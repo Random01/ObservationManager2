@@ -2,7 +2,7 @@ export class Entity{
     public id: string;
 
     constructor(params: { id: string }) {
-        Object.assign(params);
+        Object.assign(this, params);
     }
 
     public serialize(): string {
