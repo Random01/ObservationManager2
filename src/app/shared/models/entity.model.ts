@@ -8,4 +8,8 @@ export class Entity{
     public serialize(): string {
         return '';
     }
+
+    public isValid(): boolean{
+        return true;
+    }
 }
