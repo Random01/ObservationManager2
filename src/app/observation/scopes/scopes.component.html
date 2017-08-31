@@ -1,8 +1,18 @@
 ﻿<div>
     <span>Scopes</span>
     <ul>
-        <li></li>
+        <li *ngFor="let scope of scopes"
+            (click)=onSelect(scope)>
+            <span>{{scope.model}}</span>
+        </li>
     </ul>
+    
+
+    <div *ngIf="selectedScope">
+        <hr/>
+        <scope [scope]=selectedScope></scope>
+    </div>
+    
     <hr />
     <div>
         <button>Add</button>

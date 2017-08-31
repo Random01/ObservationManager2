@@ -3,11 +3,10 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'my-app',
   template: `
-    <hr/>
-    <site></site>
-    <hr/>
-    <scope></scope>
+    <scopes></scopes>
     `,
 })
 
-export class AppComponent  { name = 'World'; }
+export class AppComponent  {
+
+}
