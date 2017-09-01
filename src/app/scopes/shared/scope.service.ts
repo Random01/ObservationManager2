@@ -1,5 +1,5 @@
 ﻿import { Injectable } from '@angular/core';
-import { Scope } from './../models/scope.model';
+import { Scope } from './../../shared/models/scope.model';
 
 @Injectable()
 export class ScopeService {
@@ -22,8 +22,8 @@ export class ScopeService {
         return Promise.resolve(this.scopes);
     }
 
-    addScope(scope: Scope): Promise<number>{
+    addScope(scope: Scope): Promise<string>{
         this.scopes.push(scope);
-        return Promise.resolve(1);
+        return Promise.resolve('1');
     }
 }

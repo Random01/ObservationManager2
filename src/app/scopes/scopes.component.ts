@@ -1,6 +1,6 @@
 ﻿import { Component, Input, OnInit } from '@angular/core';
-import { Scope } from './../../shared/models/scope.model';
-import { ScopeService } from './../../shared/services/scope.service';
+import { Scope } from './../shared/models/scope.model';
+import { ScopeService } from './shared/scope.service';
 
 @Component({
     selector: 'scopes',
