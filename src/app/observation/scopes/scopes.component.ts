@@ -24,6 +24,21 @@ export class ScopesComponent implements OnInit {
         this.selectedScope = scope;
     }
 
+    addNewScope() {
+        if(this.selectedScope != null){
+            this.scopeService.addScope(this.selectedScope);
+        }
+    }
+
+    createNew() {
+        this.selectedScope = new Scope({
+            id: '',
+            model: '',
+            aperture: 0,
+            focalLength: 0
+        })
+    }
+
     ngOnInit(): void {
         this.getScopes();
     }

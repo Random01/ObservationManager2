@@ -17,6 +17,7 @@ export class Site extends Entity {
 
     constructor(params: {
         id: string,
+        name: string,
         timezone: number,
         longitude: number,
         latitude: number,

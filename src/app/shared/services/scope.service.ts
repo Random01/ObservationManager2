@@ -4,21 +4,26 @@ import { Scope } from './../models/scope.model';
 @Injectable()
 export class ScopeService {
 
-    getScopes(): Promise<Scope[]> {
+    scopes: Scope[] = [
+        new Scope({
+            id: '1',
+            model: 'SW254/1200',
+            aperture: 254,
+            focalLength: 1200}),
+        new Scope({
+            id: '2',
+            model: 'DS90/500',
+            aperture: 90,
+            focalLength: 500
+        })
+    ];
 
-        return Promise.resolve([
-            new Scope({
-                id: '1',
-                model: 'SW254/1200',
-                aperture: 254,
-                focalLength: 1200}),
-            new Scope({
-                id: '2',
-                model: 'DS90/500',
-                aperture: 90,
-                focalLength: 500
-            })
-        ]);
-        
+    getScopes(): Promise<Scope[]> {
+        return Promise.resolve(this.scopes);
+    }
+
+    addScope(scope: Scope): Promise<number>{
+        this.scopes.push(scope);
+        return Promise.resolve(1);
     }
 }

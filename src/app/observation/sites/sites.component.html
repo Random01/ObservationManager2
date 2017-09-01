@@ -1,0 +1,23 @@
+<div>
+    <span>Sites</span>
+    
+    <ul>
+        <li *ngFor="let site of sites"
+            (click)=onSelect(site)>
+            <span>{{site.name}}</span>
+        </li>
+    </ul>
+    
+
+    <div *ngIf="selectedSite">
+        <hr/>
+        <site [scope]=selectedSite></stite>
+    </div>
+    
+    <hr />
+    <div>
+        <button (click)=createNew()>New</button>
+        <button (click)=addNew()>Add</button>
+    </div>
+
+</div>

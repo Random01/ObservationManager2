@@ -1,29 +1,37 @@
 ﻿<div>
     <div>
         <span>Name</span>
-        <input />
+        <input [(ngModel)]="site.name"
+               placeholder="Name" />
     </div>
 
     <div>
         <span>Timezone</span>
-        <input />
+        <input [(ngModel)]="site.timezone"
+               placeholder="Timezone" />
     </div>
 
     <div>
         <span>Longitude</span>
-        <input />
+        <input [(ngModel)]="site.longitude"
+               placeholder="Longitude"/>
     </div>
 
     <div>
         <span>Latitude</span>
-        <input />
+        <input [(ngModel)]="site.latitude"
+               placeholder="Latitude"/>
     </div>
 
     <div>
         <span>Elevation</span>
-        <input />
+        <input [(ngModel)]="site.elevation"
+               placeholder="Elevation"/>
     </div>
 
+    <div>
+        <span>Additional details</span>
+    </div>
     <div>
         <span>IAU Code</span>
         <input />
