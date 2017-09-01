@@ -1,10 +1,7 @@
-﻿import { Entity } from './entity.model';
+﻿import { EquipmentItem } from './equipment-item.model';
 
-export class Eyepiece extends Entity {
-    // Eyepiece Name
-    public model: string;
+export class Eyepiece extends EquipmentItem {
 
-    public vendor: string;
     // Focal Length (mm)
     public focalLength: number;
     // Apparent Field of View (deg)
@@ -14,8 +11,8 @@ export class Eyepiece extends Entity {
         id: string,
         model: string,
         vendor?: string,
-        focalLength: number,
-        apparentFOV: number
+        focalLength?: number,
+        apparentFOV?: number
     }) {
         super(params);
         Object.assign(this, params);

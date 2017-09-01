@@ -1,19 +1,17 @@
 ﻿import { EquipmentItem } from './equipment-item.model';
 
-export class Filter extends EquipmentItem {
+export class Lens extends EquipmentItem {
 
-	public filterType: string;
+    public factor: number;
 
-    // "O-III 2""
-    // "Thousand Oaks"
-    // "O-III"
-	constructor(params: {
+    constructor(params: {
         id: string,
         model?: string,
         vendor?: string,
-        filterType?: string
+        factor?: number
     }) {
         super(params);
         Object.assign(this, params);
     }
+
 }
