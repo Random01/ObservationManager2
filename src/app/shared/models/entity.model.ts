@@ -1,4 +1,5 @@
 export class Entity{
+
     public id: string;
 
     constructor(params: { id: string }) {

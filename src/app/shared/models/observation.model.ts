@@ -1,15 +1,21 @@
 import { Entity } from './entity.model'
 import { Scope } from './scope.model'
 import { Result } from './result.model'
+import { Target } from './target.model'
+import { Observer } from './observer.model'
+import { Session } from './session.model'
+import { Site } from './site.model'
 
 export class Observation extends Entity {
     // WHO observed it ?
-    public observer: string;
+    public observer: Observer;
     // WHERE was observed ?
-    public site: string;
-    public session: string;
+    public site: Site;
+
+    public session: Session;
     // <!-- WHAT was observed ? -->
-    public target: string;
+    public target: Target;
+
     public begin: Date;
 
     public seeing: string;
@@ -17,13 +23,19 @@ export class Observation extends Entity {
     public scope: Scope;
     // <!-- accessories used -->
     public accessories: string;
+
     public result: Result;
 
     constructor(params: {
         id: string,
-        observer: string
+        observer?: Observer,
+        site?: Site,
+        session?: Session
     }) {
         super(params);
+
+        this.result = new Result();
+
         Object.assign(this, params);
     }
 }

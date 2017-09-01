@@ -1,3 +1,3 @@
-import {Entity} from './entity.model'
-import {Observation} from './observation.model'
-import {Scope} from './scope.model'
+export * from './entity.model'
+export * from './observation.model'
+export * from './scope.model'
