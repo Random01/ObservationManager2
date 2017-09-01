@@ -1,9 +1,10 @@
 ﻿import { Component, Input, OnInit } from '@angular/core';
+
 import { Scope } from './../shared/models/scope.model';
 import { ScopeService } from './shared/scope.service';
 
 @Component({
-    selector: 'scopes',
+    selector: 'om-scopes',
     templateUrl: './scopes.component.html',
     providers: [ ScopeService ]
 })

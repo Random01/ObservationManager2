@@ -2,7 +2,7 @@
 import { Scope } from './../../shared/models/scope.model';
 
 @Component({
-    selector: 'scope',
+    selector: 'om-scope',
     templateUrl: './scope.component.html'
 })
 

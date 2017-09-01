@@ -2,7 +2,7 @@
 import { Site } from './../../shared/models/site.model';
 
 @Component({
-    selector: 'site',
+    selector: 'om-site',
     templateUrl: './site.component.html'
 })
 
