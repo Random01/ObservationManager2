@@ -8,11 +8,11 @@ export class Scope extends Entity {
 
     public focalLength: number;
 
-    constructor(params: {
+    constructor(params?: {
         id: string,
-        model: string,
-        aperture: number,
-        focalLength: number
+        model?: string,
+        aperture?: number,
+        focalLength?: number
     }) {
         super(params);
         Object.assign(this, params);

@@ -15,7 +15,7 @@ export class Session extends Entity {
 
 	public weather: string;
 
-	constructor(params: {
+	constructor(params?: {
         id: string,
         begin?: Date,
 		end?: Date,

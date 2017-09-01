@@ -26,11 +26,12 @@ export class Observation extends Entity {
 
     public result: Result;
 
-    constructor(params: {
+    constructor(params?: {
         id: string,
         observer?: Observer,
         site?: Site,
-        session?: Session
+        session?: Session,
+        target?: Target
     }) {
         super(params);
 

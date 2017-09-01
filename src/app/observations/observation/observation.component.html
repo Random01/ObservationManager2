@@ -1,3 +1,33 @@
 ﻿<div>
+    <div>
+        <span>Target</span>
+        <div>{{observation.target.name}}</div>
+    </div>
+
+    <div>
+        <span>Notes</span>
+        <input [(ngModel)]="observation.result.description"
+               placeholder="Result" />
+    </div>
+
+    <div>
+        <span>Equipment</span>
+        <ul>
+            <li>
+                <span>Telecopes, Binocularus &amp; Finders</span>
+            </li>
+            <li>
+                <span>Eyepieces &amp; Cameras</span>
+            </li>
+            <li>
+                <span>Barlows &amp; Focal Reducers</span>
+            </li>
+        </ul>
+    </div>
+
+    <div>
+        <span>Location</span>
+        <div>{{observation.site.name}}</div>
+    </div>
 
 </div>

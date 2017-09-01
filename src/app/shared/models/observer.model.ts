@@ -8,7 +8,7 @@ export class Observer extends Entity {
 
     public contact: string;
 
-    constructor(params: {
+    constructor(params?: {
         id: string,
         name: string,
         surname?: string,

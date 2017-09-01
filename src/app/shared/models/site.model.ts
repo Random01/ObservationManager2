@@ -15,14 +15,14 @@ export class Site extends Entity {
     // <!--IAU Code for site -- >
     public code: number;
 
-    constructor(params: {
+    constructor(params?: {
         id: string,
         name: string,
-        timezone: number,
-        longitude: number,
-        latitude: number,
-        elevation: number,
-        code: number
+        timezone?: number,
+        longitude?: number,
+        latitude?: number,
+        elevation?: number,
+        code?: number
     }) {
         super(params);
         Object.assign(this, params);
