@@ -1,8 +1,6 @@
-import { Entity } from './entity.model'
+import { EquipmentItem } from './equipment-item.model';
 
-export class Scope extends Entity {
-
-    public model: string;
+export class Scope extends EquipmentItem {
 
     public aperture: number;
 
@@ -11,6 +9,7 @@ export class Scope extends Entity {
     constructor(params?: {
         id: string,
         model?: string,
+        vendor?: string,
         aperture?: number,
         focalLength?: number
     }) {

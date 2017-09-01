@@ -1,6 +1,6 @@
 ﻿import { Component, Input, OnInit } from '@angular/core';
 
-import { Scope } from './../shared/models/scope.model';
+import { Scope } from './../shared/models/equipment/scope.model';
 import { ScopeService } from './shared/scope.service';
 
 @Component({
