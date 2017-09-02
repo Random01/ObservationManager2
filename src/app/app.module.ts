@@ -5,11 +5,10 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 
-import { ScopeComponent } from './scopes/scope/scope.component';
-import { ScopesComponent } from './scopes/scopes.component';
-
 import { SiteComponent } from './sites/site/site.component';
 import { SitesComponent } from './sites/sites.component';
+
+import { ObservationsComponent } from './observations/observations.component';
 
 @NgModule({
     imports: [
@@ -17,21 +16,20 @@ import { SitesComponent } from './sites/sites.component';
         FormsModule,
         RouterModule.forRoot([
             {
-                path: 'scopes',
-                component: ScopesComponent
-            },
-            {
                 path: 'sites',
                 component: SitesComponent
+            },
+            {
+                path: 'observations',
+                component: ObservationsComponent
             }
         ])
     ],
     declarations: [
         AppComponent,
-        ScopeComponent,
-        ScopesComponent,
         SiteComponent,
-        SitesComponent
+        SitesComponent,
+        ObservationsComponent
     ],
     bootstrap: [
         AppComponent

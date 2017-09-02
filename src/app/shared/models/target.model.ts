@@ -3,15 +3,15 @@ import { TargetType } from './target-type.model';
 
 export class Target extends Entity {
 
-    name: String;
+    public name: String;
 
-    targetType: TargetType;
+    public targetType: TargetType;
 
-    alliases: String[];
+    public alliases: String[];
 
-    constructor(params: {
+    constructor(params?: {
         id: string,
-        name: string,
+        name?: string,
         targetType?: TargetType,
         alliases?: String[]
     }) {

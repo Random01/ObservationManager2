@@ -1,6 +1,6 @@
 ﻿import { Injectable } from '@angular/core';
 
-import { Scope } from './../../shared/models/scope.model';
+import { Scope } from './../../shared/models/equipment/scope.model';
 import { SCOPES } from './mock-scopes';
 
 @Injectable()

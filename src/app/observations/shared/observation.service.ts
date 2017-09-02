@@ -1,12 +1,13 @@
 ﻿import { Injectable } from '@angular/core';
+
 import { Observation } from './../../shared/models/models';
+import { OBSERVATIONS } from './mock-observations';
+
 
 export class ObservationService {
 
-    observations: Observation[]
-
     getObservations(): Promise<Observation[]> {
-        return Promise.resolve(this.observations);
+        return Promise.resolve(OBSERVATIONS);
     }
 
 }

@@ -6,7 +6,8 @@
 
     <div>
         <span>Notes</span>
-        <input [(ngModel)]="observation.result.description"
+        <input *ngIf="observation.result"
+               [(ngModel)]="observation.result.description"
                placeholder="Result" />
     </div>
 

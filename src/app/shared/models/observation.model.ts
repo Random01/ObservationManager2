@@ -1,10 +1,11 @@
-import { Entity } from './entity.model'
-import { Scope } from './scope.model'
-import { Result } from './result.model'
-import { Target } from './target.model'
-import { Observer } from './observer.model'
-import { Session } from './session.model'
-import { Site } from './site.model'
+import { Entity } from './entity.model';
+import { Result } from './result.model';
+import { Target } from './target.model';
+import { Observer } from './observer.model';
+import { Session } from './session.model';
+import { Site } from './site.model';
+
+import { Scope, Eyepiece, Filter } from './equipment/equipment';
 
 export class Observation extends Entity {
     // WHO observed it ?
@@ -21,8 +22,11 @@ export class Observation extends Entity {
     public seeing: string;
     // <!-- scope used for the observation -->
     public scope: Scope;
+
     // <!-- accessories used -->
-    public accessories: string;
+    public eyepieces: Eyepiece[];
+
+    public filters: Filter[];
 
     public result: Result;
 
@@ -31,7 +35,10 @@ export class Observation extends Entity {
         observer?: Observer,
         site?: Site,
         session?: Session,
-        target?: Target
+        target?: Target,
+        scope?: Scope,
+        begin?: Date,
+        result?: Result
     }) {
         super(params);
 
