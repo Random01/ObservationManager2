@@ -10,4 +10,8 @@ export class ObservationService {
         return Promise.resolve(OBSERVATIONS);
     }
 
+    getObservation(id: string): Promise<Observation> {
+        return Promise.resolve(OBSERVATIONS[0]);
+    }
+
 }

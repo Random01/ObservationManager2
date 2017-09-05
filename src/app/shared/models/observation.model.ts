@@ -38,7 +38,9 @@ export class Observation extends Entity {
         target?: Target,
         scope?: Scope,
         begin?: Date,
-        result?: Result
+        result?: Result,
+        eyepieces?: Eyepiece[],
+        filters?: Filter[]
     }) {
         super(params);
 

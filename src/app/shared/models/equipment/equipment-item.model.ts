@@ -14,5 +14,4 @@ export class EquipmentItem extends Entity {
         super(params);
         Object.assign(this, params);
     }
-
 }

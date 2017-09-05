@@ -1,0 +1,14 @@
+<div>
+    <div *ngIf="observation">
+        <om-observation [observation]="observation">
+        </om-observation>
+    </div>
+
+    <hr/>
+
+    <div>
+        <button (click)="save()">Save</button>
+        <button (click)="goBack()">Back</button>
+    </div>
+    
+</div>

@@ -26,7 +26,7 @@
         </ul>
     </div>
 
-    <div>
+    <div *ngIf="observation.site">
         <span>Location</span>
         <div>{{observation.site.name}}</div>
     </div>

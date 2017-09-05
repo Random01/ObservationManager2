@@ -2,12 +2,12 @@
 
 export class Filter extends EquipmentItem {
 
-	public filterType: string;
+    public filterType: string;
 
     // "O-III 2""
     // "Thousand Oaks"
     // "O-III"
-	constructor(params?: {
+    constructor(params?: {
         id: string,
         model?: string,
         vendor?: string,

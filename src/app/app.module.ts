@@ -9,6 +9,8 @@ import { SiteComponent } from './sites/site/site.component';
 import { SitesComponent } from './sites/sites.component';
 
 import { ObservationsComponent } from './observations/observations.component';
+import { ObservationDetailComponent } from './observations/observation-detail/observation-detail.component';
+import { ObservationComponent } from './observations/observation/observation.component';
 
 @NgModule({
     imports: [
@@ -22,6 +24,10 @@ import { ObservationsComponent } from './observations/observations.component';
             {
                 path: 'observations',
                 component: ObservationsComponent
+            },
+            {
+                path: 'observation',
+                component: ObservationDetailComponent
             }
         ])
     ],
@@ -29,7 +35,9 @@ import { ObservationsComponent } from './observations/observations.component';
         AppComponent,
         SiteComponent,
         SitesComponent,
-        ObservationsComponent
+        ObservationsComponent,
+        ObservationDetailComponent,
+        ObservationComponent
     ],
     bootstrap: [
         AppComponent

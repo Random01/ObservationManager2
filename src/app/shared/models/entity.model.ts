@@ -1,4 +1,4 @@
-export class Entity{
+export class Entity {
 
     public id: string;
 
@@ -10,7 +10,7 @@ export class Entity{
         return '';
     }
 
-    public isValid(): boolean{
+    public isValid(): boolean {
         return true;
     }
 }
