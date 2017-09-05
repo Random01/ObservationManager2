@@ -12,7 +12,7 @@ export class ObservationDetailComponent implements OnInit {
 
     observation: Observation;
 
-    constructor(private observationService: ObservationService){
+    constructor(private observationService: ObservationService) {
     }
 
     ngOnInit(): void {

@@ -10,7 +10,11 @@ export class ScopeService {
         return Promise.resolve(SCOPES);
     }
 
-    addScope(scope: Scope): Promise<string>{
+    addScope(scope: Scope): Promise<string> {
         return Promise.resolve('1');
+    }
+
+    getScope(id: string): Promise<Scope> {
+        return Promise.resolve(SCOPES[0]);
     }
 }
