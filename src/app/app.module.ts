@@ -12,6 +12,8 @@ import { ObservationsComponent } from './observations/observations.component';
 import { ObservationDetailComponent } from './observations/observation-detail/observation-detail.component';
 import { ObservationComponent } from './observations/observation/observation.component';
 
+
+
 @NgModule({
     imports: [
         BrowserModule,

@@ -3,7 +3,7 @@
 import { Observation } from './../../shared/models/models';
 import { OBSERVATIONS } from './mock-observations';
 
-
+@Injectable()
 export class ObservationService {
 
     getObservations(): Promise<Observation[]> {
