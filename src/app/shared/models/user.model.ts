@@ -1,5 +1,7 @@
 export class User {
 
+    id: string;
+
     firstName: string;
 
     lastName: string;
@@ -7,6 +9,7 @@ export class User {
     login: string;
 
     constructor(params?: {
+        id?: string,
         firstName?: string,
         lastName?: string,
         login?: string

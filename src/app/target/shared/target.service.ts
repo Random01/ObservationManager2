@@ -9,5 +9,5 @@ export class TargetService {
     getTargets(): Promise<Target[]> {
         return Promise.resolve(TARGETS);
     }
-    
+
 }
