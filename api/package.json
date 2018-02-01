@@ -1,0 +1,14 @@
+{
+    "name": "api",
+    "version": "0.0.1",
+    "description": "Backend for Observation Manager App",
+    "main": "index.js",
+    "scripts": {
+        "start": "set NODE_ENV=development&& nodemon --inspect=43499 index.js --debug-brk"
+    },
+    "dependencies": {
+        "express": "^4.16.2",
+        "lodash": "^4.17.4",
+        "nodemon": "^1.14.7"
+    }
+}
