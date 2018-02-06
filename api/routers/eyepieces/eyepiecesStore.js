@@ -3,7 +3,7 @@ const _ = require('lodash');
 
 class EyepiecesStore {
     constructor() {
-        this.eyepieces_ = [
+        this._eyepieces = [
             new Eyepiece({ forcalLength: 30, apparentFOV: 82 }),
             new Eyepiece({ forcalLength: 20, apparentFOV: 72 }),
             new Eyepiece({ forcalLength: 11, apparentFOV: 82 }),
@@ -15,7 +15,7 @@ class EyepiecesStore {
      * @returns {Promise}
      */
     getEyepieces() {
-        return Promise.resolve([...this.eyepieces_]);
+        return Promise.resolve([...this._eyepieces]);
     }
 
     /**
@@ -24,7 +24,7 @@ class EyepiecesStore {
      * @returns {Promise}
      */
     getEyepieceById(id) {
-        return _.find(this.eyepieces_, (eyepiece) => eyepiece.id === id);
+        return _.find(this._eyepieces, (eyepiece) => eyepiece.id === id);
     }
 
 }
