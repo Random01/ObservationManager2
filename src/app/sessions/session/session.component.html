@@ -1,3 +1,26 @@
 ﻿<div>
-    <button>Add new observation</button>
+    <div>
+        <span>Start Date</span>
+        <input type="text" />
+    </div>
+    <div>
+        <span>End Date</span>
+        <input type="text" />
+    </div>
+    <div>
+        <span>Site</span>
+        <div></div>
+    </div>
+    <div>
+        <span>Equipment</span>
+        <textare [(ngModel)]="session.equipment"></textarea>
+    </div>
+    <div>
+        <span>Comments</span>
+        <textarea [(ngModel)]="session.comments"></textarea>
+    </div>
+    <div>
+        <span>Weather</span>
+        <textarea [(ngModel)]="session.weather"></textarea>
+    </div>
 </div>

@@ -19,7 +19,7 @@ export class ScopesComponent implements OnInit {
 
     getScopes(): void {
         this.scopeService.getScopes().then(scopes => this.scopes = scopes);
-    };
+    }
 
     onSelect(scope: Scope) {
         this.selectedScope = scope;
@@ -35,6 +35,7 @@ export class ScopesComponent implements OnInit {
         this.selectedScope = new Scope({
             id: '',
             model: '',
+            vendor: '',
             aperture: 0,
             focalLength: 0
         })

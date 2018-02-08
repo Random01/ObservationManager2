@@ -1,1 +1,13 @@
-﻿
+﻿<div>
+    <span>Eyepieces</span>
+
+    <ul>
+        <li *ngFor="let ep of eyepieces">
+            <span>{{ep.model}}</span>
+        </li>
+    </ul>
+
+    <div>
+        <button routerLink="/equipment">Equipment</button>
+    </div>
+</div>

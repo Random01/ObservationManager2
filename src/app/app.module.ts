@@ -11,8 +11,12 @@ import { SitesComponent } from './sites/sites.component';
 import { ObservationsComponent } from './observations/observations.component';
 import { ObservationDetailComponent } from './observations/observation-detail/observation-detail.component';
 import { ObservationComponent } from './observations/observation/observation.component';
+import { EquipmentComponent } from './equipment/equipment.component';
+import { ScopesComponent } from './scopes/scopes.component';
+import { ScopeComponent } from './scopes/scope/scope.component';
+import { EyepiecesComponent } from './eyepieces/eyepieces.component';
 
-
+import { SessionsComponent } from './sessions/sessions.component';
 
 @NgModule({
     imports: [
@@ -30,6 +34,22 @@ import { ObservationComponent } from './observations/observation/observation.com
             {
                 path: 'observation',
                 component: ObservationDetailComponent
+            },
+            {
+                path: 'equipment',
+                component: EquipmentComponent
+            },
+            {
+                path: 'scopes',
+                component: ScopesComponent
+            },
+            {
+                path: 'eyepieces',
+                component: EyepiecesComponent
+            },
+            {
+                path: 'sessions',
+                component: SessionsComponent
             }
         ])
     ],
@@ -39,7 +59,12 @@ import { ObservationComponent } from './observations/observation/observation.com
         SitesComponent,
         ObservationsComponent,
         ObservationDetailComponent,
-        ObservationComponent
+        ObservationComponent,
+        EquipmentComponent,
+        ScopesComponent,
+        ScopeComponent,
+        EyepiecesComponent,
+        SessionsComponent
     ],
     bootstrap: [
         AppComponent

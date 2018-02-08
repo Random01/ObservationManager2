@@ -1,4 +1,5 @@
 ﻿import { Component, Input } from '@angular/core';
+import { Session } from './../../shared/models/session.model';
 
 @Component({
     selector: 'session',
@@ -6,5 +7,5 @@
 })
 
 export class SessionComponent {
-
+    session: Session;
 }
