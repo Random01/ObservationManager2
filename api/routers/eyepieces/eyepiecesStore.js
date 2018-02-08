@@ -4,10 +4,10 @@ const _ = require('lodash');
 class EyepiecesStore {
     constructor() {
         this._eyepieces = [
-            new Eyepiece({ forcalLength: 30, apparentFOV: 82 }),
-            new Eyepiece({ forcalLength: 20, apparentFOV: 72 }),
-            new Eyepiece({ forcalLength: 11, apparentFOV: 82 }),
-            new Eyepiece({ forcalLength: 7, apparentFOV: 82 })
+            new Eyepiece({ focalLength: 30, apparentFOV: 82 }),
+            new Eyepiece({ focalLength: 20, apparentFOV: 72 }),
+            new Eyepiece({ focalLength: 11, apparentFOV: 82 }),
+            new Eyepiece({ focalLength: 7, apparentFOV: 82 })
         ];
     }
 

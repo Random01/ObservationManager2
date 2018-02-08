@@ -6,6 +6,7 @@ class Eyepiece extends EquipmentItem {
 
         this.focalLength = null;
         this.apparentFOV = null;
+        
         if (params) {
             // Focal Length (mm)
             this.focalLength = params.focalLength;
