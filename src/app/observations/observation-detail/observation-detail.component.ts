@@ -24,6 +24,7 @@ export class ObservationDetailComponent implements OnInit {
     goBack(): void {
     }
 
-    save(): void {
+    update(): void {
+        
     }
 }

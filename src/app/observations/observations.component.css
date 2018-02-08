@@ -1,0 +1,19 @@
+.grid {
+    display: table;
+}
+
+.target-name-column{
+    width: 100px;
+}
+
+.begin-column{
+ width: 100px;
+}
+
+.target-name-column,
+.begin-column,
+.description-column,
+.actions-column {
+    display: table-cell;
+    padding: 10px;
+}

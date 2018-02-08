@@ -1,20 +1,20 @@
-﻿<div>
-    <div>
+﻿<div class="observation">
+    <div class="target">
         <span>Target</span>
         <div>{{observation.target.name}}</div>
         <div>
-            <om-target-search></om-target-search>
         </div>
     </div>
 
-    <div>
+    <div class="notes">
         <span>Notes</span>
-        <input *ngIf="observation.result"
-               [(ngModel)]="observation.result.description"
-               placeholder="Result" />
+        <textarea *ngIf="observation.result"
+                [(ngModel)]="observation.result.description"
+                placeholder="Result">
+        </textarea>
     </div>
 
-    <div>
+    <div class="equipment">
         <span>Equipment</span>
         <ul>
             <li>

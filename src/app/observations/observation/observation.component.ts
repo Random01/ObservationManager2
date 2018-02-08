@@ -4,10 +4,12 @@ import { Observation } from './../../shared/models/models';
 import { Scope, Eyepiece } from './../../shared/models/equipment/equipment';
 import { ScopeService } from './../../scopes/shared/scope.service';
 import { EyepieceService } from './../../eyepieces/shared/eyepiece.service';
+import { TargetSearchComponent } from './../../target/target-search/target-search.component';
 
 @Component({
     selector: 'om-observation',
     templateUrl: './observation.component.html',
+    styleUrls: [ './observation.component.css' ],
     providers: [
         ScopeService,
         EyepieceService

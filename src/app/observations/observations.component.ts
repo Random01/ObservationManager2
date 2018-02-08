@@ -6,7 +6,12 @@ import { ObservationService } from './shared/observation.service';
 @Component({
     selector: 'om-observations',
     templateUrl: './observations.component.html',
-    providers: [ObservationService]
+    styleUrls: [
+        './observations.component.css'
+    ],
+    providers: [
+        ObservationService
+    ]
 })
 
 export class ObservationsComponent implements OnInit {

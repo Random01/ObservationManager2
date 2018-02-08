@@ -3,18 +3,20 @@
     <div class="grid">
         <div *ngFor="let observation of observations">
             <div class="target-name-column">{{observation.target.name}}</div>
-            <div class="begin-column">{{observation.begin}}</div>
-            <div>{{observation.result.description}}</div>
-            <div>
-                <a *ngIf="observation.session"
-                   [routerLink]="['/session', observation.session.id]">
-                    Go To Session
-                </a>
-            </div>
-            <div>
-                <a [routerLink]="['/observation']">
-                    Go To Observation
-                </a>
+            <div class="begin-column">{{observation.begin | date:'medium'}}</div>
+            <div class="description-column">{{observation.result.description}}</div>
+            <div class="actions-column">
+                <div>
+                    <a *ngIf="observation.session.id"
+                        [routerLink]="['/session', observation.session.id]">
+                        Go To Session
+                    </a>
+                </div>
+                <div>
+                    <a [routerLink]="['/observation', observation.id]">
+                        Go To Observation
+                    </a>
+                </div>
             </div>
         </div>
     </div>

@@ -1,0 +1,8 @@
+.observation > DIV{
+    display: grid;
+    padding: 10px;
+}
+
+.notes TEXTAREA{
+    height: 200px;
+}

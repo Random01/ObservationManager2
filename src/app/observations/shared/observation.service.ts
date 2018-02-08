@@ -14,4 +14,15 @@ export class ObservationService {
         return Promise.resolve(OBSERVATIONS[0]);
     }
 
+    update(observation: Observation): Promise<Boolean> {
+        return Promise.resolve(true);
+    }
+
+    add(observation: Observation): Promise<String>{
+        return Promise.resolve('aaaa-bbbb');
+    }
+
+    delete(id: string): Promise<Boolean>{
+        return Promise.resolve(true);
+    }
 }
