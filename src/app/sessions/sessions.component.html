@@ -1,7 +1,13 @@
 <div>
     <div>
-        Sessions...
+        Recent Sessions
     </div>
+   <ul class="om-recent-sessions-list">
+        <li *ngFor="let session of sessions">
+            <div>From {{session.begin|date:'medium'}} to {{session.end|date:'medium'}}</div>
+            <div>{{session.weather}}</div>
+        </li>
+   </ul>
     <div>
         <button routerLink="/session">New Session</button>
     </div>

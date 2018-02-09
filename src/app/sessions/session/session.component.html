@@ -1,26 +1,44 @@
 ﻿<div>
     <div>
-        <span>Start Date</span>
-        <input type="text" />
+        <mat-form-field>
+                <input matInput
+                        [matDatepicker]="startDatePicker"
+                        placeholder="Start date"
+                        [(ngModel)]="session.begin">
+                <mat-datepicker-toggle matSuffix
+                        [for]="startDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #startDatePicker></mat-datepicker>
+        </mat-form-field>
     </div>
+    
     <div>
-        <span>End Date</span>
-        <input type="text" />
+            <mat-form-field>
+                    <input matInput
+                            [matDatepicker]="endDatePicker"
+                            placeholder="End date"
+                            [(ngModel)]="session.end">
+                    <mat-datepicker-toggle matSuffix
+                            [for]="endDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #endDatePicker></mat-datepicker>
+            </mat-form-field>
     </div>
-    <div>
-        <span>Site</span>
-        <div></div>
+
+    <div class="om-comments-section">
+        <mat-form-field class="om-comments-input">
+                <textarea matInput
+                        placeholder="Comments"
+                        [(ngModel)]="session.comments">
+                </textarea>
+        </mat-form-field>
     </div>
-    <div>
-        <span>Equipment</span>
-        <textare [(ngModel)]="session.equipment"></textarea>
+
+    <div class="om-weather-section">
+        <mat-form-field class="weather-input">
+                <textarea matInput
+                        placeholder="Weather"
+                        [(ngModel)]="session.weather">
+                </textarea>
+        </mat-form-field>
     </div>
-    <div>
-        <span>Comments</span>
-        <textarea [(ngModel)]="session.comments"></textarea>
-    </div>
-    <div>
-        <span>Weather</span>
-        <textarea [(ngModel)]="session.weather"></textarea>
-    </div>
+
 </div>

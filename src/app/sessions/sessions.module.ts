@@ -1,11 +1,27 @@
 import { NgModule } from '@angular/core';
 
+import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatNativeDateModule, MatInputModule, MatDatepickerModule } from '@angular/material';
+
 import { SessionsComponent } from './sessions.component';
 import { SessionComponent } from './session/session.component';
 import { SessionDetailsComponent } from './session-details/session-details.component';
 
 @NgModule({
-    declarations:[
+    imports: [
+        CommonModule,
+        BrowserModule,
+        FormsModule,
+        NoopAnimationsModule,
+        MatButtonModule,
+        MatInputModule,
+        MatDatepickerModule,
+        MatNativeDateModule
+    ],
+    declarations: [
         SessionsComponent,
         SessionComponent,
         SessionDetailsComponent
@@ -13,7 +29,10 @@ import { SessionDetailsComponent } from './session-details/session-details.compo
     exports: [
         SessionsComponent,
         SessionComponent,
-        SessionDetailsComponent
+        SessionDetailsComponent,
+        MatButtonModule,
+        MatInputModule,
+        MatDatepickerModule
     ],
     bootstrap: [
         SessionsComponent,
@@ -22,4 +41,4 @@ import { SessionDetailsComponent } from './session-details/session-details.compo
     ]
 })
 
-export class SessionsModule {}
+export class SessionsModule { }

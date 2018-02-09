@@ -8,6 +8,7 @@ import { SessionsComponent } from './sessions/sessions.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ScopesModule } from './scopes/scopes.module';
 import { SessionsModule } from './sessions/sessions.module';
+import { SessionService } from './sessions/shared/session.service';
 
 @NgModule({
   imports: [
@@ -18,7 +19,9 @@ import { SessionsModule } from './sessions/sessions.module';
     SessionsModule
   ],
   declarations: [ AppComponent ],
-  providers: [],
+  providers: [
+    SessionService
+  ],
   bootstrap: [ AppComponent ]
 })
 
