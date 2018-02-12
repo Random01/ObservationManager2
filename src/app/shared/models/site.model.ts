@@ -7,13 +7,13 @@ export class Site extends Entity {
 	// <!--PLEASE NOTE: West of Greenwich is negative and east is positive -- >
     public timezone: number = 0;
     // <!-- geographical longitude; eastwards positive -->
-    public longitude: number;
+    public longitude?: number;
     // <!-- geographical latitude -->
-    public latitude: number;
+    public latitude?: number;
     // <!-- elevation in meters -->
-    public elevation: number;
+    public elevation?: number;
     // <!--IAU Code for site -- >
-    public code: number;
+    public code?: number;
 
     constructor(params?: {
         id: string,

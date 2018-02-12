@@ -2,6 +2,7 @@
 
 import { Observation } from './../../shared/models/models';
 import { OBSERVATIONS } from './mock-observations';
+import  from 'lodash';
 
 @Injectable()
 export class ObservationService {
@@ -11,7 +12,7 @@ export class ObservationService {
     }
 
     getObservation(id: string): Promise<Observation> {
-        return Promise.resolve(OBSERVATIONS[0]);
+        return Promise.resolve(_.find(OBSERVATIONS, o=>o.id=== id));
     }
 
     update(observation: Observation): Promise<Boolean> {

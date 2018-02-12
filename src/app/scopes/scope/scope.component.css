@@ -1,0 +1,8 @@
+.om-scope-component {
+    display: flex;
+    flex-direction: column;
+}
+
+.om-scope-component > * {
+    width: 100%;
+}

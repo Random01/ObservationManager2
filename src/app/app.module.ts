@@ -10,15 +10,32 @@ import { ScopesModule } from './scopes/scopes.module';
 import { SessionsModule } from './sessions/sessions.module';
 import { SessionService } from './sessions/shared/session.service';
 
+import { MatButtonModule, MatNativeDateModule, MatInputModule, MatDatepickerModule } from '@angular/material';
+import { TargetModule } from './target/target.module';
+import { ObservationModule } from './observations/observation.module';
+
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     ScopesModule,
-    SessionsModule
+    SessionsModule,
+    MatButtonModule,
+    MatNativeDateModule,
+    MatInputModule,
+    MatDatepickerModule,
+    TargetModule,
+    ObservationModule
   ],
   declarations: [ AppComponent ],
+  exports:[
+    MatButtonModule,
+    MatNativeDateModule,
+    MatInputModule,
+    MatDatepickerModule,
+    TargetModule
+  ],
   providers: [
     SessionService
   ],

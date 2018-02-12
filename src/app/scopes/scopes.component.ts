@@ -32,13 +32,7 @@ export class ScopesComponent implements OnInit {
     }
 
     createNew() {
-        this.selectedScope = new Scope({
-            id: '',
-            model: '',
-            vendor: '',
-            aperture: 0,
-            focalLength: 0
-        })
+        this.selectedScope = new Scope();
     }
 
     ngOnInit(): void {

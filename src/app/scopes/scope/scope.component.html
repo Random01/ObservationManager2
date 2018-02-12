@@ -1,20 +1,26 @@
-﻿<div>
-    <div class="row">
-        <span>Model</span>
-        <input [(ngModel)]="scope.model"
-               placeholder="Name" />
-    </div>
+﻿<div class="om-scope-component">
+    <mat-form-field>
+        <input matInput
+                placeholder="Model"
+                [(ngModel)]="scope.model"/>
+    </mat-form-field>
 
-    <div class="row">
-        <span>Aperture</span>
-        <input [(ngModel)]="scope.aperture"
-               placeholder="Aperture" />
-    </div>
+    <mat-form-field>
+        <input matInput
+                placeholder="Aperture"
+                [(ngModel)]="scope.aperture"/>
+    </mat-form-field>
 
-    <div class="row">
-        <span>Focal Length</span>
-        <input [(ngModel)]="scope.focalLength"
-               placeholder="Focal Length" />
-    </div>
+    <mat-form-field>
+        <input matInput
+                placeholder="Focal Length"
+                [(ngModel)]="scope.focalLength"/>
+    </mat-form-field>
+
+    <mat-form-field>
+            <input matInput
+                    placeholder="Vendor"
+                    [(ngModel)]="scope.vendor"/>
+    </mat-form-field>
 
 </div>

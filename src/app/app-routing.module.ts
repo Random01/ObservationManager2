@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ScopesComponent } from './scopes/scopes.component';
 import { SessionsComponent } from './sessions/sessions.component';
 import { SessionDetailsComponent } from './sessions/session-details/session-details.component';
+import { ObservationsComponent } from './observations/observations.component';
+import { ObservationDetailComponent } from './observations/observation-detail/observation-detail.component';
 
 const routes: Routes = [
   {
@@ -17,6 +19,14 @@ const routes: Routes = [
   {
     path: 'session',
     component: SessionDetailsComponent
+  },
+  {
+    path: 'observations',
+    component: ObservationsComponent
+  },
+  {
+    path: 'observation/:id',
+    component: ObservationDetailComponent
   }
 ];
 

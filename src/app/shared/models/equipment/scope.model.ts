@@ -2,9 +2,9 @@ import { EquipmentItem } from './equipment-item.model';
 
 export class Scope extends EquipmentItem {
 
-    public aperture: number;
+    public aperture?: number;
 
-    public focalLength: number;
+    public focalLength?: number;
 
     constructor(params?: {
         id: string,

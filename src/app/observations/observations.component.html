@@ -8,12 +8,12 @@
             <div class="actions-column">
                 <div>
                     <a *ngIf="observation.session.id"
-                        [routerLink]="['/session', observation.session.id]">
+                        routerLink="/session/{{observation.session.id}}">
                         Go To Session
                     </a>
                 </div>
                 <div>
-                    <a [routerLink]="['/observation', observation.id]">
+                    <a routerLink="/observation/{{observation.id}}">
                         Go To Observation
                     </a>
                 </div>

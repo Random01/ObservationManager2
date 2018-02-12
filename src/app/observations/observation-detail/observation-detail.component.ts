@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+
 import { Observation } from './../../shared/models/models';
 import { ObservationService } from './../shared/observation.service';
+
 
 @Component({
     selector: 'om-observation-detail',
@@ -12,19 +17,26 @@ export class ObservationDetailComponent implements OnInit {
 
     observation: Observation;
 
-    constructor(private observationService: ObservationService) {
+    constructor(
+        private observationService: ObservationService,
+        private route: ActivatedRoute,
+        private location: Location
+    ) {
+    }
+
+    getObservation(): void{
+        const id = this.route.snapshot.paramMap.get('id');
+
+        this.observationService
+            .getObservation(id)
+            .then((observation) => this.observation = observation);
     }
 
     ngOnInit(): void {
-        this.observationService
-        .getObservation('aaaa')
-        .then((observation) => this.observation = observation);
+        this.getObservation();
     }
 
     goBack(): void {
-    }
-
-    update(): void {
-        
+        this.location.back();
     }
 }
