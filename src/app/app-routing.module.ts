@@ -6,6 +6,10 @@ import { SessionsComponent } from './sessions/sessions.component';
 import { SessionDetailsComponent } from './sessions/session-details/session-details.component';
 import { ObservationsComponent } from './observations/observations.component';
 import { ObservationDetailComponent } from './observations/observation-detail/observation-detail.component';
+import { EquipmentComponent } from './equipment/equipment.component';
+import { SitesComponent } from './sites/sites.component';
+import { EyepiecesComponent } from './eyepieces/eyepieces.component';
+import { FiltersComponent } from './filters/filters.component';
 
 const routes: Routes = [
   {
@@ -21,12 +25,32 @@ const routes: Routes = [
     component: SessionDetailsComponent
   },
   {
+    path: 'session/:id',
+    component: SessionDetailsComponent
+  },
+  {
     path: 'observations',
     component: ObservationsComponent
   },
   {
     path: 'observation/:id',
     component: ObservationDetailComponent
+  },
+  {
+    path: 'equipment',
+    component: EquipmentComponent
+  },
+  {
+    path: 'sites',
+    component: SitesComponent
+  },
+  {
+    path: 'eyepieces',
+    component: EyepiecesComponent
+  },
+  {
+    path: 'filters',
+    component: FiltersComponent
   }
 ];
 

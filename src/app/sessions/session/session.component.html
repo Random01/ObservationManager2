@@ -1,4 +1,6 @@
 ﻿<div>
+
+    <!-- Start Date -->
     <div>
         <mat-form-field>
                 <input matInput
@@ -11,16 +13,17 @@
         </mat-form-field>
     </div>
     
+    <!-- End Date -->
     <div>
-            <mat-form-field>
-                    <input matInput
-                            [matDatepicker]="endDatePicker"
-                            placeholder="End date"
-                            [(ngModel)]="session.end">
-                    <mat-datepicker-toggle matSuffix
-                            [for]="endDatePicker"></mat-datepicker-toggle>
-                    <mat-datepicker #endDatePicker></mat-datepicker>
-            </mat-form-field>
+        <mat-form-field>
+                <input matInput
+                        [matDatepicker]="endDatePicker"
+                        placeholder="End date"
+                        [(ngModel)]="session.end">
+                <mat-datepicker-toggle matSuffix
+                        [for]="endDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #endDatePicker></mat-datepicker>
+        </mat-form-field>
     </div>
 
     <div class="om-comments-section">

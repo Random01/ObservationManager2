@@ -2,7 +2,7 @@
 
 import { Observation } from './../../shared/models/models';
 import { OBSERVATIONS } from './mock-observations';
-import  from 'lodash';
+import * as _ from "lodash";
 
 @Injectable()
 export class ObservationService {

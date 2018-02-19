@@ -13,6 +13,10 @@ import { SessionService } from './sessions/shared/session.service';
 import { MatButtonModule, MatNativeDateModule, MatInputModule, MatDatepickerModule } from '@angular/material';
 import { TargetModule } from './target/target.module';
 import { ObservationModule } from './observations/observation.module';
+import { EquipmentComponent } from './equipment/equipment.component';
+import { SiteModule } from './sites/site.module';
+import { EyepieceModule } from './eyepieces/eyepiece.module';
+import { FilterModule } from './filters/filter.module';
 
 @NgModule({
   imports: [
@@ -26,10 +30,16 @@ import { ObservationModule } from './observations/observation.module';
     MatInputModule,
     MatDatepickerModule,
     TargetModule,
-    ObservationModule
+    ObservationModule,
+    SiteModule,
+    EyepieceModule,
+    FilterModule
   ],
-  declarations: [ AppComponent ],
-  exports:[
+  declarations: [
+    AppComponent,
+    EquipmentComponent
+  ],
+  exports: [
     MatButtonModule,
     MatNativeDateModule,
     MatInputModule,

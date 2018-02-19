@@ -6,6 +6,11 @@
         <li *ngFor="let session of sessions">
             <div>From {{session.begin|date:'medium'}} to {{session.end|date:'medium'}}</div>
             <div>{{session.weather}}</div>
+            <div>
+                <a routerLink="/session/{{session.id}}">
+                    Go To Session
+                </a>
+            </div>
         </li>
    </ul>
     <div>

@@ -7,8 +7,19 @@
     </div>
     <hr>
     <div>
-        <button mat-button>Create</button>
-        <button mat-button>Update</button>
-        <button mat-button>Cancel</button>
+        <button mat-button
+                *ngIf="editMode===false"
+                (click)="create()">Create</button>
+
+        <button mat-button
+                *ngIf="editMode===true"
+                (click)="update()">Update</button>
+
+        <button mat-button
+                *ngIf="editMode===true"
+                (click)="update()">Add New Observation</button> 
+
+        <button mat-button
+                routerLink="/sessions">Back</button>
     </div>
 </div>

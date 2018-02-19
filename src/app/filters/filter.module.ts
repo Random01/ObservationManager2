@@ -4,8 +4,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
-import { SitesComponent } from './sites.component';
-import { SiteComponent } from './site/site.component';
+import { FiltersComponent } from './filters.component';
 
 @NgModule({
     imports:[
@@ -14,17 +13,8 @@ import { SiteComponent } from './site/site.component';
         FormsModule
     ],
     declarations: [
-        SitesComponent,
-        SiteComponent
-    ],
-    exports: [
-        SitesComponent,
-        SiteComponent
-    ],
-    bootstrap: [
-        SitesComponent,
-        SiteComponent
+        FiltersComponent
     ]
 })
 
-export class SiteModule { }
+export class FilterModule { }

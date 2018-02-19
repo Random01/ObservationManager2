@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatNativeDateModule, MatInputModule, MatDatepickerModule } from '@angular/material';
 
@@ -15,6 +17,7 @@ import { SessionDetailsComponent } from './session-details/session-details.compo
         CommonModule,
         BrowserModule,
         FormsModule,
+        RouterModule,
         NoopAnimationsModule,
         MatButtonModule,
         MatInputModule,
