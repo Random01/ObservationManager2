@@ -1,8 +1,8 @@
 const EyepiecesStore = require('./eyepiecesStore');
-const eyepiecesStore = new EyepiecesStore();
 
-module.exports = app => {
+module.exports = (app, db) => {
 
+    const eyepiecesStore = new EyepiecesStore(db);
     const router = app.route('/eyepieces');
 
     router.get((req, res) => {
