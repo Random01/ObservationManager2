@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }    from '@angular/forms';
+import { HttpClientModule }    from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { SessionsComponent } from './sessions/sessions.component';
@@ -33,7 +34,8 @@ import { FilterModule } from './filters/filter.module';
     ObservationModule,
     SiteModule,
     EyepieceModule,
-    FilterModule
+    FilterModule,
+    HttpClientModule
   ],
   declarations: [
     AppComponent,
