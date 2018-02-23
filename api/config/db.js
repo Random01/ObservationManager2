@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = {
-    url: 'mongodb://TestUser:Ht98pkrs@ds111876.mlab.com:11876/my-test-database'
+    url: 'mongodb://TestUser:Ht98pkrs@ds239177.mlab.com:39177/om'
 };
