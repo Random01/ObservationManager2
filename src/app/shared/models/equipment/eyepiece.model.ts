@@ -7,9 +7,9 @@ export class Eyepiece extends EquipmentItem {
     // Apparent Field of View (deg)
     public apparentFOV: number;
 
-    constructor(params: {
+    constructor(params?: {
         id: string,
-        model: string,
+        model?: string,
         vendor?: string,
         focalLength?: number,
         apparentFOV?: number
@@ -17,5 +17,4 @@ export class Eyepiece extends EquipmentItem {
         super(params);
         Object.assign(this, params);
     }
-
 }

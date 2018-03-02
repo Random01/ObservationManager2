@@ -1,3 +1,28 @@
-﻿<div>
-    
+﻿<div class="om-eyepiece-component">
+
+    <mat-form-field>
+        <input matInput
+                placeholder="Model"
+                [(ngModel)]="eyepiece.model"/>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput
+                placeholder="Vendor"
+                [(ngModel)]="eyepiece.vendor"/>
+    </mat-form-field>
+
+    <mat-form-field>
+            <input matInput
+                    placeholder="Focal Length"
+                    [(ngModel)]="eyepiece.focalLength"/>
+    </mat-form-field>
+
+    <mat-form-field>
+            <input matInput
+                    placeholder="Apparent FOV"
+                    [(ngModel)]="eyepiece.apparentFOV"/>
+    </mat-form-field>
+
+
 </div>

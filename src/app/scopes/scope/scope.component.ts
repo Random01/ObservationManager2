@@ -1,4 +1,5 @@
 ﻿import { Component, Input } from '@angular/core';
+
 import { Scope } from './../../shared/models/equipment/scope.model';
 
 @Component({

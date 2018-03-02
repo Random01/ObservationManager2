@@ -1,13 +1,25 @@
 ﻿<div>
     <span>Eyepieces</span>
-
     <ul>
-        <li *ngFor="let ep of eyepieces">
+        <li *ngFor="let ep of eyepieces"
+            (click)=onSelect(ep)>
             <span>{{ep.model}}</span>
         </li>
     </ul>
 
+    <div *ngIf="selectedEyepiece">
+        <hr/>
+        <om-eyepiece [eyepiece]=selectedEyepiece></om-eyepiece>
+    </div>
+
+    <hr /> 
     <div>
-        <button routerLink="/equipment">Equipment</button>
+        <button mat-button
+                routerLink="/equipment">Equipment</button>
+        <button mat-button
+                (click)=createNew()>New</button>
+        <button mat-button
+                (click)=add()>Add</button>
+
     </div>
 </div>

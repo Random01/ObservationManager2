@@ -6,7 +6,7 @@ import { EyepieceService } from './shared/eyepiece.service';
 @Component({
     selector: 'om-eyepieces',
     templateUrl: './eyepieces.component.html',
-    providers: [ EyepieceService ]
+    providers: [EyepieceService]
 })
 
 export class EyepiecesComponent implements OnInit {
@@ -17,13 +17,28 @@ export class EyepiecesComponent implements OnInit {
     constructor(private eyepieceService: EyepieceService) {
     }
 
-    getEyepieces(): void {
+    loadEyepieces(): void {
         this.eyepieceService
-            .getEyepieces()
+            .getAll()
             .then(eyepieces => this.eyepieces = eyepieces);
     }
 
-    ngOnInit(): void {
-        this.getEyepieces();
+    onSelect(ep: Eyepiece) {
+        this.selectedEyepiece = ep;
     }
+
+    add(): void {
+        if (this.selectedEyepiece != null) {
+            this.eyepieceService.add(this.selectedEyepiece);
+        }
+    }
+
+    createNew(): void {
+        this.selectedEyepiece = new Eyepiece();
+    }
+
+    ngOnInit(): void {
+        this.loadEyepieces();
+    }
+
 }

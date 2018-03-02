@@ -1,16 +1,33 @@
 ﻿import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Eyepiece } from './../../shared/models/equipment/eyepiece.model';
-import { EYEPIECES } from './mock-eyepieces';
 
 @Injectable()
 export class EyepieceService {
 
-    getEyepieces(): Promise<Eyepiece[]> {
-        return Promise.resolve(EYEPIECES);
+    private epUrl = 'http://localhost:3001/eyepieces';
+
+    constructor(private http: HttpClient) {
     }
 
-    addEyepiece(eyepiece: Eyepiece): Promise<string> {
-        return Promise.resolve('1');
+    getAll(): Promise<Eyepiece[]> {
+        return new Promise<Eyepiece[]>((success, fail) => {
+            this.http.get<Eyepiece[]>(this.epUrl).subscribe(x => {
+                success(x);
+            });
+        });
+    }
+
+    add(eyepiece: Eyepiece): Promise<string> {
+        const httpOptions = {
+            headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+        };
+
+        return new Promise<string>((success, fail) => {
+            return this.http.post<Eyepiece>(this.epUrl, eyepiece, httpOptions).subscribe(x => {
+                success('');
+            });
+        });
     }
 }

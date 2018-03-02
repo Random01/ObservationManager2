@@ -4,6 +4,7 @@ import { Scope } from './../shared/models/equipment/scope.model';
 import { ScopeService } from './shared/scope.service';
 
 @Component({
+    // tslint:disable-next-line:component-selector
     selector: 'om-scopes',
     templateUrl: './scopes.component.html',
     providers: [ScopeService]
