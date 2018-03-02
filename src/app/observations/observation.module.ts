@@ -3,34 +3,39 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+
 import { RouterModule, Routes } from '@angular/router';
+
+import { MatButtonModule, MatInputModule } from '@angular/material';
 
 import { ObservationComponent } from './observation/observation.component';
 import { ObservationsComponent } from './observations.component';
 import { ObservationDetailComponent } from './observation-detail/observation-detail.component';
 
 @NgModule({
-    imports:[
+    imports: [
         CommonModule,
         BrowserModule,
         FormsModule,
-        RouterModule
+        RouterModule,
+        MatButtonModule,
+        MatInputModule
     ],
-    declarations:[
+    declarations: [
         ObservationComponent,
         ObservationsComponent,
         ObservationDetailComponent
     ],
-    exports:[
+    exports: [
         ObservationComponent,
         ObservationsComponent,
         ObservationDetailComponent
     ],
-    bootstrap:[
+    bootstrap: [
         ObservationComponent,
         ObservationsComponent,
         ObservationDetailComponent
     ]
 })
 
-export class ObservationModule {}
+export class ObservationModule { }

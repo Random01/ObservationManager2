@@ -24,7 +24,7 @@ export class ObservationDetailComponent implements OnInit {
     ) {
     }
 
-    getObservation(): void{
+    getObservation(): void {
         const id = this.route.snapshot.paramMap.get('id');
 
         this.observationService

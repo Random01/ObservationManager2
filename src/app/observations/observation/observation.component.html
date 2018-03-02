@@ -1,4 +1,5 @@
-﻿<div class="observation">
+﻿<div class="om-observation-component">
+
     <div class="target">
         <span>Target</span>
         <div>{{observation.target.name}}</div>
@@ -6,13 +7,11 @@
         </div>
     </div>
 
-    <div class="notes">
-        <span>Notes</span>
-        <textarea *ngIf="observation.result"
-                [(ngModel)]="observation.result.description"
-                placeholder="Result">
-        </textarea>
-    </div>
+    <mat-form-field *ngIf="observation.result">
+            <input matInput
+                    placeholder="Notes"
+                    [(ngModel)]="observation.result.description"/>
+    </mat-form-field>
 
     <div class="equipment">
         <span>Equipment</span>
