@@ -6,7 +6,7 @@ import { ScopeService } from './shared/scope.service';
 @Component({
     selector: 'om-scopes',
     templateUrl: './scopes.component.html',
-    providers: [ ScopeService ]
+    providers: [ScopeService]
 })
 
 export class ScopesComponent implements OnInit {
@@ -17,7 +17,7 @@ export class ScopesComponent implements OnInit {
     constructor(private scopeService: ScopeService) {
     }
 
-    getScopes(): void {
+    loadScopes(): void {
         this.scopeService.getScopes().then(scopes => this.scopes = scopes);
     }
 
@@ -26,7 +26,7 @@ export class ScopesComponent implements OnInit {
     }
 
     addNewScope() {
-        if(this.selectedScope != null){
+        if (this.selectedScope != null) {
             this.scopeService.addScope(this.selectedScope);
         }
     }
@@ -36,6 +36,6 @@ export class ScopesComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.getScopes();
+        this.loadScopes();
     }
 }
