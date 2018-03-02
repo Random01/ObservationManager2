@@ -10,6 +10,7 @@ const eyepieceRouter = require('./routers/eyepieces/eyepiecesRouter');
 const scopesRouter = require('./routers/scopes/scopesRouter');
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 MongoClient.connect(db.url, (err, database) => {
     if (err) {

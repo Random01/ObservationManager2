@@ -1,14 +1,11 @@
 const Scope = require('./scope');
 const ObjectID = require('mongodb').ObjectID;
 const _ = require('lodash');
+const BaseStore = require('./../common/baseStore');
 
-class ScopesStore {
-    constructor() {
-        this._scopes = [
-            new Scope({ id: 1, vendor: 'Sky-Watcher', model: 'SW254/1200', aperture: 254, focalLength: 1200 }),
-            new Scope({ id: 2, vendor: 'Celestron', model: 'C8-N', aperture: 200, focalLength: 1000 }),
-            new Scope({ id: 3, vendor: 'Deep Sky', model: 'DS90/500', aperture: 90, focalLength: 500 })
-        ];
+class ScopesStore extends BaseStore {
+    constructor(db) {
+        super(db);
     }
 
     getAll() {
@@ -18,7 +15,9 @@ class ScopesStore {
                     fail(err);
                 } else {
                     const scopes = _.map(items, item => {
-                        return new Scope(item);
+                        const scope = new Scope(item);
+                        scope.id = item._id;
+                        return scope;
                     });
                     success(scopes);
                 }
@@ -36,6 +35,10 @@ class ScopesStore {
                 }
             });
         });
+    }
+
+    delete(id) {
+
     }
 
 }

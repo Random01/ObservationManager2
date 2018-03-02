@@ -1,5 +1,9 @@
 class BaseStore {
 
+    constructor(db){
+        this.db = db;
+    }
+
     /**
      * @param {*} entity 
      * @returns {Promise}
