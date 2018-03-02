@@ -1,31 +1,25 @@
 const Eyepiece = require('./eyepiece');
 const _ = require('lodash');
+const BaseStore = require('./../common/baseStore');
 
-class EyepiecesStore {
+class EyepiecesStore extends BaseStore {
     constructor(db) {
-        this.db = db;
-        this._eyepieces = [
-            new Eyepiece({ focalLength: 30, apparentFOV: 82 }),
-            new Eyepiece({ focalLength: 20, apparentFOV: 82 }),
-            new Eyepiece({ focalLength: 11, apparentFOV: 82 }),
-            new Eyepiece({ focalLength: 7, apparentFOV: 82 })
-        ];
+        super(db);
     }
 
     /**
      * @returns {Promise}
      */
-    getEyepieces() {
+    getAll() {
         return new Promise((success, fail) => {
             this.db.collection('eyepieces').find({}).toArray((err, items) => {
                 if (err) {
                     fail(err);
                 } else {
                     const eyepieces = _.map(items, item => {
-                        return new Eyepiece({
-                            focalLength: item.focalLength,
-                            apparentFOV: item.apparentFOV
-                        });
+                        const ep = new Eyepiece(item);
+                        ep.id = item._id;
+                        return ep;
                     });
                     success(eyepieces);
                 }
@@ -33,18 +27,9 @@ class EyepiecesStore {
         });
     }
 
-    /**
-     * 
-     * @param {String} id 
-     * @returns {Promise}
-     */
-    getEyepieceById(id) {
-        return _.find(this._eyepieces, (eyepiece) => eyepiece.id === id);
-    }
-
     add(eyepiece) {
         return new Promise((success, fail) => {
-            this.db.collection('eyepieces').insert(note, (err, result) => {
+            this.db.collection('eyepieces').insert(eyepiece, (err, result) => {
                 if (err) {
                     fail(err);
                 } else {

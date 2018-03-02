@@ -12,7 +12,7 @@ module.exports = (app, db) => {
     router.get((req, res) => {
         scopesStore.getAll().then(scopes => {
             res.json(scopes);
-        }, (error) => {
+        }, error => {
             res.send({ 'error': { message: error.message } });
         });
     });
@@ -30,8 +30,8 @@ module.exports = (app, db) => {
 
         scopesStore.add(scope).then(scope => {
             res.json(scope);
-        }, (error) => {
-            res.send({ 'error': error });
+        }, error => {
+            res.send({ 'error': { message: error.message } });
         });
     });
 
