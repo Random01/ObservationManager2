@@ -1,15 +1,15 @@
 ﻿<div>
     <span>Eyepieces</span>
     <ul>
-        <li *ngFor="let ep of eyepieces"
+        <li *ngFor="let ep of items"
             (click)=onSelect(ep)>
             <span>{{ep.model}}</span>
         </li>
     </ul>
 
-    <div *ngIf="selectedEyepiece">
+    <div *ngIf="selectedItem">
         <hr/>
-        <om-eyepiece [eyepiece]=selectedEyepiece></om-eyepiece>
+        <om-eyepiece [eyepiece]=selectedItem></om-eyepiece>
     </div>
 
     <hr /> 
@@ -19,7 +19,7 @@
         <button mat-button
                 (click)=createNew()>New</button>
         <button mat-button
-                (click)=add()>Add</button>
+                (click)=addNewItem()>Add</button>
 
     </div>
 </div>

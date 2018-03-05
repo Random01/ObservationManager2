@@ -4,7 +4,6 @@ import { Scope } from './../shared/models/equipment/scope.model';
 import { ScopeService } from './shared/scope.service';
 
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: 'om-scopes',
     templateUrl: './scopes.component.html',
     providers: [ScopeService]
@@ -19,7 +18,7 @@ export class ScopesComponent implements OnInit {
     }
 
     loadScopes(): void {
-        this.scopeService.getScopes().then(scopes => this.scopes = scopes);
+        this.scopeService.getAll().then(scopes => this.scopes = scopes);
     }
 
     onSelect(scope: Scope) {
@@ -28,7 +27,7 @@ export class ScopesComponent implements OnInit {
 
     addNewScope() {
         if (this.selectedScope != null) {
-            this.scopeService.addScope(this.selectedScope);
+            this.scopeService.add(this.selectedScope);
         }
     }
 

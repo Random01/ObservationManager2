@@ -2,6 +2,7 @@
 
 import { Eyepiece } from './../shared/models/equipment/eyepiece.model';
 import { EyepieceService } from './shared/eyepiece.service';
+import { EntityComponent } from '../shared/components/entity-component';
 
 @Component({
     selector: 'om-eyepieces',
@@ -9,36 +10,10 @@ import { EyepieceService } from './shared/eyepiece.service';
     providers: [EyepieceService]
 })
 
-export class EyepiecesComponent implements OnInit {
-
-    eyepieces: Eyepiece[];
-    selectedEyepiece: Eyepiece;
+export class EyepiecesComponent extends EntityComponent<Eyepiece> {
 
     constructor(private eyepieceService: EyepieceService) {
-    }
-
-    loadEyepieces(): void {
-        this.eyepieceService
-            .getAll()
-            .then(eyepieces => this.eyepieces = eyepieces);
-    }
-
-    onSelect(ep: Eyepiece) {
-        this.selectedEyepiece = ep;
-    }
-
-    add(): void {
-        if (this.selectedEyepiece != null) {
-            this.eyepieceService.add(this.selectedEyepiece);
-        }
-    }
-
-    createNew(): void {
-        this.selectedEyepiece = new Eyepiece();
-    }
-
-    ngOnInit(): void {
-        this.loadEyepieces();
+        super(eyepieceService);
     }
 
 }

@@ -12,7 +12,7 @@ class Scope extends EqipmentItem {
         this.aperture = null;
         this.focalLength = null;
 
-        if(params){
+        if (params) {
             this.aperture = params.aperture;
             this.focalLength = params.focalLength;
         }

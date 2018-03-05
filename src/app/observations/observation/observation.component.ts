@@ -29,7 +29,7 @@ export class ObservationComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.scopeService.getScopes().then(scopes => this.scopes = scopes);
+        this.scopeService.getAll().then(scopes => this.scopes = scopes);
         this.eyepieceService.getAll().then(eyepieces => this.eyepieces = eyepieces);
     }
 }

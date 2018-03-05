@@ -6,8 +6,8 @@ export class EquipmentItem extends Entity {
 
     public vendor: string;
 
-    constructor(params: {
-        id: string,
+    constructor(params?: {
+        id?: string,
         model?: string,
         vendor?: string
     }) {

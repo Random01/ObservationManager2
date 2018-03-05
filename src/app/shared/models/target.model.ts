@@ -10,7 +10,7 @@ export class Target extends Entity {
     public alliases: String[];
 
     constructor(params?: {
-        id: string,
+        id?: string,
         name?: string,
         targetType?: TargetType,
         alliases?: String[]

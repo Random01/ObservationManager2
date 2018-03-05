@@ -8,7 +8,7 @@ export class Filter extends EquipmentItem {
     // "Thousand Oaks"
     // "O-III"
     constructor(params?: {
-        id: string,
+        id?: string,
         model?: string,
         vendor?: string,
         filterType?: string

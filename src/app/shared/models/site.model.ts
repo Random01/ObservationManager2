@@ -1,11 +1,11 @@
-import {Entity} from './entity.model' 
+import {Entity} from './entity.model';
 
 export class Site extends Entity {
 
     public name: string;
     // <!-- offset from UT in [min] not including daylight savings time -->
-	// <!--PLEASE NOTE: West of Greenwich is negative and east is positive -- >
-    public timezone: number = 0;
+    // <!--PLEASE NOTE: West of Greenwich is negative and east is positive -- >
+    public timezone: number;
     // <!-- geographical longitude; eastwards positive -->
     public longitude?: number;
     // <!-- geographical latitude -->
@@ -27,4 +27,4 @@ export class Site extends Entity {
         super(params);
         Object.assign(this, params);
     }
-}  
+}

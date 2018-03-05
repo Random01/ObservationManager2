@@ -1,14 +1,20 @@
-class EquipmentItem {
+const Entity = require('./entity');
+
+class EquipmentItem extends Entity {
 
     constructor(params) {
-        this.id = null;
+        super(params);
+
         this.model = null;
         this.vendor = null;
 
-        if(params) {
-            this.id = params.id;
-            this.model = params.model;
-            this.vendor = params.vendor;
+        if (params) {
+            if (params.hasOwnProperty('model')) {
+                this.model = params.model;
+            }
+            if (params.hasOwnProperty('vendor')) {
+                this.vendor = params.vendor;
+            }
         }
     }
 }

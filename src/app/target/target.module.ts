@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
+
 import { TargetSearchComponent } from './target-search/target-search.component';
 
 @NgModule({
-    declarations:[
+    declarations: [
         TargetSearchComponent
     ],
-    exports:[
+    exports: [
         TargetSearchComponent
     ]
 })

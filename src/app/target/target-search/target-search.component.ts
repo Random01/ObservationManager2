@@ -20,7 +20,7 @@ export class TargetSearchComponent implements OnInit {
 
     ngOnInit(): void {
         this.targetService
-            .getTargets()
+            .getAll()
             .then((targets) => this.targes = targets);
     }
 

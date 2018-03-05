@@ -7,7 +7,7 @@ export class Scope extends EquipmentItem {
     public focalLength?: number;
 
     constructor(params?: {
-        id: string,
+        id?: string,
         model?: string,
         vendor?: string,
         aperture?: number,

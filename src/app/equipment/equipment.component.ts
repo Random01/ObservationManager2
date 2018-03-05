@@ -1,7 +1,7 @@
 ﻿import { Component } from '@angular/core';
 
 @Component({
-    selector: 'my-equipment',
+    selector: 'om-equipment',
     templateUrl: './equipment.component.html',
 })
 

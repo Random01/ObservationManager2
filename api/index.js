@@ -6,8 +6,10 @@ const express = require('express');
 const app = express();
 const port = 3001;
 const db = require('./config/db');
+
 const eyepieceRouter = require('./routers/eyepieces/eyepiecesRouter');
 const scopesRouter = require('./routers/scopes/scopesRouter');
+const sitesRouter = require('./routers/sites/sitesRouter');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -19,6 +21,7 @@ MongoClient.connect(db.url, (err, database) => {
 
     eyepieceRouter(app, database);
     scopesRouter(app, database);
+    sitesRouter(app, database);
 
     app.listen(port, () => {
         console.log(`Example app listening on port ${port}!`);

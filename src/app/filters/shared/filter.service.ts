@@ -1,16 +1,15 @@
 ﻿import { Injectable } from '@angular/core';
 
+import { HttpClient } from '@angular/common/http';
+
 import { Filter } from './../../shared/models/equipment/filter.model';
-import { FILTERS } from './mock-filters';
+import { StorageService } from '../../shared/services/storage.service';
 
 @Injectable()
-export class FilterService {
+export class FilterService extends StorageService<Filter> {
 
-    getFilters(): Promise<Filter[]> {
-        return Promise.resolve(FILTERS);
+    constructor(protected http: HttpClient) {
+        super(http, '/filters');
     }
 
-    addFilter(eyepiece: Filter): Promise<string> {
-        return Promise.resolve('1');
-    }
 }

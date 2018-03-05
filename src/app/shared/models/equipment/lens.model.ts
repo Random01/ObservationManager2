@@ -4,8 +4,8 @@ export class Lens extends EquipmentItem {
 
     public factor: number;
 
-    constructor(params: {
-        id: string,
+    constructor(params?: {
+        id?: string,
         model?: string,
         vendor?: string,
         factor?: number

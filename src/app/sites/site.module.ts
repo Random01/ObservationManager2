@@ -8,7 +8,7 @@ import { SitesComponent } from './sites.component';
 import { SiteComponent } from './site/site.component';
 
 @NgModule({
-    imports:[
+    imports: [
         CommonModule,
         BrowserModule,
         FormsModule

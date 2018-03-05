@@ -8,7 +8,7 @@ export class Eyepiece extends EquipmentItem {
     public apparentFOV: number;
 
     constructor(params?: {
-        id: string,
+        id?: string,
         model?: string,
         vendor?: string,
         focalLength?: number,
