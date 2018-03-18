@@ -76,6 +76,18 @@ class BaseStore {
             });
         });
     }
+
+    getById(id) {
+        return new Promise((success, fail) => {
+            this.getCollection().findOne({ '_id': ObjectID(id) }, (err, item) => {
+                if (err) {
+                    fail(err);
+                } else {
+                    success(this.convert(item));
+                }
+            });
+        });
+    }
 }
 
 module.exports = BaseStore;

@@ -1,10 +1,10 @@
 class Entity {
     constructor(params) {
-        this.id = null;
-        this.dateCreated = null;
-        this.dateModified = null;
-        this.userCreated = null;
-        this.userModified = null;
+        this.id = undefined;
+        this.dateCreated = undefined;
+        this.dateModified = undefined;
+        this.userCreated = undefined;
+        this.userModified = undefined;
 
         if (params) {
             if (params.hasOwnProperty('id')) {

@@ -5,12 +5,12 @@ class Site extends Entity {
     constructor(params) {
         super(params);
 
-        this.name = null;
-        this.timezone = null;
-        this.longitude = null;
-        this.latitude = null;
-        this.elevation = null;
-        this.code = null;
+        this.name = undefined;
+        this.timezone = undefined;
+        this.longitude = undefined;
+        this.latitude = undefined;
+        this.elevation = undefined;
+        this.code = undefined;
 
         if (params) {
             if (params.hasOwnProperty('name')) {

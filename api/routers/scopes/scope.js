@@ -9,8 +9,8 @@ class Scope extends EqipmentItem {
     constructor(params) {
         super(params);
 
-        this.aperture = null;
-        this.focalLength = null;
+        this.aperture = undefined;
+        this.focalLength = undefined;
 
         if (params) {
             this.aperture = params.aperture;

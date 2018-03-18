@@ -1,3 +1,5 @@
+const express = require('express');
+
 class RouterFactory {
 
     constructor(store, router) {
@@ -24,8 +26,10 @@ class RouterFactory {
     }
 
     setUp() {
-        this.router.get((req, res) => this.getAllHandler(req, res));
-        this.router.post((req, res) => this.addNewHandler(req, res));
+        this.router.get('/', (req, res) => this.getAllHandler(req, res));
+        this.router.get('/:id', (req, res) => this.getByIdHandler(req, res));
+
+        this.router.post('/', (req, res) => this.addNewHandler(req, res));
     }
 
     /**
@@ -45,10 +49,25 @@ class RouterFactory {
         );
     }
 
+    getByIdHandler(req, res) {
+        this.store.getById(req.params.id).then(
+            entity => res.json(entity),
+            error => this.handleError(res, error)
+        );
+    }
+
     parse(req) {
         return new this.store.entityConstructor(req.body);
     }
 
+    static create(app, store, path) {
+        const router = express.Router();
+        const rf = new RouterFactory(store, router);
+
+        app.use(path, router);
+
+        return rf;
+    }
 }
 
 module.exports = RouterFactory;
