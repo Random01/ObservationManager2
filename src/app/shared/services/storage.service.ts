@@ -5,7 +5,7 @@ export class StorageService<T> {
     private endpoint = 'http://localhost:3001';
 
     constructor(protected http: HttpClient,
-                public url: string) {
+        public url: string) {
     }
 
     getUrl(): string {
@@ -13,7 +13,7 @@ export class StorageService<T> {
     }
 
     getRecent(): Promise<T[]> {
-        throw new Error('Not implemented.');
+        return this.getAll();
     }
 
     add(newItem: T): Promise<T> {
@@ -29,7 +29,11 @@ export class StorageService<T> {
     }
 
     getById(id: String): Promise<T> {
-        throw new Error('Not implemented.');
+        return new Promise<T>((success, fail) => {
+            return this.http.get<T>(this.getUrl() + '/' + id).subscribe(x => {
+                success(x);
+            });
+        });
     }
 
     getAll(): Promise<T[]> {
@@ -41,6 +45,10 @@ export class StorageService<T> {
     }
 
     update(entity: T): Promise<T> {
+        throw new Error('Not implemented.');
+    }
+
+    delete(id: String) {
         throw new Error('Not implemented.');
     }
 }
