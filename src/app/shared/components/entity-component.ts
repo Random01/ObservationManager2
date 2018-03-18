@@ -7,6 +7,7 @@ export class EntityComponent<T> extends BaseComponent implements OnInit {
 
     selectedItem: T;
     items: T[];
+
     constructor(protected storageService: StorageService<T>) {
         super();
     }

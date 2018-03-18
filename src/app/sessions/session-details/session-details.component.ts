@@ -28,11 +28,11 @@ export class SessionDetailsComponent implements OnInit {
 
     }
 
-    startLoading(): void{
+    startLoading(): void {
         this.isLoading = true;
     }
 
-    endLoading(): void{
+    endLoading(): void {
         this.isLoading = false;
     }
 
@@ -46,7 +46,7 @@ export class SessionDetailsComponent implements OnInit {
     update(): void {
         this.startLoading();
         this.sessionService.update(this.session).then(() => {
-
+            this.endLoading();
         });
     }
 
