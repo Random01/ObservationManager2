@@ -20,14 +20,14 @@
                 <span>Telecopes, Binocularus &amp; Finders</span>
                 <select>
                     <option *ngFor="let scope of scopes"
-                    [ngValue]="scope">{{scope.model}}</option>
+                            [ngValue]="scope">{{scope.model}}</option>
                 </select>
             </li>
             <li>
                 <span>Eyepieces &amp; Cameras</span>
                 <select>
                     <option *ngFor="let eyepiece of eyepieces"
-                    [ngValue]="eyepiece">{{eyepiece.model}}</option>
+                            [ngValue]="eyepiece">{{eyepiece.model}}</option>
                 </select>
             </li>
         </ul>

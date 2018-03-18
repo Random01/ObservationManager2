@@ -2,12 +2,22 @@
     <span>Recent Observations</span>
     <div class="grid">
         <div *ngFor="let observation of observations">
-            <div class="target-name-column">{{observation.target.name}}</div>
-            <div class="begin-column">{{observation.begin | date:'medium'}}</div>
-            <div class="description-column">{{observation.result.description}}</div>
+            
+            <div class="target-name-column">
+                {{observation.target.name}}
+            </div>
+
+            <div class="begin-column">
+                {{observation.begin | date:'medium'}}
+            </div>
+            
+            <div class="description-column">
+                {{observation.result.description}}
+            </div>
+            
             <div class="actions-column">
                 <div>
-                    <a *ngIf="observation.session.id"
+                    <a *ngIf="observation.session && observation.session.id"
                         routerLink="/session/{{observation.session.id}}">
                         Go To Session
                     </a>
