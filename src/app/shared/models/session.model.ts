@@ -1,28 +1,28 @@
-﻿import { Entity } from './entity.model'
-import { Site } from './site.model'
+﻿import { Entity } from './entity.model';
+import { Site } from './site.model';
 
 export class Session extends Entity {
 
-	public begin: Date;
-	
-	public end: Date;
+    public begin: Date;
 
-	public site: Site;
-	
-	public equipment: string;
+    public end: Date;
 
-	public comments: string;
+    public site: Site;
 
-	public weather: string;
+    public equipment: string;
 
-	constructor(params?: {
-        id: string,
+    public comments: string;
+
+    public weather: string;
+
+    constructor(params?: {
+        id?: string,
         begin?: Date,
-		end?: Date,
-		site?: Site,
-		equipment?: string,
-		comments?: string,
-		weather?: string
+        end?: Date,
+        site?: Site,
+        equipment?: string,
+        comments?: string,
+        weather?: string
     }) {
         super(params);
         Object.assign(this, params);

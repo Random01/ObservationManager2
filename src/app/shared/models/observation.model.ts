@@ -31,7 +31,7 @@ export class Observation extends Entity {
     public result: Result;
 
     constructor(params?: {
-        id: string,
+        id?: string,
         observer?: Observer,
         site?: Site,
         session?: Session,

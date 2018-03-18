@@ -9,8 +9,8 @@ export class Observer extends Entity {
     public contact: string;
 
     constructor(params?: {
-        id: string,
-        name: string,
+        id?: string,
+        name?: string,
         surname?: string,
         contact?: string
     }) {

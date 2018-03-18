@@ -9,11 +9,14 @@ export class Target extends Entity {
 
     public alliases: String[];
 
+    public description: String;
+
     constructor(params?: {
         id?: string,
         name?: string,
         targetType?: TargetType,
-        alliases?: String[]
+        alliases?: String[],
+        description?: String
     }) {
         super(params);
         Object.assign(this, params);
