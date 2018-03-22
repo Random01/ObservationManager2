@@ -1,8 +1,12 @@
-.observation > DIV{
-    display: grid;
-    padding: 10px;
+.om-observation-component {
+    display: flex;
+    flex-direction: column;
 }
 
-.notes TEXTAREA{
-    height: 200px;
+.om-observation-component > * {
+    width: 100%;
+}
+
+.om-observation-component .equipment LI {
+    display: block;
 }

@@ -1,41 +1,58 @@
 ﻿<div class="om-observation-component">
 
-    <div class="target">
-        <span>Target</span>
-        <div>{{observation.target.name}}</div>
-        <div>
-        </div>
-    </div>
+    <mat-form-field>
+        <mat-select placeholder="Target">
+          <mat-option *ngFor="let target of targets"
+                      [value]="target.name">
+            {{ target.name }}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
 
     <mat-form-field *ngIf="observation.result">
-            <input matInput
-                    placeholder="Notes"
-                    [(ngModel)]="observation.result.description"/>
+        <textarea matInput
+            placeholder="Notes"
+            matTextareaAutosize
+            matAutosizeMinRows="5"
+            [(ngModel)]="observation.result.description"></textarea>
+
     </mat-form-field>
 
     <div class="equipment">
-        <span>Equipment</span>
+        <h3 class="mat-subheading-2">Equipment</h3>
         <ul>
             <li>
-                <span>Telecopes, Binocularus &amp; Finders</span>
-                <select>
-                    <option *ngFor="let scope of scopes"
-                            [ngValue]="scope">{{scope.model}}</option>
-                </select>
+                <mat-form-field>
+                    <mat-select placeholder="Telecopes, Binocularus &amp; Finders">
+                      <mat-option *ngFor="let scope of scopes"
+                                  [value]="scope.id">
+                        {{ scope.model }}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
             </li>
             <li>
-                <span>Eyepieces &amp; Cameras</span>
-                <select>
-                    <option *ngFor="let eyepiece of eyepieces"
-                            [ngValue]="eyepiece">{{eyepiece.model}}</option>
-                </select>
+                <mat-form-field>
+                    <mat-select placeholder="Eyepieces &amp; Cameras">
+                      <mat-option *ngFor="let eyepiece of eyepieces"
+                                  [value]="eyepiece.id">
+                        {{ eyepiece.model }}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </li>
+            <li>
+                <mat-form-field>
+                    <mat-select placeholder="Filters">
+                      <mat-option *ngFor="let filter of filters"
+                                  [value]="filter.id">
+                        {{ filter.model }}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
             </li>
         </ul>
-    </div>
-
-    <div *ngIf="observation.site">
-        <span>Location</span>
-        <div>{{observation.site.name}}</div>
     </div>
 
 </div>

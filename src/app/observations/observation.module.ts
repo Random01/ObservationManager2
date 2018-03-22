@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
 import { MatButtonModule, MatInputModule } from '@angular/material';
+import { MatSelectModule } from '@angular/material/select';
 
 import { ObservationComponent } from './observation/observation.component';
 import { ObservationsComponent } from './observations.component';
@@ -19,7 +20,8 @@ import { ObservationDetailComponent } from './observation-detail/observation-det
         FormsModule,
         RouterModule,
         MatButtonModule,
-        MatInputModule
+        MatInputModule,
+        MatSelectModule
     ],
     declarations: [
         ObservationComponent,
