@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { FiltersComponent } from './filters.component';
 
 @NgModule({
-    imports:[
+    imports: [
         CommonModule,
         BrowserModule,
         FormsModule
