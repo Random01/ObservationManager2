@@ -18,7 +18,10 @@ import { ScopeComponent } from './scope/scope.component';
         ScopesComponent,
         ScopeComponent
     ],
-    bootstrap: [ScopesComponent, ScopeComponent]
+    bootstrap: [
+        ScopesComponent,
+        ScopeComponent
+    ]
 })
 
 export class ScopesModule { }

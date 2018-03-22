@@ -17,6 +17,9 @@ class BaseStore {
         this.db = db;
         this.collectionName = collectionName;
         this.entityConstructor = entityConstructor;
+        this.currentUser = {
+            id: '3a91743469ae481004cb710d'
+        };
     }
 
     getCollection() {
@@ -35,6 +38,16 @@ class BaseStore {
      */
     add(entity) {
         return new Promise((success, fail) => {
+            if (!entity) {
+                fail(new Error('enity should be provided.'));
+                return;
+            }
+
+            delete entity.id;
+            
+            entity.dateCreated = entity.dateModified = new Date();
+            entity.userCreated = entity.userModified = ObjectID(this.currentUser.id);
+
             this.getCollection().insert(entity, (err, result) => {
                 if (err) {
                     fail(err);
@@ -60,7 +73,6 @@ class BaseStore {
     delete(id) {
 
     }
-
 
     /**
      * @returns {Promise}
