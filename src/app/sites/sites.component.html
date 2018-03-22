@@ -8,7 +8,6 @@
         </li>
     </ul>
     
-
     <div *ngIf="selectedSite">
         <hr/>
         <om-site [site]=selectedSite></om-site>
@@ -16,8 +15,10 @@
     
     <hr />
     <div>
-        <button (click)=createNew()>New</button>
-        <button (click)=addNew()>Add</button>
+        <button mat-button
+                (click)=createNew()>New</button>
+        <button mat-button
+                (click)=addNew()>Add</button>
     </div>
 
 </div>

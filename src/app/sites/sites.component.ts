@@ -6,7 +6,7 @@ import { SiteService } from './shared/site.service';
 @Component({
     selector: 'om-sites',
     templateUrl: './sites.component.html',
-    providers: [ SiteService ]
+    providers: [SiteService]
 })
 
 export class SitesComponent implements OnInit {
@@ -18,7 +18,8 @@ export class SitesComponent implements OnInit {
     }
 
     getSites(): void {
-        this.siteService.getSites().then(sites => this.sites = sites);
+        this.siteService.getAll()
+            .then(sites => this.sites = sites);
     }
 
     onSelect(site: Site): void {
@@ -26,11 +27,15 @@ export class SitesComponent implements OnInit {
     }
 
     createNew(): void {
-
+        this.selectedSite = new Site();
     }
 
     addNew(): void {
-
+        if (this.selectedSite) {
+            this.siteService
+                .add(this.selectedSite)
+                .then(addedSite => this.selectedSite = addedSite);
+        }
     }
 
     ngOnInit(): void {

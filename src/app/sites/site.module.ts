@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
+import { MatButtonModule, MatInputModule } from '@angular/material';
+
 import { SitesComponent } from './sites.component';
 import { SiteComponent } from './site/site.component';
 
@@ -11,7 +13,9 @@ import { SiteComponent } from './site/site.component';
     imports: [
         CommonModule,
         BrowserModule,
-        FormsModule
+        FormsModule,
+        MatButtonModule,
+        MatInputModule
     ],
     declarations: [
         SitesComponent,

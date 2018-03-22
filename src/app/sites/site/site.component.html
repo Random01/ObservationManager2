@@ -1,40 +1,33 @@
-﻿<div>
-    <div>
-        <span>Name</span>
-        <input [(ngModel)]="site.name"
-               placeholder="Name" />
-    </div>
+﻿<div class="om-site-component">
 
-    <div>
-        <span>Timezone</span>
-        <input [(ngModel)]="site.timezone"
-               placeholder="Timezone" />
-    </div>
+    <mat-form-field>
+        <input matInput
+            [(ngModel)]="site.name"
+            placeholder="Name" />
+    </mat-form-field>
 
-    <div>
-        <span>Longitude</span>
-        <input [(ngModel)]="site.longitude"
-               placeholder="Longitude"/>
-    </div>
+    <mat-form-field>
+        <input matInput
+            [(ngModel)]="site.timezone"
+            placeholder="Timezone" />
+    </mat-form-field>
 
-    <div>
-        <span>Latitude</span>
-        <input [(ngModel)]="site.latitude"
-               placeholder="Latitude"/>
-    </div>
+    <mat-form-field>
+        <input matInput
+            [(ngModel)]="site.longitude"
+            placeholder="Longitude" />
+    </mat-form-field>
 
-    <div>
-        <span>Elevation</span>
-        <input [(ngModel)]="site.elevation"
-               placeholder="Elevation"/>
-    </div>
+    <mat-form-field>
+        <input matInput
+            [(ngModel)]="site.latitude"
+            placeholder="Latitude" />
+    </mat-form-field>
 
-    <div>
-        <span>Additional details</span>
-    </div>
-    <div>
-        <span>IAU Code</span>
-        <input />
-    </div>
+    <mat-form-field>
+        <input matInput
+            [(ngModel)]="site.elevation"
+            placeholder="Elevation" />
+    </mat-form-field>
 
 </div>

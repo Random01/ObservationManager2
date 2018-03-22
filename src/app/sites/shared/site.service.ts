@@ -1,17 +1,12 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Site } from './../../shared/models/site.model';
-import { SITES } from './mock-sites';
+import { StorageService } from '../../shared/services/storage.service';
 
 @Injectable()
-export class SiteService {
-
-    getSites(): Promise<Site[]> {
-        return Promise.resolve(SITES);
+export class SiteService extends StorageService<Site> {
+    constructor(protected http: HttpClient) {
+        super(http, '/sites');
     }
-
-    addSite(site: Site): Promise<string> {
-        return Promise.resolve('1')
-    }
-
 }
