@@ -1,3 +1,5 @@
+'use strict';
+
 const Entity = require('./../../common/models/Entity');
 
 class Target extends Entity {
