@@ -11,9 +11,7 @@ import { EntityComponent } from '../shared/components/entity-component';
 })
 
 export class EyepiecesComponent extends EntityComponent<Eyepiece> {
-
     constructor(private eyepieceService: EyepieceService) {
         super(eyepieceService);
     }
-
 }

@@ -1,17 +1,28 @@
 ﻿import { Component, Input, OnInit } from '@angular/core';
-import { Session } from './../../shared/models/session.model';
-
-import { FormsModule } from '@angular/forms';
+import { Session, Site } from './../../shared/models/models';
+import { SiteService } from '../../sites/shared/site.service';
 
 @Component({
     selector: 'om-session',
-    templateUrl: './session.component.html'
+    templateUrl: './session.component.html',
+    styleUrls: ['./session.component.css'],
+    providers: [
+        SiteService
+    ]
 })
 
 export class SessionComponent implements OnInit {
+
     @Input() session: Session;
 
-    ngOnInit() {
+    sites: Site[];
 
+    constructor(
+        private siteService: SiteService
+    ) {
+    }
+
+    ngOnInit() {
+        this.siteService.getAll().then(sites => this.sites = sites);
     }
 }

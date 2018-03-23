@@ -1,0 +1,8 @@
+.om-eyepiece-component {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .om-eyepiece-component > * {
+    width: 100%;
+  }

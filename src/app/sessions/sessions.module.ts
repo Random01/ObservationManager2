@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatNativeDateModule, MatInputModule, MatDatepickerModule } from '@angular/material';
+import { MatSelectModule } from '@angular/material/select';
 
 import { SessionsComponent } from './sessions.component';
 import { SessionComponent } from './session/session.component';
@@ -22,7 +23,8 @@ import { SessionDetailsComponent } from './session-details/session-details.compo
         MatButtonModule,
         MatInputModule,
         MatDatepickerModule,
-        MatNativeDateModule
+        MatNativeDateModule,
+        MatSelectModule
     ],
     declarations: [
         SessionsComponent,
@@ -32,10 +34,7 @@ import { SessionDetailsComponent } from './session-details/session-details.compo
     exports: [
         SessionsComponent,
         SessionComponent,
-        SessionDetailsComponent,
-        MatButtonModule,
-        MatInputModule,
-        MatDatepickerModule
+        SessionDetailsComponent
     ],
     bootstrap: [
         SessionsComponent,

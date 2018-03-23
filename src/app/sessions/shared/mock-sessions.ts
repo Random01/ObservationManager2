@@ -14,7 +14,7 @@ export const SESSIONS: Session[] = [
     }),
     new Session({
         id: 'bbbb',
-        begin: new Date(2018,1, 11),
+        begin: new Date(2018, 1, 11),
         end: new Date(2018, 1, 12),
         site: new Site({
             id: 'aaaa',

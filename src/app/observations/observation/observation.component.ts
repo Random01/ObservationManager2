@@ -1,11 +1,12 @@
 ﻿import { Component, Input, OnInit } from '@angular/core';
 
 import { Observation, Target } from './../../shared/models/models';
-import { Scope, Eyepiece } from './../../shared/models/equipment/equipment';
+import { Scope, Eyepiece, Filter } from './../../shared/models/equipment/equipment';
 import { ScopeService } from './../../scopes/shared/scope.service';
 import { EyepieceService } from './../../eyepieces/shared/eyepiece.service';
 import { TargetSearchComponent } from './../../target/target-search/target-search.component';
 import { TargetService } from './../../target/shared/target.service';
+import { FilterService } from '../../filters/shared/filter.service';
 
 @Component({
     selector: 'om-observation',
@@ -14,7 +15,8 @@ import { TargetService } from './../../target/shared/target.service';
     providers: [
         ScopeService,
         EyepieceService,
-        TargetService
+        TargetService,
+        FilterService
     ]
 })
 
@@ -25,10 +27,12 @@ export class ObservationComponent implements OnInit {
     scopes: Scope[];
     eyepieces: Eyepiece[];
     targets: Target[];
+    filters: Filter[];
 
     constructor(
         private scopeService: ScopeService,
         private eyepieceService: EyepieceService,
+        private filterService: FilterService,
         private targetService: TargetService) {
     }
 
@@ -36,5 +40,6 @@ export class ObservationComponent implements OnInit {
         this.scopeService.getAll().then(scopes => this.scopes = scopes);
         this.eyepieceService.getAll().then(eyepieces => this.eyepieces = eyepieces);
         this.targetService.getAll().then(targets => this.targets = targets);
+        this.filterService.getAll().then(filters => this.filters = filters);
     }
 }

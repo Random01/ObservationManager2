@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
+import { RouterModule, Routes } from '@angular/router';
+
 import { MatButtonModule, MatInputModule } from '@angular/material';
 
 import { ScopesComponent } from './scopes.component';
@@ -12,7 +14,8 @@ import { ScopeComponent } from './scope/scope.component';
         BrowserModule,
         FormsModule,
         MatButtonModule,
-        MatInputModule
+        MatInputModule,
+        RouterModule
     ],
     declarations: [
         ScopesComponent,
