@@ -1,3 +1,5 @@
+'use strict';
+
 const EquipmentItem = require('./../../common/models/EquipmentItem');
 
 class Filter extends EquipmentItem {

@@ -21,6 +21,7 @@ MongoClient.connect(db.url, (err, database) => {
     require('./routers/targets/targetsRouter')(app, database);
     require('./routers/observations/observationsRouter')(app, database);
     require('./routers/sessions/sessionsRouter')(app, database);
+    require('./routers/filters/filtersRouter')(app, database);
 
     app.listen(port, () => {
         console.log(`Example app listening on port ${port}!`);

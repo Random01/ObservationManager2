@@ -1,15 +1,17 @@
 <div>
     <span>Filters</span>
     <ul>
-        <li *ngFor="let filter of filters"
-            (click)=onSelect(filter)>
-            <span>{{filter.model}}</span>
+        <li *ngFor="let item of items"
+            (click)=onSelect(item)>
+            <span>{{item.model}}</span>
         </li>
     </ul>
+    
+    <mat-divider></mat-divider>
 
     <div *ngIf="selectedItem">
         <hr/>
-        <om-filter [filter]=selectedItem></om-eyepiece>
+        <om-filter [filter]="selectedItem"></om-filter>
     </div>
 
     <div>
