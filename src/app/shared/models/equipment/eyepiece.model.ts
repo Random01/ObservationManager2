@@ -17,4 +17,11 @@ export class Eyepiece extends EquipmentItem {
         super(params);
         Object.assign(this, params);
     }
+
+    serialize(): Object {
+        return Object.assign(super.serialize(), {
+            focalLength: this.focalLength,
+            apparentFOV: this.apparentFOV
+        });
+    }
 }

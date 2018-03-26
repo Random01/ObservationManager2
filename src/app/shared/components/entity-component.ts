@@ -2,8 +2,9 @@ import { OnInit } from '@angular/core';
 
 import { BaseComponent } from './base-component';
 import { StorageService } from '../services/storage.service';
+import { Entity } from '../models/entity.model';
 
-export class EntityComponent<T> extends BaseComponent implements OnInit {
+export class EntityComponent<T extends Entity> extends BaseComponent implements OnInit {
 
     selectedItem: T;
     items: T[];

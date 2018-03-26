@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-export class StorageService<T> {
+import { Entity } from './../models/entity.model';
+
+export class StorageService<T extends Entity> {
 
     private endpoint = 'http://localhost:3001';
 
@@ -18,11 +20,13 @@ export class StorageService<T> {
 
     add(newItem: T): Promise<T> {
         const httpOptions = {
-            headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json'
+            })
         };
 
         return new Promise<T>((success, fail) => {
-            return this.http.post<T>(this.getUrl(), newItem, httpOptions).subscribe(x => {
+            return this.http.post<T>(this.getUrl(), newItem.serialize(), httpOptions).subscribe(x => {
                 success(x);
             });
         });

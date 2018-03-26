@@ -6,8 +6,8 @@ export class Entity {
         Object.assign(this, params);
     }
 
-    public serialize(): string {
-        return '';
+    public serialize(): Object {
+        return { id: this.id };
     }
 
     public isValid(): boolean {

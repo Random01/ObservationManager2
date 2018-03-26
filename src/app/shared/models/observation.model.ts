@@ -11,6 +11,7 @@ export class Observation extends Entity {
     // WHO observed it ?
     public observer: Observer;
     // WHERE was observed ?
+    // site where session took place
     public site: Site;
 
     public session: Session;
@@ -47,5 +48,11 @@ export class Observation extends Entity {
         this.result = new Result();
 
         Object.assign(this, params);
+    }
+
+    serialize(): Object {
+        return Object.assign(super.serialize(), {
+            target: this.target != null ? this.target.id : undefined
+        });
     }
 }
