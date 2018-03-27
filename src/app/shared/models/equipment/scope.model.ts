@@ -16,4 +16,11 @@ export class Scope extends EquipmentItem {
         super(params);
         Object.assign(this, params);
     }
+
+    public serialize(): Object {
+        return Object.assign(super.serialize(), {
+            aperture: this.aperture,
+            focalLength: this.focalLength
+        });
+    }
 }

@@ -2,6 +2,10 @@ export class Entity {
 
     public id?: string;
 
+    public static empty(): Entity {
+        return new Entity();
+    }
+
     constructor(params?: { id?: string }) {
         Object.assign(this, params);
     }
@@ -13,4 +17,5 @@ export class Entity {
     public isValid(): boolean {
         return true;
     }
+
 }

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 import { Filter } from './../../shared/models/equipment/filter.model';
+import { FilterType } from '../../shared/models/equipment/filter-type.enum';
 
 @Component({
     selector: 'om-filter',
@@ -10,4 +11,16 @@ import { Filter } from './../../shared/models/equipment/filter.model';
 
 export class FilterComponent {
     @Input() filter: Filter;
+
+    filterTypes: FilterType[] = [
+        FilterType.Hbeta,
+        FilterType.Halpha,
+        FilterType.OIII,
+        FilterType.BroadBand,
+        FilterType.NarrowBand,
+        FilterType.Color,
+        FilterType.Corrective,
+        FilterType.Solar,
+        FilterType.Neutral
+    ];
 }

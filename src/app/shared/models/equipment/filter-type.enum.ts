@@ -1,8 +1,3 @@
-enum FilterType {
-    BroadBand = 'broad band',
-    NarrowBand = 'narrow band'
-}
-
 // <xsd:enumeration value="other"/>
 // <xsd:enumeration value="broad band"/>
 // <xsd:enumeration value="narrow band"/>
@@ -14,3 +9,15 @@ enum FilterType {
 // <xsd:enumeration value="corrective"/>
 // <!-- New in V1.7: filter type for solar filters -->
 // <xsd:enumeration value="solar"/>
+
+export enum FilterType {
+    BroadBand = 'broad band',
+    NarrowBand = 'narrow band',
+    OIII = 'O-III',
+    Hbeta = 'H-beta',
+    Halpha = 'H-alpha',
+    Color = 'color',
+    Neutral = 'neutral',
+    Corrective = 'corrective',
+    Solar = 'solar'
+}

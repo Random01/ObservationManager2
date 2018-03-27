@@ -20,7 +20,7 @@ export class EntityComponent<T extends Entity> extends BaseComponent implements 
     }
 
     createNew(): void {
-        this.selectedItem = {} as T;
+        this.selectedItem = null;
     }
 
     addNewItem(): void {

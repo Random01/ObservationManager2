@@ -1,8 +1,9 @@
 ﻿import { EquipmentItem } from './equipment-item.model';
+import { FilterType } from './filter-type.enum';
 
 export class Filter extends EquipmentItem {
 
-    public filterType: string;
+    public filterType: FilterType;
 
     // "O-III 2""
     // "Thousand Oaks"
@@ -11,9 +12,15 @@ export class Filter extends EquipmentItem {
         id?: string,
         model?: string,
         vendor?: string,
-        filterType?: string
+        filterType?: FilterType
     }) {
         super(params);
         Object.assign(this, params);
+    }
+
+    public serialize(): Object {
+        return Object.assign(super.serialize(), {
+            filterType: this.filterType
+        });
     }
 }

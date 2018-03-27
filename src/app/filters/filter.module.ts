@@ -9,6 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MatButtonModule, MatInputModule } from '@angular/material';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule, MatListItem } from '@angular/material/list';
+import { MatSelectModule } from '@angular/material/select';
 
 import { FiltersComponent } from './filters.component';
 import { FilterComponent } from './filter/filter.component';
@@ -22,7 +23,8 @@ import { FilterComponent } from './filter/filter.component';
         MatInputModule,
         RouterModule,
         MatDividerModule,
-        MatListModule
+        MatListModule,
+        MatSelectModule
     ],
     declarations: [
         FiltersComponent,
