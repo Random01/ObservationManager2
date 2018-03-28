@@ -44,7 +44,7 @@ class BaseStore {
             }
 
             delete entity.id;
-            
+
             entity.dateCreated = entity.dateModified = new Date();
             entity.userCreated = entity.userModified = ObjectID(this.currentUser.id);
 
@@ -63,7 +63,11 @@ class BaseStore {
      * @returns {Promise}
      */
     update(entity) {
+        return new Promise((success, fail) => {
+            this.getCollection().findOne({ '_id': ObjectID(id) }, (err, item) => {
 
+            });
+        });
     }
 
     /**
@@ -71,7 +75,9 @@ class BaseStore {
      * @returns {Promise}
      */
     delete(id) {
+        return this.getItemById(id).then((item) => {
 
+        });
     }
 
     /**
@@ -90,16 +96,22 @@ class BaseStore {
     }
 
     getById(id) {
+        return this.getById(id)
+            .then((item) => this.convert(item));
+    }
+
+    getItemById(id) {
         return new Promise((success, fail) => {
             this.getCollection().findOne({ '_id': ObjectID(id) }, (err, item) => {
                 if (err) {
                     fail(err);
                 } else {
-                    success(this.convert(item));
+                    success(item);
                 }
             });
         });
     }
+
 }
 
 module.exports = BaseStore;

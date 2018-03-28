@@ -1,5 +1,5 @@
 <div>
-    <div>
+    <div *ngIf="session">
         <om-session [session]="session"></om-session>
     </div>
     <div>
@@ -16,8 +16,7 @@
                 (click)="update()">Update</button>
 
         <button mat-button
-                *ngIf="editMode===true"
-                (click)="update()">Add New Observation</button> 
+                *ngIf="editMode===true">Add New Observation</button> 
 
         <button mat-button
                 routerLink="/sessions">Back</button>

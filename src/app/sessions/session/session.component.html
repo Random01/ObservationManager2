@@ -1,8 +1,7 @@
-﻿<div>
+﻿<div class="om-session-component">
 
     <!-- Start Date -->
     <!-- Start of observation session -->
-    <div>
         <mat-form-field>
                 <input matInput
                         [matDatepicker]="startDatePicker"
@@ -15,11 +14,9 @@
                         <strong>Start of observation session</strong>
                 </mat-hint>
         </mat-form-field>
-    </div>
     
     <!-- End Date -->
     <!-- End of observation session -->
-    <div>
         <mat-form-field>
                 <input matInput
                         [matDatepicker]="endDatePicker"
@@ -32,9 +29,7 @@
                         <strong>End of observation session</strong>
                 </mat-hint>
         </mat-form-field>
-    </div>
 
-    <div class="om-comments-section">
         <mat-form-field class="om-comments-input">
                 <textarea matInput
                         placeholder="Comments"
@@ -43,10 +38,8 @@
                         [(ngModel)]="session.comments">
                 </textarea>
         </mat-form-field>
-    </div>
 
     <!-- Comments about the weather situation -->
-    <div class="om-weather-section">
         <mat-form-field class="weather-input">
                 <textarea matInput
                         placeholder="Weather"
@@ -58,15 +51,13 @@
                         <strong>Comments about the weather situation</strong>
                 </mat-hint>
         </mat-form-field>
-    </div>
 
-    <div>
         <!-- site where session took place -->
         <mat-form-field>
-                <mat-select placeholder="Site">
+                <mat-select placeholder="Site"
+                        [(ngModel)]="session.site">
                   <mat-option *ngFor="let site of sites"
-                                [value]="site"
-                                [(ngModel)]="session.site">
+                                [value]="site">
                     {{ site.name }}
                   </mat-option>
                 </mat-select>
@@ -74,6 +65,5 @@
                         <strong>Site where session took place</strong>
                 </mat-hint>
         </mat-form-field>
-    </div>
 
 </div>

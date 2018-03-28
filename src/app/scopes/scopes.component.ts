@@ -2,6 +2,8 @@
 
 import { Scope } from './../shared/models/equipment/scope.model';
 import { ScopeService } from './shared/scope.service';
+import { EntityComponent } from '../shared/components/entity-component';
+import { Entity } from '../shared/models/models';
 
 @Component({
     selector: 'om-scopes',
@@ -9,33 +11,13 @@ import { ScopeService } from './shared/scope.service';
     providers: [ScopeService]
 })
 
-export class ScopesComponent implements OnInit {
-
-    scopes: Scope[];
-    selectedScope: Scope;
+export class ScopesComponent extends EntityComponent<Scope> {
 
     constructor(private scopeService: ScopeService) {
+        super(scopeService);
     }
 
-    loadScopes(): void {
-        this.scopeService.getAll().then(scopes => this.scopes = scopes);
-    }
-
-    onSelect(scope: Scope) {
-        this.selectedScope = scope;
-    }
-
-    addNewScope() {
-        if (this.selectedScope != null) {
-            this.scopeService.add(this.selectedScope);
-        }
-    }
-
-    createNew() {
-        this.selectedScope = new Scope();
-    }
-
-    ngOnInit(): void {
-        this.loadScopes();
+    createEmpty(): Scope {
+        return new Scope();
     }
 }

@@ -4,7 +4,7 @@ import { BaseComponent } from './base-component';
 import { StorageService } from '../services/storage.service';
 import { Entity } from '../models/entity.model';
 
-export class EntityComponent<T extends Entity> extends BaseComponent implements OnInit {
+export abstract class EntityComponent<T extends Entity> extends BaseComponent implements OnInit {
 
     selectedItem: T;
     items: T[];
@@ -20,7 +20,7 @@ export class EntityComponent<T extends Entity> extends BaseComponent implements 
     }
 
     createNew(): void {
-        this.selectedItem = null;
+        this.selectedItem = this.createEmpty();
     }
 
     addNewItem(): void {
@@ -36,4 +36,6 @@ export class EntityComponent<T extends Entity> extends BaseComponent implements 
     ngOnInit(): void {
         this.loadAllItems();
     }
+
+    abstract createEmpty(): T;
 }

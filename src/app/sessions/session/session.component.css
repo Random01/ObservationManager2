@@ -1,0 +1,8 @@
+.om-session-component {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .om-session-component > * {
+    width: 100%;
+  }

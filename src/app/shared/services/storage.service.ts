@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Entity } from './../models/entity.model';
 
-export class StorageService<T extends Entity> {
+export abstract class StorageService<T extends Entity> {
 
     private endpoint = 'http://localhost:3001';
 
@@ -55,4 +55,5 @@ export class StorageService<T extends Entity> {
     delete(id: String) {
         throw new Error('Not implemented.');
     }
+
 }
