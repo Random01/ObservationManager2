@@ -63,9 +63,20 @@ class BaseStore {
      * @returns {Promise}
      */
     update(entity) {
-        return new Promise((success, fail) => {
-            this.getCollection().findOne({ '_id': ObjectID(id) }, (err, item) => {
+        return this.getItemById(entity.id).then((item) => {
 
+            item.dateModified = new Date();
+            item.userModified = ObjectID(this.currentUser.id);
+
+            return new Promise((success, fail) => {
+                this.getCollection()
+                    .updateOne({ '_id': ObjectID(id) }, { $set: item }, (err, updatedItem) => {
+                        if (err) {
+                            fail(err);
+                        } else {
+                            success(this.convert(updatedItem));
+                        }
+                    });
             });
         });
     }
@@ -96,7 +107,7 @@ class BaseStore {
     }
 
     getById(id) {
-        return this.getById(id)
+        return this.getItemById(id)
             .then((item) => this.convert(item));
     }
 

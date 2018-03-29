@@ -28,7 +28,8 @@ class RouterFactory {
     setUp() {
         this.router.get('/', (req, res) => this.getAllHandler(req, res));
         this.router.get('/:id', (req, res) => this.getByIdHandler(req, res));
-
+        this.router.put('/:id', (req, res) => this.updateHandler(req, res));
+        this.router.delete('/:id', (req, res) => this.deleteHandler(req, res))
         this.router.post('/', (req, res) => this.addNewHandler(req, res));
     }
 
@@ -52,6 +53,20 @@ class RouterFactory {
     getByIdHandler(req, res) {
         this.store.getById(req.params.id).then(
             entity => res.json(entity),
+            error => this.handleError(res, error)
+        );
+    }
+
+    updateHandler(req, res) {
+        this.store.update(this.parse(req)).then(
+            entity => res.json(entity),
+            error => this.handleError(res, error)
+        );
+    }
+
+    deleteHandler(req, res) {
+        this.store.delete(req.params.id).then(
+            entity => res.json({ status: 'Success' }),
             error => this.handleError(res, error)
         );
     }

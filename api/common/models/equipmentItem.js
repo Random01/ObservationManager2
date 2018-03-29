@@ -5,8 +5,8 @@ class EquipmentItem extends Entity {
     constructor(params) {
         super(params);
 
-        this.model = null;
-        this.vendor = null;
+        this.model = undefined;
+        this.vendor = undefined;
 
         if (params) {
             if (params.hasOwnProperty('model')) {

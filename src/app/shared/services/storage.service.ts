@@ -49,7 +49,17 @@ export abstract class StorageService<T extends Entity> {
     }
 
     update(entity: T): Promise<T> {
-        throw new Error('Not implemented.');
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json'
+            })
+        };
+
+        return new Promise<T>((success, fail) => {
+            return this.http.put<T>(this.getUrl(), entity.serialize(), httpOptions).subscribe(x => {
+                success(x);
+            });
+        });
     }
 
     delete(id: String) {
