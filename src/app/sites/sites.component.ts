@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { Site } from './../shared/models/site.model';
 import { SiteService } from './shared/site.service';
+import { EntityComponent } from '../shared/components/entity-component';
 
 @Component({
     selector: 'om-sites',
@@ -9,36 +10,14 @@ import { SiteService } from './shared/site.service';
     providers: [SiteService]
 })
 
-export class SitesComponent implements OnInit {
-
-    sites: Site[];
-    selectedSite: Site;
+export class SitesComponent extends EntityComponent<Site> {
 
     constructor(private siteService: SiteService) {
+        super(siteService);
     }
 
-    getSites(): void {
-        this.siteService.getAll()
-            .then(sites => this.sites = sites);
+    createEmpty(): Site {
+        return new Site();
     }
 
-    onSelect(site: Site): void {
-        this.selectedSite = site;
-    }
-
-    createNew(): void {
-        this.selectedSite = new Site();
-    }
-
-    addNew(): void {
-        if (this.selectedSite) {
-            this.siteService
-                .add(this.selectedSite)
-                .then(addedSite => this.selectedSite = addedSite);
-        }
-    }
-
-    ngOnInit(): void {
-        this.getSites();
-    }
 }

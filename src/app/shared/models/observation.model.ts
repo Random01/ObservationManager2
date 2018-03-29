@@ -52,7 +52,10 @@ export class Observation extends Entity {
 
     serialize(): Object {
         return Object.assign(super.serialize(), {
-            target: this.target != null ? this.target.id : undefined
+            target: this.target != null ? this.target.id : undefined,
+            site: this.site != null ? this.site.id : undefined,
+            session: this.session != null ? this.session.id : undefined,
+            scope: this.scope != null ? this.scope.id : undefined
         });
     }
 }

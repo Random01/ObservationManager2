@@ -1,10 +1,6 @@
 export class Entity {
 
-    public id?: string;
-
-    public static empty(): Entity {
-        return new Entity();
-    }
+    public id: string;
 
     constructor(params?: { id?: string }) {
         Object.assign(this, params);

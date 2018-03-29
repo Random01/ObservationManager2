@@ -7,17 +7,17 @@ export class Site extends Entity {
     // <!--PLEASE NOTE: West of Greenwich is negative and east is positive -- >
     public timezone: number;
     // <!-- geographical longitude; eastwards positive -->
-    public longitude?: number;
+    public longitude: number;
     // <!-- geographical latitude -->
-    public latitude?: number;
+    public latitude: number;
     // <!-- elevation in meters -->
-    public elevation?: number;
+    public elevation: number;
     // <!--IAU Code for site -- >
-    public code?: number;
+    public code: number;
 
     constructor(params?: {
-        id: string,
-        name: string,
+        id?: string,
+        name?: string,
         timezone?: number,
         longitude?: number,
         latitude?: number,
@@ -27,4 +27,9 @@ export class Site extends Entity {
         super(params);
         Object.assign(this, params);
     }
+
+    serialize(): Object {
+        return Object.assign(super.serialize(), this);
+    }
+
 }
