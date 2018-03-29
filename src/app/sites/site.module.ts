@@ -21,10 +21,6 @@ import { SiteComponent } from './site/site.component';
         SitesComponent,
         SiteComponent
     ],
-    exports: [
-        SitesComponent,
-        SiteComponent
-    ],
     bootstrap: [
         SitesComponent,
         SiteComponent

@@ -2,15 +2,15 @@
     <span>Sites</span>
     
     <ul>
-        <li *ngFor="let site of sites"
+        <li *ngFor="let site of items"
             (click)=onSelect(site)>
             <span>{{site.name}}</span>
         </li>
     </ul>
     
-    <div *ngIf="selectedSite">
+    <div *ngIf="selectedItem">
         <hr/>
-        <om-site [site]=selectedSite></om-site>
+        <om-site [site]=selectedItem></om-site>
     </div>
     
     <hr />
@@ -18,7 +18,7 @@
         <button mat-button
                 (click)=createNew()>New</button>
         <button mat-button
-                (click)=addNew()>Add</button>
+                (click)=addNewItem()>Add</button>
     </div>
 
 </div>
