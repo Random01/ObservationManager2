@@ -6,7 +6,8 @@ export abstract class StorageService<T extends Entity> {
 
     private endpoint = 'http://localhost:3001';
 
-    constructor(protected http: HttpClient,
+    constructor(
+        protected http: HttpClient,
         public url: string) {
     }
 
@@ -34,8 +35,8 @@ export abstract class StorageService<T extends Entity> {
 
     getById(id: String): Promise<T> {
         return new Promise<T>((success, fail) => {
-            return this.http.get<T>(this.getUrl() + '/' + id).subscribe(x => {
-                success(x);
+            return this.http.get<any>(this.getUrl() + '/' + id).subscribe(x => {
+                success(this.deserialize(x));
             });
         });
     }
@@ -56,7 +57,7 @@ export abstract class StorageService<T extends Entity> {
         };
 
         return new Promise<T>((success, fail) => {
-            return this.http.put<T>(this.getUrl(), entity.serialize(), httpOptions).subscribe(x => {
+            return this.http.put<T>(this.getUrl() + '/' + entity.id, entity.serialize(), httpOptions).subscribe(x => {
                 success(x);
             });
         });
@@ -66,4 +67,7 @@ export abstract class StorageService<T extends Entity> {
         throw new Error('Not implemented.');
     }
 
+    deserialize(state: T): T {
+        throw new Error('Not implemented.');
+    }
 }

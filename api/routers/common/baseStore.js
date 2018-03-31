@@ -63,7 +63,13 @@ class BaseStore {
      * @returns {Promise}
      */
     update(entity) {
-        return this.getItemById(entity.id).then((item) => {
+        const id = entity.id;
+        return this.getItemById(id).then((item) => {
+
+            entity.dateCreated = item.dateCreated;
+            entity.userCreated = item.userCreated;
+
+            item = Object.assign(item, entity);
 
             item.dateModified = new Date();
             item.userModified = ObjectID(this.currentUser.id);

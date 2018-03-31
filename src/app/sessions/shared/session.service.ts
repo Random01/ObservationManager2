@@ -10,4 +10,8 @@ export class SessionService extends StorageService<Session> {
     constructor(protected http: HttpClient) {
         super(http, '/sessions');
     }
+
+    deserialize(state: any) {
+        return new Session(state);
+    }
 }
