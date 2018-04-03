@@ -55,9 +55,9 @@
         <!-- site where session took place -->
         <mat-form-field>
                 <mat-select placeholder="Site"
-                        [(ngModel)]="session.site">
+                        [(ngModel)]="session.site.id">
                   <mat-option *ngFor="let site of sites"
-                                [value]="site">
+                                [value]="site.id">
                     {{ site.name }}
                   </mat-option>
                 </mat-select>

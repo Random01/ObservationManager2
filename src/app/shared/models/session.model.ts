@@ -26,17 +26,17 @@ export class Session extends Entity {
         weather?: string
     }) {
         super(params);
+
+        this.site = new Site();
         Object.assign(this, params);
     }
 
     serialize(): Object {
-        return Object.assign(super.serialize(), {
-            begin: this.begin,
-            end: this.end,
-            equipment: this.equipment,
-            comments: this.comments,
-            weather: this.weather,
-            site: this.site != null ? this.site.id : undefined
-        });
+        const state: any = Object.assign(super.serialize(), this);
+
+        state.site = (this.site != null && this.site.id != null)
+            ? this.site.id : undefined;
+
+        return state;
     }
 }
