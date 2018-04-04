@@ -1,12 +1,10 @@
-'use strict';
-
-const Target = require('./target');
-const BaseStore = require('./../common/baseStore');
+const Target = require('./target.model');
+const BaseStore = require('./../common/base.store');
 const CsvReader = require('./../../common/services/csvReader');
 const path = require('path');
 const _ = require('lodash');
 
-class TargetsStore extends BaseStore {
+class TargetStore extends BaseStore {
     constructor(db) {
         super(db, 'target', Target);
     }
@@ -69,4 +67,4 @@ class TargetsStore extends BaseStore {
     }
 }
 
-module.exports = TargetsStore;
+module.exports = TargetStore;

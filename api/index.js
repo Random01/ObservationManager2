@@ -15,13 +15,13 @@ MongoClient.connect(db.url, (err, database) => {
         return console.log(err);
     }
 
-    require('./routers/eyepieces/eyepiecesRouter')(app, database);
-    require('./routers/scopes/scopesRouter')(app, database);
-    require('./routers/sites/sitesRouter')(app, database);
-    require('./routers/targets/targetsRouter')(app, database);
-    require('./routers/observations/observationsRouter')(app, database);
-    require('./routers/sessions/sessionsRouter')(app, database);
-    require('./routers/filters/filtersRouter')(app, database);
+    require('./routers/eyepiece/eyepiece.router')(app, database);
+    require('./routers/scope/scope.router')(app, database);
+    require('./routers/site/site.router')(app, database);
+    require('./routers/target/target.router')(app, database);
+    require('./routers/observation/observation.router')(app, database);
+    require('./routers/session/session.router')(app, database);
+    require('./routers/filter/filter.router')(app, database);
 
     app.listen(port, () => {
         console.log(`Example app listening on port ${port}!`);

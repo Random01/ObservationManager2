@@ -16,6 +16,9 @@ class Site extends Entity {
             if (params.hasOwnProperty('name')) {
                 this.name = params.name;
             }
+            if (params.hasOwnProperty('timezone')) {
+                this.timezone = params.timezone;
+            }
             if (params.hasOwnProperty('longitude')) {
                 this.longitude = params.longitude;
             }
@@ -24,6 +27,9 @@ class Site extends Entity {
             }
             if (params.hasOwnProperty('elevation')) {
                 this.elevation = params.elevation;
+            }
+            if (params.hasOwnProperty('code')) {
+                this.code = params.code;
             }
         }
     }
