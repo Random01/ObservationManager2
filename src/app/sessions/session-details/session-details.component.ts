@@ -7,14 +7,26 @@ import { Session } from './../../shared/models/session.model';
 import { SessionComponent } from './../session/session.component';
 import { SessionService } from '../shared/session.service';
 
+import { ObservationModule } from '../../observations/observation.module';
+import { ObservationDialogComponent } from '../../observations/observation-dialog/observation-dialog.component';
+
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Observation } from '../../shared/models/observation.model';
+import { Result } from '../../shared/models/models';
+import { BaseComponent } from '../../shared/components/base-component';
+import { ObservationService } from '../../observations/shared/observation.service';
+
 @Component({
     selector: 'om-session-details',
     templateUrl: './session-details.component.html',
     styleUrls: ['./session-details.component.css'],
-    providers: [SessionService]
+    providers: [
+        SessionService,
+        ObservationService
+    ]
 })
 
-export class SessionDetailsComponent implements OnInit {
+export class SessionDetailsComponent extends BaseComponent implements OnInit {
 
     session: Session;
     isLoading: Boolean;
@@ -23,9 +35,11 @@ export class SessionDetailsComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private location: Location,
-        private sessionService: SessionService
+        private sessionService: SessionService,
+        private dialog: MatDialog,
+        private observationService: ObservationService
     ) {
-
+        super();
     }
 
     startLoading(): void {
@@ -66,6 +80,24 @@ export class SessionDetailsComponent implements OnInit {
 
     ngOnInit(): void {
         this.loadSession();
+    }
+
+    addNewObservation(): void {
+        const dialogRef = this.dialog.open(ObservationDialogComponent, {
+            width: '400px',
+            data: new Observation({
+                session: this.session,
+            })
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                this.startLoading();
+                this.observationService
+                    .add(result)
+                    .then(() => this.endLoading());
+            }
+        });
     }
 
 }

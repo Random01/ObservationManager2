@@ -12,6 +12,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ObservationComponent } from './observation/observation.component';
 import { ObservationsComponent } from './observations.component';
 import { ObservationDetailComponent } from './observation-detail/observation-detail.component';
+import { ObservationDialogComponent } from './observation-dialog/observation-dialog.component';
 
 @NgModule({
     imports: [
@@ -26,17 +27,23 @@ import { ObservationDetailComponent } from './observation-detail/observation-det
     declarations: [
         ObservationComponent,
         ObservationsComponent,
-        ObservationDetailComponent
+        ObservationDetailComponent,
+        ObservationDialogComponent
     ],
     exports: [
         ObservationComponent,
         ObservationsComponent,
-        ObservationDetailComponent
+        ObservationDetailComponent,
+        ObservationDialogComponent
     ],
     bootstrap: [
         ObservationComponent,
         ObservationsComponent,
-        ObservationDetailComponent
+        ObservationDetailComponent,
+        ObservationDialogComponent
+    ],
+    entryComponents: [
+        ObservationDialogComponent
     ]
 })
 

@@ -13,7 +13,8 @@
                 (click)="update()">Update</button>
 
         <button mat-button
-                *ngIf="editMode===true">Add New Observation</button> 
+                *ngIf="editMode===true"
+                (click)="addNewObservation()">Add New Observation</button> 
 
         <button mat-button
                 routerLink="/sessions">Back</button>

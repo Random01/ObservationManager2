@@ -18,7 +18,7 @@ export class SessionService extends StorageService<Session> {
         if (state != null && state.site != null) {
             session.site = new Site({
                 id: state.site
-        });
+            });
         }
 
         return session;
