@@ -15,20 +15,23 @@ export class Observation extends Entity {
     public site: Site;
 
     public session: Session;
-    // <!-- WHAT was observed ? -->
+    // WHAT was observed
     public target: Target;
-
+    // WHEN was observed ? This may be an instant or an interval of time
+    // Start or instant of observation
     public begin: Date;
-
-    public seeing: string;
-    // <!-- scope used for the observation -->
+    // End in case of (exposure) interval
+    public end: Date;
+    // Seeing rated according to the Antoniadi scale (1=excellent, 5=very poor)
+    public seeing: Number;
+    // Scope used for the observation
     public scope: Scope;
 
-    // <!-- accessories used -->
-    public eyepieces: Eyepiece[];
-
-    public filters: Filter[];
-
+    // eyepiece used
+    public eyepiece: Eyepiece;
+    // filter used
+    public filter: Filter;
+    // Descripting of the results of the observations. Future extensions are likely!
     public result: Result;
 
     constructor(params?: {
@@ -40,8 +43,8 @@ export class Observation extends Entity {
         scope?: Scope,
         begin?: Date,
         result?: Result,
-        eyepieces?: Eyepiece[],
-        filters?: Filter[]
+        eyepiece?: Eyepiece,
+        filter?: Filter
     }) {
         super(params);
 
@@ -52,6 +55,7 @@ export class Observation extends Entity {
 
     serialize(): Object {
         return Object.assign(super.serialize(), {
+            observer: this.observer != null ? this.observer.id : undefined,
             target: this.target != null ? this.target.id : undefined,
             site: this.site != null ? this.site.id : undefined,
             session: this.session != null ? this.session.id : undefined,
