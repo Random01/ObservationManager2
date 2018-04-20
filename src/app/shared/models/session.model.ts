@@ -3,17 +3,17 @@ import { Site } from './site.model';
 
 // <!-- common remarks or conditions of observations conducted during one night/session -->
 export class Session extends Entity {
-
+    // Start of observation session
     public begin: Date;
-
+    // End of observation session
     public end: Date;
-
+    // Site where session took place
     public site: Site;
-
+    // Comments on the (optical or electronical) equipment used
     public equipment: string;
-
+    // Any other comments
     public comments: string;
-
+    // Comments about the weather situation
     public weather: string;
 
     constructor(params?: {

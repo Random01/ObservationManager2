@@ -24,16 +24,16 @@ export class ObservationDetailComponent implements OnInit {
     ) {
     }
 
-    getObservation(): void {
+    loadObservation(): void {
         const id = this.route.snapshot.paramMap.get('id');
 
         this.observationService
-            .getObservation(id)
+            .getById(id)
             .then((observation) => this.observation = observation);
     }
 
     ngOnInit(): void {
-        this.getObservation();
+        this.loadObservation();
     }
 
     goBack(): void {
