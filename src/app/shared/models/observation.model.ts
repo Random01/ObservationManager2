@@ -5,7 +5,7 @@ import { Observer } from './observer.model';
 import { Session } from './session.model';
 import { Site } from './site.model';
 
-import { Scope, Eyepiece, Filter } from './equipment/equipment';
+import { Scope, Eyepiece, Filter, Lens } from './equipment/equipment';
 
 export class Observation extends Entity {
     // WHO observed it ?
@@ -13,7 +13,7 @@ export class Observation extends Entity {
     // WHERE was observed ?
     // site where session took place
     public site: Site;
-
+    // optional session information
     public session: Session;
     // WHAT was observed
     public target: Target;
@@ -26,11 +26,12 @@ export class Observation extends Entity {
     public seeing: Number;
     // Scope used for the observation
     public scope: Scope;
-
     // eyepiece used
     public eyepiece: Eyepiece;
     // filter used
     public filter: Filter;
+    //  Barlow/shapley lens used
+    public lens: Lens;
     // Descripting of the results of the observations. Future extensions are likely!
     public result: Result;
 
@@ -40,11 +41,14 @@ export class Observation extends Entity {
         site?: Site,
         session?: Session,
         target?: Target,
-        scope?: Scope,
         begin?: Date,
-        result?: Result,
+        end?: Date,
+        seeing?: Number,
+        scope?: Scope,
         eyepiece?: Eyepiece,
-        filter?: Filter
+        filter?: Filter,
+        lens?: Lens,
+        result?: Result
     }) {
         super(params);
 
@@ -56,10 +60,16 @@ export class Observation extends Entity {
     serialize(): Object {
         return Object.assign(super.serialize(), {
             observer: this.observer != null ? this.observer.id : undefined,
-            target: this.target != null ? this.target.id : undefined,
             site: this.site != null ? this.site.id : undefined,
             session: this.session != null ? this.session.id : undefined,
+            target: this.target != null ? this.target.id : undefined,
+            begin: this.begin,
+            end: this.end,
+            seeing: this.seeing,
             scope: this.scope != null ? this.scope.id : undefined,
+            eyepiece: this.eyepiece != null ? this.eyepiece.id : undefined,
+            filter: this.filter.id != null ? this.filter.id : undefined,
+            lens: this.lens != null ? this.lens.id : undefined,
             result: this.result
         });
     }
