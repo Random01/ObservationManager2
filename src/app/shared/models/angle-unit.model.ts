@@ -1,4 +1,4 @@
-﻿//<!--angle units used in this schema -- >
+﻿// <!--angle units used in this schema -- >
 //    <xsd:simpleType name= "angleUnit" >
 //        <xsd:restriction base= "xsd:string" >
 //        <xsd:enumeration value= "arcsec" />
@@ -6,18 +6,18 @@
 //        <xsd:enumeration value= "deg" />
 //        <xsd:enumeration value= "rad" />
 //    </xsd:restriction>
-//< /xsd:simpleType>
+// < /xsd:simpleType>
 
 export class AngleType {
-    public static Arcsec: string = 'arcsec';
-    public static Arcmin: string = 'arcmin';
-    public static Deg: string = 'deg';
-    public static Rad: string = 'rad';
+    public static Arcsec = 'arcsec';
+    public static Arcmin = 'arcmin';
+    public static Deg = 'deg';
+    public static Rad = 'rad';
 
     static getAll = () => [
         AngleType.Arcsec,
         AngleType.Arcmin,
         AngleType.Deg,
         AngleType.Rad
-    ];
+    ]
 }
