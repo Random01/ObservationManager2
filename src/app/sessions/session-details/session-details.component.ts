@@ -12,9 +12,10 @@ import { ObservationDialogComponent } from '../../observations/observation-dialo
 
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Observation } from '../../shared/models/observation.model';
-import { Result } from '../../shared/models/models';
+import { Result, Target } from '../../shared/models/models';
 import { BaseComponent } from '../../shared/components/base-component';
 import { ObservationService } from '../../observations/shared/observation.service';
+import { Eyepiece, Scope, Filter } from '../../shared/models/equipment/equipment';
 
 @Component({
     selector: 'om-session-details',
@@ -87,6 +88,10 @@ export class SessionDetailsComponent extends BaseComponent implements OnInit {
             width: '400px',
             data: new Observation({
                 session: this.session,
+                target: new Target(),
+                scope: new Scope(),
+                filter: new Filter(),
+                eyepiece: new Eyepiece()
             })
         });
 

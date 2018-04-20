@@ -41,13 +41,14 @@ export class Observation extends Entity {
         site?: Site,
         session?: Session,
         target?: Target,
-        scope?: Scope,
         begin?: Date,
-        result?: Result,
+        end?: Date,
+        seeing?: Number,
+        scope?: Scope,
         eyepiece?: Eyepiece,
         filter?: Filter,
-        seeing?: Number,
-        lens?: Lens
+        lens?: Lens,
+        result?: Result
     }) {
         super(params);
 
@@ -59,15 +60,17 @@ export class Observation extends Entity {
     serialize(): Object {
         return Object.assign(super.serialize(), {
             observer: this.observer != null ? this.observer.id : undefined,
-            target: this.target != null ? this.target.id : undefined,
             site: this.site != null ? this.site.id : undefined,
             session: this.session != null ? this.session.id : undefined,
-            scope: this.scope != null ? this.scope.id : undefined,
-            result: this.result,
-            seeing: this.seeing,
+            target: this.target != null ? this.target.id : undefined,
             begin: this.begin,
             end: this.end,
-            lens: this.lens != null ? this.lens.id : undefined
+            seeing: this.seeing,
+            scope: this.scope != null ? this.scope.id : undefined,
+            eyepiece: this.eyepiece != null ? this.eyepiece.id : undefined,
+            filter: this.filter.id != null ? this.filter.id : undefined,
+            lens: this.lens != null ? this.lens.id : undefined,
+            result: this.result
         });
     }
 }

@@ -17,7 +17,7 @@ class TargetStore extends BaseStore {
             }
 
             const reader = new CsvReader({
-                path: path.normalize('L:\\Projects\\ObservationManager2\\api\\data\\NGC_light.csv')
+                path: path.normalize('E:\\WorkingProject\\InternalProjects\\ObservationManager22\\api\\data\\NGC_light.csv')
             });
 
             reader.read().then((data) => {
