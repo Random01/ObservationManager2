@@ -11,4 +11,8 @@ export class ObservationService extends StorageService<Observation> {
         super(http, '/observations');
     }
 
+    deserialize(state: any): Observation {
+        return new Observation(state);
+    }
+
 }

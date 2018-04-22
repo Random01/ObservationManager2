@@ -8,6 +8,7 @@ export abstract class EntityComponent<T extends Entity> extends BaseComponent im
 
     selectedItem: T;
     items: T[];
+    isLoading: Boolean;
 
     constructor(protected storageService: StorageService<T>) {
         super();
@@ -25,7 +26,19 @@ export abstract class EntityComponent<T extends Entity> extends BaseComponent im
 
     addNewItem(): void {
         if (this.selectedItem != null) {
-            this.storageService.add(this.selectedItem);
+            this.isLoading = true;
+            this.storageService.add(this.selectedItem).then(() => {
+                this.isLoading = false;
+            });
+        }
+    }
+
+    updateItem(): void {
+        if (this.selectedItem != null && this.selectedItem.isValid()) {
+            this.isLoading = true;
+            this.storageService.update(this.selectedItem).then(() => {
+                this.isLoading = false;
+            });
         }
     }
 

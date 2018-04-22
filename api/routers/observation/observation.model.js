@@ -1,4 +1,5 @@
 const Entity = require('./../../common/models/entity');
+const ObjectID = require('mongodb').ObjectID;
 
 class Observation extends Entity {
     /**
@@ -17,9 +18,10 @@ class Observation extends Entity {
         this.end = undefined;
         this.seeing = undefined;
         this.scope = undefined;
-        this.eyepieces = undefined;
-        this.filters = undefined;
+        this.eyepiece = undefined;
+        this.filter = undefined;
         this.result = undefined;
+        this.lens = undefined;
 
         if (params) {
             this.observer = params.observer;
@@ -30,11 +32,30 @@ class Observation extends Entity {
             this.end = params.end;
             this.seeing = params.seeing;
             this.scope = params.scope;
-            this.eyepieces = params.eyepieces;
-            this.filters = params.filters;
+            this.eyepiece = params.eyepiece;
+            this.filter = params.filter;
             this.result = params.result;
+            this.lens = params.lens;
         }
     }
+
+    getModel() {
+        return Object.assign(base.getModel(), {
+            observer: this.toId(this.observer),
+            site: this.toId(this.site),
+            session: this.toId(this.id),
+            target: this.toId(this.target),
+            begin: this.toDate(this.begin),
+            end: this.toDate(this.end),
+            seeing: this.toNumber(this.seeing),
+            scope: this.toId(this.scope),
+            eyepiece: this.toId(this.eyepiece),
+            filter: this.toId(this.filter),
+            lens: this.toId(this.lens),
+            result: this.result
+        });
+    }
+
 }
 
 module.exports = Observation;

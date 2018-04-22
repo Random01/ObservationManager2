@@ -9,4 +9,9 @@ export class SiteService extends StorageService<Site> {
     constructor(protected http: HttpClient) {
         super(http, '/sites');
     }
+
+    deserialize(state: Site): Site {
+        return new Site(state);
+    }
+
 }

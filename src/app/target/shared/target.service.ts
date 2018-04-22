@@ -8,7 +8,13 @@ import { StorageService } from '../../shared/services/storage.service';
 
 @Injectable()
 export class TargetService extends StorageService<Target> {
+
     constructor(protected http: HttpClient) {
         super(http, '/targets');
     }
+
+    deserialize(state: any): Target {
+        return new Target(state);
+    }
+
 }

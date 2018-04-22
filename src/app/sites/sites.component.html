@@ -18,6 +18,10 @@
         <button mat-button
                 (click)=createNew()>New</button>
         <button mat-button
+                *ngIf="selectedItem && selectedItem.id"
+                (click)=updateItem()>Update</button>
+        <button mat-button
+                *ngIf="selectedItem && !selectedItem.id"
                 (click)=addNewItem()>Add</button>
     </div>
 

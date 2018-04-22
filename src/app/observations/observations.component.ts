@@ -23,7 +23,7 @@ export class ObservationsComponent implements OnInit {
 
     ngOnInit(): void {
         this.observationService
-            .getObservations()
+            .getAll()
             .then(observations => this.observations = observations);
     }
 

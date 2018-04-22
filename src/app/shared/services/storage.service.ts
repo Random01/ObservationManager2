@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Entity } from './../models/entity.model';
+import _ = require('lodash');
 
 export abstract class StorageService<T extends Entity> {
 
@@ -27,25 +28,28 @@ export abstract class StorageService<T extends Entity> {
         };
 
         return new Promise<T>((success, fail) => {
-            return this.http.post<T>(this.getUrl(), newItem.serialize(), httpOptions).subscribe(x => {
-                success(x);
-            });
+            return this.http.post<T>(this.getUrl(), newItem.serialize(), httpOptions)
+                .subscribe(x => {
+                    success(this.deserialize(x));
+                });
         });
     }
 
     getById(id: String): Promise<T> {
         return new Promise<T>((success, fail) => {
-            return this.http.get<any>(this.getUrl() + '/' + id).subscribe(x => {
-                success(this.deserialize(x));
-            });
+            return this.http.get<any>(this.getUrl() + '/' + id)
+                .subscribe(x => {
+                    success(this.deserialize(x));
+                });
         });
     }
 
     getAll(): Promise<T[]> {
         return new Promise<T[]>((success, fail) => {
-            this.http.get<T[]>(this.getUrl()).subscribe(x => {
-                success(x);
-            });
+            this.http.get<T[]>(this.getUrl())
+                .subscribe(items => {
+                    success(items.map(item => this.deserialize(item)));
+                });
         });
     }
 
@@ -57,9 +61,10 @@ export abstract class StorageService<T extends Entity> {
         };
 
         return new Promise<T>((success, fail) => {
-            return this.http.put<T>(this.getUrl() + '/' + entity.id, entity.serialize(), httpOptions).subscribe(x => {
-                success(x);
-            });
+            return this.http.put<T>(this.getUrl() + '/' + entity.id, entity.serialize(), httpOptions)
+                .subscribe(item => {
+                    success(this.deserialize(item));
+                });
         });
     }
 
@@ -67,7 +72,5 @@ export abstract class StorageService<T extends Entity> {
         throw new Error('Not implemented.');
     }
 
-    deserialize(state: T): T {
-        throw new Error('Not implemented.');
-    }
+    abstract deserialize(state: any): T;
 }

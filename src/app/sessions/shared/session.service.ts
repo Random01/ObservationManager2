@@ -12,7 +12,7 @@ export class SessionService extends StorageService<Session> {
         super(http, '/sessions');
     }
 
-    deserialize(state: any) {
+    deserialize(state: any): Session {
         const session = new Session(state);
 
         if (state != null && state.site != null) {

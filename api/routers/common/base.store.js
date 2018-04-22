@@ -102,11 +102,11 @@ class BaseStore {
      */
     getAll() {
         return new Promise((success, fail) => {
-            this.getCollection().find({}).toArray((err, items) => {
+            this.getCollection().find({}).toArray((err, items = []) => {
                 if (err) {
                     fail(err);
                 } else {
-                    success(_.map(items, item => this.convert(item)));
+                    success(items.map(item => this.convert(item)));
                 }
             });
         });

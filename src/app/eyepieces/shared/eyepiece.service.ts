@@ -6,7 +6,13 @@ import { StorageService } from '../../shared/services/storage.service';
 
 @Injectable()
 export class EyepieceService extends StorageService<Eyepiece> {
+
     constructor(protected http: HttpClient) {
         super(http, '/eyepieces');
     }
+
+    deserialize(state: any): Eyepiece {
+        return new Eyepiece(state);
+    }
+
 }

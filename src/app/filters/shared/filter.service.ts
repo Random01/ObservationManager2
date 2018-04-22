@@ -13,10 +13,8 @@ export class FilterService extends StorageService<Filter> {
         super(http, '/filters');
     }
 
-    createEmpty(): Filter {
-        return new Filter({
-            model: 'Test Model'
-        });
+    deserialize(state: any): Filter {
+        return new Filter(state);
     }
 
 }

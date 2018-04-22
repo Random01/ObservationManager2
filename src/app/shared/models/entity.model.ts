@@ -11,7 +11,6 @@ export class Entity {
     }
 
     public isValid(): boolean {
-        return true;
+        return this.id != null;
     }
-
 }
