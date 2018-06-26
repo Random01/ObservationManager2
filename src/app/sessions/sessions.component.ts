@@ -8,6 +8,7 @@ import { SessionService } from './shared/session.service';
 @Component({
     selector: 'om-sessions',
     templateUrl: './sessions.component.html',
+    styleUrls: ['./sessions.component.css'],
     providers: [ SessionService ]
 })
 

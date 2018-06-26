@@ -11,10 +11,18 @@ class Target extends Entity {
         this.description = undefined;
 
         if (params) {
-            this.name = params.name;
-            this.targetType = params.targetType;
-            this.alliases = params.alliases;
-            this.description = params.description;
+            if (params.hasOwnProperty('name')) {
+                this.name = params.name;
+            }
+            if (params.hasOwnProperty('targetType')) {
+                this.targetType = params.targetType;
+            }
+            if (params.hasOwnProperty('alliases')) {
+                this.alliases = params.alliases;
+            }
+            if (params.hasOwnProperty('description')) {
+                this.description = params.description;
+            }
         }
     }
 }

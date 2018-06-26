@@ -1,21 +1,29 @@
-<div class="om-header">
-    <h2 class="mat-headline">OM</h2>
-</div>
+<mat-toolbar color="primary">
+    <mat-toolbar-row>OM!</mat-toolbar-row>
+</mat-toolbar>
 
-<div>
-    <div class="om-left-panel">
-        <ul>
-            <li><a routerLink="/equipment">Equipment</a></li>
-            <li><a routerLink="/sites">Sites</a></li>
-            <li><a routerLink="/observations">Observations</a></li>
-            <li><a routerLink="/sessions">Sessions</a></li>
-        </ul>
-    </div>
-    <div class="om-right-panel">
+<mat-sidenav-container class="example-container">
+    <mat-sidenav mode="side" opened>
+
+        <mat-list>
+            <mat-list-item>
+                <a routerLink="/equipment">Equipment</a>
+            </mat-list-item>
+            <mat-list-item>
+                <a routerLink="/sites">Sites</a>
+            </mat-list-item>
+            <mat-list-item>
+                <a routerLink="/observations">Observations</a>
+            </mat-list-item>
+            <mat-list-item>
+                <a routerLink="/sessions">Sessions</a>
+            </mat-list-item>
+        </mat-list>
+
+    </mat-sidenav>
+
+    <mat-sidenav-content>
         <router-outlet></router-outlet>
-    </div>
-</div>
+    </mat-sidenav-content>
 
-<div class="om-footer">
-    2018
-</div>
+</mat-sidenav-container>

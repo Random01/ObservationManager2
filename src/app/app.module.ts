@@ -3,6 +3,37 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import {
+  MatAutocompleteModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDialogModule,
+  MatDividerModule,
+  MatExpansionModule,
+  MatGridListModule,
+  MatIconModule,
+  MatListModule,
+  MatMenuModule,
+  MatPaginatorModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatSortModule,
+  MatStepperModule,
+  MatTableModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule
+} from '@angular/material';
+
 import { AppComponent } from './app.component';
 import { SessionsComponent } from './sessions/sessions.component';
 
@@ -35,7 +66,10 @@ import { FilterModule } from './filters/filter.module';
     SiteModule,
     EyepieceModule,
     FilterModule,
-    HttpClientModule
+    HttpClientModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule
   ],
   declarations: [
     AppComponent,
@@ -46,7 +80,8 @@ import { FilterModule } from './filters/filter.module';
     MatNativeDateModule,
     MatInputModule,
     MatDatepickerModule,
-    TargetModule
+    TargetModule,
+    MatIconModule
   ],
   providers: [
     SessionService

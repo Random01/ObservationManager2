@@ -1,8 +1,8 @@
 const Target = require('./target.model');
 const BaseStore = require('./../common/base.store');
 const CsvReader = require('./../../common/services/csvReader');
-const path = require('path');
 const _ = require('lodash');
+const data = require('../../data/data');
 
 class TargetStore extends BaseStore {
     constructor(db) {
@@ -17,7 +17,7 @@ class TargetStore extends BaseStore {
             }
 
             const reader = new CsvReader({
-                path: path.normalize('E:\\WorkingProject\\InternalProjects\\ObservationManager22\\api\\data\\NGC_light.csv')
+                path: data.targetsCsvFilePath
             });
 
             reader.read().then((data) => {
