@@ -9,6 +9,7 @@ import { About } from './About';
 import { NotFound } from './common/components/not-found.component';
 import AddScope from './scopes/add-scope.component';
 import EditScope from './scopes/edit-scope.component';
+import { Home } from './Home';
 
 import store from './stores/store';
 
@@ -17,8 +18,9 @@ ReactDom.render((
         <Router>
             <App>
                 <Switch>
+                    <Route path='/' exact component={Home} />
+                    <Route path='/scopes/:scopeId' component={EditScope} />
                     <Route path='/scopes' component={Scopes} />
-                    <Route path='/scope/:scopeId' component={EditScope} />
                     <Route path='/add-new-scope' component={AddScope} />
                     <Route path='/about' component={About} />
                     <Route path='*' component={NotFound} />

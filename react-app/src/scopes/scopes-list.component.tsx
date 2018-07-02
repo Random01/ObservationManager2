@@ -10,6 +10,8 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Icon from '@material-ui/core/Icon';
 
+import { Link } from 'react-router-dom';
+
 import Scope from '../common/models/equipment/scope.model';
 
 export interface ScopesListProps {
@@ -35,16 +37,17 @@ export class ScopesList extends React.Component<ScopesListProps> {
                         {this.props.scopes.map(scope => {
                             return (
                                 <TableRow key={scope.id}>
-                                    <TableCell component='th' scope='row'>
-                                        {scope.model}
+                                    <TableCell
+                                        component='th'
+                                        scope='row'>
+                                        <Link to={`/scopes/${scope.id}`}>
+                                            {scope.model}
+                                        </Link>
                                     </TableCell>
                                     <TableCell numeric>{scope.aperture}</TableCell>
                                     <TableCell numeric>{scope.focalLength}</TableCell>
                                     <TableCell>{scope.vendor}</TableCell>
                                     <TableCell>
-                                        <IconButton aria-label='Edit'>
-                                            <Icon>edit</Icon>
-                                        </IconButton>
                                         <IconButton aria-label='Delete'>
                                             <DeleteIcon />
                                         </IconButton>

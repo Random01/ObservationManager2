@@ -14,7 +14,6 @@ export default class App extends React.Component {
         <div>
           <ul>
             <li><Link to='/scopes'>Scopes</Link></li>
-            <li><Link to='/add-new-scope'>Add New Scope</Link></li>
             <li><Link to='/about'>About</Link></li>
           </ul>
         </div>
