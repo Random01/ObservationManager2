@@ -1,90 +1,96 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
 
 import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 
 import { Link } from 'react-router-dom';
 
+import { ScopeDetails } from './scope-details.component';
 import Scope from '../common/models/equipment/scope.model';
+import ScopeService from './shared/scope.service';
+
 import {
-    ADD_SCOPE_PAGE_LOADED,
-    ADD_SCOPE_PAGE_UNLOADED,
-    ADD_SCOPE_ADD_NEW,
-    ADD_SCOPE_SCOPE_PROPERTY_CHANGED
+    EDIT_SCOPE_PAGE_LOADED,
+    EDIT_SCOPE_PAGE_UNLOADED,
+    EDIT_SCOPE_UPDATE,
+    EDIT_SCOPE_SCOPE_PROPERTY_CHANGED
 } from '../actions/scope-action-types';
 
 import './add-scope.component.less';
-import { ScopeDetails } from './scope-details.component';
-import ScopeService from './shared/scope.service';
+import { connect } from 'react-redux';
 
 const CancelLink = props => <Link to='/scopes' {...props} />;
 
 const mapStateToProps = state => ({
-    ...state.addScope
+    ...state.editScope
 });
 
 const mapDispatchToProps = dispatch => {
     return {
-        onLoad: () => {
+        onLoad: scope => {
             dispatch({
-                type: ADD_SCOPE_PAGE_LOADED,
-                scope: new Scope()
+                type: EDIT_SCOPE_PAGE_LOADED,
+                scope
             });
         },
         onUnload: () => {
             dispatch({
-                type: ADD_SCOPE_PAGE_UNLOADED,
-            });
-        },
-        onAddNewScope: scope => {
-            dispatch({
-                type: ADD_SCOPE_ADD_NEW,
-                scope
+                type: EDIT_SCOPE_PAGE_UNLOADED,
             });
         },
         onScopePropertyChanged: (name, value) => {
             dispatch({
-                type: ADD_SCOPE_SCOPE_PROPERTY_CHANGED,
+                type: EDIT_SCOPE_SCOPE_PROPERTY_CHANGED,
                 property: {
                     name,
                     value
                 }
             });
+        },
+        onUpdate: scope => {
+            dispatch({
+                type: EDIT_SCOPE_UPDATE,
+                scope
+            });
         }
     };
 };
 
-interface AddScopeProps {
+interface EditScopeProps {
     scope: Scope;
-    onLoad: () => void;
+    onLoad: (scope: Scope) => void;
     onUnload: () => void;
-    onAddNewScope: (scope: Scope) => void;
+    onUpdate: (scope: Scope) => void;
     onScopePropertyChanged: (name: String, value: any) => void;
 }
 
-class AddScope extends React.Component<AddScopeProps> {
+class EditScope extends React.Component<EditScopeProps> {
 
-    constructor(props: AddScopeProps) {
+    constructor(props) {
         super(props);
 
+        this.handleScopeUpdate = this.handleScopeUpdate.bind(this);
         this.handleScopePropertyChanged = this.handleScopePropertyChanged.bind(this);
-        this.handleAddNewScope = this.handleAddNewScope.bind(this);
+    }
+
+    public handleScopeUpdate() {
+        this.startLoading();
+        ScopeService.update(this.props.scope).subscribe(() => {
+            this.endLoading();
+        });
     }
 
     public handleScopePropertyChanged(name: string, value: any) {
         this.props.onScopePropertyChanged(name, value);
     }
 
-    public handleAddNewScope() {
+    public componentDidMount() {
         this.startLoading();
-        ScopeService.add(new Scope(this.props.scope)).subscribe(() => {
+        const scopeId = '1';
+        ScopeService.getById(scopeId).subscribe(payload => {
+            this.props.onLoad(payload);
             this.endLoading();
         });
-    }
-
-    public componentDidMount() {
-        this.props.onLoad();
     }
 
     public componentWillUnmount() {
@@ -100,8 +106,9 @@ class AddScope extends React.Component<AddScopeProps> {
     }
 
     public render() {
+
         return (
-            <div className='om-add-scope'>
+            <div className='om-edit-scope'>
                 <ScopeDetails
                     scope={this.props.scope}
                     onScopePropertyChanged={this.handleScopePropertyChanged} />
@@ -110,8 +117,8 @@ class AddScope extends React.Component<AddScopeProps> {
                     <Button
                         variant='contained'
                         color='primary'
-                        onClick={this.handleAddNewScope}>
-                        Add
+                        onClick={this.handleScopeUpdate}>
+                        Update
                     </Button>
 
                     <Button
@@ -124,6 +131,7 @@ class AddScope extends React.Component<AddScopeProps> {
             </div>
         );
     }
+
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddScope);
+export default connect(mapStateToProps, mapDispatchToProps)(EditScope);

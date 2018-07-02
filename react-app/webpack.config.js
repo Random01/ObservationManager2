@@ -3,7 +3,7 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-module.exports = function(env, options) {
+module.exports = function (env, options) {
   const isProduction = options.mode === "production";
 
   const config = {
@@ -18,26 +18,26 @@ module.exports = function(env, options) {
 
     module: {
       rules: [
-        {
-          test: /\.jsx?$/,
-          loader: "babel-loader",
-          exclude: /node_modules/
-        },
-        {
-          test: /\.tsx?$/,
-          loader: "awesome-typescript-loader",
-          exclude: /node_modules/,
-          options: {
-            useCache: true
-          }
-        },
-        {
-          test: /\.less$/,
-          use: ExtractTextPlugin.extract({
-            fallback: "style-loader",
-            use: ["css-loader", "less-loader"]
-          })
+      {
+        test: /\.jsx?$/,
+        loader: "babel-loader",
+        exclude: /node_modules/
+      },
+      {
+        test: /\.tsx?$/,
+        loader: "awesome-typescript-loader",
+        exclude: /node_modules/,
+        options: {
+          useCache: false
         }
+      },
+      {
+        test: /\.less$/,
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: ["css-loader", "less-loader"]
+        })
+      }
       ]
     },
 

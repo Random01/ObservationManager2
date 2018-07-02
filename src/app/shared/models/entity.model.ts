@@ -1,6 +1,6 @@
 export class Entity {
 
-    public id: string;
+    public id?: string = undefined;
 
     constructor(params?: { id?: string }) {
         Object.assign(this, params);
