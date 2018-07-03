@@ -37,6 +37,11 @@ class RouterFactory {
      * Get all entites.
      */
     getAllHandler(req, res) {
+        if (req.query.name != null || req.query.maxCount!=null) {
+            this.searchHandler(req, res);
+            return;
+        }
+
         this.store.getAll().then(
             items => res.json(items),
             error => this.handleError(res, error)
@@ -66,7 +71,19 @@ class RouterFactory {
 
     deleteHandler(req, res) {
         this.store.delete(req.params.id).then(
-            entity => res.json({ status: 'Success' }),
+            () => res.json({ status: 'Success' }),
+            error => this.handleError(res, error)
+        );
+    }
+
+    searchHandler(req, res) {
+        const searchParams = {
+            name: req.query.name,
+            maxCount: req.query.maxCount
+        };
+
+        this.store.search(searchParams).then(
+            items => res.json(items),
             error => this.handleError(res, error)
         );
     }

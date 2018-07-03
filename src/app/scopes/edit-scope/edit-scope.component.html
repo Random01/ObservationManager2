@@ -1,0 +1,19 @@
+<div class="om-edit-scope">
+    <div>
+        <h2>Edit Scope</h2>
+    </div>
+            
+    <div *ngIf="item">
+        <om-scope [scope]=item></om-scope>
+    </div>
+
+    <div>
+        <button
+            mat-button
+            color="primary"
+            (click)=updateItem()>Update</button>
+        <button
+            mat-button
+            (click)=goBack()>Back</button>
+    </div>
+</div>

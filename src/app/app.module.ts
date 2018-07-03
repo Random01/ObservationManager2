@@ -69,7 +69,8 @@ import { FilterModule } from './filters/filter.module';
     HttpClientModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatTableModule
   ],
   declarations: [
     AppComponent,
@@ -81,7 +82,8 @@ import { FilterModule } from './filters/filter.module';
     MatInputModule,
     MatDatepickerModule,
     TargetModule,
-    MatIconModule
+    MatIconModule,
+    MatTableModule
   ],
   providers: [
     SessionService

@@ -8,6 +8,7 @@ import { Site } from '../../shared/models/site.model';
 
 @Injectable()
 export class SessionService extends StorageService<Session> {
+
     constructor(protected http: HttpClient) {
         super(http, '/sessions');
     }
@@ -22,5 +23,9 @@ export class SessionService extends StorageService<Session> {
         }
 
         return session;
+    }
+
+    createNew(): Session {
+        return new Session();
     }
 }

@@ -20,10 +20,6 @@ import { SiteComponent } from './site/site.component';
     declarations: [
         SitesComponent,
         SiteComponent
-    ],
-    bootstrap: [
-        SitesComponent,
-        SiteComponent
     ]
 })
 

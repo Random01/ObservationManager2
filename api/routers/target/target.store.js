@@ -65,6 +65,17 @@ class TargetStore extends BaseStore {
             }, fail);
         });
     }
+
+    search({ name, maxCount = 10 } = {}) {
+        return this.getAll().then((result) => {
+            return _.chain(result)
+                .filter((target) => {
+                    return target.name.startsWith(name);
+                })
+                .take(maxCount)
+                .value();
+        });
+    }
 }
 
 module.exports = TargetStore;

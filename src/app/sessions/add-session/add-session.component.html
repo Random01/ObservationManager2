@@ -1,0 +1,18 @@
+<div class="om-add-session">
+    <div>
+        <h2>Add New Session</h2>
+    </div>
+    <div *ngIf="item">
+        <om-session [session]="item"></om-session>
+    </div>
+    <hr />
+    <div>
+        <button
+            mat-button
+            color="primary"
+            (click)="addItem()">Add</button>
+        <button
+            mat-button
+            (click)="goBack()">Back</button>
+    </div>
+</div>

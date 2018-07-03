@@ -1,0 +1,18 @@
+<div class="om-edit-session">
+    <div>
+        <h2>Edit Session</h2>
+    </div>
+    <div *ngIf="item">
+        <om-session [session]="item"></om-session>
+    </div>
+    <hr />
+    <div>
+        <button
+            mat-button
+            color="primary"
+            (click)="updateItem()">Update</button>
+        <button
+            mat-button
+            (click)="goBack()">Back</button>
+    </div>
+</div>

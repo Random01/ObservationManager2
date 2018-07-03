@@ -1,5 +1,5 @@
 ﻿import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 import { Scope } from './../../shared/models/equipment/scope.model';
 import { StorageService } from '../../shared/services/storage.service';
@@ -14,4 +14,9 @@ export class ScopeService extends StorageService<Scope> {
     deserialize(state: any): Scope {
         return new Scope(state);
     }
+
+    createNew(): Scope {
+        return new Scope();
+    }
+
 }

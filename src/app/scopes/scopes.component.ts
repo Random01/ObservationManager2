@@ -1,9 +1,8 @@
-﻿import { Component, Input, OnInit } from '@angular/core';
+﻿import { Component } from '@angular/core';
 
 import { Scope } from './../shared/models/equipment/scope.model';
 import { ScopeService } from './shared/scope.service';
-import { EntityComponent } from '../shared/components/entity-component';
-import { Entity } from '../shared/models/models';
+import { EntityListComponent } from '../shared/components/entity-list.component';
 
 @Component({
     selector: 'om-scopes',
@@ -11,13 +10,18 @@ import { Entity } from '../shared/models/models';
     providers: [ScopeService]
 })
 
-export class ScopesComponent extends EntityComponent<Scope> {
+export class ScopesComponent extends EntityListComponent<Scope> {
+
+    displayedColumns: string[] = [
+        'model',
+        'aperture',
+        'focalLength',
+        'vendor',
+        'actions'
+    ];
 
     constructor(private scopeService: ScopeService) {
         super(scopeService);
     }
 
-    createEmpty(): Scope {
-        return new Scope();
-    }
 }

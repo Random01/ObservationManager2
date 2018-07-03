@@ -4,7 +4,6 @@ import { Observation, Target } from './../../shared/models/models';
 import { Scope, Eyepiece, Filter } from './../../shared/models/equipment/equipment';
 import { ScopeService } from './../../scopes/shared/scope.service';
 import { EyepieceService } from './../../eyepieces/shared/eyepiece.service';
-import { TargetSearchComponent } from './../../target/target-search/target-search.component';
 import { TargetService } from './../../target/shared/target.service';
 import { FilterService } from '../../filters/shared/filter.service';
 

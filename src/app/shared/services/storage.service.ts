@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Entity } from './../models/entity.model';
-import _ = require('lodash');
+import { Observable } from 'rxjs/Observable';
 
 export abstract class StorageService<T extends Entity> {
 
@@ -68,9 +68,11 @@ export abstract class StorageService<T extends Entity> {
         });
     }
 
-    delete(id: String) {
+    delete(id: String): Observable<Boolean> {
         throw new Error('Not implemented.');
     }
+
+    abstract createNew(): T;
 
     abstract deserialize(state: any): T;
 }

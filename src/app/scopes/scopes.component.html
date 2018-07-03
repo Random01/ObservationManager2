@@ -1,26 +1,66 @@
-﻿<div>
-    <span>Scopes</span>
-    <ul>
-        <li *ngFor="let scope of items"
-            (click)=onSelect(scope)>
-            <span>{{scope.model}}</span>
-        </li>
-    </ul>
-    
-    <div *ngIf="selectedItem">
-        <hr/>
-        <om-scope [scope]=selectedItem></om-scope>
+﻿<div class="om-scopes">
+    <div>
+        <h2>My Scopes</h2>
     </div>
-    
+
+    <mat-table
+        [dataSource]="items"
+        class="mat-elevation-z8">
+
+        <ng-container matColumnDef="model">
+            <mat-header-cell *matHeaderCellDef>Model</mat-header-cell>
+            <mat-cell *matCellDef="let scope">{{scope.model}}</mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="aperture">
+            <mat-header-cell *matHeaderCellDef>Aperture (mm)</mat-header-cell>
+            <mat-cell *matCellDef="let scope">{{scope.aperture}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="focalLength">
+            <mat-header-cell *matHeaderCellDef>Focal Length (mm)</mat-header-cell>
+            <mat-cell *matCellDef="let scope">{{scope.focalLength}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="vendor">
+            <mat-header-cell *matHeaderCellDef>Vendor</mat-header-cell>
+            <mat-cell *matCellDef="let scope">{{scope.vendor}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+            <mat-cell *matCellDef="let scope">
+                <button mat-icon-button
+                        routerLink="/scopes/{{scope.id}}">
+                        <mat-icon
+                            aria-label="Click to edit">
+                            edit
+                        </mat-icon>
+                </button>
+                <button mat-icon-button>
+                        <mat-icon
+                            aria-label="Click to delete">
+                            delete
+                        </mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+    </mat-table>
     <hr />
     <div>
-        <button mat-button
-                routerLink="/equipment">Equipment</button>
-        <button mat-button
-                (click)=createNew()>New</button>
-        <button mat-button
-                (click)=updateItem()>Update</button>
-        <button mat-button
-                (click)=addNewScope()>Add</button>
+        <button 
+            mat-button
+            color="primary"
+            routerLink="/scopes/new-scope"
+            color="primary">Add New Scope</button>
+
+        <button
+            mat-button
+            routerLink="/equipment">Back to Equipment</button>
+        
     </div>
 </div>

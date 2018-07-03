@@ -13,6 +13,9 @@ import { ObservationComponent } from './observation/observation.component';
 import { ObservationsComponent } from './observations.component';
 import { ObservationDetailComponent } from './observation-detail/observation-detail.component';
 import { ObservationDialogComponent } from './observation-dialog/observation-dialog.component';
+import { AddObservationComponent } from './add-observation/add-observation.component';
+import { TargetModule } from '../target/target.module';
+import { EditObservationComponent } from './edit-observation/edit-observation.component';
 
 @NgModule({
     imports: [
@@ -22,25 +25,31 @@ import { ObservationDialogComponent } from './observation-dialog/observation-dia
         RouterModule,
         MatButtonModule,
         MatInputModule,
-        MatSelectModule
+        MatSelectModule,
+        TargetModule
     ],
     declarations: [
         ObservationComponent,
         ObservationsComponent,
         ObservationDetailComponent,
-        ObservationDialogComponent
+        ObservationDialogComponent,
+        AddObservationComponent,
+        EditObservationComponent
     ],
     exports: [
         ObservationComponent,
         ObservationsComponent,
         ObservationDetailComponent,
-        ObservationDialogComponent
+        ObservationDialogComponent,
+        AddObservationComponent,
+        EditObservationComponent
     ],
     bootstrap: [
         ObservationComponent,
         ObservationsComponent,
         ObservationDetailComponent,
-        ObservationDialogComponent
+        ObservationDialogComponent,
+        AddObservationComponent
     ],
     entryComponents: [
         ObservationDialogComponent

@@ -1,0 +1,22 @@
+<div>
+
+    <mat-form-field
+        class="example-full-width">
+        <input
+            type="text"
+            placeholder="Target"
+            aria-label="Number"
+            matInput
+            [formControl]="searhControl"
+            [matAutocomplete]="auto"
+            (keyup)="search(searhControl.value)">
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option
+                *ngFor="let target of targets$ | async"
+                [value]="target.name">
+            {{target.name}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+    
+</div>

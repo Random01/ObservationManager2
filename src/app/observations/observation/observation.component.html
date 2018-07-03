@@ -1,13 +1,7 @@
 ﻿<div class="om-observation-component">
 
-    <mat-form-field>
-        <mat-select placeholder="Target">
-          <mat-option *ngFor="let target of targets"
-                      [value]="target.name">
-            {{ target.name }}
-          </mat-option>
-        </mat-select>
-    </mat-form-field>
+    <om-target-selector [target]="target">
+    </om-target-selector>
 
     <mat-form-field *ngIf="observation.result">
         <textarea matInput

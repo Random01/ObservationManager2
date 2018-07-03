@@ -1,0 +1,21 @@
+<div class="om-edit-observation">
+    <div>
+        <h2>Update Observation</h2>
+    </div>
+    <div *ngIf="item">
+        <om-observation [observation]="item"></om-observation>
+    </div>
+
+    <hr/>
+
+    <div>
+        <button
+            (click)="updateItem()"
+            mat-button>Update</button>
+
+        <button
+            (click)="goBack()"
+            mat-button>Back</button>
+    </div>
+
+</div>

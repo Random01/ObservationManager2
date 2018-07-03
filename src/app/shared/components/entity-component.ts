@@ -21,7 +21,7 @@ export abstract class EntityComponent<T extends Entity> extends BaseComponent im
     }
 
     createNew(): void {
-        this.selectedItem = this.createEmpty();
+        this.selectedItem = this.storageService.createNew();
     }
 
     addNewItem(): void {
@@ -50,5 +50,4 @@ export abstract class EntityComponent<T extends Entity> extends BaseComponent im
         this.loadAllItems();
     }
 
-    abstract createEmpty(): T;
 }

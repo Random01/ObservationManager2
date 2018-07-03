@@ -1,0 +1,17 @@
+<div class="om-add-scope">
+    <div>
+        <h2>Add New Scope</h2>
+    </div>
+    <div *ngIf="item">
+        <om-scope [scope]=item></om-scope>
+    </div>
+    <div>
+        <button 
+            mat-button
+            color="primary"
+            (click)=addItem()>Add</button>
+        <button
+            mat-button
+            (click)=goBack()>Back</button>
+    </div>
+</div>

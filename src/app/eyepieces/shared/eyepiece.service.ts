@@ -15,4 +15,7 @@ export class EyepieceService extends StorageService<Eyepiece> {
         return new Eyepiece(state);
     }
 
+    createNew(): Eyepiece {
+        return new Eyepiece();
+    }
 }
