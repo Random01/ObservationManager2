@@ -30,4 +30,8 @@ export class EditSessionComponent extends EditEntityComponent<Session> {
     goBack() {
         this.router.navigate(['/sessions']);
     }
+
+    showObservations() {
+        this.router.navigate([`/sessions/${this.getItemId()}/observations`]);
+    }
 }

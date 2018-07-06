@@ -1,0 +1,17 @@
+<div class="om-add-site">
+    <div>
+        <h2>Add New Site</h2>
+    </div>
+    <div *ngIf="item">
+        <om-site [site]=item></om-site>
+    </div>
+    <div>
+        <button 
+            mat-button
+            color="primary"
+            (click)=addItem()>Add</button>
+        <button
+            mat-button
+            (click)=goBack()>Back</button>
+    </div>
+</div>

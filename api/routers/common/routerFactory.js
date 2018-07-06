@@ -26,6 +26,7 @@ class RouterFactory {
     }
 
     setUp() {
+        this.router.get('/upload', (req, res) => this.uploadHandler(req, res));
         this.router.get('/', (req, res) => this.getAllHandler(req, res));
         this.router.get('/:id', (req, res) => this.getByIdHandler(req, res));
         this.router.put('/:id', (req, res) => this.updateHandler(req, res));
@@ -37,7 +38,7 @@ class RouterFactory {
      * Get all entites.
      */
     getAllHandler(req, res) {
-        if (req.query.name != null || req.query.maxCount!=null) {
+        if (req.query.name != null || req.query.maxCount != null) {
             this.searchHandler(req, res);
             return;
         }
@@ -79,7 +80,7 @@ class RouterFactory {
     searchHandler(req, res) {
         const searchParams = {
             name: req.query.name,
-            maxCount: req.query.maxCount
+            maxCount: req.query.maxCount != null ? parseInt(req.query.maxCount) : undefined
         };
 
         this.store.search(searchParams).then(
@@ -88,7 +89,17 @@ class RouterFactory {
         );
     }
 
+    uploadHandler(req, res) {
+        this.store.upload().then(
+            () => res.json({ status: 'Success' }),
+            error => this.handleError(res, error)
+        );
+    }
+
     parse(req) {
+        if (this.store.entityConstructor == null) {
+            return req.body;
+        }
         return new this.store.entityConstructor(req.body);
     }
 

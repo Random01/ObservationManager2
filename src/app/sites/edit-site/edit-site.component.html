@@ -1,0 +1,19 @@
+<div class="om-edit-site">
+    <div>
+        <h2>Edit Site</h2>
+    </div>
+            
+    <div *ngIf="item">
+        <om-site [site]=item></om-site>
+    </div>
+
+    <div>
+        <button
+            mat-button
+            color="primary"
+            (click)=updateItem()>Update</button>
+        <button
+            mat-button
+            (click)=goBack()>Back</button>
+    </div>
+</div>

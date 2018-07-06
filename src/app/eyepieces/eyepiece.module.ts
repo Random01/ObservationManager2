@@ -6,12 +6,16 @@ import { FormsModule } from '@angular/forms';
 
 import { RouterModule, Routes } from '@angular/router';
 
-import { MatButtonModule, MatInputModule } from '@angular/material';
-import { MatListModule, MatListItem } from '@angular/material/list';
-import { MatDividerModule } from '@angular/material/divider';
+import {
+    MatButtonModule,
+    MatInputModule,
+    MatTableModule,
+    MatIconModule
+} from '@angular/material';
 
-import { EyepiecesComponent } from './eyepieces.component';
+import { EyepiecesComponent } from './eyepieces/eyepieces.component';
 import { EyepieceComponent } from './eyepiece/eyepiece.component';
+import { EyepieceService } from './shared/eyepiece.service';
 
 @NgModule({
     imports: [
@@ -21,14 +25,15 @@ import { EyepieceComponent } from './eyepiece/eyepiece.component';
         RouterModule,
         MatButtonModule,
         MatInputModule,
-        MatListModule
+        MatTableModule,
+        MatIconModule,
     ],
     declarations: [
         EyepiecesComponent,
         EyepieceComponent
     ],
-    bootstrap: [
-        EyepiecesComponent
+    providers: [
+        EyepieceService
     ]
 })
 

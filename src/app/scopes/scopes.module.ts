@@ -15,6 +15,7 @@ import { ScopesComponent } from './scopes.component';
 import { ScopeComponent } from './scope/scope.component';
 import { AddScopeComponent } from './add-scope/add-scope.component';
 import { EditScopeComponent } from './edit-scope/edit-scope.component';
+import { ScopeService } from './shared/scope.service';
 
 @NgModule({
     imports: [
@@ -32,11 +33,14 @@ import { EditScopeComponent } from './edit-scope/edit-scope.component';
         AddScopeComponent,
         EditScopeComponent
     ],
-    bootstrap: [
+    exports: [
         ScopesComponent,
         ScopeComponent,
         AddScopeComponent,
         EditScopeComponent
+    ],
+    providers: [
+        ScopeService
     ]
 })
 

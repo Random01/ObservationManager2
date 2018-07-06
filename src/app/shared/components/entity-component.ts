@@ -50,4 +50,8 @@ export abstract class EntityComponent<T extends Entity> extends BaseComponent im
         this.loadAllItems();
     }
 
+    removeItem(item: any): void {
+        this.storageService.delete(item._id).then();
+    }
+
 }

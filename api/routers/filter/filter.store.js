@@ -1,10 +1,11 @@
-const Fillter = require('./filter.model');
-const BaseStore = require('./../common/base.store');
+const FilterSchema = require('./filter.schema');
+const BaseMongooseStore = require('./../common/baseMongoose.store');
 
-class FilterStore extends BaseStore {
+
+class FilterStore extends BaseMongooseStore {
 
     constructor(db) {
-        super(db, 'filters', Fillter);
+        super(db.model('filters', FilterSchema));
     }
 
 }

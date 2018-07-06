@@ -21,6 +21,8 @@ export class TargetService extends StorageService<Target> {
     }
 
     deserialize(state: any): Target {
+        state.id = state._id;
+        delete state._id;
         return new Target(state);
     }
 

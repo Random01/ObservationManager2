@@ -32,10 +32,10 @@ export abstract class EntityListComponent<T extends Entity> extends BaseComponen
             });
     }
 
-    remove(entityId: string) {
+    remove(entity: any) {
         this.startLoading();
-        return this.storageService.delete(entityId)
-            .subscribe(() => this.loadAllItems());
+        return this.storageService.delete(entity._id)
+            .then(() => this.loadAllItems());
     }
 
     ngOnInit(): void {

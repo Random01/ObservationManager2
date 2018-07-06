@@ -1,10 +1,57 @@
-const Observation = require('./observation.model');
-const BaseStore = require('./../common/base.store');
+const ObservationSchema = require('./observation.schema');
+const BaseMongooseStore = require('./../common/baseMongoose.store');
 
-class ObservationStore extends BaseStore {
+class ObservationStore extends BaseMongooseStore {
     constructor(db) {
-        super(db, 'observations', Observation);
+        super(db.model('observations', ObservationSchema));
     }
+
+    getById(id) {
+        return new Promise((success, fail) => {
+            this.model
+                .findOne({ _id: id })
+                .populate('userCreated')
+                .populate('userModified')
+                .populate('observer')
+                .populate('site')
+                .populate('session')
+                .populate('scope')
+                .populate('eyepiece')
+                .populate('filter')
+                .populate('target')
+                .exec((err, docs) => {
+                    if (err) {
+                        fail(err);
+                    } else {
+                        success(docs);
+                    }
+                });
+        });
+    }
+
+    getAll() {
+        return new Promise((success, fail) => {
+            this.model
+                .find()
+                .populate('userCreated')
+                .populate('userModified')
+                .populate('observer')
+                .populate('site')
+                .populate('session')
+                .populate('scope')
+                .populate('eyepiece')
+                .populate('filter')
+                .populate('target')
+                .exec((err, docs) => {
+                    if (err) {
+                        fail(err);
+                    } else {
+                        success(docs);
+                    }
+                });
+        });
+    }
+
 }
 
 module.exports = ObservationStore;

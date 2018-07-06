@@ -3,20 +3,20 @@ import { TargetType } from './target-type.model';
 
 export class Target extends Entity {
 
-    public name: String;
+    public name: string;
 
     public targetType: TargetType;
 
-    public alliases: String[];
+    public alliases: string[];
 
-    public description: String;
+    public description: string;
 
     constructor(params?: {
         id?: string,
         name?: string,
         targetType?: TargetType,
-        alliases?: String[],
-        description?: String
+        alliases?: string[],
+        description?: string
     }) {
         super(params);
         Object.assign(this, params);

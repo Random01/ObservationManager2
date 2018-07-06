@@ -1,5 +1,4 @@
 const Entity = require('./../../common/models/entity');
-const ObjectID = require('mongodb').ObjectID;
 
 class Observation extends Entity {
     /**

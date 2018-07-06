@@ -2,6 +2,7 @@
 
 import { Observation } from './../shared/models/models';
 import { ObservationService } from './shared/observation.service';
+import { ScopeService } from '../scopes/shared/scope.service';
 
 @Component({
     selector: 'om-observations',
@@ -10,7 +11,8 @@ import { ObservationService } from './shared/observation.service';
         './observations.component.css'
     ],
     providers: [
-        ObservationService
+        ObservationService,
+        ScopeService
     ]
 })
 

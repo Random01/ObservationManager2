@@ -49,6 +49,10 @@ import { EquipmentComponent } from './equipment/equipment.component';
 import { SiteModule } from './sites/site.module';
 import { EyepieceModule } from './eyepieces/eyepiece.module';
 import { FilterModule } from './filters/filter.module';
+import { UsersModule } from './users/users.module';
+import { EyepieceService } from './eyepieces/shared/eyepiece.service';
+import { ScopeService } from './scopes/shared/scope.service';
+import { FilterService } from './filters/shared/filter.service';
 
 @NgModule({
   imports: [
@@ -70,7 +74,8 @@ import { FilterModule } from './filters/filter.module';
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
-    MatTableModule
+    MatTableModule,
+    UsersModule
   ],
   declarations: [
     AppComponent,
@@ -86,7 +91,10 @@ import { FilterModule } from './filters/filter.module';
     MatTableModule
   ],
   providers: [
-    SessionService
+    SessionService,
+    EyepieceService,
+    ScopeService,
+    FilterService
   ],
   bootstrap: [ AppComponent ]
 })

@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Entity } from './../models/entity.model';
-import { Observable } from 'rxjs/Observable';
 
 export abstract class StorageService<T extends Entity> {
 
@@ -68,8 +67,15 @@ export abstract class StorageService<T extends Entity> {
         });
     }
 
-    delete(id: String): Observable<Boolean> {
-        throw new Error('Not implemented.');
+    delete(id: String): Promise<Boolean> {
+        const url = `${this.getUrl()}/${id}`;
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json'
+            })
+        };
+
+        return this.http.delete<Boolean>(url, httpOptions).toPromise();
     }
 
     abstract createNew(): T;

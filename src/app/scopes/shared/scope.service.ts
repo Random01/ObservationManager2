@@ -12,6 +12,9 @@ export class ScopeService extends StorageService<Scope> {
     }
 
     deserialize(state: any): Scope {
+        state.id = state._id;
+        delete state._id;
+
         return new Scope(state);
     }
 

@@ -41,4 +41,10 @@ export class ObservationComponent implements OnInit {
         this.targetService.getAll().then(targets => this.targets = targets);
         this.filterService.getAll().then(filters => this.filters = filters);
     }
+
+    onTargetSelected(target?: Target) {
+        if (this.observation != null) {
+            this.observation.target = target;
+        }
+    }
 }

@@ -14,6 +14,9 @@ export class SessionService extends StorageService<Session> {
     }
 
     deserialize(state: any): Session {
+        state.id = state._id;
+        delete state._id;
+
         const session = new Session(state);
 
         if (state != null && state.site != null) {

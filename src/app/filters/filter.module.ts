@@ -29,10 +29,6 @@ import { FilterComponent } from './filter/filter.component';
     declarations: [
         FiltersComponent,
         FilterComponent
-    ],
-    bootstrap: [
-        FiltersComponent,
-        FilterComponent
     ]
 })
 

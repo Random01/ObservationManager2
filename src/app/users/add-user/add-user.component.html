@@ -1,0 +1,17 @@
+<div class="om-add-user">
+    <div>
+        <h2>Add New User</h2>
+    </div>
+    <div *ngIf="item">
+        <om-user [user]=item></om-user>
+    </div>
+    <div>
+        <button 
+            mat-button
+            color="primary"
+            (click)=addItem()>Add</button>
+        <button
+            mat-button
+            (click)=goBack()>Back</button>
+    </div>
+</div>

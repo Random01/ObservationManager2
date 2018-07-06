@@ -1,10 +1,27 @@
-const Session = require('./session.model');
-const BaseStore = require('./../common/base.store');
+const SessionSchema = require('./session.schema');
+const BaseMongooseStore = require('./../common/baseMongoose.store');
 
-class SessionStore extends BaseStore {
+class SessionStore extends BaseMongooseStore {
     constructor(db) {
-        super(db, 'sessions', Session);
+        super(db.model('sessions', SessionSchema));
     }
+
+    getById(id) {
+        return new Promise((success, fail) => {
+            this.model
+                .findOne({ _id: id })
+                .populate('userCreated')
+                .populate('userModified')
+                .exec((err, docs) => {
+                    if (err) {
+                        fail(err);
+                    } else {
+                        success(docs);
+                    }
+                });
+        });
+    }
+
 }
 
 module.exports = SessionStore;

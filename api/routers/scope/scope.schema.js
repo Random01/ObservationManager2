@@ -1,17 +1,15 @@
 const mongoose = require('mongoose');
-
 const Schema = mongoose.Schema;
 
 const ScopeSchema = new Schema({
-    id: Schema.Types.ObjectId,
     dateCreated: Date,
     dateModified: Date,
-    userCreated: String,
-    userModified: String,
-    aperture: Number,
-    focalLength: Number,
+    userCreated: { type: Schema.Types.ObjectId, ref: 'users' },
+    userModified: { type: Schema.Types.ObjectId, ref: 'users' },
     model: String,
-    vendor: String
+    vendor: String,
+    aperture: Number,
+    focalLength: Number
 });
 
-module.exports = mongoose.model('Scope', ScopeSchema);
+module.exports = ScopeSchema;

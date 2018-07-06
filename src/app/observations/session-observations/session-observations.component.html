@@ -1,0 +1,41 @@
+<div class="om-session-observations-component">
+    <div>
+        <h2>Observations</h2>
+    </div>
+    <div class="grid">
+        <div *ngFor="let observation of observations">
+
+            <div class="target-name-column">
+                {{observation.target.name}}
+            </div>
+
+            <div class="begin-column">
+                {{observation.begin | date:'medium'}}
+            </div>
+
+            <div class="description-column">
+                {{observation.result.description}}
+            </div>
+
+            <div class="actions-column">
+                <div>
+                    <a routerLink="/observations/{{observation.id}}">
+                        Go To Observation
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div>
+        <button
+            mat-button
+            color="primary"
+            (click)=addNewObservation()>Add New Onservation</button>
+
+        <button
+            mat-button
+            (click)=backToSession()>Back to Session</button>
+    </div>
+
+</div>

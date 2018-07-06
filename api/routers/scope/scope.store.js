@@ -1,9 +1,9 @@
-const Scope = require('./scope.model');
-const BaseStore = require('./../common/base.store');
+const ScopeSchema = require('./scope.schema');
+const BaseMongooseStore = require('./../common/baseMongoose.store');
 
-class ScopeStore extends BaseStore {
+class ScopeStore extends BaseMongooseStore {
     constructor(db) {
-        super(db, 'scopes', Scope);
+        super(db.model('scopes', ScopeSchema));
     }
 }
 

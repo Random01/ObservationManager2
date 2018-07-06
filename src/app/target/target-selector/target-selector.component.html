@@ -10,11 +10,14 @@
             [formControl]="searhControl"
             [matAutocomplete]="auto"
             (keyup)="search(searhControl.value)">
-        <mat-autocomplete #auto="matAutocomplete">
+        <mat-autocomplete
+            #auto="matAutocomplete"
+            [displayWith]="displayFn"
+            (optionSelected)=onTargetSelected(searhControl.value)>
             <mat-option
-                *ngFor="let target of targets$ | async"
-                [value]="target.name">
-            {{target.name}}
+                *ngFor="let trgt of targets$ | async"
+                [value]="trgt">
+            {{trgt.name}}
             </mat-option>
         </mat-autocomplete>
     </mat-form-field>

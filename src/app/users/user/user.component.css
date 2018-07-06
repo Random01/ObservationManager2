@@ -1,0 +1,8 @@
+.om-user-component {
+    display: flex;
+    flex-direction: column;
+}
+
+.om-user-component > * {
+    width: 100%;
+}

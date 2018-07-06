@@ -16,6 +16,7 @@ import { ObservationDialogComponent } from './observation-dialog/observation-dia
 import { AddObservationComponent } from './add-observation/add-observation.component';
 import { TargetModule } from '../target/target.module';
 import { EditObservationComponent } from './edit-observation/edit-observation.component';
+import { SessionObservationsComponent } from './session-observations/session-observations.component';
 
 @NgModule({
     imports: [
@@ -34,7 +35,8 @@ import { EditObservationComponent } from './edit-observation/edit-observation.co
         ObservationDetailComponent,
         ObservationDialogComponent,
         AddObservationComponent,
-        EditObservationComponent
+        EditObservationComponent,
+        SessionObservationsComponent
     ],
     exports: [
         ObservationComponent,
@@ -42,14 +44,8 @@ import { EditObservationComponent } from './edit-observation/edit-observation.co
         ObservationDetailComponent,
         ObservationDialogComponent,
         AddObservationComponent,
-        EditObservationComponent
-    ],
-    bootstrap: [
-        ObservationComponent,
-        ObservationsComponent,
-        ObservationDetailComponent,
-        ObservationDialogComponent,
-        AddObservationComponent
+        EditObservationComponent,
+        SessionObservationsComponent
     ],
     entryComponents: [
         ObservationDialogComponent

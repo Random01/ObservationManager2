@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 
 import { Site } from './../shared/models/site.model';
 import { SiteService } from './shared/site.service';
-import { EntityComponent } from '../shared/components/entity-component';
+
+import { EntityListComponent } from '../shared/components/entity-list.component';
 
 @Component({
     selector: 'om-sites',
@@ -10,14 +11,20 @@ import { EntityComponent } from '../shared/components/entity-component';
     providers: [SiteService]
 })
 
-export class SitesComponent extends EntityComponent<Site> {
+export class SitesComponent extends EntityListComponent<Site> {
+
+    displayedColumns: string[] = [
+        'name',
+        'timezone',
+        'longitude',
+        'latitude',
+        'elevation',
+        'code',
+        'actions'
+    ];
 
     constructor(private siteService: SiteService) {
         super(siteService);
-    }
-
-    createEmpty(): Site {
-        return new Site();
     }
 
 }

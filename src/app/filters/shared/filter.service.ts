@@ -13,6 +13,9 @@ export class FilterService extends StorageService<Filter> {
     }
 
     deserialize(state: any): Filter {
+        state.id = state._id;
+        delete state._id;
+
         return new Filter(state);
     }
 

@@ -1,6 +1,12 @@
 ﻿<div class="om-observation-component">
 
-    <om-target-selector [target]="target">
+    <div *ngIf="observation.target">
+        {{observation.target.name}}
+    </div>
+
+    <om-target-selector
+        [target]="observation.target"
+        (targetSelected)="onTargetSelected($event)">
     </om-target-selector>
 
     <mat-form-field *ngIf="observation.result">
