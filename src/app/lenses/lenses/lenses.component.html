@@ -1,0 +1,61 @@
+<div class="om-lenses">
+    <div>
+        <h2 class="mat-h2">My Lenses</h2>
+    </div>
+
+    <mat-table
+        [dataSource]="items"
+        class="mat-elevation-z8">
+
+        <ng-container matColumnDef="model">
+            <mat-header-cell *matHeaderCellDef>Model</mat-header-cell>
+            <mat-cell *matCellDef="let lens">{{lens.model}}</mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="factor">
+            <mat-header-cell *matHeaderCellDef>Factor</mat-header-cell>
+            <mat-cell *matCellDef="let lens">{{lens.factor}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="vendor">
+            <mat-header-cell *matHeaderCellDef>Vendor</mat-header-cell>
+            <mat-cell *matCellDef="let lens">{{lens.vendor}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+            <mat-cell *matCellDef="let lens">
+                <button mat-icon-button
+                        routerLink="/lenses/{{lens.id}}">
+                        <mat-icon
+                            aria-label="Click to edit">
+                            edit
+                        </mat-icon>
+                </button>
+                <button mat-icon-button>
+                        <mat-icon
+                            aria-label="Click to delete">
+                            delete
+                        </mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+    </mat-table>
+    <hr />
+    <div>
+        <button 
+            mat-button
+            color="primary"
+            routerLink="/lenses/new-lens"
+            color="primary">Add New Lens</button>
+
+        <button
+            mat-button
+            routerLink="/equipment">Back to Equipment</button>
+        
+    </div>
+</div>

@@ -35,7 +35,6 @@ import {
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
-import { SessionsComponent } from './sessions/sessions.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { ScopesModule } from './scopes/scopes.module';
@@ -45,7 +44,7 @@ import { SessionService } from './sessions/shared/session.service';
 import { MatButtonModule, MatNativeDateModule, MatInputModule, MatDatepickerModule } from '@angular/material';
 import { TargetModule } from './target/target.module';
 import { ObservationModule } from './observations/observation.module';
-import { EquipmentComponent } from './equipment/equipment.component';
+import { EquipmentModule } from './equipment/equipment.module';
 import { SiteModule } from './sites/site.module';
 import { EyepieceModule } from './eyepieces/eyepiece.module';
 import { FilterModule } from './filters/filter.module';
@@ -53,6 +52,8 @@ import { UsersModule } from './users/users.module';
 import { EyepieceService } from './eyepieces/shared/eyepiece.service';
 import { ScopeService } from './scopes/shared/scope.service';
 import { FilterService } from './filters/shared/filter.service';
+import { LensesModule } from './lenses/lenses.module';
+import { LensService } from './lenses/shared/lens.service';
 
 @NgModule({
   imports: [
@@ -75,18 +76,18 @@ import { FilterService } from './filters/shared/filter.service';
     MatSidenavModule,
     MatListModule,
     MatTableModule,
-    UsersModule
+    UsersModule,
+    LensesModule,
+    EquipmentModule
   ],
   declarations: [
-    AppComponent,
-    EquipmentComponent
+    AppComponent
   ],
   exports: [
     MatButtonModule,
     MatNativeDateModule,
     MatInputModule,
     MatDatepickerModule,
-    TargetModule,
     MatIconModule,
     MatTableModule
   ],
@@ -94,7 +95,8 @@ import { FilterService } from './filters/shared/filter.service';
     SessionService,
     EyepieceService,
     ScopeService,
-    FilterService
+    FilterService,
+    LensService
   ],
   bootstrap: [ AppComponent ]
 })

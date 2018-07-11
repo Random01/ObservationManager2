@@ -59,6 +59,8 @@ export class TargetSelectorComponent implements OnInit {
         if (this.target !== target) {
             this.target = target;
             this.targetSelected.emit(target);
+
+            this.searhControl.setValue(null);
         }
     }
 

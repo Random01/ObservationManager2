@@ -1,12 +1,12 @@
-.om-observation-component {
+.om-observation {
     display: flex;
     flex-direction: column;
 }
 
-.om-observation-component > * {
+.om-observation > * {
     width: 100%;
 }
 
-.om-observation-component .equipment LI {
+.om-observation .equipment LI {
     display: block;
 }

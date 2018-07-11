@@ -1,0 +1,19 @@
+<div class="om-edit-eyepiece">
+    <div>
+        <h2 class="mat-h2">Edit Eyepiece</h2>
+    </div>
+            
+    <div *ngIf="item">
+        <om-eyepiece [eyepiece]=item></om-eyepiece>
+    </div>
+
+    <div>
+        <button
+            mat-button
+            color="primary"
+            (click)=updateItem()>Update</button>
+        <button
+            mat-button
+            (click)=goBack()>Back</button>
+    </div>
+</div>

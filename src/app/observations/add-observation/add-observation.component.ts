@@ -23,4 +23,8 @@ export class AddObservationComponent extends AddEntityComponent<Observation> {
     goBack() {
         this.router.navigate(['/observations']);
     }
+
+    addItemAndContinue() {
+
+    }
 }

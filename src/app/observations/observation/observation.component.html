@@ -1,4 +1,4 @@
-﻿<div class="om-observation-component">
+﻿<div class="om-observation">
 
     <div *ngIf="observation.target">
         {{observation.target.name}}
@@ -9,8 +9,10 @@
         (targetSelected)="onTargetSelected($event)">
     </om-target-selector>
 
-    <mat-form-field *ngIf="observation.result">
-        <textarea matInput
+    <mat-form-field
+        *ngIf="observation.result">
+        <textarea
+            matInput
             placeholder="Notes"
             matTextareaAutosize
             matAutosizeMinRows="5"
@@ -23,12 +25,15 @@
         <ul>
             <li>
                 <mat-form-field>
-                    <mat-select placeholder="Telecopes, Binocularus &amp; Finders"
-                                [(ngModel)]="observation.scope.id">
-                      <mat-option *ngFor="let scope of scopes"
-                                  [value]="scope.id">
-                        {{ scope.model }}
-                      </mat-option>
+                    <mat-select
+                        placeholder="Telecopes, Binocularus &amp; Finders"
+                        [(ngModel)]="observation.scope.id">
+                        
+                        <mat-option>None</mat-option>
+                        <mat-option *ngFor="let scope of scopes"
+                                    [value]="scope.id">
+                            {{ scope.model }}
+                        </mat-option>
                     </mat-select>
                 </mat-form-field>
 
@@ -38,10 +43,11 @@
                 <mat-form-field>
                     <mat-select placeholder="Eyepieces"
                                 [(ngModel)]="observation.eyepiece.id">
-                      <mat-option *ngFor="let eyepiece of eyepieces"
-                                  [value]="eyepiece.id">
-                        {{ eyepiece.model }}
-                      </mat-option>
+                        <mat-option>None</mat-option>
+                        <mat-option *ngFor="let eyepiece of eyepieces"
+                                    [value]="eyepiece.id">
+                            {{ eyepiece.model }}
+                        </mat-option>
                     </mat-select>
                 </mat-form-field>
             </li>
@@ -50,10 +56,11 @@
                 <mat-form-field>
                     <mat-select placeholder="Filters"
                                 [(ngModel)]="observation.filter.id">
-                      <mat-option *ngFor="let filter of filters"
-                                  [value]="filter.id">
-                        {{ filter.model }}
-                      </mat-option>
+                        <mat-option>None</mat-option>
+                        <mat-option *ngFor="let filter of filters"
+                                    [value]="filter.id">
+                            {{ filter.model }}
+                        </mat-option>
                     </mat-select>
                 </mat-form-field>
             </li>

@@ -19,8 +19,26 @@ import { AddUserComponent } from './users/add-user/add-user.component';
 import { AddSiteComponent } from './sites/add-site/add-site.component';
 import { EditSiteComponent } from './sites/edit-site/edit-site.component';
 import { SessionObservationsComponent } from './observations/session-observations/session-observations.component';
+import { LensesComponent } from './lenses/lenses/lenses.component';
+import { AddLensComponent } from './lenses/add-lens/add-lens.component';
+import { EditLensComponent } from './lenses/edit-lens/edit-lens.component';
+import { EditEyepieceComponent } from './eyepieces/edit-eyepiece/edit-eyepiece.component';
+import { AddEyepieceComponent } from './eyepieces/add-eyepiece/add-eyepiece.component';
 
 const routes: Routes = [
+  {
+    path: 'lenses',
+    component: LensesComponent
+  },
+  {
+    path: 'lenses/new-lens',
+    component: AddLensComponent
+  },
+  {
+    path: 'lenses/:id',
+    component: EditLensComponent
+  },
+
   {
     path: 'scopes',
     component: ScopesComponent
@@ -83,10 +101,20 @@ const routes: Routes = [
     path: 'sites/:id',
     component: EditSiteComponent
   },
+
   {
     path: 'eyepieces',
     component: EyepiecesComponent
   },
+  {
+    path: 'eyepieces/new-eyepiece',
+    component: AddEyepieceComponent
+  },
+  {
+    path: 'eyepieces/:id',
+    component: EditEyepieceComponent
+  },
+
   {
     path: 'filters',
     component: FiltersComponent

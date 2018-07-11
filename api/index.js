@@ -24,6 +24,7 @@ dataBase.once('open', () => {
     require('./routers/session/session.router')(app, dataBase);
     require('./routers/filter/filter.router')(app, dataBase);
     require('./routers/user/user.router')(app, dataBase);
+    require('./routers/lens/lens.router')(app, dataBase);
 
     app.listen(port, () => {
         console.log(`Example app listening on port ${port}!`);

@@ -16,6 +16,8 @@ import {
 import { EyepiecesComponent } from './eyepieces/eyepieces.component';
 import { EyepieceComponent } from './eyepiece/eyepiece.component';
 import { EyepieceService } from './shared/eyepiece.service';
+import { AddEyepieceComponent } from './add-eyepiece/add-eyepiece.component';
+import { EditEyepieceComponent } from './edit-eyepiece/edit-eyepiece.component';
 
 @NgModule({
     imports: [
@@ -30,7 +32,15 @@ import { EyepieceService } from './shared/eyepiece.service';
     ],
     declarations: [
         EyepiecesComponent,
-        EyepieceComponent
+        EyepieceComponent,
+        AddEyepieceComponent,
+        EditEyepieceComponent
+    ],
+    exports: [
+        EyepiecesComponent,
+        EyepieceComponent,
+        AddEyepieceComponent,
+        EditEyepieceComponent
     ],
     providers: [
         EyepieceService
