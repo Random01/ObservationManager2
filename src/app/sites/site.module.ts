@@ -17,6 +17,7 @@ import { SitesComponent } from './sites.component';
 import { SiteComponent } from './site/site.component';
 import { EditSiteComponent } from './edit-site/edit-site.component';
 import { AddSiteComponent } from './add-site/add-site.component';
+import { SitesRoutingModule } from './sites-routing.module';
 
 @NgModule({
     imports: [
@@ -27,7 +28,8 @@ import { AddSiteComponent } from './add-site/add-site.component';
         MatButtonModule,
         MatInputModule,
         MatTableModule,
-        MatIconModule
+        MatIconModule,
+        SitesRoutingModule
     ],
     declarations: [
         SitesComponent,

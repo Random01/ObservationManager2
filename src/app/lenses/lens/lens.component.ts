@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { Lens } from './../../shared/models/equipment/equipment';
+import { Lens } from '../../shared/models/equipment/equipment';
 
 @Component({
     selector: 'om-lens',

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Entity } from './../models/entity.model';
+import { Entity } from '../models/entity.model';
 
 export abstract class StorageService<T extends Entity> {
 

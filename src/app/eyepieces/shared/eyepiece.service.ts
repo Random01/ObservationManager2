@@ -1,7 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Eyepiece } from './../../shared/models/equipment/eyepiece.model';
+import { Eyepiece } from '../../shared/models/equipment/eyepiece.model';
 import { StorageService } from '../../shared/services/storage.service';
 
 @Injectable()

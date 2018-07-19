@@ -4,19 +4,26 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
-import { MatButtonModule, MatInputModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
+import {
+    MatButtonModule,
+    MatInputModule,
+    MatTableModule,
+    MatIconModule
+} from '@angular/material';
 
 import { ObservationComponent } from './observation/observation.component';
-import { ObservationsComponent } from './observations.component';
+import { ObservationsComponent } from './observations/observations.component';
 import { ObservationDetailComponent } from './observation-detail/observation-detail.component';
 import { ObservationDialogComponent } from './observation-dialog/observation-dialog.component';
 import { AddObservationComponent } from './add-observation/add-observation.component';
 import { TargetModule } from '../target/target.module';
 import { EditObservationComponent } from './edit-observation/edit-observation.component';
 import { SessionObservationsComponent } from './session-observations/session-observations.component';
+import { ObservationService } from './shared/observation.service';
+import { ObservationsRoutingModule } from './observations-routing.module';
 
 @NgModule({
     imports: [
@@ -27,7 +34,10 @@ import { SessionObservationsComponent } from './session-observations/session-obs
         MatButtonModule,
         MatInputModule,
         MatSelectModule,
-        TargetModule
+        TargetModule,
+        MatTableModule,
+        MatIconModule,
+        ObservationsRoutingModule
     ],
     declarations: [
         ObservationComponent,
@@ -38,18 +48,12 @@ import { SessionObservationsComponent } from './session-observations/session-obs
         EditObservationComponent,
         SessionObservationsComponent
     ],
-    exports: [
-        ObservationComponent,
-        ObservationsComponent,
-        ObservationDetailComponent,
-        ObservationDialogComponent,
-        AddObservationComponent,
-        EditObservationComponent,
-        SessionObservationsComponent
-    ],
     entryComponents: [
         ObservationDialogComponent
+    ],
+    providers: [
+        ObservationService
     ]
 })
 
-export class ObservationModule { }
+export class ObservationsModule { }

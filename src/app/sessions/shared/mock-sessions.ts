@@ -1,4 +1,4 @@
-import { Session } from './../../shared/models/session.model';
+import { Session } from '../../shared/models/session.model';
 import { Site } from '../../shared/models/models';
 
 export const SESSIONS: Session[] = [

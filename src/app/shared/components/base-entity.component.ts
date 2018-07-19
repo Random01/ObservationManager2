@@ -15,7 +15,4 @@ export abstract class BaseEntityComponent<T extends Entity> extends BaseComponen
         this.isLoading = false;
     }
 
-    public back() {
-
-    }
 }

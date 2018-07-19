@@ -1,5 +1,5 @@
 ﻿import { Component, Input, OnInit } from '@angular/core';
-import { Session, Site } from './../../shared/models/models';
+import { Session, Site } from '../../shared/models/models';
 import { SiteService } from '../../sites/shared/site.service';
 
 @Component({

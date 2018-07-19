@@ -38,7 +38,7 @@ class RouterFactory {
      * Get all entites.
      */
     getAllHandler(req, res) {
-        if (req.query.name != null || req.query.maxCount != null) {
+        if (req.query.name != null || req.query.maxCount != null || req.query.sessionId != null) {
             this.searchHandler(req, res);
             return;
         }
@@ -80,7 +80,8 @@ class RouterFactory {
     searchHandler(req, res) {
         const searchParams = {
             name: req.query.name,
-            maxCount: req.query.maxCount != null ? parseInt(req.query.maxCount) : undefined
+            maxCount: req.query.maxCount != null ? parseInt(req.query.maxCount) : undefined,
+            sessionId: req.query.sessionId
         };
 
         this.store.search(searchParams).then(

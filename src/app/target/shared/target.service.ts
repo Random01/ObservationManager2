@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 
-import { Target } from './../../shared/models/target.model';
+import { Target } from '../../shared/models/target.model';
 import { StorageService } from '../../shared/services/storage.service';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';

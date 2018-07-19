@@ -1,8 +1,8 @@
 ﻿import { Component } from '@angular/core';
 
-import { Scope } from './../shared/models/equipment/scope.model';
-import { ScopeService } from './shared/scope.service';
-import { EntityListComponent } from '../shared/components/entity-list.component';
+import { Scope } from '../../shared/models/equipment/scope.model';
+import { ScopeService } from '../shared/scope.service';
+import { EntityListComponent } from '../../shared/components/entity-list.component';
 
 @Component({
     selector: 'om-scopes',

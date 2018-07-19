@@ -9,11 +9,13 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatNativeDateModule, MatInputModule, MatDatepickerModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
 
-import { SessionsComponent } from './sessions.component';
+import { SessionsComponent } from './sessions/sessions.component';
 import { SessionComponent } from './session/session.component';
 import { SessionDetailsComponent } from './session-details/session-details.component';
 import { AddSessionComponent } from './add-session/add-session.component';
 import { EditSessionComponent } from './edit-session/edit-session.component';
+import { SessionsRoutingModule } from './sessions-routing.module';
+import { SessionService } from './shared/session.service';
 
 @NgModule({
     imports: [
@@ -26,7 +28,8 @@ import { EditSessionComponent } from './edit-session/edit-session.component';
         MatInputModule,
         MatDatepickerModule,
         MatNativeDateModule,
-        MatSelectModule
+        MatSelectModule,
+        SessionsRoutingModule
     ],
     declarations: [
         SessionsComponent,
@@ -35,19 +38,8 @@ import { EditSessionComponent } from './edit-session/edit-session.component';
         AddSessionComponent,
         EditSessionComponent
     ],
-    exports: [
-        SessionsComponent,
-        SessionComponent,
-        SessionDetailsComponent,
-        AddSessionComponent,
-        EditSessionComponent
-    ],
-    bootstrap: [
-        SessionsComponent,
-        SessionComponent,
-        SessionDetailsComponent,
-        AddSessionComponent,
-        EditSessionComponent
+    providers: [
+        SessionService
     ]
 })
 

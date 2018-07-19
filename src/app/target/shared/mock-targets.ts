@@ -1,4 +1,4 @@
-import { Target } from './../../shared/models/models';
+import { Target } from '../../shared/models/models';
 
 export const TARGETS: Target[] = [
     new Target({

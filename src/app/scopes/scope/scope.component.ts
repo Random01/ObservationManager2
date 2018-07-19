@@ -1,6 +1,6 @@
 ﻿import { Component, Input } from '@angular/core';
 
-import { Scope } from './../../shared/models/equipment/scope.model';
+import { Scope } from '../../shared/models/equipment/scope.model';
 
 @Component({
     selector: 'om-scope',

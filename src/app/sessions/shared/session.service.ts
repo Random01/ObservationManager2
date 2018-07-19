@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Session } from '../../shared/models/models';
-import { StorageService } from './../../shared/services/storage.service';
+import { StorageService } from '../../shared/services/storage.service';
 import { Site } from '../../shared/models/site.model';
 
 @Injectable()

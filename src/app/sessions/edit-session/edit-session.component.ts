@@ -24,7 +24,7 @@ export class EditSessionComponent extends EditEntityComponent<Session> {
     }
 
     getItemId(): string {
-        return this.route.snapshot.paramMap.get('id');
+        return this.route.snapshot.paramMap.get('sessionId');
     }
 
     goBack() {

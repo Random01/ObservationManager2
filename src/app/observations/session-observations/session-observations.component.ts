@@ -18,7 +18,15 @@ import { ObservationService } from '../shared/observation.service';
 
 export class SessionObservationsComponent implements OnInit {
 
-    observations: Observation[];
+    items: Observation[];
+
+    displayedColumns: string[] = [
+        'date',
+        'targetName',
+        'scopeModel',
+        'eyepieceModel',
+        'actions'
+    ];
 
     constructor(
         private route: ActivatedRoute,
@@ -27,13 +35,17 @@ export class SessionObservationsComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.loadItems();
+    }
+
+    loadItems(): void {
         this.observationService
             .getSessionObservations(this.getSessionId())
-            .then(observations => this.observations = observations);
+            .then(observations => this.items = observations);
     }
 
     getSessionId(): string {
-        return this.route.snapshot.paramMap.get('id');
+        return this.route.snapshot.paramMap.get('sessionId');
     }
 
     addNewObservation() {
@@ -43,4 +55,11 @@ export class SessionObservationsComponent implements OnInit {
     backToSession() {
         this.router.navigate(['sessions', this.getSessionId()]);
     }
+
+    remove(itemToRemove: Observation) {
+        this.observationService.delete(itemToRemove.id).then(() => {
+            this.loadItems();
+        });
+    }
+
 }

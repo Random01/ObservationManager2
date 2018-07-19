@@ -18,6 +18,14 @@ export abstract class AddEntityComponent<T extends Entity> extends BaseEntityCom
         });
     }
 
+    public addItemAndContinue() {
+        this.startLoading();
+        this.storageService.add(this.item).then(() => {
+            this.item = this.storageService.createNew();
+            this.endLoading();
+        });
+    }
+
     public abstract goBack(): void;
 
     ngOnInit(): void {

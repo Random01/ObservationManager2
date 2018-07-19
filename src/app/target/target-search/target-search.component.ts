@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Target } from './../../shared/models/target.model';
-import { TargetService } from './../shared/target.service';
+import { Target } from '../../shared/models/target.model';
+import { TargetService } from '../shared/target.service';
 
 @Component({
     selector: 'om-target-search',

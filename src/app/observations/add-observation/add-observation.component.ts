@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
-import { Observation } from '../../shared/models/models';
+import { Observation, Session } from '../../shared/models/models';
 import { ObservationService } from '../shared/observation.service';
 
 import { AddEntityComponent } from '../../shared/components/add-entity.component';
@@ -15,16 +15,26 @@ import { AddEntityComponent } from '../../shared/components/add-entity.component
 
 export class AddObservationComponent extends AddEntityComponent<Observation> {
     constructor(
+        private route: ActivatedRoute,
         private router: Router,
         private observatioService: ObservationService) {
         super(observatioService);
     }
 
+    getSessionId(): string {
+        return this.route.snapshot.paramMap.get('sessionId');
+    }
+
     goBack() {
-        this.router.navigate(['/observations']);
+        this.router.navigate([`/sessions/${this.getSessionId()}/observations`]);
     }
 
-    addItemAndContinue() {
+    addItem() {
+        this.item.session = new Session({
+            id: this.getSessionId()
+        });
 
+        super.addItem();
     }
+
 }

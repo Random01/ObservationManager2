@@ -22,10 +22,14 @@ export class EditObservationComponent extends EditEntityComponent<Observation> {
     }
 
     getItemId(): string {
-        return this.route.snapshot.paramMap.get('id');
+        return this.route.snapshot.paramMap.get('observationId');
+    }
+
+    getSessionId(): string {
+        return this.route.snapshot.paramMap.get('sessionId');
     }
 
     goBack() {
-        this.router.navigate(['/sessions']);
+        this.router.navigate([`/sessions/${this.getSessionId()}/observations`]);
     }
 }

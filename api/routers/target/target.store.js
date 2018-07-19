@@ -25,7 +25,6 @@ class TargetStore extends BaseMongooseStore {
                     }
                 });
         });
-
     }
 
     loadFromCsv() {

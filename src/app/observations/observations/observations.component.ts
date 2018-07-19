@@ -1,8 +1,8 @@
 ﻿import { Component, Input, OnInit } from '@angular/core';
 
-import { Observation } from './../shared/models/models';
-import { ObservationService } from './shared/observation.service';
-import { ScopeService } from '../scopes/shared/scope.service';
+import { Observation } from '../../shared/models/models';
+import { ObservationService } from '../shared/observation.service';
+import { ScopeService } from '../../scopes/shared/scope.service';
 
 @Component({
     selector: 'om-observations',

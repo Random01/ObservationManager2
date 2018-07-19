@@ -3,16 +3,14 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Session } from './../../shared/models/session.model';
-import { SessionComponent } from './../session/session.component';
+import { Session } from '../../shared/models/session.model';
 import { SessionService } from '../shared/session.service';
 
-import { ObservationModule } from '../../observations/observation.module';
 import { ObservationDialogComponent } from '../../observations/observation-dialog/observation-dialog.component';
 
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Observation } from '../../shared/models/observation.model';
-import { Result, Target } from '../../shared/models/models';
+import { Target } from '../../shared/models/models';
 import { BaseComponent } from '../../shared/components/base-component';
 import { ObservationService } from '../../observations/shared/observation.service';
 import { Eyepiece, Scope, Filter } from '../../shared/models/equipment/equipment';

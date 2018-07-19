@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { Filter } from './../../shared/models/equipment/filter.model';
+import { Filter } from '../../shared/models/equipment/filter.model';
 import { FilterType } from '../../shared/models/equipment/filter-type.enum';
 
 @Component({

@@ -1,4 +1,4 @@
-﻿import { Site } from './../../shared/models/site.model';
+﻿import { Site } from '../../shared/models/site.model';
 
 export const SITES: Site[] = [
     new Site({

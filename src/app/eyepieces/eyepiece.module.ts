@@ -18,6 +18,7 @@ import { EyepieceComponent } from './eyepiece/eyepiece.component';
 import { EyepieceService } from './shared/eyepiece.service';
 import { AddEyepieceComponent } from './add-eyepiece/add-eyepiece.component';
 import { EditEyepieceComponent } from './edit-eyepiece/edit-eyepiece.component';
+import { EyepiecesRoutingModule } from './eyepieces-routing.module';
 
 @NgModule({
     imports: [
@@ -29,14 +30,9 @@ import { EditEyepieceComponent } from './edit-eyepiece/edit-eyepiece.component';
         MatInputModule,
         MatTableModule,
         MatIconModule,
+        EyepiecesRoutingModule
     ],
     declarations: [
-        EyepiecesComponent,
-        EyepieceComponent,
-        AddEyepieceComponent,
-        EditEyepieceComponent
-    ],
-    exports: [
         EyepiecesComponent,
         EyepieceComponent,
         AddEyepieceComponent,

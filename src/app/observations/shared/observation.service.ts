@@ -1,9 +1,9 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { StorageService } from './../../shared/services/storage.service';
+import { StorageService } from '../../shared/services/storage.service';
 
-import { Observation, Target } from './../../shared/models/models';
+import { Observation, Target } from '../../shared/models/models';
 import { Scope, Eyepiece, Filter } from '../../shared/models/equipment/equipment';
 
 import { FilterService } from '../../filters/shared/filter.service';

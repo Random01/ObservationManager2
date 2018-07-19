@@ -2,7 +2,7 @@
 
 import { HttpClient } from '@angular/common/http';
 
-import { Filter } from './../../shared/models/equipment/filter.model';
+import { Filter } from '../../shared/models/equipment/filter.model';
 import { StorageService } from '../../shared/services/storage.service';
 
 @Injectable()

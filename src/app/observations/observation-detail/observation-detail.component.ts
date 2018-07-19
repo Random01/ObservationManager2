@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Observation } from './../../shared/models/models';
-import { ObservationService } from './../shared/observation.service';
+import { Observation } from '../../shared/models/models';
+import { ObservationService } from '../shared/observation.service';
 
 
 @Component({

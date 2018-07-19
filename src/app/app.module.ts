@@ -43,7 +43,7 @@ import { SessionService } from './sessions/shared/session.service';
 
 import { MatButtonModule, MatNativeDateModule, MatInputModule, MatDatepickerModule } from '@angular/material';
 import { TargetModule } from './target/target.module';
-import { ObservationModule } from './observations/observation.module';
+import { ObservationsModule } from './observations/observations.module';
 import { EquipmentModule } from './equipment/equipment.module';
 import { SiteModule } from './sites/site.module';
 import { EyepieceModule } from './eyepieces/eyepiece.module';
@@ -67,7 +67,7 @@ import { LensService } from './lenses/shared/lens.service';
     MatInputModule,
     MatDatepickerModule,
     TargetModule,
-    ObservationModule,
+    ObservationsModule,
     SiteModule,
     EyepieceModule,
     FilterModule,

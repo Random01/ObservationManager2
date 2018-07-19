@@ -34,7 +34,7 @@ export abstract class EntityListComponent<T extends Entity> extends BaseComponen
 
     remove(entity: any) {
         this.startLoading();
-        return this.storageService.delete(entity._id)
+        return this.storageService.delete(entity.id)
             .then(() => this.loadAllItems());
     }
 

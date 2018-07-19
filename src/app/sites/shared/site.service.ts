@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Site } from './../../shared/models/site.model';
+import { Site } from '../../shared/models/site.model';
 import { StorageService } from '../../shared/services/storage.service';
 
 @Injectable()

@@ -1,6 +1,6 @@
 ﻿<div class="om-scopes">
     <div>
-        <h2>My Scopes</h2>
+        <h2 class="mat-h2">My Scopes</h2>
     </div>
 
     <mat-table
@@ -37,7 +37,9 @@
                             edit
                         </mat-icon>
                 </button>
-                <button mat-icon-button>
+                <button
+                    mat-icon-button
+                    (click)=remove(scope)>
                         <mat-icon
                             aria-label="Click to delete">
                             delete

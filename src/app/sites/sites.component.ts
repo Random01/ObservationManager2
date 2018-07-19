@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Site } from './../shared/models/site.model';
+import { Site } from '../shared/models/site.model';
 import { SiteService } from './shared/site.service';
 
 import { EntityListComponent } from '../shared/components/entity-list.component';

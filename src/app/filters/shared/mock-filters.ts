@@ -1,4 +1,4 @@
-﻿import { Filter, FilterType } from './../../shared/models/equipment/equipment';
+﻿import { Filter, FilterType } from '../../shared/models/equipment/equipment';
 
 export const FILTERS: Filter[] = [
     new Filter({

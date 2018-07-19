@@ -11,11 +11,12 @@ import {
     MatIconModule
 } from '@angular/material';
 
-import { ScopesComponent } from './scopes.component';
+import { ScopesComponent } from './scopes/scopes.component';
 import { ScopeComponent } from './scope/scope.component';
 import { AddScopeComponent } from './add-scope/add-scope.component';
 import { EditScopeComponent } from './edit-scope/edit-scope.component';
 import { ScopeService } from './shared/scope.service';
+import { ScopesRoutingModule } from './scopes-routing.module';
 
 @NgModule({
     imports: [
@@ -25,15 +26,10 @@ import { ScopeService } from './shared/scope.service';
         MatInputModule,
         MatTableModule,
         MatIconModule,
-        RouterModule
+        RouterModule,
+        ScopesRoutingModule
     ],
     declarations: [
-        ScopesComponent,
-        ScopeComponent,
-        AddScopeComponent,
-        EditScopeComponent
-    ],
-    exports: [
         ScopesComponent,
         ScopeComponent,
         AddScopeComponent,

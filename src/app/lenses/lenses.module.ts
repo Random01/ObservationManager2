@@ -16,6 +16,7 @@ import { AddLensComponent } from './add-lens/add-lens.component';
 import { LensService } from './shared/lens.service';
 import { LensesComponent } from './lenses/lenses.component';
 import { EditLensComponent } from './edit-lens/edit-lens.component';
+import { LensesRoutingModule } from './lenses-routing.module';
 
 @NgModule({
     imports: [
@@ -25,7 +26,8 @@ import { EditLensComponent } from './edit-lens/edit-lens.component';
         MatInputModule,
         MatTableModule,
         MatIconModule,
-        RouterModule
+        RouterModule,
+        LensesRoutingModule
     ],
     declarations: [
         LensesComponent,

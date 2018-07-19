@@ -1,4 +1,4 @@
-﻿import { Observation, Observer, Site, Session, Target, Result } from './../../shared/models/models';
+﻿import { Observation, Observer, Site, Session, Target, Result } from '../../shared/models/models';
 
 export const OBSERVATIONS: Observation[] = [
     new Observation({

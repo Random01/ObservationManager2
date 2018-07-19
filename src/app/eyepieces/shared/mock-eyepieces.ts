@@ -1,4 +1,4 @@
-﻿import { Eyepiece } from './../../shared/models/equipment/eyepiece.model';
+﻿import { Eyepiece } from '../../shared/models/equipment/eyepiece.model';
 
 export const EYEPIECES: Eyepiece[] = [
     new Eyepiece({

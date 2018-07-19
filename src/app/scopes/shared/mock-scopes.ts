@@ -1,4 +1,4 @@
-﻿import { Scope } from './../../shared/models/equipment/scope.model';
+﻿import { Scope } from '../../shared/models/equipment/scope.model';
 
 export const SCOPES: Scope[] = [
     new Scope({
