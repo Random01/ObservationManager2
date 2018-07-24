@@ -1,20 +1,24 @@
 <div class="om-filter-component">
         <mat-form-field>
-                <input matInput
+                <input
+                        matInput
                         placeholder="Model"
                         [(ngModel)]="filter.model"/>
         </mat-form-field>
 
         <mat-form-field>
-                <input matInput
+                <input
+                        matInput
                         placeholder="Vendor"
                         [(ngModel)]="filter.vendor"/>
         </mat-form-field>
 
         <mat-form-field>
-                <mat-select placeholder="Filter Type"
+                <mat-select
+                        placeholder="Filter Type"
                         [(value)]="filter.filterType">
-                        <mat-option *ngFor="let filterType of filterTypes"
+                        <mat-option
+                                *ngFor="let filterType of filterTypes"
                                 [value]="filterType">
                                 {{ filterType }}
                         </mat-option>

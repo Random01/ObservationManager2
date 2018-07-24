@@ -23,7 +23,7 @@ export class EditLensComponent extends EditEntityComponent<Lens> {
     }
 
     getItemId(): string {
-        return this.route.snapshot.paramMap.get('id');
+        return this.route.snapshot.paramMap.get('lensId');
     }
 
     goBack() {

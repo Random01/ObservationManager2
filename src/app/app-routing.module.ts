@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { EquipmentComponent } from './equipment/equipment.component';
-import { FiltersComponent } from './filters/filters.component';
 import { UsersComponent } from './users/users/users.component';
 import { AddUserComponent } from './users/add-user/add-user.component';
 
@@ -13,10 +12,6 @@ const routes: Routes = [
     component: EquipmentComponent
   },
 
-  {
-    path: 'filters',
-    component: FiltersComponent
-  },
   {
     path: 'users',
     component: UsersComponent

@@ -6,6 +6,7 @@ const ScopeSchema = new Schema({
     dateModified: Date,
     userCreated: { type: Schema.Types.ObjectId, ref: 'users' },
     userModified: { type: Schema.Types.ObjectId, ref: 'users' },
+    
     model: String,
     vendor: String,
     aperture: Number,

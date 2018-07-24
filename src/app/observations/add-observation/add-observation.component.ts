@@ -17,8 +17,8 @@ export class AddObservationComponent extends AddEntityComponent<Observation> {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private observatioService: ObservationService) {
-        super(observatioService);
+        private service: ObservationService) {
+        super(service);
     }
 
     getSessionId(): string {
@@ -29,12 +29,30 @@ export class AddObservationComponent extends AddEntityComponent<Observation> {
         this.router.navigate([`/sessions/${this.getSessionId()}/observations`]);
     }
 
-    addItem() {
-        this.item.session = new Session({
-            id: this.getSessionId()
-        });
+    createNew() {
+        return super.createNew().then((item) => {
+            item.session = new Session({
+                id: this.getSessionId()
+            });
 
-        super.addItem();
+            return item;
+        });
     }
 
+    public addItemAndContinue() {
+        this.startLoading();
+        return this.storageService.add(this.item)
+            .then(() => {
+                return this.createNew();
+            })
+            .then((item) => {
+                item.scope = this.item.scope;
+                item.filter = this.item.filter;
+                item.eyepiece = this.item.eyepiece;
+                item.lens = this.item.lens;
+
+                this.item = item;
+                this.endLoading();
+            });
+    }
 }

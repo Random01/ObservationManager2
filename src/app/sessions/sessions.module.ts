@@ -6,7 +6,13 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatNativeDateModule, MatInputModule, MatDatepickerModule } from '@angular/material';
+import {
+    MatButtonModule,
+    MatNativeDateModule,
+    MatInputModule,
+    MatDatepickerModule
+} from '@angular/material';
+
 import { MatSelectModule } from '@angular/material/select';
 
 import { SessionsComponent } from './sessions/sessions.component';

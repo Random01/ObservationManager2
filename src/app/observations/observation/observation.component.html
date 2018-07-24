@@ -1,14 +1,79 @@
 ﻿<div class="om-observation">
 
-    <div *ngIf="observation.target">
-        {{observation.target.name}}
+    <!-- Target -->
+    <div class="om-target">
+        <div *ngIf="observation.target">
+            {{observation.target.name}}
+        </div>
+        <div>
+            <om-target-selector
+                [target]="observation.target"
+                (targetSelected)="onTargetSelected($event)">
+            </om-target-selector>
+        </div>
     </div>
 
-    <om-target-selector
-        [target]="observation.target"
-        (targetSelected)="onTargetSelected($event)">
-    </om-target-selector>
+    <!-- Start of observation (Date) -->
+    <mat-form-field>
+        <input
+            matInput
+            [matDatepicker]="startDatePicker"
+            placeholder="Start Date"
+            [(ngModel)]="observation.begin">
+        <mat-datepicker-toggle
+            matSuffix
+            [for]="startDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker
+            #startDatePicker></mat-datepicker>
+        <mat-hint
+            align="start">
+            <strong>Date of observation</strong>
+        </mat-hint>
+    </mat-form-field>
 
+    <!-- Start of observation (Time) -->
+    <mat-form-field>
+        <input
+            matInput
+            type="time"
+            placeholder="Time"/>
+        <mat-hint
+            align="start">
+            <strong>Time of observation</strong>
+        </mat-hint>
+    </mat-form-field>
+
+    <!-- End of observation (Date) -->
+    <mat-form-field>
+        <input
+            matInput
+            [matDatepicker]="endDatePicker"
+            placeholder="End Date"
+            [(ngModel)]="observation.end">
+        <mat-datepicker-toggle
+            matSuffix
+            [for]="endDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker
+            #endDatePicker></mat-datepicker>
+        <mat-hint
+            align="end">
+            <strong>Date of observation</strong>
+        </mat-hint>
+    </mat-form-field>
+    
+    <!-- End of observation (Time) -->
+    <mat-form-field>
+        <input
+            matInput
+            type="time"
+            placeholder="Time"/>
+        <mat-hint
+            align="end">
+                <strong>Time of observation</strong>
+        </mat-hint>
+    </mat-form-field>
+
+    <!-- Result -->
     <mat-form-field
         *ngIf="observation.result">
         <textarea
@@ -20,51 +85,53 @@
         </textarea>
     </mat-form-field>
 
-    <div class="equipment">
-        <h3 class="mat-subheading-2">Equipment</h3>
-        <ul>
-            <li>
-                <mat-form-field>
-                    <mat-select
-                        placeholder="Telecopes, Binocularus &amp; Finders"
-                        [(ngModel)]="observation.scope.id">
-                        
-                        <mat-option>None</mat-option>
-                        <mat-option *ngFor="let scope of scopes"
-                                    [value]="scope.id">
-                            {{ scope.model }}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+    <h3 class="mat-subheading-2">Equipment</h3>
 
-            </li>
+    <mat-form-field>
+        <mat-select
+            placeholder="Telecopes, Binocularus &amp; Finders"
+            [(ngModel)]="observation.scope.id">
+            
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let scope of scopes"
+                        [value]="scope.id">
+                {{ scope.model }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
 
-            <li>
-                <mat-form-field>
-                    <mat-select placeholder="Eyepieces"
-                                [(ngModel)]="observation.eyepiece.id">
-                        <mat-option>None</mat-option>
-                        <mat-option *ngFor="let eyepiece of eyepieces"
-                                    [value]="eyepiece.id">
-                            {{ eyepiece.model }}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </li>
 
-            <li>
-                <mat-form-field>
-                    <mat-select placeholder="Filters"
-                                [(ngModel)]="observation.filter.id">
-                        <mat-option>None</mat-option>
-                        <mat-option *ngFor="let filter of filters"
-                                    [value]="filter.id">
-                            {{ filter.model }}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </li>
-        </ul>
-    </div>
+    <mat-form-field>
+        <mat-select placeholder="Eyepieces"
+                    [(ngModel)]="observation.eyepiece.id">
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let eyepiece of eyepieces"
+                        [value]="eyepiece.id">
+                {{ eyepiece.model }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select placeholder="Filters"
+                    [(ngModel)]="observation.filter.id">
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let filter of filters"
+                        [value]="filter.id">
+                {{ filter.model }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select placeholder="Lenses"
+                    [(ngModel)]="observation.lens.id">
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let lens of lenses"
+                        [value]="lens.id">
+                {{ lens.model }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
 
 </div>

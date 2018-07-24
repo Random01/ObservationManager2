@@ -19,17 +19,17 @@ export abstract class StorageService<T extends Entity> {
         return this.getAll();
     }
 
-    add(newItem: T): Promise<T> {
+    add(newItem: T): Promise<Boolean> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json'
             })
         };
 
-        return new Promise<T>((success, fail) => {
+        return new Promise<Boolean>((success, fail) => {
             return this.http.post<T>(this.getUrl(), newItem.serialize(), httpOptions)
-                .subscribe(x => {
-                    success(this.deserialize(x));
+                .subscribe(() => {
+                    success(true);
                 });
         });
     }
@@ -52,17 +52,17 @@ export abstract class StorageService<T extends Entity> {
         });
     }
 
-    update(entity: T): Promise<T> {
+    update(entity: T): Promise<Boolean> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json'
             })
         };
 
-        return new Promise<T>((success, fail) => {
+        return new Promise<Boolean>((success, fail) => {
             return this.http.put<T>(this.getUrl() + '/' + entity.id, entity.serialize(), httpOptions)
-                .subscribe(item => {
-                    success(this.deserialize(item));
+                .subscribe(() => {
+                    success(true);
                 });
         });
     }

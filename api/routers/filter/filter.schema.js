@@ -7,7 +7,7 @@ const FilterSchema = new Schema({
     userCreated: { type: Schema.Types.ObjectId, ref: 'users' },
     userModified: { type: Schema.Types.ObjectId, ref: 'users' },
     
-    name: String,
+    model: String,
     vendor: String,
     filterType: String
 });

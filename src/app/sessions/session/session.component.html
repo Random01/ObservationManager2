@@ -1,7 +1,7 @@
 ﻿<div class="om-session-component">
 
-    <!-- Start Date -->
-    <!-- Start of observation session -->
+        <!-- Start Date -->
+        <!-- Start of an observation session (Time) -->
         <mat-form-field>
                 <input matInput
                         [matDatepicker]="startDatePicker"
@@ -14,11 +14,24 @@
                         <strong>Start of observation session</strong>
                 </mat-hint>
         </mat-form-field>
-    
-    <!-- End Date -->
-    <!-- End of observation session -->
+
+        <!-- Start of an observation session (Time) -->
         <mat-form-field>
-                <input matInput
+                <input
+                        matInput
+                        type="time"
+                        placeholder="Time"/>
+                <mat-hint
+                        align="start">
+                        <strong>Time of observation</strong>
+                </mat-hint>
+        </mat-form-field>
+    
+        <!-- End Date -->
+        <!-- End of an observation session (Date) -->
+        <mat-form-field>
+                <input
+                        matInput
                         [matDatepicker]="endDatePicker"
                         placeholder="End date"
                         [(ngModel)]="session.end">
@@ -30,18 +43,39 @@
                 </mat-hint>
         </mat-form-field>
 
-        <mat-form-field class="om-comments-input">
-                <textarea matInput
-                        placeholder="Comments"
-                        matTextareaAutosize
-                        matAutosizeMinRows="5"
-                        [(ngModel)]="session.comments">
-                </textarea>
+         <!-- End of an observation session (Time) -->
+        <mat-form-field>
+                <input
+                        matInput
+                        type="time"
+                        placeholder="Time"/>
+                <mat-hint
+                        align="start">
+                        <strong>Time of observation</strong>
+                </mat-hint>
+            </mat-form-field>
+
+        <!-- site where session took place -->
+        <mat-form-field>
+                <mat-select
+                        placeholder="Site"
+                        [(ngModel)]="session.site.id">
+                  <mat-option
+                        *ngFor="let site of sites"
+                        [value]="site.id">
+                    {{ site.name }}
+                  </mat-option>
+                </mat-select>
+                <mat-hint align="start">
+                        <strong>Site where session took place</strong>
+                </mat-hint>
         </mat-form-field>
 
-    <!-- Comments about the weather situation -->
-        <mat-form-field class="weather-input">
-                <textarea matInput
+        <!-- Comments about the weather situation -->
+        <mat-form-field
+                class="weather-input">
+                <textarea
+                        matInput
                         placeholder="Weather"
                         matTextareaAutosize
                         matAutosizeMinRows="5"
@@ -52,17 +86,32 @@
                 </mat-hint>
         </mat-form-field>
 
-        <!-- site where session took place -->
-        <mat-form-field>
-                <mat-select placeholder="Site"
-                        [(ngModel)]="session.site.id">
-                  <mat-option *ngFor="let site of sites"
-                                [value]="site.id">
-                    {{ site.name }}
-                  </mat-option>
-                </mat-select>
+        <!-- Equipment -->
+        <mat-form-field
+                class="equipment-input">
+                <textarea
+                        matInput
+                        placeholder="Equipment"
+                        matTextareaAutosize
+                        matAutosizeMinRows="2"
+                        [(ngModel)]="session.equipment">
+                </textarea>
                 <mat-hint align="start">
-                        <strong>Site where session took place</strong>
+                        <strong>Comments on the (optical or electronical) equipment used</strong>
+                </mat-hint>
+        </mat-form-field>
+
+        <!-- Any other comments -->
+        <mat-form-field class="om-comments-input">
+                <textarea
+                        matInput
+                        placeholder="Comments"
+                        matTextareaAutosize
+                        matAutosizeMinRows="5"
+                        [(ngModel)]="session.comments">
+                </textarea>
+                <mat-hint align="start">
+                        <strong>Any other comments</strong>
                 </mat-hint>
         </mat-form-field>
 

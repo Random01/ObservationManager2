@@ -14,14 +14,14 @@ export class EyepiecesComponent extends EntityListComponent<Eyepiece> {
 
     displayedColumns: string[] = [
         'model',
+        'vendor',
         'focalLength',
         'apparentFOV',
-        'vendor',
         'actions'
     ];
 
-    constructor(private eyepieceService: EyepieceService) {
-        super(eyepieceService);
+    constructor(private service: EyepieceService) {
+        super(service);
     }
 
 }

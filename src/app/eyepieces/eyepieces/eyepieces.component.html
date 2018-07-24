@@ -11,7 +11,12 @@
         <mat-header-cell *matHeaderCellDef>Model</mat-header-cell>
         <mat-cell *matCellDef="let eyepiece">{{eyepiece.model}}</mat-cell>
     </ng-container>
-    
+
+    <ng-container matColumnDef="vendor">
+            <mat-header-cell *matHeaderCellDef>Vendor</mat-header-cell>
+            <mat-cell *matCellDef="let eyepiece">{{eyepiece.vendor}}</mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="focalLength">
         <mat-header-cell *matHeaderCellDef>Focal Length (mm)</mat-header-cell>
         <mat-cell *matCellDef="let eyepiece">{{eyepiece.focalLength}}</mat-cell>
@@ -20,11 +25,6 @@
     <ng-container matColumnDef="apparentFOV">
         <mat-header-cell *matHeaderCellDef>Apparent FOV (deg)</mat-header-cell>
         <mat-cell *matCellDef="let eyepiece">{{eyepiece.apparentFOV}}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="vendor">
-        <mat-header-cell *matHeaderCellDef>Vendor</mat-header-cell>
-        <mat-cell *matCellDef="let eyepiece">{{eyepiece.vendor}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="actions">
@@ -37,7 +37,9 @@
                         edit
                     </mat-icon>
             </button>
-            <button mat-icon-button>
+            <button
+                mat-icon-button
+                (click)=remove(scope)>
                     <mat-icon
                         aria-label="Click to delete">
                         delete

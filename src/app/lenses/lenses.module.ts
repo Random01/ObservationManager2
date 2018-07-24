@@ -35,12 +35,6 @@ import { LensesRoutingModule } from './lenses-routing.module';
         AddLensComponent,
         EditLensComponent
     ],
-    exports: [
-        LensesComponent,
-        LensComponent,
-        AddLensComponent,
-        EditLensComponent
-    ],
     providers: [
         LensService
     ]

@@ -20,16 +20,28 @@ export abstract class AddEntityComponent<T extends Entity> extends BaseEntityCom
 
     public addItemAndContinue() {
         this.startLoading();
-        this.storageService.add(this.item).then(() => {
-            this.item = this.storageService.createNew();
-            this.endLoading();
-        });
+        return this.storageService.add(this.item)
+            .then(() => {
+                return this.createNew();
+            })
+            .then((item) => {
+                this.item = item;
+                this.endLoading();
+            });
+    }
+
+    public createNew(): Promise<T> {
+        return Promise.resolve(this.storageService.createNew());
     }
 
     public abstract goBack(): void;
 
     ngOnInit(): void {
-        this.item = this.storageService.createNew();
+        this.startLoading();
+        this.createNew().then((item) => {
+            this.item = item;
+            this.endLoading();
+        });
     }
 
 }

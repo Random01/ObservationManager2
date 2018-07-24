@@ -3,10 +3,14 @@
     flex-direction: column;
 }
 
-.om-observation > * {
+.om-observation>* {
     width: 100%;
 }
 
 .om-observation .equipment LI {
     display: block;
+}
+
+.om-observation .om-target > DIV {
+    display: inline-block;
 }

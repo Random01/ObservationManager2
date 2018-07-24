@@ -11,7 +11,10 @@ import {
     MatButtonModule,
     MatInputModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSliderModule
 } from '@angular/material';
 
 import { ObservationComponent } from './observation/observation.component';
@@ -34,9 +37,12 @@ import { ObservationsRoutingModule } from './observations-routing.module';
         MatButtonModule,
         MatInputModule,
         MatSelectModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
         TargetModule,
         MatTableModule,
         MatIconModule,
+        MatSliderModule,
         ObservationsRoutingModule
     ],
     declarations: [

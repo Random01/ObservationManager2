@@ -47,7 +47,7 @@ import { ObservationsModule } from './observations/observations.module';
 import { EquipmentModule } from './equipment/equipment.module';
 import { SiteModule } from './sites/site.module';
 import { EyepieceModule } from './eyepieces/eyepiece.module';
-import { FilterModule } from './filters/filter.module';
+import { FilterModule } from './filters/filters.module';
 import { UsersModule } from './users/users.module';
 import { EyepieceService } from './eyepieces/shared/eyepiece.service';
 import { ScopeService } from './scopes/shared/scope.service';
