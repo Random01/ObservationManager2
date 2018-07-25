@@ -1,10 +1,15 @@
-<mat-toolbar color="primary">
-    <mat-toolbar-row>OM!</mat-toolbar-row>
+<mat-toolbar
+    class="om-toolbar"
+    color="primary">
+        <span>OM!</span>
+        <span class="example-fill-remaining-space"></span>
+        <span>Welcome, Alexsei</span>
 </mat-toolbar>
 
 <mat-sidenav-container
     class="om-sidebar-container">
     <mat-sidenav
+        class="om-sidenav"
         mode="side"
         opened>
 
@@ -25,7 +30,8 @@
 
     </mat-sidenav>
 
-    <mat-sidenav-content>
+    <mat-sidenav-content
+        class="om-sidenav-content">
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 

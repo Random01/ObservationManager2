@@ -11,14 +11,7 @@ import { LensService } from '../../lenses/shared/lens.service';
 @Component({
     selector: 'om-observation',
     templateUrl: './observation.component.html',
-    styleUrls: ['./observation.component.css'],
-    providers: [
-        ScopeService,
-        EyepieceService,
-        TargetService,
-        FilterService,
-        LensService
-    ]
+    styleUrls: ['./observation.component.css']
 })
 
 export class ObservationComponent implements OnInit {

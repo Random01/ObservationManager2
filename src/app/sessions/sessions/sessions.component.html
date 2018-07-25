@@ -3,25 +3,52 @@
         <h2 class="mat-h2">My Sessions</h2>
     </div>
 
-    <ul class="om-recent-sessions-list">
-        <li *ngFor="let session of sessions">
-            <div>From {{session.begin|date:'medium'}} to {{session.end|date:'medium'}}</div>
-            <div>{{session.weather}}</div>
-            <div>
-                <div>
-                    <a routerLink="/sessions/{{session.id}}">
-                        Go To Session
-                    </a>
-                </div>
-                <div>
-                    <a routerLink="/sessions/{{session.id}}/observations">
-                        Go To Observations
-                    </a>
-                </div>
+    <mat-table
+        [dataSource]="items"
+        class="mat-elevation-z8">
 
-            </div>
-        </li>
-    </ul>
+        <ng-container matColumnDef="begin">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Date</mat-header-cell>
+            <mat-cell *matCellDef="let session">{{session.begin|date:'medium'}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="site">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Site</mat-header-cell>
+            <mat-cell *matCellDef="let session">{{session.site.name}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="weather">
+                <mat-header-cell *matHeaderCellDef>Weather</mat-header-cell>
+                <mat-cell *matCellDef="let session">{{session.weather}}</mat-cell>
+            </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+            <mat-cell *matCellDef="let session">
+                <button mat-icon-button
+                        routerLink="/sessions/{{session.id}}">
+                        <mat-icon
+                            aria-label="Click to edit">
+                            edit
+                        </mat-icon>
+                </button>
+                <button
+                    mat-icon-button
+                    (click)=remove(session)>
+                        <mat-icon
+                            aria-label="Click to delete">
+                            delete
+                        </mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+    </mat-table>
+
+    <hr/>
 
     <div>
         <button

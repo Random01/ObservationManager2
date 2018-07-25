@@ -6,8 +6,7 @@ import { EntityListComponent } from '../../shared/components/entity-list.compone
 
 @Component({
     selector: 'om-scopes',
-    templateUrl: './scopes.component.html',
-    providers: [ScopeService]
+    templateUrl: './scopes.component.html'
 })
 
 export class ScopesComponent extends EntityListComponent<Scope> {

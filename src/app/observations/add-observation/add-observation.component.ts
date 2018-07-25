@@ -6,19 +6,20 @@ import { Observation, Session } from '../../shared/models/models';
 import { ObservationService } from '../shared/observation.service';
 
 import { AddEntityComponent } from '../../shared/components/add-entity.component';
+import { SessionService } from '../../sessions/shared/session.service';
 
 @Component({
     selector: 'om-add-observation',
-    templateUrl: './add-observation.component.html',
-    providers: [ObservationService]
+    templateUrl: './add-observation.component.html'
 })
 
 export class AddObservationComponent extends AddEntityComponent<Observation> {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private service: ObservationService) {
-        super(service);
+        private observationService: ObservationService,
+        private sessionService: SessionService) {
+        super(observationService);
     }
 
     getSessionId(): string {
@@ -30,18 +31,21 @@ export class AddObservationComponent extends AddEntityComponent<Observation> {
     }
 
     createNew() {
-        return super.createNew().then((item) => {
-            item.session = new Session({
-                id: this.getSessionId()
+        return super.createNew()
+            .then((item) => {
+                return this.sessionService.getById(this.getSessionId())
+                    .then((session) => {
+                        item.session = session;
+                        item.site = session.site;
+                        item.begin = session.begin;
+                        return item;
+                    });
             });
-
-            return item;
-        });
     }
 
     public addItemAndContinue() {
         this.startLoading();
-        return this.storageService.add(this.item)
+        return this.observationService.add(this.item)
             .then(() => {
                 return this.createNew();
             })

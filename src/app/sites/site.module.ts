@@ -18,6 +18,7 @@ import { SiteComponent } from './site/site.component';
 import { EditSiteComponent } from './edit-site/edit-site.component';
 import { AddSiteComponent } from './add-site/add-site.component';
 import { SitesRoutingModule } from './sites-routing.module';
+import { SiteService } from './shared/site.service';
 
 @NgModule({
     imports: [
@@ -36,6 +37,9 @@ import { SitesRoutingModule } from './sites-routing.module';
         SiteComponent,
         EditSiteComponent,
         AddSiteComponent
+    ],
+    providers: [
+        SiteService
     ]
 })
 
