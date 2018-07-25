@@ -12,6 +12,22 @@ class SessionStore extends BaseMongooseStore {
                 .findOne({ _id: id })
                 .populate('userCreated')
                 .populate('userModified')
+                .populate('site')
+                .exec((err, docs) => {
+                    if (err) {
+                        fail(err);
+                    } else {
+                        success(docs);
+                    }
+                });
+        });
+    }
+
+    getAll() {
+        return new Promise((success, fail) => {
+            this.model
+                .find()
+                .populate('site')
                 .exec((err, docs) => {
                     if (err) {
                         fail(err);

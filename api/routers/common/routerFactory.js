@@ -17,7 +17,9 @@ class RouterFactory {
     }
 
     handleError(res, error) {
-        res.send({
+        console.error(error.message + '; ' + error.stack);
+
+        res.status(500).send({
             'error': {
                 message: error.message,
                 stack: error.stack

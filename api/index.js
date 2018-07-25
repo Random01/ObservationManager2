@@ -7,8 +7,27 @@ const port = 3001;
 const db = require('./config/db');
 const mongoose = require('mongoose');
 
+const hash = require('pbkdf2-password')();
+const session = require('express-session');
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(session({
+    resave: false, // don't save session if unmodified
+    saveUninitialized: false, // don't create session until something stored
+    secret: 'shhhh, very secret'
+}));
+
+var users = {
+    tj: { name: 'tj' }
+};
+
+hash({ password: 'foobar' }, function (err, pass, salt, hash) {
+    if (err) throw err;
+    // store the salt & hash in the "db"
+    users.tj.salt = salt;
+    users.tj.hash = hash;
+});
 
 mongoose.connect(db.url);
 
