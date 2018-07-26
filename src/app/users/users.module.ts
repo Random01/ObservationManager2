@@ -22,15 +22,8 @@ import { AddUserComponent } from './add-user/add-user.component';
         UsersComponent,
         AddUserComponent
     ],
-    exports: [
-        UserComponent,
-        UsersComponent,
-        AddUserComponent
-    ],
-    bootstrap: [
-        UserComponent,
-        UsersComponent,
-        AddUserComponent
+    providers: [
+        UserService
     ]
 })
 
