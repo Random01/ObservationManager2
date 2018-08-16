@@ -26,10 +26,7 @@ export class ObservationService extends StorageService<Observation> {
     }
 
     deserialize(state: any): Observation {
-        state.id = state._id;
-        delete state._id;
-
-        const observation = new Observation(state);
+        const observation = super.deserialize(state);
 
         observation.target = this.targetService.deserialize(state.target || {});
         observation.scope = this.scopeService.deserialize(state.scope || {});
@@ -40,14 +37,14 @@ export class ObservationService extends StorageService<Observation> {
         return observation;
     }
 
-    createNew(): Observation {
-        return new Observation({
+    createNew(params?: any): Observation {
+        return new Observation(Object.assign({}, {
             target: new Target(),
             scope: new Scope(),
             filter: new Filter(),
             eyepiece: new Eyepiece(),
             lens: new Lens()
-        });
+        }, params));
     }
 
     getSessionObservations(sessionId: string): Promise<Observation[]> {

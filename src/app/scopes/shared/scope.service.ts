@@ -11,15 +11,8 @@ export class ScopeService extends StorageService<Scope> {
         super(http, '/scopes');
     }
 
-    deserialize(state: any): Scope {
-        state.id = state._id;
-        delete state._id;
-
-        return new Scope(state);
-    }
-
-    createNew(): Scope {
-        return new Scope();
+    createNew(params?: any): Scope {
+        return new Scope(params);
     }
 
 }

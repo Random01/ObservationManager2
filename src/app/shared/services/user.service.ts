@@ -10,11 +10,7 @@ export class UserService extends StorageService<User> {
         super(http, '/users');
     }
 
-    deserialize(state: any): User {
-        return new User(state);
-    }
-
-    createNew(): User {
-        return new User();
+    createNew(params?: any): User {
+        return new User(params);
     }
 }

@@ -17,19 +17,16 @@ export class SessionService extends StorageService<Session> {
     }
 
     deserialize(state: any): Session {
-        state.id = state._id;
-        delete state._id;
-
-        const session = new Session(state);
+        const session = super.deserialize(state);
 
         session.site = this.siteService.deserialize(state.site || {});
 
         return session;
     }
 
-    createNew(): Session {
-        return new Session({
+    createNew(params?: any): Session {
+        return new Session(Object.assign({}, {
             site: new Site()
-        });
+        }, params));
     }
 }

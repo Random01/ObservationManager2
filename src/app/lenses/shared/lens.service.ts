@@ -12,15 +12,8 @@ export class LensService extends StorageService<Lens> {
         super(http, '/lenses');
     }
 
-    deserialize(state: any): Lens {
-        state.id = state._id;
-        delete state._id;
-
-        return new Lens(state);
-    }
-
-    createNew(): Lens {
-        return new Lens();
+    createNew(params?: any): Lens {
+        return new Lens(params);
     }
 
 }

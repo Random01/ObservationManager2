@@ -11,13 +11,7 @@ export class SiteService extends StorageService<Site> {
         super(http, '/sites');
     }
 
-    deserialize(state: any): Site {
-        state.id = state._id;
-        delete state._id;
-        return new Site(state);
-    }
-
-    createNew(): Site {
-        return new Site();
+    createNew(params: any): Site {
+        return new Site(params);
     }
 }
