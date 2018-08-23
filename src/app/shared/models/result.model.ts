@@ -2,10 +2,13 @@
 
     public type: string;
 
+    // Language
     public lang: string;
 
+    // Description of the finding
     public description: string;
 
+    // Visual Rating
     public rating: number;
 
     constructor(params?: {
