@@ -11,14 +11,7 @@ export class EyepieceService extends StorageService<Eyepiece> {
         super(http, '/eyepieces');
     }
 
-    deserialize(state: any): Eyepiece {
-        state.id = state._id;
-        delete state._id;
-
-        return new Eyepiece(state);
-    }
-
-    createNew(): Eyepiece {
-        return new Eyepiece();
+    createNew(params?: any): Eyepiece {
+        return new Eyepiece(params);
     }
 }

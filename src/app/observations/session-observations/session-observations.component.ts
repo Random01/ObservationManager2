@@ -62,4 +62,7 @@ export class SessionObservationsComponent implements OnInit {
         });
     }
 
+    backToMySessions() {
+        this.router.navigate(['sessions']);
+    }
 }

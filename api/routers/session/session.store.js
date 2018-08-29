@@ -27,6 +27,8 @@ class SessionStore extends BaseMongooseStore {
         return new Promise((success, fail) => {
             this.model
                 .find()
+                .populate('userCreated')
+                .populate('userModified')
                 .populate('site')
                 .exec((err, docs) => {
                     if (err) {

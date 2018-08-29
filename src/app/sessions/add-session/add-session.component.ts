@@ -23,4 +23,15 @@ export class AddSessionComponent extends AddEntityComponent<Session> {
     goBack() {
         this.router.navigate(['/sessions']);
     }
+
+    addAndGo() {
+        this.startLoading();
+        this.storageService.add(this.item).then((result) => {
+            this.endLoading();
+
+            if (result.status === 200) {
+                this.router.navigate([`/sessions/${result.payload.id}`]);
+            }
+        });
+    }
 }
