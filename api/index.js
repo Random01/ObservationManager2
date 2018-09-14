@@ -3,9 +3,9 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
-const port = 3001;
 const db = require('./config/db');
 const mongoose = require('mongoose');
+const PORT = process.env.PORT || 3001;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -26,7 +26,7 @@ dataBase.once('open', () => {
     require('./routers/user/user.router')(app, dataBase);
     require('./routers/lens/lens.router')(app, dataBase);
 
-    app.listen(port, () => {
-        console.log(`Example app listening on port ${port}!`);
+    app.listen(PORT, () => {
+        console.log(`Example app listening on port ${PORT}!`);
     });
 });
