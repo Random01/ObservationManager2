@@ -8,14 +8,17 @@ class BaseMongooseStore {
         }
 
         this.model = model;
-        this.currentUser = {
-            id: '5b3c99e366453b6a3c3c85d8'
-        }
+        this.currentUser = null;
     }
 
     getAll() {
         return new Promise((success, fail) => {
-            this.model.find((err, docs) => {
+            let searhParams = null;
+            if (this.currentUser) {
+                searhParams = { userCreated: this.currentUser.id };
+            }
+
+            this.model.find(searhParams, (err, docs) => {
                 if (err) {
                     fail(err);
                 } else {

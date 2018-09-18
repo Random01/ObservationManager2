@@ -54,6 +54,8 @@ import { ScopeService } from './scopes/shared/scope.service';
 import { FilterService } from './filters/shared/filter.service';
 import { LensesModule } from './lenses/lenses.module';
 import { LensService } from './lenses/shared/lens.service';
+import { AuthModule } from './auth/auth.module';
+import { UserService } from './shared/services/user.service';
 
 @NgModule({
   imports: [
@@ -78,7 +80,8 @@ import { LensService } from './lenses/shared/lens.service';
     MatTableModule,
     UsersModule,
     LensesModule,
-    EquipmentModule
+    EquipmentModule,
+    AuthModule
   ],
   declarations: [
     AppComponent
@@ -96,7 +99,8 @@ import { LensService } from './lenses/shared/lens.service';
     EyepieceService,
     ScopeService,
     FilterService,
-    LensService
+    LensService,
+    UserService
   ],
   bootstrap: [ AppComponent ]
 })

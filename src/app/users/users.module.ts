@@ -8,6 +8,7 @@ import { MatButtonModule, MatInputModule } from '@angular/material';
 import { UserComponent } from './user/user.component';
 import { UsersComponent } from './users/users.component';
 import { AddUserComponent } from './add-user/add-user.component';
+import { UserService } from '../shared/services/user.service';
 
 @NgModule({
     imports: [

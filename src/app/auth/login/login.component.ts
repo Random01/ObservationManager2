@@ -4,11 +4,15 @@ import { Router } from '@angular/router';
 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { AuthService } from '../shared/auth.service';
+import { UserService } from '../../users/shared/user.service';
 
 @Component({
     selector: 'om-login',
     templateUrl: './login.component.html',
+    styleUrls: [ './login.component.css' ],
+    providers: [
+        UserService
+    ]
 })
 export class LoginComponent {
 
@@ -16,7 +20,7 @@ export class LoginComponent {
 
     constructor(
         private fb: FormBuilder,
-        private authService: AuthService,
+        private userService: UserService,
         private router: Router) {
 
         this.form = this.fb.group({
@@ -29,13 +33,11 @@ export class LoginComponent {
         const val = this.form.value;
 
         if (val.email && val.password) {
-            this.authService.login(val.email, val.password)
-                .subscribe(
-                    () => {
-                        console.log('User is logged in');
-                        this.router.navigateByUrl('/');
-                    }
-                );
+            this.userService.authenticate(val.email, val.password).then((response) => {
+                localStorage.setItem('jwtToken', response.token);
+
+                this.router.navigate(['/']);
+            });
         }
     }
 

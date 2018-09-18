@@ -1,0 +1,8 @@
+.om-register-component {
+    display: flex;
+    flex-direction: column;
+}
+
+.om-register-component>* {
+    width: 100%;
+}

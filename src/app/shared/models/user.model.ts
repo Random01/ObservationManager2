@@ -8,11 +8,17 @@ export class User extends Entity {
 
     userName: string;
 
+    password: string;
+
+    email: string;
+
     constructor(params?: {
         id?: string,
         firstName?: string,
         lastName?: string,
-        userName?: string
+        userName?: string,
+        password?: string,
+        email?: string
     }) {
         super(params);
         Object.assign(this, params);
@@ -22,7 +28,9 @@ export class User extends Entity {
         return Object.assign(super.serialize(), {
             firstName: this.firstName,
             lastName: this.lastName,
-            userName: this.userName
+            userName: this.userName,
+            password: this.password,
+            email: this.email
         });
     }
 }

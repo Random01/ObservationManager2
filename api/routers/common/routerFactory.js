@@ -1,4 +1,5 @@
 const express = require('express');
+const auth = require('../authentication/auth');
 
 class RouterFactory {
 
@@ -28,18 +29,20 @@ class RouterFactory {
     }
 
     setUp() {
-        this.router.get('/upload', (req, res) => this.uploadHandler(req, res));
-        this.router.get('/', (req, res) => this.getAllHandler(req, res));
-        this.router.get('/:id', (req, res) => this.getByIdHandler(req, res));
-        this.router.put('/:id', (req, res) => this.updateHandler(req, res));
-        this.router.delete('/:id', (req, res) => this.deleteHandler(req, res))
-        this.router.post('/', (req, res) => this.addNewHandler(req, res));
+        this.router.get('/upload', auth.required, (req, res) => this.uploadHandler(req, res));
+        this.router.get('/', auth.optional, (req, res) => this.getAllHandler(req, res));
+        this.router.get('/:id', auth.optional, (req, res) => this.getByIdHandler(req, res));
+        this.router.put('/:id', auth.required, (req, res) => this.updateHandler(req, res));
+        this.router.delete('/:id', auth.required, (req, res) => this.deleteHandler(req, res))
+        this.router.post('/', auth.required, (req, res) => this.addNewHandler(req, res));
     }
 
     /**
      * Get all entites.
      */
     getAllHandler(req, res) {
+        this.authorize(req.payload);
+
         if (req.query.name != null || req.query.maxCount != null || req.query.sessionId != null) {
             this.searchHandler(req, res);
             return;
@@ -52,6 +55,8 @@ class RouterFactory {
     }
 
     addNewHandler(req, res) {
+        this.authorize(req.payload);
+
         this.store.add(this.parse(req)).then(
             entity => res.json(entity),
             error => this.handleError(res, error)
@@ -59,13 +64,25 @@ class RouterFactory {
     }
 
     getByIdHandler(req, res) {
+        this.authorize(req.payload);
+
         this.store.getById(req.params.id).then(
             entity => res.json(entity),
             error => this.handleError(res, error)
         );
     }
 
+    authorize(payload) {
+        if (payload) {
+            this.store.currentUser = { id: payload.id };
+        } else {
+            this.store.currentUser = null;
+        }
+    }
+
     updateHandler(req, res) {
+        this.authorize(req.payload);
+
         this.store.update(this.parse(req)).then(
             entity => res.json(entity),
             error => this.handleError(res, error)
@@ -73,6 +90,8 @@ class RouterFactory {
     }
 
     deleteHandler(req, res) {
+        this.authorize(req.payload);
+        
         this.store.delete(req.params.id).then(
             () => res.json({ status: 'Success' }),
             error => this.handleError(res, error)
@@ -80,6 +99,8 @@ class RouterFactory {
     }
 
     searchHandler(req, res) {
+        this.authorize(req.payload);
+
         const searchParams = {
             name: req.query.name,
             maxCount: req.query.maxCount != null ? parseInt(req.query.maxCount) : undefined,
@@ -93,6 +114,8 @@ class RouterFactory {
     }
 
     uploadHandler(req, res) {
+        this.authorize(req.payload);
+
         this.store.upload().then(
             () => res.json({ status: 'Success' }),
             error => this.handleError(res, error)

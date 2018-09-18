@@ -30,7 +30,8 @@ export abstract class StorageService<T extends Entity> {
     add(newItem: T): Promise<AddResultPayload> {
         const httpOptions = {
             headers: new HttpHeaders({
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('jwtToken')
             })
         };
 
@@ -46,8 +47,14 @@ export abstract class StorageService<T extends Entity> {
     }
 
     getById(id: String): Promise<T> {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Authorization': localStorage.getItem('jwtToken')
+            })
+        };
+
         return new Promise<T>((success) => {
-            return this.http.get<any>(this.getUrl() + '/' + id)
+            return this.http.get<any>(this.getUrl() + '/' + id, httpOptions)
                 .subscribe(x => {
                     success(this.deserialize(x));
                 });
@@ -55,8 +62,14 @@ export abstract class StorageService<T extends Entity> {
     }
 
     getAll(): Promise<T[]> {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Authorization': localStorage.getItem('jwtToken')
+            })
+        };
+
         return new Promise<T[]>((success) => {
-            this.http.get<T[]>(this.getUrl())
+            this.http.get<T[]>(this.getUrl(), httpOptions)
                 .subscribe(items => {
                     success(items.map(item => this.deserialize(item)));
                 });
@@ -66,7 +79,8 @@ export abstract class StorageService<T extends Entity> {
     update(entity: T): Promise<Boolean> {
         const httpOptions = {
             headers: new HttpHeaders({
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('jwtToken')
             })
         };
 
@@ -82,7 +96,8 @@ export abstract class StorageService<T extends Entity> {
         const url = `${this.getUrl()}/${id}`;
         const httpOptions = {
             headers: new HttpHeaders({
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('jwtToken')
             })
         };
 
