@@ -1,0 +1,23 @@
+<div>
+    <span>
+        <a routerLink="/login">Sign in</a> or <a routerLink="/register">Sign up</a>
+    </span>
+
+    <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item
+                (click)="editProfile()">
+            <span>Edit profile</span>
+        </button>
+        <button mat-menu-item
+                (click)="signOut()">
+            <span>Sign out</span>
+        </button>
+    </mat-menu>
+    
+</div>

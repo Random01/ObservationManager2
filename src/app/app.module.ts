@@ -56,6 +56,7 @@ import { LensesModule } from './lenses/lenses.module';
 import { LensService } from './lenses/shared/lens.service';
 import { AuthModule } from './auth/auth.module';
 import { UserService } from './shared/services/user.service';
+import { UserProfileMenuComponent } from './main/userProfileMenu/user-profile-menu.component';
 
 @NgModule({
   imports: [
@@ -81,10 +82,13 @@ import { UserService } from './shared/services/user.service';
     UsersModule,
     LensesModule,
     EquipmentModule,
-    AuthModule
+    AuthModule,
+    MatIconModule,
+    MatMenuModule
   ],
   declarations: [
-    AppComponent
+    AppComponent,
+    UserProfileMenuComponent
   ],
   exports: [
     MatButtonModule,

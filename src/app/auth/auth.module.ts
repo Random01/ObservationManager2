@@ -12,7 +12,7 @@ import {
 } from '@angular/material';
 
 import { LoginComponent } from './login/login.component';
-import { AuthService } from './shared/auth.service';
+import { AuthenticationService } from './shared/authentication.service';
 import { AuthRoutingModule } from './auth-routing.module';
 import { RegisterComponent } from './register/register.component';
 
@@ -33,7 +33,8 @@ import { RegisterComponent } from './register/register.component';
         RegisterComponent
     ],
     providers: [
-        AuthService
+        AuthenticationService,
+        AuthenticationService
     ]
 })
 

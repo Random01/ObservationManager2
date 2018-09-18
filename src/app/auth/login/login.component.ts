@@ -9,7 +9,7 @@ import { UserService } from '../../users/shared/user.service';
 @Component({
     selector: 'om-login',
     templateUrl: './login.component.html',
-    styleUrls: [ './login.component.css' ],
+    styleUrls: ['./login.component.css'],
     providers: [
         UserService
     ]
@@ -19,23 +19,22 @@ export class LoginComponent {
     form: FormGroup;
 
     constructor(
-        private fb: FormBuilder,
+        private formBuilder: FormBuilder,
         private userService: UserService,
         private router: Router) {
 
-        this.form = this.fb.group({
+        this.form = this.formBuilder.group({
             email: ['', Validators.required],
             password: ['', Validators.required]
         });
     }
 
     login() {
-        const val = this.form.value;
+        const { email, password } = this.form.value;
 
-        if (val.email && val.password) {
-            this.userService.authenticate(val.email, val.password).then((response) => {
+        if (email && password) {
+            this.userService.authenticate(email, password).then((response) => {
                 localStorage.setItem('jwtToken', response.token);
-
                 this.router.navigate(['/']);
             });
         }

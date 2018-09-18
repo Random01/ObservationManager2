@@ -31,7 +31,7 @@ export abstract class StorageService<T extends Entity> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'Authorization': localStorage.getItem('jwtToken')
+                'Authorization': this.getAuthorizationToken()
             })
         };
 
@@ -49,7 +49,7 @@ export abstract class StorageService<T extends Entity> {
     getById(id: String): Promise<T> {
         const httpOptions = {
             headers: new HttpHeaders({
-                'Authorization': localStorage.getItem('jwtToken')
+                'Authorization': this.getAuthorizationToken()
             })
         };
 
@@ -64,7 +64,7 @@ export abstract class StorageService<T extends Entity> {
     getAll(): Promise<T[]> {
         const httpOptions = {
             headers: new HttpHeaders({
-                'Authorization': localStorage.getItem('jwtToken')
+                'Authorization': this.getAuthorizationToken()
             })
         };
 
@@ -76,11 +76,15 @@ export abstract class StorageService<T extends Entity> {
         });
     }
 
+    getAuthorizationToken(): string {
+        return localStorage.getItem('jwtToken');
+    }
+
     update(entity: T): Promise<Boolean> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'Authorization': localStorage.getItem('jwtToken')
+                'Authorization': this.getAuthorizationToken()
             })
         };
 
@@ -97,7 +101,7 @@ export abstract class StorageService<T extends Entity> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'Authorization': localStorage.getItem('jwtToken')
+                'Authorization': this.getAuthorizationToken()
             })
         };
 
