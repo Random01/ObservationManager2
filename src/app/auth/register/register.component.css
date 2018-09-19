@@ -1,8 +1,8 @@
-.om-register-component {
+.om-register-component .register-profile {
     display: flex;
     flex-direction: column;
 }
 
-.om-register-component>* {
+.om-register-component .register-profile >* {
     width: 100%;
 }

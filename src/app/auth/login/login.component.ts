@@ -35,6 +35,8 @@ export class LoginComponent {
         if (email && password) {
             this.userService.authenticate(email, password).then((response) => {
                 localStorage.setItem('jwtToken', response.token);
+                localStorage.setItem('user', response.user.userName);
+
                 this.router.navigate(['/']);
             });
         }

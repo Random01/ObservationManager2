@@ -1,31 +1,35 @@
 <div class="om-register-component">
+    <div>
+        <h2 class="mat-h2">Register</h2>
+    </div>
 
-    <mat-form-field>
-        <input matInput
-                placeholder="Username"
-                [(ngModel)]="item.userName"/>
-    </mat-form-field>
+    <div class="register-profile">
+        <mat-form-field>
+            <input matInput
+                    placeholder="Username"
+                    [(ngModel)]="item.userName"/>
+        </mat-form-field>
 
-    <mat-form-field>
-        <input matInput
-                placeholder="Email"
-                [(ngModel)]="item.email"/>
-    </mat-form-field>
+        <mat-form-field>
+            <input matInput
+                    placeholder="Email"
+                    [(ngModel)]="item.email"/>
+        </mat-form-field>
 
-    <mat-form-field>
-        <input matInput
-                placeholder="Password"
-                [(ngModel)]="item.password"/>
-    </mat-form-field>
+        <mat-form-field>
+            <input matInput
+                    placeholder="Password"
+                    [(ngModel)]="item.password"/>
+        </mat-form-field>
+    </div>
 
-</div>
-
-<div>
-    <button 
-            mat-button
-            color="primary"
-            (click)=register()>Register</button>
+    <div>
+        <button 
+                mat-button
+                color="primary"
+                (click)=register()>Register</button>
         <button
-            mat-button
-            (click)=goBack()>Back</button>
+                mat-button
+                (click)=goBack()>Back</button>
+    </div>
 </div>

@@ -1,6 +1,8 @@
-<div>
+<div class="om-user-profile-menu">
+    
     <span>
-        <a routerLink="/login">Sign in</a> or <a routerLink="/register">Sign up</a>
+        <a routerLink="/login"
+            class="text-bold text-white no-underline">Sign in</a> or <a routerLink="/register" class="text-bold text-white no-underline">Sign up</a>
     </span>
 
     <button
@@ -10,9 +12,10 @@
     </button>
 
     <mat-menu #menu="matMenu">
+
         <button mat-menu-item
                 (click)="editProfile()">
-            <span>Edit profile</span>
+            <span>Profile</span>
         </button>
         <button mat-menu-item
                 (click)="signOut()">

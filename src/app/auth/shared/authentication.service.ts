@@ -5,6 +5,11 @@ export class AuthenticationService {
 
     signOut() {
         localStorage.removeItem('jwtToken');
+        localStorage.removeItem('user');
+    }
+
+    signIn() {
+
     }
 
 }
