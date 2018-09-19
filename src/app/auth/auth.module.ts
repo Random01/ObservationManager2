@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthenticationService } from './shared/authentication.service';
 import { AuthRoutingModule } from './auth-routing.module';
 import { RegisterComponent } from './register/register.component';
+import { UsersModule } from '../users/users.module';
 
 @NgModule({
     imports: [
@@ -26,7 +27,8 @@ import { RegisterComponent } from './register/register.component';
         MatButtonModule,
         MatInputModule,
         MatTableModule,
-        MatIconModule
+        MatIconModule,
+        UsersModule
     ],
     declarations: [
         LoginComponent,

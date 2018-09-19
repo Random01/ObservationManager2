@@ -1,5 +1,3 @@
-'use strict';
-
 const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
@@ -42,7 +40,6 @@ dataBase.once('open', () => {
     require('./routers/filter/filter.router')(app, dataBase);
     require('./routers/user/user.router')(app, dataBase);
     require('./routers/lens/lens.router')(app, dataBase);
-    require('./routers/authentication/authentication.router')(app, dataBase);
 
     app.listen(PORT, () => {
         console.log(`Example app listening on port ${PORT}!`);

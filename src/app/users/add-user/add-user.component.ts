@@ -2,10 +2,9 @@ import { Component } from '@angular/core';
 
 import { Router } from '@angular/router';
 
-import { UserService } from '../../shared/services/user.service';
-
 import { AddEntityComponent } from '../../shared/components/add-entity.component';
 import { User } from '../../shared/models/user.model';
+import { UserService } from '../shared/user.service';
 
 @Component({
     selector: 'om-add-user',

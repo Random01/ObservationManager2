@@ -3,6 +3,7 @@ import { User } from '../models/user.model';
 export class BaseComponent {
 
     currentUser: User;
+    isLoading: Boolean = false;
 
     constructor() {
         this.currentUser = new User({
@@ -10,6 +11,14 @@ export class BaseComponent {
             firstName: 'Alexei',
             lastName: 'Matvienko'
         });
+    }
+
+    public startLoading() {
+        this.isLoading = true;
+    }
+
+    public endLoading() {
+        this.isLoading = false;
     }
 
 }

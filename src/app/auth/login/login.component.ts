@@ -4,25 +4,26 @@ import { Router } from '@angular/router';
 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { UserService } from '../../users/shared/user.service';
+import { AuthenticationService } from '../shared/authentication.service';
+import { BaseComponent } from '../../shared/components/base-component';
 
 @Component({
     selector: 'om-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css'],
     providers: [
-        UserService
+        AuthenticationService
     ]
 })
-export class LoginComponent {
+export class LoginComponent extends BaseComponent {
 
     form: FormGroup;
 
     constructor(
         private formBuilder: FormBuilder,
-        private userService: UserService,
-        private router: Router) {
-
+        private router: Router,
+        private authenticationService: AuthenticationService) {
+        super();
         this.form = this.formBuilder.group({
             email: ['', Validators.required],
             password: ['', Validators.required]
@@ -33,11 +34,12 @@ export class LoginComponent {
         const { email, password } = this.form.value;
 
         if (email && password) {
-            this.userService.authenticate(email, password).then((response) => {
-                localStorage.setItem('jwtToken', response.token);
-                localStorage.setItem('user', response.user.userName);
-
+            this.startLoading();
+            this.authenticationService.signIn(email, password).then(() => {
+                this.endLoading();
                 this.router.navigate(['/']);
+            }, () => {
+                this.endLoading();
             });
         }
     }

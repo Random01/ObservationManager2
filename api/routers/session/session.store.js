@@ -23,7 +23,22 @@ class SessionStore extends BaseMongooseStore {
         });
     }
 
-
+    getAll() {
+        return new Promise((success, fail) => {
+            this.model
+                .find()
+                .populate('userCreated')
+                .populate('userModified')
+                .populate('site')
+                .exec((err, docs) => {
+                    if (err) {
+                        fail(err);
+                    } else {
+                        success(docs);
+                    }
+                });
+        });
+    }
 }
 
 module.exports = SessionStore;
