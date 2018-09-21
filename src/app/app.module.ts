@@ -55,6 +55,7 @@ import { FilterService } from './filters/shared/filter.service';
 import { LensesModule } from './lenses/lenses.module';
 import { LensService } from './lenses/shared/lens.service';
 import { AuthModule } from './auth/auth.module';
+
 import { UserProfileMenuComponent } from './main/userProfileMenu/user-profile-menu.component';
 
 @NgModule({
@@ -102,7 +103,7 @@ import { UserProfileMenuComponent } from './main/userProfileMenu/user-profile-me
     EyepieceService,
     ScopeService,
     FilterService,
-    LensService,
+    LensService
   ],
   bootstrap: [ AppComponent ]
 })

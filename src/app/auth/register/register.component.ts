@@ -26,12 +26,14 @@ export class RegisterComponent extends BaseEntityComponent<User> implements OnIn
     }
 
     register() {
-        this.userService.register(this.item).then(() => {
-            this.router.navigate(['/']);
-        });
+        this.userService.register(this.item).then(() => this.goBack());
     }
 
-    ngOnInit(): void {
+    ngOnInit() {
         this.item = this.userService.createNew();
+    }
+
+    goBack() {
+        this.router.navigate(['/']);
     }
 }

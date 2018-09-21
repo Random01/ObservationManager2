@@ -27,6 +27,7 @@ import { EditObservationComponent } from './edit-observation/edit-observation.co
 import { SessionObservationsComponent } from './session-observations/session-observations.component';
 import { ObservationService } from './shared/observation.service';
 import { ObservationsRoutingModule } from './observations-routing.module';
+import { ObservationListComponent } from './observation-list/observation-list.component';
 
 @NgModule({
     imports: [
@@ -52,7 +53,8 @@ import { ObservationsRoutingModule } from './observations-routing.module';
         ObservationDialogComponent,
         AddObservationComponent,
         EditObservationComponent,
-        SessionObservationsComponent
+        SessionObservationsComponent,
+        ObservationListComponent
     ],
     entryComponents: [
         ObservationDialogComponent

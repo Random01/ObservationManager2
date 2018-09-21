@@ -21,10 +21,11 @@ class RouterFactory {
         console.error(error.message + '; ' + error.stack);
 
         res.status(500).send({
-            'error': {
+            success: false,
+            errors: [{
                 message: error.message,
                 stack: error.stack
-            }
+            }]
         });
     }
 
@@ -93,7 +94,7 @@ class RouterFactory {
         this.authorize(req.payload);
         
         this.store.delete(req.params.id).then(
-            () => res.json({ status: 'Success' }),
+            () => res.json({ success: true }),
             error => this.handleError(res, error)
         );
     }
@@ -117,7 +118,7 @@ class RouterFactory {
         this.authorize(req.payload);
 
         this.store.upload().then(
-            () => res.json({ status: 'Success' }),
+            () => res.json({ success: true }),
             error => this.handleError(res, error)
         );
     }

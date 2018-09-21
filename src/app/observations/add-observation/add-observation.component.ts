@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { Observation, Session } from '../../shared/models/models';
+import { Observation } from '../../shared/models/models';
 import { ObservationService } from '../shared/observation.service';
 
 import { AddEntityComponent } from '../../shared/components/add-entity.component';

@@ -16,7 +16,7 @@ module.exports = (app, db) => {
             if (!user) {
                 return res.sendStatus(401);
             } else {
-                return res.json({ user: user.toAuthJSON() });
+                return res.json({ success: true, user: user.toAuthJSON() });
             }
         });
     });
@@ -25,15 +25,15 @@ module.exports = (app, db) => {
         const { userName, password, email } = req.body;
 
         if (!userName) {
-            return res.status(422).json({ errors: { userName: 'can\'t be blank' } });
+            return res.status(422).json({ success: false, errors: { userName: 'can\'t be blank' } });
         }
 
         if (!email) {
-            return res.status(422).json({ errors: { email: 'can\'t be blank' } });
+            return res.status(422).json({ success: false, errors: { email: 'can\'t be blank' } });
         }
 
         if (!password) {
-            return res.status(422).json({ errors: { password: 'can\'t be blank' } });
+            return res.status(422).json({ success: false, errors: { password: 'can\'t be blank' } });
         }
 
         const user = new User();
@@ -43,17 +43,17 @@ module.exports = (app, db) => {
         user.setPassword(password);
 
         user.save().then(() => {
-            return res.json({ user: user.toAuthJSON() });
+            return res.json({ success: true, user: user.toAuthJSON() });
         }).catch(next);
     });
 
     router.post('/login', (req, res, next) => {
         if (!req.body.user.userName) {
-            return res.status(422).json({ errors: { userName: 'can\'t be blank' } });
+            return res.status(422).json({ success: false, errors: { userName: 'can\'t be blank' } });
         }
 
         if (!req.body.user.password) {
-            return res.status(422).json({ errors: { password: 'can\'t be blank' } });
+            return res.status(422).json({ success: false, errors: { password: 'can\'t be blank' } });
         }
 
         passport.authenticate('local', { session: false }, (err, user, info) => {
@@ -63,7 +63,10 @@ module.exports = (app, db) => {
 
             if (user) {
                 user.token = user.generateJWT();
-                return res.json({ user: user.toAuthJSON() });
+                return res.json({
+                    success: true,
+                    user: user.toAuthJSON()
+                });
             } else {
                 return res.status(422).json(info);
             }

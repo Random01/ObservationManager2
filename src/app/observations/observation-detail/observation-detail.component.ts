@@ -6,13 +6,11 @@ import { Location } from '@angular/common';
 import { Observation } from '../../shared/models/models';
 import { ObservationService } from '../shared/observation.service';
 
-
 @Component({
     selector: 'om-observation-detail',
     templateUrl: './observation-detail.component.html',
     providers: [ObservationService]
 })
-
 export class ObservationDetailComponent implements OnInit {
 
     observation: Observation;
@@ -24,7 +22,7 @@ export class ObservationDetailComponent implements OnInit {
     ) {
     }
 
-    loadObservation(): void {
+    loadObservation() {
         const id = this.route.snapshot.paramMap.get('id');
 
         this.observationService
@@ -32,11 +30,15 @@ export class ObservationDetailComponent implements OnInit {
             .then((observation) => this.observation = observation);
     }
 
-    ngOnInit(): void {
+    ngOnInit() {
         this.loadObservation();
     }
 
-    goBack(): void {
+    goBack() {
         this.location.back();
+    }
+
+    update() {
+
     }
 }
