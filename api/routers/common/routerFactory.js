@@ -134,7 +134,7 @@ class RouterFactory {
         const router = express.Router();
         const rf = new RouterFactory(store, router);
 
-        app.use(path, router);
+        app.use('/api' + path, router);
 
         return rf;
     }

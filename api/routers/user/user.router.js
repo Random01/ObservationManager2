@@ -73,5 +73,5 @@ module.exports = (app, db) => {
         })(req, res, next);
     });
 
-    app.use('/users', router);
+    app.use('/api/users', router);
 };

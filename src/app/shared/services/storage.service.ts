@@ -2,10 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Entity } from '../models/entity.model';
 import { AddResultPayload } from './add-result-payload.model';
+import { environment } from '../../../environments/environment';
 
 export abstract class StorageService<T extends Entity> {
-
-    private endpoint = 'http://localhost:3001';
 
     constructor(
         protected http: HttpClient,
@@ -20,7 +19,7 @@ export abstract class StorageService<T extends Entity> {
     }
 
     getUrl(): string {
-        return this.endpoint + this.url;
+        return environment.omServiceEndpoint + this.url;
     }
 
     getRecent(): Promise<T[]> {

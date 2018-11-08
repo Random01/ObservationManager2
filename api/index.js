@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 const PORT = process.env.PORT || 3001;
 const session = require('express-session');
 
+app.use(express.static(__dirname + '/public'));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -40,6 +42,10 @@ dataBase.once('open', () => {
     require('./routers/filter/filter.router')(app, dataBase);
     require('./routers/user/user.router')(app, dataBase);
     require('./routers/lens/lens.router')(app, dataBase);
+
+    app.use('/*', (req, res) => {
+        res.sendfile(__dirname + '/public/index.html');
+    });
 
     app.listen(PORT, () => {
         console.log(`Example app listening on port ${PORT}!`);

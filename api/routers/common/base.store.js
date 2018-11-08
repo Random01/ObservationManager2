@@ -17,9 +17,6 @@ class BaseStore {
         this.db = db;
         this.collectionName = collectionName;
         this.entityConstructor = entityConstructor;
-        this.currentUser = {
-            id: '3a91743469ae481004cb710d'
-        };
     }
 
     getCollection() {
