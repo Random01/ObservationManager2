@@ -42,4 +42,5 @@ export class TargetService extends StorageService<Target> {
                 map((targets) => targets.map(item => this.deserialize(item)))
             );
     }
+
 }

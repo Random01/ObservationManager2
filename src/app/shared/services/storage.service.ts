@@ -4,6 +4,18 @@ import { Entity } from '../models/entity.model';
 import { AddResultPayload } from './add-result-payload.model';
 import { environment } from '../../../environments/environment';
 
+interface RequestParams {
+    page: number;
+    size: number;
+}
+
+interface Response<T extends Entity> {
+    items: T[];
+    pageCount: number;
+    pages: number;
+    totalCount: number;
+}
+
 export abstract class StorageService<T extends Entity> {
 
     constructor(
@@ -71,6 +83,25 @@ export abstract class StorageService<T extends Entity> {
             this.http.get<T[]>(this.getUrl(), httpOptions)
                 .subscribe(items => {
                     success(items.map(item => this.deserialize(item)));
+                });
+        });
+    }
+
+    getItems(request: RequestParams): Promise<Response<T>> {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Authorization': this.getAuthorizationToken()
+            })
+        };
+
+        return new Promise<Response<T>>((success) => {
+            const url = `${this.getUrl()}?page=${request.page}&size=${request.size}`;
+            this.http.get<any>(url, httpOptions)
+                .subscribe(response => {
+                    success({
+                        ...response,
+                        items: response.items.map(item => this.deserialize(item))
+                    });
                 });
         });
     }

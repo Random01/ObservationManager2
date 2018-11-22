@@ -1,0 +1,17 @@
+<div class="om-add-target">
+    <div>
+        <h2>Add New Object</h2>
+    </div>
+    <div *ngIf="item">
+        <om-target [target]=item></om-target>
+    </div>
+    <div>
+        <button 
+            mat-button
+            color="primary"
+            (click)=addItem()>Add</button>
+        <button
+            mat-button
+            (click)=goBack()>Back</button>
+    </div>
+</div>

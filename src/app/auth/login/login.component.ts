@@ -24,6 +24,7 @@ export class LoginComponent extends BaseComponent {
         private router: Router,
         private authenticationService: AuthenticationService) {
         super();
+
         this.form = this.formBuilder.group({
             email: ['', Validators.required],
             password: ['', Validators.required]

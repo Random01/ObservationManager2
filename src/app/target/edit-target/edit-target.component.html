@@ -1,0 +1,19 @@
+<div class="om-edit-target">
+  <div>
+    <h2>Edit Object</h2>
+  </div>
+
+  <div *ngIf="item">
+    <om-target [target]=item></om-target>
+  </div>
+
+  <div>
+    <button
+        mat-button
+        color="primary"
+        (click)=updateItem()>Update</button>
+    <button
+        mat-button
+        (click)=goBack()>Back</button>
+  </div>
+</div>

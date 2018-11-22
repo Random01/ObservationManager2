@@ -28,6 +28,34 @@ class BaseMongooseStore {
         });
     }
 
+    getItems({ page, size } = { page: 0, size: 100 }) {
+        return new Promise((success, fail) => {
+            this.model.count((err, count)=>{
+                if (err) {
+                    fail(err);
+                } else {
+                    this.model
+                        .find()
+                        .limit(size)
+                        .skip(page * size)
+                        .exec((err, docs)=>{
+                            if (err) {
+                                fail(err);
+                            } else {
+                                success({
+                                    items: docs,
+                                    pageCount: page,
+                                    pages: Math.ceil(count / size),
+                                    totalCount: count
+                                });
+                            }
+                        });
+                }
+            });
+        });
+
+    }
+
     getById(id) {
         return new Promise((success, fail) => {
             this.model

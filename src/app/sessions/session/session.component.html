@@ -1,63 +1,67 @@
 ﻿<div class="om-session-component">
 
-        <!-- Start Date -->
-        <!-- Start of an observation session (Time) -->
-        <mat-form-field>
-                <input
-                        matInput
-                        [matDatepicker]="startDatePicker"
-                        placeholder="Start date"
-                        [(ngModel)]="session.begin">
-                <mat-datepicker-toggle
-                        matSuffix
-                        [for]="startDatePicker"></mat-datepicker-toggle>
-                <mat-datepicker
-                        #startDatePicker></mat-datepicker>
-                <mat-hint
-                        align="start">
-                        <strong>Start of observation session</strong>
-                </mat-hint>
-        </mat-form-field>
+        <div>
+                <!-- Start Date -->
+                <!-- Start of an observation session (Time) -->
+                <mat-form-field>
+                        <input
+                                matInput
+                                [matDatepicker]="startDatePicker"
+                                placeholder="Start date"
+                                [(ngModel)]="session.begin">
+                        <mat-datepicker-toggle
+                                matSuffix
+                                [for]="startDatePicker"></mat-datepicker-toggle>
+                        <mat-datepicker
+                                #startDatePicker></mat-datepicker>
+                        <mat-hint
+                                align="start">
+                                <strong>Start of observation session</strong>
+                        </mat-hint>
+                </mat-form-field>
 
-        <!-- Start of an observation session (Time) -->
-        <mat-form-field>
-                <input
-                        matInput
-                        type="time"
-                        placeholder="Time"/>
-                <mat-hint
-                        align="start">
-                        <strong>Time of observation</strong>
-                </mat-hint>
-        </mat-form-field>
+                <!-- Start of an observation session (Time) -->
+                <mat-form-field>
+                        <input
+                                matInput
+                                type="time"
+                                placeholder="Time"/>
+                        <mat-hint
+                                align="start">
+                                <strong>Time of observation</strong>
+                        </mat-hint>
+                </mat-form-field>
+        </div>
     
-        <!-- End Date -->
-        <!-- End of an observation session (Date) -->
-        <mat-form-field>
-                <input
-                        matInput
-                        [matDatepicker]="endDatePicker"
-                        placeholder="End date"
-                        [(ngModel)]="session.end">
-                <mat-datepicker-toggle matSuffix
-                        [for]="endDatePicker"></mat-datepicker-toggle>
-                <mat-datepicker #endDatePicker></mat-datepicker>
-                <mat-hint align="start">
-                        <strong>End of observation session</strong>
-                </mat-hint>
-        </mat-form-field>
+        <div>
+                <!-- End Date -->
+                <!-- End of an observation session (Date) -->
+                <mat-form-field>
+                        <input
+                                matInput
+                                [matDatepicker]="endDatePicker"
+                                placeholder="End date"
+                                [(ngModel)]="session.end">
+                        <mat-datepicker-toggle matSuffix
+                                [for]="endDatePicker"></mat-datepicker-toggle>
+                        <mat-datepicker #endDatePicker></mat-datepicker>
+                        <mat-hint align="start">
+                                <strong>End of observation session</strong>
+                        </mat-hint>
+                </mat-form-field>
 
-         <!-- End of an observation session (Time) -->
-        <mat-form-field>
-                <input
-                        matInput
-                        type="time"
-                        placeholder="Time"/>
-                <mat-hint
-                        align="start">
-                        <strong>Time of observation</strong>
-                </mat-hint>
-            </mat-form-field>
+                <!-- End of an observation session (Time) -->
+                <mat-form-field>
+                        <input
+                                matInput
+                                type="time"
+                                placeholder="Time"/>
+                        <mat-hint
+                                align="start">
+                                <strong>Time of observation</strong>
+                        </mat-hint>
+                </mat-form-field>
+        </div>
 
         <!-- site where session took place -->
         <mat-form-field>

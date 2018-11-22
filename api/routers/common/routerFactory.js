@@ -3,141 +3,164 @@ const auth = require('../authentication/auth');
 
 class RouterFactory {
 
-    constructor(store, router) {
-        if (!store) {
-            throw new Error('store should be provided.');
-        }
-        if (!router) {
-            throw new Error('router should be provided.');
-        }
-
-        this.store = store;
-        this.router = router;
-
-        this.setUp();
+  constructor(store, router) {
+    if (!store) {
+      throw new Error('store should be provided.');
+    }
+    if (!router) {
+      throw new Error('router should be provided.');
     }
 
-    handleError(res, error) {
-        console.error(error.message + '; ' + error.stack);
+    this.store = store;
+    this.router = router;
 
-        res.status(500).send({
-            success: false,
-            errors: [{
-                message: error.message,
-                stack: error.stack
-            }]
-        });
+    this.setUp();
+  }
+
+  handleError(res, error) {
+    console.error(error.message + '; ' + error.stack);
+
+    res.status(500).send({
+      success: false,
+      errors: [{
+        message: error.message,
+        stack: error.stack
+      }]
+    });
+  }
+
+  setUp() {
+    this.router.get('/upload', auth.required, (req, res) => this.uploadHandler(req, res));
+    this.router.get('/', auth.optional, (req, res) => this.getAllHandler(req, res));
+    this.router.get('/:id', auth.optional, (req, res) => this.getByIdHandler(req, res));
+    this.router.put('/:id', auth.required, (req, res) => this.updateHandler(req, res));
+    this.router.delete('/:id', auth.required, (req, res) => this.deleteHandler(req, res))
+    this.router.post('/', auth.required, (req, res) => this.addNewHandler(req, res));
+  }
+
+  /**
+   * Get all entites.
+   */
+  getAllHandler(req, res) {
+    this.authorize(req.payload);
+
+    if (req.query.name != null || req.query.maxCount != null || req.query.sessionId != null) {
+      this.searchHandler(req, res);
+      return;
     }
 
-    setUp() {
-        this.router.get('/upload', auth.required, (req, res) => this.uploadHandler(req, res));
-        this.router.get('/', auth.optional, (req, res) => this.getAllHandler(req, res));
-        this.router.get('/:id', auth.optional, (req, res) => this.getByIdHandler(req, res));
-        this.router.put('/:id', auth.required, (req, res) => this.updateHandler(req, res));
-        this.router.delete('/:id', auth.required, (req, res) => this.deleteHandler(req, res))
-        this.router.post('/', auth.required, (req, res) => this.addNewHandler(req, res));
+    if (req.query.page != null && req.query.size != null) {
+      this.getItemsHandler(req, res);
+      return;
     }
 
-    /**
-     * Get all entites.
-     */
-    getAllHandler(req, res) {
-        this.authorize(req.payload);
+    this.store.getAll().then(
+      items => res.json(items),
+      error => this.handleError(res, error)
+    );
+  }
 
-        if (req.query.name != null || req.query.maxCount != null || req.query.sessionId != null) {
-            this.searchHandler(req, res);
-            return;
-        }
+  addNewHandler(req, res) {
+    this.authorize(req.payload);
 
-        this.store.getAll().then(
-            items => res.json(items),
-            error => this.handleError(res, error)
-        );
+    this.store.add(this.parse(req)).then(
+      entity => res.json(entity),
+      error => this.handleError(res, error)
+    );
+  }
+
+  getByIdHandler(req, res) {
+    this.authorize(req.payload);
+
+    this.store.getById(req.params.id).then(
+      entity => res.json(entity),
+      error => this.handleError(res, error)
+    );
+  }
+
+  authorize(payload) {
+    if (payload) {
+      this.store.currentUser = {
+        id: payload.id
+      };
+    } else {
+      this.store.currentUser = null;
     }
+  }
 
-    addNewHandler(req, res) {
-        this.authorize(req.payload);
+  updateHandler(req, res) {
+    this.authorize(req.payload);
 
-        this.store.add(this.parse(req)).then(
-            entity => res.json(entity),
-            error => this.handleError(res, error)
-        );
+    this.store.update(this.parse(req)).then(
+      entity => res.json(entity),
+      error => this.handleError(res, error)
+    );
+  }
+
+  deleteHandler(req, res) {
+    this.authorize(req.payload);
+
+    this.store.delete(req.params.id).then(
+      () => res.json({
+        success: true
+      }),
+      error => this.handleError(res, error)
+    );
+  }
+
+  searchHandler(req, res) {
+    this.authorize(req.payload);
+
+    const searchParams = {
+      name: req.query.name,
+      maxCount: req.query.maxCount != null ? parseInt(req.query.maxCount) : undefined,
+      sessionId: req.query.sessionId
+    };
+
+    this.store.search(searchParams).then(
+      items => res.json(items),
+      error => this.handleError(res, error)
+    );
+  }
+
+  getItemsHandler(req, res) {
+    const requestParams = {
+      size: parseInt(req.query.size),
+      page: parseInt(req.query.page)
+    };
+
+    this.store.getItems(requestParams).then(
+      items => res.json(items),
+      error => this.handleError(res, error)
+    );
+  }
+
+  uploadHandler(req, res) {
+    this.authorize(req.payload);
+
+    this.store.upload().then(
+      () => res.json({
+        success: true
+      }),
+      error => this.handleError(res, error)
+    );
+  }
+
+  parse(req) {
+    if (this.store.entityConstructor == null) {
+      return req.body;
     }
+    return new this.store.entityConstructor(req.body);
+  }
 
-    getByIdHandler(req, res) {
-        this.authorize(req.payload);
+  static create(app, store, path) {
+    const router = express.Router();
+    const rf = new RouterFactory(store, router);
 
-        this.store.getById(req.params.id).then(
-            entity => res.json(entity),
-            error => this.handleError(res, error)
-        );
-    }
+    app.use('/api' + path, router);
 
-    authorize(payload) {
-        if (payload) {
-            this.store.currentUser = { id: payload.id };
-        } else {
-            this.store.currentUser = null;
-        }
-    }
-
-    updateHandler(req, res) {
-        this.authorize(req.payload);
-
-        this.store.update(this.parse(req)).then(
-            entity => res.json(entity),
-            error => this.handleError(res, error)
-        );
-    }
-
-    deleteHandler(req, res) {
-        this.authorize(req.payload);
-        
-        this.store.delete(req.params.id).then(
-            () => res.json({ success: true }),
-            error => this.handleError(res, error)
-        );
-    }
-
-    searchHandler(req, res) {
-        this.authorize(req.payload);
-
-        const searchParams = {
-            name: req.query.name,
-            maxCount: req.query.maxCount != null ? parseInt(req.query.maxCount) : undefined,
-            sessionId: req.query.sessionId
-        };
-
-        this.store.search(searchParams).then(
-            items => res.json(items),
-            error => this.handleError(res, error)
-        );
-    }
-
-    uploadHandler(req, res) {
-        this.authorize(req.payload);
-
-        this.store.upload().then(
-            () => res.json({ success: true }),
-            error => this.handleError(res, error)
-        );
-    }
-
-    parse(req) {
-        if (this.store.entityConstructor == null) {
-            return req.body;
-        }
-        return new this.store.entityConstructor(req.body);
-    }
-
-    static create(app, store, path) {
-        const router = express.Router();
-        const rf = new RouterFactory(store, router);
-
-        app.use('/api' + path, router);
-
-        return rf;
-    }
+    return rf;
+  }
 }
 
 module.exports = RouterFactory;
