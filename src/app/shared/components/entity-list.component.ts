@@ -9,6 +9,9 @@ export abstract class EntityListComponent<T extends Entity> extends BaseComponen
 
     items: T[];
     isLoading: Boolean;
+    currentPage = 0;
+    pageSize = 10;
+    totalCount = 0;
 
     public startLoading() {
         this.isLoading = true;
@@ -22,24 +25,34 @@ export abstract class EntityListComponent<T extends Entity> extends BaseComponen
         super();
     }
 
-    loadAllItems(): Promise<void> {
+    async loadItems(): Promise<void> {
         this.startLoading();
-        return this.storageService
-            .getAll()
-            .then(loadedItem => {
-                this.endLoading();
-                this.items = loadedItem;
-            });
+
+        const response = await this.storageService.getItems({
+            size: this.pageSize,
+            page: this.currentPage
+        });
+
+        this.items = response.items;
+        this.totalCount = response.totalCount;
+
+        this.endLoading();
     }
 
-    remove(entity: any) {
+    async remove(entity: any) {
         this.startLoading();
-        return this.storageService.delete(entity.id)
-            .then(() => this.loadAllItems());
+        await this.storageService.delete(entity.id);
+        return this.loadItems();
     }
 
     ngOnInit(): void {
-        this.loadAllItems();
+        this.loadItems();
+    }
+
+    onPageChanged(pageEvent: any) {
+        this.currentPage = pageEvent.pageIndex;
+        this.pageSize = pageEvent.pageSize;
+        this.loadItems();
     }
 
 }

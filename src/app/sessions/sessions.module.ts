@@ -12,7 +12,8 @@ import {
     MatInputModule,
     MatDatepickerModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatPaginatorModule
 } from '@angular/material';
 
 import { MatSelectModule } from '@angular/material/select';
@@ -39,7 +40,8 @@ import { SessionService } from './shared/session.service';
         MatSelectModule,
         SessionsRoutingModule,
         MatTableModule,
-        MatIconModule
+        MatIconModule,
+        MatPaginatorModule
     ],
     declarations: [
         SessionsComponent,

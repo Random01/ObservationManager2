@@ -19,35 +19,8 @@ export class TargetsComponent extends EntityListComponent<Target> {
         'actions'
     ];
 
-    currentPage = 0;
-    pageSize = 10;
-
     constructor(private service: TargetService) {
         super(service);
     }
 
-    async loadAllItems(): Promise<void> {
-        this.startLoading();
-
-        const response = await this.storageService.getItems({
-            size: this.pageSize,
-            page: this.currentPage
-        });
-
-        this.endLoading();
-        this.items = response.items;
-    }
-
-    nextPage() {
-        this.currentPage++;
-        this.loadAllItems();
-    }
-
-    previousPage() {
-        this.currentPage--;
-        if (this.currentPage < 0) {
-            this.currentPage = 0;
-        }
-        this.loadAllItems();
-    }
 }

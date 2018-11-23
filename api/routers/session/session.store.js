@@ -10,8 +10,8 @@ class SessionStore extends BaseMongooseStore {
         return new Promise((success, fail) => {
             this.model
                 .findOne({ _id: id })
-                .populate('userCreated')
-                .populate('userModified')
+                .populate('userCreated', '_id userName firstName lastName')
+                .populate('userModified', '_id userName firstName lastName')
                 .populate('site')
                 .exec((err, docs) => {
                     if (err) {
@@ -23,22 +23,37 @@ class SessionStore extends BaseMongooseStore {
         });
     }
 
-    getAll() {
+    getItems({ page, size } = { page: 0, size: 100 }) {
         return new Promise((success, fail) => {
-            this.model
-                .find()
-                .populate('userCreated')
-                .populate('userModified')
-                .populate('site')
-                .exec((err, docs) => {
-                    if (err) {
-                        fail(err);
-                    } else {
-                        success(docs);
-                    }
-                });
+            this.model.count((err, count)=>{
+                if (err) {
+                    fail(err);
+                } else {
+                    this.model
+                        .find()
+                        .populate('userCreated', '_id userName firstName lastName')
+                        .populate('userModified', '_id userName firstName lastName')
+                        .populate('site')
+                        .limit(size)
+                        .skip(page * size)
+                        .exec((err, docs)=>{
+                            if (err) {
+                                fail(err);
+                            } else {
+                                success({
+                                    items: docs,
+                                    pageCount: page,
+                                    pages: Math.ceil(count / size),
+                                    totalCount: count
+                                });
+                            }
+                        });
+                }
+            });
         });
+
     }
+
 }
 
 module.exports = SessionStore;

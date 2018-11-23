@@ -86,6 +86,14 @@ class TargetStore extends BaseMongooseStore {
             });
         })
     }
+
+    batchUpdate(){
+        return new Promise((success, fail) => {
+
+
+
+        });
+    }
 }
 
 module.exports = TargetStore;

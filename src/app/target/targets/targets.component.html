@@ -37,19 +37,18 @@
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
 
-  <button 
-        mat-button
-        (click)=previousPage()>Previous Page</button>
+  <mat-paginator
+              [length]="totalCount"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="[5, 10]"
+              (page)=onPageChanged($event)>
+  </mat-paginator>
 
-  <button 
-        mat-button
-        (click)=nextPage()>Next Page</button>
 
   <hr />
   <div>
       <button 
           mat-button
-          color="primary"
           routerLink="/objects/new-object"
           color="primary">Add New Object</button>
 

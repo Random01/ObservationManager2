@@ -30,27 +30,41 @@ class ObservationStore extends BaseMongooseStore {
         });
     }
 
-    getAll() {
+    getItems({ page, size } = { page: 0, size: 100 }) {
         return new Promise((success, fail) => {
-            this.model
-                .find()
-                .populate('userCreated')
-                .populate('userModified')
-                .populate('observer')
-                .populate('site')
-                .populate('session')
-                .populate('scope')
-                .populate('eyepiece')
-                .populate('filter')
-                .populate('target')
-                .exec((err, docs) => {
-                    if (err) {
-                        fail(err);
-                    } else {
-                        success(docs);
-                    }
-                });
+            this.model.count((err, count)=>{
+                if (err) {
+                    fail(err);
+                } else {
+                    this.model
+                        .find()
+                        .populate('userCreated', '_id userName firstName lastName')
+                        .populate('userModified', '_id userName firstName lastName')
+                        .populate('observer', '_id userName firstName lastName')
+                        .populate('site')
+                        .populate('session')
+                        .populate('scope')
+                        .populate('eyepiece')
+                        .populate('filter')
+                        .populate('target')
+                        .limit(size)
+                        .skip(page * size)
+                        .exec((err, docs)=>{
+                            if (err) {
+                                fail(err);
+                            } else {
+                                success({
+                                    items: docs,
+                                    pageCount: page,
+                                    pages: Math.ceil(count / size),
+                                    totalCount: count
+                                });
+                            }
+                        });
+                }
+            });
         });
+
     }
 
     search({ sessionId } = {}) {
@@ -59,9 +73,9 @@ class ObservationStore extends BaseMongooseStore {
                 .find({
                     session: sessionId
                 })
-                .populate('userCreated')
-                .populate('userModified')
-                .populate('observer')
+                .populate('userCreated', '_id userName firstName lastName')
+                .populate('userModified', '_id userName firstName lastName')
+                .populate('observer', '_id userName firstName lastName')
                 .populate('site')
                 .populate('session')
                 .populate('scope')

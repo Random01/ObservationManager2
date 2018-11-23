@@ -112,7 +112,7 @@ class BaseMongooseStore {
 
     delete(id) {
         return new Promise((success, fail) => {
-            this.model.deleteOne({ _id: id }, err => {
+            this.model.deleteOne({ _id: id }, (err) => {
                 if (err) {
                     fail(err);
                 } else {
