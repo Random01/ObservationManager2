@@ -66,8 +66,7 @@ class TargetStore extends BaseMongooseStore {
 
                 return {
                     name: name,
-                    alliases: identifiers != null
-                        ? identifiers.split(',') : undefined
+                    alliases: identifiers != null ? identifiers.split(',') : undefined
                 };
             });
         });

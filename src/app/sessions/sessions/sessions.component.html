@@ -5,10 +5,13 @@
 
     <mat-table
         [dataSource]="items"
+        matSort
         class="mat-elevation-z8">
 
         <ng-container matColumnDef="begin">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Date</mat-header-cell>
+            <mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header="begin">Date</mat-header-cell>
             <mat-cell *matCellDef="let session">{{session.begin|date:'medium'}}</mat-cell>
         </ng-container>
 

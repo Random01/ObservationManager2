@@ -126,7 +126,9 @@ class RouterFactory {
   getItemsHandler(req, res) {
     const requestParams = {
       size: parseInt(req.query.size),
-      page: parseInt(req.query.page)
+      page: parseInt(req.query.page),
+      sortField: req.query.sortField,
+      sortDirection: req.query.sortDirection,
     };
 
     this.store.getItems(requestParams).then(

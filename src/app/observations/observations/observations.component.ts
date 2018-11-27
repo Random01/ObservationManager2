@@ -3,6 +3,7 @@
 import { Observation } from '../../shared/models/models';
 import { ObservationService } from '../shared/observation.service';
 import { ScopeService } from '../../scopes/shared/scope.service';
+import { EntityListComponent } from '../../shared/components/entity-list.component';
 
 @Component({
     selector: 'om-observations',
@@ -16,17 +17,10 @@ import { ScopeService } from '../../scopes/shared/scope.service';
     ]
 })
 
-export class ObservationsComponent implements OnInit {
-
-    observations: Observation[];
+export class ObservationsComponent extends EntityListComponent<Observation> {
 
     constructor(private observationService: ObservationService) {
-    }
-
-    ngOnInit(): void {
-        this.observationService
-            .getAll()
-            .then(observations => this.observations = observations);
+        super(observationService);
     }
 
 }

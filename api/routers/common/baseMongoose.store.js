@@ -28,14 +28,21 @@ class BaseMongooseStore {
         });
     }
 
-    getItems({ page, size } = { page: 0, size: 100 }) {
+    getItems({ page, size, sortField, sortDirection } = { page: 0, size: 100 }) {
         return new Promise((success, fail) => {
             this.model.count((err, count)=>{
                 if (err) {
                     fail(err);
                 } else {
-                    this.model
-                        .find()
+                    const query = this.model.find();
+                    
+                    if(sortField!=null && sortDirection!=null){
+                        const sortQuery = {};
+                        sortQuery[sortField] = sortDirection === 'asc' ? 1 : -1;
+                        query.sort(sortQuery);
+                    }
+
+                    query
                         .limit(size)
                         .skip(page * size)
                         .exec((err, docs)=>{
