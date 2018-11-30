@@ -28,24 +28,31 @@ class BaseMongooseStore {
         });
     }
 
-    getItems({ page, size, sortField, sortDirection } = { page: 0, size: 100 }) {
+    getItems(
+        { requestParams: { page, size, sortField, sortDirection } = { page: 0, size: 100 },
+        populationDetails = []
+    }) {
         return new Promise((success, fail) => {
-            this.model.count((err, count)=>{
+            this.model.count((err, count) => {
                 if (err) {
                     fail(err);
                 } else {
                     const query = this.model.find();
                     
-                    if(sortField!=null && sortDirection!=null){
+                    if (sortField != null && sortDirection != null) {
                         const sortQuery = {};
                         sortQuery[sortField] = sortDirection === 'asc' ? 1 : -1;
                         query.sort(sortQuery);
                     }
 
+                    populationDetails.forEach((items) => {
+                        query.populate(...items);
+                    });
+
                     query
                         .limit(size)
                         .skip(page * size)
-                        .exec((err, docs)=>{
+                        .exec((err, docs) => {
                             if (err) {
                                 fail(err);
                             } else {
@@ -63,11 +70,16 @@ class BaseMongooseStore {
 
     }
 
-    getById(id) {
+    getById({ id, populationDetails = [] }) {
         return new Promise((success, fail) => {
-            this.model
-                .findOne({ _id: id })
-                .exec((err, docs) => {
+
+            const query = this.model.findOne({ _id: id });
+
+            populationDetails.forEach((items) => {
+                query.populate(...items);
+            });
+
+            query.exec((err, docs) => {
                     if (err) {
                         fail(err);
                     } else {

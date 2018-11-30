@@ -5,6 +5,13 @@ class ScopeStore extends BaseMongooseStore {
     constructor(db) {
         super(db.model('scopes', ScopeSchema));
     }
+
+    getById({ id }) {
+        return super.getById({ id, populationDetails: [
+            ['userCreated', '_id userName firstName lastName'],
+            ['userModified', '_id userName firstName lastName']
+        ]});
+    }
 }
 
 module.exports = ScopeStore;

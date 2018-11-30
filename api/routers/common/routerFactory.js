@@ -72,7 +72,7 @@ class RouterFactory {
   getByIdHandler(req, res) {
     this.authorize(req.payload);
 
-    this.store.getById(req.params.id).then(
+    this.store.getById({ id: req.params.id }).then(
       entity => res.json(entity),
       error => this.handleError(res, error)
     );
@@ -131,7 +131,7 @@ class RouterFactory {
       sortDirection: req.query.sortDirection,
     };
 
-    this.store.getItems(requestParams).then(
+    this.store.getItems({ requestParams }).then(
       items => res.json(items),
       error => this.handleError(res, error)
     );

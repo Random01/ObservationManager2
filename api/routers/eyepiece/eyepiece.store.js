@@ -6,23 +6,13 @@ class EyepieceStore extends BaseMongooseStore {
     constructor(db) {
         super(db.model('eyepieces', EyepieceSchema));
     }
-
-    getById(id) {
-        return new Promise((success, fail) => {
-            this.model
-                .findOne({ _id: id })
-                .populate('userCreated')
-                .populate('userModified')
-                .exec((err, docs) => {
-                    if (err) {
-                        fail(err);
-                    } else {
-                        success(docs);
-                    }
-                });
-        });
-    }
     
+    getById({ id }) {
+        return super.getById({ id, populationDetails: [
+            ['userCreated', '_id userName firstName lastName'],
+            ['userModified', '_id userName firstName lastName']
+        ]});
+    }
 }
 
 module.exports = EyepieceStore;
