@@ -23,65 +23,71 @@
         </div>
     </div>
 
-    <!-- Start of observation (Date) -->
-    <mat-form-field>
-        <input
-            matInput
-            [matDatepicker]="startDatePicker"
-            placeholder="Start Date"
-            [(ngModel)]="observation.begin">
-        <mat-datepicker-toggle
-            matSuffix
-            [for]="startDatePicker"></mat-datepicker-toggle>
-        <mat-datepicker
-            #startDatePicker></mat-datepicker>
-        <mat-hint
-            align="start">
-            <strong>Date of observation</strong>
-        </mat-hint>
-    </mat-form-field>
+    <div>
+        <!-- Start of observation (Date) -->
+        <mat-form-field>
+            <input
+                matInput
+                [matDatepicker]="startDatePicker"
+                placeholder="Start Date"
+                [(ngModel)]="observation.begin">
+            <mat-datepicker-toggle
+                matSuffix
+                [for]="startDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker
+                #startDatePicker></mat-datepicker>
+            <mat-hint
+                align="start">
+                <strong>Date of observation</strong>
+            </mat-hint>
+        </mat-form-field>
 
-    <!-- Start of observation (Time) -->
-    <mat-form-field>
-        <input
-            matInput
-            type="time"
-            placeholder="Time"/>
-        <mat-hint
-            align="start">
-            <strong>Time of observation</strong>
-        </mat-hint>
-    </mat-form-field>
-
-    <!-- End of observation (Date) -->
-    <mat-form-field>
-        <input
-            matInput
-            [matDatepicker]="endDatePicker"
-            placeholder="End Date"
-            [(ngModel)]="observation.end">
-        <mat-datepicker-toggle
-            matSuffix
-            [for]="endDatePicker"></mat-datepicker-toggle>
-        <mat-datepicker
-            #endDatePicker></mat-datepicker>
-        <mat-hint
-            align="start">
-            <strong>Date of observation</strong>
-        </mat-hint>
-    </mat-form-field>
-    
-    <!-- End of observation (Time) -->
-    <mat-form-field>
-        <input
-            matInput
-            type="time"
-            placeholder="Time"/>
-        <mat-hint
-            align="start">
+        <!-- Start of observation (Time) -->
+        <mat-form-field>
+            <input
+                matInput
+                type="time"
+                placeholder="Time"/>
+            <mat-hint
+                align="start">
                 <strong>Time of observation</strong>
-        </mat-hint>
-    </mat-form-field>
+            </mat-hint>
+        </mat-form-field>
+
+    </div>
+
+    <div>
+        <!-- End of observation (Date) -->
+        <mat-form-field>
+            <input
+                matInput
+                [matDatepicker]="endDatePicker"
+                placeholder="End Date"
+                [(ngModel)]="observation.end">
+            <mat-datepicker-toggle
+                matSuffix
+                [for]="endDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker
+                #endDatePicker></mat-datepicker>
+            <mat-hint
+                align="start">
+                <strong>Date of observation</strong>
+            </mat-hint>
+        </mat-form-field>
+    
+        <!-- End of observation (Time) -->
+        <mat-form-field>
+            <input
+                matInput
+                type="time"
+                placeholder="Time"/>
+            <mat-hint
+                align="start">
+                    <strong>Time of observation</strong>
+            </mat-hint>
+        </mat-form-field>
+
+    </div>
 
     <!-- Result -->
     <mat-form-field

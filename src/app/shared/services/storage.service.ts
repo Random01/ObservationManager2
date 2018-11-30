@@ -3,10 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Entity } from '../models/entity.model';
 import { AddResultPayload } from './add-result-payload.model';
 import { environment } from '../../../environments/environment';
+import { SortOrder } from '../models/sort-order.model';
 
-interface RequestParams {
+class RequestParams {
     page: number;
     size: number;
+    sortField?: string;
+    sortDirection?: SortOrder;
 }
 
 interface Response<T extends Entity> {
@@ -95,7 +98,12 @@ export abstract class StorageService<T extends Entity> {
         };
 
         return new Promise<Response<T>>((success) => {
-            const url = `${this.getUrl()}?page=${request.page}&size=${request.size}`;
+            let url = `${this.getUrl()}?page=${request.page}&size=${request.size}`;
+
+            if (request.sortDirection !== null && request.sortField !== null) {
+                url += `&sortField=${request.sortField}&sortDirection=${request.sortDirection}`;
+            }
+
             this.http.get<any>(url, httpOptions)
                 .subscribe(response => {
                     success({

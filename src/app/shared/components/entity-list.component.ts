@@ -4,6 +4,7 @@ import { BaseComponent } from './base-component';
 
 import { Entity } from '../models/models';
 import { StorageService } from '../services/storage.service';
+import { SortOrder } from '../models/sort-order.model';
 
 export abstract class EntityListComponent<T extends Entity> extends BaseComponent implements OnInit {
 
@@ -12,6 +13,8 @@ export abstract class EntityListComponent<T extends Entity> extends BaseComponen
     currentPage = 0;
     pageSize = 10;
     totalCount = 0;
+    sortField?: string;
+    sortDirection?: SortOrder;
 
     public startLoading() {
         this.isLoading = true;
@@ -30,7 +33,9 @@ export abstract class EntityListComponent<T extends Entity> extends BaseComponen
 
         const response = await this.storageService.getItems({
             size: this.pageSize,
-            page: this.currentPage
+            page: this.currentPage,
+            sortDirection: this.sortDirection,
+            sortField: this.sortField
         });
 
         this.items = response.items;
