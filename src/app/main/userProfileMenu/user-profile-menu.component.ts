@@ -1,19 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { AuthenticationService } from '../../auth/shared/authentication.service';
 
 @Component({
     selector: 'om-user-profile-menu',
     templateUrl: './user-profile-menu.component.html',
-    styleUrls: ['./user-profile-menu.component.css'],
-    providers: [
-        AuthenticationService
-    ]
+    styleUrls: ['./user-profile-menu.component.css']
 })
-export class UserProfileMenuComponent {
+export class UserProfileMenuComponent implements OnInit {
 
-    constructor(private authenticationService: AuthenticationService) {
+    public isAuthenticated: boolean;
 
+    ngOnInit(): void {
+        this.authenticationService
+            .isAuthenticated
+            .pipe()
+            .subscribe((isAuthenticated) => {
+                this.isAuthenticated = isAuthenticated;
+            });
+    }
+
+    constructor(
+        private authenticationService: AuthenticationService) {
     }
 
     signOut() {

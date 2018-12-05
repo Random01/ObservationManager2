@@ -1,8 +1,12 @@
 <div class="om-user-profile-menu">
     
-    <span>
+    <span *ngIf="!isAuthenticated">
         <a routerLink="/login"
             class="text-bold text-white no-underline">Sign in</a> or <a routerLink="/register" class="text-bold text-white no-underline">Sign up</a>
+    </span>
+
+    <span *ngIf="isAuthenticated">
+        Welcome!
     </span>
 
     <button

@@ -40,6 +40,12 @@ export class UserService extends StorageService<User> {
         });
     }
 
+    getUser(): Promise<SignInResultPayload> {
+        return new Promise<SignInResultPayload>((success) => {
+            success(new SignInResultPayload());
+        });
+    }
+
     register(user: User): Promise<User> {
         const httpOptions = {
             headers: new HttpHeaders({

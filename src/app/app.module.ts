@@ -57,6 +57,7 @@ import { LensService } from './lenses/shared/lens.service';
 import { AuthModule } from './auth/auth.module';
 
 import { UserProfileMenuComponent } from './main/userProfileMenu/user-profile-menu.component';
+import { AuthenticationService } from './auth/shared/authentication.service';
 
 @NgModule({
   imports: [
@@ -103,9 +104,10 @@ import { UserProfileMenuComponent } from './main/userProfileMenu/user-profile-me
     EyepieceService,
     ScopeService,
     FilterService,
-    LensService
+    LensService,
+    AuthenticationService
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent]
 })
 
 export class AppModule { }

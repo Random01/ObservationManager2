@@ -10,10 +10,7 @@ import { BaseComponent } from '../../shared/components/base-component';
 @Component({
     selector: 'om-login',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css'],
-    providers: [
-        AuthenticationService
-    ]
+    styleUrls: ['./login.component.css']
 })
 export class LoginComponent extends BaseComponent {
 

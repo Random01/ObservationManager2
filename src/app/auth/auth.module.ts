@@ -12,10 +12,10 @@ import {
 } from '@angular/material';
 
 import { LoginComponent } from './login/login.component';
-import { AuthenticationService } from './shared/authentication.service';
 import { AuthRoutingModule } from './auth-routing.module';
 import { RegisterComponent } from './register/register.component';
 import { UsersModule } from '../users/users.module';
+import { JwtService } from './shared/jwt.service';
 
 @NgModule({
     imports: [
@@ -35,8 +35,7 @@ import { UsersModule } from '../users/users.module';
         RegisterComponent
     ],
     providers: [
-        AuthenticationService,
-        AuthenticationService
+        JwtService
     ]
 })
 
