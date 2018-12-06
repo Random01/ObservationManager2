@@ -6,7 +6,7 @@ import { Target } from '../../shared/models/target.model';
 import { StorageService } from '../../shared/services/storage.service';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
-import { catchError, map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 interface SearchParams {
     name: string;
@@ -20,14 +20,8 @@ export class TargetService extends StorageService<Target> {
         super(http, '/targets');
     }
 
-    deserialize(state: any): Target {
-        state.id = state._id;
-        delete state._id;
-        return new Target(state);
-    }
-
-    createNew(): Target {
-        return new Target();
+    createNew(params?: any): Target {
+        return new Target(params);
     }
 
     search(searchParams: SearchParams): Observable<Target[]> {

@@ -27,6 +27,10 @@ export abstract class StorageService<T extends Entity> {
     }
 
     protected static prepare(state: any): any {
+        if (typeof state === 'string') {
+            return { id: state };
+        }
+
         state.id = state._id;
         delete state._id;
 
@@ -90,6 +94,10 @@ export abstract class StorageService<T extends Entity> {
         });
     }
 
+    /**
+     * Returns a paginated list of items.
+     * @param request
+     */
     getItems(request: RequestParams): Promise<Response<T>> {
         const httpOptions = {
             headers: new HttpHeaders({
@@ -100,7 +108,7 @@ export abstract class StorageService<T extends Entity> {
         return new Promise<Response<T>>((success) => {
             let url = `${this.getUrl()}?page=${request.page}&size=${request.size}`;
 
-            if (request.sortDirection !== null && request.sortField !== null) {
+            if (request.sortDirection != null && request.sortField != null) {
                 url += `&sortField=${request.sortField}&sortDirection=${request.sortDirection}`;
             }
 

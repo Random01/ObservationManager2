@@ -5,26 +5,34 @@
             class="text-bold text-white no-underline">Sign in</a> or <a routerLink="/register" class="text-bold text-white no-underline">Sign up</a>
     </span>
 
-    <span *ngIf="isAuthenticated">
-        Welcome!
-    </span>
-
     <button
         mat-icon-button
         [matMenuTriggerFor]="menu">
         <mat-icon>more_vert</mat-icon>
     </button>
 
-    <mat-menu #menu="matMenu">
+        <mat-menu
+            #menu="matMenu">
 
-        <button mat-menu-item
+            <button
+                mat-menu-item
+                *ngIf="isAuthenticated"
                 (click)="editProfile()">
-            <span>Profile</span>
-        </button>
-        <button mat-menu-item
-                (click)="signOut()">
-            <span>Sign out</span>
-        </button>
-    </mat-menu>
+                <span>Signed in as {{currentUser.userName}}</span>
+            </button>
+
+            <button mat-menu-item
+                    *ngIf="isAuthenticated"
+                    (click)="editProfile()">
+                <span>Your Profile</span>
+            </button>
+
+            <button mat-menu-item
+                    *ngIf="isAuthenticated"
+                    (click)="signOut()">
+                <span>Sign out</span>
+            </button>
+
+        </mat-menu>
     
 </div>

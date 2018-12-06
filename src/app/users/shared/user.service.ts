@@ -41,8 +41,24 @@ export class UserService extends StorageService<User> {
     }
 
     getUser(): Promise<SignInResultPayload> {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Authorization': this.getAuthorizationToken()
+            })
+        };
+
         return new Promise<SignInResultPayload>((success) => {
-            success(new SignInResultPayload());
+            return this.http.get<any>(this.getUrl() + '/user', httpOptions)
+                .subscribe(({ user }) => {
+                    success(new SignInResultPayload({
+                        token: user.token,
+                        user: new User({
+                            userName: user.userName,
+                            email: user.email
+                        })
+                    }));
+                });
         });
     }
 

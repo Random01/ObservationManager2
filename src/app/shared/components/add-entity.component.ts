@@ -12,22 +12,24 @@ export abstract class AddEntityComponent<T extends Entity> extends BaseEntityCom
 
     public addItem() {
         this.startLoading();
-        this.storageService.add(this.item).then(() => {
-            this.endLoading();
-            this.goBack();
-        });
+
+        this.storageService
+            .add(this.item)
+            .then(
+                () => this.goBack(),
+                () => this.endLoading()
+            );
     }
 
-    public addItemAndContinue() {
+    public async addItemAndContinue() {
         this.startLoading();
-        return this.storageService.add(this.item)
-            .then(() => {
-                return this.createNew();
-            })
-            .then((item) => {
-                this.item = item;
-                this.endLoading();
-            });
+
+        try {
+            await this.storageService.add(this.item);
+            this.item = await this.createNew();
+        } finally {
+            this.endLoading();
+        }
     }
 
     public createNew(): Promise<T> {

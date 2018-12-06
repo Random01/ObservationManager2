@@ -9,6 +9,8 @@ import { UserComponent } from './user/user.component';
 import { UsersComponent } from './users/users.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { UserService } from './shared/user.service';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UsersRoutingModule } from './users-routing.module';
 
 @NgModule({
     imports: [
@@ -16,12 +18,14 @@ import { UserService } from './shared/user.service';
         BrowserModule,
         FormsModule,
         MatButtonModule,
-        MatInputModule
+        MatInputModule,
+        UsersRoutingModule
     ],
     declarations: [
         UserComponent,
         UsersComponent,
-        AddUserComponent
+        AddUserComponent,
+        UserProfileComponent
     ],
     providers: [
         UserService

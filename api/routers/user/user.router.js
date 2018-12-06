@@ -43,7 +43,10 @@ module.exports = (app, db) => {
         user.setPassword(password);
 
         user.save().then(() => {
-            return res.json({ success: true, user: user.toAuthJSON() });
+            return res.json({
+                success: true,
+                user: user.toAuthJSON()
+            });
         }).catch(next);
     });
 
@@ -71,6 +74,21 @@ module.exports = (app, db) => {
                 return res.status(422).json(info);
             }
         })(req, res, next);
+    });
+
+    router.get('/user', auth.required, (req, res, next) => {
+        const userId = req.payload ? req.payload.id : null;
+
+        store.getById({ id: userId }).then((user) => {
+            if (!user) {
+                return res.sendStatus(401);
+            } else {
+                return res.json({
+                    success: true,
+                    user: user.toAuthJSON()
+                });
+            }
+        }).catch(next);
     });
 
     app.use('/api/users', router);

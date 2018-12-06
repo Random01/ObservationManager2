@@ -18,8 +18,6 @@ export class AuthenticationService {
     private isAuthenticatedSubject = new ReplaySubject<boolean>(1);
     public isAuthenticated = this.isAuthenticatedSubject.asObservable();
 
-    public num: number;
-
     constructor(
         private userService: UserService,
         private jwtService: JwtService
@@ -38,13 +36,14 @@ export class AuthenticationService {
         this.isAuthenticatedSubject.next(true);
     }
 
-    populate() {
+    async populate() {
         if (this.jwtService.getToken()) {
-            this.userService.getUser()
-                .then(
-                    (result) => this.setAut(result),
-                    () => this.signOut()
-                );
+            try {
+                const result = await this.userService.getUser();
+                this.setAut(result);
+            } catch (ex) {
+                this.signOut();
+            }
         } else {
             this.signOut();
         }

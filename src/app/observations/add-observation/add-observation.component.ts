@@ -26,37 +26,37 @@ export class AddObservationComponent extends AddEntityComponent<Observation> {
         return this.route.snapshot.paramMap.get('sessionId');
     }
 
-    goBack() {
+    public goBack() {
         this.router.navigate([`/sessions/${this.getSessionId()}/observations`]);
     }
 
-    createNew() {
-        return super.createNew()
-            .then((item) => {
-                return this.sessionService.getById(this.getSessionId())
-                    .then((session) => {
-                        item.session = session;
-                        item.site = session.site;
-                        item.begin = session.begin;
-                        return item;
-                    });
-            });
+    public async createNew() {
+        const item = await super.createNew();
+        const session = await this.sessionService.getById(this.getSessionId());
+
+        item.session = session;
+        item.site = session.site;
+        item.begin = session.begin;
+
+        return item;
     }
 
-    public addItemAndContinue() {
+    public async addItemAndContinue() {
         this.startLoading();
-        return this.observationService.add(this.item)
-            .then(() => {
-                return this.createNew();
-            })
-            .then((item) => {
-                item.scope = this.item.scope;
-                item.filter = this.item.filter;
-                item.eyepiece = this.item.eyepiece;
-                item.lens = this.item.lens;
 
-                this.item = item;
-                this.endLoading();
-            });
+        try {
+            await this.observationService.add(this.item);
+
+            const item = await this.createNew();
+
+            item.scope = this.item.scope;
+            item.filter = this.item.filter;
+            item.eyepiece = this.item.eyepiece;
+            item.lens = this.item.lens;
+
+            this.item = item;
+        } finally {
+            this.endLoading();
+        }
     }
 }

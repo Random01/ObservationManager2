@@ -21,4 +21,8 @@ export class Target extends Entity {
         super(params);
         Object.assign(this, params);
     }
+
+    serialize(): Object {
+        return Object.assign(super.serialize(), this);
+    }
 }

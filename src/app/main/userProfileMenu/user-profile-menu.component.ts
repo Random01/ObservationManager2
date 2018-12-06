@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AuthenticationService } from '../../auth/shared/authentication.service';
+import { User } from '../../shared/models/user.model';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'om-user-profile-menu',
@@ -10,6 +12,7 @@ import { AuthenticationService } from '../../auth/shared/authentication.service'
 export class UserProfileMenuComponent implements OnInit {
 
     public isAuthenticated: boolean;
+    public currentUser: User;
 
     ngOnInit(): void {
         this.authenticationService
@@ -18,9 +21,17 @@ export class UserProfileMenuComponent implements OnInit {
             .subscribe((isAuthenticated) => {
                 this.isAuthenticated = isAuthenticated;
             });
+
+        this.authenticationService
+            .currentUser
+            .pipe()
+            .subscribe((user) => {
+                this.currentUser = user;
+            });
     }
 
     constructor(
+        private router: Router,
         private authenticationService: AuthenticationService) {
     }
 
@@ -29,7 +40,7 @@ export class UserProfileMenuComponent implements OnInit {
     }
 
     editProfile() {
-
+        this.router.navigate(['/users/profile']);
     }
 
 }
