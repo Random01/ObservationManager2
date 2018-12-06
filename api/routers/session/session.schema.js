@@ -11,6 +11,7 @@ const SessionSchema = new Schema({
     end: { type: Date },
     comments: String,
     weather: String,
+    equipment: String,
     site:  { type: Schema.Types.ObjectId, ref: 'sites' }
 });
 
