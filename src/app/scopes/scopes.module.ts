@@ -8,7 +8,9 @@ import {
     MatButtonModule,
     MatInputModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatPaginatorModule,
+    MatAutocompleteModule
 } from '@angular/material';
 
 import { ScopesComponent } from './scopes/scopes.component';
@@ -27,7 +29,9 @@ import { ScopesRoutingModule } from './scopes-routing.module';
         MatTableModule,
         MatIconModule,
         RouterModule,
-        ScopesRoutingModule
+        ScopesRoutingModule,
+        MatPaginatorModule,
+        MatAutocompleteModule
     ],
     declarations: [
         ScopesComponent,

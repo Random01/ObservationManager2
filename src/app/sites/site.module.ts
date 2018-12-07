@@ -10,10 +10,11 @@ import {
     MatButtonModule,
     MatInputModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatPaginatorModule
 } from '@angular/material';
 
-import { SitesComponent } from './sites.component';
+import { SitesComponent } from './sites/sites.component';
 import { SiteComponent } from './site/site.component';
 import { EditSiteComponent } from './edit-site/edit-site.component';
 import { AddSiteComponent } from './add-site/add-site.component';
@@ -30,6 +31,7 @@ import { SiteService } from './shared/site.service';
         MatInputModule,
         MatTableModule,
         MatIconModule,
+        MatPaginatorModule,
         SitesRoutingModule
     ],
     declarations: [

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
-import { Site } from '../shared/models/site.model';
-import { SiteService } from './shared/site.service';
+import { Site } from '../../shared/models/site.model';
+import { SiteService } from '../shared/site.service';
 
-import { EntityListComponent } from '../shared/components/entity-list.component';
+import { EntityListComponent } from '../../shared/components/entity-list.component';
 
 @Component({
     selector: 'om-sites',
@@ -19,7 +19,6 @@ export class SitesComponent extends EntityListComponent<Site> {
         'longitude',
         'latitude',
         'elevation',
-        'code',
         'actions'
     ];
 

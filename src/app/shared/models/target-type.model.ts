@@ -1,8 +1,8 @@
 ﻿export enum TargetType {
-    OpenCluster,
-    DarkNebula,
-    BrightNebula,
-    Galaxy,
-    Star,
-    GlobularCluster
+    OpenCluster = 'OC',
+    DarkNebula = 'DN',
+    BrightNebula = 'BN',
+    Galaxy = 'G',
+    Star = 'S',
+    GlobularCluster = 'GC'
 }

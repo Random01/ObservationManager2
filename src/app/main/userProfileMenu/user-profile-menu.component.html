@@ -6,6 +6,7 @@
     </span>
 
     <button
+        *ngIf="isAuthenticated"
         mat-icon-button
         [matMenuTriggerFor]="menu">
         <mat-icon>more_vert</mat-icon>

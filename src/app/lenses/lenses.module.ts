@@ -8,7 +8,8 @@ import {
     MatButtonModule,
     MatInputModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatPaginatorModule
 } from '@angular/material';
 
 import { LensComponent } from './lens/lens.component';
@@ -27,6 +28,7 @@ import { LensesRoutingModule } from './lenses-routing.module';
         MatTableModule,
         MatIconModule,
         RouterModule,
+        MatPaginatorModule,
         LensesRoutingModule
     ],
     declarations: [

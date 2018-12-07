@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { EquipmentComponent } from './equipment.component';
+import { VendorService } from './shared/vendor.service';
 
 @NgModule({
     imports: [
@@ -17,6 +18,9 @@ import { EquipmentComponent } from './equipment.component';
     ],
     exports: [
         EquipmentComponent,
+    ],
+    providers: [
+        VendorService
     ]
 })
 

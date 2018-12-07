@@ -10,7 +10,8 @@ import {
     MatButtonModule,
     MatInputModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatPaginatorModule
 } from '@angular/material';
 
 import { EyepiecesComponent } from './eyepieces/eyepieces.component';
@@ -30,7 +31,8 @@ import { EyepiecesRoutingModule } from './eyepieces-routing.module';
         MatInputModule,
         MatTableModule,
         MatIconModule,
-        EyepiecesRoutingModule
+        EyepiecesRoutingModule,
+        MatPaginatorModule
     ],
     declarations: [
         EyepiecesComponent,

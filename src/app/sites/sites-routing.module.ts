@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { RouterModule, Routes } from '@angular/router';
 
-import { SitesComponent } from './sites.component';
+import { SitesComponent } from './sites/sites.component';
 import { AddSiteComponent } from './add-site/add-site.component';
 import { EditSiteComponent } from './edit-site/edit-site.component';
 

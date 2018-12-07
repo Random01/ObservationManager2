@@ -1,4 +1,5 @@
 ﻿<div class="om-scope-component">
+    
     <mat-form-field>
         <input matInput
                 placeholder="Model"
@@ -18,8 +19,21 @@
     </mat-form-field>
 
     <mat-form-field>
-            <input matInput
-                    placeholder="Vendor"
-                    [(ngModel)]="scope.vendor"/>
+            <input
+                matInput
+                placeholder="Vendor"
+                [matAutocomplete]="auto"
+                [(ngModel)]="scope.vendor"/>
+
+            <mat-autocomplete
+                #auto="matAutocomplete">
+
+                <mat-option
+                    *ngFor="let vendor of filteredVendors | async"
+                    [value]="vendor">
+                    {{vendor}}
+                </mat-option>
+                
+            </mat-autocomplete>
     </mat-form-field>
 </div>

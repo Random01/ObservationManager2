@@ -12,7 +12,8 @@ import {
     MatButtonModule,
     MatInputModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatPaginatorModule
 } from '@angular/material';
 
 import { FiltersComponent } from './filters/filters.component';
@@ -35,6 +36,7 @@ import { FilterService } from './shared/filter.service';
         MatTableModule,
         MatIconModule,
         MatSelectModule,
+        MatPaginatorModule,
         FiltersRoutingModule
     ],
     declarations: [

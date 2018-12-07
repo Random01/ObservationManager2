@@ -1,4 +1,5 @@
 import { Entity } from './models';
+import { UserRole } from './user-role.model';
 
 export class User extends Entity {
 
@@ -12,13 +13,16 @@ export class User extends Entity {
 
     email: string;
 
+    role: UserRole;
+
     constructor(params?: {
         id?: string,
         firstName?: string,
         lastName?: string,
         userName?: string,
         password?: string,
-        email?: string
+        email?: string,
+        role?: UserRole
     }) {
         super(params);
         Object.assign(this, params);
@@ -32,5 +36,9 @@ export class User extends Entity {
             password: this.password,
             email: this.email
         });
+    }
+
+    public isAdmin(): boolean {
+        return this.role === UserRole.Admin || this.role === UserRole.SuperAdmin;
     }
 }
