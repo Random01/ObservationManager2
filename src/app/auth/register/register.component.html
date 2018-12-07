@@ -1,37 +1,52 @@
-<div class="om-register-component">
-    
+<form
+    class="om-register-component"
+    [formGroup]=profileForm
+    (ngSubmit)="onSubmit()">
+
     <div>
         <h2 class="mat-h2">Register</h2>
     </div>
 
     <div class="register-profile">
         <mat-form-field>
-            <input matInput
-                    placeholder="Username"
-                    [(ngModel)]="item.userName"/>
+
+            <input
+                matInput
+                placeholder="Username"
+                formControlName="userName"/>
+
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput
-                    placeholder="Email"
-                    [(ngModel)]="item.email"/>
+
+            <input
+                matInput
+                placeholder="Email"
+                formControlName="email"/>
+
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput
-                    placeholder="Password"
-                    [(ngModel)]="item.password"/>
+
+            <input
+                matInput
+                placeholder="Password"
+                formControlName="password"
+                type="password"/>
+
         </mat-form-field>
     </div>
 
-    <div>
+    <div class="form-buttons">
         <button 
-                mat-button
-                color="primary"
-                (click)=register()>Register</button>
+            mat-button
+            type="submit"
+            color="primary"
+            [disabled]="!profileForm.valid">Register</button>
+
         <button
-                mat-button
-                (click)=goBack()>Back</button>
+            mat-button
+            (click)=goBack()>Back</button>
     </div>
 
-</div>
+</form>

@@ -1,6 +1,7 @@
 <form
-    [formGroup]="form"
-    class="om-login-component">
+    class="om-login-component"
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()">
 
     <div>
         <h2 class="mat-h2">Login</h2>
@@ -24,6 +25,7 @@
                     placeholder="Password"
                     formControlName="password"
                     type="password"/>
+
             </mat-form-field>
         </div>
 
@@ -32,8 +34,9 @@
     <div class="form-buttons">
         <button
             mat-button
+            type="submit"
             color="primary"
-            (click)="login()">Sign in</button>
+            [disabled]="!loginForm.valid">Sign in</button>
     </div>
 
 </form>

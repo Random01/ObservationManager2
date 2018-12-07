@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { Router } from '@angular/router';
 
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 
 import { AuthenticationService } from '../shared/authentication.service';
 import { BaseComponent } from '../../shared/components/base-component';
@@ -14,22 +14,19 @@ import { BaseComponent } from '../../shared/components/base-component';
 })
 export class LoginComponent extends BaseComponent {
 
-    form: FormGroup;
+    loginForm = new FormGroup({
+        email: new FormControl('', Validators.required),
+        password: new FormControl('', Validators.required)
+    });
 
     constructor(
-        private formBuilder: FormBuilder,
         private router: Router,
         private authenticationService: AuthenticationService) {
         super();
-
-        this.form = this.formBuilder.group({
-            email: ['', Validators.required],
-            password: ['', Validators.required]
-        });
     }
 
     login() {
-        const { email, password } = this.form.value;
+        const { email, password } = this.loginForm.value;
 
         if (email && password) {
             this.startLoading();

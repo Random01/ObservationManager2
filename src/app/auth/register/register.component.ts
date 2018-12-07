@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { UserService } from '../../users/shared/user.service';
 import { User } from '../../shared/models/user.model';
-import { BaseEntityComponent } from '../../shared/components/base-entity.component';
 
 @Component({
     selector: 'om-register',
@@ -14,23 +13,32 @@ import { BaseEntityComponent } from '../../shared/components/base-entity.compone
         UserService
     ]
 })
-export class RegisterComponent extends BaseEntityComponent<User> implements OnInit {
+export class RegisterComponent {
 
-    item: User;
+    profileForm = new FormGroup({
+        userName: new FormControl('', Validators.required),
+        email: new FormControl('', Validators.required),
+        password: new FormControl('', Validators.required)
+    });
 
     constructor(
         private userService: UserService,
         private router: Router
     ) {
-        super();
     }
 
-    register() {
-        this.userService.register(this.item).then(() => this.goBack());
-    }
+    onSubmit() {
+        const { userName, email, password } = this.profileForm.value;
 
-    ngOnInit() {
-        this.item = this.userService.createNew();
+        if (userName && email && password) {
+            const user = new User({
+                email,
+                userName,
+                password
+            });
+            this.userService.register(user).then(() => this.goBack());
+        }
+
     }
 
     goBack() {
