@@ -4,6 +4,7 @@ import { Entity } from '../models/entity.model';
 import { AddResultPayload } from './add-result-payload.model';
 import { environment } from '../../../environments/environment';
 import { SortOrder } from '../models/sort-order.model';
+import { JwtService } from '../../auth/shared/jwt.service';
 
 class RequestParams {
     page: number;
@@ -22,8 +23,9 @@ interface Response<T extends Entity> {
 export abstract class StorageService<T extends Entity> {
 
     constructor(
+        public url: string,
         protected http: HttpClient,
-        public url: string) {
+        protected jwtService: JwtService) {
     }
 
     protected static prepare(state: any): any {
@@ -123,7 +125,7 @@ export abstract class StorageService<T extends Entity> {
     }
 
     getAuthorizationToken(): string {
-        return localStorage.getItem('jwtToken');
+        return this.jwtService.getToken();
     }
 
     update(entity: T): Promise<Boolean> {

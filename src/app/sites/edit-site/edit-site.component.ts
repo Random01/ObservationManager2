@@ -8,8 +8,7 @@ import { Site } from '../../shared/models/models';
 
 @Component({
     selector: 'om-edit-site',
-    templateUrl: './edit-site.component.html',
-    providers: [SiteService]
+    templateUrl: './edit-site.component.html'
 })
 
 export class EditSiteComponent extends EditEntityComponent<Site> {

@@ -29,9 +29,9 @@ export class AddSessionComponent extends AddEntityComponent<Session> {
         this.storageService.add(this.item).then((result) => {
             this.endLoading();
 
-            if (result.status === 200) {
-                this.router.navigate([`/sessions/${result.payload.id}`]);
+            if (result.isSuccess()) {
+                this.router.navigate([`/sessions/${result.payload.id}/observations`]);
             }
-        });
+        }, () => this.endLoading());
     }
 }

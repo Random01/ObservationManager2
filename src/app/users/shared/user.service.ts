@@ -5,12 +5,15 @@ import { User } from '../../shared/models/user.model';
 
 import { StorageService } from '../../shared/services/storage.service';
 import { SignInResultPayload } from './signIn-result-payload.model';
+import { JwtService } from '../../auth/shared/jwt.service';
 
 @Injectable()
 export class UserService extends StorageService<User> {
 
-    constructor(protected http: HttpClient) {
-        super(http, '/users');
+    constructor(
+        protected http: HttpClient,
+        protected jwtService: JwtService) {
+        super('/users', http, jwtService);
     }
 
     deserialize(state: any): User {

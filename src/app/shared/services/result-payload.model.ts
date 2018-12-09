@@ -15,4 +15,8 @@ export class ResultPayload<T extends Entity> {
     }) {
         Object.assign(this, params);
     }
+
+    isSuccess(): boolean {
+        return this.status === 200;
+    }
 }

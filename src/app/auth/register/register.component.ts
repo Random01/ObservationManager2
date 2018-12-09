@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { UserService } from '../../users/shared/user.service';
 import { User } from '../../shared/models/user.model';
+import { BaseComponent } from '../../shared/components/base-component';
 
 @Component({
     selector: 'om-register',
@@ -13,7 +14,7 @@ import { User } from '../../shared/models/user.model';
         UserService
     ]
 })
-export class RegisterComponent {
+export class RegisterComponent extends BaseComponent {
 
     profileForm = new FormGroup({
         userName: new FormControl('', Validators.required),
@@ -25,6 +26,7 @@ export class RegisterComponent {
         private userService: UserService,
         private router: Router
     ) {
+        super();
     }
 
     onSubmit() {
@@ -36,7 +38,19 @@ export class RegisterComponent {
                 userName,
                 password
             });
-            this.userService.register(user).then(() => this.goBack());
+
+            this.startLoading();
+            this.userService
+                .register(user)
+                .then(
+                    () => {
+                        this.endLoading();
+                        this.goBack();
+                    },
+                    () => {
+                        this.endLoading();
+                    }
+                );
         }
 
     }

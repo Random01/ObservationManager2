@@ -7,6 +7,7 @@ import { StorageService } from '../../shared/services/storage.service';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { map } from 'rxjs/operators';
+import { JwtService } from '../../auth/shared/jwt.service';
 
 interface SearchParams {
     name: string;
@@ -16,8 +17,10 @@ interface SearchParams {
 @Injectable()
 export class TargetService extends StorageService<Target> {
 
-    constructor(protected http: HttpClient) {
-        super(http, '/targets');
+    constructor(
+        protected http: HttpClient,
+        protected jwtService: JwtService) {
+        super('/targets', http, jwtService);
     }
 
     createNew(params?: any): Target {

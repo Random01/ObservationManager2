@@ -7,8 +7,7 @@ import { EntityListComponent } from '../../shared/components/entity-list.compone
 
 @Component({
     selector: 'om-sites',
-    templateUrl: './sites.component.html',
-    providers: [SiteService]
+    templateUrl: './sites.component.html'
 })
 
 export class SitesComponent extends EntityListComponent<Site> {
@@ -16,13 +15,14 @@ export class SitesComponent extends EntityListComponent<Site> {
     displayedColumns: string[] = [
         'name',
         'timezone',
-        'longitude',
         'latitude',
+        'longitude',
         'elevation',
         'actions'
     ];
 
-    constructor(private siteService: SiteService) {
+    constructor(
+        private siteService: SiteService) {
         super(siteService);
     }
 

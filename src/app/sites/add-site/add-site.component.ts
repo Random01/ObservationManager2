@@ -9,11 +9,11 @@ import { SiteService } from '../shared/site.service';
 
 @Component({
     selector: 'om-add-site',
-    templateUrl: './add-site.component.html',
-    providers: [SiteService]
+    templateUrl: './add-site.component.html'
 })
 
 export class AddSiteComponent extends AddEntityComponent<Site> {
+
     constructor(
         private router: Router,
         private service: SiteService) {

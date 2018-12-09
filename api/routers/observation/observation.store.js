@@ -27,7 +27,7 @@ class ObservationStore extends BaseMongooseStore {
                 ['userModified', '_id userName firstName lastName'],
                 ['observer', '_id userName firstName lastName'],
                 ['site', '_id name'],
-                ['session'],
+                ['session', '_id'],
                 ['scope', '_id name'],
                 ['eyepiece', '_id name'],
                 ['filter', '_id name'],

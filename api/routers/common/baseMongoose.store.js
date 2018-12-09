@@ -80,12 +80,12 @@ class BaseMongooseStore {
             });
 
             query.exec((err, docs) => {
-                    if (err) {
-                        fail(err);
-                    } else {
-                        success(docs);
-                    }
-                });
+                if (err) {
+                    fail(err);
+                } else {
+                    success(docs);
+                }
+            });
         });
     }
 

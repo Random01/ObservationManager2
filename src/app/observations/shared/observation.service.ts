@@ -11,18 +11,20 @@ import { ScopeService } from '../../scopes/shared/scope.service';
 import { EyepieceService } from '../../eyepieces/shared/eyepiece.service';
 import { TargetService } from '../../target/shared/target.service';
 import { LensService } from '../../lenses/shared/lens.service';
+import { JwtService } from '../../auth/shared/jwt.service';
 
 @Injectable()
 export class ObservationService extends StorageService<Observation> {
 
     constructor(
         protected http: HttpClient,
+        protected jwtService: JwtService,
         protected scopeService: ScopeService,
         protected filterService: FilterService,
         protected eyepieceService: EyepieceService,
         protected targetService: TargetService,
         protected lensService: LensService) {
-        super(http, '/observations');
+        super('/observations', http, jwtService);
     }
 
     deserialize(state: any): Observation {

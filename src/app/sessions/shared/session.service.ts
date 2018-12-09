@@ -6,14 +6,16 @@ import { StorageService } from '../../shared/services/storage.service';
 
 import { Site } from '../../shared/models/site.model';
 import { SiteService } from '../../sites/shared/site.service';
+import { JwtService } from '../../auth/shared/jwt.service';
 
 @Injectable()
 export class SessionService extends StorageService<Session> {
 
     constructor(
         protected http: HttpClient,
+        protected jwtService: JwtService,
         protected siteService: SiteService) {
-        super(http, '/sessions');
+        super('/sessions', http, jwtService);
     }
 
     deserialize(state: any): Session {

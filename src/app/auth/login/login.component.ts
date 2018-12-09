@@ -25,7 +25,7 @@ export class LoginComponent extends BaseComponent {
         super();
     }
 
-    login() {
+    onSubmit() {
         const { email, password } = this.loginForm.value;
 
         if (email && password) {
