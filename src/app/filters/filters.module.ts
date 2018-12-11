@@ -22,6 +22,7 @@ import { FiltersRoutingModule } from './filters-routing.module';
 import { EditFilterComponent } from './edit-filter/edit-filter.component';
 import { AddFilterComponent } from './add-filter/add-filter.component';
 import { FilterService } from './shared/filter.service';
+import { EquipmentModule } from '../equipment/equipment.module';
 
 @NgModule({
     imports: [
@@ -37,7 +38,8 @@ import { FilterService } from './shared/filter.service';
         MatIconModule,
         MatSelectModule,
         MatPaginatorModule,
-        FiltersRoutingModule
+        FiltersRoutingModule,
+        EquipmentModule
     ],
     declarations: [
         FiltersComponent,

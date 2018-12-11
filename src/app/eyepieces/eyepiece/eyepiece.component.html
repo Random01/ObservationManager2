@@ -8,21 +8,20 @@
 
     <mat-form-field>
         <input matInput
-                placeholder="Vendor"
-                [(ngModel)]="eyepiece.vendor"/>
+                type="number"
+                placeholder="Focal Length (mm)"
+                [(ngModel)]="eyepiece.focalLength"/>
     </mat-form-field>
 
     <mat-form-field>
-            <input matInput
-                    placeholder="Focal Length"
-                    [(ngModel)]="eyepiece.focalLength"/>
+        <input matInput
+                type="number"
+                placeholder="Apparent FOV"
+                [(ngModel)]="eyepiece.apparentFOV"/>
     </mat-form-field>
 
-    <mat-form-field>
-            <input matInput
-                    placeholder="Apparent FOV"
-                    [(ngModel)]="eyepiece.apparentFOV"/>
-    </mat-form-field>
-
+    <om-vendor-selector
+        [(vendor)]="eyepiece.vendor">
+    </om-vendor-selector>
 
 </div>

@@ -20,6 +20,7 @@ import { EyepieceService } from './shared/eyepiece.service';
 import { AddEyepieceComponent } from './add-eyepiece/add-eyepiece.component';
 import { EditEyepieceComponent } from './edit-eyepiece/edit-eyepiece.component';
 import { EyepiecesRoutingModule } from './eyepieces-routing.module';
+import { EquipmentModule } from '../equipment/equipment.module';
 
 @NgModule({
     imports: [
@@ -32,7 +33,8 @@ import { EyepiecesRoutingModule } from './eyepieces-routing.module';
         MatTableModule,
         MatIconModule,
         EyepiecesRoutingModule,
-        MatPaginatorModule
+        MatPaginatorModule,
+        EquipmentModule
     ],
     declarations: [
         EyepiecesComponent,

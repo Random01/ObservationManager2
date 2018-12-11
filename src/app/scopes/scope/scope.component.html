@@ -1,21 +1,26 @@
 ﻿<div class="om-scope-component">
-    
+
     <mat-form-field>
-        <input matInput
-                placeholder="Model"
-                [(ngModel)]="scope.model"/>
+        <input
+            matInput
+            placeholder="Model"
+            [(ngModel)]="scope.model"/>
     </mat-form-field>
 
     <mat-form-field>
-        <input matInput
-                placeholder="Aperture (mm)"
-                [(ngModel)]="scope.aperture"/>
+        <input
+            matInput
+            type="number"
+            placeholder="Aperture (mm)"
+            [(ngModel)]="scope.aperture"/>
     </mat-form-field>
 
     <mat-form-field>
-        <input matInput
-                placeholder="Focal Length (mm)"
-                [(ngModel)]="scope.focalLength"/>
+        <input
+            matInput
+            type="number"
+            placeholder="Focal Length (mm)"
+            [(ngModel)]="scope.focalLength"/>
     </mat-form-field>
 
     <om-vendor-selector [(vendor)]="scope.vendor"></om-vendor-selector>
