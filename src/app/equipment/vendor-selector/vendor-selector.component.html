@@ -1,0 +1,19 @@
+<mat-form-field>
+    <input
+        matInput
+        placeholder="Vendor"
+        [matAutocomplete]="auto"
+        [(ngModel)]="vendor"
+        (ngModelChange)="onVendorChange($event)" />
+
+    <mat-autocomplete
+        #auto="matAutocomplete">
+
+        <mat-option
+            *ngFor="let vnd of filteredVendors | async"
+            [value]="vnd">
+            {{vnd}}
+        </mat-option>
+        
+    </mat-autocomplete>
+</mat-form-field>

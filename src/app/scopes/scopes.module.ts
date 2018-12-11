@@ -19,6 +19,7 @@ import { AddScopeComponent } from './add-scope/add-scope.component';
 import { EditScopeComponent } from './edit-scope/edit-scope.component';
 import { ScopeService } from './shared/scope.service';
 import { ScopesRoutingModule } from './scopes-routing.module';
+import { EquipmentModule } from '../equipment/equipment.module';
 
 @NgModule({
     imports: [
@@ -31,7 +32,8 @@ import { ScopesRoutingModule } from './scopes-routing.module';
         RouterModule,
         ScopesRoutingModule,
         MatPaginatorModule,
-        MatAutocompleteModule
+        MatAutocompleteModule,
+        EquipmentModule
     ],
     declarations: [
         ScopesComponent,

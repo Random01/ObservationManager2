@@ -18,22 +18,5 @@
                 [(ngModel)]="scope.focalLength"/>
     </mat-form-field>
 
-    <mat-form-field>
-            <input
-                matInput
-                placeholder="Vendor"
-                [matAutocomplete]="auto"
-                [(ngModel)]="scope.vendor"/>
-
-            <mat-autocomplete
-                #auto="matAutocomplete">
-
-                <mat-option
-                    *ngFor="let vendor of filteredVendors | async"
-                    [value]="vendor">
-                    {{vendor}}
-                </mat-option>
-                
-            </mat-autocomplete>
-    </mat-form-field>
+    <om-vendor-selector [(vendor)]="scope.vendor"></om-vendor-selector>
 </div>
