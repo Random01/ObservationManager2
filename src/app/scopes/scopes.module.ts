@@ -4,15 +4,6 @@ import { FormsModule } from '@angular/forms';
 
 import { RouterModule } from '@angular/router';
 
-import {
-    MatButtonModule,
-    MatInputModule,
-    MatTableModule,
-    MatIconModule,
-    MatPaginatorModule,
-    MatAutocompleteModule
-} from '@angular/material';
-
 import { ScopesComponent } from './scopes/scopes.component';
 import { ScopeComponent } from './scope/scope.component';
 import { AddScopeComponent } from './add-scope/add-scope.component';
@@ -20,20 +11,16 @@ import { EditScopeComponent } from './edit-scope/edit-scope.component';
 import { ScopeService } from './shared/scope.service';
 import { ScopesRoutingModule } from './scopes-routing.module';
 import { EquipmentModule } from '../equipment/equipment.module';
+import { MaterialModule } from '../shared/material.module';
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
-        MatButtonModule,
-        MatInputModule,
-        MatTableModule,
-        MatIconModule,
         RouterModule,
         ScopesRoutingModule,
-        MatPaginatorModule,
-        MatAutocompleteModule,
-        EquipmentModule
+        EquipmentModule,
+        MaterialModule
     ],
     declarations: [
         ScopesComponent,

@@ -2,7 +2,6 @@ import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 
-import { EquipmentItem } from '../../shared/models/equipment/equipment';
 import { VendorService } from '../shared/vendor.service';
 
 @Component({

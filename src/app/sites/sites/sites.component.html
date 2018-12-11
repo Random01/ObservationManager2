@@ -17,19 +17,19 @@
             <mat-cell *matCellDef="let site">{{site.timezone}}</mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="longitude">
-            <mat-header-cell *matHeaderCellDef>Geographical Longitude</mat-header-cell>
-            <mat-cell *matCellDef="let site">{{site.longitude}}</mat-cell>
-        </ng-container>
-
         <ng-container matColumnDef="latitude">
             <mat-header-cell *matHeaderCellDef>Geographical Latitude</mat-header-cell>
-            <mat-cell *matCellDef="let site">{{site.latitude}}</mat-cell>
+            <mat-cell *matCellDef="let site">{{site.latitude | number:'1.4-4'}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="longitude">
+            <mat-header-cell *matHeaderCellDef>Geographical Longitude</mat-header-cell>
+            <mat-cell *matCellDef="let site">{{site.longitude | number:'1.4-4'}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="elevation">
             <mat-header-cell *matHeaderCellDef>Elevation (m)</mat-header-cell>
-            <mat-cell *matCellDef="let site">{{site.elevation}}</mat-cell>
+            <mat-cell *matCellDef="let site">{{site.elevation | number}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="code">

@@ -8,7 +8,8 @@ export class VendorService {
         return Promise.resolve([
             new Vendor({ name: 'Sky Watcher' }),
             new Vendor({ name: 'Deep-Sky' }),
-            new Vendor({ name: 'Celestron' })
+            new Vendor({ name: 'Celestron' }),
+            new Vendor({ name: 'Baader' })
         ]);
     }
 

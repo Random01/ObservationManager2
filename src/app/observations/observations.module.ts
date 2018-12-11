@@ -6,17 +6,6 @@ import { FormsModule } from '@angular/forms';
 
 import { RouterModule } from '@angular/router';
 
-import { MatSelectModule } from '@angular/material/select';
-import {
-    MatButtonModule,
-    MatInputModule,
-    MatTableModule,
-    MatIconModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatSliderModule
-} from '@angular/material';
-
 import { ObservationComponent } from './observation/observation.component';
 import { ObservationsComponent } from './observations/observations.component';
 import { ObservationDetailComponent } from './observation-detail/observation-detail.component';
@@ -28,6 +17,7 @@ import { SessionObservationsComponent } from './session-observations/session-obs
 import { ObservationService } from './shared/observation.service';
 import { ObservationsRoutingModule } from './observations-routing.module';
 import { ObservationListComponent } from './observation-list/observation-list.component';
+import { MaterialModule } from '../shared/material.module';
 
 @NgModule({
     imports: [
@@ -35,16 +25,9 @@ import { ObservationListComponent } from './observation-list/observation-list.co
         BrowserModule,
         FormsModule,
         RouterModule,
-        MatButtonModule,
-        MatInputModule,
-        MatSelectModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
         TargetModule,
-        MatTableModule,
-        MatIconModule,
-        MatSliderModule,
-        ObservationsRoutingModule
+        ObservationsRoutingModule,
+        MaterialModule
     ],
     declarations: [
         ObservationComponent,
