@@ -2,6 +2,7 @@
 
     <mat-form-field
         class="example-full-width">
+        
         <input
             type="text"
             placeholder="Target"
@@ -10,16 +11,36 @@
             [formControl]="searhControl"
             [matAutocomplete]="auto"
             (keyup)="search(searhControl.value)">
+
         <mat-autocomplete
             #auto="matAutocomplete"
             [displayWith]="displayFn"
-            (optionSelected)=onTargetSelected(searhControl.value)>
+            (optionSelected)="onTargetSelected(searhControl.value)">
             <mat-option
                 *ngFor="let trgt of targets$ | async"
                 [value]="trgt">
             {{trgt.name}}
             </mat-option>
         </mat-autocomplete>
+
+        <button
+            mat-button
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            matTooltip="Clear"
+            (click)="clearSelection()"
+            *ngIf="target && target.id">
+            <mat-icon>close</mat-icon>
+        </button>
+
     </mat-form-field>
-    
+
+    <button
+        mat-button
+        mat-icon-button
+        (click)="openAdvancedSearch()">
+        <mat-icon>search</mat-icon>
+    </button>
+
 </div>

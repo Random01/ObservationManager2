@@ -7,8 +7,7 @@ import { EntityListComponent } from '../../shared/components/entity-list.compone
 
 @Component({
     selector: 'om-targets',
-    templateUrl: './targets.component.html',
-    providers: [TargetService]
+    templateUrl: './targets.component.html'
 })
 
 export class TargetsComponent extends EntityListComponent<Target> {

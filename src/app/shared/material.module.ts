@@ -11,7 +11,8 @@ import {
     MatAutocompleteModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSliderModule
+    MatSliderModule,
+    MatTooltipModule
 } from '@angular/material';
 
 @NgModule({
@@ -25,7 +26,8 @@ import {
         MatSelectModule,
         MatDatepickerModule,
         MatNativeDateModule,
-        MatSliderModule
+        MatSliderModule,
+        MatTooltipModule
     ]
 })
 

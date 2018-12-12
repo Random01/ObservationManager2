@@ -40,9 +40,4 @@ export class ObservationComponent implements OnInit {
         this.lensService.getAll().then(lenses => this.lenses = lenses);
     }
 
-    onTargetSelected(target?: Target) {
-        if (this.observation != null) {
-            this.observation.target = target;
-        }
-    }
 }

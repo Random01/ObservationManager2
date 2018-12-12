@@ -13,19 +13,29 @@ import {
 } from 'rxjs/operators';
 
 import { FormControl } from '@angular/forms';
-import { MatOption } from '@angular/material';
 
 @Component({
     selector: 'om-target-selector',
-    templateUrl: './target-selector.component.html',
-    providers: [
-        TargetService
-    ]
+    templateUrl: './target-selector.component.html'
 })
 export class TargetSelectorComponent implements OnInit {
 
-    @Input() target: Target;
-    @Output() targetSelected: EventEmitter<Target> = new EventEmitter();
+    private _target: Target;
+
+    @Input()
+    set target(target: Target) {
+        if (this._target !== target) {
+            this._target = target;
+            this.searhControl.setValue(this._target);
+        }
+    }
+
+    get target(): Target {
+        return this._target;
+    }
+
+    @Output()
+    targetChange: EventEmitter<Target> = new EventEmitter();
 
     targets$: Observable<Target[]>;
 
@@ -33,7 +43,8 @@ export class TargetSelectorComponent implements OnInit {
 
     private searchTerms = new Subject<string>();
 
-    constructor(private targetService: TargetService) {
+    constructor(
+        private targetService: TargetService) {
     }
 
     displayFn(target?: Target): string | undefined {
@@ -58,10 +69,16 @@ export class TargetSelectorComponent implements OnInit {
     onTargetSelected(target?: Target) {
         if (this.target !== target) {
             this.target = target;
-            this.targetSelected.emit(target);
-
-            this.searhControl.setValue(null);
+            this.targetChange.emit(target);
         }
+    }
+
+    clearSelection() {
+        this.onTargetSelected(new Target());
+    }
+
+    openAdvancedSearch() {
+
     }
 
 }

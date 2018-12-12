@@ -8,8 +8,7 @@ import { Target } from '../../shared/models/models';
 
 @Component({
     selector: 'om-edit-target',
-    templateUrl: './edit-target.component.html',
-    providers: [TargetService]
+    templateUrl: './edit-target.component.html'
 })
 
 export class EditTargetComponent extends EditEntityComponent<Target> {

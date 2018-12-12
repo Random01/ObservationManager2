@@ -7,20 +7,14 @@
             disabled
             matInput
             placeholder="Session"
-            value="{{observation.session.begin|date:'medium'}} - {{observation.session.end|date:'medium'}}"/>
+            value="{{observation.session.begin|date:'MMM d, y, hh:mm'}} - {{observation.session.end|date:'MMM d, y, hh:mm'}}"/>
     </mat-form-field>
 
     <!-- Target -->
     <div class="om-target">
-        <div *ngIf="observation.target">
-            {{observation.target.name}}
-        </div>
-        <div>
-            <om-target-selector
-                [target]="observation.target"
-                (targetSelected)="onTargetSelected($event)">
-            </om-target-selector>
-        </div>
+        <om-target-selector
+            [(target)]="observation.target">
+        </om-target-selector>
     </div>
 
     <div>
@@ -100,13 +94,7 @@
             [(ngModel)]="observation.result.description">
         </textarea>
     </mat-form-field>
-
-    <mat-form-field>
-        <input
-            matInput
-            placeholder="Visual rating"/>
-    </mat-form-field>
-
+    
     <h3 class="mat-subheading-2">Equipment</h3>
 
     <mat-form-field>

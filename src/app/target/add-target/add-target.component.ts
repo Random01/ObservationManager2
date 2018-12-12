@@ -9,8 +9,7 @@ import { TargetService } from '../shared/target.service';
 
 @Component({
     selector: 'om-add-target',
-    templateUrl: './add-target.component.html',
-    providers: [TargetService]
+    templateUrl: './add-target.component.html'
 })
 
 export class AddTargetComponent extends AddEntityComponent<Target> {
