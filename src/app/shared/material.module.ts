@@ -12,7 +12,8 @@ import {
     MatDatepickerModule,
     MatNativeDateModule,
     MatSliderModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MAT_TOOLTIP_DEFAULT_OPTIONS
 } from '@angular/material';
 
 @NgModule({
@@ -28,6 +29,9 @@ import {
         MatNativeDateModule,
         MatSliderModule,
         MatTooltipModule
+    ],
+    providers: [
+        { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: 1000 }
     ]
 })
 
