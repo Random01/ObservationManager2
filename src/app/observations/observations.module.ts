@@ -18,6 +18,7 @@ import { ObservationService } from './shared/observation.service';
 import { ObservationsRoutingModule } from './observations-routing.module';
 import { ObservationListComponent } from './observation-list/observation-list.component';
 import { MaterialModule } from '../shared/material.module';
+import { DeepSkyFindingDetailsComponent } from './finding-details/deep-sky-finding-details/deep-sky-finding-details.component';
 
 @NgModule({
     imports: [
@@ -37,7 +38,8 @@ import { MaterialModule } from '../shared/material.module';
         AddObservationComponent,
         EditObservationComponent,
         SessionObservationsComponent,
-        ObservationListComponent
+        ObservationListComponent,
+        DeepSkyFindingDetailsComponent
     ],
     entryComponents: [
         ObservationDialogComponent

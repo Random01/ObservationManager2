@@ -3,11 +3,11 @@ import { DeepSkyFindingDetails } from '../../../shared/models/finding-details/de
 
 @Component({
     selector: 'om-deep-sky-finding-details',
-    templateUrl: './deep-sky-finding-details.html',
+    templateUrl: './deep-sky-finding-details.component.html',
     styleUrls: ['./deep-sky-finding-details.component.css']
 })
 
-export class DeepSkyFindingdetailsComponent implements OnInit {
+export class DeepSkyFindingDetailsComponent implements OnInit {
 
     @Input() findingDetails: DeepSkyFindingDetails;
 
