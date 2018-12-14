@@ -8,7 +8,7 @@
 
         <ng-container matColumnDef="date">
                 <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
-                <mat-cell *matCellDef="let observation">{{observation.begin | date:'medium'}}</mat-cell>
+                <mat-cell *matCellDef="let observation">{{observation.begin | date:'MMM d, y, hh:mm'}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="targetName">

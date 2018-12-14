@@ -12,7 +12,7 @@
             <mat-header-cell
                 *matHeaderCellDef
                 mat-sort-header="begin">Date</mat-header-cell>
-            <mat-cell *matCellDef="let session">{{session.begin|date:'medium'}}</mat-cell>
+            <mat-cell *matCellDef="let session">{{session.begin|date:'MMM d, y'}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="site">
