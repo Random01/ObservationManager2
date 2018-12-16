@@ -1,18 +1,20 @@
 import { EquipmentItem } from './equipment-item.model';
+import { OpticsType } from './optics-type.model';
 
+export class Optics extends EquipmentItem {
 
-export class Scope extends EquipmentItem {
-
+    // Aperture in [mm]
     public aperture?: number;
 
-    public focalLength?: number;
+    // Type of optic. The type is optional but should be given if known!
+    public type?: OpticsType;
 
     constructor(params?: {
         id?: string,
         model?: string,
         vendor?: string,
-        aperture?: number,
-        focalLength?: number
+        focalLength?: number,
+        type?: OpticsType
     }) {
         super(params);
         Object.assign(this, params);
@@ -21,7 +23,7 @@ export class Scope extends EquipmentItem {
     public serialize(): Object {
         return Object.assign(super.serialize(), {
             aperture: this.aperture,
-            focalLength: this.focalLength
+            type: this.type
         });
     }
 }

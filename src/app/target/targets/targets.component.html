@@ -12,6 +12,11 @@
       <mat-cell *matCellDef="let target">{{target.name}}</mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="alliases">
+      <mat-header-cell *matHeaderCellDef>Aliases Names</mat-header-cell>
+      <mat-cell *matCellDef="let target">{{target.alliases}}</mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="description">
       <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
       <mat-cell *matCellDef="let target">{{target.description}}</mat-cell>
@@ -43,7 +48,6 @@
               [pageSizeOptions]="[5, 10]"
               (page)=onPageChanged($event)>
   </mat-paginator>
-
 
   <hr />
   <div>

@@ -1,9 +1,12 @@
-import { EquipmentItem } from './equipment-item.model';
+import { Optics } from './optics.model';
+import { OpticsType } from './optics-type.model';
 
-export class Scope extends EquipmentItem {
+/**
+ * type definition for telescopes using eyepieces
+ */
+export class Scope extends Optics {
 
-    public aperture?: number;
-
+    // focal length in [mm]
     public focalLength?: number;
 
     constructor(params?: {
@@ -11,7 +14,8 @@ export class Scope extends EquipmentItem {
         model?: string,
         vendor?: string,
         aperture?: number,
-        focalLength?: number
+        focalLength?: number,
+        type?: OpticsType
     }) {
         super(params);
         Object.assign(this, params);
@@ -19,7 +23,6 @@ export class Scope extends EquipmentItem {
 
     public serialize(): Object {
         return Object.assign(super.serialize(), {
-            aperture: this.aperture,
             focalLength: this.focalLength
         });
     }

@@ -1,5 +1,6 @@
 ﻿import { Entity } from './entity.model';
 import { TargetType } from './target-type.model';
+import { Constellation } from './constellation.mode';
 
 export class Target extends Entity {
 
@@ -11,12 +12,15 @@ export class Target extends Entity {
 
     public description: string;
 
+    public constellation: Constellation;
+
     constructor(params?: {
         id?: string,
         name?: string,
         targetType?: TargetType,
         alliases?: string[],
-        description?: string
+        description?: string,
+        constellation?: Constellation
     }) {
         super(params);
         Object.assign(this, params);
