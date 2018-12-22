@@ -8,4 +8,8 @@ export class OpticsType {
     constructor(param: { name: string }) {
         this.name = param.name;
     }
+
+    public serialize(): Object {
+        return { name };
+    }
 }

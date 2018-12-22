@@ -23,7 +23,7 @@ export class Optics extends EquipmentItem {
     public serialize(): Object {
         return Object.assign(super.serialize(), {
             aperture: this.aperture,
-            type: this.type
+            type: this.type ? this.type.serialize() : null
         });
     }
 }
