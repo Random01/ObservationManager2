@@ -4,5 +4,8 @@
     BrightNebula = 'BN',
     Galaxy = 'G',
     Star = 'S',
-    GlobularCluster = 'GC'
+    GlobularCluster = 'GC',
+    Planet = 'P',
+    PlanetaryNebula = 'PN',
+    Comet = 'C'
 }

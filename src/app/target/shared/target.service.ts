@@ -8,6 +8,10 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { map } from 'rxjs/operators';
 import { JwtService } from '../../auth/shared/jwt.service';
+import { TargetType } from '../../shared/models/target-type.model';
+import { GalaxyTarget } from '../../shared/models/target-types/deep-sky/galaxy-target.model';
+import { GlobularClusterTarget } from '../../shared/models/target-types/deep-sky/globular-cluster-target.model';
+import { CometTarget } from '../../shared/models/target-types/solar-system/comet-target.model';
 
 interface SearchParams {
     name: string;
@@ -38,6 +42,19 @@ export class TargetService extends StorageService<Target> {
             .pipe(
                 map((targets) => targets.map(item => this.deserialize(item)))
             );
+    }
+
+    protected create(targetType: TargetType, params?: any): Target {
+        switch (targetType) {
+            case TargetType.Galaxy:
+                return new GalaxyTarget(params);
+            case TargetType.GlobularCluster:
+                return new GlobularClusterTarget(params);
+            case TargetType.Comet:
+                return new CometTarget(params);
+            default:
+                return new Target(params);
+        }
     }
 
 }
