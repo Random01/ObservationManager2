@@ -1,39 +1,39 @@
 <div class="om-user-profile-menu">
     
-    <span *ngIf="!isAuthenticated">
+    <span *ngIf="!isAuthenticated && !isWorking">
         <a routerLink="/login"
             class="text-bold text-white no-underline">Sign in</a> or <a routerLink="/register" class="text-bold text-white no-underline">Sign up</a>
     </span>
 
     <button
-        *ngIf="isAuthenticated"
+        *ngIf="isAuthenticated && !isWorking"
         mat-icon-button
         [matMenuTriggerFor]="menu">
         <mat-icon>more_vert</mat-icon>
     </button>
 
-        <mat-menu
-            #menu="matMenu">
+    <mat-menu
+        #menu="matMenu">
 
-            <button
-                mat-menu-item
+        <button
+            mat-menu-item
+            *ngIf="isAuthenticated"
+            (click)="editProfile()">
+            <span>Signed in as {{currentUser.userName}}</span>
+        </button>
+
+        <button mat-menu-item
                 *ngIf="isAuthenticated"
                 (click)="editProfile()">
-                <span>Signed in as {{currentUser.userName}}</span>
-            </button>
+            <span>Your Profile</span>
+        </button>
 
-            <button mat-menu-item
-                    *ngIf="isAuthenticated"
-                    (click)="editProfile()">
-                <span>Your Profile</span>
-            </button>
+        <button mat-menu-item
+                *ngIf="isAuthenticated"
+                (click)="signOut()">
+            <span>Sign out</span>
+        </button>
 
-            <button mat-menu-item
-                    *ngIf="isAuthenticated"
-                    (click)="signOut()">
-                <span>Sign out</span>
-            </button>
-
-        </mat-menu>
+    </mat-menu>
     
 </div>

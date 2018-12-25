@@ -13,6 +13,11 @@ import { AddTargetComponent } from './add-target/add-target.component';
 import { EditTargetComponent } from './edit-target/edit-target.component';
 import { TargetComponent } from './target/target.component';
 import { MaterialModule } from '../shared/material.module';
+import { ConstellationSelectorComponent } from './constellation-selector/constellation-selector.component';
+import { TargetTypeSelectorComponent } from './target-type-selector/target-type-selector.component';
+import { TargetTypeService } from './shared/target-type.service';
+import { DeclinationSelectorComponent } from './declination-selector/declination-selector.component';
+import { RightAscensionSelectorComponent } from './right-ascension-selector/right-ascension-selector.component';
 
 @NgModule({
     imports: [
@@ -29,14 +34,19 @@ import { MaterialModule } from '../shared/material.module';
         AddTargetComponent,
         EditTargetComponent,
         TargetsComponent,
-        TargetComponent
+        TargetComponent,
+        ConstellationSelectorComponent,
+        TargetTypeSelectorComponent,
+        DeclinationSelectorComponent,
+        RightAscensionSelectorComponent
     ],
     exports: [
         TargetSearchComponent,
         TargetSelectorComponent
     ],
     providers: [
-        TargetService
+        TargetService,
+        TargetTypeService
     ]
 })
 

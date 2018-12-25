@@ -1,23 +1,30 @@
-/**
- * equatorial coordinates
- */
+import { RA } from './ra.model';
+import { Dec } from './dec.model';
+
 export class EquatorialCoordinates {
 
-    public ra: number;
+    /**
+     * Right Ascension
+     */
+    public ra: RA;
 
-    public dec: number;
+    /**
+     * Declination
+     */
+    public dec: Dec;
 
-    constructor(params: {
-        ra: number;
-        dec: number;
+    constructor(param?: {
+        ra: RA,
+        dec: Dec
     }) {
-        Object.assign(this, params);
+        this.ra = new RA();
+        this.dec = new Dec();
+
+        Object.assign(this, param);
     }
 
-    public serialize(): object {
-        return {
-            ra: this.ra,
-            dec: this.dec
-        };
+    public serialize(): Object {
+        return { ra: 0, dec: 0 };
     }
+
 }

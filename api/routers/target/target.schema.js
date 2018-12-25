@@ -14,7 +14,12 @@ const TargetSchema = new Schema({
     },
     name: String,
     alliases: [String],
-    description: String
+    description: String,
+    type: String,
+    pos: {
+        ra: Number,
+        dec: Number
+    }
 });
 
 module.exports = TargetSchema;

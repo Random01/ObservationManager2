@@ -13,13 +13,17 @@ export class UserProfileMenuComponent implements OnInit {
 
     public isAuthenticated: boolean;
     public currentUser: User;
+    public isWorking: boolean;
 
     ngOnInit(): void {
+        this.isWorking = true;
+
         this.authenticationService
             .isAuthenticated
             .pipe()
             .subscribe((isAuthenticated) => {
                 this.isAuthenticated = isAuthenticated;
+                this.isWorking = false;
             });
 
         this.authenticationService

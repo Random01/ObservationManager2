@@ -38,6 +38,18 @@ class ConstellationStore extends BaseMongooseStore {
         });
     }
 
+    getAll() {
+        // do not use authentication here as constellations available for all users.
+        return new Promise((success, fail) => {
+            this.model.find({}, (err, docs) => {
+                if (err) {
+                    fail(err);
+                } else {
+                    success(docs);
+                }
+            });
+        });
+    }
 }
 
 module.exports = ConstellationStore;

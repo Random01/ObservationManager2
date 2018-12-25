@@ -1,11 +1,8 @@
 <div class="om-target-component">
 
     <!-- Target Type -->
-    <mat-form-field>
-            <input matInput
-                [(ngModel)]="target.targetType"
-                placeholder="Name" />
-    </mat-form-field>
+    <om-target-type-selector [(targetType)]="target.targetType">
+    </om-target-type-selector>
 
     <!-- Target name -->
     <mat-form-field>
@@ -20,5 +17,12 @@
             [(ngModel)]="target.description"
             placeholder="Description" />
     </mat-form-field>
+
+    <om-right-ascension-selector [(ra)]="target.position.ra"></om-right-ascension-selector>
+
+    <om-declination-selector [(dec)]="target.position.dec"></om-declination-selector>
+
+    <om-constellation-selector [(constellation)]="target.constellation">
+    </om-constellation-selector>
     
 </div>

@@ -4,9 +4,14 @@ const Schema = mongoose.Schema;
 const ObservationSchema = new Schema({
     dateCreated: Date,
     dateModified: Date,
-    userCreated: { type: Schema.Types.ObjectId, ref: 'users' },
-    userModified: { type: Schema.Types.ObjectId, ref: 'users' },
-
+    userCreated: {
+        type: Schema.Types.ObjectId,
+        ref: 'users'
+    },
+    userModified: {
+        type: Schema.Types.ObjectId,
+        ref: 'users'
+    },
     observer: { type: Schema.Types.ObjectId, ref: 'users' },
     site: { type: Schema.Types.ObjectId, ref: 'sites' },
     session: { type: Schema.Types.ObjectId, ref: 'sessions' },

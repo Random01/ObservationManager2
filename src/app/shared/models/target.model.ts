@@ -31,6 +31,9 @@ export class Target extends Entity {
         position?: EquatorialCoordinates
     }) {
         super(params);
+
+        this.position = new EquatorialCoordinates();
+
         Object.assign(this, params);
     }
 
