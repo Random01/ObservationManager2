@@ -9,7 +9,7 @@ class CsvReader {
         this.path = path;
     }
 
-    read() {
+    read({ separator } = { separator: ';' }) {
         return new Promise((success, fail) => {
             const rl = readline.createInterface({
                 input: fs.createReadStream(this.path),
@@ -17,16 +17,17 @@ class CsvReader {
             });
 
             const lines = [];
-            rl.on('line', function (line) {
-                lines.push(line.split(';'));
-            }).on('close', () => {
-                let [definition, ...rows] = lines;
+            rl
+                .on('line', (line) => lines.push(line.split(separator)))
+                .on('close', () => {
+                    let [definition, ...rows] = lines;
 
-                success({
-                    definition,
-                    rows
-                });
-            }).on('error', fail);
+                    success({
+                        definition,
+                        rows
+                    });
+                })
+                .on('error', fail);
         });
     }
 }

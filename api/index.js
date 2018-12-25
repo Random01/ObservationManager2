@@ -42,6 +42,7 @@ dataBase.once('open', () => {
     require('./routers/filter/filter.router')(app, dataBase);
     require('./routers/user/user.router')(app, dataBase);
     require('./routers/lens/lens.router')(app, dataBase);
+    require('./routers/constellation/constellation.router')(app, dataBase);
 
     app.use('/*', (req, res) => {
         res.sendFile(__dirname + '/public/index.html');
