@@ -1,7 +1,8 @@
 import { RA } from './ra.model';
 import { Dec } from './dec.model';
+import { Serializable } from '../interfaces/serializable.interface';
 
-export class EquatorialCoordinates {
+export class EquatorialCoordinates implements Serializable {
 
     /**
      * Right Ascension
@@ -23,8 +24,11 @@ export class EquatorialCoordinates {
         Object.assign(this, param);
     }
 
-    public serialize(): Object {
-        return { ra: 0, dec: 0 };
+    public serialize(): any {
+        return {
+            ra: this.ra.serialize(),
+            dec: this.dec.serialize()
+        };
     }
 
 }

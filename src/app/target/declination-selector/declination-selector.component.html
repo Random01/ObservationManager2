@@ -2,22 +2,26 @@
 
     <mat-form-field>
         <input matInput
-            [(ngModel)]="degrees"
+            [(ngModel)]="dec.degrees"
             type="number"
             placeholder="Degrees" />
     </mat-form-field>
 
     <mat-form-field>
         <input matInput
-            [(ngModel)]="arcminutes"
+            [(ngModel)]="dec.arcminutes"
             type="number"
+            min="0"
+            max="59"
             placeholder="Arcminutes" />
     </mat-form-field>
 
     <mat-form-field>
         <input matInput
-            [(ngModel)]="arcseconds"
+            [(ngModel)]="dec.arcseconds"
             type="number"
+            min="0"
+            max="59"
             placeholder="Arcseconds" />
     </mat-form-field>
 

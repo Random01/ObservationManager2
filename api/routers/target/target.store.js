@@ -83,7 +83,7 @@ class TargetStore extends BaseMongooseStore {
                     }
                 });
             });
-        })
+        });
     }
 
     batchUpdate(){

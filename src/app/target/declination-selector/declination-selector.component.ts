@@ -11,16 +11,7 @@ export class DeclinationSelectorComponent {
     @Input() dec: Dec;
     @Output() decChange = new EventEmitter<Dec>();
 
-    degrees: number;
-
-    arcminutes: number;
-
-    arcseconds: number;
-
     constructor() {
-        this.degrees = 0;
-        this.arcminutes = 0;
-        this.arcseconds = 0;
     }
 
 }
