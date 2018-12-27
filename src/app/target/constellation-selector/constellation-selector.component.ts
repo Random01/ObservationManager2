@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Constellation } from '../../shared/models/constellation.mode';
 import { ConstellationsService } from '../../constellations/shared/constellations.service';
 

@@ -3,8 +3,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { TargetService } from '../shared/target.service';
 import { Target } from '../../shared/models/models';
 
-import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable';
+import { Subject ,  Observable } from 'rxjs';
 
 import {
     debounceTime,

@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { OpticsType } from '../../shared/models/equipment/optics-type.model';
 
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import { Observable ,  of } from 'rxjs';
 
 @Injectable()
 export class OpticsService {

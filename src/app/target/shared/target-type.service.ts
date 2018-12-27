@@ -1,6 +1,5 @@
-import { Observable } from 'rxjs/Observable';
+import { Observable ,  of } from 'rxjs';
 import { TargetType } from '../../shared/models/target-type.model';
-import { of } from 'rxjs/observable/of';
 
 export class TargetTypeService {
 

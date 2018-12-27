@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { UserService } from '../../users/shared/user.service';
 import { JwtService } from './jwt.service';
 
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { BehaviorSubject ,  ReplaySubject } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 
 import { User } from '../../shared/models/user.model';
