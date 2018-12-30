@@ -25,8 +25,16 @@ export class RA implements Serializable {
         return this.hours * 15 + this.minutes / 4 + this.seconds / 240;
     }
 
+    fromDegrees(degrees: number) {
+
+    }
+
     serialize(): any {
         return this.toDegrees();
+    }
+
+    deserialize(state: any) {
+
     }
 
 }

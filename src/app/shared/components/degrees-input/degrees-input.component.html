@@ -1,0 +1,28 @@
+<div class="om-degees-selector-component">
+
+    <mat-form-field>
+        <input matInput
+            [(ngModel)]="value.degrees"
+            type="number"
+            placeholder="Degrees" />
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput
+            [(ngModel)]="value.arcminutes"
+            type="number"
+            min="0"
+            max="59"
+            placeholder="Arcminutes" />
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput
+            [(ngModel)]="value.arcseconds"
+            type="number"
+            min="0"
+            max="59"
+            placeholder="Arcseconds" />
+    </mat-form-field>
+
+</div>

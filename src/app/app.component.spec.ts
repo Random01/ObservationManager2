@@ -22,9 +22,9 @@ describe('AppComponent', function () {
     de = fixture.debugElement.query(By.css('h1'));
   });
 
-  it('should create component', () => expect(comp).toBeDefined() );
+  xit('should create component', () => expect(comp).toBeDefined() );
 
-  it('should have expected <h1> text', () => {
+  xit('should have expected <h1> text', () => {
     fixture.detectChanges();
     const h1 = de.nativeElement;
     expect(h1.innerText).toMatch(/angular/i,
