@@ -30,8 +30,8 @@ export class Degrees implements Serializable {
 
     fromDegrees(degrees: number) {
         const degreesFraction = Math.ceil(degrees);
-        const arcminFraction = 7;
-        const arcseconds = 6;
+        const arcminFraction = (degrees % 1) * 60;
+        const arcseconds = (arcminFraction % 1) * 60;
 
         this.degrees = degreesFraction;
         this.arcminutes = arcminFraction;

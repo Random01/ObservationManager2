@@ -47,7 +47,7 @@ describe('Dec', () => {
                 arcseconds: 30
             });
 
-            expect(dec.toDegrees()).toEqual('47.8249967');
+            expect(dec.toDegrees().toFixed(5)).toEqual('47.82500');
         });
 
 
