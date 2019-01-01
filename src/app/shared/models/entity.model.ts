@@ -1,4 +1,6 @@
-export class Entity {
+import { Serializable } from '../interfaces/serializable.interface';
+
+export class Entity implements Serializable {
 
     public id: string;
 
@@ -10,6 +12,10 @@ export class Entity {
 
     public serialize(): Object {
         return { id: this.id };
+    }
+
+    public deserialize(state: any): void {
+        this.id = state.id;
     }
 
     public isValid(): boolean {

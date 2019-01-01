@@ -30,4 +30,12 @@
             placeholder="Elevation" />
     </mat-form-field>
 
+    <om-degrees-input
+        [(degrees)]="site.coord.lattitude">
+    </om-degrees-input>
+
+    <om-degrees-input
+        [(degrees)]="site.coord.longitude">
+    </om-degrees-input>
+
 </div>

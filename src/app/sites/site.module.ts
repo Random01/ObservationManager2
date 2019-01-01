@@ -20,6 +20,7 @@ import { EditSiteComponent } from './edit-site/edit-site.component';
 import { AddSiteComponent } from './add-site/add-site.component';
 import { SitesRoutingModule } from './sites-routing.module';
 import { SiteService } from './shared/site.service';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
     imports: [
@@ -32,7 +33,8 @@ import { SiteService } from './shared/site.service';
         MatTableModule,
         MatIconModule,
         MatPaginatorModule,
-        SitesRoutingModule
+        SitesRoutingModule,
+        SharedModule
     ],
     declarations: [
         SitesComponent,

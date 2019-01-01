@@ -22,11 +22,16 @@ export class RA implements Serializable {
 
     toDegrees(): number {
         // 1h = 15°; 1m = 1/4°; 1s = 1/240°
-        return this.hours * 15 + this.minutes / 4 + this.seconds / 240;
+        return this.hours * 15.0 + this.minutes / 4.0 + this.seconds / 240.0;
     }
 
     fromDegrees(degrees: number) {
+        this.hours = degrees / 15.0;
 
+        const fraction = (degrees % 1) * 4.0;
+
+        this.minutes = fraction;
+        this.seconds = fraction * 60;
     }
 
     serialize(): any {
