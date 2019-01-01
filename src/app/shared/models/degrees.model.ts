@@ -23,6 +23,10 @@ export class Degrees implements Serializable {
         return this.toDegrees();
     }
 
+    deserialize(params: any) {
+        this.fromDegrees(params);
+    }
+
     toDegrees(): number {
         // https://en.wikipedia.org/wiki/Minute_and_second_of_arc
         return (this.arcseconds / 3600) + (this.arcminutes / 60.0) + this.degrees;

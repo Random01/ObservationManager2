@@ -31,4 +31,9 @@ export class EquatorialCoordinates implements Serializable {
         };
     }
 
+    public deserialize(params: any): void {
+        this.ra.deserialize(params.ra);
+        this.dec.deserialize(params.dec);
+    }
+
 }

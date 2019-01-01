@@ -64,12 +64,21 @@ describe('Dec', () => {
             expect(dec.arcseconds).toEqual(0);
         });
 
-        it('should work (1)', () => {
+        it('should work (2)', () => {
             const dec = new Dec();
-            dec.fromDegrees(0);
+            dec.fromDegrees(51.5);
 
-            expect(dec.degrees).toEqual(0);
-            expect(dec.arcminutes).toEqual(0);
+            expect(dec.degrees).toEqual(51);
+            expect(dec.arcminutes).toEqual(30);
+            expect(dec.arcseconds).toEqual(0);
+        });
+
+        it('should work (3)', () => {
+            const dec = new Dec();
+            dec.fromDegrees(51.5);
+
+            expect(dec.degrees).toEqual(51);
+            expect(dec.arcminutes).toEqual(30);
             expect(dec.arcseconds).toEqual(0);
         });
 

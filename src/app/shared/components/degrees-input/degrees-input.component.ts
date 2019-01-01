@@ -6,7 +6,7 @@ import { Degrees } from '../../models/degrees.model';
     templateUrl: './degrees-selector.component.html',
     styleUrls: ['./degrees-selector.component.css']
 })
-export class DegreeslinationSelectorComponent {
+export class DegreesSelectorComponent {
 
     @Input() degrees: Degrees;
     @Output() degreesChange = new EventEmitter<Degrees>();

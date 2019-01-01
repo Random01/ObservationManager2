@@ -34,7 +34,7 @@ export class RA implements Serializable {
     }
 
     deserialize(state: any) {
-
+        this.fromDegrees(state);
     }
 
 }
