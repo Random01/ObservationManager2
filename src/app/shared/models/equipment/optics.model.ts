@@ -13,7 +13,7 @@ export class Optics extends EquipmentItem {
         id?: string,
         model?: string,
         vendor?: string,
-        focalLength?: number,
+        aperture?: number,
         type?: OpticsType
     }) {
         super(params);
@@ -25,5 +25,12 @@ export class Optics extends EquipmentItem {
             aperture: this.aperture,
             type: this.type ? this.type.serialize() : null
         });
+    }
+
+    public deserialize(state: any): void {
+        super.deserialize(state);
+
+        this.aperture = state.aperture;
+        this.type = state.type;
     }
 }

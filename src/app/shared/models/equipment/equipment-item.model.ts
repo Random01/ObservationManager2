@@ -15,10 +15,17 @@ export class EquipmentItem extends Entity {
         Object.assign(this, params);
     }
 
-    serialize(): Object {
+    public serialize(): Object {
         return Object.assign(super.serialize(), {
             model: this.model,
             vendor: this.vendor
         });
+    }
+
+    public deserialize(state: any): void {
+        super.deserialize(state);
+
+        this.model = state.model;
+        this.vendor = state.vendor;
     }
 }

@@ -23,4 +23,10 @@ export class Filter extends EquipmentItem {
             filterType: this.filterType
         });
     }
+
+    public deserialize(state: any): void {
+        super.deserialize(state);
+
+        this.filterType = state.filterType;
+    }
 }

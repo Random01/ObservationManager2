@@ -26,4 +26,10 @@ export class Scope extends Optics {
             focalLength: this.focalLength
         });
     }
+
+    public deserialize(state: any): void {
+        super.deserialize(state);
+
+        this.focalLength = state.focalLength;
+    }
 }

@@ -36,6 +36,7 @@ export class Site extends Entity {
             name: this.name,
             timezone: this.timezone,
             code: this.code,
+            elevation: this.elevation,
             longitude: this.coord.longitude.serialize(),
             latitude: this.coord.latitude.serialize()
         });
@@ -47,6 +48,7 @@ export class Site extends Entity {
         this.name = state.name;
         this.timezone = state.timezone;
         this.code = state.code;
+        this.elevation = state.elevation;
 
         this.coord.longitude.deserialize(state.longitude);
         this.coord.latitude.deserialize(state.latitude);

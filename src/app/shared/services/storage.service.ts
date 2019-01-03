@@ -159,6 +159,8 @@ export abstract class StorageService<T extends Entity> {
     abstract createNew(params?: any): T;
 
     deserialize(state: any): T {
-        return this.createNew(StorageService.prepare(state));
+        const item = this.createNew();
+        item.deserialize(StorageService.prepare(state));
+        return item;
     }
 }
