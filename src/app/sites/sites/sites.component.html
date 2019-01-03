@@ -19,12 +19,12 @@
 
         <ng-container matColumnDef="latitude">
             <mat-header-cell *matHeaderCellDef>Geographical Latitude</mat-header-cell>
-            <mat-cell *matCellDef="let site">{{site.latitude | number:'1.4-4'}}</mat-cell>
+            <mat-cell *matCellDef="let site">{{ site.latitude | degreesFormatter }}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="longitude">
             <mat-header-cell *matHeaderCellDef>Geographical Longitude</mat-header-cell>
-            <mat-cell *matCellDef="let site">{{site.longitude | number:'1.4-4'}}</mat-cell>
+            <mat-cell *matCellDef="let site">{{ site.longitude | degreesFormatter }}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="elevation">

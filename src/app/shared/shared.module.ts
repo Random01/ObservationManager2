@@ -6,6 +6,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
+import { DegreesFormatter } from './models/pipes/degrees-formatter.pipe';
 
 @NgModule({
     imports: [
@@ -16,10 +17,12 @@ import { BrowserModule } from '@angular/platform-browser';
         MaterialModule
     ],
     declarations: [
-        DegreesInputComponent
+        DegreesInputComponent,
+        DegreesFormatter
     ],
     exports: [
-        DegreesInputComponent
+        DegreesInputComponent,
+        DegreesFormatter
     ],
     providers: [
         MessageService

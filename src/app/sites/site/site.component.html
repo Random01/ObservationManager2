@@ -14,26 +14,16 @@
 
     <mat-form-field>
         <input matInput
-            [(ngModel)]="site.latitude"
-            placeholder="Latitude" />
-    </mat-form-field>
-
-    <mat-form-field>
-        <input matInput
-            [(ngModel)]="site.longitude"
-            placeholder="Longitude" />
-    </mat-form-field>
-
-    <mat-form-field>
-        <input matInput
             [(ngModel)]="site.elevation"
             placeholder="Elevation" />
     </mat-form-field>
 
+    <span>Latitude</span>
     <om-degrees-input
-        [(degrees)]="site.coord.lattitude">
+        [(degrees)]="site.coord.latitude">
     </om-degrees-input>
 
+    <span>Longitude</span>
     <om-degrees-input
         [(degrees)]="site.coord.longitude">
     </om-degrees-input>

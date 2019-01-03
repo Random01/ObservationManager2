@@ -1,6 +1,5 @@
 ﻿import { Component, Input } from '@angular/core';
 import { Site } from '../../shared/models/site.model';
-import { Degrees } from '../../shared/models/degrees.model';
 
 @Component({
     selector: 'om-site',
@@ -10,5 +9,4 @@ import { Degrees } from '../../shared/models/degrees.model';
 
 export class SiteComponent {
     @Input() site: Site;
-
 }

@@ -3,14 +3,14 @@ import { Degrees } from './degrees.model';
 
 export class GeographicalCoordinates implements Serializable {
 
-    public lattitude: Degrees;
+    public latitude: Degrees;
     public longitude: Degrees;
 
     constructor(params?: {
-        lattitude?: Degrees,
+        latitude?: Degrees,
         longitude?: Degrees
     }) {
-        this.lattitude = new Degrees();
+        this.latitude = new Degrees();
         this.longitude = new Degrees();
 
         Object.assign(this, params);
@@ -18,13 +18,13 @@ export class GeographicalCoordinates implements Serializable {
 
     public serialize(): any {
         return {
-            lattitude: this.lattitude.serialize(),
+            latitude: this.latitude.serialize(),
             longitude: this.longitude.serialize()
         };
     }
 
     public deserialize(params: any): void {
-        this.lattitude.deserialize(params.lattitude);
+        this.latitude.deserialize(params.latitude);
         this.longitude.deserialize(params.longitude);
     }
 }

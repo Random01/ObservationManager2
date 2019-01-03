@@ -1,3 +1,7 @@
 .om-degrees-selector-component > DIV {
     display: inline-block;
 }
+
+.om-degrees-selector-component .mat-form-field {
+    max-width: 100px;
+}

@@ -15,6 +15,8 @@ export class SiteService extends StorageService<Site> {
     }
 
     createNew(params: any): Site {
-        return new Site(params);
+        const site = new Site();
+        site.deserialize(params);
+        return site;
     }
 }
