@@ -34,8 +34,22 @@ export class User extends Entity {
             lastName: this.lastName,
             userName: this.userName,
             password: this.password,
-            email: this.email
+            email: this.email,
+            role: this.role
         });
+    }
+
+    public deserialize(state: any): void {
+        super.deserialize(state);
+
+        this.copy(state, [
+            'firtName',
+            'lastName',
+            'userName',
+            'password',
+            'email',
+            'role'
+        ]);
     }
 
     public isAdmin(): boolean {

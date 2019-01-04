@@ -26,11 +26,11 @@ export class TargetService extends StorageService<Target> {
         super('/targets', http, jwtService);
     }
 
-    createNew(params?: any): Target {
+    public createNew(params?: any): Target {
         return new Target(params);
     }
 
-    search(searchParams: SearchParams): Observable<Target[]> {
+    public search(searchParams: SearchParams): Observable<Target[]> {
         if (searchParams.name.trim() === '') {
             return of([]);
         }

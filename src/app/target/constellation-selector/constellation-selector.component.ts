@@ -8,7 +8,7 @@ import { ConstellationsService } from '../../constellations/shared/constellation
     selector: 'om-constellation-selector',
     templateUrl: './constellation-selector.component.html',
     styleUrls: ['./constellation-selector.component.css'],
-    providers: [ ConstellationsService ]
+    providers: [ConstellationsService]
 })
 export class ConstellationSelectorComponent implements OnInit {
 
@@ -22,19 +22,21 @@ export class ConstellationSelectorComponent implements OnInit {
         private constellationService: ConstellationsService) {
     }
 
-    onVendorChange(model: Constellation) {
+    onConstellationChange(model: Constellation) {
         this.constellation = model;
         this.constellationChange.emit(model);
     }
 
     ngOnInit() {
-        this.constellationService.getAll().then((vendors) => {
-            this.constellations = vendors;
+        this.constellationService
+            .getAll()
+            .then((vendors) => {
+                this.constellations = vendors;
 
-            this.filteredConstellations = new Observable((subscriber) => {
-                subscriber.next(this.constellations);
+                this.filteredConstellations = new Observable((subscriber) => {
+                    subscriber.next(this.constellations);
+                });
             });
-        });
     }
 
 }

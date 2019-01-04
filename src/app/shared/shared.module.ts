@@ -7,6 +7,7 @@ import { MaterialModule } from './material.module';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { DegreesFormatter } from './models/pipes/degrees-formatter.pipe';
+import { DateTimeInputComponent } from './components/date-time-input/date-time-input.component';
 
 @NgModule({
     imports: [
@@ -18,10 +19,12 @@ import { DegreesFormatter } from './models/pipes/degrees-formatter.pipe';
     ],
     declarations: [
         DegreesInputComponent,
+        DateTimeInputComponent,
         DegreesFormatter
     ],
     exports: [
         DegreesInputComponent,
+        DateTimeInputComponent,
         DegreesFormatter
     ],
     providers: [

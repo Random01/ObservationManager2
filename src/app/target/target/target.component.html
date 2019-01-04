@@ -6,23 +6,38 @@
 
     <!-- Target name -->
     <mat-form-field>
-        <input matInput
+        <input
+            matInput
             [(ngModel)]="target.name"
             placeholder="Name" />
     </mat-form-field>
 
     <!-- Target Description -->
     <mat-form-field>
-        <input matInput
+        <input
+            matInput
             [(ngModel)]="target.description"
             placeholder="Description" />
     </mat-form-field>
 
-    <om-right-ascension-selector [(ra)]="target.position.ra"></om-right-ascension-selector>
+    <span>RA</span>
+    <om-right-ascension-selector
+        [(ra)]="target.position.ra">
+    </om-right-ascension-selector>
 
-    <om-declination-selector [(dec)]="target.position.dec"></om-declination-selector>
+    <span>Dec</span>
+    <om-declination-selector
+        [(dec)]="target.position.dec">
+    </om-declination-selector>
 
-    <om-constellation-selector [(constellation)]="target.constellation">
+    <!-- Constellation -->
+    <om-constellation-selector
+        [(constellation)]="target.constellation">
     </om-constellation-selector>
+
+    <!-- Alias Names -->
+    <om-aliases-editor
+        [aliases]="target.alliases">
+    </om-aliases-editor>
     
 </div>

@@ -52,12 +52,18 @@ export class Observation extends Entity {
     }) {
         super(params);
 
+        this.observer = new Observer();
+        this.target = new Target();
+        this.scope = new Scope();
+        this.filter = new Filter();
+        this.eyepiece = new Eyepiece();
+        this.lens = new Lens();
         this.result = new Result();
 
         Object.assign(this, params);
     }
 
-    serialize(): Object {
+    public serialize(): Object {
         return Object.assign(super.serialize(), {
             observer: this.observer != null ? this.observer.id : undefined,
             site: this.site != null ? this.site.id : undefined,
@@ -70,7 +76,24 @@ export class Observation extends Entity {
             eyepiece: this.eyepiece != null ? this.eyepiece.id : undefined,
             filter: this.filter.id != null ? this.filter.id : undefined,
             lens: this.lens != null ? this.lens.id : undefined,
-            result: this.result
+            result: this.result.serialize()
         });
+    }
+
+    public deserialize(state: any): void {
+        super.deserialize(state);
+
+        this.copy(state, [
+            'begin',
+            'end',
+            'seeing',
+            'observer',
+            'target',
+            'scope',
+            'filter',
+            'eyepiece',
+            'lens',
+            'result'
+        ]);
     }
 }

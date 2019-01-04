@@ -32,6 +32,8 @@ export class Target extends Entity {
     }) {
         super(params);
 
+        this.alliases = [];
+        this.constellation = new Constellation();
         this.position = new EquatorialCoordinates();
 
         Object.assign(this, params);
@@ -42,8 +44,22 @@ export class Target extends Entity {
             name: this.name,
             targetType: this.targetType,
             alliases: this.alliases,
+            description: this.description,
             constelation: this.constellation ? this.constellation.serialize() : null,
             position: this.position ? this.position.serialize() : null
         });
+    }
+
+    deserialize(state: any): void {
+        super.deserialize(state);
+
+        this.copy(state, [
+            'name',
+            'targetType',
+            'alliases',
+            'description',
+            'position',
+            'constellation'
+        ]);
     }
 }

@@ -22,4 +22,10 @@ export class Lens extends EquipmentItem {
         });
     }
 
+    public deserialize(state: any): void {
+        super.deserialize(state);
+
+        this.factor = state.factor;
+    }
+
 }

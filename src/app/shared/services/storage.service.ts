@@ -28,17 +28,6 @@ export abstract class StorageService<T extends Entity> {
         protected jwtService: JwtService) {
     }
 
-    protected static prepare(state: any): any {
-        if (typeof state === 'string') {
-            return { id: state };
-        }
-
-        state.id = state._id;
-        delete state._id;
-
-        return state;
-    }
-
     getUrl(): string {
         return environment.omServiceEndpoint + this.url;
     }
@@ -160,7 +149,7 @@ export abstract class StorageService<T extends Entity> {
 
     deserialize(state: any): T {
         const item = this.createNew();
-        item.deserialize(StorageService.prepare(state));
+        item.deserialize(state);
         return item;
     }
 }

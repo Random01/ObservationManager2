@@ -1,7 +1,9 @@
 ﻿import { Entity } from './entity.model';
 import { Site } from './site.model';
 
-// <!-- common remarks or conditions of observations conducted during one night/session -->
+/**
+ * Common remarks or conditions of observations conducted during one night/session.
+ */
 export class Session extends Entity {
     // Start of observation session
     public begin: Date;
@@ -31,12 +33,25 @@ export class Session extends Entity {
         Object.assign(this, params);
     }
 
-    serialize(): Object {
+    public serialize(): Object {
         const state: any = Object.assign(super.serialize(), this);
 
         state.site = (this.site != null && this.site.id != null)
             ? this.site.id : undefined;
 
         return state;
+    }
+
+    public deserialize(state: any): void {
+        super.deserialize(state);
+
+        this.copy(state, [
+            'begin',
+            'end',
+            'site',
+            'equipment',
+            'comments',
+            'weather'
+        ]);
     }
 }

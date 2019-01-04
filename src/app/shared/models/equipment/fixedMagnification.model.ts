@@ -30,4 +30,11 @@ export class FixedMagnificationOptics extends Optics {
         });
     }
 
+    public deserialize(state: any): void {
+        super.deserialize(state);
+
+        this.magnification = state.magnification;
+        this.trueField = state.trueField;
+    }
+
 }

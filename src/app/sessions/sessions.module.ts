@@ -25,6 +25,7 @@ import { AddSessionComponent } from './add-session/add-session.component';
 import { EditSessionComponent } from './edit-session/edit-session.component';
 import { SessionsRoutingModule } from './sessions-routing.module';
 import { SessionService } from './shared/session.service';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
     imports: [
@@ -41,7 +42,8 @@ import { SessionService } from './shared/session.service';
         SessionsRoutingModule,
         MatTableModule,
         MatIconModule,
-        MatPaginatorModule
+        MatPaginatorModule,
+        SharedModule
     ],
     declarations: [
         SessionsComponent,

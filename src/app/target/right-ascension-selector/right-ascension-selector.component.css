@@ -1,0 +1,7 @@
+.om-right-ascension-selector > DIV {
+    display: inline-block;
+}
+
+.om-right-ascension-selector .mat-form-field {
+    max-width: 75px;
+}

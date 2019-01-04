@@ -1,0 +1,37 @@
+<div class="om-date-time-input">
+    <!-- Date -->
+    <mat-form-field>
+            <input
+                matInput
+                [matDatepicker]="datePicker"
+                [placeholder]="datePlaceholder"
+                [(ngModel)]="dateTime">
+
+            <mat-datepicker-toggle
+                matSuffix
+                [for]="datePicker"></mat-datepicker-toggle>
+
+            <mat-datepicker
+                #datePicker></mat-datepicker>
+
+            <mat-hint
+                align="start">
+                <strong>{{dateHint}}</strong>
+            </mat-hint>
+
+    </mat-form-field>
+
+    <!-- Time -->
+    <mat-form-field>
+        <input
+            matInput
+            type="time"
+            [placeholder]="timePlaceholder"/>
+
+        <mat-hint
+            align="start">
+            <strong>{{timeHint}}</strong>
+        </mat-hint>
+
+    </mat-form-field>
+</div>

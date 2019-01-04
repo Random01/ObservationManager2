@@ -19,6 +19,7 @@ import { ObservationsRoutingModule } from './observations-routing.module';
 import { ObservationListComponent } from './observation-list/observation-list.component';
 import { MaterialModule } from '../shared/material.module';
 import { DeepSkyFindingDetailsComponent } from './finding-details/deep-sky-finding-details/deep-sky-finding-details.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
     imports: [
@@ -28,7 +29,8 @@ import { DeepSkyFindingDetailsComponent } from './finding-details/deep-sky-findi
         RouterModule,
         TargetModule,
         ObservationsRoutingModule,
-        MaterialModule
+        MaterialModule,
+        SharedModule
     ],
     declarations: [
         ObservationComponent,

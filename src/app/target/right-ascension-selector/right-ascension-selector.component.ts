@@ -9,18 +9,9 @@ import { RA } from '../../shared/models/ra.model';
 export class RightAscensionSelectorComponent {
 
     @Input() ra: RA;
-    @Output() decChange = new EventEmitter<RA>();
-
-    hours: number;
-
-    minutes: number;
-
-    seconds: number;
+    @Output() raChange = new EventEmitter<RA>();
 
     constructor() {
-        this.hours = 0;
-        this.minutes = 0;
-        this.seconds = 0;
     }
 
 }

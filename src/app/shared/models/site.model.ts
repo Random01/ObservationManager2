@@ -45,10 +45,12 @@ export class Site extends Entity {
     deserialize(state: any): void {
         super.deserialize(state);
 
-        this.name = state.name;
-        this.timezone = state.timezone;
-        this.code = state.code;
-        this.elevation = state.elevation;
+        this.copy(state, [
+            'name',
+            'timezone',
+            'code',
+            'elevation'
+        ]);
 
         this.coord.longitude.deserialize(state.longitude);
         this.coord.latitude.deserialize(state.latitude);

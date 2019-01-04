@@ -1,9 +1,10 @@
 <mat-form-field>
+
     <input
         matInput
         placeholder="Constellation"
         [matAutocomplete]="auto"
-        [(ngModel)]="constellation" />
+        [(ngModel)]="constellation.name" />
 
     <mat-autocomplete
         #auto="matAutocomplete">
@@ -11,8 +12,9 @@
         <mat-option
             *ngFor="let cnst of filteredConstellations | async"
             [value]="cnst">
-            {{cnst.name}}
+            {{cnst.name}} ({{cnst.code}})
         </mat-option>
         
     </mat-autocomplete>
+
 </mat-form-field>
