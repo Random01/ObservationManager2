@@ -1,0 +1,23 @@
+<div class="om-add-observing-program">
+
+    <div>
+        <h2>Add New Observing Program</h2>
+    </div>
+
+    <div *ngIf="item">
+        <om-observing-program
+            [program]=item>
+        </om-observing-program>
+    </div>
+
+    <div>
+        <button 
+            mat-button
+            color="primary"
+            (click)=addItem()>Add</button>
+        <button
+            mat-button
+            (click)=goBack()>Back</button>
+    </div>
+
+</div>

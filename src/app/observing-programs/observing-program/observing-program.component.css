@@ -1,0 +1,8 @@
+.om-observing-program {
+    display: flex;
+    flex-direction: column;
+}
+
+.om-observing-program > * {
+    width: 100%;
+}

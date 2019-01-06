@@ -59,6 +59,7 @@ import { AuthModule } from './auth/auth.module';
 import { UserProfileMenuComponent } from './main/userProfileMenu/user-profile-menu.component';
 import { AuthenticationService } from './auth/shared/authentication.service';
 import { MessageService } from './shared/services/message.service';
+import { ObservingProgramsModule } from './observing-programs/observing-programs.module';
 
 @NgModule({
   imports: [
@@ -86,7 +87,8 @@ import { MessageService } from './shared/services/message.service';
     EquipmentModule,
     AuthModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    ObservingProgramsModule
   ],
   declarations: [
     AppComponent,

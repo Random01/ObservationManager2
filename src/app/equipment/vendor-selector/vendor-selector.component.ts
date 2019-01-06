@@ -27,13 +27,15 @@ export class VendorSelectorComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.vendorService.getAllSuggestions().then((vendors) => {
-            this.vendors = vendors.map(vendor => vendor.name);
+        this.vendorService
+            .getAllSuggestions()
+            .then((vendors) => {
+                this.vendors = vendors.map(vendor => vendor.name);
 
-            this.filteredVendors = new Observable((subscriber) => {
-                subscriber.next(this.vendors);
+                this.filteredVendors = new Observable((subscriber) => {
+                    subscriber.next(this.vendors);
+                });
             });
-        });
 
     }
 }

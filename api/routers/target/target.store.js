@@ -65,11 +65,40 @@ class TargetStore extends BaseMongooseStore {
                 ] = row;
 
                 return {
-                    name: name,
+                    name,
+                    type,
+                    ra: this.parseRa(ra),
+                    dec: this.parseDec(dec),
+                    constellation,
                     alliases: identifiers != null ? identifiers.split(',') : undefined
                 };
             });
         });
+    }
+
+    parseRa(ra) {
+        if (ra == null) {
+            return null;
+        }
+    
+        const [hours, minutes, seconds] = ra.split(':');
+        return parseFloat(hours) * 15.0
+            + parseFloat(minutes) / 4.0
+            + parseFloat(seconds) / 240.0;
+    }
+    
+    parseDec(dec) {
+        if (dec == null) {
+            return null;
+        }
+    
+        let [degrees, arcminutes, arcseconds] = dec.split(':');
+    
+        degrees = parseFloat(degrees);
+    
+        return ((parseFloat(arcseconds) / 3600.0)
+            + (parseFloat(arcminutes) / 60.0)
+            + Math.abs(degrees)) * Math.sign(degrees);
     }
 
     upload() {

@@ -1,0 +1,47 @@
+<div class="om-targets-editor">
+
+    <mat-table
+        [dataSource]="targets"
+        class="mat-elevation-z8">
+
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+            <mat-cell *matCellDef="let target">{{target.name}}</mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+            <mat-cell *matCellDef="let target">
+                <button mat-icon-button
+                    (click)=removeTarget(target)>
+                        <mat-icon
+                            aria-label="Click to delete">
+                            delete
+                        </mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+    </mat-table>
+
+    <div class="control-panel">
+
+        <!-- Target -->
+        <div class="om-target">
+            <om-target-selector
+                [(target)]="newTarget">
+            </om-target-selector>
+        </div>
+
+        <button
+            mat-button
+            *ngIf="newTarget!=null"
+            (click)="addNewTarget()"
+            color="primary">Add Object</button>
+
+    </div>
+
+</div>

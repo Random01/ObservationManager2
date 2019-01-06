@@ -1,0 +1,28 @@
+<div class="om-observing-program">
+
+    <mat-form-field>
+
+        <input
+            matInput
+            [(ngModel)]="program.name"
+            placeholder="Name" />
+
+    </mat-form-field>
+
+    <mat-form-field>
+
+        <textarea
+            matInput
+            placeholder="Description"
+            matTextareaAutosize
+            matAutosizeMinRows="5"
+            [(ngModel)]="program.description">
+        </textarea>
+
+    </mat-form-field>
+
+    <om-targets-editor
+        [(targets)]="program.targets">
+    </om-targets-editor>
+
+</div>
