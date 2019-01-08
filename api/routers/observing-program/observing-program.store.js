@@ -18,12 +18,19 @@ class ObservingProgramStore extends BaseMongooseStore {
     }
 
     /**
-     * 
      * @param {Array.<Object>} targets 
      * @returns {Promise}
      */
-    uploadProgram(targets) {
+    uploadProgram({ targets }) {
 
+    }
+
+    getStatistics({ id }) {
+        return new Promise((success, fail) => {
+
+            
+
+        });
     }
 
 }

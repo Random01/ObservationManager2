@@ -1,8 +1,7 @@
-﻿import { Component, Input, OnInit } from '@angular/core';
+﻿import { Component } from '@angular/core';
 
 import { Observation } from '../../shared/models/models';
 import { ObservationService } from '../shared/observation.service';
-import { ScopeService } from '../../scopes/shared/scope.service';
 import { EntityListComponent } from '../../shared/components/entity-list.component';
 import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
 
@@ -11,14 +10,16 @@ import { DeleteEntityDialogService } from '../../shared/components/delete-entity
     templateUrl: './observations.component.html',
     styleUrls: [
         './observations.component.css'
-    ],
-    providers: [
-        ObservationService,
-        ScopeService
     ]
 })
 
 export class ObservationsComponent extends EntityListComponent<Observation> {
+
+    displayedColumns: string[] = [
+        'targetName',
+        'result',
+        'actions'
+    ];
 
     constructor(
         protected observationService: ObservationService,

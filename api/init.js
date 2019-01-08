@@ -1,6 +1,7 @@
 const ConstellationStore = require('./routers/constellation/constellation.store');
 const TargetStore = require('./routers/target/target.store');
 const mongoose = require('mongoose');
+const _ = require('lodash');
 
 mongoose.connect(require('./config/db').url);
 
@@ -10,6 +11,8 @@ dataBase.on('error', console.error.bind(console, 'connection error:'));
 dataBase.once('open', () => {
 
     updateTargets();
+
+    
 
     console.log(`Data base is ready!`);
 });
@@ -28,7 +31,11 @@ function updateTargets() {
 
     console.log(`Loading targets!`);
     targetStore.loadFromCsv().then((targets) => {
-
+        const groups = _.groupBy(targets, (t) => t.type);
         console.log(`Targets have been loaded!`);
     });
+}
+
+function updateName(name) {
+    
 }
