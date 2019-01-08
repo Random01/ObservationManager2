@@ -1,20 +1,14 @@
-<mat-form-field>
+<div class="om-constellation-selector">
 
-    <input
-        matInput
-        placeholder="Constellation"
-        [matAutocomplete]="auto"
-        [(ngModel)]="constellation.name" />
+    <mat-form-field >
 
-    <mat-autocomplete
-        #auto="matAutocomplete">
+        <mat-select placeholder="Constellation">
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let cnst of filteredConstellations | async"
+                        [value]="cnst">
+                {{cnst.name}} ({{cnst.code}})
+            </mat-option>
+        </mat-select>
 
-        <mat-option
-            *ngFor="let cnst of filteredConstellations | async"
-            [value]="cnst">
-            {{cnst.name}} ({{cnst.code}})
-        </mat-option>
-        
-    </mat-autocomplete>
-
-</mat-form-field>
+    </mat-form-field>
+</div>

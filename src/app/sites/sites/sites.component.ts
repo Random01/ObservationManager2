@@ -4,6 +4,7 @@ import { Site } from '../../shared/models/site.model';
 import { SiteService } from '../shared/site.service';
 
 import { EntityListComponent } from '../../shared/components/entity-list.component';
+import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
 
 @Component({
     selector: 'om-sites',
@@ -22,8 +23,9 @@ export class SitesComponent extends EntityListComponent<Site> {
     ];
 
     constructor(
-        private siteService: SiteService) {
-        super(siteService);
+        protected siteService: SiteService,
+        protected deleteEntityDialogService: DeleteEntityDialogService) {
+        super(siteService, deleteEntityDialogService);
     }
 
 }

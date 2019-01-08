@@ -3,6 +3,7 @@
 import { Filter } from '../../shared/models/equipment/equipment';
 import { FilterService } from '../shared/filter.service';
 import { EntityListComponent } from '../../shared/components/entity-list.component';
+import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
 
 @Component({
     selector: 'om-filters',
@@ -19,8 +20,10 @@ export class FiltersComponent extends EntityListComponent<Filter> {
         'actions'
     ];
 
-    constructor(private service: FilterService) {
-        super(service);
+    constructor(
+        protected service: FilterService,
+        protected deleteEntityDialogService: DeleteEntityDialogService) {
+        super(service, deleteEntityDialogService);
     }
 
 }

@@ -8,11 +8,22 @@ class ObservingProgramStore extends BaseMongooseStore {
     }
 
     getById({ id }) {
-        return super.getById({ id, populationDetails: [
-            ['userCreated', '_id userName firstName lastName'],
-            ['userModified', '_id userName firstName lastName'],
-            ['targets', '_id name']
-        ]});
+        return super.getById({
+            id, populationDetails: [
+                ['userCreated', '_id userName firstName lastName'],
+                ['userModified', '_id userName firstName lastName'],
+                ['targets', '_id name']
+            ]
+        });
+    }
+
+    /**
+     * 
+     * @param {Array.<Object>} targets 
+     * @returns {Promise}
+     */
+    uploadProgram(targets) {
+
     }
 
 }

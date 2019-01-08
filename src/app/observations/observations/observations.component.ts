@@ -4,6 +4,7 @@ import { Observation } from '../../shared/models/models';
 import { ObservationService } from '../shared/observation.service';
 import { ScopeService } from '../../scopes/shared/scope.service';
 import { EntityListComponent } from '../../shared/components/entity-list.component';
+import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
 
 @Component({
     selector: 'om-observations',
@@ -19,8 +20,10 @@ import { EntityListComponent } from '../../shared/components/entity-list.compone
 
 export class ObservationsComponent extends EntityListComponent<Observation> {
 
-    constructor(private observationService: ObservationService) {
-        super(observationService);
+    constructor(
+        protected observationService: ObservationService,
+        protected deleteEntityDialogService: DeleteEntityDialogService) {
+        super(observationService, deleteEntityDialogService);
     }
 
 }

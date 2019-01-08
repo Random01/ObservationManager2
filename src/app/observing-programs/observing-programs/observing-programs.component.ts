@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { EntityListComponent } from '../../shared/components/entity-list.component';
 import { ObservingProgram } from '../../shared/models/observing-program.model';
 import { ObservingProgramsService } from '../shared/observing-programs.service';
+import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
 
 @Component({
     selector: 'om-observing-programs',
@@ -17,8 +18,9 @@ export class ObservingProgramsComponent extends EntityListComponent<ObservingPro
     ];
 
     constructor(
-        private service: ObservingProgramsService) {
-        super(service);
+        protected service: ObservingProgramsService,
+        protected deleteEntityDialogService: DeleteEntityDialogService) {
+        super(service, deleteEntityDialogService);
     }
 
 }

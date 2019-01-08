@@ -8,6 +8,8 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { DegreesFormatter } from './models/pipes/degrees-formatter.pipe';
 import { DateTimeInputComponent } from './components/date-time-input/date-time-input.component';
+import { DeleteEntityDialogService } from './components/delete-entity-dialog/delete-entity-dialog.service';
+import { DeleteEntityDialogComponent } from './components/delete-entity-dialog/delete-entity-dialog.component';
 
 @NgModule({
     imports: [
@@ -17,10 +19,14 @@ import { DateTimeInputComponent } from './components/date-time-input/date-time-i
         ReactiveFormsModule,
         MaterialModule
     ],
+    entryComponents: [
+        DeleteEntityDialogComponent
+    ],
     declarations: [
         DegreesInputComponent,
         DateTimeInputComponent,
-        DegreesFormatter
+        DegreesFormatter,
+        DeleteEntityDialogComponent
     ],
     exports: [
         DegreesInputComponent,
@@ -28,7 +34,8 @@ import { DateTimeInputComponent } from './components/date-time-input/date-time-i
         DegreesFormatter
     ],
     providers: [
-        MessageService
+        MessageService,
+        DeleteEntityDialogService
     ]
 })
 

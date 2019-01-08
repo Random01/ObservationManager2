@@ -12,8 +12,13 @@
       <mat-cell *matCellDef="let target">{{target.name}}</mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="targetType">
+      <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
+      <mat-cell *matCellDef="let target">{{target.targetType}}</mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="alliases">
-      <mat-header-cell *matHeaderCellDef>Aliases Names</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>Alias Names</mat-header-cell>
       <mat-cell *matCellDef="let target">{{target.alliases}}</mat-cell>
     </ng-container>
 

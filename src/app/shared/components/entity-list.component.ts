@@ -5,6 +5,7 @@ import { BaseComponent } from './base-component';
 import { Entity } from '../models/models';
 import { StorageService } from '../services/storage.service';
 import { SortOrder } from '../models/sort-order.model';
+import { DeleteEntityDialogService } from './delete-entity-dialog/delete-entity-dialog.service';
 
 export abstract class EntityListComponent<T extends Entity> extends BaseComponent implements OnInit {
 
@@ -24,7 +25,9 @@ export abstract class EntityListComponent<T extends Entity> extends BaseComponen
         this.isLoading = false;
     }
 
-    constructor(protected storageService: StorageService<T>) {
+    constructor(
+        protected storageService: StorageService<T>,
+        protected deleteEntityDialogService: DeleteEntityDialogService) {
         super();
     }
 
@@ -45,9 +48,15 @@ export abstract class EntityListComponent<T extends Entity> extends BaseComponen
     }
 
     async remove(entity: any) {
-        this.startLoading();
-        await this.storageService.delete(entity.id);
-        return this.loadItems();
+        const result = await this.deleteEntityDialogService.show({
+            message: 'Are you sure?'
+        });
+
+        if (result.success) {
+            this.startLoading();
+            await this.storageService.delete(entity.id);
+            return this.loadItems();
+        }
     }
 
     ngOnInit(): void {

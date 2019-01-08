@@ -3,6 +3,7 @@
 import { Scope } from '../../shared/models/equipment/scope.model';
 import { ScopeService } from '../shared/scope.service';
 import { EntityListComponent } from '../../shared/components/entity-list.component';
+import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
 
 @Component({
     selector: 'om-scopes',
@@ -19,8 +20,10 @@ export class ScopesComponent extends EntityListComponent<Scope> {
         'actions'
     ];
 
-    constructor(private scopeService: ScopeService) {
-        super(scopeService);
+    constructor(
+        protected scopeService: ScopeService,
+        protected deleteEntityDialogService: DeleteEntityDialogService) {
+        super(scopeService, deleteEntityDialogService);
     }
 
 }
