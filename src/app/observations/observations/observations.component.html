@@ -5,11 +5,15 @@
         </h2>
     </div>
 
+    <div>
+
+    </div>
+
     <mat-paginator
-              [length]="totalCount"
-              [pageSize]="pageSize"
-              [pageSizeOptions]="[5, 10]"
-              (page)=onPageChanged($event)>
+            [length]="totalCount"
+            [(pageSize)]="pageSize"
+            [pageSizeOptions]="[5, 10]"
+            (page)=onPageChanged($event)>
     </mat-paginator>
     
     <mat-table
@@ -19,6 +23,21 @@
         <ng-container matColumnDef="targetName">
             <mat-header-cell *matHeaderCellDef>Target</mat-header-cell>
             <mat-cell *matCellDef="let observation">{{observation.target.name}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="scopeModel">
+            <mat-header-cell *matHeaderCellDef>Scope</mat-header-cell>
+            <mat-cell *matCellDef="let observation">{{observation.scope.model}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="eyepieceModel">
+            <mat-header-cell *matHeaderCellDef>Eyepiece</mat-header-cell>
+            <mat-cell *matCellDef="let observation">{{observation.eyepiece.model}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="filterModel">
+            <mat-header-cell *matHeaderCellDef>Filter</mat-header-cell>
+            <mat-cell *matCellDef="let observation">{{observation.filter.model}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="result">
@@ -54,43 +73,9 @@
 
     <mat-paginator
               [length]="totalCount"
-              [pageSize]="pageSize"
+              [(pageSize)]="pageSize"
               [pageSizeOptions]="[5, 10]"
               (page)=onPageChanged($event)>
     </mat-paginator>
-
-    <!-- 
-    <div class="grid">
-        <div *ngFor="let observation of items">
-            
-            <div class="target-name-column">
-                {{observation.target.name}}
-            </div>
-
-            <div class="begin-column">
-                {{observation.begin | date:'medium'}}
-            </div>
-            
-            <div class="description-column">
-                {{observation.result.description}}
-            </div>
-            
-            <div class="actions-column">
-                <div>
-                    <a *ngIf="observation.session && observation.session.id"
-                        routerLink="/sessions/{{observation.session.id}}">
-                        Go To Session
-                    </a>
-                </div>
-                <div>
-                    <a routerLink="/observations/{{observation.id}}">
-                        Go To Observation
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    -->
     
 </div>

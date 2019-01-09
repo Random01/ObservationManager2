@@ -17,6 +17,9 @@ export class ObservationsComponent extends EntityListComponent<Observation> {
 
     displayedColumns: string[] = [
         'targetName',
+        'scopeModel',
+        'eyepieceModel',
+        'filterModel',
         'result',
         'actions'
     ];
