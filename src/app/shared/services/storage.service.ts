@@ -90,17 +90,13 @@ export abstract class StorageService<T extends Entity> {
         };
 
         return new Promise<Response<T>>((success) => {
-            let url = `${this.getUrl()}?page=${request.page}&size=${request.size}`;
-
-            if (request.sortDirection != null && request.sortField != null) {
-                url += `&sortField=${request.sortField}&sortDirection=${request.sortDirection}`;
-            }
+            const url = this.getUrl() + '?' + request.getQueryString();
 
             this.http.get<any>(url, httpOptions)
                 .subscribe(response => {
                     success({
                         ...response,
-                        items: response.items.map(item => this.deserialize(item))
+                        items: response.items.map((item: any) => this.deserialize(item))
                     });
                 });
         });

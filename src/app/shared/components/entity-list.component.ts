@@ -32,16 +32,21 @@ export abstract class EntityListComponent<T extends Entity> extends BaseComponen
         super();
     }
 
+    protected getRequestParams(): RequestParams {
+        return new RequestParams();
+    }
+
     async loadItems(): Promise<void> {
         this.startLoading();
 
-        const response = await this.storageService.getItems(
-            new RequestParams({
-                size: this.pageSize,
-                page: this.currentPage,
-                sortDirection: this.sortDirection,
-                sortField: this.sortField
-            }));
+        const requestParams = this.getRequestParams();
+
+        requestParams.size = this.pageSize;
+        requestParams.page = this.currentPage;
+        requestParams.sortDirection = this.sortDirection;
+        requestParams.sortField = this.sortField;
+
+        const response = await this.storageService.getItems(requestParams);
 
         this.items = response.items;
         this.totalCount = response.totalCount;

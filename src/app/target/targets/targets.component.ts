@@ -6,6 +6,7 @@ import { TargetService } from '../shared/target.service';
 import { EntityListComponent } from '../../shared/components/entity-list.component';
 import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
 import { TargetSearchParams } from '../target-search-params/target-search-params.model';
+import { RequestParams } from '../../shared/services/request-params.model';
 
 @Component({
     selector: 'om-targets',
@@ -31,6 +32,10 @@ export class TargetsComponent extends EntityListComponent<Target> {
         super(service, deleteEntityDialogService);
 
         this.searchParams = new TargetSearchParams();
+    }
+
+    protected getRequestParams(): RequestParams {
+        return new TargetSearchParams();
     }
 
 }

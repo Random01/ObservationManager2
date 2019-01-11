@@ -29,7 +29,7 @@ export class RequestParams {
 
     public getQueryString(): string {
         return this.getQueryParams()
-            .filter(({ value }) => !!value)
+            .filter(({ value }) => value != null)
             .map(({ name, value }) => name + '=' + value)
             .join('&');
     }
