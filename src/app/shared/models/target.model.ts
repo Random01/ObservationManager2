@@ -45,7 +45,7 @@ export class Target extends Entity {
             targetType: this.targetType,
             alliases: this.alliases,
             description: this.description,
-            constelation: this.constellation ? this.constellation.serialize() : null,
+            constellation: this.serializeEntity(this.constellation),
             position: this.position ? this.position.serialize() : null
         });
     }

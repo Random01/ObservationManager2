@@ -3,15 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Entity } from '../models/entity.model';
 import { AddResultPayload } from './add-result-payload.model';
 import { environment } from '../../../environments/environment';
-import { SortOrder } from '../models/sort-order.model';
 import { JwtService } from '../../auth/shared/jwt.service';
-
-class RequestParams {
-    page: number;
-    size: number;
-    sortField?: string;
-    sortDirection?: SortOrder;
-}
+import { RequestParams } from './request-params.model';
 
 interface Response<T extends Entity> {
     items: T[];

@@ -5,7 +5,8 @@
                 matInput
                 [matDatepicker]="datePicker"
                 [placeholder]="datePlaceholder"
-                [(ngModel)]="dateTime">
+                [(ngModel)]="dateTime"
+                (ngModelChange)="onDateChanged()">
 
             <mat-datepicker-toggle
                 matSuffix
@@ -26,6 +27,8 @@
         <input
             matInput
             type="time"
+            [(ngModel)]="time"
+            (ngModelChange)="onTimeChanged()"
             [placeholder]="timePlaceholder"/>
 
         <mat-hint

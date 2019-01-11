@@ -1,3 +1,15 @@
-.om-sessions-component{
+.om-sessions-component {
     min-height: 200px;
+}
+
+.om-sessions-component .mat-column-actions {
+    flex: 0 0 100px;
+}
+
+.om-sessions-component .mat-column-begin {
+    flex: 0 0 100px;
+}
+
+.om-sessions-component .mat-column-site {
+    flex: 0 0 150px;
 }

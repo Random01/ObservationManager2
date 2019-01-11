@@ -12,7 +12,7 @@ class ObservationStore extends BaseMongooseStore {
             ['userModified', '_id userName firstName lastName'],
             ['observer', '_id userName firstName lastName'],
             ['site', '_id name'],
-            ['session'],
+            ['session', '_id begin end site'],
             ['scope', '_id name'],
             ['eyepiece', '_id name'],
             ['filter', '_id name'],
@@ -27,7 +27,7 @@ class ObservationStore extends BaseMongooseStore {
                 ['userModified', '_id userName firstName lastName'],
                 ['observer', '_id userName firstName lastName'],
                 ['site', '_id name'],
-                ['session'],
+                ['session', '_id'],
                 ['scope', '_id model'],
                 ['eyepiece', '_id model'],
                 ['filter', '_id model'],
@@ -44,12 +44,12 @@ class ObservationStore extends BaseMongooseStore {
                 .populate('userCreated', '_id userName firstName lastName')
                 .populate('userModified', '_id userName firstName lastName')
                 .populate('observer', '_id userName firstName lastName')
-                .populate('site')
-                .populate('session')
-                .populate('scope')
-                .populate('eyepiece')
-                .populate('filter')
-                .populate('target')
+                .populate('site', '_id name')
+                .populate('session', '_id')
+                .populate('scope', '_id model')
+                .populate('eyepiece', '_id model')
+                .populate('filter', '_id model')
+                .populate('target', '_id name')
                 .exec((err, docs) => {
                     if (err) {
                         fail(err);

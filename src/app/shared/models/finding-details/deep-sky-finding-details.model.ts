@@ -8,4 +8,5 @@ export class DeepSkyFindingDetails extends FindingDetails {
     resolved?: boolean;
     mottled?: boolean;
     laminar?: boolean;
+
 }

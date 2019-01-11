@@ -2,6 +2,12 @@
     
     <h2 class="mat-h2">Observations</h2>
 
+    <!-- Session Info -->
+    <om-session-info
+        [session]="session"
+        *ngIf="session">
+    </om-session-info>
+
     <mat-table
         [dataSource]="items"
         class="mat-elevation-z8">
@@ -51,20 +57,28 @@
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
     </mat-table>
-<hr/>
+
+    <hr/>
+    
     <div>
         <button
             mat-button
             color="primary"
-            (click)=addNewObservation()>Add New Observation</button>
+            (click)=addNewObservation()>
+            Add New Observation
+        </button>
 
         <button
             mat-button
-            (click)=backToSession()>Back to Session</button>
+            (click)=backToSession()>
+            Back to Session
+        </button>
 
         <button
             mat-button
-            (click)=backToMySessions()>Back to My Sessions</button>
+            (click)=backToMySessions()>
+            Back to My Sessions
+        </button>
 
     </div>
 

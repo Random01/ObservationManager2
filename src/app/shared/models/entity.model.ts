@@ -1,5 +1,7 @@
 import { Serializable } from '../interfaces/serializable.interface';
 
+import * as moment from 'moment';
+
 export class Entity implements Serializable {
 
     public id: string;
@@ -20,7 +22,10 @@ export class Entity implements Serializable {
         }
     }
 
-    public serialize(): Object {
+    public serialize(params?: { lightWeight: boolean }): Object {
+        if (params != null && params.lightWeight === true) {
+            return this.id;
+        }
         return { id: this.id };
     }
 
@@ -34,5 +39,20 @@ export class Entity implements Serializable {
 
     public isValid(): boolean {
         return this.id != null;
+    }
+
+    protected parseDate(value?: string): Date {
+        if (value) {
+            return moment(value).toDate();
+        }
+        return null;
+    }
+
+    protected serializeDate(value?: Date): string {
+        return value ? value.toISOString() : null;
+    }
+
+    protected serializeEntity(value?: Entity) {
+        return value ? value.id : null;
     }
 }

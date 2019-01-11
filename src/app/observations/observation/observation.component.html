@@ -1,14 +1,10 @@
 ﻿<div class="om-observation">
 
-    <!-- Session -->
-    <mat-form-field
+    <!-- Session Info -->
+    <om-session-info
+        [session]="observation.session"
         *ngIf="observation.session">
-        <input
-            disabled
-            matInput
-            placeholder="Session"
-            value="{{observation.session.begin|date:'MMM d, y, hh:mm'}} - {{observation.session.end|date:'MMM d, y, hh:mm'}}"/>
-    </mat-form-field>
+    </om-session-info>
 
     <!-- Target -->
     <div class="om-target">

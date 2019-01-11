@@ -20,6 +20,7 @@ import { ObservationListComponent } from './observation-list/observation-list.co
 import { MaterialModule } from '../shared/material.module';
 import { DeepSkyFindingDetailsComponent } from './finding-details/deep-sky-finding-details/deep-sky-finding-details.component';
 import { SharedModule } from '../shared/shared.module';
+import { SessionsModule } from '../sessions/sessions.module';
 
 @NgModule({
     imports: [
@@ -29,6 +30,7 @@ import { SharedModule } from '../shared/shared.module';
         RouterModule,
         TargetModule,
         ObservationsRoutingModule,
+        SessionsModule,
         MaterialModule,
         SharedModule
     ],

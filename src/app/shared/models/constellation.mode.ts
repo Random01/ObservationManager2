@@ -1,4 +1,4 @@
-import { Entity } from './models';
+import { Entity } from './entity.model';
 
 export class Constellation extends Entity {
 

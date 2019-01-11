@@ -26,6 +26,7 @@
     "@angular/router": "~7.1.0",
     "@types/lodash": "^4.14.102",
     "core-js": "^2.5.4",
+    "moment": "^2.23.0",
     "rxjs": "~6.3.3",
     "rxjs-tslint": "^0.1.6",
     "tslib": "^1.9.3",

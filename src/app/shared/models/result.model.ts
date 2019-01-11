@@ -23,7 +23,12 @@ export class Result implements Serializable {
     }
 
     public serialize(): Object {
-        return Object.assign({}, this);
+        return {
+            type: this.type,
+            lang: this.lang,
+            description: this.description,
+            rating: this.rating
+        };
     }
 
     public deserialize(state: any): void {

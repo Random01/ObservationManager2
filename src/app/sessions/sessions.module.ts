@@ -26,6 +26,7 @@ import { EditSessionComponent } from './edit-session/edit-session.component';
 import { SessionsRoutingModule } from './sessions-routing.module';
 import { SessionService } from './shared/session.service';
 import { SharedModule } from '../shared/shared.module';
+import { SessionInfoComponent } from './session-info/session-info.component';
 
 @NgModule({
     imports: [
@@ -50,7 +51,11 @@ import { SharedModule } from '../shared/shared.module';
         SessionComponent,
         SessionDetailsComponent,
         AddSessionComponent,
-        EditSessionComponent
+        EditSessionComponent,
+        SessionInfoComponent
+    ],
+    exports: [
+        SessionInfoComponent
     ],
     providers: [
         SessionService

@@ -6,6 +6,7 @@ import { Entity } from '../models/models';
 import { StorageService } from '../services/storage.service';
 import { SortOrder } from '../models/sort-order.model';
 import { DeleteEntityDialogService } from './delete-entity-dialog/delete-entity-dialog.service';
+import { RequestParams } from '../services/request-params.model';
 
 export abstract class EntityListComponent<T extends Entity> extends BaseComponent implements OnInit {
 
@@ -34,12 +35,13 @@ export abstract class EntityListComponent<T extends Entity> extends BaseComponen
     async loadItems(): Promise<void> {
         this.startLoading();
 
-        const response = await this.storageService.getItems({
-            size: this.pageSize,
-            page: this.currentPage,
-            sortDirection: this.sortDirection,
-            sortField: this.sortField
-        });
+        const response = await this.storageService.getItems(
+            new RequestParams({
+                size: this.pageSize,
+                page: this.currentPage,
+                sortDirection: this.sortDirection,
+                sortField: this.sortField
+            }));
 
         this.items = response.items;
         this.totalCount = response.totalCount;

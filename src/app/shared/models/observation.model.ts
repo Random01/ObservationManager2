@@ -59,23 +59,24 @@ export class Observation extends Entity {
         this.eyepiece = new Eyepiece();
         this.lens = new Lens();
         this.result = new Result();
+        this.session = new Session();
 
         Object.assign(this, params);
     }
 
     public serialize(): Object {
         return Object.assign(super.serialize(), {
-            observer: this.observer != null ? this.observer.id : undefined,
-            site: this.site != null ? this.site.id : undefined,
-            session: this.session != null ? this.session.id : undefined,
-            target: this.target != null ? this.target.id : undefined,
-            begin: this.begin,
-            end: this.end,
+            observer: this.serializeEntity(this.observer),
+            site: this.serializeEntity(this.site),
+            session: this.serializeEntity(this.session),
+            target: this.serializeEntity(this.target),
+            begin: this.serializeDate(this.begin),
+            end: this.serializeDate(this.end),
             seeing: this.seeing,
-            scope: this.scope != null ? this.scope.id : undefined,
-            eyepiece: this.eyepiece != null ? this.eyepiece.id : undefined,
-            filter: this.filter.id != null ? this.filter.id : undefined,
-            lens: this.lens != null ? this.lens.id : undefined,
+            scope: this.serializeEntity(this.scope),
+            eyepiece: this.serializeEntity(this.eyepiece),
+            filter: this.serializeEntity(this.filter),
+            lens: this.serializeEntity(this.lens),
             result: this.result.serialize()
         });
     }
@@ -83,9 +84,10 @@ export class Observation extends Entity {
     public deserialize(state: any): void {
         super.deserialize(state);
 
+        this.begin = this.parseDate(state.begin);
+        this.end = this.parseDate(state.end);
+
         this.copy(state, [
-            'begin',
-            'end',
             'seeing',
             'observer',
             'target',
@@ -93,7 +95,8 @@ export class Observation extends Entity {
             'filter',
             'eyepiece',
             'lens',
-            'result'
+            'result',
+            'session'
         ]);
     }
 }

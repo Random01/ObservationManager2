@@ -28,8 +28,18 @@ class BaseMongooseStore {
         });
     }
 
+    createSearchParams() {
+        return undefined;
+    }
+
+    /**
+     * 
+     * @param {*} param
+     * @param {Array.<String>} populationDetails
+     * @returns {Promise}
+     */
     getItems(
-        { requestParams: { page, size, sortField, sortDirection } = { page: 0, size: 100 },
+        { requestParams: { page, size, sortField, sortDirection, ...restRequestParams } = { page: 0, size: 100 },
         populationDetails = []
     }) {
         return new Promise((success, fail) => {
@@ -37,7 +47,7 @@ class BaseMongooseStore {
                 if (err) {
                     fail(err);
                 } else {
-                    const query = this.model.find();
+                    const query = this.model.find(this.createSearchParams(restRequestParams));
                     
                     if (sortField != null && sortDirection != null) {
                         const sortQuery = {};

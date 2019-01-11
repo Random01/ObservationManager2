@@ -19,6 +19,7 @@ import { TargetTypeService } from './shared/target-type.service';
 import { DeclinationSelectorComponent } from './declination-selector/declination-selector.component';
 import { RightAscensionSelectorComponent } from './right-ascension-selector/right-ascension-selector.component';
 import { AliasesEditorComponent } from './aliases-editor/aliases-editor.component';
+import { TargetSearchParamsComponent } from './target-search-params/target-search-params.component';
 
 @NgModule({
     imports: [
@@ -40,7 +41,8 @@ import { AliasesEditorComponent } from './aliases-editor/aliases-editor.componen
         TargetTypeSelectorComponent,
         DeclinationSelectorComponent,
         RightAscensionSelectorComponent,
-        AliasesEditorComponent
+        AliasesEditorComponent,
+        TargetSearchParamsComponent
     ],
     exports: [
         TargetSearchComponent,

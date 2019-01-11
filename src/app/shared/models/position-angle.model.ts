@@ -1,4 +1,6 @@
-export class PositionAngle {
+import { Serializable } from '../interfaces/serializable.interface';
+
+export class PositionAngle implements Serializable {
 
     public unit: number;
 
@@ -8,7 +10,12 @@ export class PositionAngle {
         Object.assign(this, params);
     }
 
-    serialize(): Object {
+    public serialize(): Object {
         return { unit: this.unit };
     }
+
+    public deserialize(params: any): void {
+        this.unit = params.unit;
+    }
+
 }

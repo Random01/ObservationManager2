@@ -1,0 +1,19 @@
+<div class="om-target-search-params">
+
+    <mat-form-field>
+
+        <input
+            type="text"
+            placeholder="Name"
+            [(ngModel)]="searchParams.name"
+            matInput />
+
+    </mat-form-field>
+
+    <button
+        mat-button
+        (click)="search()">
+        Search
+    </button>
+
+</div>

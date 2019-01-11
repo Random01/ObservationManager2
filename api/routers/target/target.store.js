@@ -10,7 +10,10 @@ class TargetStore extends BaseMongooseStore {
         super(db.model('targets', TargetSchema));
     }
 
-    search({ name, maxCount = 10 } = {}) {
+    search({
+        name,
+        maxCount = 10
+    } = {}) {
         return new Promise((success, fail) => {
             this.model
                 .find({
@@ -80,25 +83,25 @@ class TargetStore extends BaseMongooseStore {
         if (ra == null) {
             return null;
         }
-    
+
         const [hours, minutes, seconds] = ra.split(':');
-        return parseFloat(hours) * 15.0
-            + parseFloat(minutes) / 4.0
-            + parseFloat(seconds) / 240.0;
+        return parseFloat(hours) * 15.0 +
+            parseFloat(minutes) / 4.0 +
+            parseFloat(seconds) / 240.0;
     }
-    
+
     parseDec(dec) {
         if (dec == null) {
             return null;
         }
-    
+
         let [degrees, arcminutes, arcseconds] = dec.split(':');
-    
+
         degrees = parseFloat(degrees);
-    
-        return ((parseFloat(arcseconds) / 3600.0)
-            + (parseFloat(arcminutes) / 60.0)
-            + Math.abs(degrees)) * Math.sign(degrees);
+
+        return ((parseFloat(arcseconds) / 3600.0) +
+            (parseFloat(arcminutes) / 60.0) +
+            Math.abs(degrees)) * Math.sign(degrees);
     }
 
     upload() {
@@ -115,12 +118,20 @@ class TargetStore extends BaseMongooseStore {
         });
     }
 
-    batchUpdate(){
+    batchUpdate() {
         return new Promise((success, fail) => {
 
-
-
         });
+    }
+
+    createSearchParams(requestParams) {
+        if (requestParams && requestParams.name) {
+            return {
+                name: new RegExp(name)
+            };
+        }
+
+        return undefined;
     }
 }
 

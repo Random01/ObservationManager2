@@ -1,7 +1,9 @@
-<div class="om-sites">
+<div class="om-targets">
   <div>
     <h2>Objects</h2>
   </div>
+
+  <om-target-search-params [(searchParams)]="searchParams"></om-target-search-params>
 
   <mat-table
         [dataSource]="items"

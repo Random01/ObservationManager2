@@ -3,7 +3,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { TargetService } from '../shared/target.service';
 import { Target } from '../../shared/models/models';
 
-import { Subject ,  Observable } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 
 import {
     debounceTime,
@@ -15,7 +15,10 @@ import { FormControl } from '@angular/forms';
 
 @Component({
     selector: 'om-target-selector',
-    templateUrl: './target-selector.component.html'
+    templateUrl: './target-selector.component.html',
+    styleUrls: [
+        './target-selector.component.css'
+    ]
 })
 export class TargetSelectorComponent implements OnInit {
 

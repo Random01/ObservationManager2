@@ -34,20 +34,23 @@ export class Session extends Entity {
     }
 
     public serialize(): Object {
-        const state: any = Object.assign(super.serialize(), this);
-
-        state.site = (this.site != null && this.site.id != null)
-            ? this.site.id : undefined;
-
-        return state;
+        return Object.assign(super.serialize(), {
+            begin: this.serializeDate(this.begin),
+            end: this.serializeDate(this.end),
+            equipment: this.equipment,
+            comments: this.comments,
+            weather: this.weather,
+            site: this.serializeEntity(this.site)
+        });
     }
 
     public deserialize(state: any): void {
         super.deserialize(state);
 
+        this.begin = this.parseDate(state.begin);
+        this.end = this.parseDate(state.end);
+
         this.copy(state, [
-            'begin',
-            'end',
             'site',
             'equipment',
             'comments',

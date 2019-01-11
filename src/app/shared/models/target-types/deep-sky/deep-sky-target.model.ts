@@ -34,7 +34,7 @@ export class DeepSkyTargetType extends Target {
     }
 
     serialize(): Object {
-        return Object.assign(super.serialize(), this, {
+        return Object.assign(super.serialize(), {
             smallDiameter: this.smallDiameter,
             largeDiameter: this.largeDiameter,
             visualMagnitude: this.visualMagnitude,
