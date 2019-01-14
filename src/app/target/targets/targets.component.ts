@@ -35,7 +35,12 @@ export class TargetsComponent extends EntityListComponent<Target> {
     }
 
     protected getRequestParams(): RequestParams {
-        return new TargetSearchParams();
+        return  this.searchParams;
+    }
+
+    onSearch(searchParams: TargetSearchParams) {
+        this.searchParams = searchParams;
+        this.loadItems();
     }
 
 }

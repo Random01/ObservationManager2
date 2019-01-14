@@ -3,7 +3,10 @@
     <h2>Objects</h2>
   </div>
 
-  <om-target-search-params [(searchParams)]="searchParams"></om-target-search-params>
+  <om-target-search-params
+    [searchParams]="searchParams"
+    (search)="onSearch($event)">
+  </om-target-search-params>
 
   <mat-table
         [dataSource]="items"

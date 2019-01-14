@@ -42,7 +42,7 @@ export class SessionObservationsComponent implements OnInit {
     loadItems(): void {
         this.observationService
             .getSessionObservations(this.getSessionId())
-            .then(observations => this.items = observations);
+            .then(observations => this.items = observations.items);
     }
 
     loadSession(): void {

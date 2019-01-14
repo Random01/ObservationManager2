@@ -15,7 +15,9 @@ class BaseMongooseStore {
         return new Promise((success, fail) => {
             let searhParams = null;
             if (this.currentUser) {
-                searhParams = { userCreated: this.currentUser.id };
+                searhParams = {
+                    userCreated: this.currentUser.id
+                };
             }
 
             this.model.find(searhParams, (err, docs) => {
@@ -28,62 +30,77 @@ class BaseMongooseStore {
         });
     }
 
-    createSearchParams() {
-        return undefined;
-    }
-
     /**
      * 
      * @param {*} param
      * @param {Array.<String>} populationDetails
      * @returns {Promise}
      */
-    getItems(
-        { requestParams: { page, size, sortField, sortDirection, ...restRequestParams } = { page: 0, size: 100 },
+    getItems({
+        requestParams: {
+            page,
+            size,
+            sortField,
+            sortDirection,
+            ...restRequestParams
+        } = {
+            page: 0,
+            size: 100
+        },
         populationDetails = []
     }) {
         return new Promise((success, fail) => {
-            this.model.count((err, count) => {
-                if (err) {
-                    fail(err);
-                } else {
-                    const query = this.model.find(this.createSearchParams(restRequestParams));
-                    
-                    if (sortField != null && sortDirection != null) {
-                        const sortQuery = {};
-                        sortQuery[sortField] = sortDirection === 'asc' ? 1 : -1;
-                        query.sort(sortQuery);
-                    }
+            this.model
+                .find(restRequestParams)
+                .count((err, count) => {
+                    if (err) {
+                        fail(err);
+                    } else {
+                        const query = this.model.find(restRequestParams);
 
-                    populationDetails.forEach((items) => {
-                        query.populate(...items);
-                    });
+                        if (sortField != null && sortDirection != null) {
+                            const sortQuery = {};
+                            sortQuery[sortField] = sortDirection === 'asc' ? 1 : -1;
+                            query.sort(sortQuery);
+                        }
 
-                    query
-                        .limit(size)
-                        .skip(page * size)
-                        .exec((err, docs) => {
+                        populationDetails.forEach((items) => {
+                            query.populate(...items);
+                        });
+
+                        if (size != null && page != null) {
+                            query
+                                .limit(size)
+                                .skip(page * size);
+                        }
+
+                        query.exec((err, docs) => {
                             if (err) {
                                 fail(err);
                             } else {
                                 success({
                                     items: docs,
-                                    pageCount: page,
-                                    pages: Math.ceil(count / size),
+                                    pageCount: page != null ? page : 0,
+                                    pages: size != null ? Math.ceil(count / size) : 1,
                                     totalCount: count
                                 });
                             }
                         });
-                }
-            });
+                    }
+                });
         });
 
     }
 
-    getById({ id, populationDetails = [] }) {
+    getById({
+        id,
+        populationDetails = []
+    }) {
         return new Promise((success, fail) => {
 
-            const query = this.model.findOne({ _id: id });
+            const query = this.model.findOne({
+                _id: id
+            });
 
             populationDetails.forEach((items) => {
                 query.populate(...items);
@@ -129,7 +146,9 @@ class BaseMongooseStore {
             entity.dateModified = new Date();
             entity.userModified = ObjectID(this.currentUser.id);
 
-            this.model.updateOne({ _id: entity.id }, entity, (err) => {
+            this.model.updateOne({
+                _id: entity.id
+            }, entity, (err) => {
                 if (err) {
                     fail(err);
                 } else {
@@ -141,7 +160,9 @@ class BaseMongooseStore {
 
     delete(id) {
         return new Promise((success, fail) => {
-            this.model.deleteOne({ _id: id }, (err) => {
+            this.model.deleteOne({
+                _id: id
+            }, (err) => {
                 if (err) {
                     fail(err);
                 } else {

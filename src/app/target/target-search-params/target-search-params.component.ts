@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { TargetSearchParams } from './target-search-params.model';
 
 @Component({
@@ -11,8 +11,9 @@ import { TargetSearchParams } from './target-search-params.model';
 export class TargetSearchParamsComponent {
 
     @Input() searchParams: TargetSearchParams;
+    @Output() search = new EventEmitter<TargetSearchParams>();
 
-    search(): void {
-
+    onSearch(): void {
+        this.search.emit(this.searchParams);
     }
 }

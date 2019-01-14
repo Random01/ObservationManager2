@@ -20,4 +20,5 @@ export class SessionService extends StorageService<Session> {
     createNew(params?: any): Session {
         return new Session(params);
     }
+
 }

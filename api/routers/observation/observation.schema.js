@@ -19,9 +19,15 @@ const ObservationSchema = new Schema({
     begin: Date,
     end: Date,
     seeing: Number,
-    scope: { type: Schema.Types.ObjectId, ref: 'scopes' },
-    eyepiece: { type: Schema.Types.ObjectId, ref: 'eyepieces' },
-    filter: { type: Schema.Types.ObjectId, ref: 'filters' },
+    scope: {
+        type: Schema.Types.ObjectId, ref: 'scopes'
+    },
+    eyepiece: {
+        type: Schema.Types.ObjectId, ref: 'eyepieces'
+    },
+    filter: {
+        type: Schema.Types.ObjectId, ref: 'filters'
+    },
     result: {
         description: String
     }

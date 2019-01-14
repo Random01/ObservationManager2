@@ -123,16 +123,7 @@ class TargetStore extends BaseMongooseStore {
 
         });
     }
-
-    createSearchParams(requestParams) {
-        if (requestParams && requestParams.name) {
-            return {
-                name: new RegExp(name)
-            };
-        }
-
-        return undefined;
-    }
+    
 }
 
 module.exports = TargetStore;

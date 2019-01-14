@@ -6,6 +6,7 @@ import { StorageService } from '../../shared/services/storage.service';
 import { Observation } from '../../shared/models/models';
 
 import { JwtService } from '../../auth/shared/jwt.service';
+import { ObservationSearchParams } from './observation-search-params.model';
 
 @Injectable()
 export class ObservationService extends StorageService<Observation> {
@@ -20,14 +21,7 @@ export class ObservationService extends StorageService<Observation> {
         return new Observation(params);
     }
 
-    getSessionObservations(sessionId: string): Promise<Observation[]> {
-        const url = `${this.getUrl()}?sessionId=${sessionId}`;
-
-        return new Promise<Observation[]>((success, fail) => {
-            this.http.get<Observation[]>(url)
-                .subscribe(items => {
-                    success(items.map(item => this.deserialize(item)));
-                });
-        });
+    getSessionObservations(sessionId: string) {
+        return this.getItems(new ObservationSearchParams({ sessionId, page: 0, size: 10 }));
     }
 }

@@ -20,9 +20,9 @@ class ObservationStore extends BaseMongooseStore {
         ]});
     }
 
-    getItems(requestParams) {
+    getItems({ requestParams }) {
         return super.getItems(
-            Object.assign({}, requestParams, { populationDetails: [
+            Object.assign({}, { requestParams }, { populationDetails: [
                 ['userCreated', '_id userName firstName lastName'],
                 ['userModified', '_id userName firstName lastName'],
                 ['observer', '_id userName firstName lastName'],
@@ -33,31 +33,6 @@ class ObservationStore extends BaseMongooseStore {
                 ['filter', '_id model'],
                 ['target', '_id name']
             ]}));
-    }
-
-    search({ sessionId } = {}) {
-        return new Promise((success, fail) => {
-            this.model
-                .find({
-                    session: sessionId
-                })
-                .populate('userCreated', '_id userName firstName lastName')
-                .populate('userModified', '_id userName firstName lastName')
-                .populate('observer', '_id userName firstName lastName')
-                .populate('site', '_id name')
-                .populate('session', '_id')
-                .populate('scope', '_id model')
-                .populate('eyepiece', '_id model')
-                .populate('filter', '_id model')
-                .populate('target', '_id name')
-                .exec((err, docs) => {
-                    if (err) {
-                        fail(err);
-                    } else {
-                        success(docs);
-                    }
-                });
-        });
     }
 
 }

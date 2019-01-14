@@ -14,9 +14,9 @@ class SessionStore extends BaseMongooseStore {
         ]});
     }
 
-    getItems(requestParams) {
+    getItems({ requestParams }) {
         return super.getItems(
-            Object.assign({}, requestParams, { populationDetails: [
+            Object.assign({}, { requestParams }, { populationDetails: [
                 ['userCreated', '_id userName firstName lastName'],
                 ['userModified', '_id userName firstName lastName'],
                 ['site', '_id name']
