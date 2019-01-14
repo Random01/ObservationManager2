@@ -19,7 +19,7 @@ export class ObservationSearchParams extends RequestParams {
     protected getQueryParams(): { name: string, value: any }[] {
         const params = super.getQueryParams();
 
-        params.push({ name: 'sessionId', value: this.sessionId });
+        params.push({ name: 'session', value: this.sessionId });
 
         return params;
     }

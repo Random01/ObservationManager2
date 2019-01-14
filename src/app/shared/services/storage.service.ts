@@ -63,19 +63,9 @@ export abstract class StorageService<T extends Entity> {
         });
     }
 
-    getAll(): Promise<T[]> {
-        const httpOptions = {
-            headers: new HttpHeaders({
-                'Authorization': this.getAuthorizationToken()
-            })
-        };
-
-        return new Promise<T[]>((success) => {
-            this.http.get<T[]>(this.getUrl(), httpOptions)
-                .subscribe(items => {
-                    success(items.map(item => this.deserialize(item)));
-                });
-        });
+    async getAll(): Promise<T[]> {
+        const response = await this.getItems(new RequestParams());
+        return response.items;
     }
 
     /**

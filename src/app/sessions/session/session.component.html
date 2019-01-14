@@ -27,11 +27,12 @@
                 <mat-select
                         placeholder="Site"
                         [(ngModel)]="session.site.id">
-                  <mat-option
-                        *ngFor="let site of sites"
-                        [value]="site.id">
-                    {{ site.name }}
-                  </mat-option>
+                        <mat-option>None</mat-option>
+                        <mat-option
+                                *ngFor="let site of sites"
+                                [value]="site.id">
+                                {{ site.name }}
+                        </mat-option>
                 </mat-select>
                 <mat-hint align="start">
                         <strong>Site where session took place</strong>

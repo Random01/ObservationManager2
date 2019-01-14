@@ -5,6 +5,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observation, Session } from '../../shared/models/models';
 import { ObservationService } from '../shared/observation.service';
 import { SessionService } from '../../sessions/shared/session.service';
+import { EntityListComponent } from '../../shared/components/entity-list.component';
+import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
+import { ObservationSearchParams } from '../shared/observation-search-params.model';
+import { RequestParams } from '../../shared/services/request-params.model';
 
 @Component({
     selector: 'om-session-observations',
@@ -13,8 +17,7 @@ import { SessionService } from '../../sessions/shared/session.service';
         './session-observations.component.css'
     ]
 })
-
-export class SessionObservationsComponent implements OnInit {
+export class SessionObservationsComponent extends EntityListComponent<Observation> {
 
     items: Observation[];
     session: Session;
@@ -28,21 +31,26 @@ export class SessionObservationsComponent implements OnInit {
     ];
 
     constructor(
-        private route: ActivatedRoute,
-        private router: Router,
-        private observationService: ObservationService,
-        private sessionService: SessionService) {
+        protected route: ActivatedRoute,
+        protected router: Router,
+        protected observationService: ObservationService,
+        protected sessionService: SessionService,
+        protected deleteEntityDialogService: DeleteEntityDialogService) {
+        super(observationService, deleteEntityDialogService);
     }
 
+    protected getRequestParams(): RequestParams {
+        const params = new ObservationSearchParams();
+
+        params.sessionId = this.getSessionId();
+
+        return params;
+    }
+
+    // tslint:disable-next-line:use-life-cycle-interface
     ngOnInit(): void {
-        this.loadItems();
+        super.ngOnInit();
         this.loadSession();
-    }
-
-    loadItems(): void {
-        this.observationService
-            .getSessionObservations(this.getSessionId())
-            .then(observations => this.items = observations.items);
     }
 
     loadSession(): void {
@@ -66,12 +74,6 @@ export class SessionObservationsComponent implements OnInit {
 
     backToSession() {
         this.router.navigate(['sessions', this.getSessionId()]);
-    }
-
-    remove(itemToRemove: Observation) {
-        this.observationService.delete(itemToRemove.id).then(() => {
-            this.loadItems();
-        });
     }
 
     backToMySessions() {
