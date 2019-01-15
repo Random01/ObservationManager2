@@ -7,7 +7,10 @@ import { DeleteEntityDialogService } from '../../shared/components/delete-entity
 
 @Component({
     selector: 'om-observing-programs',
-    templateUrl: './observing-programs.component.html'
+    templateUrl: './observing-programs.component.html',
+    styleUrls: [
+        './observing-programs.component.css'
+    ]
 })
 
 export class ObservingProgramsComponent extends EntityListComponent<ObservingProgram> {

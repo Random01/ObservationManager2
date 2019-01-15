@@ -14,6 +14,7 @@ export abstract class EntityListComponent<T extends Entity> extends BaseComponen
     isLoading: Boolean;
     currentPage = 0;
     pageSize = 10;
+    pageSizeOptions = [5, 10];
     totalCount = 0;
     sortField?: string;
     sortDirection?: SortOrder;

@@ -25,7 +25,14 @@ class ObservingProgramStore extends BaseMongooseStore {
 
     }
 
-    getStatistics({ id }) {
+    /**
+     * Returns a list of observed objects
+     * @param {Object} param
+     * @param {String} param.id - Observing Program Id.
+     * @param {String} param.userId - User Id.
+     * @returns {Promise}
+     */
+    getStatistics({ id, userId }) {
         return new Promise((success, fail) => {
 
             

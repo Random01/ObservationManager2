@@ -1,7 +1,13 @@
 <mat-toolbar
     class="om-toolbar"
     color="primary">
-        <span>OM!</span>
+        <span>
+            <button mat-icon-button>
+                <mat-icon>menu</mat-icon>
+            </button>
+            <h1>OM</h1>
+        </span>
+        
         <span class="example-fill-remaining-space"></span>
         <span>
             <om-user-profile-menu></om-user-profile-menu>
@@ -10,6 +16,7 @@
 
 <mat-sidenav-container
     class="om-sidebar-container">
+
     <mat-sidenav
         class="om-sidenav"
         mode="side"

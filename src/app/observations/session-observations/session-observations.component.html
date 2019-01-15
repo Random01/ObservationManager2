@@ -8,6 +8,13 @@
         *ngIf="session">
     </om-session-info>
 
+    <mat-paginator
+        [length]="totalCount"
+        [(pageSize)]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)=onPageChanged($event)>
+    </mat-paginator>
+
     <mat-table
         [dataSource]="items"
         class="mat-elevation-z8">
@@ -31,6 +38,16 @@
                 <mat-header-cell *matHeaderCellDef>Eyepiece</mat-header-cell>
                 <mat-cell *matCellDef="let observation">{{observation.eyepiece.model}}</mat-cell>
             </ng-container>
+
+        <ng-container matColumnDef="filterModel">
+            <mat-header-cell *matHeaderCellDef>Filter</mat-header-cell>
+            <mat-cell *matCellDef="let observation">{{observation.filter.model}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="result">
+            <mat-header-cell *matHeaderCellDef>Result</mat-header-cell>
+            <mat-cell *matCellDef="let observation">{{observation.result.description}}</mat-cell>
+        </ng-container>
         
         <ng-container matColumnDef="actions">
             <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
@@ -60,8 +77,8 @@
 
     <mat-paginator
         [length]="totalCount"
-        [pageSize]="pageSize"
-        [pageSizeOptions]="[5, 10]"
+        [(pageSize)]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"
         (page)=onPageChanged($event)>
     </mat-paginator>
 

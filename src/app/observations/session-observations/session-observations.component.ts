@@ -27,6 +27,8 @@ export class SessionObservationsComponent extends EntityListComponent<Observatio
         'targetName',
         'scopeModel',
         'eyepieceModel',
+        'filterModel',
+        'result',
         'actions'
     ];
 
