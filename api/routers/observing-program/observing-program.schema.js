@@ -15,7 +15,12 @@ const ObservingProgramSchema = new Schema({
 
     name: String,
     description: String,
-    targets: [{ type: Schema.Types.ObjectId, ref: 'targets' }]
+    targets: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'targets'
+        }
+    ]
 });
 
 module.exports = ObservingProgramSchema;

@@ -17,6 +17,20 @@ class ObservingProgramRouter extends RouterFactory {
 
     setUp() {
         super.setUp();
+
+        this.router.get('/statistics/:id', auth.optional, (req, res) => this.getStatistics(req, res));
+    }
+
+    getStatistics(req, res) {
+        //this.authorize(req.payload);
+
+        this.store.getStatistics({
+            id: req.params.id,
+            userId: this.currentUser ? this.currentUser.id : undefined
+        }).then(
+            entity => res.json(entity),
+            error => this.handleError(res, error)
+        );
     }
 
 }

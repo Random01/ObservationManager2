@@ -12,10 +12,22 @@ const ObservationSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'users'
     },
-    observer: { type: Schema.Types.ObjectId, ref: 'users' },
-    site: { type: Schema.Types.ObjectId, ref: 'sites' },
-    session: { type: Schema.Types.ObjectId, ref: 'sessions' },
-    target: { type: Schema.Types.ObjectId, ref: 'targets' },
+    observer: {
+        type: Schema.Types.ObjectId,
+        ref: 'users'
+    },
+    site: {
+        type: Schema.Types.ObjectId,
+        ref: 'sites'
+    },
+    session: {
+        type: Schema.Types.ObjectId,
+        ref: 'sessions'
+    },
+    target: {
+        type: Schema.Types.ObjectId,
+        ref: 'targets'
+    },
     begin: Date,
     end: Date,
     seeing: Number,

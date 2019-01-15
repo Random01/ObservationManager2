@@ -1,5 +1,9 @@
 const ObservingProgramSchema = require('./observing-program.schema');
+const ObservationSchema = require('./../observation/observation.schema');
 const BaseMongooseStore = require('./../common/baseMongoose.store');
+
+const mongoose = require('mongoose');
+const ObjectID = require('mongodb').ObjectID;
 
 class ObservingProgramStore extends BaseMongooseStore {
 
@@ -7,9 +11,12 @@ class ObservingProgramStore extends BaseMongooseStore {
         super(db.model('observing-programs', ObservingProgramSchema));
     }
 
-    getById({ id }) {
+    getById({
+        id
+    }) {
         return super.getById({
-            id, populationDetails: [
+            id,
+            populationDetails: [
                 ['userCreated', '_id userName firstName lastName'],
                 ['userModified', '_id userName firstName lastName'],
                 ['targets', '_id name']
@@ -21,7 +28,9 @@ class ObservingProgramStore extends BaseMongooseStore {
      * @param {Array.<Object>} targets 
      * @returns {Promise}
      */
-    uploadProgram({ targets }) {
+    uploadProgram({
+        targets
+    }) {
 
     }
 
@@ -32,11 +41,34 @@ class ObservingProgramStore extends BaseMongooseStore {
      * @param {String} param.userId - User Id.
      * @returns {Promise}
      */
-    getStatistics({ id, userId }) {
+    getStatistics({
+        id,
+        userId
+    }) {
         return new Promise((success, fail) => {
+            this.model.findOne({
+                _id: ObjectID(id)
+            }).exec((err, observingProgram) => {
+                if (err) {
+                    fail(err);
+                } else {
+                    const observationsModel = mongoose.model('observations', ObservationSchema);
 
-            
-
+                    observationsModel
+                        .find({
+                            target: {
+                                '$in': observingProgram.targets
+                            }
+                        })
+                        .exec((err, observations) => {
+                            if (err) {
+                                fail(err);
+                            } else {
+                                success(observations);
+                            }
+                        });
+                }
+            });
         });
     }
 
