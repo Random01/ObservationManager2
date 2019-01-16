@@ -23,4 +23,38 @@ const TargetSchema = new Schema({
     constellation: String
 });
 
+/**
+ * @param {String} name
+ * @returns {Promise}
+ */
+TargetSchema.statics.findByName = function (name) {
+    return new Promise((success, fail) => {
+        this.find({
+            name: new RegExp(name, 'i')
+        }, (err, targets) => {
+            if (err) {
+                fail(err);
+            } else {
+                success(targets);
+            }
+        });
+    });
+};
+
+TargetSchema.statics.findByNames = function (names) {
+    return new Promise((success, fail) => {
+        this.find({
+            name: {
+                '$in': names.map(name => name)
+            }
+        }, (err, targets) => {
+            if (err) {
+                fail(err);
+            } else {
+                success(targets);
+            }
+        });
+    });
+};
+
 module.exports = TargetSchema;

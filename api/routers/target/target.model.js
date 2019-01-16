@@ -1,30 +1,6 @@
-const Entity = require('./../../common/models/Entity');
+const mongoose = require('mongoose');
+const TargetSchema = require('./target.schema');
 
-class Target extends Entity {
+const targetsModel =  mongoose.model('targets', TargetSchema);
 
-    constructor(params) {
-        super(params);
-
-        this.name = undefined;
-        this.targetType = undefined;
-        this.alliases = undefined;
-        this.description = undefined;
-
-        if (params) {
-            if (params.hasOwnProperty('name')) {
-                this.name = params.name;
-            }
-            if (params.hasOwnProperty('targetType')) {
-                this.targetType = params.targetType;
-            }
-            if (params.hasOwnProperty('alliases')) {
-                this.alliases = params.alliases;
-            }
-            if (params.hasOwnProperty('description')) {
-                this.description = params.description;
-            }
-        }
-    }
-}
-
-module.exports = Target;
+module.exports = targetsModel;

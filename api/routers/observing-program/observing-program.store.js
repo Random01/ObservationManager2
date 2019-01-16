@@ -1,5 +1,6 @@
 const ObservingProgramSchema = require('./observing-program.schema');
 const ObservationSchema = require('./../observation/observation.schema');
+const TargetModel = require('./../target/target.model');
 const BaseMongooseStore = require('./../common/baseMongoose.store');
 
 const mongoose = require('mongoose');
@@ -31,7 +32,7 @@ class ObservingProgramStore extends BaseMongooseStore {
     uploadProgram({
         targets
     }) {
-
+        
     }
 
     /**
