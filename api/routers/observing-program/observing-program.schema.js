@@ -26,7 +26,7 @@ ObservingProgramSchema.statics.getById = function (id) {
     return new Promise((success, fail) => {
         this.findOne({
             _id: ObjectID(id)
-        }, (err, observingProgram) => {
+        }).populate('targets _id name').exec((err, observingProgram) => {
             if (err) {
                 fail(err);
             } else {

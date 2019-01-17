@@ -1,10 +1,7 @@
 const ObservingProgramSchema = require('./observing-program.schema');
-const ObservationSchema = require('./../observation/observation.schema');
-const TargetModel = require('./../target/target.model');
+const ObservationModel = require('./../observation/observation.model');
 const BaseMongooseStore = require('./../common/baseMongoose.store');
-
-const mongoose = require('mongoose');
-const ObjectID = require('mongodb').ObjectID;
+const _ = require('lodash');
 
 class ObservingProgramStore extends BaseMongooseStore {
 
@@ -32,7 +29,7 @@ class ObservingProgramStore extends BaseMongooseStore {
     uploadProgram({
         targets
     }) {
-        
+
     }
 
     /**
@@ -44,33 +41,30 @@ class ObservingProgramStore extends BaseMongooseStore {
      */
     getStatistics({
         id,
-        userId
+        userId,
+        page,
+        size
     }) {
-        return new Promise((success, fail) => {
-            this.model.findOne({
-                _id: ObjectID(id)
-            }).exec((err, observingProgram) => {
-                if (err) {
-                    fail(err);
-                } else {
-                    const observationsModel = mongoose.model('observations', ObservationSchema);
+        return this.model
+            .getById(id)
+            .then((observingProgram) => {
+                const targets = observingProgram.targets.splice(page * size, page * size + size);
 
-                    observationsModel
-                        .find({
-                            target: {
-                                '$in': observingProgram.targets
-                            }
-                        })
-                        .exec((err, observations) => {
-                            if (err) {
-                                fail(err);
-                            } else {
-                                success(observations);
-                            }
-                        });
-                }
+                return Promise.all([
+                    targets,
+                    ObservationModel.getByTargets(targets)
+                ]);
+            })
+            .then(([targets, observations]) => {
+                const observationsToTarget = _.groupBy(observations, (o) => o.target);
+
+                return targets.map((target) => {
+                    return {
+                        target,
+                        observations: observationsToTarget[target]
+                    }
+                });
             });
-        });
     }
 
 }

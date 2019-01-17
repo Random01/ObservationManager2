@@ -1,3 +1,4 @@
+const ObjectID = require('mongodb').ObjectID;
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -44,5 +45,22 @@ const ObservationSchema = new Schema({
         description: String
     }
 });
+
+ObservationSchema.statics.getByTargets = function (targetIds) {
+    return new Promise((success, fail) => {
+        this.find({
+            target: {
+                '$in': targetIds.map((targetId) => ObjectID(targetId))
+            }
+        })
+            .exec((err, observations) => {
+                if (err) {
+                    fail(err);
+                } else {
+                    success(observations);
+                }
+            })
+    });
+};
 
 module.exports = ObservationSchema;
