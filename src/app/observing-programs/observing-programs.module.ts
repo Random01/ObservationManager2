@@ -15,7 +15,7 @@ import { ObservingProgramsService } from './shared/observing-programs.service';
 import { ObservingProgramComponent } from './observing-program/observing-program.component';
 import { TargetsEditorComponent } from './targets-editor/targets-editor.component';
 import { TargetModule } from '../target/target.module';
-
+import { ObservingProgramStatisticsComponent } from './observing-program-statistics/observing-program-statistics.component';
 
 @NgModule({
     imports: [
@@ -32,7 +32,8 @@ import { TargetModule } from '../target/target.module';
         EditObservingProgramComponent,
         ObservingProgramsComponent,
         ObservingProgramComponent,
-        TargetsEditorComponent
+        TargetsEditorComponent,
+        ObservingProgramStatisticsComponent
     ],
     providers: [
         ObservingProgramsService

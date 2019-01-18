@@ -23,6 +23,13 @@
                 <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
                 <mat-cell *matCellDef="let program">
                     <button mat-icon-button
+                        routerLink="/observing-programs/statistics/{{program.id}}">
+                        <mat-icon
+                            aria-label="Click to view">
+                            edit
+                        </mat-icon>
+                    </button>
+                    <button mat-icon-button
                             routerLink="/observing-programs/{{program.id}}">
                             <mat-icon
                                 aria-label="Click to edit">

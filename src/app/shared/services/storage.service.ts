@@ -5,13 +5,7 @@ import { AddResultPayload } from './add-result-payload.model';
 import { environment } from '../../../environments/environment';
 import { JwtService } from '../../auth/shared/jwt.service';
 import { RequestParams } from './request-params.model';
-
-interface Response<T extends Entity> {
-    items: T[];
-    pageCount: number;
-    pages: number;
-    totalCount: number;
-}
+import { Response } from '../interfaces/response.interface';
 
 export abstract class StorageService<T extends Entity> {
 
