@@ -48,22 +48,30 @@ class ObservingProgramStore extends BaseMongooseStore {
         return this.model
             .getById(id)
             .then((observingProgram) => {
-                const targets = observingProgram.targets.splice(page * size, page * size + size);
+                const startIndex = page * size;
+                const targets = observingProgram.targets.slice(startIndex, startIndex + size);
 
                 return Promise.all([
                     targets,
-                    ObservationModel.getByTargets(targets)
+                    ObservationModel.getByTargets(targets),
+                    observingProgram.targets.length
                 ]);
             })
-            .then(([targets, observations]) => {
+            .then(([targets, observations, totalCount]) => {
                 const observationsToTarget = _.groupBy(observations, (o) => o.target);
-
-                return targets.map((target) => {
+                const targetsStatistics = targets.map((target) => {
                     return {
                         target,
-                        observations: observationsToTarget[target]
+                        observations: observationsToTarget[target.id]
                     }
                 });
+
+                return {
+                    items: targetsStatistics,
+                    pageCount: page != null ? page : 0,
+                    pages: size != null ? Math.ceil(totalCount / size) : 1,
+                    totalCount
+                };
             });
     }
 

@@ -1,9 +1,14 @@
 <div class="om-observing-program-statistics">
 
+    <div>
+        <h2>Statistics</h2>
+    </div>
+
     <mat-paginator
             [length]="totalCount"
             [(pageSize)]="pageSize"
             [pageSizeOptions]="pageSizeOptions"
+            showFirstLastButtons="true"
             (page)=onPageChanged($event)>
     </mat-paginator>
 
@@ -12,13 +17,16 @@
         class="mat-elevation-z8">
 
         <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef>Object Name</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>Target Name</mat-header-cell>
             <mat-cell *matCellDef="let item">{{item.target.name}}</mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="actions">
-            <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+        <ng-container matColumnDef="observed">
+            <mat-header-cell *matHeaderCellDef>Observed</mat-header-cell>
             <mat-cell *matCellDef="let item">
+                    <mat-icon *ngIf="item.observed">
+                            check
+                    </mat-icon>
             </mat-cell>
         </ng-container>
 
@@ -31,8 +39,14 @@
         [length]="totalCount"
         [(pageSize)]="pageSize"
         [pageSizeOptions]="pageSizeOptions"
+        showFirstLastButtons="true"
         (page)=onPageChanged($event)>
     </mat-paginator>
 
+    <div>
+        <button
+            mat-button
+            (click)=goBack()>Back</button>
+    </div>
 
 </div>

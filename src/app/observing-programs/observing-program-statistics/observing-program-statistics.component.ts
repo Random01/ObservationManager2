@@ -1,5 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { ObservingProgram } from '../../shared/models/observing-program.model';
+import { Component } from '@angular/core';
 import { TargetStatistics, ObservingProgramsService, ObservingProgramStatisticsRequestParams } from '../shared/observing-programs.service';
 import { PaginatedListComponent } from '../../shared/components/paginated-list.component';
 import { RequestParams } from '../../shared/services/request-params.model';
@@ -14,7 +13,7 @@ export class ObservingProgramStatisticsComponent extends PaginatedListComponent<
 
     displayedColumns: string[] = [
         'name',
-        'actions'
+        'observed'
     ];
 
     constructor(
@@ -42,9 +41,14 @@ export class ObservingProgramStatisticsComponent extends PaginatedListComponent<
         const stat = await this.observingProgramService.getStatistics(request as ObservingProgramStatisticsRequestParams);
 
         this.items = stat.items;
+        this.totalCount = stat.totalCount;
     }
 
     getObservingProgramId(): string {
-        return this.route.snapshot.paramMap.get('observingProgramId');
+        return this.route.snapshot.paramMap.get('programId');
+    }
+
+    goBack(): void {
+        this.router.navigate(['/observing-programs']);
     }
 }

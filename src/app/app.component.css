@@ -9,3 +9,7 @@
 .om-toolbar .example-fill-remaining-space {
     flex: 1 1 auto;
 }
+
+.om-toolbar .om-title {
+    display: contents;
+}

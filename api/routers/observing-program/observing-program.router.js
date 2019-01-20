@@ -26,7 +26,9 @@ class ObservingProgramRouter extends RouterFactory {
 
         this.store.getStatistics({
             id: req.params.id,
-            userId: this.currentUser ? this.currentUser.id : undefined
+            userId: this.currentUser ? this.currentUser.id : undefined,
+            page: parseFloat(req.query.page),
+            size: parseFloat(req.query.size)
         }).then(
             entity => res.json(entity),
             error => this.handleError(res, error)
