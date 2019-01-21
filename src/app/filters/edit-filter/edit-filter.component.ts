@@ -9,8 +9,7 @@ import { FilterService } from '../shared/filter.service';
 
 @Component({
     selector: 'om-edit-filter',
-    templateUrl: './edit-filter.component.html',
-    providers: [FilterService]
+    templateUrl: './edit-filter.component.html'
 })
 
 export class EditFilterComponent extends EditEntityComponent<Filter> {

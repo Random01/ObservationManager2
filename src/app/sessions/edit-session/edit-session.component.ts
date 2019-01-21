@@ -7,11 +7,9 @@ import { EditEntityComponent } from '../../shared/components/edit-entity.compone
 import { SessionService } from '../shared/session.service';
 import { Session } from '../../shared/models/models';
 
-
 @Component({
     selector: 'om-edit-session',
-    templateUrl: './edit-session.component.html',
-    providers: [SessionService]
+    templateUrl: './edit-session.component.html'
 })
 
 export class EditSessionComponent extends EditEntityComponent<Session> {

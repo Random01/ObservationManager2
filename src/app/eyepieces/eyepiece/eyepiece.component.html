@@ -1,23 +1,32 @@
-﻿<div class="om-eyepiece-component">
+﻿<div class="om-eyepiece">
 
     <mat-form-field>
-        <input matInput
-                placeholder="Model"
-                [(ngModel)]="eyepiece.model"/>
+        <input
+            matInput
+            autocomplete="off"
+            type="text"
+            placeholder="Model"
+            [(ngModel)]="eyepiece.model"/>
     </mat-form-field>
 
     <mat-form-field>
-        <input matInput
-                type="number"
-                placeholder="Focal Length (mm)"
-                [(ngModel)]="eyepiece.focalLength"/>
+        <input
+            matInput
+            autocomplete="off"
+            type="number"
+            min="0"
+            placeholder="Focal Length (mm)"
+            [(ngModel)]="eyepiece.focalLength"/>
     </mat-form-field>
 
     <mat-form-field>
-        <input matInput
-                type="number"
-                placeholder="Apparent FOV"
-                [(ngModel)]="eyepiece.apparentFOV"/>
+        <input
+            matInput
+            autocomplete="off"
+            type="number"
+            min="0"
+            placeholder="Apparent FOV"
+            [(ngModel)]="eyepiece.apparentFOV"/>
     </mat-form-field>
 
     <om-vendor-selector

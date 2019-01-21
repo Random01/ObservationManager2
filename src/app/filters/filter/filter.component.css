@@ -1,8 +1,8 @@
-.om-filter-component {
+.om-filter {
     display: flex;
     flex-direction: column;
   }
   
-  .om-filter-component > * {
+  .om-filter > * {
     width: 100%;
   }

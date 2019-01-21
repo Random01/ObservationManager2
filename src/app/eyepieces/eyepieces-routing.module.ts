@@ -10,15 +10,15 @@ const routes: Routes = [
     {
         path: 'eyepieces',
         component: EyepiecesComponent
-      },
-      {
+    },
+    {
         path: 'eyepieces/new-eyepiece',
         component: AddEyepieceComponent
-      },
-      {
+    },
+    {
         path: 'eyepieces/:id',
         component: EditEyepieceComponent
-      }
+    }
 ];
 
 @NgModule({

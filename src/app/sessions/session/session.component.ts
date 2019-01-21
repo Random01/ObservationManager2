@@ -5,10 +5,7 @@ import { SiteService } from '../../sites/shared/site.service';
 @Component({
     selector: 'om-session',
     templateUrl: './session.component.html',
-    styleUrls: ['./session.component.css'],
-    providers: [
-        SiteService
-    ]
+    styleUrls: ['./session.component.css']
 })
 
 export class SessionComponent implements OnInit {

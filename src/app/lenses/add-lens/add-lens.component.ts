@@ -9,8 +9,7 @@ import { Scope } from '../../shared/models/equipment/equipment';
 
 @Component({
     selector: 'om-add-lens',
-    templateUrl: './add-lens.component.html',
-    providers: [LensService]
+    templateUrl: './add-lens.component.html'
 })
 
 export class AddLensComponent extends AddEntityComponent<Scope> {

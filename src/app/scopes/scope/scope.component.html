@@ -3,6 +3,8 @@
     <mat-form-field>
         <input
             matInput
+            autocomplete="off"
+            type="text"
             placeholder="Model"
             [(ngModel)]="scope.model"/>
     </mat-form-field>
@@ -10,7 +12,9 @@
     <mat-form-field>
         <input
             matInput
+            autocomplete="off"
             type="number"
+            min="0"
             placeholder="Aperture (mm)"
             [(ngModel)]="scope.aperture"/>
     </mat-form-field>
@@ -18,7 +22,9 @@
     <mat-form-field>
         <input
             matInput
+            autocomplete="off"
             type="number"
+            min="0"
             placeholder="Focal Length (mm)"
             [(ngModel)]="scope.focalLength"/>
     </mat-form-field>

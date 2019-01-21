@@ -7,8 +7,7 @@ import { DeleteEntityDialogService } from '../../shared/components/delete-entity
 
 @Component({
     selector: 'om-eyepieces',
-    templateUrl: './eyepieces.component.html',
-    providers: [EyepieceService]
+    templateUrl: './eyepieces.component.html'
 })
 
 export class EyepiecesComponent extends EntityListComponent<Eyepiece> {

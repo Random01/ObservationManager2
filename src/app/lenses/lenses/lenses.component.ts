@@ -8,7 +8,7 @@ import { DeleteEntityDialogService } from '../../shared/components/delete-entity
 @Component({
     selector: 'om-lenses',
     templateUrl: './lenses.component.html',
-    providers: [LensService]
+    styleUrls: ['./lenses.component.css']
 })
 
 export class LensesComponent extends EntityListComponent<Lens> {

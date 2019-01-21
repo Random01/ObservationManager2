@@ -7,8 +7,7 @@ import { DeleteEntityDialogService } from '../../shared/components/delete-entity
 
 @Component({
     selector: 'om-filters',
-    templateUrl: './filters.component.html',
-    providers: [FilterService]
+    templateUrl: './filters.component.html'
 })
 
 export class FiltersComponent extends EntityListComponent<Filter> {

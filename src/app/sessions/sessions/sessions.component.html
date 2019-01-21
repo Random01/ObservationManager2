@@ -5,8 +5,9 @@
 
     <mat-paginator
         [length]="totalCount"
-        [pageSize]="pageSize"
+        [(pageSize)]="pageSize"
         [pageSizeOptions]="pageSizeOptions"
+        showFirstLastButtons="true"
         (page)=onPageChanged($event)>
     </mat-paginator>
 
@@ -70,8 +71,9 @@
 
     <mat-paginator
         [length]="totalCount"
-        [pageSize]="pageSize"
+        [(pageSize)]="pageSize"
         [pageSizeOptions]="pageSizeOptions"
+        showFirstLastButtons="true"
         (page)=onPageChanged($event)>
     </mat-paginator>
 

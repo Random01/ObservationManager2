@@ -9,8 +9,7 @@ import { LensService } from '../shared/lens.service';
 
 @Component({
     selector: 'om-edit-lens',
-    templateUrl: './edit-lens.component.html',
-    providers: [LensService]
+    templateUrl: './edit-lens.component.html'
 })
 
 export class EditLensComponent extends EditEntityComponent<Lens> {

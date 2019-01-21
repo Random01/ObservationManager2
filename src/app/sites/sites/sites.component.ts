@@ -8,7 +8,8 @@ import { DeleteEntityDialogService } from '../../shared/components/delete-entity
 
 @Component({
     selector: 'om-sites',
-    templateUrl: './sites.component.html'
+    templateUrl: './sites.component.html',
+    styleUrls: [ './sites.component.css' ]
 })
 
 export class SitesComponent extends EntityListComponent<Site> {

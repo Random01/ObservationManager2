@@ -1,24 +1,30 @@
-﻿<div class="om-site-component">
+﻿<div class="om-site">
 
     <mat-form-field>
         <input
             matInput
+            type="text"
+            autocomplete="off"
             [(ngModel)]="site.name"
             placeholder="Name" />
     </mat-form-field>
 
+    <!-- Timezone -->
     <mat-form-field>
         <input
             matInput
             type="number"
+            autocomplete="off"
             [(ngModel)]="site.timezone"
             placeholder="Timezone" />
     </mat-form-field>
 
+    <!-- Elevation -->
     <mat-form-field>
         <input
             matInput
             type="number"
+            autocomplete="off"
             [(ngModel)]="site.elevation"
             placeholder="Elevation" />
     </mat-form-field>

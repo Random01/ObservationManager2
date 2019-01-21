@@ -22,8 +22,6 @@ class ObservingProgramRouter extends RouterFactory {
     }
 
     getStatistics(req, res) {
-        //this.authorize(req.payload);
-
         this.store.getStatistics({
             id: req.params.id,
             userId: this.currentUser ? this.currentUser.id : undefined,

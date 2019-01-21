@@ -9,8 +9,7 @@ import { EyepieceService } from '../shared/eyepiece.service';
 
 @Component({
     selector: 'om-edit-eyepiece',
-    templateUrl: './edit-eyepiece.component.html',
-    providers: [EyepieceService]
+    templateUrl: './edit-eyepiece.component.html'
 })
 
 export class EditEyepieceComponent extends EditEntityComponent<Eyepiece> {

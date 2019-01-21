@@ -8,6 +8,14 @@
     (search)="onSearch($event)">
   </om-target-search-params>
 
+  <mat-paginator
+    [length]="totalCount"
+    [(pageSize)]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    showFirstButton="true"
+    (page)=onPageChanged($event)>
+  </mat-paginator>
+
   <mat-table
         [dataSource]="items"
         class="mat-elevation-z8">
@@ -53,10 +61,11 @@
   </mat-table>
 
   <mat-paginator
-              [length]="totalCount"
-              [pageSize]="pageSize"
-              [pageSizeOptions]="[5, 10]"
-              (page)=onPageChanged($event)>
+    [length]="totalCount"
+    [(pageSize)]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    showFirstButton="true"
+    (page)=onPageChanged($event)>
   </mat-paginator>
 
   <hr />

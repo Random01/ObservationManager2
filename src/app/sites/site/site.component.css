@@ -1,8 +1,8 @@
-.om-site-component {
+.om-site {
     display: flex;
     flex-direction: column;
 }
 
-.om-site-component > * {
+.om-site > * {
     width: 100%;
 }

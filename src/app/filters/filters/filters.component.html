@@ -1,11 +1,19 @@
 <div class="om-filters">
-        <div>
-            <h2>My Filters</h2>
-        </div>
+    <div>
+        <h2>My Filters</h2>
+    </div>
     
-        <mat-table
-            [dataSource]="items"
-            class="mat-elevation-z8">
+    <mat-paginator
+        [length]="totalCount"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"
+        showFirstLastButtons="true"
+        (page)=onPageChanged($event)>
+    </mat-paginator>
+
+    <mat-table
+        [dataSource]="items"
+        class="mat-elevation-z8">
     
         <ng-container matColumnDef="model">
             <mat-header-cell *matHeaderCellDef>Model</mat-header-cell>
@@ -49,13 +57,15 @@
     </mat-table>
 
     <mat-paginator
-              [length]="totalCount"
-              [pageSize]="pageSize"
-              [pageSizeOptions]="[5, 10]"
-              (page)=onPageChanged($event)>
+        [length]="totalCount"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"
+        showFirstLastButtons="true"
+        (page)=onPageChanged($event)>
     </mat-paginator>
     
     <hr />
+
     <div>
         <button 
             mat-button

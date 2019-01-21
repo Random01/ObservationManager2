@@ -9,8 +9,7 @@ import { AddEntityComponent } from '../../shared/components/add-entity.component
 
 @Component({
     selector: 'om-add-session',
-    templateUrl: './add-session.component.html',
-    providers: [SessionService]
+    templateUrl: './add-session.component.html'
 })
 
 export class AddSessionComponent extends AddEntityComponent<Session> {
