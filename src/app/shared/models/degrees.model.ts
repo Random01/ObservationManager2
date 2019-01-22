@@ -23,7 +23,7 @@ export class Degrees implements Serializable {
         return this.toDegrees();
     }
 
-    deserialize(params: any) {
+    deserialize(params: any): void {
         this.fromDegrees(params);
     }
 
@@ -32,7 +32,7 @@ export class Degrees implements Serializable {
         return (this.arcseconds / 3600) + (this.arcminutes / 60.0) + this.degrees;
     }
 
-    fromDegrees(degrees: number) {
+    fromDegrees(degrees: number): void {
         const degreesFraction = degrees;
         const arcminFraction = (degrees % 1) * 60;
         const arcseconds = (arcminFraction % 1) * 60;

@@ -8,8 +8,7 @@ import { UserService } from '../shared/user.service';
 
 @Component({
     selector: 'om-add-user',
-    templateUrl: './add-user.component.html',
-    providers: [UserService]
+    templateUrl: './add-user.component.html'
 })
 
 export class AddUserComponent extends AddEntityComponent<User> {

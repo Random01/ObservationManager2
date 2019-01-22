@@ -6,17 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import {
-    MatButtonModule,
-    MatNativeDateModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatTableModule,
-    MatIconModule,
-    MatPaginatorModule
-} from '@angular/material';
 
-import { MatSelectModule } from '@angular/material/select';
+import { MaterialModule } from '../shared/material.module';
 
 import { SessionsComponent } from './sessions/sessions.component';
 import { SessionComponent } from './session/session.component';
@@ -35,16 +26,9 @@ import { SessionInfoComponent } from './session-info/session-info.component';
         FormsModule,
         RouterModule,
         NoopAnimationsModule,
-        MatButtonModule,
-        MatInputModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatSelectModule,
         SessionsRoutingModule,
-        MatTableModule,
-        MatIconModule,
-        MatPaginatorModule,
-        SharedModule
+        SharedModule,
+        MaterialModule
     ],
     declarations: [
         SessionsComponent,

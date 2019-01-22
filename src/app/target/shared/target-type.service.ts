@@ -1,10 +1,6 @@
 import { Observable, of } from 'rxjs';
 import { TargetType } from '../../shared/models/target-type.model';
-
-export interface TargetTypeItem {
-    type: TargetType;
-    name: string;
-}
+import { TargetTypeItem } from './interfaces/target-search-params.interface';
 
 export class TargetTypeService {
 

@@ -4,31 +4,18 @@ import { FormsModule } from '@angular/forms';
 
 import { RouterModule } from '@angular/router';
 
-import {
-    MatButtonModule,
-    MatInputModule,
-    MatTableModule,
-    MatIconModule,
-    MatPaginatorModule,
-    MatAutocompleteModule
-} from '@angular/material';
-
 import { EquipmentComponent } from './equipment.component';
 import { VendorService } from './shared/vendor.service';
 import { VendorSelectorComponent } from './vendor-selector/vendor-selector.component';
+import { MaterialModule } from '../shared/material.module';
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
         RouterModule,
-        MatButtonModule,
-        MatInputModule,
-        MatTableModule,
-        MatIconModule,
         RouterModule,
-        MatPaginatorModule,
-        MatAutocompleteModule
+        MaterialModule
     ],
     declarations: [
         EquipmentComponent,

@@ -1,4 +1,4 @@
-﻿<div class="om-recent-observations">
+﻿<div class="om-observations">
     <div>
         <h2 class="mat-h2">
             My Recent Observations
@@ -9,6 +9,7 @@
         [length]="totalCount"
         [(pageSize)]="pageSize"
         [pageSizeOptions]="pageSizeOptions"
+        showFirstLastButtons="true"
         (page)=onPageChanged($event)>
     </mat-paginator>
     
@@ -45,16 +46,16 @@
             <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
             <mat-cell *matCellDef="let observation">
                 <button
-                    *ngIf="observation.session && observation.session.id"
                     mat-icon-button
-                    routerLink="/sessions/{{observation.session.id}}">
+                    routerLink="/observations/{{observation.id}}">
                     <mat-icon>
-                            view_headline
+                            edit
                     </mat-icon>
                 </button>
                 <button
+                    *ngIf="observation.session && observation.session.id"
                     mat-icon-button
-                    routerLink="/observations/{{observation.id}}">
+                    routerLink="/sessions/{{observation.session.id}}">
                     <mat-icon>
                             view_headline
                     </mat-icon>
@@ -71,6 +72,7 @@
         [length]="totalCount"
         [(pageSize)]="pageSize"
         [pageSizeOptions]="pageSizeOptions"
+        showFirstLastButtons="true"
         (page)=onPageChanged($event)>
     </mat-paginator>
     

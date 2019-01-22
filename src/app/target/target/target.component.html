@@ -1,13 +1,15 @@
 <div class="om-target-component">
 
     <!-- Target Type -->
-    <om-target-type-selector [(targetType)]="target.targetType">
+    <om-target-type-selector [(targetType)]="target.target">
     </om-target-type-selector>
 
     <!-- Target name -->
     <mat-form-field>
         <input
             matInput
+            type="text"
+            autocomplete="off"
             [(ngModel)]="target.name"
             placeholder="Name" />
     </mat-form-field>
@@ -16,6 +18,8 @@
     <mat-form-field>
         <input
             matInput
+            type="text"
+            autocomplete="off"
             [(ngModel)]="target.description"
             placeholder="Description" />
     </mat-form-field>

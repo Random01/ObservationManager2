@@ -10,6 +10,13 @@ class TargetStore extends BaseMongooseStore {
         super(db.model('targets', TargetSchema));
     }
 
+    getById({ id }) {
+        return super.getById({ id, populationDetails: [
+            ['userCreated', '_id userName firstName lastName'],
+            ['userModified', '_id userName firstName lastName']
+        ]});
+    }
+
     search({
         name,
         maxCount = 10

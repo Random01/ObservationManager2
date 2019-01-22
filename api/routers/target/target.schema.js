@@ -20,7 +20,7 @@ const TargetSchema = new Schema({
         ra: Number,
         dec: Number
     },
-    constellation: String
+    const: String
 });
 
 /**

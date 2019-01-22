@@ -8,7 +8,7 @@ export class Target extends Entity {
     //  most common name
     public name: string;
 
-    public targetType: TargetType;
+    public type: TargetType;
 
     // alternative names
     public alliases: string[];
@@ -24,7 +24,7 @@ export class Target extends Entity {
     constructor(params?: {
         id?: string,
         name?: string,
-        targetType?: TargetType,
+        type?: TargetType,
         alliases?: string[],
         description?: string,
         constellation?: Constellation,
@@ -40,13 +40,13 @@ export class Target extends Entity {
     }
 
     serialize(): Object {
-        return Object.assign(super.serialize(), this, {
+        return Object.assign(super.serialize(), {
             name: this.name,
-            targetType: this.targetType,
+            type: this.type,
             alliases: this.alliases,
             description: this.description,
-            constellation: this.serializeEntity(this.constellation),
-            position: this.position ? this.position.serialize() : null
+            const: this.serializeEntity(this.constellation),
+            pos: this.position ? this.position.serialize() : null
         });
     }
 
@@ -55,11 +55,11 @@ export class Target extends Entity {
 
         this.copy(state, [
             'name',
-            'targetType',
+            'type',
             'alliases',
-            'description',
-            'position',
-            'constellation'
+            'description'
         ]);
+
+        this.position.deserialize(state.pos || {});
     }
 }

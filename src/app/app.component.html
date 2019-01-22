@@ -2,7 +2,9 @@
     class="om-toolbar"
     color="primary">
         <span class="om-title">
-            <button mat-icon-button>
+            <button
+                mat-icon-button
+                (click)="toggleSideNav()">
                 <mat-icon>menu</mat-icon>
             </button>
             <h1>OM</h1>
@@ -20,7 +22,7 @@
     <mat-sidenav
         class="om-sidenav"
         mode="side"
-        opened>
+        [(opened)]="opened">
 
         <mat-list>
             <mat-list-item>

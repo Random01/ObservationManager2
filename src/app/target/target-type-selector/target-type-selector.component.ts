@@ -1,7 +1,8 @@
 import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 
 import { TargetType } from '../../shared/models/target-type.model';
-import { TargetTypeService, TargetTypeItem } from '../shared/target-type.service';
+import { TargetTypeService } from '../shared/target-type.service';
+import { TargetTypeItem } from '../shared/interfaces/target-search-params.interface';
 
 @Component({
     selector: 'om-target-type-selector',
@@ -25,6 +26,10 @@ export class TargetTypeSelectorComponent implements OnInit {
             .subscribe((targetTypes) => {
                 this.targetTypes = targetTypes;
             });
+    }
+
+    onChange(value: TargetType): void {
+        this.targetTypeChange.emit(value);
     }
 
 }

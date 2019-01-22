@@ -8,11 +8,17 @@ import { AuthenticationService } from './auth/shared/authentication.service';
 })
 export class AppComponent implements OnInit {
 
+  opened = true;
+
   constructor(
     private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.authenticationService.populate();
+  }
+
+  toggleSideNav(): void {
+    this.opened = !this.opened;
   }
 
 }

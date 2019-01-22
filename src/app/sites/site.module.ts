@@ -6,13 +6,7 @@ import { FormsModule } from '@angular/forms';
 
 import { RouterModule } from '@angular/router';
 
-import {
-    MatButtonModule,
-    MatInputModule,
-    MatTableModule,
-    MatIconModule,
-    MatPaginatorModule
-} from '@angular/material';
+import { MaterialModule } from '../shared/material.module';
 
 import { SitesComponent } from './sites/sites.component';
 import { SiteComponent } from './site/site.component';
@@ -28,13 +22,9 @@ import { SharedModule } from '../shared/shared.module';
         BrowserModule,
         FormsModule,
         RouterModule,
-        MatButtonModule,
-        MatInputModule,
-        MatTableModule,
-        MatIconModule,
-        MatPaginatorModule,
         SitesRoutingModule,
-        SharedModule
+        SharedModule,
+        MaterialModule
     ],
     declarations: [
         SitesComponent,
