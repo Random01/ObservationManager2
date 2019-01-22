@@ -2,7 +2,7 @@
         <mat-form-field>
                 <mat-select
                         placeholder="Target Type"
-                        [value]="type"
+                        [value]="targetType"
                         (selectionChange)="onChange($event.value)">
                         <mat-option
                                 *ngFor="let targetType of targetTypes"

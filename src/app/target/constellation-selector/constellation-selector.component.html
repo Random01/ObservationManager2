@@ -2,7 +2,9 @@
 
     <mat-form-field>
 
-        <mat-select placeholder="Constellation">
+        <mat-select
+            placeholder="Constellation"
+            (selectionChange)="onConstellationChange($event.value)">
             <mat-option>None</mat-option>
             <mat-option *ngFor="let cnst of filteredConstellations | async"
                         [value]="cnst">
