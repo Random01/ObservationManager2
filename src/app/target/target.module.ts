@@ -20,6 +20,7 @@ import { DeclinationSelectorComponent } from './declination-selector/declination
 import { RightAscensionSelectorComponent } from './right-ascension-selector/right-ascension-selector.component';
 import { AliasesEditorComponent } from './aliases-editor/aliases-editor.component';
 import { TargetSearchParamsComponent } from './target-search-params/target-search-params.component';
+import { TargetTypeFormatterPipe } from './shared/pipes/target-type-formatter.pipe';
 
 @NgModule({
     imports: [
@@ -42,7 +43,8 @@ import { TargetSearchParamsComponent } from './target-search-params/target-searc
         DeclinationSelectorComponent,
         RightAscensionSelectorComponent,
         AliasesEditorComponent,
-        TargetSearchParamsComponent
+        TargetSearchParamsComponent,
+        TargetTypeFormatterPipe
     ],
     exports: [
         TargetSearchComponent,

@@ -5,12 +5,15 @@ export class ObservationSearchParams extends RequestParams {
 
     public sessionId: string;
 
+    public targetId: string;
+
     constructor(props?: {
         page?: number,
         size?: number,
         sortField?: string,
         sortDirection?: SortOrder,
-        sessionId?: string
+        sessionId?: string,
+        targetId?: string
     }) {
         super(props);
         Object.assign(this, props);
@@ -20,6 +23,7 @@ export class ObservationSearchParams extends RequestParams {
         const params = super.getQueryParams();
 
         params.push({ name: 'session', value: this.sessionId });
+        params.push({ name: 'target', value: this.targetId });
 
         return params;
     }

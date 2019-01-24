@@ -4,6 +4,7 @@
                         placeholder="Target Type"
                         [value]="targetType"
                         (selectionChange)="onChange($event.value)">
+                        <mat-option>None</mat-option>
                         <mat-option
                                 *ngFor="let targetType of targetTypes"
                                 [value]="targetType.type">
