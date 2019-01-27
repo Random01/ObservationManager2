@@ -16,8 +16,8 @@ export class LensesComponent extends EntityListComponent<Lens> {
 
     displayedColumns: string[] = [
         'model',
-        'factor',
         'vendor',
+        'factor',
         'actions'
     ];
 

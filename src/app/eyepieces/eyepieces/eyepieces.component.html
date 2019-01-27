@@ -5,7 +5,7 @@
 
     <mat-paginator
         [length]="totalCount"
-        [pageSize]="pageSize"
+        [(pageSize)]="pageSize"
         [pageSizeOptions]="pageSizeOptions"
         showFirstLastButtons="true"
         (page)=onPageChanged($event)>
@@ -27,12 +27,12 @@
 
         <ng-container matColumnDef="focalLength">
             <mat-header-cell *matHeaderCellDef>Focal Length (mm)</mat-header-cell>
-            <mat-cell *matCellDef="let eyepiece">{{eyepiece.focalLength}}</mat-cell>
+            <mat-cell *matCellDef="let eyepiece">{{eyepiece | eyepieceFocalLength}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="apparentFOV">
             <mat-header-cell *matHeaderCellDef>Apparent FOV (deg)</mat-header-cell>
-            <mat-cell *matCellDef="let eyepiece">{{eyepiece.apparentFOV}}</mat-cell>
+            <mat-cell *matCellDef="let eyepiece">{{eyepiece.apparentFOV | number:'0.1'}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="actions">
@@ -63,7 +63,7 @@
 
     <mat-paginator
         [length]="totalCount"
-        [pageSize]="pageSize"
+        [(pageSize)]="pageSize"
         [pageSizeOptions]="pageSizeOptions"
         showFirstLastButtons="true"
         (page)=onPageChanged($event)>

@@ -5,7 +5,7 @@
 
     <mat-paginator
         [length]="totalCount"
-        [pageSize]="pageSize"
+        [(pageSize)]="pageSize"
         [pageSizeOptions]="pageSizeOptions"
         showFirstLastButtons="true"
         (page)=onPageChanged($event)>
@@ -27,7 +27,7 @@
 
         <ng-container matColumnDef="factor">
                 <mat-header-cell *matHeaderCellDef>Factor</mat-header-cell>
-                <mat-cell *matCellDef="let lens">{{lens.factor}}</mat-cell>
+                <mat-cell *matCellDef="let lens">{{lens.factor | number:'0.2'}}</mat-cell>
             </ng-container>
 
         <ng-container matColumnDef="actions">
@@ -58,7 +58,7 @@
 
     <mat-paginator
         [length]="totalCount"
-        [pageSize]="pageSize"
+        [(pageSize)]="pageSize"
         [pageSizeOptions]="pageSizeOptions"
         showFirstLastButtons="true"
         (page)=onPageChanged($event)>

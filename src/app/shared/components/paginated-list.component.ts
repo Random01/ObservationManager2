@@ -1,10 +1,23 @@
 import { BaseComponent } from './base-component';
 import { SortOrder } from '../models/sort-order.model';
 import { RequestParams } from '../services/request-params.model';
-import { OnInit } from '@angular/core';
+import { OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
-export abstract class PaginatedListComponent<T> extends BaseComponent implements OnInit {
+interface PageChangedEvent {
+    length: number;
+    pageIndex: number;
+    pageSize: number;
+    previousPageIndex: number;
+}
+
+interface PaginatedListQueryParams {
+    page: number;
+    size: number;
+}
+
+export abstract class PaginatedListComponent<T> extends BaseComponent implements OnInit, OnDestroy {
 
     items: T[];
     isLoading: Boolean;
@@ -14,6 +27,8 @@ export abstract class PaginatedListComponent<T> extends BaseComponent implements
     totalCount = 0;
     sortField?: string;
     sortDirection?: SortOrder;
+
+    queryParamsSubscription: Subscription;
 
     constructor(
         protected route: ActivatedRoute,
@@ -30,17 +45,28 @@ export abstract class PaginatedListComponent<T> extends BaseComponent implements
 
     }
 
-    onPageChanged(pageEvent: any) {
+    onPageChanged(pageEvent: PageChangedEvent) {
         this.currentPage = pageEvent.pageIndex;
         this.pageSize = pageEvent.pageSize;
-        this.loadItems();
+
+        this.goToPage({ page: pageEvent.pageIndex, size: pageEvent.pageSize });
     }
 
-    goToPage(pageNum) {
-        this.router.navigate(['/product-list'], { queryParams: { page: pageNum } });
+    goToPage(params: PaginatedListQueryParams) {
+        this.router.navigate([], { queryParams: params });
     }
 
     ngOnInit(): void {
-        this.loadItems();
+        this.queryParamsSubscription = this.route
+            .queryParams
+            .subscribe(params => {
+                this.currentPage = +params['page'] || 0;
+                this.pageSize = +params['size'] || 10;
+                this.loadItems();
+            });
+    }
+
+    ngOnDestroy(): void {
+        this.queryParamsSubscription.unsubscribe();
     }
 }

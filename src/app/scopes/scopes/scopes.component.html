@@ -22,12 +22,12 @@
         
         <ng-container matColumnDef="aperture">
             <mat-header-cell *matHeaderCellDef>Aperture (mm)</mat-header-cell>
-            <mat-cell *matCellDef="let scope">{{scope.aperture}}</mat-cell>
+            <mat-cell *matCellDef="let scope">{{scope.aperture | number:'0.2'}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="focalLength">
             <mat-header-cell *matHeaderCellDef>Focal Length (mm)</mat-header-cell>
-            <mat-cell *matCellDef="let scope">{{scope.focalLength}}</mat-cell>
+            <mat-cell *matCellDef="let scope">{{scope.focalLength | number:'0.2'}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="vendor">

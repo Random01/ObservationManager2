@@ -14,6 +14,7 @@ import { EditEyepieceComponent } from './edit-eyepiece/edit-eyepiece.component';
 import { EyepiecesRoutingModule } from './eyepieces-routing.module';
 import { EquipmentModule } from '../equipment/equipment.module';
 import { MaterialModule } from '../shared/material.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
     imports: [
@@ -23,7 +24,8 @@ import { MaterialModule } from '../shared/material.module';
         RouterModule,
         EyepiecesRoutingModule,
         EquipmentModule,
-        MaterialModule
+        MaterialModule,
+        SharedModule
     ],
     declarations: [
         EyepiecesComponent,

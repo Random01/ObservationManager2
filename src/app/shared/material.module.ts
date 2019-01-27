@@ -14,6 +14,7 @@ import {
     MatSliderModule,
     MatTooltipModule,
     MatListModule,
+    MatCheckboxModule,
     MAT_TOOLTIP_DEFAULT_OPTIONS
 } from '@angular/material';
 
@@ -30,7 +31,8 @@ import {
         MatNativeDateModule,
         MatSliderModule,
         MatTooltipModule,
-        MatListModule
+        MatListModule,
+        MatCheckboxModule
     ],
     providers: [
         { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: 1000 }

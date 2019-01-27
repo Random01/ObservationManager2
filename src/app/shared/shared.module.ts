@@ -6,10 +6,15 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { DegreesFormatter } from './models/pipes/degrees-formatter.pipe';
+
 import { DateTimeInputComponent } from './components/date-time-input/date-time-input.component';
 import { DeleteEntityDialogService } from './components/delete-entity-dialog/delete-entity-dialog.service';
 import { DeleteEntityDialogComponent } from './components/delete-entity-dialog/delete-entity-dialog.component';
+
+import { DegreesFormatter } from './models/pipes/degrees-formatter.pipe';
+import { EyepieceFocalLengthPipe } from './models/pipes/eyepiece-focal-length-formatter.pipe';
+
+import { DecimalPipe } from '@angular/common';
 
 @NgModule({
     imports: [
@@ -26,16 +31,19 @@ import { DeleteEntityDialogComponent } from './components/delete-entity-dialog/d
         DegreesInputComponent,
         DateTimeInputComponent,
         DegreesFormatter,
+        EyepieceFocalLengthPipe,
         DeleteEntityDialogComponent
     ],
     exports: [
         DegreesInputComponent,
         DateTimeInputComponent,
-        DegreesFormatter
+        DegreesFormatter,
+        EyepieceFocalLengthPipe
     ],
     providers: [
         MessageService,
-        DeleteEntityDialogService
+        DeleteEntityDialogService,
+        DecimalPipe
     ]
 })
 
