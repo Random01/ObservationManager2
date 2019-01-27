@@ -4,20 +4,63 @@ const ObservingProgramModel = require('./routers/observing-program/observing-pro
 const mongoose = require('mongoose');
 const _ = require('lodash');
 
-const CsvReader = require('./common/services/csvReader');
-const data = require('./data/data');
+const TargetCsvLoaderService = require('./routers/target/target-csv-loader.service');
 
 mongoose.connect(require('./config/db').url);
 
 const dataBase = mongoose.connection;
 
 dataBase.on('error', console.error.bind(console, 'connection error:'));
-dataBase.once('open', () => {
+dataBase.once('open', async function () {
 
-    //uploadH400ObservingProgram();
+    const service = new TargetCsvLoaderService();
+    service.load().then(async function (targets) {
+
+        let targetIndex = 0;
+        for (const target of targets) {
+            //await updateTarget(target);
+
+            console.log('Progress: ' + ((targetIndex + 1) / targets.length) * 100);
+            targetIndex++;
+        }
+    });
 
     console.log(`Data base is ready!`);
 });
+
+async function updateTarget(target) {
+    return new Promise((success, fail) => {
+
+        const updatedTarget = {
+            name: target.name,
+            description: target.description,
+            type: target.type,
+            constellation: target.constellation,
+            visMag: target.visMag,
+            surfBr: target.surfBr
+        };
+
+        if (_.isFinite(target.ra) && _.isFinite(target.dec)) {
+            updatedTarget.position = {
+                ra: target.ra,
+                dec: target.dec
+            };
+        }
+
+        Object
+            .keys(updatedTarget)
+            .forEach((key) => (updatedTarget[key] == null) && delete updatedTarget[key]);
+
+        TargetModel
+            .updateOne({ name: new RegExp(target.originalName, 'i') }, updatedTarget).exec((err, t) => {
+                if (err) {
+                    fail(err);
+                } else {
+                    success(t);
+                }
+            });
+    });
+}
 
 function uploadConstellations(dataBase) {
     const constellationStore = new ConstellationStore(dataBase);

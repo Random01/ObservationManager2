@@ -4,6 +4,7 @@ import { EntityListComponent } from '../../shared/components/entity-list.compone
 import { ObservingProgram } from '../../shared/models/observing-program.model';
 import { ObservingProgramsService } from '../shared/observing-programs.service';
 import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'om-observing-programs',
@@ -22,8 +23,10 @@ export class ObservingProgramsComponent extends EntityListComponent<ObservingPro
 
     constructor(
         protected service: ObservingProgramsService,
-        protected deleteEntityDialogService: DeleteEntityDialogService) {
-        super(service, deleteEntityDialogService);
+        protected deleteEntityDialogService: DeleteEntityDialogService,
+        protected route: ActivatedRoute,
+        protected router: Router) {
+        super(service, deleteEntityDialogService, route, router);
     }
 
 }

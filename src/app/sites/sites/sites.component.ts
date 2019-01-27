@@ -5,6 +5,7 @@ import { SiteService } from '../shared/site.service';
 
 import { EntityListComponent } from '../../shared/components/entity-list.component';
 import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'om-sites',
@@ -25,8 +26,10 @@ export class SitesComponent extends EntityListComponent<Site> {
 
     constructor(
         protected siteService: SiteService,
-        protected deleteEntityDialogService: DeleteEntityDialogService) {
-        super(siteService, deleteEntityDialogService);
+        protected deleteEntityDialogService: DeleteEntityDialogService,
+        protected route: ActivatedRoute,
+        protected router: Router) {
+        super(siteService, deleteEntityDialogService, route, router);
     }
 
 }

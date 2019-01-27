@@ -29,13 +29,13 @@ export class Degrees implements Serializable {
 
     toDegrees(): number {
         // https://en.wikipedia.org/wiki/Minute_and_second_of_arc
-        return (this.arcseconds / 3600) + (this.arcminutes / 60.0) + this.degrees;
+        return (this.arcseconds / 3600.0) + (this.arcminutes / 60.0) + this.degrees;
     }
 
     fromDegrees(degrees: number): void {
         const degreesFraction = degrees;
-        const arcminFraction = (degrees % 1) * 60;
-        const arcseconds = (arcminFraction % 1) * 60;
+        const arcminFraction = (degrees % 1) * 60.0;
+        const arcseconds = (arcminFraction % 1) * 60.0;
 
         this.degrees = Math.floor(degreesFraction);
         this.arcminutes = Math.floor(arcminFraction);

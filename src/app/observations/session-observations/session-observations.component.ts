@@ -38,7 +38,7 @@ export class SessionObservationsComponent extends EntityListComponent<Observatio
         protected observationService: ObservationService,
         protected sessionService: SessionService,
         protected deleteEntityDialogService: DeleteEntityDialogService) {
-        super(observationService, deleteEntityDialogService);
+        super(observationService, deleteEntityDialogService, route, router);
     }
 
     protected getRequestParams(): RequestParams {

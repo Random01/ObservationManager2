@@ -4,6 +4,7 @@ import { Lens } from '../../shared/models/equipment/equipment';
 import { LensService } from '../shared/lens.service';
 import { EntityListComponent } from '../../shared/components/entity-list.component';
 import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'om-lenses',
@@ -22,8 +23,10 @@ export class LensesComponent extends EntityListComponent<Lens> {
 
     constructor(
         protected lensService: LensService,
-        protected deleteEntityDialogService: DeleteEntityDialogService) {
-        super(lensService, deleteEntityDialogService);
+        protected deleteEntityDialogService: DeleteEntityDialogService,
+        protected route: ActivatedRoute,
+        protected router: Router) {
+        super(lensService, deleteEntityDialogService, route, router);
     }
 
 }

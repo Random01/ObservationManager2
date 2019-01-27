@@ -4,13 +4,16 @@ import { Entity } from '../models/models';
 import { StorageService } from '../services/storage.service';
 import { DeleteEntityDialogService } from './delete-entity-dialog/delete-entity-dialog.service';
 import { PaginatedListComponent } from './paginated-list.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 export abstract class EntityListComponent<T extends Entity> extends PaginatedListComponent<T> implements OnInit {
 
     constructor(
         protected storageService: StorageService<T>,
-        protected deleteEntityDialogService: DeleteEntityDialogService) {
-        super();
+        protected deleteEntityDialogService: DeleteEntityDialogService,
+        protected route: ActivatedRoute,
+        protected router: Router) {
+        super(route, router);
     }
 
     async loadItems(): Promise<void> {

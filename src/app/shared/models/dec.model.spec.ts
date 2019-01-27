@@ -2,7 +2,7 @@ import { Dec } from './dec.model';
 
 describe('Dec', () => {
 
-    it('should work', () => {
+    it('should have a constructor with parameters', () => {
         const dec = new Dec({
             degrees: 10,
             arcminutes: 20,
@@ -14,7 +14,7 @@ describe('Dec', () => {
         expect(dec.arcseconds).toEqual(30);
     });
 
-    describe('toDegrees', () => {
+    describe('should have a toDegrees(..) method and it', () => {
 
         it('should work (1)', () => {
             const dec = new Dec();
@@ -50,10 +50,19 @@ describe('Dec', () => {
             expect(dec.toDegrees().toFixed(5)).toEqual('47.82500');
         });
 
+        it('should work (5)', () => {
+            const dec = new Dec({
+                degrees: 56,
+                arcminutes: 29,
+                arcseconds: 59
+            });
+
+            expect(dec.toDegrees().toFixed(5)).toEqual('56.49972');
+        });
 
     });
 
-    describe('fromDegrees', () => {
+    describe('should have a fromDegrees(...) method and it', () => {
 
         it('should work (1)', () => {
             const dec = new Dec();
@@ -75,11 +84,11 @@ describe('Dec', () => {
 
         it('should work (3)', () => {
             const dec = new Dec();
-            dec.fromDegrees(51.5);
+            dec.fromDegrees(56.499722222222225);
 
-            expect(dec.degrees).toEqual(51);
-            expect(dec.arcminutes).toEqual(30);
-            expect(dec.arcseconds).toEqual(0);
+            expect(dec.degrees).toEqual(56);
+            expect(dec.arcminutes).toEqual(29);
+            expect(dec.arcseconds).toEqual(59);
         });
 
     });

@@ -5,6 +5,7 @@ import { UserService } from '../shared/user.service';
 
 import { EntityListComponent } from '../../shared/components/entity-list.component';
 import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'om-users',
@@ -15,8 +16,10 @@ export class UsersComponent extends EntityListComponent<User> {
 
     constructor(
         protected userService: UserService,
-        protected deleteEntityDialogService: DeleteEntityDialogService) {
-        super(userService, deleteEntityDialogService);
+        protected deleteEntityDialogService: DeleteEntityDialogService,
+        protected route: ActivatedRoute,
+        protected router: Router) {
+        super(userService, deleteEntityDialogService, route, router);
     }
 
 }

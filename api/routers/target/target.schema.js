@@ -13,14 +13,17 @@ const TargetSchema = new Schema({
         ref: 'users'
     },
     name: String,
-    alliases: [String],
+    aliases: [String],
     description: String,
     type: String,
-    pos: {
+    position: {
         ra: Number,
         dec: Number
     },
-    const: String
+    constellation: String,
+    visMag: Number,
+    surfBr: Number,
+    magStar: Number
 });
 
 /**

@@ -7,6 +7,7 @@ import { EntityListComponent } from '../../shared/components/entity-list.compone
 import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
 import { TargetSearchParams } from '../target-search-params/target-search-params.model';
 import { RequestParams } from '../../shared/services/request-params.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'om-targets',
@@ -28,8 +29,10 @@ export class TargetsComponent extends EntityListComponent<Target> {
 
     constructor(
         protected service: TargetService,
-        protected deleteEntityDialogService: DeleteEntityDialogService) {
-        super(service, deleteEntityDialogService);
+        protected deleteEntityDialogService: DeleteEntityDialogService,
+        protected route: ActivatedRoute,
+        protected router: Router) {
+        super(service, deleteEntityDialogService, route, router);
 
         this.searchParams = new TargetSearchParams();
     }

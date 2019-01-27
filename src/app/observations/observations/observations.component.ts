@@ -4,6 +4,7 @@ import { Observation } from '../../shared/models/models';
 import { ObservationService } from '../shared/observation.service';
 import { EntityListComponent } from '../../shared/components/entity-list.component';
 import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'om-observations',
@@ -26,8 +27,10 @@ export class ObservationsComponent extends EntityListComponent<Observation> {
 
     constructor(
         protected observationService: ObservationService,
-        protected deleteEntityDialogService: DeleteEntityDialogService) {
-        super(observationService, deleteEntityDialogService);
+        protected deleteEntityDialogService: DeleteEntityDialogService,
+        protected route: ActivatedRoute,
+        protected router: Router) {
+        super(observationService, deleteEntityDialogService, route, router);
     }
 
 }

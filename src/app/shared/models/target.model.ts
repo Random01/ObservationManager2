@@ -45,8 +45,8 @@ export class Target extends Entity {
             type: this.type,
             alliases: this.alliases,
             description: this.description,
-            const: this.serializeEntity(this.constellation),
-            pos: this.position ? this.position.serialize() : null
+            constellation: this.serializeEntity(this.constellation),
+            position: this.position ? this.position.serialize() : null
         });
     }
 
@@ -60,6 +60,7 @@ export class Target extends Entity {
             'description'
         ]);
 
-        this.position.deserialize(state.pos || {});
+        this.constellation.deserialize(state.constellation || {});
+        this.position.deserialize(state.position || {});
     }
 }

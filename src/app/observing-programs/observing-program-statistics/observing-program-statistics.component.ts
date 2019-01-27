@@ -21,7 +21,7 @@ export class ObservingProgramStatisticsComponent extends PaginatedListComponent<
         protected router: Router,
         protected observingProgramService: ObservingProgramsService
     ) {
-        super();
+        super(route, router);
     }
 
     protected getRequestParams(): RequestParams {

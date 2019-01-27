@@ -23,7 +23,7 @@ export class TargetTypeSelectorComponent implements OnInit {
     ngOnInit() {
         this.targetTypeService
             .getAllTargetTypes()
-            .subscribe((targetTypes) => {
+            .then((targetTypes) => {
                 this.targetTypes = targetTypes;
             });
     }

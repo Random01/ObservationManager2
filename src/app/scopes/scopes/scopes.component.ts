@@ -4,6 +4,7 @@ import { Scope } from '../../shared/models/equipment/scope.model';
 import { ScopeService } from '../shared/scope.service';
 import { EntityListComponent } from '../../shared/components/entity-list.component';
 import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'om-scopes',
@@ -22,8 +23,10 @@ export class ScopesComponent extends EntityListComponent<Scope> {
 
     constructor(
         protected scopeService: ScopeService,
-        protected deleteEntityDialogService: DeleteEntityDialogService) {
-        super(scopeService, deleteEntityDialogService);
+        protected deleteEntityDialogService: DeleteEntityDialogService,
+        protected route: ActivatedRoute,
+        protected router: Router) {
+        super(scopeService, deleteEntityDialogService, route, router);
     }
 
 }
