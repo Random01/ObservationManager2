@@ -18,6 +18,7 @@ class ObservingProgramRouter extends RouterFactory {
     setUp() {
         super.setUp();
 
+        this.router.get('/overall-statistics/:id', auth.optional, (req, res) => this.getOverallStatistics(req, res));
         this.router.get('/statistics/:id', auth.optional, (req, res) => this.getStatistics(req, res));
     }
 
@@ -27,6 +28,16 @@ class ObservingProgramRouter extends RouterFactory {
             userId: this.currentUser ? this.currentUser.id : undefined,
             page: parseFloat(req.query.page),
             size: parseFloat(req.query.size)
+        }).then(
+            entity => res.json(entity),
+            error => this.handleError(res, error)
+        );
+    }
+
+    getOverallStatistics(req, res) {
+        this.store.getOverallStatistics({
+            id: req.params.id,
+            userId: this.currentUser ? this.currentUser.id : undefined
         }).then(
             entity => res.json(entity),
             error => this.handleError(res, error)

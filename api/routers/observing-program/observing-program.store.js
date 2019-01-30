@@ -32,6 +32,25 @@ class ObservingProgramStore extends BaseMongooseStore {
 
     }
 
+    getOverallStatistics({
+        id,
+        userId
+    }) {
+        return this.model
+            .getById(id)
+            .then((observingProgram) => {
+                return Promise.all([
+                    observingProgram.targets,
+                    ObservationModel.getByTargets(targets)
+                ]);
+            }).then(([targets, observations]) => {
+                const observationsToTarget = _.groupBy(observations, (o) => o.target);
+                const observedTargets = _.filter(targets, (target) => !!observationsToTarget[target.id]);
+
+                return observedTargets.length / target.length;
+            });
+    }
+
     /**
      * Returns a list of observed objects
      * @param {Object} param

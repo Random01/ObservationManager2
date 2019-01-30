@@ -21,9 +21,9 @@ export class TargetsComponent extends EntityListComponent<Target> {
 
     displayedColumns: string[] = [
         'name',
-        'targetType',
+        'type',
+        'constellation',
         'alliases',
-        'description',
         'actions'
     ];
 
