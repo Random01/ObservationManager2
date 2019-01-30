@@ -17,8 +17,18 @@
         class="mat-elevation-z8">
 
         <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef>Target Name</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
             <mat-cell *matCellDef="let item">{{item.target.name}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="type">
+            <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
+            <mat-cell *matCellDef="let item">{{item.target.type | targetTypeFormatter}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="constellation">
+            <mat-header-cell *matHeaderCellDef>Constellation</mat-header-cell>
+            <mat-cell *matCellDef="let item">{{item.target.constellation}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="observed">

@@ -13,6 +13,8 @@ export class ObservingProgramStatisticsComponent extends PaginatedListComponent<
 
     displayedColumns: string[] = [
         'name',
+        'type',
+        'constellation',
         'observed'
     ];
 

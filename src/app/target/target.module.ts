@@ -48,7 +48,8 @@ import { TargetTypeFormatterPipe } from './shared/pipes/target-type-formatter.pi
     ],
     exports: [
         TargetSearchComponent,
-        TargetSelectorComponent
+        TargetSelectorComponent,
+        TargetTypeFormatterPipe
     ],
     providers: [
         TargetService,
