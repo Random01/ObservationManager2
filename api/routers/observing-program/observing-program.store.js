@@ -41,13 +41,16 @@ class ObservingProgramStore extends BaseMongooseStore {
             .then((observingProgram) => {
                 return Promise.all([
                     observingProgram.targets,
-                    ObservationModel.getByTargets(targets)
+                    ObservationModel.getByTargets(observingProgram.targets)
                 ]);
             }).then(([targets, observations]) => {
                 const observationsToTarget = _.groupBy(observations, (o) => o.target);
                 const observedTargets = _.filter(targets, (target) => !!observationsToTarget[target.id]);
 
-                return observedTargets.length / target.length;
+                return {
+                    observedCount: observedTargets.length,
+                    totalCount: targets.length
+                };
             });
     }
 
