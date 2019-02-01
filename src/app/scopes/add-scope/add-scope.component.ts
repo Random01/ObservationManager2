@@ -9,8 +9,7 @@ import { Scope } from '../../shared/models/equipment/equipment';
 
 @Component({
     selector: 'om-add-scope',
-    templateUrl: './add-scope.component.html',
-    providers: [ScopeService]
+    templateUrl: './add-scope.component.html'
 })
 
 export class AddScopeComponent extends AddEntityComponent<Scope> {

@@ -5,10 +5,7 @@ import { TargetService } from '../shared/target.service';
 
 @Component({
     selector: 'om-target-search',
-    templateUrl: './target-search.component.html',
-    providers: [
-        TargetService
-    ]
+    templateUrl: './target-search.component.html'
 })
 
 export class TargetSearchComponent implements OnInit {

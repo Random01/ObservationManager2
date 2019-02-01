@@ -8,7 +8,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'om-scopes',
-    templateUrl: './scopes.component.html'
+    templateUrl: './scopes.component.html',
+    styleUrls: ['./scopes.component.css']
 })
 
 export class ScopesComponent extends EntityListComponent<Scope> {

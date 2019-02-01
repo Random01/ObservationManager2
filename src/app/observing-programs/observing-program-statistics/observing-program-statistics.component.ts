@@ -1,15 +1,18 @@
-import { Component } from '@angular/core';
-import { TargetStatistics, ObservingProgramsService, ObservingProgramStatisticsRequestParams } from '../shared/observing-programs.service';
+import { Component, OnInit } from '@angular/core';
+import { ObservingProgramsService } from '../shared/observing-programs.service';
 import { PaginatedListComponent } from '../../shared/components/paginated-list.component';
 import { RequestParams } from '../../shared/services/request-params.model';
 import { Router, ActivatedRoute } from '@angular/router';
+import { TargetStatistics } from '../shared/target-statistics.model';
+import { ObservingProgramStatisticsRequestParams } from '../shared/observing-program-satistics-request-params.model';
+import ObservingProgramStatistics from '../shared/observing-program-statistics.model';
 
 @Component({
     selector: 'om-observing-program-statistics',
     templateUrl: './observing-program-statistics.component.html',
     styleUrls: ['./observing-program-statistics.component.css']
 })
-export class ObservingProgramStatisticsComponent extends PaginatedListComponent<TargetStatistics> {
+export class ObservingProgramStatisticsComponent extends PaginatedListComponent<TargetStatistics> implements OnInit {
 
     displayedColumns: string[] = [
         'name',
@@ -17,6 +20,8 @@ export class ObservingProgramStatisticsComponent extends PaginatedListComponent<
         'constellation',
         'observed'
     ];
+
+    observingProgramStatistics: ObservingProgramStatistics;
 
     constructor(
         protected route: ActivatedRoute,
@@ -53,4 +58,14 @@ export class ObservingProgramStatisticsComponent extends PaginatedListComponent<
     goBack(): void {
         this.router.navigate(['/observing-programs']);
     }
+
+    ngOnInit(): void {
+        super.ngOnInit();
+        this.observingProgramService
+            .getObservingProgramStatistics(this.getObservingProgramId())
+            .then(response => {
+                this.observingProgramStatistics = response;
+            });
+    }
+
 }

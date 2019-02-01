@@ -9,27 +9,16 @@ class ObservingProgramStore extends BaseMongooseStore {
         super(db.model('observing-programs', ObservingProgramSchema));
     }
 
-    getById({
-        id
-    }) {
+    getById({ id, userId }) {
         return super.getById({
             id,
+            userId,
             populationDetails: [
                 ['userCreated', '_id userName firstName lastName'],
                 ['userModified', '_id userName firstName lastName'],
                 ['targets', '_id name']
             ]
         });
-    }
-
-    /**
-     * @param {Array.<Object>} targets 
-     * @returns {Promise}
-     */
-    uploadProgram({
-        targets
-    }) {
-
     }
 
     getOverallStatistics({
@@ -85,7 +74,7 @@ class ObservingProgramStore extends BaseMongooseStore {
                     return {
                         target,
                         observations: observationsToTarget[target.id]
-                    }
+                    };
                 });
 
                 return {

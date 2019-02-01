@@ -5,44 +5,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { StorageService } from '../../shared/services/storage.service';
 import { ObservingProgram } from '../../shared/models/observing-program.model';
 import { JwtService } from '../../auth/shared/jwt.service';
-import { RequestParams } from '../../shared/services/request-params.model';
-import { Target, Observation } from '../../shared/models/models';
 import { Response } from '../../shared/interfaces/response.interface';
-
-export class TargetStatistics {
-
-    public target: Target;
-    public observations: Observation[];
-
-    constructor(params?: {
-        target?: Target,
-        observations?: Observation[]
-    }) {
-        this.target = new Target();
-        this.observations = [];
-
-        Object.assign(this, params);
-    }
-
-    get observed(): boolean {
-        return this.observations.length > 0;
-    }
-
-}
-
-export class ObservingProgramStatisticsRequestParams extends RequestParams {
-
-    public observingProgramId: string;
-
-    protected getQueryParams(): { name: string, value: any }[] {
-        const params = super.getQueryParams();
-
-        params.push({ name: 'id', value: this.observingProgramId });
-
-        return params;
-    }
-
-}
+import { TargetStatistics } from './target-statistics.model';
+import { ObservingProgramStatisticsRequestParams } from './observing-program-satistics-request-params.model';
+import ObservingProgramStatistics from './observing-program-statistics.model';
 
 @Injectable()
 export class ObservingProgramsService extends StorageService<ObservingProgram> {
@@ -65,7 +31,7 @@ export class ObservingProgramsService extends StorageService<ObservingProgram> {
         };
 
         return new Promise<Response<TargetStatistics>>((success) => {
-            const url = this.getUrl() + `/statistics/${request.observingProgramId}?` + request.getQueryString();
+            const url = `${this.getUrl()}/statistics/${request.observingProgramId}?${request.getQueryString()}`;
 
             this.http.get<any>(url, httpOptions)
                 .subscribe(response => {
@@ -74,6 +40,23 @@ export class ObservingProgramsService extends StorageService<ObservingProgram> {
                         items: response.items.map((item: any) => this.parseTargetStatistics(item))
                     });
                 });
+        });
+    }
+
+    public getObservingProgramStatistics(observingProgramId: string): Promise<ObservingProgramStatistics> {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Authorization': this.getAuthorizationToken()
+            })
+        };
+
+        const url = `${this.getUrl()}/overall-statistics/${observingProgramId}`;
+
+        return this.http.get<any>(url, httpOptions).toPromise().then((response) => {
+            return new ObservingProgramStatistics({
+                totalCount: response.totalCount,
+                observedCount: response.observedCount
+            });
         });
     }
 

@@ -9,8 +9,7 @@ import { ScopeService } from '../shared/scope.service';
 
 @Component({
     selector: 'om-edit-scope',
-    templateUrl: './edit-scope.component.html',
-    providers: [ScopeService]
+    templateUrl: './edit-scope.component.html'
 })
 
 export class EditScopeComponent extends EditEntityComponent<Scope> {

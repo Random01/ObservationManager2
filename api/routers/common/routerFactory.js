@@ -31,74 +31,57 @@ class RouterFactory {
 
     setUp() {
         this.router.get('/upload', auth.required, (req, res) => this.uploadHandler(req, res));
-        this.router.get('/', auth.optional, (req, res) => this.getAllHandler(req, res));
+        this.router.get('/', auth.optional, (req, res) => this.getItemsHandler(req, res));
         this.router.get('/:id', auth.optional, (req, res) => this.getByIdHandler(req, res));
         this.router.put('/:id', auth.required, (req, res) => this.updateHandler(req, res));
         this.router.delete('/:id', auth.required, (req, res) => this.deleteHandler(req, res));
         this.router.post('/', auth.required, (req, res) => this.addNewHandler(req, res));
     }
 
-    /**
-     * Get all entites.
-     */
-    getAllHandler(req, res) {
-        this.authorize(req.payload);
-        this.getItemsHandler(req, res);
-    }
-
     addNewHandler(req, res) {
-        this.authorize(req.payload);
-
-        this.store.add(this.parse(req)).then(
-            entity => res.json(entity),
-            error => this.handleError(res, error)
-        );
-    }
-
-    getByIdHandler(req, res) {
-        this.authorize(req.payload);
-
-        this.store.getById({
-            id: req.params.id
+        this.store.add({
+            entity: this.parse(req),
+            userId: req.payload ? req.payload.id : undefined
         }).then(
             entity => res.json(entity),
             error => this.handleError(res, error)
         );
     }
 
-    authorize(payload) {
-        if (payload) {
-            this.store.currentUser = {
-                id: payload.id
-            };
-        } else {
-            this.store.currentUser = null;
-        }
+    getByIdHandler(req, res) {
+        this.store.getById({
+            id: req.params.id,
+            userId: req.payload ? req.payload.id : undefined
+        }).then(
+            entity => res.json(entity),
+            error => this.handleError(res, error)
+        );
     }
 
     updateHandler(req, res) {
-        this.authorize(req.payload);
-
-        this.store.update(this.parse(req)).then(
+        this.store.update({
+            entity: this.parse(req),
+            userId: req.payload ? req.payload.id : undefined
+        }).then(
             entity => res.json(entity),
             error => this.handleError(res, error)
         );
     }
 
     deleteHandler(req, res) {
-        this.authorize(req.payload);
-
-        this.store.delete(req.params.id).then(
-            () => res.json({
-                success: true
-            }),
+        this.store.delete({
+            id: req.params.id,
+            userId: req.payload ? req.payload.id : undefined
+        }).then(
+            () => res.json({ success: true }),
             error => this.handleError(res, error)
         );
     }
 
     getItemsHandler(req, res) {
         this.store.getItems({
-            requestParams: this.parseRequestParams(req)
+            requestParams: this.parseRequestParams(req),
+            userId: req.payload ? req.payload.id : undefined
         }).then(
             items => res.json(items),
             error => this.handleError(res, error)
@@ -110,17 +93,6 @@ class RouterFactory {
             size: req.query.size ? parseInt(req.query.size) : undefined,
             page: req.query.page ? parseInt(req.query.page) : undefined
         });
-    }
-
-    uploadHandler(req, res) {
-        this.authorize(req.payload);
-
-        this.store.upload().then(
-            () => res.json({
-                success: true
-            }),
-            error => this.handleError(res, error)
-        );
     }
 
     parse(req) {

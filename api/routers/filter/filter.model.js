@@ -1,17 +1,4 @@
-const EquipmentItem = require('./../../common/models/EquipmentItem');
+const mongoose = require('mongoose');
+const FilterSchema = require('./filter.schema');
 
-class Filter extends EquipmentItem {
-    constructor(params) {
-        super(params);
-
-        this.filterType = undefined;
-
-        if (params) {
-            if (params.hasOwnProperty('filterType')) {
-                this.filterType = params.filterType;
-            }
-        }
-    }
-}
-
-module.exports = Filter;
+module.exports = mongoose.model('filters', FilterSchema);

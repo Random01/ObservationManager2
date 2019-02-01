@@ -6,8 +6,8 @@ class ObservationStore extends BaseMongooseStore {
         super(db.model('observations', ObservationSchema));
     }
 
-    getById({ id }) {
-        return super.getById({ id, populationDetails: [
+    getById({ id, userId }) {
+        return super.getById({ id, userId, populationDetails: [
             ['userCreated', '_id userName firstName lastName'],
             ['userModified', '_id userName firstName lastName'],
             ['observer', '_id userName firstName lastName'],
@@ -20,9 +20,9 @@ class ObservationStore extends BaseMongooseStore {
         ]});
     }
 
-    getItems({ requestParams }) {
+    getItems({ requestParams, userId }) {
         return super.getItems(
-            Object.assign({}, { requestParams }, { populationDetails: [
+            Object.assign({}, { requestParams, userId }, { populationDetails: [
                 ['userCreated', '_id userName firstName lastName'],
                 ['userModified', '_id userName firstName lastName'],
                 ['observer', '_id userName firstName lastName'],

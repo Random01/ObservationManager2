@@ -8,7 +8,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'om-eyepieces',
-    templateUrl: './eyepieces.component.html'
+    templateUrl: './eyepieces.component.html',
+    styleUrls: ['./eyepieces.component.css']
 })
 
 export class EyepiecesComponent extends EntityListComponent<Eyepiece> {

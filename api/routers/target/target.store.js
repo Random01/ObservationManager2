@@ -5,20 +5,29 @@ const TargetCsvLoader = require('./target-csv-loader.service');
 const _ = require('lodash');
 
 class TargetStore extends BaseMongooseStore {
+
     constructor(db) {
         super(db.model('targets', TargetSchema));
     }
 
-    getById({
-        id
-    }) {
+    getById({ id, userId }) {
         return super.getById({
             id,
+            userId,
             populationDetails: [
                 ['userCreated', '_id userName firstName lastName'],
                 ['userModified', '_id userName firstName lastName']
             ]
         });
+    }
+
+    getItems({ requestParams }) {
+        return super.getItems(
+            Object.assign({}, { requestParams }, { populationDetails: [
+                ['userCreated', '_id userName firstName lastName'],
+                ['userModified', '_id userName firstName lastName'],
+                ['site', '_id name']
+            ]}));
     }
 
     search({
@@ -27,9 +36,7 @@ class TargetStore extends BaseMongooseStore {
     } = {}) {
         return new Promise((success, fail) => {
             this.model
-                .find({
-                    name: new RegExp(name)
-                })
+                .find({ name: new RegExp(name) })
                 .limit(maxCount)
                 .exec((err, docs) => {
                     if (err) {
@@ -72,17 +79,6 @@ class TargetStore extends BaseMongooseStore {
 
     loadTargetsFromCsv() {
         return (new TargetCsvLoader()).load();
-    }
-
-    batchUpdate() {
-        return Promise.all([
-            this.loadAllTargetsFromDb(),
-            this.loadTargetsFromCsv()
-        ]).then(([dbTargets, csvTargets]) => {
-
-        }).then((updatedTargets)=>{
-
-        });
     }
 
 }

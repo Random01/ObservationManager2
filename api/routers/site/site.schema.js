@@ -4,8 +4,14 @@ const Schema = mongoose.Schema;
 const SiteSchema = new Schema({
     dateCreated: Date,
     dateModified: Date,
-    userCreated: { type: Schema.Types.ObjectId, ref: 'users' },
-    userModified: { type: Schema.Types.ObjectId, ref: 'users' },
+    userCreated: {
+        type: Schema.Types.ObjectId,
+        ref: 'users'
+    },
+    userModified: {
+        type: Schema.Types.ObjectId,
+        ref: 'users'
+    },
     
     name: String,
     timezone: Number,

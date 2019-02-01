@@ -8,19 +8,11 @@ class BaseMongooseStore {
         }
 
         this.model = model;
-        this.currentUser = null;
     }
 
     getAll() {
         return new Promise((success, fail) => {
-            let searhParams = null;
-            if (this.currentUser) {
-                searhParams = {
-                    userCreated: this.currentUser.id
-                };
-            }
-
-            this.model.find(searhParams, (err, docs) => {
+            this.model.find().exec((err, docs) => {
                 if (err) {
                     fail(err);
                 } else {
@@ -47,8 +39,14 @@ class BaseMongooseStore {
             page: 0,
             size: 100
         },
-        populationDetails = []
+        populationDetails = [],
+        userId
     }) {
+        restRequestParams = restRequestParams || {};
+        if (userId) {
+            restRequestParams.userCreated = userId;
+        }
+
         return new Promise((success, fail) => {
             this.model
                 .find(restRequestParams)
@@ -59,9 +57,9 @@ class BaseMongooseStore {
                         const query = this.model.find(restRequestParams);
 
                         if (sortField != null && sortDirection != null) {
-                            const sortQuery = {};
-                            sortQuery[sortField] = sortDirection === 'asc' ? 1 : -1;
-                            query.sort(sortQuery);
+                            query.sort({
+                                [sortField]: sortDirection === 'asc' ? 1 : -1
+                            });
                         }
 
                         populationDetails.forEach((items) => {
@@ -94,12 +92,14 @@ class BaseMongooseStore {
 
     getById({
         id,
+        userId,
         populationDetails = []
     }) {
         return new Promise((success, fail) => {
 
             const query = this.model.findOne({
-                _id: id
+                _id: id,
+                userCreated: userId
             });
 
             populationDetails.forEach((items) => {
@@ -116,7 +116,10 @@ class BaseMongooseStore {
         });
     }
 
-    add(entity) {
+    add({
+        entity,
+        userId
+    }) {
         return new Promise((success, fail) => {
             if (!entity) {
                 fail(new Error('enity should be provided.'));
@@ -124,7 +127,7 @@ class BaseMongooseStore {
             }
 
             entity.dateCreated = entity.dateModified = new Date();
-            entity.userCreated = entity.userModified = ObjectID(this.currentUser.id);
+            entity.userCreated = entity.userModified = ObjectID(userId);
 
             this.model.create(entity, (err, result) => {
                 if (err) {
@@ -136,7 +139,10 @@ class BaseMongooseStore {
         });
     }
 
-    update(entity) {
+    update({
+        entity,
+        userId
+    }) {
         return new Promise((success, fail) => {
             if (!entity) {
                 fail(new Error('enity should be provided.'));
@@ -144,10 +150,11 @@ class BaseMongooseStore {
             }
 
             entity.dateModified = new Date();
-            entity.userModified = ObjectID(this.currentUser.id);
+            entity.userModified = ObjectID(userId);
 
             this.model.updateOne({
-                _id: entity.id
+                _id: entity.id,
+                userCreated: userId
             }, entity, (err) => {
                 if (err) {
                     fail(err);
@@ -158,10 +165,14 @@ class BaseMongooseStore {
         });
     }
 
-    delete(id) {
+    delete({
+        id,
+        userId
+    }) {
         return new Promise((success, fail) => {
             this.model.deleteOne({
-                _id: id
+                _id: id,
+                userCreated: userId
             }, (err) => {
                 if (err) {
                     fail(err);

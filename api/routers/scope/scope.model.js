@@ -1,22 +1,4 @@
-const EqipmentItem = require('./../../common/models/EquipmentItem');
+const mongoose = require('mongoose');
+const ScopeSchema = require('./scope.schema');
 
-class Scope extends EqipmentItem {
-    /**
-     * 
-     * @param {*} params
-     * @param {String} params.id
-     */
-    constructor(params) {
-        super(params);
-
-        this.aperture = undefined;
-        this.focalLength = undefined;
-
-        if (params) {
-            this.aperture = params.aperture;
-            this.focalLength = params.focalLength;
-        }
-    }
-}
-
-module.exports = Scope;
+module.exports = mongoose.model('scopes', ScopeSchema);

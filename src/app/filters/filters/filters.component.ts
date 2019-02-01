@@ -8,7 +8,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'om-filters',
-    templateUrl: './filters.component.html'
+    templateUrl: './filters.component.html',
+    styleUrls: [ './filters.component.css' ]
 })
 
 export class FiltersComponent extends EntityListComponent<Filter> {

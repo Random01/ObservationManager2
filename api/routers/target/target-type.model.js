@@ -1,9 +1,9 @@
-const TargetType = {
+module.exports = {
     OpenCluster: 'OC',
     DarkNebula: 'DN',
     BrightNebula: 'GN',
     Galaxy: 'GX',
-    Star:'S',
+    Star: 'S',
     GlobularCluster: 'GC',
     Planet: 'P',
     PlanetaryNebula: 'PN',
@@ -12,6 +12,4 @@ const TargetType = {
     Asterism: 'AS',
     UnspecifiedDeepSkyObject: 'NA',
     Quasar: 'QS'
-}
-
-module.exports = TargetType;
+};

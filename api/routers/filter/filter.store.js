@@ -6,8 +6,8 @@ class FilterStore extends BaseMongooseStore {
         super(db.model('filters', FilterSchema));
     }
 
-    getById({ id }) {
-        return super.getById({ id, populationDetails: [
+    getById({ id, userId }) {
+        return super.getById({ id, userId, populationDetails: [
             ['userCreated', '_id userName firstName lastName'],
             ['userModified', '_id userName firstName lastName']
         ]});
