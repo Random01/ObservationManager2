@@ -1,7 +1,7 @@
-.om-degrees-selector-component > DIV {
+.om-degrees-selector > DIV {
     display: inline-block;
 }
 
-.om-degrees-selector-component .mat-form-field {
+.om-degrees-selector .mat-form-field {
     max-width: 75px;
 }

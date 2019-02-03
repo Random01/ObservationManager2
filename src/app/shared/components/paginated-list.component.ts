@@ -1,21 +1,13 @@
+import { OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { Subscription } from 'rxjs';
+
 import { BaseComponent } from './base-component';
 import { SortOrder } from '../models/sort-order.model';
 import { RequestParams } from '../services/request-params.model';
-import { OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-
-interface PageChangedEvent {
-    length: number;
-    pageIndex: number;
-    pageSize: number;
-    previousPageIndex: number;
-}
-
-interface PaginatedListQueryParams {
-    page: number;
-    size: number;
-}
+import PageChangedEvent from '../interfaces/page-change-event.interface';
+import PaginatedListQueryParams from '../interfaces/paginated-list-query-params.interface';
 
 export abstract class PaginatedListComponent<T> extends BaseComponent implements OnInit, OnDestroy {
 

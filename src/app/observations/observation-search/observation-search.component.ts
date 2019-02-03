@@ -1,33 +1,46 @@
-﻿import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
-import { Observation, Target } from '../../shared/models/models';
-import { Scope, Eyepiece, Filter, Lens } from '../../shared/models/equipment/equipment';
+import ObservationSearchParameters from './observation-search-parameters.model';
+
+import {
+    Eyepiece,
+    Filter,
+    Lens,
+    Scope
+} from '../../shared/models/equipment/equipment';
+
 import { ScopeService } from '../../scopes/shared/scope.service';
 import { EyepieceService } from '../../eyepieces/shared/eyepiece.service';
 import { FilterService } from '../../filters/shared/filter.service';
 import { LensService } from '../../lenses/shared/lens.service';
+import { SiteService } from '../../sites/shared/site.service';
+import { Site } from '../../shared/models/models';
 
 @Component({
-    selector: 'om-observation',
-    templateUrl: './observation.component.html',
-    styleUrls: ['./observation.component.css']
+    selector: 'om-observation-search',
+    templateUrl: './observation-search.component.html',
+    styleUrls: [
+        './observation-search.component.css'
+    ]
 })
+export class ObservationSearchComponent implements OnInit {
 
-export class ObservationComponent implements OnInit {
-
-    @Input() observation: Observation;
+    @Input()
+    searchParameters: ObservationSearchParameters;
 
     scopes: Scope[];
     eyepieces: Eyepiece[];
-    targets: Target[];
     filters: Filter[];
     lenses: Lens[];
+    sites: Site[];
 
     constructor(
         private scopeService: ScopeService,
         private eyepieceService: EyepieceService,
         private filterService: FilterService,
-        private lensService: LensService) {
+        private lensService: LensService,
+        private siteService: SiteService
+    ) {
     }
 
     ngOnInit(): void {
@@ -35,6 +48,6 @@ export class ObservationComponent implements OnInit {
         this.eyepieceService.getAll().then(eyepieces => this.eyepieces = eyepieces);
         this.filterService.getAll().then(filters => this.filters = filters);
         this.lensService.getAll().then(lenses => this.lenses = lenses);
+        this.siteService.getAll().then(sites => this.sites = sites);
     }
-
 }

@@ -1,3 +1,7 @@
 .om-targets-editor .control-panel{
     display: flex;
 }
+
+.om-targets-editor .mat-column-actions {
+    flex: 0 0 50px;
+}

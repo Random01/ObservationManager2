@@ -7,8 +7,8 @@ class EyepieceStore extends BaseMongooseStore {
         super(db.model('eyepieces', EyepieceSchema));
     }
     
-    getById({ id }) {
-        return super.getById({ id, populationDetails: [
+    getById({ id, userId }) {
+        return super.getById({ id, userId, populationDetails: [
             ['userCreated', '_id userName firstName lastName'],
             ['userModified', '_id userName firstName lastName']
         ]});

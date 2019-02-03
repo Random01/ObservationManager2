@@ -1,12 +1,21 @@
 <div class="om-targets">
   <div>
-    <h2>Objects</h2>
+    <h2 class="mat-h2">Objects</h2>
   </div>
 
-  <om-target-search-params
-    [searchParams]="searchParams"
-    (search)="onSearch($event)">
-  </om-target-search-params>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Search Panel
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+  
+    <om-target-search-params
+      [searchParams]="searchParams"
+      (search)="onSearch($event)">
+    </om-target-search-params>
+  
+  </mat-expansion-panel>
 
   <mat-paginator
     [length]="totalCount"

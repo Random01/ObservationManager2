@@ -1,7 +1,14 @@
 <div class="om-targets-editor">
 
+    <mat-paginator
+        [length]="targets.length"
+        [(pageSize)]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)=onPageChanged($event)>
+    </mat-paginator>
+
     <mat-table
-        [dataSource]="targets"
+        [dataSource]="paginatedTargets"
         class="mat-elevation-z8">
 
         <ng-container matColumnDef="name">
@@ -26,6 +33,13 @@
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
     </mat-table>
+
+    <mat-paginator
+        [length]="totalCount"
+        [(pageSize)]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)=onPageChanged($event)>
+    </mat-paginator>
 
     <div class="control-panel">
 

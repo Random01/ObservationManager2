@@ -1,9 +1,29 @@
 ﻿<div class="om-observations">
     <div>
         <h2 class="mat-h2">
-            My Recent Observations
+            My Observations
         </h2>
     </div>
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Search Panel
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+      
+        <div *ngIf="searchParameters">
+            <om-observation-search [searchParameters]="searchParameters">
+            </om-observation-search>
+    
+            <div>
+                <button 
+                    mat-button
+                    (click)=search()>Search</button>
+            </div>
+        </div>
+      
+    </mat-expansion-panel>
 
     <mat-paginator
         [length]="totalCount"

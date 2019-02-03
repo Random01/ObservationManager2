@@ -9,7 +9,10 @@ export class VendorService {
             new Vendor({ name: 'Sky Watcher' }),
             new Vendor({ name: 'Deep-Sky' }),
             new Vendor({ name: 'Celestron' }),
-            new Vendor({ name: 'Baader' })
+            new Vendor({ name: 'Baader' }),
+            new Vendor({ name: 'Astronomik' }),
+            new Vendor({ name: 'Tele Vue' }),
+            new Vendor({ name: 'Explore Scientific' })
         ]);
     }
 

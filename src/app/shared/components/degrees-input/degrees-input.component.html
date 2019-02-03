@@ -1,14 +1,18 @@
-<div class="om-degrees-selector-component">
+<div class="om-degrees-selector">
 
     <mat-form-field>
-        <input matInput
+        <input
+            matInput
+            autocomplete="off"
             [(ngModel)]="degrees.degrees"
             type="number"
             placeholder="Degrees" />
     </mat-form-field>
 
     <mat-form-field>
-        <input matInput
+        <input
+            matInput
+            autocomplete="off"
             [(ngModel)]="degrees.arcminutes"
             type="number"
             min="0"
@@ -17,7 +21,9 @@
     </mat-form-field>
 
     <mat-form-field>
-        <input matInput
+        <input
+            matInput
+            autocomplete="off"
             [(ngModel)]="degrees.arcseconds"
             type="number"
             min="0"

@@ -1,0 +1,72 @@
+<div class="om-observation-search">
+    <!-- Target -->
+    <div class="om-target">
+        <om-target-selector
+            [(target)]="searchParameters.target">
+        </om-target-selector>
+    </div>
+    <!-- Site -->
+    <mat-form-field>
+        <mat-select
+                placeholder="Site"
+                [(ngModel)]="searchParameters.site.id">
+                <mat-option>None</mat-option>
+                <mat-option
+                        *ngFor="let site of sites"
+                        [value]="site.id">
+                        {{ site.name }}
+                </mat-option>
+        </mat-select>
+        <mat-hint align="start">
+                <strong>Site where session took place</strong>
+        </mat-hint>
+    </mat-form-field>
+    <!-- Scope -->
+    <mat-form-field>
+        <mat-select
+            placeholder="Telecopes, Binocularus &amp; Finders"
+            [(ngModel)]="searchParameters.scope.id">
+            
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let scope of scopes"
+                        [value]="scope.id">
+                {{ scope.model }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <!-- Eyepiece -->
+    <mat-form-field>
+        <mat-select placeholder="Eyepieces"
+                    [(ngModel)]="searchParameters.eyepiece.id">
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let eyepiece of eyepieces"
+                        [value]="eyepiece.id">
+                {{ eyepiece.model }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <!-- Filter -->
+    <mat-form-field>
+        <mat-select placeholder="Filters"
+                    [(ngModel)]="searchParameters.filter.id">
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let filter of filters"
+                        [value]="filter.id">
+                {{ filter.model }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <!-- Lens -->
+    <mat-form-field>
+        <mat-select placeholder="Lenses"
+                    [(ngModel)]="searchParameters.lens.id">
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let lens of lenses"
+                        [value]="lens.id">
+                {{ lens.model }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+
+</div>

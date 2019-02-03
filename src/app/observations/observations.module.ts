@@ -21,6 +21,7 @@ import { MaterialModule } from '../shared/material.module';
 import { DeepSkyFindingDetailsComponent } from './finding-details/deep-sky-finding-details/deep-sky-finding-details.component';
 import { SharedModule } from '../shared/shared.module';
 import { SessionsModule } from '../sessions/sessions.module';
+import { ObservationSearchComponent } from './observation-search/observation-search.component';
 
 @NgModule({
     imports: [
@@ -43,7 +44,8 @@ import { SessionsModule } from '../sessions/sessions.module';
         EditObservationComponent,
         SessionObservationsComponent,
         ObservationListComponent,
-        DeepSkyFindingDetailsComponent
+        DeepSkyFindingDetailsComponent,
+        ObservationSearchComponent
     ],
     entryComponents: [
         ObservationDialogComponent

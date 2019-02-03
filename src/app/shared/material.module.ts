@@ -15,7 +15,8 @@ import {
     MatTooltipModule,
     MatListModule,
     MatCheckboxModule,
-    MAT_TOOLTIP_DEFAULT_OPTIONS
+    MAT_TOOLTIP_DEFAULT_OPTIONS,
+    MatExpansionModule
 } from '@angular/material';
 
 @NgModule({
@@ -32,7 +33,8 @@ import {
         MatSliderModule,
         MatTooltipModule,
         MatListModule,
-        MatCheckboxModule
+        MatCheckboxModule,
+        MatExpansionModule
     ],
     providers: [
         { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: 1000 }

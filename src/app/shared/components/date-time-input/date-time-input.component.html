@@ -3,17 +3,20 @@
     <mat-form-field>
             <input
                 matInput
+                autocomplete="off"
                 [matDatepicker]="datePicker"
                 [placeholder]="datePlaceholder"
                 [(ngModel)]="dateTime"
-                (ngModelChange)="onDateChanged()">
+                (ngModelChange)="onDateChanged()"/>
 
             <mat-datepicker-toggle
                 matSuffix
-                [for]="datePicker"></mat-datepicker-toggle>
+                [for]="datePicker">
+            </mat-datepicker-toggle>
 
             <mat-datepicker
-                #datePicker></mat-datepicker>
+                #datePicker>
+            </mat-datepicker>
 
             <mat-hint
                 align="start">
@@ -26,6 +29,7 @@
     <mat-form-field>
         <input
             matInput
+            autocomplete="off"
             type="time"
             [(ngModel)]="time"
             (ngModelChange)="onTimeChanged()"
