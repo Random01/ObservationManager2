@@ -9,10 +9,7 @@ import { BaseComponent } from '../../shared/components/base-component';
 @Component({
     selector: 'om-register',
     templateUrl: './register.component.html',
-    styleUrls: ['./register.component.css'],
-    providers: [
-        UserService
-    ]
+    styleUrls: ['./register.component.css']
 })
 export class RegisterComponent extends BaseComponent {
 
@@ -47,15 +44,12 @@ export class RegisterComponent extends BaseComponent {
                         this.endLoading();
                         this.goBack();
                     },
-                    () => {
-                        this.endLoading();
-                    }
+                    () => this.endLoading()
                 );
         }
-
     }
 
     goBack() {
-        this.router.navigate(['/']);
+        this.router.navigate(['/login']);
     }
 }

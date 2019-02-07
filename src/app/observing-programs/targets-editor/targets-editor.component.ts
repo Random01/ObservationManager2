@@ -21,6 +21,7 @@ export class TargetsEditorComponent implements OnChanges {
     pageSize = 10;
     pageSizeOptions = [5, 10];
     paginatedTargets: Target[];
+    totalCount = 0;
 
     @Input() targets: Target[];
     @Output() targetsChange: EventEmitter<Target[]> = new EventEmitter();

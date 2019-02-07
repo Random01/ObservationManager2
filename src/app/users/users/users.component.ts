@@ -14,6 +14,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 export class UsersComponent extends EntityListComponent<User> {
 
+    displayedColumns = [
+        'name',
+        'actions'
+    ];
+
     constructor(
         protected userService: UserService,
         protected deleteEntityDialogService: DeleteEntityDialogService,
