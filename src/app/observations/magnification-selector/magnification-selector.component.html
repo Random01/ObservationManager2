@@ -1,0 +1,27 @@
+<div class="om-magnification-selector">
+
+    <mat-form-field>
+        <input
+            matInput
+            autocomplete="off"
+            type="number"
+            min="0"
+            placeholder="Magnification"
+            [disabled]="isMagnificationInputDisabled()"
+            [(ngModel)]="magnification"/>
+    </mat-form-field>
+
+    <div
+        class="slider"
+        *ngIf="isSliderVisible()">
+        <mat-slider
+            thumbLabel
+            [min]="minFocalLength"
+            [max]="maxFocalLength"
+            [step]="step"
+            [(value)]="selectedFocalLenght"
+            [tickInterval]="true">
+        </mat-slider>
+    </div>
+
+</div>

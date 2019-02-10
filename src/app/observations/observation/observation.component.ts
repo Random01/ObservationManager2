@@ -1,9 +1,8 @@
 ﻿import { Component, Input, OnInit } from '@angular/core';
 
 import { Observation, Target } from '../../shared/models/models';
-import { Scope, Eyepiece, Filter, Lens } from '../../shared/models/equipment/equipment';
+import { Scope, Filter, Lens } from '../../shared/models/equipment/equipment';
 import { ScopeService } from '../../scopes/shared/scope.service';
-import { EyepieceService } from '../../eyepieces/shared/eyepiece.service';
 import { FilterService } from '../../filters/shared/filter.service';
 import { LensService } from '../../lenses/shared/lens.service';
 
@@ -18,21 +17,18 @@ export class ObservationComponent implements OnInit {
     @Input() observation: Observation;
 
     scopes: Scope[];
-    eyepieces: Eyepiece[];
     targets: Target[];
     filters: Filter[];
     lenses: Lens[];
 
     constructor(
         private scopeService: ScopeService,
-        private eyepieceService: EyepieceService,
         private filterService: FilterService,
         private lensService: LensService) {
     }
 
     ngOnInit(): void {
         this.scopeService.getAll().then(scopes => this.scopes = scopes);
-        this.eyepieceService.getAll().then(eyepieces => this.eyepieces = eyepieces);
         this.filterService.getAll().then(filters => this.filters = filters);
         this.lensService.getAll().then(lenses => this.lenses = lenses);
     }

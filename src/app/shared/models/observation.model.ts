@@ -6,6 +6,7 @@ import { Session } from './session.model';
 import { Site } from './site.model';
 
 import { Scope, Eyepiece, Filter, Lens } from './equipment/equipment';
+import { SeeingType } from './seeing-type.model';
 
 export class Observation extends Entity {
     // WHO observed it ?
@@ -23,7 +24,7 @@ export class Observation extends Entity {
     // End in case of (exposure) interval
     public end: Date;
     // Seeing rated according to the Antoniadi scale (1=excellent, 5=very poor)
-    public seeing: Number;
+    public seeing: SeeingType;
     // Scope used for the observation
     public scope: Scope;
     // eyepiece used
@@ -34,6 +35,13 @@ export class Observation extends Entity {
     public lens: Lens;
     // Descripting of the results of the observations. Future extensions are likely!
     public result: Result;
+    // Estimated limiting magnitude for naked eye. It's optional but should occur always!
+    public faintestStar: number;
+    // Sky quality meter (SQM) reading
+    public skyQuality: number;
+    // magnification used (redundant in case of existing eyepiece reference)
+    // May be used to derive the actually used focal length in case of a zoom eyepiece
+    public magnification: number;
 
     constructor(params?: {
         id?: string,
@@ -43,12 +51,15 @@ export class Observation extends Entity {
         target?: Target,
         begin?: Date,
         end?: Date,
-        seeing?: Number,
+        seeing?: SeeingType,
         scope?: Scope,
         eyepiece?: Eyepiece,
         filter?: Filter,
         lens?: Lens,
-        result?: Result
+        result?: Result,
+        faintestStar?: number,
+        skyQuality?: number,
+        magnification?: number
     }) {
         super(params);
 
@@ -77,7 +88,10 @@ export class Observation extends Entity {
             eyepiece: this.serializeEntity(this.eyepiece),
             filter: this.serializeEntity(this.filter),
             lens: this.serializeEntity(this.lens),
-            result: this.result.serialize()
+            result: this.result.serialize(),
+            faintestStar: this.faintestStar,
+            skyQuality: this.skyQuality,
+            magnification: this.magnification
         });
     }
 
@@ -96,7 +110,10 @@ export class Observation extends Entity {
             'eyepiece',
             'lens',
             'result',
-            'session'
+            'session',
+            'faintestStar',
+            'skyQuality',
+            'magnification'
         ]);
     }
 }

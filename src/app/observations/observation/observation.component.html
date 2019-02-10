@@ -48,30 +48,19 @@
     
     <h3 class="mat-subheading-2">Equipment</h3>
 
-    <mat-form-field>
-        <mat-select
-            placeholder="Telecopes, Binocularus &amp; Finders"
-            [(ngModel)]="observation.scope.id">
-            
-            <mat-option>None</mat-option>
-            <mat-option *ngFor="let scope of scopes"
-                        [value]="scope.id">
-                {{ scope.model }}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
+    <om-scope-selector
+        [(item)]="observation.scope">
+    </om-scope-selector>
 
+    <om-eyepiece-selector
+        [(item)]="observation.eyepiece">
+    </om-eyepiece-selector>
 
-    <mat-form-field>
-        <mat-select placeholder="Eyepieces"
-                    [(ngModel)]="observation.eyepiece.id">
-            <mat-option>None</mat-option>
-            <mat-option *ngFor="let eyepiece of eyepieces"
-                        [value]="eyepiece.id">
-                {{ eyepiece.model }}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
+    <om-magnification-selector
+        [eyepiece]="observation.eyepiece"
+        [scope]="observation.scope"
+        [(magnification)]="observation.magnification">
+    </om-magnification-selector>
 
     <mat-form-field>
         <mat-select placeholder="Filters"

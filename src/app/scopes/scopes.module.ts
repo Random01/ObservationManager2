@@ -12,6 +12,8 @@ import { ScopeService } from './shared/scope.service';
 import { ScopesRoutingModule } from './scopes-routing.module';
 import { EquipmentModule } from '../equipment/equipment.module';
 import { MaterialModule } from '../shared/material.module';
+import { ScopeSelectorComponent } from './scope-selector';
+
 
 @NgModule({
     imports: [
@@ -26,7 +28,11 @@ import { MaterialModule } from '../shared/material.module';
         ScopesComponent,
         ScopeComponent,
         AddScopeComponent,
-        EditScopeComponent
+        EditScopeComponent,
+        ScopeSelectorComponent
+    ],
+    exports: [
+        ScopeSelectorComponent
     ],
     providers: [
         ScopeService

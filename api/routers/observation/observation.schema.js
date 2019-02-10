@@ -34,17 +34,23 @@ const ObservationSchema = new Schema({
     end: Date,
     seeing: Number,
     scope: {
-        type: Schema.Types.ObjectId, ref: 'scopes'
+        type: Schema.Types.ObjectId,
+        ref: 'scopes'
     },
     eyepiece: {
-        type: Schema.Types.ObjectId, ref: 'eyepieces'
+        type: Schema.Types.ObjectId,
+        ref: 'eyepieces'
     },
     filter: {
-        type: Schema.Types.ObjectId, ref: 'filters'
+        type: Schema.Types.ObjectId,
+        ref: 'filters'
     },
     result: {
         description: String
-    }
+    },
+    faintestStar: Number,
+    skyQuality: Number,
+    magnification: Number
 });
 
 ObservationSchema.statics.getByTargets = function (targetIds) {

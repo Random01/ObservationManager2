@@ -22,6 +22,10 @@ import { DeepSkyFindingDetailsComponent } from './finding-details/deep-sky-findi
 import { SharedModule } from '../shared/shared.module';
 import { SessionsModule } from '../sessions/sessions.module';
 import { ObservationSearchComponent } from './observation-search/observation-search.component';
+import { MagnificationSelectorComponent } from './magnification-selector';
+import { EyepieceSelectorComponent } from '../eyepieces/eyepiece-selector';
+import { ScopesModule } from '../scopes/scopes.module';
+import { EyepieceModule } from '../eyepieces/eyepiece.module';
 
 @NgModule({
     imports: [
@@ -33,7 +37,9 @@ import { ObservationSearchComponent } from './observation-search/observation-sea
         ObservationsRoutingModule,
         SessionsModule,
         MaterialModule,
-        SharedModule
+        SharedModule,
+        ScopesModule,
+        EyepieceModule
     ],
     declarations: [
         ObservationComponent,
@@ -45,7 +51,9 @@ import { ObservationSearchComponent } from './observation-search/observation-sea
         SessionObservationsComponent,
         ObservationListComponent,
         DeepSkyFindingDetailsComponent,
-        ObservationSearchComponent
+        ObservationSearchComponent,
+        MagnificationSelectorComponent,
+        EyepieceSelectorComponent
     ],
     entryComponents: [
         ObservationDialogComponent
