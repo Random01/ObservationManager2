@@ -2,9 +2,9 @@ import { User } from '../../shared/models/user.model';
 
 export class SignInResultPayload {
 
-    token: string;
+    public token: string;
 
-    user: User;
+    public user: User;
 
     constructor(params?: {
         token?: string,

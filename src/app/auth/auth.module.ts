@@ -8,8 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { RegisterComponent } from './register/register.component';
 import { UsersModule } from '../users/users.module';
-import { JwtService } from './shared/jwt.service';
 import { MaterialModule } from '../shared/material.module';
+import { AuthenticationService, JwtService } from './shared';
 
 @NgModule({
     imports: [
@@ -26,7 +26,8 @@ import { MaterialModule } from '../shared/material.module';
         RegisterComponent
     ],
     providers: [
-        JwtService
+        JwtService,
+        AuthenticationService
     ]
 })
 

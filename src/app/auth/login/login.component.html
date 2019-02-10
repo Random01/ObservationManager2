@@ -12,7 +12,7 @@
             <mat-form-field>
                 <input
                     matInput
-                    autocomplete=""
+                    autocomplete="username"
                     placeholder="E-mail or Username"
                     formControlName="email"/>
 
@@ -38,6 +38,11 @@
             type="submit"
             color="primary"
             [disabled]="!loginForm.valid">Sign in</button>
+
+        <button
+            mat-button
+            routerLink="/register">Create an account</button>
+
     </div>
 
 </form>

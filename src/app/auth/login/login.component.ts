@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 
-import { AuthenticationService } from '../shared/authentication.service';
-import { BaseComponent } from '../../shared/components/base-component';
+import { AuthenticationService } from '../shared';
+import { BaseComponent } from '../../shared/components';
 
 @Component({
     selector: 'om-login',

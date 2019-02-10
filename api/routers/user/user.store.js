@@ -7,6 +7,10 @@ class UserStore extends BaseMongooseStore {
         super(db.model('users', UserSchema));
     }
 
+    getItems({ requestParams }) {
+        return super.getItems(Object.assign({}, { requestParams }));
+    }
+
 }
 
 module.exports = UserStore;

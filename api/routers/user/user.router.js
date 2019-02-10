@@ -2,8 +2,7 @@ const express = require('express');
 const UserStore = require('../user/user.store');
 const passport = require('passport');
 const auth = require('../authentication/auth');
-const mongoose = require('mongoose');
-const User = mongoose.model('users');
+const User = require('./user.model');
 
 module.exports = (app, db) => {
 
