@@ -14,6 +14,7 @@ import { AddFilterComponent } from './add-filter/add-filter.component';
 import { FilterService } from './shared/filter.service';
 import { EquipmentModule } from '../equipment/equipment.module';
 import { MaterialModule } from '../shared/material.module';
+import { FilterSelectorComponent } from './filter-selector';
 
 @NgModule({
     imports: [
@@ -29,7 +30,11 @@ import { MaterialModule } from '../shared/material.module';
         FiltersComponent,
         FilterComponent,
         AddFilterComponent,
-        EditFilterComponent
+        EditFilterComponent,
+        FilterSelectorComponent
+    ],
+    exports: [
+        FilterSelectorComponent
     ],
     providers: [
         FilterService

@@ -26,6 +26,8 @@ import { MagnificationSelectorComponent } from './magnification-selector';
 import { EyepieceSelectorComponent } from '../eyepieces/eyepiece-selector';
 import { ScopesModule } from '../scopes/scopes.module';
 import { EyepieceModule } from '../eyepieces/eyepiece.module';
+import { LensesModule } from '../lenses/lenses.module';
+import { FilterModule } from '../filters/filters.module';
 
 @NgModule({
     imports: [
@@ -39,7 +41,9 @@ import { EyepieceModule } from '../eyepieces/eyepiece.module';
         MaterialModule,
         SharedModule,
         ScopesModule,
-        EyepieceModule
+        EyepieceModule,
+        LensesModule,
+        FilterModule
     ],
     declarations: [
         ObservationComponent,
@@ -52,8 +56,7 @@ import { EyepieceModule } from '../eyepieces/eyepiece.module';
         ObservationListComponent,
         DeepSkyFindingDetailsComponent,
         ObservationSearchComponent,
-        MagnificationSelectorComponent,
-        EyepieceSelectorComponent
+        MagnificationSelectorComponent
     ],
     entryComponents: [
         ObservationDialogComponent

@@ -62,26 +62,12 @@
         [(magnification)]="observation.magnification">
     </om-magnification-selector>
 
-    <mat-form-field>
-        <mat-select placeholder="Filters"
-                    [(ngModel)]="observation.filter.id">
-            <mat-option>None</mat-option>
-            <mat-option *ngFor="let filter of filters"
-                        [value]="filter.id">
-                {{ filter.model }}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
+    <om-filter-selector
+        [(item)]="observation.filter">
+    </om-filter-selector>
 
-    <mat-form-field>
-        <mat-select placeholder="Lenses"
-                    [(ngModel)]="observation.lens.id">
-            <mat-option>None</mat-option>
-            <mat-option *ngFor="let lens of lenses"
-                        [value]="lens.id">
-                {{ lens.model }}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
+    <om-lens-selector
+        [(item)]="observation.lens">
+    </om-lens-selector>
 
 </div>

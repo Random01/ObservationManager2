@@ -15,6 +15,7 @@ import { EyepiecesRoutingModule } from './eyepieces-routing.module';
 import { EquipmentModule } from '../equipment/equipment.module';
 import { MaterialModule } from '../shared/material.module';
 import { SharedModule } from '../shared/shared.module';
+import { EyepieceSelectorComponent } from './eyepiece-selector';
 
 @NgModule({
     imports: [
@@ -31,7 +32,11 @@ import { SharedModule } from '../shared/shared.module';
         EyepiecesComponent,
         EyepieceComponent,
         AddEyepieceComponent,
-        EditEyepieceComponent
+        EditEyepieceComponent,
+        EyepieceSelectorComponent
+    ],
+    exports: [
+        EyepieceSelectorComponent
     ],
     providers: [
         EyepieceService

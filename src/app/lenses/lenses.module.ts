@@ -12,6 +12,7 @@ import { EditLensComponent } from './edit-lens/edit-lens.component';
 import { LensesRoutingModule } from './lenses-routing.module';
 import { EquipmentModule } from '../equipment/equipment.module';
 import { MaterialModule } from '../shared/material.module';
+import { LensSelectorComponent } from './lens-selector';
 
 @NgModule({
     imports: [
@@ -26,7 +27,11 @@ import { MaterialModule } from '../shared/material.module';
         LensesComponent,
         LensComponent,
         AddLensComponent,
-        EditLensComponent
+        EditLensComponent,
+        LensSelectorComponent
+    ],
+    exports: [
+        LensSelectorComponent
     ],
     providers: [
         LensService
