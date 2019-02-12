@@ -6,9 +6,9 @@ import { EntitySelectorComponent } from '../../shared/components/entity-selector
 
 @Component({
     selector: 'om-scope-selector',
-    templateUrl: './scope-selector.component.html',
+    templateUrl: '../../shared/components/entity-selector/entity-selector.component.html',
     styleUrls: [
-        './scope-selector.component.css'
+        '../../shared/components/entity-selector/entity-selector.component.css'
     ]
 })
 export class ScopeSelectorComponent extends EntitySelectorComponent<Scope, ScopeService> {
@@ -17,6 +17,8 @@ export class ScopeSelectorComponent extends EntitySelectorComponent<Scope, Scope
         protected scopeService: ScopeService
     ) {
         super(scopeService);
+
+        this.placeholder = 'Telecopes, Binocularus & Finders';
     }
 
 }

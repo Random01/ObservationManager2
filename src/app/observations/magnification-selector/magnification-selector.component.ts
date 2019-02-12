@@ -74,20 +74,21 @@ export class MagnificationSelectorComponent {
     step = 1;
     selectedFocalLenght = 3;
 
-    calculateMagnification(): number {
+    calculateMagnification(): number | null {
         if (this.scope && this.eyepiece) {
             const factor = this.lens != null && this.lens.factor != null ? this.lens.factor : 1.0;
-            return (this.scope.focalLength / this.selectedFocalLenght) * factor;
+            const eyepieceFocalLength = this.eyepiece.isZoomEyepiece ? this.selectedFocalLenght : this.eyepiece.focalLength;
+            return Math.round((this.scope.focalLength / eyepieceFocalLength) * factor);
         }
         return null;
     }
 
     isMagnificationInputDisabled(): boolean {
-        return this.eyepiece.focalLength != null;
+        return !!this.eyepiece && this.eyepiece.focalLength != null;
     }
 
     isSliderVisible(): boolean {
-        return this.eyepiece && this.eyepiece.isZoomEyepiece;
+        return !!this.eyepiece && !!this.eyepiece.isZoomEyepiece && false;
     }
 
     updateMagnification(): void {

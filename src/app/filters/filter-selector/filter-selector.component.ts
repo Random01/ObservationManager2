@@ -6,9 +6,9 @@ import { EntitySelectorComponent } from '../../shared/components/entity-selector
 
 @Component({
     selector: 'om-filter-selector',
-    templateUrl: './filter-selector.component.html',
+    templateUrl: '../../shared/components/entity-selector/entity-selector.component.html',
     styleUrls: [
-        './filter-selector.component.css'
+        '../../shared/components/entity-selector/entity-selector.component.css'
     ]
 })
 export class FilterSelectorComponent extends EntitySelectorComponent<Filter, FilterService> {
@@ -17,6 +17,8 @@ export class FilterSelectorComponent extends EntitySelectorComponent<Filter, Fil
         protected filterService: FilterService
     ) {
         super(filterService);
+
+        this.placeholder = 'Filters';
     }
 
 }

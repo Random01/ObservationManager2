@@ -4,6 +4,10 @@ import { StorageService } from '../../services/storage.service';
 import { Entity } from '../../models/models';
 import { MatSelectChange } from '@angular/material';
 
+export const ENTITY_SELECTOR_COMPONENT_CSS_PATH = 'xxxxxx';
+
+export const ENTITY_SELECTOR_COMPONENT_HTML_PATH = 'xxx';
+
 export class EntitySelectorComponent<T extends Entity, S extends StorageService<T>> implements OnInit {
 
     private _item: T;
@@ -21,6 +25,8 @@ export class EntitySelectorComponent<T extends Entity, S extends StorageService<
     public itemChange: EventEmitter<T> = new EventEmitter();
 
     public items: T[];
+
+    public placeholder: string;
 
     constructor(
         private service: S

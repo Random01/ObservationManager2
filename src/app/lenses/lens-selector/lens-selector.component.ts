@@ -6,9 +6,9 @@ import { EntitySelectorComponent } from '../../shared/components/entity-selector
 
 @Component({
     selector: 'om-lens-selector',
-    templateUrl: './lens-selector.component.html',
+    templateUrl: '../../shared/components/entity-selector/entity-selector.component.html',
     styleUrls: [
-        './lens-selector.component.css'
+        '../../shared/components/entity-selector/entity-selector.component.css'
     ]
 })
 export class LensSelectorComponent extends EntitySelectorComponent<Lens, LensService> {
@@ -17,6 +17,8 @@ export class LensSelectorComponent extends EntitySelectorComponent<Lens, LensSer
         protected lensService: LensService
     ) {
         super(lensService);
+
+        this.placeholder = 'Lenses';
     }
 
 }

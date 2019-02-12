@@ -6,9 +6,9 @@ import { EntitySelectorComponent } from '../../shared/components/entity-selector
 
 @Component({
     selector: 'om-eyepiece-selector',
-    templateUrl: './eyepiece-selector.component.html',
+    templateUrl: '../../shared/components/entity-selector/entity-selector.component.html',
     styleUrls: [
-        './eyepiece-selector.component.css'
+        '../../shared/components/entity-selector/entity-selector.component.css'
     ]
 })
 export class EyepieceSelectorComponent extends EntitySelectorComponent<Eyepiece, EyepieceService> {
@@ -17,6 +17,8 @@ export class EyepieceSelectorComponent extends EntitySelectorComponent<Eyepiece,
         protected eyepieceService: EyepieceService
     ) {
         super(eyepieceService);
+
+        this.placeholder = 'Eyepieces';
     }
 
 }

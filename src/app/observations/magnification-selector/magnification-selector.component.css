@@ -1,7 +1,4 @@
-.om-magnification-selector .slider .mat-slider{
-    width: 100%;
-}
-
-.om-magnification-selector .mat-form-field{
+.om-magnification-selector .slider .mat-slider,
+.om-magnification-selector .mat-form-field {
     width: 100%;
 }
