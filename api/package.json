@@ -7,20 +7,20 @@
         "start": "set NODE_ENV=development&& nodemon --inspect=43499 index.js --debug-brk"
     },
     "dependencies": {
-        "body-parser": "^1.18.2",
-        "express": "^4.16.2",
+        "body-parser": "^1.18.3",
+        "express": "^4.16.4",
         "express-jwt": "^5.3.1",
         "express-session": "^1.15.6",
-        "jsonwebtoken": "^8.3.0",
-        "lodash": "^4.17.4",
-        "mongodb": "^3.1.0",
-        "mongoose": "^5.0.15",
+        "jsonwebtoken": "^8.4.0",
+        "lodash": "^4.17.11",
+        "mongodb": "^3.1.13",
+        "mongoose": "^5.4.11",
         "passport": "^0.4.0",
         "passport-local": "^1.0.0",
         "pbkdf2-password": "^1.2.1"
     },
     "devDependencies": {
-        "nodemon": "^1.17.5"
+        "nodemon": "^1.18.10"
     },
     "engines": {
         "node": "8.11.3"
