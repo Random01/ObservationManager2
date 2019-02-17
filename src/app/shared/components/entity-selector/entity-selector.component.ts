@@ -4,10 +4,6 @@ import { StorageService } from '../../services/storage.service';
 import { Entity } from '../../models/models';
 import { MatSelectChange } from '@angular/material';
 
-export const ENTITY_SELECTOR_COMPONENT_CSS_PATH = 'xxxxxx';
-
-export const ENTITY_SELECTOR_COMPONENT_HTML_PATH = 'xxx';
-
 export class EntitySelectorComponent<T extends Entity, S extends StorageService<T>> implements OnInit {
 
     private _item: T;
@@ -52,4 +48,7 @@ export class EntitySelectorComponent<T extends Entity, S extends StorageService<
         this.onItemSelected(event.value);
     }
 
+    openPopup(): void {
+
+    }
 }
