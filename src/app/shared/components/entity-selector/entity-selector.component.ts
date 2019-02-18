@@ -3,6 +3,7 @@ import { OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { StorageService } from '../../services/storage.service';
 import { Entity } from '../../models/models';
 import { MatSelectChange } from '@angular/material';
+import { AddNewEntityDialogService } from '../../services/add-new-entity-dialog.service';
 
 export class EntitySelectorComponent<T extends Entity, S extends StorageService<T>> implements OnInit {
 
@@ -25,12 +26,13 @@ export class EntitySelectorComponent<T extends Entity, S extends StorageService<
     public placeholder: string;
 
     constructor(
-        private service: S
+        private service: S,
+        private dialogService: AddNewEntityDialogService<T, S>,
     ) {
     }
 
     ngOnInit(): void {
-        this.service.getAll().then(items => this.items = items);
+        this.loadAll();
     }
 
     getCompareWithFn(e1: Entity, e2: Entity): boolean {
@@ -48,7 +50,13 @@ export class EntitySelectorComponent<T extends Entity, S extends StorageService<
         this.onItemSelected(event.value);
     }
 
-    openPopup(): void {
+    openDialog(): void {
+        this.dialogService.openDialog().then(() => {
+            this.loadAll();
+        });
+    }
 
+    loadAll(): void {
+        this.service.getAll().then(items => this.items = items);
     }
 }
