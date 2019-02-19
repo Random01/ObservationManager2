@@ -14,7 +14,7 @@ export abstract class AddEntityDialogComponent<T extends Entity, S extends Stora
     }
 
     public addItem(): void {
-        if (this.item && this.item.isValid()) {
+        if (this.item) {
             this.storageService.add(this.item).then(result => {
                 this.dialogRef.close(result.payload);
             });

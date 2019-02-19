@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Scope } from '../../shared/models/equipment/equipment';
 import { ScopeService } from '../shared/scope.service';
 import { EntitySelectorComponent } from '../../shared/components/entity-selector/entity-selector.component';
+import { AddScopeDialogService } from '../add-scope-dialog';
 
 @Component({
     selector: 'om-scope-selector',
@@ -14,9 +15,10 @@ import { EntitySelectorComponent } from '../../shared/components/entity-selector
 export class ScopeSelectorComponent extends EntitySelectorComponent<Scope, ScopeService> {
 
     constructor(
-        protected scopeService: ScopeService
+        protected scopeService: ScopeService,
+        protected addScopeDialogService: AddScopeDialogService
     ) {
-        super(scopeService);
+        super(scopeService, addScopeDialogService);
 
         this.placeholder = 'Telecopes, Binocularus & Finders';
     }

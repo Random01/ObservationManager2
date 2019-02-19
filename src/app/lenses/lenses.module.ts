@@ -13,6 +13,7 @@ import { LensesRoutingModule } from './lenses-routing.module';
 import { EquipmentModule } from '../equipment/equipment.module';
 import { MaterialModule } from '../shared/material.module';
 import { LensSelectorComponent } from './lens-selector';
+import { AddLensDialogService } from './add-lens-dialog';
 
 @NgModule({
     imports: [
@@ -34,7 +35,8 @@ import { LensSelectorComponent } from './lens-selector';
         LensSelectorComponent
     ],
     providers: [
-        LensService
+        LensService,
+        AddLensDialogService
     ]
 })
 
