@@ -51,8 +51,9 @@ export class EntitySelectorComponent<T extends Entity, S extends StorageService<
     }
 
     openDialog(): void {
-        this.dialogService.openDialog().then(() => {
-            this.loadAll();
+        this.dialogService.openDialog().then((result) => {
+            this.items = [result, ...this.items];
+            this.item = result;
         });
     }
 
