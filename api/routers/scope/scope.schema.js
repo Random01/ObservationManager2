@@ -14,10 +14,23 @@ const ScopeSchema = new Schema({
         ref: 'users'
     },
     
-    model: String,
-    vendor: String,
-    aperture: Number,
-    focalLength: Number
+    model: {
+        type: String,
+        required: true,
+        maxlength: 250
+    },
+    vendor: {
+        type: String,
+        maxlength: 250
+    },
+    aperture: {
+        type: Number,
+        min: 0
+    },
+    focalLength: {
+        type: Number,
+        min: 0
+    }
 });
 
 module.exports = ScopeSchema;

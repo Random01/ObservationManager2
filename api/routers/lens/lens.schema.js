@@ -4,12 +4,25 @@ const Schema = mongoose.Schema;
 const LensSchema = new Schema({
     dateCreated: Date,
     dateModified: Date,
-    userCreated: { type: Schema.Types.ObjectId, ref: 'users' },
-    userModified: { type: Schema.Types.ObjectId, ref: 'users' },
+    userCreated: {
+        type: Schema.Types.ObjectId,
+        ref: 'users'
+    },
+    userModified: {
+        type: Schema.Types.ObjectId,
+        ref: 'users'
+    },
 
-   vendor: String,
-   factor: Number,
-   model: String
+    model: {
+        type: String,
+        required: true,
+        maxlength: 250
+    },
+    vendor: {
+        type: String,
+        maxlength: 250
+    },
+    factor: Number
 });
 
 module.exports = LensSchema;

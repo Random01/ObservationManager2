@@ -12,13 +12,28 @@ const EyepieceSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'users'
     },
-    
-    model: String,
-    vendor: String,
 
-    focalLength: Number,
-    maxFocalLength: Number,
-    apparentFOV: Number
+    model: {
+        type: String,
+        required: true,
+        maxlength: 250
+    },
+    vendor: {
+        type: String,
+        maxlength: 250
+    },
+    focalLength: {
+        type: Number,
+        min: 0
+    },
+    maxFocalLength: {
+        type: Number,
+        min: 0
+    },
+    apparentFOV: {
+        type: Number,
+        min: 0
+    }
 });
 
 module.exports = EyepieceSchema;
