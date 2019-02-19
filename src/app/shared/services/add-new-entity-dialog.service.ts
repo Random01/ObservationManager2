@@ -8,8 +8,6 @@ export abstract class AddNewEntityDialogService<T extends Entity, S extends Stor
     ) {
     }
 
-    public openDialog(): Promise<T> {
-        return Promise.resolve({} as T);
-    }
+    public abstract openDialog(): Promise<T>;
 
 }
