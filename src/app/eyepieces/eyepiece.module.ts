@@ -16,7 +16,10 @@ import { EquipmentModule } from '../equipment/equipment.module';
 import { MaterialModule } from '../shared/material.module';
 import { SharedModule } from '../shared/shared.module';
 import { EyepieceSelectorComponent } from './eyepiece-selector';
-import { AddEyepieceDialogService } from './add-eyepiece-dialog';
+import {
+    AddEyepieceDialogService,
+    AddEyepieceDialogComponent
+} from './add-eyepiece-dialog';
 
 @NgModule({
     imports: [
@@ -34,7 +37,8 @@ import { AddEyepieceDialogService } from './add-eyepiece-dialog';
         EyepieceComponent,
         AddEyepieceComponent,
         EditEyepieceComponent,
-        EyepieceSelectorComponent
+        EyepieceSelectorComponent,
+        AddEyepieceDialogComponent
     ],
     exports: [
         EyepieceSelectorComponent
@@ -42,6 +46,9 @@ import { AddEyepieceDialogService } from './add-eyepiece-dialog';
     providers: [
         EyepieceService,
         AddEyepieceDialogService
+    ],
+    entryComponents: [
+        AddEyepieceDialogComponent
     ]
 })
 

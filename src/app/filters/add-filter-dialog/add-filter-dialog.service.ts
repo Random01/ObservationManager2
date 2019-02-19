@@ -15,7 +15,7 @@ export class AddFilterDialogService extends AddNewEntityDialogService<Filter, Fi
 
     protected createDialog() {
         return this.dialog.open(AddFilterDialogComponent, {
-            width: '250px'
+            width: '350px'
         });
     }
 

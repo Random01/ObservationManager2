@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 import { Scope } from '../../shared/models/equipment/equipment';
 import { AddEntityDialogComponent } from '../../shared/components/add-entity-dialog.component';
 import { ScopeService } from '../shared/scope.service';
@@ -13,7 +13,6 @@ import { ScopeService } from '../shared/scope.service';
     ]
 })
 export class AddScopeDialogComponent extends AddEntityDialogComponent<Scope, ScopeService> {
-
     constructor(
         protected scopeService: ScopeService,
         protected dialogRef: MatDialogRef<AddScopeDialogComponent, Scope>
