@@ -13,7 +13,7 @@ export class AddScopeDialogService extends AddNewEntityDialogService<Scope, Scop
         super(dialog);
     }
 
-    createDialog(): any {
+    createDialog() {
         return this.dialog.open(AddScopeDialogComponent, {
             width: '300px'
         });

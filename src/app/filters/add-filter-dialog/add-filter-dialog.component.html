@@ -1,0 +1,17 @@
+<div class="om-add-scope">
+    <div>
+        <h2 class="mat-h2">Add New Filter</h2>
+    </div>
+    <div *ngIf="item">
+        <om-filter [filter]=item></om-filter>
+    </div>
+    <div>
+        <button 
+            mat-button
+            color="primary"
+            (click)=addItem()>Add</button>
+        <button
+            mat-button
+            (click)=cancel()>Cancel</button>
+    </div>
+</div>

@@ -15,7 +15,7 @@ import { FilterService } from './shared/filter.service';
 import { EquipmentModule } from '../equipment/equipment.module';
 import { MaterialModule } from '../shared/material.module';
 import { FilterSelectorComponent } from './filter-selector';
-import { AddFilterDialogService } from './add-filter-dialog';
+import { AddFilterDialogService, AddFilterDialogComponent } from './add-filter-dialog';
 
 @NgModule({
     imports: [
@@ -32,10 +32,14 @@ import { AddFilterDialogService } from './add-filter-dialog';
         FilterComponent,
         AddFilterComponent,
         EditFilterComponent,
-        FilterSelectorComponent
+        FilterSelectorComponent,
+        AddFilterDialogComponent
     ],
     exports: [
         FilterSelectorComponent
+    ],
+    entryComponents: [
+        AddFilterDialogComponent
     ],
     providers: [
         FilterService,

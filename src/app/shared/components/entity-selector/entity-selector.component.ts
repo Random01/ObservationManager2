@@ -26,8 +26,8 @@ export class EntitySelectorComponent<T extends Entity, S extends StorageService<
     public placeholder: string;
 
     constructor(
-        private service: S,
-        private dialogService: AddNewEntityDialogService<T, S>,
+        protected service: S,
+        protected dialogService: AddNewEntityDialogService<T, S>,
     ) {
     }
 

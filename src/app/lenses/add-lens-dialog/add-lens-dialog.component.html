@@ -1,0 +1,17 @@
+<div class="om-add-lens">
+    <div>
+        <h2 class="mat-h2">Add New Lens</h2>
+    </div>
+    <div *ngIf="item">
+        <om-lens [lens]=item></om-lens>
+    </div>
+    <div>
+        <button 
+            mat-button
+            color="primary"
+            (click)=addItem()>Add</button>
+        <button
+            mat-button
+            (click)=cancel()>Cancel</button>
+    </div>
+</div>
