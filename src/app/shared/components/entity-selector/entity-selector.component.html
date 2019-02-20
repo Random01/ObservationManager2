@@ -1,5 +1,6 @@
 <div class="om-entity-selector">
-    <mat-form-field>
+    <mat-form-field
+        class="select">
         <mat-select
             [placeholder]="placeholder"
             (selectionChange)="onSelectionChange($event)"
@@ -8,7 +9,7 @@
             <mat-option>None</mat-option>
             <mat-option *ngFor="let item of items"
                         [value]="item">
-                {{ item.model }}
+                {{ item.getDisplayName() }}
             </mat-option>
         </mat-select>
     </mat-form-field>
@@ -19,4 +20,5 @@
         (click)="openDialog()">
         <mat-icon>add</mat-icon>
     </button>
+
 </div>

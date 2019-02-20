@@ -33,7 +33,8 @@ import { AddSiteDialogService, AddSiteDialogComponent } from './add-site-dialog'
         SiteComponent,
         EditSiteComponent,
         AddSiteComponent,
-        AddSiteDialogComponent
+        AddSiteDialogComponent,
+        SiteSelectorComponent
     ],
     exports: [
         SiteSelectorComponent

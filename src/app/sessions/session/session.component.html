@@ -23,21 +23,7 @@
         </om-date-time-input>
         
         <!-- site where session took place -->
-        <mat-form-field>
-                <mat-select
-                        placeholder="Site"
-                        [(ngModel)]="session.site.id">
-                        <mat-option>None</mat-option>
-                        <mat-option
-                                *ngFor="let site of sites"
-                                [value]="site.id">
-                                {{ site.name }}
-                        </mat-option>
-                </mat-select>
-                <mat-hint align="start">
-                        <strong>Site where session took place</strong>
-                </mat-hint>
-        </mat-form-field>
+        <om-site-selector [(item)]="session.site"></om-site-selector>
 
         <!-- Comments about the weather situation -->
         <mat-form-field

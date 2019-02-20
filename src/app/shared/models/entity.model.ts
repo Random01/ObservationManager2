@@ -55,4 +55,8 @@ export class Entity implements Serializable {
     protected serializeEntity(value?: Entity) {
         return value ? value.id : null;
     }
+
+    public getDisplayName(): string {
+        return null;
+    }
 }

@@ -13,14 +13,15 @@ export abstract class AddNewEntityDialogService<T extends Entity, S extends Stor
 
     public openDialog(): Promise<T> {
         return new Promise((success, fail) => {
-            const dialogRef = this.createDialog();
-            dialogRef.afterClosed().subscribe((result: T) => {
-                if (result) {
-                    success(result);
-                } else {
-                    fail();
-                }
-            });
+            this.createDialog()
+                .afterClosed()
+                .subscribe((result: T) => {
+                    if (result) {
+                        success(result);
+                    } else {
+                        fail();
+                    }
+                });
         });
 
     }
