@@ -13,9 +13,10 @@ class ObservationStore extends BaseMongooseStore {
             ['observer', '_id userName firstName lastName'],
             ['site', '_id name'],
             ['session', '_id begin end site'],
-            ['scope'],
-            ['eyepiece'],
+            ['scope', '_id model'],
+            ['eyepiece', '_id model'],
             ['filter', '_id model'],
+            ['lens', '_id model'],
             ['target']
         ]});
     }
@@ -31,7 +32,8 @@ class ObservationStore extends BaseMongooseStore {
                 ['scope', '_id model'],
                 ['eyepiece', '_id model'],
                 ['filter', '_id model'],
-                ['target', '_id name']
+                ['target', '_id name'],
+                ['lens', '_id model']
             ]}));
     }
 
