@@ -4,11 +4,10 @@ import { MatDialog } from '@angular/material';
 
 import { AddNewEntityDialogService } from '../../shared/services/add-new-entity-dialog.service';
 import { Scope } from '../../shared/models/equipment/equipment';
-import { ScopeService } from '../shared/scope.service';
 import { AddScopeDialogComponent } from './add-scope-dialog.component';
 
 @Injectable()
-export class AddScopeDialogService extends AddNewEntityDialogService<Scope, ScopeService> {
+export class AddScopeDialogService extends AddNewEntityDialogService<Scope> {
 
     constructor(
         protected dialog: MatDialog) {

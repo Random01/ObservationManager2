@@ -1,8 +1,7 @@
-import { StorageService } from './storage.service';
 import { Entity } from '../models/models';
 import { MatDialog } from '@angular/material';
 
-export abstract class AddNewEntityDialogService<T extends Entity, S extends StorageService<T>> {
+export abstract class AddNewEntityDialogService<T extends Entity> {
 
     item: T;
 

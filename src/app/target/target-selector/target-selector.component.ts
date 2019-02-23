@@ -12,6 +12,7 @@ import {
 } from 'rxjs/operators';
 
 import { FormControl } from '@angular/forms';
+import { AddTargetDialogService } from './add-target-dialog';
 
 @Component({
     selector: 'om-target-selector',
@@ -46,7 +47,8 @@ export class TargetSelectorComponent implements OnInit {
     private searchTerms = new Subject<string>();
 
     constructor(
-        private targetService: TargetService) {
+        private targetService: TargetService,
+        private dialogService: AddTargetDialogService) {
     }
 
     displayFn(target?: Target): string | undefined {
@@ -79,8 +81,12 @@ export class TargetSelectorComponent implements OnInit {
         this.onTargetSelected(new Target());
     }
 
-    openAdvancedSearch() {
-
+    openDialog() {
+        this.dialogService.openDialog().then((result) => {
+            if (result) {
+                this.onTargetSelected(result);
+            }
+        });
     }
 
 }
