@@ -29,7 +29,7 @@ export class AddSessionComponent extends AddEntityComponent<Session> {
             this.endLoading();
 
             if (result.isSuccess()) {
-                this.router.navigate([`/sessions/${result.payload.id}/observations`]);
+                this.router.navigate([`/sessions/${result.payload.id}/observations/new-observation`]);
             }
         }, () => this.endLoading());
     }

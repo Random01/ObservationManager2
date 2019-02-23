@@ -27,7 +27,7 @@ export class AddObservationComponent extends AddEntityComponent<Observation> {
     }
 
     public goBack() {
-        this.router.navigate([`/sessions/${this.getSessionId()}/observations`]);
+        this.router.navigate([`/sessions/${this.getSessionId()}/observations/`]);
     }
 
     public async createNew() {
