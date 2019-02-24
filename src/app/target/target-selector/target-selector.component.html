@@ -36,6 +36,7 @@
     </mat-form-field>
 
     <button
+        *ngIf="canAdd"
         mat-button
         mat-icon-button
         (click)="openDialog()">

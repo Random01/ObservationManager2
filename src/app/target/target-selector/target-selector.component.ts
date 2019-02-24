@@ -44,6 +44,9 @@ export class TargetSelectorComponent implements OnInit {
 
     searhControl: FormControl = new FormControl();
 
+    @Input()
+    canAdd: boolean;
+
     private searchTerms = new Subject<string>();
 
     constructor(
@@ -86,7 +89,7 @@ export class TargetSelectorComponent implements OnInit {
             if (result) {
                 this.onTargetSelected(result);
             }
-        });
+        }, () => { });
     }
 
 }
