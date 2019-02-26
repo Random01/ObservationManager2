@@ -40,7 +40,9 @@ export class UserProfileMenuComponent implements OnInit {
     }
 
     signOut() {
-        this.authenticationService.signOut();
+        this.authenticationService.signOut().then(() => {
+            this.router.navigate(['/']);
+        });
     }
 
     editProfile() {

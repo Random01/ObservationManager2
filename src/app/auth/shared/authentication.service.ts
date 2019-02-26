@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { UserService } from '../../users/shared/user.service';
 import { JwtService } from './jwt.service';
 
-import { BehaviorSubject ,  ReplaySubject } from 'rxjs';
+import { BehaviorSubject, ReplaySubject } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 
 import { User } from '../../shared/models/user.model';
@@ -23,10 +23,12 @@ export class AuthenticationService {
     ) {
     }
 
-    signOut() {
+    signOut(): Promise<void> {
         this.jwtService.removeToken();
         this.currentUserSubject.next({} as User);
         this.isAuthenticatedSubject.next(false);
+
+        return Promise.resolve();
     }
 
     setAut(result: SignInResultPayload): void {

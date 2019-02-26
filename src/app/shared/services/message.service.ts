@@ -6,7 +6,9 @@ export class Message {
     text: string;
 }
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class MessageService {
 
     constructor(
@@ -14,9 +16,15 @@ export class MessageService {
     ) {
     }
 
-    show(message: Message) {
-        this.snackBar.open(message.text, 'Undo', {
+    showInfo(message: string) {
+        this.snackBar.open(message, 'Undo', {
             duration: 1000
+        });
+    }
+
+    showError(errorMessage: string) {
+        this.snackBar.open(errorMessage, 'X', {
+            panelClass: ['error']
         });
     }
 

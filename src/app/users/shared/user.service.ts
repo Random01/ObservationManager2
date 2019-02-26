@@ -74,7 +74,7 @@ export class UserService extends StorageService<User> {
 
         return new Promise<User>((success) => {
             return this.http.post<any>(this.getUrl() + '/', user, httpOptions)
-                .subscribe(() => success(new User()));
+                .subscribe(() => success(user));
         });
     }
 
