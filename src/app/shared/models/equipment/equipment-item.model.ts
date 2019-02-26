@@ -28,4 +28,8 @@ export class EquipmentItem extends Entity {
         this.model = state.model;
         this.vendor = state.vendor;
     }
+
+    public getDisplayName(): string {
+        return this.model;
+    }
 }

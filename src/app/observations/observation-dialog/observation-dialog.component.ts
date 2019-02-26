@@ -1,12 +1,12 @@
 import { Component, Inject } from '@angular/core';
 
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { Observation } from '../../shared/models/observation.model';
 
 @Component({
     selector: 'om-observation-dialog',
-    templateUrl: 'observation-dialog.component.html',
+    templateUrl: 'observation-dialog.component.html'
 })
 
 export class ObservationDialogComponent {

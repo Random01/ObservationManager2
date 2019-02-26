@@ -1,0 +1,17 @@
+<div class="om-add-eyepiece-dialog">
+    <div>
+        <h2 class="mat-h2">Add New Eyepiece</h2>
+    </div>
+    <div *ngIf="item">
+        <om-eyepiece [eyepiece]=item></om-eyepiece>
+    </div>
+    <div>
+        <button 
+            mat-button
+            color="primary"
+            (click)=addItem()>Add</button>
+        <button
+            mat-button
+            (click)=cancel()>Cancel</button>
+    </div>
+</div>

@@ -23,7 +23,6 @@ import { SharedModule } from '../shared/shared.module';
 import { SessionsModule } from '../sessions/sessions.module';
 import { ObservationSearchComponent } from './observation-search/observation-search.component';
 import { MagnificationSelectorComponent } from './magnification-selector';
-import { EyepieceSelectorComponent } from '../eyepieces/eyepiece-selector';
 import { ScopesModule } from '../scopes/scopes.module';
 import { EyepieceModule } from '../eyepieces/eyepiece.module';
 import { LensesModule } from '../lenses/lenses.module';

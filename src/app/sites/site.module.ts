@@ -15,6 +15,8 @@ import { AddSiteComponent } from './add-site/add-site.component';
 import { SitesRoutingModule } from './sites-routing.module';
 import { SiteService } from './shared/site.service';
 import { SharedModule } from '../shared/shared.module';
+import { SiteSelectorComponent } from './site-selector';
+import { AddSiteDialogService, AddSiteDialogComponent } from './add-site-dialog';
 
 @NgModule({
     imports: [
@@ -30,10 +32,19 @@ import { SharedModule } from '../shared/shared.module';
         SitesComponent,
         SiteComponent,
         EditSiteComponent,
-        AddSiteComponent
+        AddSiteComponent,
+        AddSiteDialogComponent,
+        SiteSelectorComponent
+    ],
+    exports: [
+        SiteSelectorComponent
     ],
     providers: [
-        SiteService
+        SiteService,
+        AddSiteDialogService
+    ],
+    entryComponents: [
+        AddSiteDialogComponent
     ]
 })
 

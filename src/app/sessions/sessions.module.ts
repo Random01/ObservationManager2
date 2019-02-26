@@ -18,6 +18,7 @@ import { SessionsRoutingModule } from './sessions-routing.module';
 import { SessionService } from './shared/session.service';
 import { SharedModule } from '../shared/shared.module';
 import { SessionInfoComponent } from './session-info/session-info.component';
+import { SiteModule } from '../sites/site.module';
 
 @NgModule({
     imports: [
@@ -28,7 +29,8 @@ import { SessionInfoComponent } from './session-info/session-info.component';
         NoopAnimationsModule,
         SessionsRoutingModule,
         SharedModule,
-        MaterialModule
+        MaterialModule,
+        SiteModule
     ],
     declarations: [
         SessionsComponent,

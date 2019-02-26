@@ -56,4 +56,7 @@ export class Site extends Entity {
         this.coord.latitude.deserialize(state.latitude);
     }
 
+    public getDisplayName(): string {
+        return this.name;
+    }
 }

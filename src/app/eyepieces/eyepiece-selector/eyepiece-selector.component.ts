@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Eyepiece } from '../../shared/models/equipment/equipment';
 import { EyepieceService } from '../shared/eyepiece.service';
 import { EntitySelectorComponent } from '../../shared/components/entity-selector/entity-selector.component';
+import { AddEyepieceDialogService } from '../add-eyepiece-dialog';
 
 @Component({
     selector: 'om-eyepiece-selector',
@@ -14,9 +15,10 @@ import { EntitySelectorComponent } from '../../shared/components/entity-selector
 export class EyepieceSelectorComponent extends EntitySelectorComponent<Eyepiece, EyepieceService> {
 
     constructor(
-        protected eyepieceService: EyepieceService
+        protected eyepieceService: EyepieceService,
+        protected addNewEyepieceDialogService: AddEyepieceDialogService
     ) {
-        super(eyepieceService);
+        super(eyepieceService, addNewEyepieceDialogService);
 
         this.placeholder = 'Eyepieces';
     }

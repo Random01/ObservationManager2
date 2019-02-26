@@ -13,7 +13,7 @@ const ObservationSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'users'
     },
-    
+
     observer: {
         type: Schema.Types.ObjectId,
         ref: 'users'
@@ -44,6 +44,10 @@ const ObservationSchema = new Schema({
     filter: {
         type: Schema.Types.ObjectId,
         ref: 'filters'
+    },
+    lens: {
+        type: Schema.Types.ObjectId,
+        ref: 'lenses'
     },
     result: {
         description: String

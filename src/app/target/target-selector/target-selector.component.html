@@ -36,10 +36,11 @@
     </mat-form-field>
 
     <button
+        *ngIf="canAdd"
         mat-button
         mat-icon-button
-        (click)="openAdvancedSearch()">
-        <mat-icon>search</mat-icon>
+        (click)="openDialog()">
+        <mat-icon>add</mat-icon>
     </button>
 
 </div>
