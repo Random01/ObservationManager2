@@ -10,6 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import { UsersModule } from '../users/users.module';
 import { MaterialModule } from '../shared/material.module';
 import { AuthenticationService, JwtService } from './shared';
+import { AuthGuardService } from './shared/auth-guard.service';
 
 @NgModule({
     imports: [
@@ -27,7 +28,8 @@ import { AuthenticationService, JwtService } from './shared';
     ],
     providers: [
         JwtService,
-        AuthenticationService
+        AuthenticationService,
+        AuthGuardService
     ]
 })
 

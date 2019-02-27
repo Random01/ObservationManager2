@@ -60,4 +60,7 @@ export class AuthenticationService {
         return result;
     }
 
+    isAuth(): boolean {
+        return this.jwtService.isTokenExpired();
+    }
 }

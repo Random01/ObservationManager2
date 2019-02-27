@@ -5,19 +5,23 @@ import { RouterModule, Routes } from '@angular/router';
 import { EyepiecesComponent } from './eyepieces/eyepieces.component';
 import { AddEyepieceComponent } from './add-eyepiece/add-eyepiece.component';
 import { EditEyepieceComponent } from './edit-eyepiece/edit-eyepiece.component';
+import { AuthGuardService } from '../auth/shared/auth-guard.service';
 
 const routes: Routes = [
     {
         path: 'eyepieces',
-        component: EyepiecesComponent
+        component: EyepiecesComponent,
+        canActivate: [AuthGuardService]
     },
     {
         path: 'eyepieces/new-eyepiece',
-        component: AddEyepieceComponent
+        component: AddEyepieceComponent,
+        canActivate: [AuthGuardService]
     },
     {
         path: 'eyepieces/:id',
-        component: EditEyepieceComponent
+        component: EditEyepieceComponent,
+        canActivate: [AuthGuardService]
     }
 ];
 

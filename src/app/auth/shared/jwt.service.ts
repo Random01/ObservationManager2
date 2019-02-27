@@ -15,4 +15,8 @@ export class JwtService {
         return localStorage.getItem('jwtToken');
     }
 
+    isTokenExpired(): boolean {
+        return true;
+    }
+
 }
