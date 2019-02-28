@@ -40,4 +40,5 @@ export class Eyepiece extends EquipmentItem {
     public get isZoomEyepiece(): boolean {
         return this.maxFocalLength > 0;
     }
+
 }

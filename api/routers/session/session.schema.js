@@ -19,9 +19,18 @@ const SessionSchema = new Schema({
     end: {
         type: Date
     },
-    comments: String,
-    weather: String,
-    equipment: String,
+    comments: {
+        type: String,
+        maxlength: 1024
+    },
+    weather: {
+        type: String,
+        maxlength: 1024
+    },
+    equipment: {
+        type: String,
+        maxlength: 1024
+    },
     site: {
         type: Schema.Types.ObjectId,
         ref: 'sites'

@@ -13,6 +13,7 @@
         <button 
             mat-button
             color="primary"
+            [disabled]="!isValid()"
             (click)=addItem()>Add</button>
         <button
             mat-button

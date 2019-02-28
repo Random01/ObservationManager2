@@ -50,7 +50,10 @@ const ObservationSchema = new Schema({
         ref: 'lenses'
     },
     result: {
-        description: String
+        description: {
+            type: String,
+            maxlength: 1024
+        },
     },
     faintestStar: Number,
     skyQuality: Number,

@@ -13,12 +13,19 @@ const SiteSchema = new Schema({
         ref: 'users'
     },
     
-    name: String,
+    name: {
+        type: String,
+        required: true,
+        maxlength: 250
+    },
     timezone: Number,
     longitude: Number,
     latitude: Number,
     elevation: Number,
-    code: String
+    code: {
+        type: String,
+        maxlength: 250
+    }
 });
 
 module.exports = SiteSchema;

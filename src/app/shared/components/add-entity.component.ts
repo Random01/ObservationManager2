@@ -38,6 +38,10 @@ export abstract class AddEntityComponent<T extends Entity> extends BaseEntityCom
 
     public abstract goBack(): void;
 
+    public isValid(): boolean {
+        return this.item != null && this.item.isValid();
+    }
+
     ngOnInit(): void {
         this.startLoading();
         this.createNew().then((item) => {

@@ -32,4 +32,8 @@ export class EquipmentItem extends Entity {
     public getDisplayName(): string {
         return this.model;
     }
+
+    public isValid(): boolean {
+        return this.model != null && this.model.trim().length > 0;
+    }
 }

@@ -38,7 +38,7 @@ export class Entity implements Serializable {
     }
 
     public isValid(): boolean {
-        return this.id != null;
+        return true;
     }
 
     protected parseDate(value?: string): Date {

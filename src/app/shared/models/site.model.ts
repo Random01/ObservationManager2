@@ -59,4 +59,8 @@ export class Site extends Entity {
     public getDisplayName(): string {
         return this.name;
     }
+
+    public isValid(): boolean {
+        return this.name != null && this.name.length > 0;
+    }
 }

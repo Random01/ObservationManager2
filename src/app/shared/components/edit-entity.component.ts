@@ -30,4 +30,8 @@ export abstract class EditEntityComponent<T extends Entity> extends BaseEntityCo
         });
     }
 
+    public isValid(): boolean {
+        return this.item != null && this.item.isValid();
+    }
+
 }
