@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { UsersComponent } from './users/users.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AuthGuardService } from '../auth/shared/auth-guard.service';
 
 const routes: Routes = [
     {
@@ -12,11 +13,13 @@ const routes: Routes = [
     },
     {
         path: 'users/new-user',
-        component: AddUserComponent
+        component: AddUserComponent,
+        canActivate: [AuthGuardService]
     },
     {
         path: 'users/profile',
-        component: UserProfileComponent
+        component: UserProfileComponent,
+        canActivate: [AuthGuardService]
     }
 ];
 

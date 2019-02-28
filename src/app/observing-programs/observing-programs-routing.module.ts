@@ -6,23 +6,28 @@ import { AddObservingProgramComponent } from './add-observing-program/add-observ
 import { EditObservingProgramComponent } from './edit-observing-program/edit-observing-program.component';
 import { ObservingProgramsComponent } from './observing-programs/observing-programs.component';
 import { ObservingProgramStatisticsComponent } from './observing-program-statistics/observing-program-statistics.component';
+import { AuthGuardService } from '../auth/shared/auth-guard.service';
 
 const routes: Routes = [
     {
         path: 'observing-programs/new-observing-program',
-        component: AddObservingProgramComponent
+        component: AddObservingProgramComponent,
+        canActivate: [AuthGuardService]
     },
     {
         path: 'observing-programs/:programId',
-        component: EditObservingProgramComponent
+        component: EditObservingProgramComponent,
+        canActivate: [AuthGuardService]
     },
     {
         path: 'observing-programs',
-        component: ObservingProgramsComponent
+        component: ObservingProgramsComponent,
+        canActivate: [AuthGuardService]
     },
     {
         path: 'observing-programs/statistics/:programId',
-        component: ObservingProgramStatisticsComponent
+        component: ObservingProgramStatisticsComponent,
+        canActivate: [AuthGuardService]
     }
 ];
 
