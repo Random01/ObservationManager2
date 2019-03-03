@@ -5,7 +5,7 @@ import { AddResultPayload } from './add-result-payload.model';
 import { environment } from '../../../environments/environment';
 import { JwtService } from '../../auth/shared/jwt.service';
 import { RequestParams } from './request-params.model';
-import { Response } from '../interfaces/response.interface';
+import { PaginatedResponsePayload } from '../interfaces/paginated-response-payload.interface';
 
 export abstract class StorageService<T extends Entity> {
 
@@ -24,6 +24,10 @@ export abstract class StorageService<T extends Entity> {
     }
 
     add(newItem: T): Promise<AddResultPayload> {
+        if (!newItem) {
+            throw new Error('newItem should be provided');
+        }
+
         const httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
@@ -66,14 +70,14 @@ export abstract class StorageService<T extends Entity> {
      * Returns a paginated list of items.
      * @param request
      */
-    getItems(request: RequestParams): Promise<Response<T>> {
+    getItems(request: RequestParams): Promise<PaginatedResponsePayload<T>> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Authorization': this.getAuthorizationToken()
             })
         };
 
-        return new Promise<Response<T>>((success) => {
+        return new Promise<PaginatedResponsePayload<T>>((success) => {
             const url = this.getUrl() + '?' + request.getQueryString();
 
             this.http.get<any>(url, httpOptions)

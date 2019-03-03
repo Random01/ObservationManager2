@@ -63,4 +63,8 @@ export class Target extends Entity {
         this.constellation.deserialize(state.constellation || {});
         this.position.deserialize(state.position || {});
     }
+
+    public isValid(): boolean {
+        return this.name != null && this.name.trim().length > 0;
+    }
 }

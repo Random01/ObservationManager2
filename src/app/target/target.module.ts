@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { TargetSearchComponent } from './target-search/target-search.component';
 import { TargetSelectorComponent } from './target-selector/target-selector.component';
 import { TargetService } from './shared/target.service';
 import { TargetsRoutingModule } from './targets-routing.module';
@@ -33,7 +32,6 @@ import { AddTargetDialogService, AddTargetDialogComponent } from './target-selec
         MaterialModule
     ],
     declarations: [
-        TargetSearchComponent,
         TargetSelectorComponent,
         AddTargetComponent,
         EditTargetComponent,
@@ -49,7 +47,6 @@ import { AddTargetDialogService, AddTargetDialogComponent } from './target-selec
         AddTargetDialogComponent
     ],
     exports: [
-        TargetSearchComponent,
         TargetSelectorComponent,
         TargetTypeFormatterPipe
     ],

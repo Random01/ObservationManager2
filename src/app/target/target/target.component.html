@@ -12,17 +12,18 @@
             type="text"
             autocomplete="off"
             [(ngModel)]="target.name"
-            placeholder="Name" />
+            placeholder="Name"/>
     </mat-form-field>
 
     <!-- Target Description -->
     <mat-form-field>
-        <input
+        <textarea
             matInput
-            type="text"
-            autocomplete="off"
-            [(ngModel)]="target.description"
-            placeholder="Description" />
+            placeholder="Description"
+            matTextareaAutosize
+            matAutosizeMinRows="5"
+            [(ngModel)]="target.description">
+        </textarea>
     </mat-form-field>
 
     <span>RA</span>

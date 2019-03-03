@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { StorageService } from '../../shared/services/storage.service';
 import { ObservingProgram } from '../../shared/models/observing-program.model';
 import { JwtService } from '../../auth/shared/jwt.service';
-import { Response } from '../../shared/interfaces/response.interface';
+import { PaginatedResponsePayload } from '../../shared/interfaces/paginated-response-payload.interface';
 import { TargetStatistics } from './target-statistics.model';
 import { ObservingProgramStatisticsRequestParams } from './observing-program-satistics-request-params.model';
 import ObservingProgramStatistics from './observing-program-statistics.model';
@@ -23,14 +23,14 @@ export class ObservingProgramsService extends StorageService<ObservingProgram> {
         return new ObservingProgram(params);
     }
 
-    public getStatistics(request: ObservingProgramStatisticsRequestParams): Promise<Response<TargetStatistics>> {
+    public getStatistics(request: ObservingProgramStatisticsRequestParams): Promise<PaginatedResponsePayload<TargetStatistics>> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Authorization': this.getAuthorizationToken()
             })
         };
 
-        return new Promise<Response<TargetStatistics>>((success) => {
+        return new Promise<PaginatedResponsePayload<TargetStatistics>>((success) => {
             const url = `${this.getUrl()}/statistics/${request.observingProgramId}?${request.getQueryString()}`;
 
             this.http.get<any>(url, httpOptions)

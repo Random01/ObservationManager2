@@ -11,7 +11,6 @@ import { LensService } from '../shared/lens.service';
     selector: 'om-edit-lens',
     templateUrl: './edit-lens.component.html'
 })
-
 export class EditLensComponent extends EditEntityComponent<Lens> {
 
     constructor(

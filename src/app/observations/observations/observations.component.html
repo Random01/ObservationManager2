@@ -29,6 +29,7 @@
         [length]="totalCount"
         [(pageSize)]="pageSize"
         [pageSizeOptions]="pageSizeOptions"
+        [pageIndex]="currentPage"
         showFirstLastButtons="true"
         (page)=onPageChanged($event)>
     </mat-paginator>
@@ -92,6 +93,7 @@
         [length]="totalCount"
         [(pageSize)]="pageSize"
         [pageSizeOptions]="pageSizeOptions"
+        [pageIndex]="currentPage"
         showFirstLastButtons="true"
         (page)=onPageChanged($event)>
     </mat-paginator>
