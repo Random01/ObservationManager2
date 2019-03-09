@@ -26,6 +26,7 @@ import { ScopesModule } from '../scopes/scopes.module';
 import { EyepieceModule } from '../eyepieces/eyepiece.module';
 import { LensesModule } from '../lenses/lenses.module';
 import { FilterModule } from '../filters/filters.module';
+import { ObservationConditionsComponent } from './observation-conditions';
 
 @NgModule({
     imports: [
@@ -53,7 +54,8 @@ import { FilterModule } from '../filters/filters.module';
         SessionObservationsComponent,
         DeepSkyFindingDetailsComponent,
         ObservationSearchComponent,
-        MagnificationSelectorComponent
+        MagnificationSelectorComponent,
+        ObservationConditionsComponent
     ],
     entryComponents: [
         ObservationDialogComponent

@@ -49,10 +49,15 @@ export class AddObservationComponent extends AddEntityComponent<Observation> {
 
             const item = await this.createNew();
 
+            // Copy previous settings to a new instance for convinience
             item.scope = this.item.scope;
             item.filter = this.item.filter;
             item.eyepiece = this.item.eyepiece;
             item.lens = this.item.lens;
+            // Observation Conditions
+            item.faintestStar = this.item.faintestStar;
+            item.seeing = this.item.seeing;
+            item.skyQuality = this.item.skyQuality;
 
             this.item = item;
         } finally {
