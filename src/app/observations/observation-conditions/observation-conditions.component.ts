@@ -1,13 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { Observation } from '../../shared/models/models';
-import { SeeingType } from '../../shared/models/seeing-type.model';
 import { SeeingTypeService } from '../shared';
-
-interface SeeingItem {
-    name: string;
-    seeing: SeeingType;
-}
+import { SeeingItem } from '../shared/seeing-type.interface';
 
 @Component({
     selector: 'om-observation-conditions',
