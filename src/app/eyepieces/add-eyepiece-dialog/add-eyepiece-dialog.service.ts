@@ -2,7 +2,7 @@ import { AddNewEntityDialogService } from '../../shared/services/add-new-entity-
 import { Eyepiece } from '../../shared/models/equipment/equipment';
 import { Injectable } from '@angular/core';
 import { AddEyepieceDialogComponent } from './add-eyepiece-dialog.component';
-import { MatDialogRef, MatDialog } from '@angular/material';
+import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 
 @Injectable()
 export class AddEyepieceDialogService extends AddNewEntityDialogService<Eyepiece> {

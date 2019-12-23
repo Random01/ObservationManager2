@@ -2,7 +2,7 @@ import { AddNewEntityDialogService } from '../../shared/services/add-new-entity-
 import { Filter } from '../../shared/models/equipment/equipment';
 import { Injectable } from '@angular/core';
 import { AddFilterDialogComponent } from './add-filter-dialog.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 
 @Injectable()
 export class AddFilterDialogService extends AddNewEntityDialogService<Filter> {

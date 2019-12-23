@@ -8,7 +8,7 @@ import { SessionService } from '../shared/session.service';
 
 import { ObservationDialogComponent } from '../../observations/observation-dialog/observation-dialog.component';
 
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observation } from '../../shared/models/observation.model';
 import { Target } from '../../shared/models/models';
 import { BaseComponent } from '../../shared/components/base-component';

@@ -1,7 +1,9 @@
 import { Observable, of } from 'rxjs';
 import { TargetType } from '../../shared/models/target-type.model';
 import { TargetTypeItem } from './interfaces/target-search-params.interface';
+import { Injectable } from "@angular/core";
 
+@Injectable()
 export class TargetTypeService {
 
     private types = {

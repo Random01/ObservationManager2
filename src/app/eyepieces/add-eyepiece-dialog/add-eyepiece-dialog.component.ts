@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { AddEntityDialogComponent } from '../../shared/components/add-entity-dialog.component';
 import { Eyepiece } from '../../shared/models/equipment/equipment';
 import { EyepieceService } from '../shared/eyepiece.service';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
     selector: 'om-add-eyepiece-dialog',

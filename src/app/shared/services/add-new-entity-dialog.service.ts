@@ -1,5 +1,5 @@
 import { Entity } from '../models/models';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 
 export abstract class AddNewEntityDialogService<T extends Entity> {
 
