@@ -84,7 +84,7 @@ export class MagnificationSelectorComponent {
     }
 
     isMagnificationInputDisabled(): boolean {
-        return !!this.eyepiece && this.eyepiece.focalLength != null;
+        return this.eyepiece != null && this.eyepiece.focalLength != null;
     }
 
     isSliderVisible(): boolean {

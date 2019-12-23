@@ -1,0 +1,3 @@
+export abstract class BaseExporterService {
+
+}
