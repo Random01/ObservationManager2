@@ -4,7 +4,9 @@
   "description": "OM helps you to keep your observations.",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start_app": "ng serve",
+    "start_server": "cd api && npm run start",
+    "start": "concurrently --kill-others \"npm run start\" \"npm run start_server\"",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
@@ -47,6 +49,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.5.0",
+    "concurrently": "^5.0.2",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~3.1.1",
