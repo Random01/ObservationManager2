@@ -2,14 +2,8 @@ OM
 
 1. "npm install"
 
-2. "npm start"
+1. "npm run start"
 
-3. "cd api"
+1. Run "chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security"
 
-4. "npm install"
-
-5. "npm start"
-
-6. Run "chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security"
-
-7. Open "http://localhost:4200"
+1. Open "http://localhost:4200"
