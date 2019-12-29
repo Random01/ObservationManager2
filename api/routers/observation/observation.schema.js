@@ -64,7 +64,7 @@ ObservationSchema.statics.getByTargets = function (targetIds) {
     return new Promise((success, fail) => {
         this.find({
             target: {
-                '$in': targetIds.map((targetId) => ObjectID(targetId))
+                '$in': targetIds
             }
         })
             .exec((err, observations) => {
