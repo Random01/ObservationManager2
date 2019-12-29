@@ -6,7 +6,7 @@
     "ng": "ng",
     "start_app": "ng serve",
     "start_server": "cd api && npm run start",
-    "start": "concurrently --kill-others \"npm run start\" \"npm run start_server\"",
+    "start": "concurrently --kill-others \"npm run start_app\" \"npm run start_server\"",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
