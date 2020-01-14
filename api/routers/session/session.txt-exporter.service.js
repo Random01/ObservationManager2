@@ -11,7 +11,7 @@ class SessionTxtExporter extends BaseTxtExporter {
     export(res, session) {
         res.set('Content-Type', 'text/plain');
 
-        let content = 'Observation';
+        let content = 'Session';
 
         res.send(Buffer.from(content));
     }

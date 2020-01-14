@@ -21,20 +21,24 @@ class ObservingProgramStore extends BaseMongooseStore {
         });
     }
 
+    /**
+     * Gets an overall statistics for a selected observing program.
+     * @returns {Promise}
+     */
     getOverallStatistics({
         id,
         userId
     }) {
         return this.model
             .getById(id)
-            .then((observingProgram) => {
+            .then(observingProgram => {
                 return Promise.all([
                     observingProgram.targets,
                     ObservationModel.getByTargets(observingProgram.targets)
                 ]);
             }).then(([targets, observations]) => {
-                const observationsToTarget = _.groupBy(observations, (o) => o.target);
-                const observedTargets = _.filter(targets, (target) => !!observationsToTarget[target.id]);
+                const observationsToTarget = _.groupBy(observations, o => o.target);
+                const observedTargets = _.filter(targets, target => !!observationsToTarget[target.id]);
 
                 return {
                     observedCount: observedTargets.length,
@@ -44,7 +48,8 @@ class ObservingProgramStore extends BaseMongooseStore {
     }
 
     /**
-     * Returns a list of observed objects
+     * Returns a list of observed objects.
+     * 
      * @param {Object} param
      * @param {String} param.id - Observing Program Id.
      * @param {String} param.userId - User Id.
@@ -58,7 +63,7 @@ class ObservingProgramStore extends BaseMongooseStore {
     }) {
         return this.model
             .getById(id)
-            .then((observingProgram) => {
+            .then(observingProgram => {
                 const startIndex = page * size;
                 const targets = observingProgram.targets.slice(startIndex, startIndex + size);
 
@@ -69,8 +74,8 @@ class ObservingProgramStore extends BaseMongooseStore {
                 ]);
             })
             .then(([targets, observations, totalCount]) => {
-                const observationsToTarget = _.groupBy(observations, (o) => o.target);
-                const targetsStatistics = targets.map((target) => {
+                const observationsToTarget = _.groupBy(observations, o => o.target);
+                const targetsStatistics = targets.map(target => {
                     return {
                         target,
                         observations: observationsToTarget[target.id]
