@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 
 import { AddNewEntityDialogService } from '../../shared/services/add-new-entity-dialog.service';
 import { Scope } from '../../shared/models/equipment/equipment';

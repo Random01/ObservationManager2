@@ -1,8 +1,9 @@
 import { OnInit, Output, EventEmitter, Input } from '@angular/core';
 
+import { MatSelectChange } from '@angular/material/select';
+
 import { StorageService } from '../../services/storage.service';
 import { Entity } from '../../models/models';
-import { MatSelectChange } from '@angular/material';
 import { AddNewEntityDialogService } from '../../services/add-new-entity-dialog.service';
 
 export class EntitySelectorComponent<T extends Entity, S extends StorageService<T>> implements OnInit {

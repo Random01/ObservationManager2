@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Filter } from '../../shared/models/equipment/equipment';
 import { AddEntityDialogComponent } from '../../shared/components/add-entity-dialog.component';
 import { FilterService } from '../shared/filter.service';

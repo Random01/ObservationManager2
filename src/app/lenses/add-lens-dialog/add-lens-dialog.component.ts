@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material/dialog';
 
 import { LensService } from '../shared/lens.service';
 import { Lens } from '../../shared/models/equipment/equipment';
