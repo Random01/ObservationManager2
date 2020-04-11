@@ -9,23 +9,23 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
     selector: 'om-filters',
     templateUrl: './filters.component.html',
-    styleUrls: [ './filters.component.css' ]
+    styleUrls: ['./filters.component.css']
 })
-
 export class FiltersComponent extends EntityListComponent<Filter> {
 
     displayedColumns: string[] = [
         'model',
         'vendor',
         'filterType',
-        'actions'
+        'actions',
     ];
 
     constructor(
         protected service: FilterService,
         protected deleteEntityDialogService: DeleteEntityDialogService,
         protected route: ActivatedRoute,
-        protected router: Router) {
+        protected router: Router,
+    ) {
         super(service, deleteEntityDialogService, route, router);
     }
 

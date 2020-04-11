@@ -1,17 +1,18 @@
 ﻿import { Component } from '@angular/core';
 
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { Scope } from '../../shared/models/equipment/scope.model';
 import { ScopeService } from '../shared/scope.service';
 import { EntityListComponent } from '../../shared/components/entity-list.component';
 import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
-import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
     selector: 'om-scopes',
     templateUrl: './scopes.component.html',
     styleUrls: ['./scopes.component.css']
 })
-
 export class ScopesComponent extends EntityListComponent<Scope> {
 
     displayedColumns: string[] = [
@@ -19,14 +20,15 @@ export class ScopesComponent extends EntityListComponent<Scope> {
         'aperture',
         'focalLength',
         'vendor',
-        'actions'
+        'actions',
     ];
 
     constructor(
         protected service: ScopeService,
         protected deleteEntityDialogService: DeleteEntityDialogService,
         protected route: ActivatedRoute,
-        protected router: Router) {
+        protected router: Router,
+    ) {
         super(service, deleteEntityDialogService, route, router);
     }
 

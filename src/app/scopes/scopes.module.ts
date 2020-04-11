@@ -8,7 +8,6 @@ import { ScopesComponent } from './scopes/scopes.component';
 import { ScopeComponent } from './scope/scope.component';
 import { AddScopeComponent } from './add-scope/add-scope.component';
 import { EditScopeComponent } from './edit-scope/edit-scope.component';
-import { ScopeService } from './shared/scope.service';
 import { ScopesRoutingModule } from './scopes-routing.module';
 import { EquipmentModule } from '../equipment/equipment.module';
 import { MaterialModule } from '../shared/material.module';
@@ -23,7 +22,7 @@ import { AddScopeDialogService, AddScopeDialogComponent } from './add-scope-dial
         RouterModule,
         ScopesRoutingModule,
         EquipmentModule,
-        MaterialModule
+        MaterialModule,
     ],
     declarations: [
         ScopesComponent,
@@ -31,17 +30,16 @@ import { AddScopeDialogService, AddScopeDialogComponent } from './add-scope-dial
         AddScopeComponent,
         EditScopeComponent,
         ScopeSelectorComponent,
-        AddScopeDialogComponent
+        AddScopeDialogComponent,
     ],
     exports: [
-        ScopeSelectorComponent
+        ScopeSelectorComponent,
     ],
     providers: [
-        ScopeService,
-        AddScopeDialogService
+        AddScopeDialogService,
     ],
     entryComponents: [
-        AddScopeDialogComponent
+        AddScopeDialogComponent,
     ]
 })
 

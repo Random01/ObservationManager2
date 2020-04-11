@@ -17,7 +17,7 @@ export class EditEyepieceComponent extends EditEntityComponent<Eyepiece> {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private eyepiece: EyepieceService) {
+        eyepiece: EyepieceService) {
         super(eyepiece);
     }
 

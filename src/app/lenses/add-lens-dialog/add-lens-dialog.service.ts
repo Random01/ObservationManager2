@@ -10,13 +10,14 @@ import { AddLensDialogComponent } from './add-lens-dialog.component';
 export class AddLensDialogService extends AddNewEntityDialogService<Lens> {
 
     constructor(
-        protected dialog: MatDialog) {
+        protected dialog: MatDialog,
+    ) {
         super(dialog);
     }
 
     protected createDialog() {
         return this.dialog.open(AddLensDialogComponent, {
-            width: '300px'
+            width: '300px',
         });
     }
 

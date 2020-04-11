@@ -5,7 +5,14 @@ import { DeepSkyTargetType } from './deep-sky-target.model';
  */
 export class PlanetaryNebula extends DeepSkyTargetType {
 
-    // magnitude of central star in [mag]
+    /**
+     * magnitude of central star in [mag]
+     */
     public centralStarMagnitude: number;
+
+    constructor(params?: Partial<PlanetaryNebula>) {
+        super(params);
+        Object.assign(this, params);
+    }
 
 }

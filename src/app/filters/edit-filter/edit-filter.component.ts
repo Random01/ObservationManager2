@@ -17,7 +17,7 @@ export class EditFilterComponent extends EditEntityComponent<Filter> {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private service: FilterService) {
+        service: FilterService) {
         super(service);
     }
 

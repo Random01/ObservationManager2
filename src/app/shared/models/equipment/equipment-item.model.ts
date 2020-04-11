@@ -6,11 +6,7 @@ export class EquipmentItem extends Entity {
 
     public vendor: string;
 
-    constructor(params?: {
-        id?: string,
-        model?: string,
-        vendor?: string
-    }) {
+    constructor(params?: Partial<EquipmentItem>) {
         super(params);
         Object.assign(this, params);
     }
@@ -18,7 +14,7 @@ export class EquipmentItem extends Entity {
     public serialize(): Object {
         return Object.assign(super.serialize(), {
             model: this.model,
-            vendor: this.vendor
+            vendor: this.vendor,
         });
     }
 

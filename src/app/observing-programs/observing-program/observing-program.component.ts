@@ -6,7 +6,6 @@ import { ObservingProgram } from '../../shared/models/observing-program.model';
     templateUrl: './observing-program.component.html',
     styleUrls: ['./observing-program.component.css']
 })
-
 export class ObservingProgramComponent {
     @Input() program: ObservingProgram;
 }

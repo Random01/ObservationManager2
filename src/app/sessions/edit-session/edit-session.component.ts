@@ -11,14 +11,13 @@ import { Session } from '../../shared/models/models';
     selector: 'om-edit-session',
     templateUrl: './edit-session.component.html'
 })
-
 export class EditSessionComponent extends EditEntityComponent<Session> {
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private sessionService: SessionService) {
-        super(sessionService);
+        service: SessionService) {
+        super(service);
     }
 
     getItemId(): string {

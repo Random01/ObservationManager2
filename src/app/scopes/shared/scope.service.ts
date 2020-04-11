@@ -5,16 +5,17 @@ import { Scope } from '../../shared/models/equipment/scope.model';
 import { StorageService } from '../../shared/services/storage.service';
 import { JwtService } from '../../auth/shared/jwt.service';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ScopeService extends StorageService<Scope> {
 
     constructor(
         protected http: HttpClient,
-        protected jwtService: JwtService) {
+        protected jwtService: JwtService,
+    ) {
         super('/scopes', http, jwtService);
     }
 
-    createNew(params?: any): Scope {
+    public createNew(params?: any): Scope {
         return new Scope(params);
     }
 

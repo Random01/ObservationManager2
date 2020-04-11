@@ -10,7 +10,7 @@ import { TargetStatistics } from './target-statistics.model';
 import { ObservingProgramStatisticsRequestParams } from './observing-program-satistics-request-params.model';
 import ObservingProgramStatistics from './observing-program-statistics.model';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ObservingProgramsService extends StorageService<ObservingProgram> {
 
     constructor(
@@ -37,13 +37,13 @@ export class ObservingProgramsService extends StorageService<ObservingProgram> {
                 .subscribe(response => {
                     success({
                         ...response,
-                        items: response.items.map((item: any) => this.parseTargetStatistics(item))
+                        items: response.items.map((item: any) => this.parseTargetStatistics(item)),
                     });
                 });
         });
     }
 
-    public getObservingProgramStatistics(observingProgramId: string): Promise<ObservingProgramStatistics> {
+    public async getObservingProgramStatistics(observingProgramId: string): Promise<ObservingProgramStatistics> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Authorization': this.getAuthorizationToken()
@@ -52,18 +52,17 @@ export class ObservingProgramsService extends StorageService<ObservingProgram> {
 
         const url = `${this.getUrl()}/overall-statistics/${observingProgramId}`;
 
-        return this.http.get<any>(url, httpOptions).toPromise().then((response) => {
-            return new ObservingProgramStatistics({
-                totalCount: response.totalCount,
-                observedCount: response.observedCount
-            });
+        const response = await this.http.get<any>(url, httpOptions).toPromise();
+        return new ObservingProgramStatistics({
+            totalCount: response.totalCount,
+            observedCount: response.observedCount,
         });
     }
 
     parseTargetStatistics(state: any): TargetStatistics {
         return new TargetStatistics({
             target: state.target,
-            observations: state.observations || []
+            observations: state.observations || [],
         });
     }
 }

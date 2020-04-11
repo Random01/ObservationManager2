@@ -11,12 +11,11 @@ import { Scope } from '../../shared/models/equipment/equipment';
     selector: 'om-add-scope',
     templateUrl: './add-scope.component.html'
 })
-
 export class AddScopeComponent extends AddEntityComponent<Scope> {
     constructor(
         private router: Router,
-        private scopeService: ScopeService) {
-        super(scopeService);
+        service: ScopeService) {
+        super(service);
     }
 
     goBack() {

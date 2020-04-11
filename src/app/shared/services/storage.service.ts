@@ -6,7 +6,6 @@ import { environment } from '../../../environments/environment';
 import { JwtService } from '../../auth/shared/jwt.service';
 import { RequestParams } from './request-params.model';
 import { PaginatedResponsePayload } from '../interfaces/paginated-response-payload.interface';
-import { tap } from 'rxjs/operators';
 
 export abstract class StorageService<T extends Entity> {
 

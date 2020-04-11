@@ -13,7 +13,6 @@ import { SiteComponent } from './site/site.component';
 import { EditSiteComponent } from './edit-site/edit-site.component';
 import { AddSiteComponent } from './add-site/add-site.component';
 import { SitesRoutingModule } from './sites-routing.module';
-import { SiteService } from './shared/site.service';
 import { SharedModule } from '../shared/shared.module';
 import { SiteSelectorComponent } from './site-selector';
 import { AddSiteDialogService, AddSiteDialogComponent } from './add-site-dialog';
@@ -40,7 +39,6 @@ import { AddSiteDialogService, AddSiteDialogComponent } from './add-site-dialog'
         SiteSelectorComponent
     ],
     providers: [
-        SiteService,
         AddSiteDialogService
     ],
     entryComponents: [

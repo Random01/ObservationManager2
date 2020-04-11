@@ -16,7 +16,7 @@ export class ScopeSelectorComponent extends EntitySelectorComponent<Scope, Scope
 
     constructor(
         protected scopeService: ScopeService,
-        protected addScopeDialogService: AddScopeDialogService
+        protected addScopeDialogService: AddScopeDialogService,
     ) {
         super(scopeService, addScopeDialogService);
 

@@ -16,7 +16,7 @@ export class SiteSelectorComponent extends EntitySelectorComponent<Site, SiteSer
 
     constructor(
         protected storageService: SiteService,
-        protected dialogService: AddSiteDialogService
+        protected dialogService: AddSiteDialogService,
     ) {
         super(storageService, dialogService);
 

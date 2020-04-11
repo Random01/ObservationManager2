@@ -9,21 +9,14 @@ export class Scope extends Optics {
     // focal length in [mm]
     public focalLength?: number;
 
-    constructor(params?: {
-        id?: string,
-        model?: string,
-        vendor?: string,
-        aperture?: number,
-        focalLength?: number,
-        type?: OpticsType
-    }) {
+    constructor(params?: Partial<Scope>) {
         super(params);
         Object.assign(this, params);
     }
 
     public serialize(): Object {
         return Object.assign(super.serialize(), {
-            focalLength: this.focalLength
+            focalLength: this.focalLength,
         });
     }
 

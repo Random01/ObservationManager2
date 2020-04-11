@@ -43,24 +43,7 @@ export class Observation extends Entity {
     // May be used to derive the actually used focal length in case of a zoom eyepiece
     public magnification: number;
 
-    constructor(params?: {
-        id?: string,
-        observer?: Observer,
-        site?: Site,
-        session?: Session,
-        target?: Target,
-        begin?: Date,
-        end?: Date,
-        seeing?: SeeingType,
-        scope?: Scope,
-        eyepiece?: Eyepiece,
-        filter?: Filter,
-        lens?: Lens,
-        result?: Result,
-        faintestStar?: number,
-        skyQuality?: number,
-        magnification?: number
-    }) {
+    constructor(params?: Partial<Observation>) {
         super(params);
 
         this.observer = new Observer();
@@ -91,7 +74,7 @@ export class Observation extends Entity {
             result: this.result.serialize(),
             faintestStar: this.faintestStar,
             skyQuality: this.skyQuality,
-            magnification: this.magnification
+            magnification: this.magnification,
         });
     }
 
@@ -113,7 +96,7 @@ export class Observation extends Entity {
             'session',
             'faintestStar',
             'skyQuality',
-            'magnification'
+            'magnification',
         ]);
     }
 }

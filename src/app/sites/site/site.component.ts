@@ -6,7 +6,6 @@ import { Site } from '../../shared/models/site.model';
     templateUrl: './site.component.html',
     styleUrls: ['./site.component.css']
 })
-
 export class SiteComponent {
     @Input() site: Site;
 }

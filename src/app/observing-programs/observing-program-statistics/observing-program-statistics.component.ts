@@ -18,7 +18,7 @@ export class ObservingProgramStatisticsComponent extends PaginatedListComponent<
         'name',
         'type',
         'constellation',
-        'observed'
+        'observed',
     ];
 
     observingProgramStatistics: ObservingProgramStatistics;
@@ -26,7 +26,7 @@ export class ObservingProgramStatisticsComponent extends PaginatedListComponent<
     constructor(
         protected route: ActivatedRoute,
         protected router: Router,
-        protected observingProgramService: ObservingProgramsService
+        protected observingProgramService: ObservingProgramsService,
     ) {
         super(route, router);
     }

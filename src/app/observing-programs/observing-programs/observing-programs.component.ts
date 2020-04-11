@@ -13,12 +13,11 @@ import { ActivatedRoute, Router } from '@angular/router';
         './observing-programs.component.css'
     ]
 })
-
 export class ObservingProgramsComponent extends EntityListComponent<ObservingProgram> {
 
     displayedColumns: string[] = [
         'name',
-        'actions'
+        'actions',
     ];
 
     constructor(

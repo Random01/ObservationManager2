@@ -17,8 +17,8 @@ export class TargetTypeSelectorComponent implements OnInit {
     targetTypes: TargetTypeItem[] = [];
 
     constructor(
-        private targetTypeService: TargetTypeService) {
-    }
+        private targetTypeService: TargetTypeService,
+    ) { }
 
     ngOnInit() {
         this.targetTypeService

@@ -12,13 +12,13 @@ import { SessionService } from '../../sessions/shared/session.service';
     selector: 'om-add-observation',
     templateUrl: './add-observation.component.html'
 })
-
 export class AddObservationComponent extends AddEntityComponent<Observation> {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
         private observationService: ObservationService,
-        private sessionService: SessionService) {
+        private sessionService: SessionService,
+    ) {
         super(observationService);
     }
 

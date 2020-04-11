@@ -7,7 +7,6 @@ import { Observation } from '../../shared/models/models';
     templateUrl: './observation.component.html',
     styleUrls: ['./observation.component.css']
 })
-
 export class ObservationComponent {
 
     @Input() observation: Observation;

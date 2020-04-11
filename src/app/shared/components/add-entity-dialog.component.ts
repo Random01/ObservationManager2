@@ -8,7 +8,7 @@ export abstract class AddEntityDialogComponent<T extends Entity, S extends Stora
 
     constructor(
         protected storageService: S,
-        protected dialogRef: any
+        protected dialogRef: any,
     ) {
 
     }

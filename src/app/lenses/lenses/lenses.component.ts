@@ -11,7 +11,6 @@ import { ActivatedRoute, Router } from '@angular/router';
     templateUrl: './lenses.component.html',
     styleUrls: ['./lenses.component.css']
 })
-
 export class LensesComponent extends EntityListComponent<Lens> {
 
     displayedColumns: string[] = [

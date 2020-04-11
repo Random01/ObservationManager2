@@ -14,7 +14,6 @@ interface PageChangedEvent {
     templateUrl: './targets-editor.component.html',
     styleUrls: ['./targets-editor.component.css']
 })
-
 export class TargetsEditorComponent implements OnChanges {
 
     currentPage = 0;
@@ -28,7 +27,7 @@ export class TargetsEditorComponent implements OnChanges {
 
     displayedColumns: string[] = [
         'name',
-        'actions'
+        'actions',
     ];
 
     newTarget: Target;

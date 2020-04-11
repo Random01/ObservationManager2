@@ -2,21 +2,20 @@
 
 export class Eyepiece extends EquipmentItem {
 
-    // Focal Length (mm)
+    /**
+     * Focal Length (mm)
+     */
     public focalLength: number;
-    // New in V1.7: upper limit of focal length (used in case of zoom eyepiece) in [mm]
+    /**
+     * New in V1.7: upper limit of focal length (used in case of zoom eyepiece) in [mm]
+     */
     public maxFocalLength: number;
-    // Apparent Field of View (deg)
+    /**
+     * Apparent Field of View (deg)
+     */
     public apparentFOV: number;
 
-    constructor(params?: {
-        id?: string,
-        model?: string,
-        vendor?: string,
-        focalLength?: number,
-        maxFocalLength?: number,
-        apparentFOV?: number
-    }) {
+    constructor(params?: Partial<Eyepiece>) {
         super(params);
         Object.assign(this, params);
     }
@@ -25,7 +24,7 @@ export class Eyepiece extends EquipmentItem {
         return Object.assign(super.serialize(), {
             focalLength: this.focalLength,
             maxFocalLength: this.maxFocalLength,
-            apparentFOV: this.apparentFOV
+            apparentFOV: this.apparentFOV,
         });
     }
 

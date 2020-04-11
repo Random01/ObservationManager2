@@ -3,27 +3,19 @@ import { UserRole } from './user-role.model';
 
 export class User extends Entity {
 
-    firstName: string;
+    public firstName: string;
 
-    lastName: string;
+    public lastName: string;
 
-    userName: string;
+    public userName: string;
 
-    password: string;
+    public password: string;
 
-    email: string;
+    public email: string;
 
-    role: UserRole;
+    public role: UserRole;
 
-    constructor(params?: {
-        id?: string,
-        firstName?: string,
-        lastName?: string,
-        userName?: string,
-        password?: string,
-        email?: string,
-        role?: UserRole
-    }) {
+    constructor(params?: Partial<User>) {
         super(params);
         Object.assign(this, params);
     }
@@ -35,7 +27,7 @@ export class User extends Entity {
             userName: this.userName,
             password: this.password,
             email: this.email,
-            role: this.role
+            role: this.role,
         });
     }
 
@@ -48,7 +40,7 @@ export class User extends Entity {
             'userName',
             'password',
             'email',
-            'role'
+            'role',
         ]);
     }
 

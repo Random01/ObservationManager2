@@ -11,14 +11,14 @@ import { ScopeService } from '../shared/scope.service';
     selector: 'om-edit-scope',
     templateUrl: './edit-scope.component.html'
 })
-
 export class EditScopeComponent extends EditEntityComponent<Scope> {
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private scopeService: ScopeService) {
-        super(scopeService);
+        service: ScopeService,
+    ) {
+        super(service);
     }
 
     getItemId(): string {

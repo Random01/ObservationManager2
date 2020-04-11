@@ -2,17 +2,15 @@ import { SortOrder } from '../models/sort-order.model';
 
 export class RequestParams {
 
-    page: number;
-    size: number;
-    sortField?: string;
-    sortDirection?: SortOrder;
+    public page: number;
 
-    constructor(props?: {
-        page?: number,
-        size?: number,
-        sortField?: string,
-        sortDirection?: SortOrder
-    }) {
+    public size: number;
+
+    public sortField?: string;
+
+    public sortDirection?: SortOrder;
+
+    constructor(props?: Partial<RequestParams>) {
         Object.assign(this, props);
     }
 

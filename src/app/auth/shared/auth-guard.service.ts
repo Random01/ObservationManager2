@@ -5,15 +5,16 @@ import { AuthenticationService } from './authentication.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AuthGuardService implements CanActivate {
 
     constructor(
         protected auth: AuthenticationService,
-        protected router: Router) {
+        protected router: Router,
+    ) {
     }
 
-    canActivate(): Observable<boolean> {
+    public canActivate(): Observable<boolean> {
         return this.auth.isAuthenticated.pipe(
             map(authenticated => {
                 if (authenticated) {

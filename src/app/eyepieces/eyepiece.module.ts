@@ -8,7 +8,6 @@ import { RouterModule } from '@angular/router';
 
 import { EyepiecesComponent } from './eyepieces/eyepieces.component';
 import { EyepieceComponent } from './eyepiece/eyepiece.component';
-import { EyepieceService } from './shared/eyepiece.service';
 import { AddEyepieceComponent } from './add-eyepiece/add-eyepiece.component';
 import { EditEyepieceComponent } from './edit-eyepiece/edit-eyepiece.component';
 import { EyepiecesRoutingModule } from './eyepieces-routing.module';
@@ -44,7 +43,6 @@ import {
         EyepieceSelectorComponent
     ],
     providers: [
-        EyepieceService,
         AddEyepieceDialogService
     ],
     entryComponents: [

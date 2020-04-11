@@ -10,15 +10,15 @@ export abstract class AddEntityComponent<T extends Entity> extends BaseEntityCom
         super();
     }
 
-    public addItem() {
+    public async addItem() {
         this.startLoading();
 
-        this.storageService
-            .add(this.item)
-            .then(
-                () => this.goBack(),
-                () => this.endLoading()
-            );
+        try {
+            await this.storageService.add(this.item);
+            this.goBack();
+        } finally {
+            this.endLoading();
+        }
     }
 
     public async addItemAndContinue() {
@@ -42,12 +42,14 @@ export abstract class AddEntityComponent<T extends Entity> extends BaseEntityCom
         return this.item != null && this.item.isValid();
     }
 
-    ngOnInit(): void {
+    public async ngOnInit() {
         this.startLoading();
-        this.createNew().then((item) => {
-            this.item = item;
+
+        try {
+            this.item = await this.createNew();
+        } finally {
             this.endLoading();
-        });
+        }
     }
 
 }

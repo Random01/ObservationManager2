@@ -10,13 +10,13 @@ import { AddEyepieceDialogService } from '../add-eyepiece-dialog';
     templateUrl: '../../shared/components/entity-selector/entity-selector.component.html',
     styleUrls: [
         '../../shared/components/entity-selector/entity-selector.component.css'
-    ]
+    ],
 })
 export class EyepieceSelectorComponent extends EntitySelectorComponent<Eyepiece, EyepieceService> {
 
     constructor(
         protected eyepieceService: EyepieceService,
-        protected addNewEyepieceDialogService: AddEyepieceDialogService
+        protected addNewEyepieceDialogService: AddEyepieceDialogService,
     ) {
         super(eyepieceService, addNewEyepieceDialogService);
 

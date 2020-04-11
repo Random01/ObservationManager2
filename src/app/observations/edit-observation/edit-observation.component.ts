@@ -9,16 +9,15 @@ import { ObservationService } from '../shared/observation.service';
 @Component({
     selector: 'om-edit-observation',
     templateUrl: './edit-observation.component.html',
-    providers: [ObservationService]
 })
-
 export class EditObservationComponent extends EditEntityComponent<Observation> {
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private sessionService: ObservationService) {
-        super(sessionService);
+        service: ObservationService,
+    ) {
+        super(service);
     }
 
     getItemId(): string {

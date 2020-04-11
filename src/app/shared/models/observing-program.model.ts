@@ -9,12 +9,7 @@ export class ObservingProgram extends Entity {
 
     public targets: Target[];
 
-    constructor(params?: {
-        id?: string,
-        name?: string,
-        description?: string,
-        targets?: Target[]
-    }) {
+    constructor(params?: Partial<ObservingProgram>) {
         super(params);
         this.targets = [];
         Object.assign(this, params);
@@ -24,7 +19,7 @@ export class ObservingProgram extends Entity {
         return Object.assign(super.serialize(), {
             name: this.name,
             description: this.description,
-            targets: this.targets.map((target) => target.id)
+            targets: this.targets.map((target) => target.id),
         });
     }
 

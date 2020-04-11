@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 
 import { OpticsType } from '../../shared/models/equipment/optics-type.model';
 
-import { Observable ,  of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class OpticsService {
 
     private static names: string[] = [
@@ -14,7 +14,7 @@ export class OpticsService {
         'Refractor',
         'Cassegrain',
         'Schmidt-Cassegrain',
-        'Maksutov'
+        'Maksutov',
     ];
 
     getOpticsTypes(): Observable<OpticsType[]> {

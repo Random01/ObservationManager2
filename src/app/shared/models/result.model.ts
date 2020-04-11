@@ -4,21 +4,22 @@ export class Result implements Serializable {
 
     public type: string;
 
-    // Language
+    /**
+     * Language
+     */
     public lang: string;
 
-    // Description of the finding
+    /**
+     * Description of the finding
+     */
     public description: string;
 
-    // Visual Rating
+    /**
+     * Visual Rating
+     */
     public rating: number;
 
-    constructor(params?: {
-        type?: string,
-        lang?: string,
-        description?: string,
-        rating?: number
-    }) {
+    constructor(params?: Partial<Result>) {
         Object.assign(this, params);
     }
 
@@ -27,7 +28,7 @@ export class Result implements Serializable {
             type: this.type,
             lang: this.lang,
             description: this.description,
-            rating: this.rating
+            rating: this.rating,
         };
     }
 

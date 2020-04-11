@@ -16,7 +16,7 @@ export class LensSelectorComponent extends EntitySelectorComponent<Lens, LensSer
 
     constructor(
         protected lensService: LensService,
-        protected addLensDialogService: AddLensDialogService
+        protected addLensDialogService: AddLensDialogService,
     ) {
         super(lensService, addLensDialogService);
 

@@ -14,7 +14,6 @@ import { ActivatedRoute, Router } from '@angular/router';
     templateUrl: './targets.component.html',
     styleUrls: ['./targets.component.css']
 })
-
 export class TargetsComponent extends EntityListComponent<Target> {
 
     searchParams: TargetSearchParams;
@@ -24,14 +23,15 @@ export class TargetsComponent extends EntityListComponent<Target> {
         'type',
         'constellation',
         'alliases',
-        'actions'
+        'actions',
     ];
 
     constructor(
         protected service: TargetService,
         protected deleteEntityDialogService: DeleteEntityDialogService,
         protected route: ActivatedRoute,
-        protected router: Router) {
+        protected router: Router,
+    ) {
         super(service, deleteEntityDialogService, route, router);
 
         this.searchParams = new TargetSearchParams();

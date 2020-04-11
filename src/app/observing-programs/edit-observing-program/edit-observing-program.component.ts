@@ -10,13 +10,12 @@ import { ObservingProgramsService } from '../shared/observing-programs.service';
     selector: 'om-edit-observing-program',
     templateUrl: './edit-observing-program.component.html'
 })
-
 export class EditObservingProgramComponent extends EditEntityComponent<ObservingProgram> {
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private service: ObservingProgramsService) {
+        service: ObservingProgramsService) {
         super(service);
     }
 

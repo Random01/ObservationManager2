@@ -8,7 +8,14 @@ export class GalaxyTarget extends DeepSkyTargetType {
 
     public hubbleType: string;
 
-    // position angle of large axis in [deg]
+    /**
+     * position angle of large axis in [deg]
+     */
     public positionAngle: PositionAngle;
+
+    constructor(params?: Partial<GalaxyTarget>) {
+        super(params);
+        Object.assign(this, params);
+    }
 
 }

@@ -21,7 +21,7 @@ export class DeleteEntityDialogService {
         return new Promise((success) => {
             const dialogRef = this.dialog.open(DeleteEntityDialogComponent, {
                 width: '250px',
-                data: options
+                data: options,
             });
 
             dialogRef.afterClosed().subscribe(success);

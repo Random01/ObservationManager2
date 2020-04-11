@@ -11,7 +11,4 @@ export class DegreesInputComponent {
     @Input() degrees: Degrees;
     @Output() degreesChange = new EventEmitter<Degrees>();
 
-    constructor() {
-    }
-
 }

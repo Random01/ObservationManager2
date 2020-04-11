@@ -7,12 +7,13 @@ import { StorageService } from '../../shared/services/storage.service';
 import { SignInResultPayload } from './signIn-result-payload.model';
 import { JwtService } from '../../auth/shared/jwt.service';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class UserService extends StorageService<User> {
 
     constructor(
         protected http: HttpClient,
-        protected jwtService: JwtService) {
+        protected jwtService: JwtService,
+    ) {
         super('/users', http, jwtService);
     }
 
@@ -27,7 +28,7 @@ export class UserService extends StorageService<User> {
     authenticate(userName: String, password: String): Promise<SignInResultPayload> {
         const httpOptions = {
             headers: new HttpHeaders({
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             })
         };
 
@@ -37,7 +38,7 @@ export class UserService extends StorageService<User> {
                     token: user.token,
                     user: new User({
                         userName: user.userName,
-                        email: user.email
+                        email: user.email,
                     })
                 })));
         });
@@ -47,7 +48,7 @@ export class UserService extends StorageService<User> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'Authorization': this.getAuthorizationToken()
+                'Authorization': this.getAuthorizationToken(),
             })
         };
 
@@ -58,7 +59,7 @@ export class UserService extends StorageService<User> {
                         token: user.token,
                         user: new User({
                             userName: user.userName,
-                            email: user.email
+                            email: user.email,
                         })
                     }));
                 });
@@ -68,7 +69,7 @@ export class UserService extends StorageService<User> {
     register(user: User): Promise<User> {
         const httpOptions = {
             headers: new HttpHeaders({
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             })
         };
 

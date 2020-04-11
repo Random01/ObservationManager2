@@ -8,15 +8,11 @@ export class ResultPayload<T extends Entity> {
 
     public status: number;
 
-    constructor(params?: {
-        message?: string,
-        payload?: T,
-        status?: number
-    }) {
+    constructor(params?: Partial<ResultPayload<T>>) {
         Object.assign(this, params);
     }
 
-    isSuccess(): boolean {
+    public isSuccess(): boolean {
         return this.status === 200;
     }
 }

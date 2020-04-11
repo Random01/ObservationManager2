@@ -5,7 +5,7 @@ import { Eyepiece } from '../../shared/models/equipment/eyepiece.model';
 import { StorageService } from '../../shared/services/storage.service';
 import { JwtService } from '../../auth/shared/jwt.service';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class EyepieceService extends StorageService<Eyepiece> {
 
     constructor(

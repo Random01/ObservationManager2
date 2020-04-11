@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -8,7 +8,7 @@ import { SessionService } from '../shared/session.service';
 
 import { ObservationDialogComponent } from '../../observations/observation-dialog/observation-dialog.component';
 
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { Observation } from '../../shared/models/observation.model';
 import { Target } from '../../shared/models/models';
 import { BaseComponent } from '../../shared/components/base-component';
@@ -19,12 +19,7 @@ import { Eyepiece, Scope, Filter } from '../../shared/models/equipment/equipment
     selector: 'om-session-details',
     templateUrl: './session-details.component.html',
     styleUrls: ['./session-details.component.css'],
-    providers: [
-        SessionService,
-        ObservationService
-    ]
 })
-
 export class SessionDetailsComponent extends BaseComponent implements OnInit {
 
     session: Session;
@@ -33,10 +28,9 @@ export class SessionDetailsComponent extends BaseComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
-        private location: Location,
         private sessionService: SessionService,
         private dialog: MatDialog,
-        private observationService: ObservationService
+        private observationService: ObservationService,
     ) {
         super();
     }

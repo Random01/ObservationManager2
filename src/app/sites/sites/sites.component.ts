@@ -10,9 +10,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
     selector: 'om-sites',
     templateUrl: './sites.component.html',
-    styleUrls: [ './sites.component.css' ]
+    styleUrls: ['./sites.component.css']
 })
-
 export class SitesComponent extends EntityListComponent<Site> {
 
     displayedColumns: string[] = [
@@ -21,14 +20,15 @@ export class SitesComponent extends EntityListComponent<Site> {
         'latitude',
         'longitude',
         'elevation',
-        'actions'
+        'actions',
     ];
 
     constructor(
         protected siteService: SiteService,
         protected deleteEntityDialogService: DeleteEntityDialogService,
         protected route: ActivatedRoute,
-        protected router: Router) {
+        protected router: Router,
+    ) {
         super(siteService, deleteEntityDialogService, route, router);
     }
 

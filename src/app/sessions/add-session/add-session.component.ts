@@ -11,12 +11,13 @@ import { AddEntityComponent } from '../../shared/components/add-entity.component
     selector: 'om-add-session',
     templateUrl: './add-session.component.html'
 })
-
 export class AddSessionComponent extends AddEntityComponent<Session> {
+
     constructor(
         private router: Router,
-        private sessionService: SessionService) {
-        super(sessionService);
+        service: SessionService,
+    ) {
+        super(service);
     }
 
     goBack() {

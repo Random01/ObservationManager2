@@ -8,13 +8,13 @@ import { FilterService } from '../shared/filter.service';
 
 @Component({
     selector: 'om-add-filter',
-    templateUrl: './add-filter.component.html'
+    templateUrl: './add-filter.component.html',
 })
-
 export class AddFilterComponent extends AddEntityComponent<Filter> {
     constructor(
         private router: Router,
-        private service: FilterService) {
+        service: FilterService,
+    ) {
         super(service);
     }
 

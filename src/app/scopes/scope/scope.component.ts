@@ -7,7 +7,6 @@ import { Scope } from '../../shared/models/equipment/scope.model';
     templateUrl: './scope.component.html',
     styleUrls: ['./scope.component.css']
 })
-
 export class ScopeComponent {
 
     @Input() scope: Scope;

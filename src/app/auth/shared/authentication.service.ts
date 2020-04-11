@@ -8,7 +8,7 @@ import { distinctUntilChanged } from 'rxjs/operators';
 import { User } from '../../shared/models/user.model';
 import { SignInResultPayload } from '../../users/shared/signIn-result-payload.model';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AuthenticationService {
 
     private currentUserSubject = new BehaviorSubject<User>({} as User);
@@ -19,7 +19,7 @@ export class AuthenticationService {
 
     constructor(
         private userService: UserService,
-        private jwtService: JwtService
+        private jwtService: JwtService,
     ) {
     }
 

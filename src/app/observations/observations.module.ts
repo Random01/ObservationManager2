@@ -14,7 +14,6 @@ import { AddObservationComponent } from './add-observation/add-observation.compo
 import { TargetModule } from '../target/target.module';
 import { EditObservationComponent } from './edit-observation/edit-observation.component';
 import { SessionObservationsComponent } from './session-observations/session-observations.component';
-import { ObservationService } from './shared/observation.service';
 import { ObservationsRoutingModule } from './observations-routing.module';
 import { MaterialModule } from '../shared/material.module';
 import { DeepSkyFindingDetailsComponent } from './finding-details/deep-sky-finding-details/deep-sky-finding-details.component';
@@ -42,7 +41,7 @@ import { ObservationConditionsComponent } from './observation-conditions';
         ScopesModule,
         EyepieceModule,
         LensesModule,
-        FilterModule
+        FilterModule,
     ],
     declarations: [
         ObservationComponent,
@@ -55,14 +54,11 @@ import { ObservationConditionsComponent } from './observation-conditions';
         DeepSkyFindingDetailsComponent,
         ObservationSearchComponent,
         MagnificationSelectorComponent,
-        ObservationConditionsComponent
+        ObservationConditionsComponent,
     ],
     entryComponents: [
-        ObservationDialogComponent
+        ObservationDialogComponent,
     ],
-    providers: [
-        ObservationService
-    ]
 })
 
 export class ObservationsModule { }

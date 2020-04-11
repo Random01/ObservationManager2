@@ -8,19 +8,14 @@ export class Filter extends EquipmentItem {
     // "O-III 2""
     // "Thousand Oaks"
     // "O-III"
-    constructor(params?: {
-        id?: string,
-        model?: string,
-        vendor?: string,
-        filterType?: FilterType
-    }) {
+    constructor(params?: Partial<Filter>) {
         super(params);
         Object.assign(this, params);
     }
 
     public serialize(): Object {
         return Object.assign(super.serialize(), {
-            filterType: this.filterType
+            filterType: this.filterType,
         });
     }
 

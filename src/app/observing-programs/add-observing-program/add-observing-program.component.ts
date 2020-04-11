@@ -13,7 +13,7 @@ import { ObservingProgramsService } from '../shared/observing-programs.service';
 export class AddObservingProgramComponent extends AddEntityComponent<ObservingProgram> {
     constructor(
         private router: Router,
-        private service: ObservingProgramsService) {
+        service: ObservingProgramsService) {
         super(service);
     }
 

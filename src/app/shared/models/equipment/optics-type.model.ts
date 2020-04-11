@@ -7,8 +7,8 @@ export class OpticsType implements Serializable {
 
     public name: string;
 
-    constructor(param: { name: string }) {
-        this.name = param.name;
+    constructor(param?: Partial<OpticsType>) {
+        Object.assign(this, param);
     }
 
     public serialize(): Object {

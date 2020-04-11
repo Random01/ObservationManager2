@@ -14,7 +14,8 @@ export abstract class EntityListComponent<T extends Entity> extends PaginatedLis
         protected storageService: StorageService<T>,
         protected deleteEntityDialogService: DeleteEntityDialogService,
         protected route: ActivatedRoute,
-        protected router: Router) {
+        protected router: Router,
+    ) {
         super(route, router);
     }
 
@@ -40,7 +41,7 @@ export abstract class EntityListComponent<T extends Entity> extends PaginatedLis
 
     async remove(entity: any) {
         const result = await this.deleteEntityDialogService.show({
-            message: 'Are you sure?'
+            message: 'Are you sure?',
         });
 
         if (result.success) {

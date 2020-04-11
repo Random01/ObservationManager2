@@ -19,5 +19,5 @@ export enum FilterType {
     Color = 'color',
     Neutral = 'neutral',
     Corrective = 'corrective',
-    Solar = 'solar'
+    Solar = 'solar',
 }

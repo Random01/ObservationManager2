@@ -11,7 +11,4 @@ export class RightAscensionSelectorComponent {
     @Input() ra: RA;
     @Output() raChange = new EventEmitter<RA>();
 
-    constructor() {
-    }
-
 }

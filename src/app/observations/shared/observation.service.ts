@@ -8,12 +8,13 @@ import { Observation } from '../../shared/models/models';
 import { JwtService } from '../../auth/shared/jwt.service';
 import { ObservationSearchParams } from './observation-search-params.model';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ObservationService extends StorageService<Observation> {
 
     constructor(
         protected http: HttpClient,
-        protected jwtService: JwtService) {
+        protected jwtService: JwtService,
+    ) {
         super('/observations', http, jwtService);
     }
 

@@ -5,16 +5,17 @@ import { Site } from '../../shared/models/site.model';
 import { StorageService } from '../../shared/services/storage.service';
 import { JwtService } from '../../auth/shared/jwt.service';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class SiteService extends StorageService<Site> {
 
     constructor(
         protected http: HttpClient,
-        protected jwtService: JwtService) {
+        protected jwtService: JwtService,
+    ) {
         super('/sites', http, jwtService);
     }
 
-    createNew(params: any): Site {
+    public createNew(params: any): Site {
         return new Site(params);
     }
 }

@@ -9,9 +9,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
     selector: 'om-eyepieces',
     templateUrl: './eyepieces.component.html',
-    styleUrls: ['./eyepieces.component.css']
+    styleUrls: ['./eyepieces.component.css'],
 })
-
 export class EyepiecesComponent extends EntityListComponent<Eyepiece> {
 
     displayedColumns: string[] = [
@@ -19,14 +18,15 @@ export class EyepiecesComponent extends EntityListComponent<Eyepiece> {
         'vendor',
         'focalLength',
         'apparentFOV',
-        'actions'
+        'actions',
     ];
 
     constructor(
         protected service: EyepieceService,
         protected deleteEntityDialogService: DeleteEntityDialogService,
         protected route: ActivatedRoute,
-        protected router: Router) {
+        protected router: Router,
+    ) {
         super(service, deleteEntityDialogService, route, router);
     }
 

@@ -10,14 +10,16 @@ import { AddEntityDialogComponent } from '../../shared/components/add-entity-dia
     selector: 'om-add-lens-dialog',
     templateUrl: './add-lens-dialog.component.html',
     styleUrls: [
-        './add-lens-dialog.component.css'
-    ]
+        './add-lens-dialog.component.css',
+    ],
 })
 export class AddLensDialogComponent extends AddEntityDialogComponent<Lens, LensService> {
+
     constructor(
         protected storageService: LensService,
-        protected dialogRef: MatDialogRef<AddLensDialogComponent, Lens>
+        protected dialogRef: MatDialogRef<AddLensDialogComponent, Lens>,
     ) {
         super(storageService, dialogRef);
     }
+
 }

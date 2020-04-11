@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { EquipmentComponent } from './equipment.component';
-import { VendorService } from './shared/vendor.service';
 import { VendorSelectorComponent } from './vendor-selector/vendor-selector.component';
 import { MaterialModule } from '../shared/material.module';
 
@@ -24,9 +23,6 @@ import { MaterialModule } from '../shared/material.module';
     exports: [
         EquipmentComponent,
         VendorSelectorComponent
-    ],
-    providers: [
-        VendorService
     ]
 })
 

@@ -15,7 +15,7 @@ import { ScopeService } from '../shared/scope.service';
 export class AddScopeDialogComponent extends AddEntityDialogComponent<Scope, ScopeService> {
     constructor(
         protected storageService: ScopeService,
-        protected dialogRef: MatDialogRef<AddScopeDialogComponent, Scope>
+        protected dialogRef: MatDialogRef<AddScopeDialogComponent, Scope>,
     ) {
         super(storageService, dialogRef);
     }

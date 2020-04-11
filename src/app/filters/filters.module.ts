@@ -11,7 +11,6 @@ import { FilterComponent } from './filter/filter.component';
 import { FiltersRoutingModule } from './filters-routing.module';
 import { EditFilterComponent } from './edit-filter/edit-filter.component';
 import { AddFilterComponent } from './add-filter/add-filter.component';
-import { FilterService } from './shared/filter.service';
 import { EquipmentModule } from '../equipment/equipment.module';
 import { MaterialModule } from '../shared/material.module';
 import { FilterSelectorComponent } from './filter-selector';
@@ -42,7 +41,6 @@ import { AddFilterDialogService, AddFilterDialogComponent } from './add-filter-d
         AddFilterDialogComponent
     ],
     providers: [
-        FilterService,
         AddFilterDialogService
     ]
 })

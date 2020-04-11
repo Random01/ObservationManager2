@@ -10,13 +10,12 @@ import { Target } from '../../shared/models/models';
     selector: 'om-edit-target',
     templateUrl: './edit-target.component.html'
 })
-
 export class EditTargetComponent extends EditEntityComponent<Target> {
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private service: TargetService) {
+        service: TargetService) {
         super(service);
     }
 

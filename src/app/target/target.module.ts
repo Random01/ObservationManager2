@@ -54,8 +54,6 @@ import { AddTargetDialogService, AddTargetDialogComponent } from './target-selec
         AddTargetDialogComponent
     ],
     providers: [
-        TargetService,
-        TargetTypeService,
         AddTargetDialogService
     ]
 })

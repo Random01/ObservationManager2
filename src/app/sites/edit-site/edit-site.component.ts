@@ -10,13 +10,12 @@ import { Site } from '../../shared/models/models';
     selector: 'om-edit-site',
     templateUrl: './edit-site.component.html'
 })
-
 export class EditSiteComponent extends EditEntityComponent<Site> {
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private service: SiteService) {
+        service: SiteService) {
         super(service);
     }
 

@@ -4,9 +4,7 @@ export class PositionAngle implements Serializable {
 
     public unit: number;
 
-    constructor(params: {
-        unit?: number
-    }) {
+    constructor(params?: Partial<PositionAngle>) {
         Object.assign(this, params);
     }
 

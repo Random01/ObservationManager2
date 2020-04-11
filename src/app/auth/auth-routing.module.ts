@@ -21,7 +21,7 @@ const authRoutes: Routes = [
         RouterModule.forChild(authRoutes)
     ],
     exports: [
-        RouterModule
+        RouterModule,
     ]
 })
 export class AuthRoutingModule { }

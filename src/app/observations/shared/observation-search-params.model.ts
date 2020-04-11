@@ -1,5 +1,4 @@
 import { RequestParams } from '../../shared/services/request-params.model';
-import { SortOrder } from '../../shared/models/sort-order.model';
 
 export class ObservationSearchParams extends RequestParams {
 
@@ -7,14 +6,7 @@ export class ObservationSearchParams extends RequestParams {
 
     public targetId: string;
 
-    constructor(props?: {
-        page?: number,
-        size?: number,
-        sortField?: string,
-        sortDirection?: SortOrder,
-        sessionId?: string,
-        targetId?: string
-    }) {
+    constructor(props?: Partial<ObservationSearchParams>) {
         super(props);
         Object.assign(this, props);
     }

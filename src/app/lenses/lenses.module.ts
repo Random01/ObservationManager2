@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 
 import { LensComponent } from './lens/lens.component';
 import { AddLensComponent } from './add-lens/add-lens.component';
-import { LensService } from './shared/lens.service';
 import { LensesComponent } from './lenses/lenses.component';
 import { EditLensComponent } from './edit-lens/edit-lens.component';
 import { LensesRoutingModule } from './lenses-routing.module';
@@ -39,7 +38,6 @@ import { AddLensDialogService, AddLensDialogComponent } from './add-lens-dialog'
         AddLensDialogComponent
     ],
     providers: [
-        LensService,
         AddLensDialogService
     ]
 })

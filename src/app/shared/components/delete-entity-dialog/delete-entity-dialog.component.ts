@@ -13,7 +13,6 @@ export class DeleteEntityDialogComponent {
         public dialogRef: MatDialogRef<DeleteEntityDialogComponent>,
         @Inject(MAT_DIALOG_DATA) public data: DeleteEntityDialogOptions
     ) {
-
     }
 
     onNoClick(): void {

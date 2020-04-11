@@ -9,4 +9,9 @@ export class DarkNebulaTarget extends DeepSkyTargetType {
     // opacity acc. to Lynds (1: min, 6:max)
     public opacity: number;
 
+    constructor(params?: Partial<DarkNebulaTarget>) {
+        super(params);
+        Object.assign(this, params);
+    }
+
 }

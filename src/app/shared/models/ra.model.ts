@@ -12,11 +12,7 @@ export class RA implements Serializable {
 
     public seconds = 0;
 
-    constructor(param?: {
-        hours: number,
-        minutes: number,
-        seconds: number
-    }) {
+    constructor(param?: Partial<RA>) {
         Object.assign(this, param);
     }
 

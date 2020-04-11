@@ -12,14 +12,13 @@ import { ActivatedRoute, Router } from '@angular/router';
     templateUrl: './sessions.component.html',
     styleUrls: ['./sessions.component.css']
 })
-
 export class SessionsComponent extends EntityListComponent<Session> {
 
     displayedColumns: string[] = [
         'begin',
         'site',
         'weather',
-        'actions'
+        'actions',
     ];
 
     sortDirection = SortOrder.Asc;
@@ -29,7 +28,8 @@ export class SessionsComponent extends EntityListComponent<Session> {
         protected sessionService: SessionService,
         protected deleteEntityDialogService: DeleteEntityDialogService,
         protected route: ActivatedRoute,
-        protected router: Router) {
+        protected router: Router,
+    ) {
         super(sessionService, deleteEntityDialogService, route, router);
     }
 

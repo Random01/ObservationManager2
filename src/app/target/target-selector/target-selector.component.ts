@@ -51,8 +51,8 @@ export class TargetSelectorComponent implements OnInit {
 
     constructor(
         private targetService: TargetService,
-        private dialogService: AddTargetDialogService) {
-    }
+        private dialogService: AddTargetDialogService,
+    ) { }
 
     displayFn(target?: Target): string | undefined {
         return target ? target.name : undefined;

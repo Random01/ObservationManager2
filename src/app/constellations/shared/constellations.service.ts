@@ -5,7 +5,7 @@ import { StorageService } from '../../shared/services/storage.service';
 import { Constellation } from '../../shared/models/constellation.mode';
 import { JwtService } from '../../auth/shared/jwt.service';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ConstellationsService extends StorageService<Constellation> {
 
     constructor(

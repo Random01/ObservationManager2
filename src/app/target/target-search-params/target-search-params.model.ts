@@ -8,14 +8,7 @@ export class TargetSearchParams extends RequestParams {
 
     public type: TargetType;
 
-    constructor(props?: {
-        page?: number,
-        size?: number,
-        sortField?: string,
-        sortDirection?: SortOrder,
-        name?: string,
-        type?: TargetType
-    }) {
+    constructor(props?: Partial<TargetSearchParams>) {
         super(props);
         Object.assign(this, props);
     }

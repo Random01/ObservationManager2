@@ -11,11 +11,11 @@ import { Scope } from '../../shared/models/equipment/equipment';
     selector: 'om-add-lens',
     templateUrl: './add-lens.component.html'
 })
-
 export class AddLensComponent extends AddEntityComponent<Scope> {
     constructor(
         private router: Router,
-        private lensService: LensService) {
+        lensService: LensService,
+    ) {
         super(lensService);
     }
 

@@ -25,7 +25,7 @@ import { ObservingProgramStatisticsComponent } from './observing-program-statist
         RouterModule,
         MaterialModule,
         ObservingProgramsRoutingModule,
-        TargetModule
+        TargetModule,
     ],
     declarations: [
         AddObservingProgramComponent,
@@ -33,11 +33,8 @@ import { ObservingProgramStatisticsComponent } from './observing-program-statist
         ObservingProgramsComponent,
         ObservingProgramComponent,
         TargetsEditorComponent,
-        ObservingProgramStatisticsComponent
+        ObservingProgramStatisticsComponent,
     ],
-    providers: [
-        ObservingProgramsService
-    ]
 })
 
 export class ObservingProgramsModule { }

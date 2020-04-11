@@ -5,28 +5,32 @@ import { Site } from './site.model';
  * Common remarks or conditions of observations conducted during one night/session.
  */
 export class Session extends Entity {
-    // Start of observation session
+    /**
+     * Start of observation session
+     */
     public begin: Date;
-    // End of observation session
+    /**
+     * End of observation session
+     */
     public end: Date;
-    // Site where session took place
+    /**
+     * Site where session took place
+     */
     public site: Site;
-    // Comments on the (optical or electronical) equipment used
+    /**
+     * Comments on the (optical or electronical) equipment used
+     */
     public equipment: string;
-    // Any other comments
+    /**
+     * Any other comments
+     */
     public comments: string;
-    // Comments about the weather situation
+    /**
+     * Comments about the weather situation
+     */
     public weather: string;
 
-    constructor(params?: {
-        id?: string,
-        begin?: Date,
-        end?: Date,
-        site?: Site,
-        equipment?: string,
-        comments?: string,
-        weather?: string
-    }) {
+    constructor(params?: Partial<Session>) {
         super(params);
 
         this.site = new Site();
@@ -40,7 +44,7 @@ export class Session extends Entity {
             equipment: this.equipment,
             comments: this.comments,
             weather: this.weather,
-            site: this.serializeEntity(this.site)
+            site: this.serializeEntity(this.site),
         });
     }
 
@@ -54,7 +58,7 @@ export class Session extends Entity {
             'site',
             'equipment',
             'comments',
-            'weather'
+            'weather',
         ]);
     }
 }

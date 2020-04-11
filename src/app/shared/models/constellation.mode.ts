@@ -6,11 +6,7 @@ export class Constellation extends Entity {
 
     public name: string;
 
-    constructor(params?: {
-        id?: string,
-        code?: string,
-        name?: string
-    }) {
+    constructor(params?: Partial<Constellation>) {
         super(params);
         Object.assign(this, params);
     }

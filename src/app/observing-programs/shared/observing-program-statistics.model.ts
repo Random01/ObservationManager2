@@ -1,12 +1,9 @@
 export default class ObservingProgramStatistics {
 
-    totalCount: number;
-    observedCount: number;
+    public totalCount: number;
+    public observedCount: number;
 
-    constructor(params?: {
-        totalCount?: number,
-        observedCount?: number
-    }) {
+    constructor(params?: Partial<ObservingProgramStatistics>) {
         Object.assign(this, params);
     }
 

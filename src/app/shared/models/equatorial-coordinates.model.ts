@@ -14,10 +14,7 @@ export class EquatorialCoordinates implements Serializable {
      */
     public dec: Dec;
 
-    constructor(param?: {
-        ra?: RA,
-        dec?: Dec
-    }) {
+    constructor(param?: Partial<EquatorialCoordinates>) {
         this.ra = new RA();
         this.dec = new Dec();
 
@@ -27,7 +24,7 @@ export class EquatorialCoordinates implements Serializable {
     public serialize(): any {
         return {
             ra: this.ra.serialize(),
-            dec: this.dec.serialize()
+            dec: this.dec.serialize(),
         };
     }
 

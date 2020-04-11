@@ -15,7 +15,7 @@ import { Eyepiece } from '../../shared/models/equipment/equipment';
 export class AddEyepieceComponent extends AddEntityComponent<Eyepiece> {
     constructor(
         private router: Router,
-        private eyepieceService: EyepieceService) {
+        eyepieceService: EyepieceService) {
         super(eyepieceService);
     }
 

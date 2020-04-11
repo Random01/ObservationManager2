@@ -17,7 +17,7 @@ interface SearchParams {
     maxCount: number;
 }
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class TargetService extends StorageService<Target> {
 
     constructor(
@@ -26,7 +26,7 @@ export class TargetService extends StorageService<Target> {
         super('/targets', http, jwtService);
     }
 
-    public createNew(params?: any): Target {
+    public createNew(params?: Partial<Target>): Target {
         return new Target(params);
     }
 

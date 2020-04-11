@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
+
+import { Observable, of } from 'rxjs';
+
 import { Vendor } from '../../shared/models/equipment/vendor.model';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class VendorService {
 
-    getAllSuggestions(): Promise<Vendor[]> {
-        return Promise.resolve([
+    public getAllSuggestions(): Observable<Vendor[]> {
+        return of([
             new Vendor({ name: 'Sky Watcher' }),
             new Vendor({ name: 'Deep-Sky' }),
             new Vendor({ name: 'Celestron' }),

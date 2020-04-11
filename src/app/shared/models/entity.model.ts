@@ -6,9 +6,7 @@ export class Entity implements Serializable {
 
     public id: string;
 
-    constructor(params?: {
-        id?: string
-    }) {
+    constructor(params?: Partial<Entity>) {
         Object.assign(this, params);
     }
 

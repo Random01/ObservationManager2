@@ -5,4 +5,9 @@ import { DeepSkyTargetType } from './deep-sky-target.model';
  */
 export class QuasarTarget extends DeepSkyTargetType {
 
+    constructor(params?: Partial<QuasarTarget>) {
+        super(params);
+        Object.assign(this, params);
+    }
+
 }

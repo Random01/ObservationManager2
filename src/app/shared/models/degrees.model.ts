@@ -11,28 +11,24 @@ export class Degrees implements Serializable {
 
     public arcseconds = 0;
 
-    constructor(params?: {
-        degrees?: number,
-        arcminutes?: number,
-        arcseconds?: number
-    }) {
+    constructor(params?: Partial<Degrees>) {
         Object.assign(this, params);
     }
 
-    serialize(): any {
+    public serialize(): any {
         return this.toDegrees();
     }
 
-    deserialize(params: any): void {
+    public deserialize(params: any): void {
         this.fromDegrees(params);
     }
 
-    toDegrees(): number {
+    public toDegrees(): number {
         // https://en.wikipedia.org/wiki/Minute_and_second_of_arc
         return ((this.arcseconds / 3600.0) + (this.arcminutes / 60.0) + Math.abs(this.degrees)) * Math.sign(this.degrees);
     }
 
-    fromDegrees(degrees: number): void {
+    public fromDegrees(degrees: number): void {
         const sign = Math.sign(degrees);
         degrees = Math.abs(degrees);
 

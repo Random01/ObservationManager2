@@ -104,11 +104,6 @@ import { ObservingProgramsModule } from './observing-programs/observing-programs
     MatTableModule
   ],
   providers: [
-    SessionService,
-    EyepieceService,
-    ScopeService,
-    FilterService,
-    LensService,
     AuthenticationService
   ],
   bootstrap: [AppComponent]

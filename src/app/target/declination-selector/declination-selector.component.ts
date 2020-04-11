@@ -11,7 +11,4 @@ export class DeclinationSelectorComponent {
     @Input() dec: Dec;
     @Output() decChange = new EventEmitter<Dec>();
 
-    constructor() {
-    }
-
 }

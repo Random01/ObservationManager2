@@ -7,9 +7,8 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'om-user-profile',
     templateUrl: './user-profile.component.html',
-    styleUrls: [ './user-profile.component.css' ]
+    styleUrls: ['./user-profile.component.css']
 })
-
 export class UserProfileComponent {
 
     user: User;

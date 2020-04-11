@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 
-import { MessageService } from './services/message.service';
 import { DegreesInputComponent } from './components/degrees-input/degrees-input.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
@@ -41,7 +40,6 @@ import { DecimalPipe } from '@angular/common';
         EyepieceFocalLengthPipe
     ],
     providers: [
-        MessageService,
         DeleteEntityDialogService,
         DecimalPipe
     ]

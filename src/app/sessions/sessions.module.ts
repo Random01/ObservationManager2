@@ -41,11 +41,8 @@ import { SiteModule } from '../sites/site.module';
         SessionInfoComponent
     ],
     exports: [
-        SessionInfoComponent
+        SessionInfoComponent,
     ],
-    providers: [
-        SessionService
-    ]
 })
 
 export class SessionsModule { }

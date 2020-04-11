@@ -16,18 +16,9 @@ export class Site extends Entity {
     // <!-- geographical latitude -->
     public coord: GeographicalCoordinates;
 
-    constructor(params?: {
-        id?: string,
-        name?: string,
-        timezone?: number,
-        elevation?: number,
-        code?: number,
-        coord?: GeographicalCoordinates
-    }) {
+    constructor(params?: Partial<Site>) {
         super(params);
-
         this.coord = new GeographicalCoordinates();
-
         Object.assign(this, params);
     }
 
@@ -38,7 +29,7 @@ export class Site extends Entity {
             code: this.code,
             elevation: this.elevation,
             longitude: this.coord.longitude.serialize(),
-            latitude: this.coord.latitude.serialize()
+            latitude: this.coord.latitude.serialize(),
         });
     }
 
@@ -49,7 +40,7 @@ export class Site extends Entity {
             'name',
             'timezone',
             'code',
-            'elevation'
+            'elevation',
         ]);
 
         this.coord.longitude.deserialize(state.longitude);

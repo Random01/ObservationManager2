@@ -6,7 +6,6 @@ import { Target } from '../../shared/models/target.model';
     templateUrl: './target.component.html',
     styleUrls: ['./target.component.css']
 })
-
 export class TargetComponent {
     @Input() target: Target;
 }

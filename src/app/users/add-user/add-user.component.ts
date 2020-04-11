@@ -8,14 +8,15 @@ import { UserService } from '../shared/user.service';
 
 @Component({
     selector: 'om-add-user',
-    templateUrl: './add-user.component.html'
+    templateUrl: './add-user.component.html',
 })
-
 export class AddUserComponent extends AddEntityComponent<User> {
+
     constructor(
         private router: Router,
-        private userService: UserService) {
-        super(userService);
+        service: UserService,
+    ) {
+        super(service);
     }
 
     goBack() {

@@ -6,10 +6,7 @@ export class GeographicalCoordinates implements Serializable {
     public latitude: Degrees;
     public longitude: Degrees;
 
-    constructor(params?: {
-        latitude?: Degrees,
-        longitude?: Degrees
-    }) {
+    constructor(params?: Partial<GeographicalCoordinates>) {
         this.latitude = new Degrees();
         this.longitude = new Degrees();
 
@@ -19,7 +16,7 @@ export class GeographicalCoordinates implements Serializable {
     public serialize(): any {
         return {
             latitude: this.latitude.serialize(),
-            longitude: this.longitude.serialize()
+            longitude: this.longitude.serialize(),
         };
     }
 

@@ -16,7 +16,7 @@ export class AddScopeDialogService extends AddNewEntityDialogService<Scope> {
 
     createDialog() {
         return this.dialog.open(AddScopeDialogComponent, {
-            width: '300px'
+            width: '300px',
         });
     }
 }

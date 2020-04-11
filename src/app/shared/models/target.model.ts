@@ -5,31 +5,31 @@ import { EquatorialCoordinates } from './equatorial-coordinates.model';
 
 export class Target extends Entity {
 
-    //  most common name
+    /**
+     * most common name
+     */
     public name: string;
 
     public type: TargetType;
 
-    // alternative names
+    /**
+     * alternative names
+     */
     public alliases: string[];
 
-    // notes on targets
+    /**
+     * notes on targets
+     */
     public description: string;
 
-    // constellation is optional because it can be derived from position
+    /**
+     * constellation is optional because it can be derived from position
+     */
     public constellation: Constellation;
 
     public position: EquatorialCoordinates;
 
-    constructor(params?: {
-        id?: string,
-        name?: string,
-        type?: TargetType,
-        alliases?: string[],
-        description?: string,
-        constellation?: Constellation,
-        position?: EquatorialCoordinates
-    }) {
+    constructor(params?: Partial<Target>) {
         super(params);
 
         this.alliases = [];
@@ -46,7 +46,7 @@ export class Target extends Entity {
             alliases: this.alliases,
             description: this.description,
             constellation: this.constellation != null ? this.constellation.code : null,
-            position: this.position ? this.position.serialize() : null
+            position: this.position ? this.position.serialize() : null,
         });
     }
 
@@ -57,7 +57,7 @@ export class Target extends Entity {
             'name',
             'type',
             'alliases',
-            'description'
+            'description',
         ]);
 
         this.constellation.deserialize(state.constellation || {});

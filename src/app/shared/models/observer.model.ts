@@ -8,12 +8,7 @@ export class Observer extends Entity {
 
     public contact: string;
 
-    constructor(params?: {
-        id?: string,
-        name?: string,
-        surname?: string,
-        contact?: string
-    }) {
+    constructor(params?: Partial<Observer>) {
         super(params);
         Object.assign(this, params);
     }
@@ -22,7 +17,7 @@ export class Observer extends Entity {
         return Object.assign(super.serialize(), {
             name: this.name,
             surname: this.surname,
-            contact: this.contact
+            contact: this.contact,
         });
     }
 
@@ -32,7 +27,7 @@ export class Observer extends Entity {
         this.copy(state, [
             'name',
             'surname',
-            'contact'
+            'contact',
         ]);
     }
 }

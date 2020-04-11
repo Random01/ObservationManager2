@@ -11,7 +11,6 @@ import { ActivatedRoute, Router } from '@angular/router';
     selector: 'om-users',
     templateUrl: './users.component.html'
 })
-
 export class UsersComponent extends EntityListComponent<User> {
 
     displayedColumns = [

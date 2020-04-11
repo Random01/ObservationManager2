@@ -6,10 +6,7 @@ export class SignInResultPayload {
 
     public user: User;
 
-    constructor(params?: {
-        token?: string,
-        user?: User
-    }) {
+    constructor(params?: Partial<SignInResultPayload>) {
         Object.assign(this, params);
     }
 }
