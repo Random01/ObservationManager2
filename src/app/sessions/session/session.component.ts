@@ -1,4 +1,5 @@
 ﻿import { Component, Input } from '@angular/core';
+
 import { Session } from '../../shared/models/models';
 
 @Component({

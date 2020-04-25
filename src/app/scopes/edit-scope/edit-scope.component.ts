@@ -9,7 +9,7 @@ import { ScopeService } from '../shared/scope.service';
 
 @Component({
     selector: 'om-edit-scope',
-    templateUrl: './edit-scope.component.html'
+    templateUrl: './edit-scope.component.html',
 })
 export class EditScopeComponent extends EditEntityComponent<Scope> {
 
@@ -21,11 +21,11 @@ export class EditScopeComponent extends EditEntityComponent<Scope> {
         super(service);
     }
 
-    getItemId(): string {
+    public getItemId(): string {
         return this.route.snapshot.paramMap.get('id');
     }
 
-    goBack() {
+    public goBack() {
         this.router.navigate(['/scopes']);
     }
 

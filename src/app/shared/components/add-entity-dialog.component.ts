@@ -1,6 +1,7 @@
+import { OnInit } from '@angular/core';
+
 import { Entity } from '../models/models';
 import { StorageService } from '../services/storage.service';
-import { OnInit } from '@angular/core';
 
 export abstract class AddEntityDialogComponent<T extends Entity, S extends StorageService<T>> implements OnInit {
 

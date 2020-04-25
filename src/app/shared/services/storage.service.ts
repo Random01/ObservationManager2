@@ -6,6 +6,7 @@ import { environment } from '../../../environments/environment';
 import { JwtService } from '../../auth/shared/jwt.service';
 import { RequestParams } from './request-params.model';
 import { PaginatedResponsePayload } from '../interfaces/paginated-response-payload.interface';
+import { ResponseStatus } from './response-status.model';
 
 export abstract class StorageService<T extends Entity> {
 
@@ -15,15 +16,15 @@ export abstract class StorageService<T extends Entity> {
         protected jwtService: JwtService) {
     }
 
-    getUrl(): string {
+    protected getUrl(): string {
         return environment.omServiceEndpoint + this.url;
     }
 
-    getRecent(): Promise<T[]> {
+    public getRecent(): Promise<T[]> {
         return this.getAll();
     }
 
-    add(newItem: T): Promise<AddResultPayload> {
+    public async add(newItem: T): Promise<AddResultPayload> {
         if (!newItem) {
             throw new Error('newItem should be provided');
         }
@@ -35,62 +36,50 @@ export abstract class StorageService<T extends Entity> {
             })
         };
 
-        return new Promise<AddResultPayload>((success) => {
-            return this.http.post<T>(this.getUrl(), newItem.serialize(), httpOptions)
-                .subscribe((result) => {
-                    success(new AddResultPayload({
-                        status: 200,
-                        payload: this.deserialize(result)
-                    }));
-                });
+        const result = await this.http.post<T>(this.getUrl(), newItem.serialize(), httpOptions).toPromise();
+
+        return new AddResultPayload({
+            status: ResponseStatus.Ok,
+            payload: this.deserialize(result),
         });
     }
 
-    getById(id: String): Promise<T> {
+    public async getById(id: String): Promise<T> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Authorization': this.getAuthorizationToken()
             })
         };
 
-        return new Promise<T>((success) => {
-            return this.http.get<any>(this.getUrl() + '/' + id, httpOptions)
-                .subscribe(x => {
-                    success(this.deserialize(x));
-                });
-        });
+        const result = await this.http.get<any>(this.getUrl() + '/' + id, httpOptions).toPromise();
+        return this.deserialize(result);
     }
 
-    async getAll(): Promise<T[]> {
-        const response = await this.getItems(new RequestParams());
-        return response.items;
+    public async getAll(): Promise<T[]> {
+        return (await this.getItems(new RequestParams())).items;
     }
 
     /**
      * Returns a paginated list of items.
      * @param request
      */
-    getItems(request: RequestParams): Promise<PaginatedResponsePayload<T>> {
+    public async getItems(request: RequestParams): Promise<PaginatedResponsePayload<T>> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Authorization': this.getAuthorizationToken()
             })
         };
 
-        return new Promise<PaginatedResponsePayload<T>>((success) => {
-            const url = this.getUrl() + '?' + request.getQueryString();
+        const url = this.getUrl() + '?' + request.getQueryString();
+        const result = await this.http.get<any>(url, httpOptions).toPromise();
 
-            this.http.get<any>(url, httpOptions)
-                .subscribe(response => {
-                    success({
-                        ...response,
-                        items: response.items.map((item: any) => this.deserialize(item))
-                    });
-                });
-        });
+        return {
+            ...result,
+            items: result.items.map((item: any) => this.deserialize(item))
+        };
     }
 
-    async exportItems(request: RequestParams): Promise<Blob> {
+    public async exportItems(request: RequestParams): Promise<Blob> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Authorization': this.getAuthorizationToken(),
@@ -103,11 +92,11 @@ export abstract class StorageService<T extends Entity> {
         return await this.http.get<Blob>(url, httpOptions).toPromise() as any;
     }
 
-    getAuthorizationToken(): string {
+    protected getAuthorizationToken(): string {
         return this.jwtService.getToken();
     }
 
-    update(entity: T): Promise<Boolean> {
+    public update(entity: T): Promise<Boolean> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
@@ -115,15 +104,15 @@ export abstract class StorageService<T extends Entity> {
             })
         };
 
-        return new Promise<Boolean>((success) => {
-            return this.http.put<T>(this.getUrl() + '/' + entity.id, entity.serialize(), httpOptions)
-                .subscribe(() => {
-                    success(true);
-                });
-        });
+        return this.http.put<T>(this.getUrl() + '/' + entity.id, entity.serialize(), httpOptions)
+            .toPromise()
+            .then(
+                () => true,
+                () => false
+            );
     }
 
-    delete(id: String): Promise<Boolean> {
+    public delete(id: String): Promise<Boolean> {
         const url = `${this.getUrl()}/${id}`;
         const httpOptions = {
             headers: new HttpHeaders({
@@ -137,7 +126,7 @@ export abstract class StorageService<T extends Entity> {
 
     abstract createNew(params?: any): T;
 
-    deserialize(state: any): T {
+    public deserialize(state: any): T {
         const item = this.createNew();
         item.deserialize(state);
         return item;

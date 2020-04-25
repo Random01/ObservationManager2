@@ -12,7 +12,6 @@ import PaginatedListQueryParams from '../interfaces/paginated-list-query-params.
 export abstract class PaginatedListComponent<T> extends BaseComponent implements OnInit, OnDestroy {
 
     items: T[];
-    isLoading: Boolean;
     currentPage = 0;
     pageSize = 10;
     pageSizeOptions = [5, 10];

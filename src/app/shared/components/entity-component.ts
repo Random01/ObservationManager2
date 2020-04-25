@@ -8,7 +8,6 @@ export abstract class EntityComponent<T extends Entity> extends BaseComponent im
 
     selectedItem: T;
     items: T[];
-    isLoading: Boolean;
 
     constructor(protected storageService: StorageService<T>) {
         super();

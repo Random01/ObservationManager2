@@ -1,6 +1,6 @@
 export class BaseComponent {
 
-    public isLoading: Boolean = false;
+    public isLoading = false;
 
     public startLoading() {
         this.isLoading = true;

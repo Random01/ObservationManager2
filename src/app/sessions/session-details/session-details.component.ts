@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+
+import { MatDialog } from '@angular/material/dialog';
 
 import { Session } from '../../shared/models/session.model';
 import { SessionService } from '../shared/session.service';
 
 import { ObservationDialogComponent } from '../../observations/observation-dialog/observation-dialog.component';
 
-import { MatDialog } from '@angular/material/dialog';
 import { Observation } from '../../shared/models/observation.model';
 import { Target } from '../../shared/models/models';
 import { BaseComponent } from '../../shared/components/base-component';
@@ -23,7 +22,6 @@ import { Eyepiece, Scope, Filter } from '../../shared/models/equipment/equipment
 export class SessionDetailsComponent extends BaseComponent implements OnInit {
 
     session: Session;
-    isLoading: Boolean;
     editMode: Boolean;
 
     constructor(
@@ -35,13 +33,6 @@ export class SessionDetailsComponent extends BaseComponent implements OnInit {
         super();
     }
 
-    startLoading(): void {
-        this.isLoading = true;
-    }
-
-    endLoading(): void {
-        this.isLoading = false;
-    }
 
     create(): void {
         this.startLoading();

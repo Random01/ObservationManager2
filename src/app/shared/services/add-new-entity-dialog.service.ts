@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 
 export abstract class AddNewEntityDialogService<T extends Entity> {
 
-    item: T;
+    public item: T;
 
     constructor(
         protected dialog: MatDialog
@@ -12,9 +12,11 @@ export abstract class AddNewEntityDialogService<T extends Entity> {
 
     public openDialog(): Promise<T> {
         return new Promise((success, fail) => {
-            this.createDialog()
+            const subscription = this.createDialog()
                 .afterClosed()
                 .subscribe((result: T) => {
+                    subscription.unsubscribe();
+                    
                     if (result) {
                         success(result);
                     } else {

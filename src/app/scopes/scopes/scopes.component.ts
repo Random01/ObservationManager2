@@ -7,7 +7,6 @@ import { ScopeService } from '../shared/scope.service';
 import { EntityListComponent } from '../../shared/components/entity-list.component';
 import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
 
-
 @Component({
     selector: 'om-scopes',
     templateUrl: './scopes.component.html',

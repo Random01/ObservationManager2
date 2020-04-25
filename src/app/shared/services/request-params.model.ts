@@ -11,7 +11,7 @@ export class RequestParams {
     public sortDirection?: SortOrder;
 
     constructor(props?: Partial<RequestParams>) {
-        Object.assign(this, props);
+        Object.assign(this, { ...props });
     }
 
     protected getQueryParams(): { name: string, value: any }[] {

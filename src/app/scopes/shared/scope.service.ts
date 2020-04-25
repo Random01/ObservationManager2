@@ -15,7 +15,7 @@ export class ScopeService extends StorageService<Scope> {
         super('/scopes', http, jwtService);
     }
 
-    public createNew(params?: any): Scope {
+    public createNew(params?: Partial<Scope>): Scope {
         return new Scope(params);
     }
 

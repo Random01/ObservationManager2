@@ -1,4 +1,5 @@
 import { Entity } from '../models/models';
+import { ResponseStatus } from './response-status.model';
 
 export class ResultPayload<T extends Entity> {
 
@@ -6,13 +7,13 @@ export class ResultPayload<T extends Entity> {
 
     public payload: T;
 
-    public status: number;
+    public status: ResponseStatus;
 
     constructor(params?: Partial<ResultPayload<T>>) {
         Object.assign(this, params);
     }
 
     public isSuccess(): boolean {
-        return this.status === 200;
+        return this.status === ResponseStatus.Ok;
     }
 }

@@ -10,12 +10,14 @@ export abstract class EditEntityComponent<T extends Entity> extends BaseEntityCo
         super();
     }
 
-    public updateItem() {
+    public async updateItem() {
         this.startLoading();
-        this.storageService.update(this.item).then(() => {
-            this.endLoading();
+        try {
+            await this.storageService.update(this.item);
             this.goBack();
-        });
+        } finally {
+            this.endLoading();
+        }
     }
 
     public abstract goBack(): void;
@@ -24,10 +26,9 @@ export abstract class EditEntityComponent<T extends Entity> extends BaseEntityCo
 
     ngOnInit(): void {
         this.startLoading();
-        this.storageService.getById(this.getItemId()).then(loadedItem => {
-            this.endLoading();
-            this.item = loadedItem;
-        });
+        this.storageService.getById(this.getItemId())
+            .then(loadedItem => this.item = loadedItem)
+            .then(() => this.endLoading());
     }
 
     public isValid(): boolean {
