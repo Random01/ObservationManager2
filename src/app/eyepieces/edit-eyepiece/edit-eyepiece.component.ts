@@ -11,7 +11,6 @@ import { EyepieceService } from '../shared/eyepiece.service';
     selector: 'om-edit-eyepiece',
     templateUrl: './edit-eyepiece.component.html'
 })
-
 export class EditEyepieceComponent extends EditEntityComponent<Eyepiece> {
 
     constructor(

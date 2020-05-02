@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { BaseComponent } from './base-component';
 import { SortOrder } from '../models/sort-order.model';
 import { RequestParams } from '../services/request-params.model';
+
 import PageChangedEvent from '../interfaces/page-change-event.interface';
 import PaginatedListQueryParams from '../interfaces/paginated-list-query-params.interface';
 
@@ -22,8 +23,8 @@ export abstract class PaginatedListComponent<T> extends BaseComponent implements
     queryParamsSubscription: Subscription;
 
     constructor(
-        protected route: ActivatedRoute,
-        protected router: Router
+        protected readonly route: ActivatedRoute,
+        protected readonly router: Router
     ) {
         super();
     }

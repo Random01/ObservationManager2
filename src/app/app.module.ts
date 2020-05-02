@@ -37,7 +37,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ScopesModule } from './scopes/scopes.module';
 import { SessionsModule } from './sessions/sessions.module';
-import { SessionService } from './sessions/shared/session.service';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -50,16 +49,10 @@ import { SiteModule } from './sites/site.module';
 import { EyepieceModule } from './eyepieces/eyepiece.module';
 import { FilterModule } from './filters/filters.module';
 import { UsersModule } from './users/users.module';
-import { EyepieceService } from './eyepieces/shared/eyepiece.service';
-import { ScopeService } from './scopes/shared/scope.service';
-import { FilterService } from './filters/shared/filter.service';
 import { LensesModule } from './lenses/lenses.module';
-import { LensService } from './lenses/shared/lens.service';
 import { AuthModule } from './auth/auth.module';
 
 import { UserProfileMenuComponent } from './main/userProfileMenu/user-profile-menu.component';
-import { AuthenticationService } from './auth/shared/authentication.service';
-import { MessageService } from './shared/services/message.service';
 import { ObservingProgramsModule } from './observing-programs/observing-programs.module';
 
 @NgModule({
@@ -102,9 +95,6 @@ import { ObservingProgramsModule } from './observing-programs/observing-programs
     MatDatepickerModule,
     MatIconModule,
     MatTableModule
-  ],
-  providers: [
-    AuthenticationService
   ],
   bootstrap: [AppComponent]
 })

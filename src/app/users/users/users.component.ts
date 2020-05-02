@@ -19,10 +19,10 @@ export class UsersComponent extends EntityListComponent<User> {
     ];
 
     constructor(
-        protected userService: UserService,
-        protected deleteEntityDialogService: DeleteEntityDialogService,
-        protected route: ActivatedRoute,
-        protected router: Router) {
+        userService: UserService,
+        deleteEntityDialogService: DeleteEntityDialogService,
+        route: ActivatedRoute,
+        router: Router) {
         super(userService, deleteEntityDialogService, route, router);
     }
 

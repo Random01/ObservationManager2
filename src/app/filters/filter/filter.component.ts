@@ -1,26 +1,26 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+import { Observable } from 'rxjs';
 
 import { Filter } from '../../shared/models/equipment/filter.model';
 import { FilterType } from '../../shared/models/equipment/filter-type.enum';
+import { FilterTypeService } from '../shared/filter-type.service';
 
 @Component({
     selector: 'om-filter',
     templateUrl: './filter.component.html',
-    styleUrls: [ './filter.component.css' ]
+    styleUrls: ['./filter.component.css']
 })
+export class FilterComponent implements OnInit {
 
-export class FilterComponent {
-    @Input() filter: Filter;
+    @Input() public filter: Filter;
 
-    filterTypes: FilterType[] = [
-        FilterType.Hbeta,
-        FilterType.Halpha,
-        FilterType.OIII,
-        FilterType.BroadBand,
-        FilterType.NarrowBand,
-        FilterType.Color,
-        FilterType.Corrective,
-        FilterType.Solar,
-        FilterType.Neutral
-    ];
+    public filterTypes$: Observable<FilterType[]>;
+
+    constructor(private filterTypeService: FilterTypeService) {
+    }
+
+    public ngOnInit(): void {
+        this.filterTypes$ = this.filterTypeService.getAll();
+    }
 }

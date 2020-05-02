@@ -5,14 +5,12 @@ import { StorageService } from '../services/storage.service';
 
 export abstract class AddEntityDialogComponent<T extends Entity, S extends StorageService<T>> implements OnInit {
 
-    item: T;
+    public item: T;
 
     constructor(
-        protected storageService: S,
-        protected dialogRef: any,
-    ) {
-
-    }
+        protected readonly storageService: S,
+        protected readonly dialogRef: any,
+    ) { }
 
     public addItem(): void {
         if (this.item) {

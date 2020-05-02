@@ -25,26 +25,25 @@ export class UserService extends StorageService<User> {
         return new User();
     }
 
-    authenticate(userName: String, password: String): Promise<SignInResultPayload> {
+    public async authenticate(userName: String, password: String): Promise<SignInResultPayload> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-            })
+            }),
         };
+        const data = { user: { userName: userName, password: password } };
 
-        return new Promise<SignInResultPayload>((success) => {
-            return this.http.post<any>(this.getUrl() + '/login', { user: { userName: userName, password: password } }, httpOptions)
-                .subscribe(({ user }) => success(new SignInResultPayload({
-                    token: user.token,
-                    user: new User({
-                        userName: user.userName,
-                        email: user.email,
-                    })
-                })));
+        const { user } = await this.http.post<any>(this.getUrl() + '/login', data, httpOptions).toPromise();
+        return new SignInResultPayload({
+            token: user.token,
+            user: new User({
+                userName: user.userName,
+                email: user.email,
+            }),
         });
     }
 
-    getUser(): Promise<SignInResultPayload> {
+    public async getUser(): Promise<SignInResultPayload> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
@@ -52,31 +51,26 @@ export class UserService extends StorageService<User> {
             })
         };
 
-        return new Promise<SignInResultPayload>((success) => {
-            return this.http.get<any>(this.getUrl() + '/user', httpOptions)
-                .subscribe(({ user }) => {
-                    success(new SignInResultPayload({
-                        token: user.token,
-                        user: new User({
-                            userName: user.userName,
-                            email: user.email,
-                        })
-                    }));
-                });
+        const { user } = await this.http.get<any>(this.getUrl() + '/user', httpOptions).toPromise();
+        return new SignInResultPayload({
+            token: user.token,
+            user: new User({
+                userName: user.userName,
+                email: user.email,
+            })
         });
     }
 
-    register(user: User): Promise<User> {
+    public register(user: User): Promise<User> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
             })
         };
 
-        return new Promise<User>((success) => {
-            return this.http.post<any>(this.getUrl() + '/', user, httpOptions)
-                .subscribe(() => success(user));
-        });
+        return this.http
+            .post<any>(this.getUrl() + '/', user, httpOptions)
+            .toPromise();
     }
 
 }

@@ -14,7 +14,7 @@
                         placeholder="Filter Type"
                         [(value)]="filter.filterType">
                         <mat-option
-                                *ngFor="let filterType of filterTypes"
+                                *ngFor="let filterType of filterTypes$ | async"
                                 [value]="filterType">
                                 {{ filterType }}
                         </mat-option>

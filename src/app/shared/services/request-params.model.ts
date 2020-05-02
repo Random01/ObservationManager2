@@ -10,7 +10,7 @@ export class RequestParams {
 
     public sortDirection?: SortOrder;
 
-    constructor(props?: Partial<RequestParams>) {
+    constructor(props: Partial<RequestParams> = {}) {
         Object.assign(this, { ...props });
     }
 

@@ -66,7 +66,7 @@ export class SessionDetailsComponent extends BaseComponent implements OnInit {
         this.loadSession();
     }
 
-    addNewObservation(): void {
+    public async addNewObservation() {
         const dialogRef = this.dialog.open(ObservationDialogComponent, {
             width: '400px',
             data: new Observation({
@@ -78,14 +78,15 @@ export class SessionDetailsComponent extends BaseComponent implements OnInit {
             })
         });
 
-        dialogRef.afterClosed().subscribe(result => {
-            if (result) {
-                this.startLoading();
-                this.observationService
-                    .add(result)
-                    .then(() => this.endLoading());
+        const result = await dialogRef.afterClosed().toPromise();
+        if (result) {
+            this.startLoading();
+            try {
+                await this.observationService.add(result);
+            } finally {
+                this.endLoading()
             }
-        });
+        }
     }
 
 }

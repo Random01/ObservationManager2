@@ -20,24 +20,22 @@ export class UserProfileMenuComponent implements OnInit {
 
         this.authenticationService
             .isAuthenticated
-            .pipe()
-            .subscribe((isAuthenticated) => {
+            .subscribe(isAuthenticated => {
                 this.isAuthenticated = isAuthenticated;
                 this.isWorking = false;
             });
 
         this.authenticationService
             .currentUser
-            .pipe()
-            .subscribe((user) => {
+            .subscribe(user => {
                 this.currentUser = user;
             });
     }
 
     constructor(
-        private router: Router,
-        private authenticationService: AuthenticationService) {
-    }
+        private readonly router: Router,
+        private readonly authenticationService: AuthenticationService,
+    ) { }
 
     signOut() {
         this.authenticationService.signOut().then(() => {

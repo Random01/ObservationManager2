@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+
 import { DeleteEntityDialogComponent } from './delete-entity-dialog.component';
 
 export interface DeleteEntityDialogResult {
@@ -18,14 +19,12 @@ export class DeleteEntityDialogService {
     }
 
     public show(options: DeleteEntityDialogOptions): Promise<DeleteEntityDialogResult> {
-        return new Promise((success) => {
-            const dialogRef = this.dialog.open(DeleteEntityDialogComponent, {
-                width: '250px',
-                data: options,
-            });
-
-            dialogRef.afterClosed().subscribe(success);
+        const dialogRef = this.dialog.open(DeleteEntityDialogComponent, {
+            width: '250px',
+            data: options,
         });
+
+        return dialogRef.afterClosed().toPromise();
     }
 
 }

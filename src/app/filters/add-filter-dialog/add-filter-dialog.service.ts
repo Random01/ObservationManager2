@@ -1,8 +1,9 @@
+import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+
 import { AddNewEntityDialogService } from '../../shared/services/add-new-entity-dialog.service';
 import { Filter } from '../../shared/models/equipment/equipment';
-import { Injectable } from '@angular/core';
 import { AddFilterDialogComponent } from './add-filter-dialog.component';
-import { MatDialog } from '@angular/material/dialog';
 
 @Injectable()
 export class AddFilterDialogService extends AddNewEntityDialogService<Filter> {
@@ -12,7 +13,7 @@ export class AddFilterDialogService extends AddNewEntityDialogService<Filter> {
         super(dialog);
     }
 
-    createDialog() {
+    public createDialog() {
         return this.dialog.open(AddFilterDialogComponent, {
             width: '350px'
         });

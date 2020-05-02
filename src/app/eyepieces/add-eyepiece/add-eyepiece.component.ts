@@ -9,9 +9,8 @@ import { Eyepiece } from '../../shared/models/equipment/equipment';
 
 @Component({
     selector: 'om-add-eyepiece',
-    templateUrl: './add-eyepiece.component.html'
+    templateUrl: './add-eyepiece.component.html',
 })
-
 export class AddEyepieceComponent extends AddEntityComponent<Eyepiece> {
     constructor(
         private router: Router,

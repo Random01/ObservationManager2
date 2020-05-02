@@ -33,7 +33,7 @@ export abstract class StorageService<T extends Entity> {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
                 'Authorization': this.getAuthorizationToken()
-            })
+            }),
         };
 
         const result = await this.http.post<T>(this.getUrl(), newItem.serialize(), httpOptions).toPromise();

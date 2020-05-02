@@ -15,7 +15,6 @@ import { SessionDetailsComponent } from './session-details/session-details.compo
 import { AddSessionComponent } from './add-session/add-session.component';
 import { EditSessionComponent } from './edit-session/edit-session.component';
 import { SessionsRoutingModule } from './sessions-routing.module';
-import { SessionService } from './shared/session.service';
 import { SharedModule } from '../shared/shared.module';
 import { SessionInfoComponent } from './session-info/session-info.component';
 import { SiteModule } from '../sites/site.module';

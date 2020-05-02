@@ -14,8 +14,9 @@ import ObservingProgramStatistics from './observing-program-statistics.model';
 export class ObservingProgramsService extends StorageService<ObservingProgram> {
 
     constructor(
-        protected http: HttpClient,
-        protected jwtService: JwtService) {
+        http: HttpClient,
+        jwtService: JwtService,
+    ) {
         super('/observing-programs', http, jwtService);
     }
 
