@@ -1,4 +1,4 @@
-const BaseTxtExporter = require('./../common/baseTxtExporter.service');
+const BaseTxtExporter = require('./../common/base-txt-exporter.service');
 
 class ScopeTxtExporter extends BaseTxtExporter {
 
