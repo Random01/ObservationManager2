@@ -1,10 +1,10 @@
 ﻿import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { EyepieceService } from '../shared/eyepiece.service';
 import { Eyepiece } from '../../shared/models/equipment/equipment';
 import { EntityListComponent } from '../../shared/components/entity-list.component';
 import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'om-eyepieces',
@@ -28,6 +28,10 @@ export class EyepiecesComponent extends EntityListComponent<Eyepiece> {
         protected router: Router,
     ) {
         super(service, deleteEntityDialogService, route, router);
+    }
+
+    getExportFileName() {
+        return 'Eyepieces';
     }
 
 }
