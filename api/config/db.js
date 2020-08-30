@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = {
-    url: 'mongodb://TestUser:qwerty1234@ds016148.mlab.com:16148/om-1'
+    url: 'mongodb+srv://db-user:<password>@om.haz76.azure.mongodb.net/om-1?retryWrites=true&w=majority'
 };
