@@ -9,8 +9,9 @@ import { JwtService } from '../../auth/shared/jwt.service';
 export class ConstellationsService extends StorageService<Constellation> {
 
     constructor(
-        protected http: HttpClient,
-        protected jwtService: JwtService) {
+        http: HttpClient,
+        jwtService: JwtService,
+    ) {
         super('/constellations', http, jwtService);
     }
 

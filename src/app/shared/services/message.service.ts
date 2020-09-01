@@ -10,17 +10,17 @@ export class Message {
 export class MessageService {
 
     constructor(
-        private snackBar: MatSnackBar
+        private readonly snackBar: MatSnackBar
     ) {
     }
 
-    showInfo(message: string) {
+    public showInfo(message: string) {
         this.snackBar.open(message, 'Undo', {
             duration: 1000,
         });
     }
 
-    showError(errorMessage: string) {
+    public showError(errorMessage: string) {
         this.snackBar.open(errorMessage, 'X', {
             panelClass: ['error'],
         });

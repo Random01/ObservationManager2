@@ -16,8 +16,8 @@ import { AddEntityDialogComponent } from '../../shared/components/add-entity-dia
 export class AddLensDialogComponent extends AddEntityDialogComponent<Lens, LensService> {
 
     constructor(
-        protected storageService: LensService,
-        protected dialogRef: MatDialogRef<AddLensDialogComponent, Lens>,
+        storageService: LensService,
+        dialogRef: MatDialogRef<AddLensDialogComponent, Lens>,
     ) {
         super(storageService, dialogRef);
     }

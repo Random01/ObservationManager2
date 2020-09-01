@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { DeleteEntityDialogOptions, DeleteEntityDialogResult } from './delete-entity-dialog.service';
@@ -6,6 +6,7 @@ import { DeleteEntityDialogOptions, DeleteEntityDialogResult } from './delete-en
 @Component({
     selector: 'om-delete-entity-dialog',
     templateUrl: 'delete-entity-dialog.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DeleteEntityDialogComponent {
 
@@ -15,11 +16,11 @@ export class DeleteEntityDialogComponent {
     ) {
     }
 
-    onNoClick(): void {
+    public onNoClick(): void {
         this.dialogRef.close({ success: false });
     }
 
-    onOkClick(): void {
+    public onOkClick(): void {
         this.dialogRef.close({ success: true });
     }
 

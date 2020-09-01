@@ -8,7 +8,7 @@ import {
 @Component({
     selector: 'om-magnification-selector',
     templateUrl: './magnification-selector.component.html',
-    styleUrls: ['./magnification-selector.component.css']
+    styleUrls: ['./magnification-selector.component.css'],
 })
 export class MagnificationSelectorComponent {
 

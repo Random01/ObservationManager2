@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, EventEmitter, Output, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, EventEmitter, Output, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 
 import { Observable, Subscription } from 'rxjs';
 
@@ -7,7 +7,8 @@ import { VendorService } from '../shared/vendor.service';
 @Component({
     selector: 'om-vendor-selector',
     templateUrl: './vendor-selector.component.html',
-    styleUrls: ['./vendor-selector.component.css']
+    styleUrls: ['./vendor-selector.component.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VendorSelectorComponent implements OnInit, OnDestroy {
 
@@ -16,11 +17,12 @@ export class VendorSelectorComponent implements OnInit, OnDestroy {
     @Input() vendor: String;
     @Output() vendorChange = new EventEmitter<string>();
 
-    vendors: string[] = [];
-    filteredVendors: Observable<string[]>;
+    public vendors: string[] = [];
+    public filteredVendors: Observable<string[]>;
 
     constructor(
-        private vendorService: VendorService) {
+        private vendorService: VendorService,
+    ) {
     }
 
     public onVendorChange(model: string) {

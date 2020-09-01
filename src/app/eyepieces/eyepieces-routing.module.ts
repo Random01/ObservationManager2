@@ -11,26 +11,26 @@ const routes: Routes = [
     {
         path: 'eyepieces',
         component: EyepiecesComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
     },
     {
         path: 'eyepieces/new-eyepiece',
         component: AddEyepieceComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
     },
     {
         path: 'eyepieces/:id',
         component: EditEyepieceComponent,
-        canActivate: [AuthGuardService]
-    }
+        canActivate: [AuthGuardService],
+    },
 ];
 
 @NgModule({
     imports: [
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
     ],
     exports: [
-        RouterModule
+        RouterModule,
     ]
 })
 export class EyepiecesRoutingModule { }

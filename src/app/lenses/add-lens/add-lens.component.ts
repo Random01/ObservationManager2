@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { LensService } from '../shared/lens.service';
-
 import { AddEntityComponent } from '../../shared/components/add-entity.component';
 import { Scope } from '../../shared/models/equipment/equipment';
 
@@ -12,6 +11,7 @@ import { Scope } from '../../shared/models/equipment/equipment';
     templateUrl: './add-lens.component.html'
 })
 export class AddLensComponent extends AddEntityComponent<Scope> {
+    
     constructor(
         private router: Router,
         lensService: LensService,
@@ -19,7 +19,7 @@ export class AddLensComponent extends AddEntityComponent<Scope> {
         super(lensService);
     }
 
-    goBack() {
+    public goBack() {
         this.router.navigate(['/lenses']);
     }
 }

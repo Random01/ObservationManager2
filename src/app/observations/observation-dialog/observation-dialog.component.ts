@@ -6,25 +6,24 @@ import { Observation } from '../../shared/models/observation.model';
 
 @Component({
     selector: 'om-observation-dialog',
-    templateUrl: 'observation-dialog.component.html'
+    templateUrl: 'observation-dialog.component.html',
 })
-
 export class ObservationDialogComponent {
 
-    observation: Observation;
+    public observation: Observation;
 
     constructor(
         public dialogRef: MatDialogRef<ObservationDialogComponent, Observation>,
-        @Inject(MAT_DIALOG_DATA) public data: Observation
+        @Inject(MAT_DIALOG_DATA) public data: Observation,
     ) {
         this.observation = data;
     }
 
-    close(): void {
+    public close(): void {
         this.dialogRef.close();
     }
 
-    add(): void {
+    public add(): void {
         this.dialogRef.close(this.observation);
     }
 }

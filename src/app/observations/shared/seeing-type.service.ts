@@ -11,7 +11,7 @@ export class SeeingTypeService {
             { name: 'Slight quivering of the image.', seeing: SeeingType.Slight },
             { name: 'Moderate seeing.', seeing: SeeingType.Moderate },
             { name: 'Poor seeing.', seeing: SeeingType.Poor },
-            { name: 'Very bad seeing.', seeing: SeeingType.VeryBad }
+            { name: 'Very bad seeing.', seeing: SeeingType.VeryBad },
         ]);
     }
 

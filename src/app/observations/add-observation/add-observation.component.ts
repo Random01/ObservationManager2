@@ -16,7 +16,7 @@ export class AddObservationComponent extends AddEntityComponent<Observation> {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private observationService: ObservationService,
+        observationService: ObservationService,
         private sessionService: SessionService,
     ) {
         super(observationService);
@@ -45,7 +45,7 @@ export class AddObservationComponent extends AddEntityComponent<Observation> {
         this.startLoading();
 
         try {
-            await this.observationService.add(this.item);
+            await this.storageService.add(this.item);
 
             const item = await this.createNew();
 

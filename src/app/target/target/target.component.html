@@ -43,7 +43,10 @@
 
     <!-- Alias Names -->
     <om-aliases-editor
-        [aliases]="target.alliases">
+        [aliases]="target.alliases"
+        (aliasAdded)="onAliasAdded($event)"
+        (aliasRemoved)="onAliasRemoved($event)"
+    >
     </om-aliases-editor>
     
 </div>

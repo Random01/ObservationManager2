@@ -3,19 +3,19 @@ import { Injectable } from '@angular/core';
 @Injectable({ providedIn: 'root' })
 export class JwtService {
 
-    setToken(token: string): void {
+    public setToken(token: string): void {
         localStorage.setItem('jwtToken', token);
     }
 
-    removeToken(): void {
+    public removeToken(): void {
         localStorage.removeItem('jwtToken');
     }
 
-    getToken(): string {
+    public getToken(): string {
         return localStorage.getItem('jwtToken');
     }
 
-    isTokenExpired(): boolean {
+    public isTokenExpired(): boolean {
         return true;
     }
 

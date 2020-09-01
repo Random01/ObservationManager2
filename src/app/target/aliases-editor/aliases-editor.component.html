@@ -9,7 +9,7 @@
 
                 <button
                     mat-icon-button
-                    (click)=removeAlias($index)>
+                    (click)=removeAlias(alias)>
                     <mat-icon aria-label="Click to delete">
                         delete
                     </mat-icon>
@@ -25,12 +25,14 @@
                 matInput
                 autocomplete="off"
                 [(ngModel)]="newAlias"
+                (ngModelChange)="validate()"
                 type="text"
                 placeholder="New Alias" />
         </mat-form-field>
 
         <button 
             mat-button
+            [disabled]="!isValid"
             (click)=addNewAlias()>Add</button>
 
     </div>

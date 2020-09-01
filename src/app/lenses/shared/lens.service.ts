@@ -10,8 +10,8 @@ import { JwtService } from '../../auth/shared/jwt.service';
 export class LensService extends StorageService<Lens> {
 
     constructor(
-        protected http: HttpClient,
-        protected jwtService: JwtService,
+        http: HttpClient,
+        jwtService: JwtService,
     ) {
         super('/lenses', http, jwtService);
     }

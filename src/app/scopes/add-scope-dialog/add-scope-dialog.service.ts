@@ -6,11 +6,12 @@ import { AddNewEntityDialogService } from '../../shared/services/add-new-entity-
 import { Scope } from '../../shared/models/equipment/equipment';
 import { AddScopeDialogComponent } from './add-scope-dialog.component';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AddScopeDialogService extends AddNewEntityDialogService<Scope> {
 
     constructor(
-        protected dialog: MatDialog) {
+        dialog: MatDialog,
+    ) {
         super(dialog);
     }
 

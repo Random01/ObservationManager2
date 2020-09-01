@@ -15,8 +15,8 @@ import { AddEyepieceDialogService } from '../add-eyepiece-dialog';
 export class EyepieceSelectorComponent extends EntitySelectorComponent<Eyepiece, EyepieceService> {
 
     constructor(
-        protected eyepieceService: EyepieceService,
-        protected addNewEyepieceDialogService: AddEyepieceDialogService,
+        eyepieceService: EyepieceService,
+        addNewEyepieceDialogService: AddEyepieceDialogService,
     ) {
         super(eyepieceService, addNewEyepieceDialogService);
 

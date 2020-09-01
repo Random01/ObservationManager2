@@ -9,8 +9,9 @@ import { JwtService } from '../../auth/shared/jwt.service';
 export class EyepieceService extends StorageService<Eyepiece> {
 
     constructor(
-        protected http: HttpClient,
-        protected jwtService: JwtService) {
+        http: HttpClient,
+        jwtService: JwtService,
+    ) {
         super('/eyepieces', http, jwtService);
     }
 

@@ -39,7 +39,7 @@ export class ObservationSearchComponent implements OnInit {
         private eyepieceService: EyepieceService,
         private filterService: FilterService,
         private lensService: LensService,
-        private siteService: SiteService
+        private siteService: SiteService,
     ) {
     }
 

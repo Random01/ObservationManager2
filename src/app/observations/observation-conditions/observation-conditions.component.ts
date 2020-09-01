@@ -19,7 +19,8 @@ export class ObservationConditionsComponent implements OnInit {
     seeingTypes: SeeingItem[];
 
     constructor(
-        private seeingTypeService: SeeingTypeService) {
+        private seeingTypeService: SeeingTypeService,
+    ) {
     }
 
     async ngOnInit() {

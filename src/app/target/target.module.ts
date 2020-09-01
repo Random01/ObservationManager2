@@ -18,7 +18,7 @@ import { RightAscensionSelectorComponent } from './right-ascension-selector/righ
 import { AliasesEditorComponent } from './aliases-editor/aliases-editor.component';
 import { TargetSearchParamsComponent } from './target-search-params/target-search-params.component';
 import { TargetTypeFormatterPipe } from './shared/pipes/target-type-formatter.pipe';
-import { AddTargetDialogService, AddTargetDialogComponent } from './target-selector/add-target-dialog';
+import { AddTargetDialogComponent } from './target-selector/add-target-dialog';
 
 @NgModule({
     imports: [
@@ -27,7 +27,7 @@ import { AddTargetDialogService, AddTargetDialogComponent } from './target-selec
         FormsModule,
         ReactiveFormsModule,
         TargetsRoutingModule,
-        MaterialModule
+        MaterialModule,
     ],
     declarations: [
         TargetSelectorComponent,
@@ -42,17 +42,16 @@ import { AddTargetDialogService, AddTargetDialogComponent } from './target-selec
         AliasesEditorComponent,
         TargetSearchParamsComponent,
         TargetTypeFormatterPipe,
-        AddTargetDialogComponent
+        AddTargetDialogComponent,
     ],
     exports: [
         TargetSelectorComponent,
-        TargetTypeFormatterPipe
+        TargetTypeFormatterPipe,
     ],
     entryComponents: [
-        AddTargetDialogComponent
+        AddTargetDialogComponent,
     ],
     providers: [
-        AddTargetDialogService
     ]
 })
 

@@ -15,8 +15,8 @@ import { FilterService } from '../shared/filter.service';
 })
 export class AddFilterDialogComponent extends AddEntityDialogComponent<Filter, FilterService> {
     constructor(
-        protected storageService: FilterService,
-        protected dialogRef: MatDialogRef<AddFilterDialogComponent, Filter>
+        storageService: FilterService,
+        dialogRef: MatDialogRef<AddFilterDialogComponent, Filter>,
     ) {
         super(storageService, dialogRef);
     }

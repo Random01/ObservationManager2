@@ -16,7 +16,8 @@ export class EditLensComponent extends EditEntityComponent<Lens> {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        lensService: LensService) {
+        lensService: LensService,
+    ) {
         super(lensService);
     }
 

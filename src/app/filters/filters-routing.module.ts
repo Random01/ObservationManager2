@@ -10,26 +10,26 @@ const routes: Routes = [
     {
         path: 'filters/new-filter',
         component: AddFilterComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
     },
     {
         path: 'filters/:filterId',
         component: EditFilterComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
     },
     {
         path: 'filters',
         component: FiltersComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
     }
 ];
 
 @NgModule({
     imports: [
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
     ],
     exports: [
-        RouterModule
-    ]
+        RouterModule,
+    ],
 })
 export class FiltersRoutingModule { }

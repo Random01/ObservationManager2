@@ -36,7 +36,6 @@ import { EyepieceFocalLengthPipe } from './models/pipes/eyepiece-focal-length-fo
         EyepieceFocalLengthPipe
     ],
     providers: [
-        DeleteEntityDialogService,
         DecimalPipe
     ]
 })

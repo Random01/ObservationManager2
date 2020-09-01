@@ -22,10 +22,10 @@ export class EyepiecesComponent extends EntityListComponent<Eyepiece> {
     ];
 
     constructor(
-        protected service: EyepieceService,
-        protected deleteEntityDialogService: DeleteEntityDialogService,
-        protected route: ActivatedRoute,
-        protected router: Router,
+        service: EyepieceService,
+        deleteEntityDialogService: DeleteEntityDialogService,
+        route: ActivatedRoute,
+        router: Router,
     ) {
         super(service, deleteEntityDialogService, route, router);
     }

@@ -5,17 +5,18 @@ import { AddNewEntityDialogService } from '../../shared/services/add-new-entity-
 import { Filter } from '../../shared/models/equipment/equipment';
 import { AddFilterDialogComponent } from './add-filter-dialog.component';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AddFilterDialogService extends AddNewEntityDialogService<Filter> {
 
     constructor(
-        protected dialog: MatDialog) {
+        dialog: MatDialog,
+    ) {
         super(dialog);
     }
 
     public createDialog() {
         return this.dialog.open(AddFilterDialogComponent, {
-            width: '350px'
+            width: '350px',
         });
     }
 

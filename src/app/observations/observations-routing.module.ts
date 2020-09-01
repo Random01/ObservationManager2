@@ -11,41 +11,41 @@ const routes: Routes = [
     {
         path: 'observations/new-observation',
         component: AddObservationComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
     },
     {
         path: 'observations/:observationId',
         component: EditObservationComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
     },
     {
         path: 'observations',
         component: ObservationsComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
     },
     {
         path: 'sessions/:sessionId/observations',
         component: SessionObservationsComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
     },
     {
         path: 'sessions/:sessionId/observations/new-observation',
         component: AddObservationComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
     },
     {
         path: 'sessions/:sessionId/observations/:observationId',
         component: EditObservationComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
     }
 ];
 
 @NgModule({
     imports: [
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
     ],
     exports: [
-        RouterModule
+        RouterModule,
     ]
 })
 export class ObservationsRoutingModule { }

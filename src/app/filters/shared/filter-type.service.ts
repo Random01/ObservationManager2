@@ -17,7 +17,7 @@ export class FilterTypeService {
             FilterType.Color,
             FilterType.Corrective,
             FilterType.Solar,
-            FilterType.Neutral
+            FilterType.Neutral,
         ]);
     }
 }

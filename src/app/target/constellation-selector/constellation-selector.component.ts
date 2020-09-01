@@ -15,7 +15,7 @@ export class ConstellationSelectorComponent implements OnInit {
     @Input()
     constellation: Constellation;
 
-    @Output()
+    @Output() 
     constellationChange = new EventEmitter<Constellation>();
 
     public isLoading = false;

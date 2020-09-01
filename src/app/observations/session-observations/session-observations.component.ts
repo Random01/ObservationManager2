@@ -29,15 +29,16 @@ export class SessionObservationsComponent extends EntityListComponent<Observatio
         'eyepieceModel',
         'filterModel',
         'result',
-        'actions'
+        'actions',
     ];
 
     constructor(
-        protected route: ActivatedRoute,
-        protected router: Router,
-        protected observationService: ObservationService,
+        route: ActivatedRoute,
+        router: Router,
+        observationService: ObservationService,
         protected sessionService: SessionService,
-        protected deleteEntityDialogService: DeleteEntityDialogService) {
+        deleteEntityDialogService: DeleteEntityDialogService,
+    ) {
         super(observationService, deleteEntityDialogService, route, router);
     }
 

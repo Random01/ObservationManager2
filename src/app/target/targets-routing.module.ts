@@ -11,26 +11,26 @@ const targetsRoutes: Routes = [
     {
         path: 'objects',
         component: TargetsComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
     },
     {
         path: 'objects/new-object',
         component: AddTargetComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
     },
     {
         path: 'objects/:id',
         component: EditTargetComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
     }
 ];
 
 @NgModule({
     imports: [
-        RouterModule.forChild(targetsRoutes)
+        RouterModule.forChild(targetsRoutes),
     ],
     exports: [
-        RouterModule
+        RouterModule,
     ]
 })
 export class TargetsRoutingModule { }

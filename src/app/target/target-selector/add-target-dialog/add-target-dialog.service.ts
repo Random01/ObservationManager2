@@ -6,17 +6,18 @@ import { AddNewEntityDialogService } from '../../../shared/services/add-new-enti
 import { Target } from '../../../shared/models/models';
 import { AddTargetDialogComponent } from './add-target-dialog.component';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AddTargetDialogService extends AddNewEntityDialogService<Target> {
 
     constructor(
-        protected dialog: MatDialog) {
+        dialog: MatDialog,
+    ) {
         super(dialog);
     }
 
     createDialog() {
         return this.dialog.open(AddTargetDialogComponent, {
-            width: '350px'
+            width: '350px',
         });
     }
 

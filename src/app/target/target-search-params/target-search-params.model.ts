@@ -1,5 +1,4 @@
 import { RequestParams } from '../../shared/services/request-params.model';
-import { SortOrder } from '../../shared/models/sort-order.model';
 import { TargetType } from '../../shared/models/target-type.model';
 
 export class TargetSearchParams extends RequestParams {

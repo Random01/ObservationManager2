@@ -20,15 +20,15 @@ export class EditObservationComponent extends EditEntityComponent<Observation> {
         super(service);
     }
 
-    getItemId(): string {
+    public getItemId(): string {
         return this.route.snapshot.paramMap.get('observationId');
     }
 
-    getSessionId(): string {
+    public getSessionId(): string {
         return this.route.snapshot.paramMap.get('sessionId');
     }
 
-    goBack() {
+    public goBack() {
         this.router.navigate([`/sessions/${this.getSessionId()}/observations`]);
     }
 }

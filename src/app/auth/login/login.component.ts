@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { Router } from '@angular/router';
 
@@ -10,22 +10,24 @@ import { BaseComponent } from '../../shared/components';
 @Component({
     selector: 'om-login',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css']
+    styleUrls: ['./login.component.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent extends BaseComponent {
 
-    loginForm = new FormGroup({
+    public loginForm = new FormGroup({
         email: new FormControl('', Validators.required),
         password: new FormControl('', Validators.required)
     });
 
     constructor(
         private router: Router,
-        private authenticationService: AuthenticationService) {
+        private authenticationService: AuthenticationService,
+    ) {
         super();
     }
 
-    onSubmit() {
+    public onSubmit() {
         const { email, password } = this.loginForm.value;
 
         if (email && password) {
@@ -33,9 +35,7 @@ export class LoginComponent extends BaseComponent {
             this.authenticationService.signIn(email, password).then(() => {
                 this.endLoading();
                 this.router.navigate(['/']);
-            }, () => {
-                this.endLoading();
-            });
+            }, () => this.endLoading());
         }
     }
 

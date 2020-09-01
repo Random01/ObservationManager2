@@ -12,8 +12,8 @@ import { ObservationSearchParams } from './observation-search-params.model';
 export class ObservationService extends StorageService<Observation> {
 
     constructor(
-        protected http: HttpClient,
-        protected jwtService: JwtService,
+        http: HttpClient,
+        jwtService: JwtService,
     ) {
         super('/observations', http, jwtService);
     }

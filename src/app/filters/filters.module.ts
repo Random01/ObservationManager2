@@ -14,7 +14,7 @@ import { AddFilterComponent } from './add-filter/add-filter.component';
 import { EquipmentModule } from '../equipment/equipment.module';
 import { MaterialModule } from '../shared/material.module';
 import { FilterSelectorComponent } from './filter-selector';
-import { AddFilterDialogService, AddFilterDialogComponent } from './add-filter-dialog';
+import { AddFilterDialogComponent } from './add-filter-dialog';
 
 @NgModule({
     imports: [
@@ -24,7 +24,7 @@ import { AddFilterDialogService, AddFilterDialogComponent } from './add-filter-d
         RouterModule,
         FiltersRoutingModule,
         EquipmentModule,
-        MaterialModule
+        MaterialModule,
     ],
     declarations: [
         FiltersComponent,
@@ -32,17 +32,14 @@ import { AddFilterDialogService, AddFilterDialogComponent } from './add-filter-d
         AddFilterComponent,
         EditFilterComponent,
         FilterSelectorComponent,
-        AddFilterDialogComponent
+        AddFilterDialogComponent,
     ],
     exports: [
-        FilterSelectorComponent
+        FilterSelectorComponent,
     ],
     entryComponents: [
-        AddFilterDialogComponent
+        AddFilterDialogComponent,
     ],
-    providers: [
-        AddFilterDialogService
-    ]
 })
 
 export class FilterModule { }

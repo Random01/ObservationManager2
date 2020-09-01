@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { EditEntityComponent } from '../../shared/components/edit-entity.component';
@@ -15,7 +14,8 @@ export class EditTargetComponent extends EditEntityComponent<Target> {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        service: TargetService) {
+        service: TargetService,
+    ) {
         super(service);
     }
 

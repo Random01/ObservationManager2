@@ -9,7 +9,6 @@ import { ObservationService } from '../shared/observation.service';
 @Component({
     selector: 'om-observation-detail',
     templateUrl: './observation-detail.component.html',
-    providers: [ObservationService]
 })
 export class ObservationDetailComponent implements OnInit {
 
@@ -18,7 +17,7 @@ export class ObservationDetailComponent implements OnInit {
     constructor(
         private observationService: ObservationService,
         private route: ActivatedRoute,
-        private location: Location
+        private location: Location,
     ) {
     }
 

@@ -6,11 +6,11 @@ import { AddNewEntityDialogService } from '../../shared/services/add-new-entity-
 import { Lens } from '../../shared/models/equipment/equipment';
 import { AddLensDialogComponent } from './add-lens-dialog.component';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AddLensDialogService extends AddNewEntityDialogService<Lens> {
 
     constructor(
-        protected dialog: MatDialog,
+        dialog: MatDialog,
     ) {
         super(dialog);
     }

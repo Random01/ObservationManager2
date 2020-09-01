@@ -1,10 +1,10 @@
 ﻿import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Observation } from '../../shared/models/models';
 import { ObservationService } from '../shared/observation.service';
 import { EntityListComponent } from '../../shared/components/entity-list.component';
 import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
-import { ActivatedRoute, Router } from '@angular/router';
 import ObservationSearchParameters from '../observation-search/observation-search-parameters.model';
 import { RequestParams } from '../../shared/services/request-params.model';
 
@@ -15,7 +15,6 @@ import { RequestParams } from '../../shared/services/request-params.model';
         './observations.component.css'
     ]
 })
-
 export class ObservationsComponent extends EntityListComponent<Observation> {
 
     searchParameters: ObservationSearchParameters;
@@ -26,14 +25,15 @@ export class ObservationsComponent extends EntityListComponent<Observation> {
         'eyepieceModel',
         'filterModel',
         'result',
-        'actions'
+        'actions',
     ];
 
     constructor(
-        protected observationService: ObservationService,
-        protected deleteEntityDialogService: DeleteEntityDialogService,
-        protected route: ActivatedRoute,
-        protected router: Router) {
+        observationService: ObservationService,
+        deleteEntityDialogService: DeleteEntityDialogService,
+        route: ActivatedRoute,
+        router: Router,
+    ) {
         super(observationService, deleteEntityDialogService, route, router);
 
         this.searchParameters = new ObservationSearchParameters();

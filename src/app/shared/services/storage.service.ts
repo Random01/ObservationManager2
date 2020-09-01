@@ -11,9 +11,10 @@ import { ResponseStatus } from './response-status.model';
 export abstract class StorageService<T extends Entity> {
 
     constructor(
-        public url: string,
-        protected http: HttpClient,
-        protected jwtService: JwtService) {
+        public readonly url: string,
+        protected readonly http: HttpClient,
+        protected readonly jwtService: JwtService
+    ) {
     }
 
     protected getUrl(): string {
@@ -32,7 +33,7 @@ export abstract class StorageService<T extends Entity> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'Authorization': this.getAuthorizationToken()
+                'Authorization': this.getAuthorizationToken(),
             }),
         };
 
@@ -47,8 +48,8 @@ export abstract class StorageService<T extends Entity> {
     public async getById(id: String): Promise<T> {
         const httpOptions = {
             headers: new HttpHeaders({
-                'Authorization': this.getAuthorizationToken()
-            })
+                'Authorization': this.getAuthorizationToken(),
+            }),
         };
 
         const result = await this.http.get<any>(this.getUrl() + '/' + id, httpOptions).toPromise();
@@ -66,7 +67,7 @@ export abstract class StorageService<T extends Entity> {
     public async getItems(request: RequestParams): Promise<PaginatedResponsePayload<T>> {
         const httpOptions = {
             headers: new HttpHeaders({
-                'Authorization': this.getAuthorizationToken()
+                'Authorization': this.getAuthorizationToken(),
             })
         };
 
@@ -75,7 +76,7 @@ export abstract class StorageService<T extends Entity> {
 
         return {
             ...result,
-            items: result.items.map((item: any) => this.deserialize(item))
+            items: result.items.map((item: any) => this.deserialize(item)),
         };
     }
 
@@ -83,9 +84,9 @@ export abstract class StorageService<T extends Entity> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Authorization': this.getAuthorizationToken(),
-                'Content-Type': 'application/octet-stream'
+                'Content-Type': 'application/octet-stream',
             }),
-            responseType: 'blob'
+            responseType: 'blob',
         } as any;
 
         const url = this.getUrl() + '/export?' + request.getQueryString();
@@ -100,15 +101,15 @@ export abstract class StorageService<T extends Entity> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'Authorization': this.getAuthorizationToken()
-            })
+                'Authorization': this.getAuthorizationToken(),
+            }),
         };
 
         return this.http.put<T>(this.getUrl() + '/' + entity.id, entity.serialize(), httpOptions)
             .toPromise()
             .then(
                 () => true,
-                () => false
+                () => false,
             );
     }
 
@@ -117,7 +118,7 @@ export abstract class StorageService<T extends Entity> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'Authorization': this.getAuthorizationToken()
+                'Authorization': this.getAuthorizationToken(),
             })
         };
 

@@ -15,8 +15,8 @@ import { AddLensDialogService } from '../add-lens-dialog';
 export class LensSelectorComponent extends EntitySelectorComponent<Lens, LensService> {
 
     constructor(
-        protected lensService: LensService,
-        protected addLensDialogService: AddLensDialogService,
+        lensService: LensService,
+        addLensDialogService: AddLensDialogService,
     ) {
         super(lensService, addLensDialogService);
 

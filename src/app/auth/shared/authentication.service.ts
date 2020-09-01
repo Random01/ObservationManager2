@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { UserService } from '../../users/shared/user.service';
-import { JwtService } from './jwt.service';
 
 import { BehaviorSubject, ReplaySubject } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 
 import { User } from '../../shared/models/user.model';
 import { SignInResultPayload } from '../../users/shared/signIn-result-payload.model';
+import { UserService } from '../../users/shared/user.service';
+import { JwtService } from './jwt.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -23,7 +23,7 @@ export class AuthenticationService {
     ) {
     }
 
-    signOut(): Promise<void> {
+    public signOut(): Promise<void> {
         this.jwtService.removeToken();
         this.currentUserSubject.next({} as User);
         this.isAuthenticatedSubject.next(false);
@@ -31,13 +31,13 @@ export class AuthenticationService {
         return Promise.resolve();
     }
 
-    setAut(result: SignInResultPayload): void {
+    public setAut(result: SignInResultPayload): void {
         this.jwtService.setToken(result.token);
         this.currentUserSubject.next(result.user);
         this.isAuthenticatedSubject.next(true);
     }
 
-    async populate() {
+    public async populate() {
         if (this.jwtService.getToken()) {
             try {
                 const result = await this.userService.getUser();
@@ -50,17 +50,17 @@ export class AuthenticationService {
         }
     }
 
-    getCurrentUser(): User {
+    public getCurrentUser(): User {
         return this.currentUserSubject.value;
     }
 
-    async signIn(userName: String, password: String) {
+    public async signIn(userName: String, password: String) {
         const result = await this.userService.authenticate(userName, password);
         this.setAut(result);
         return result;
     }
 
-    isAuth(): boolean {
+    public isAuth(): boolean {
         return this.jwtService.isTokenExpired();
     }
 }

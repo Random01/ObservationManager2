@@ -11,12 +11,10 @@ export interface DeleteEntityDialogOptions {
     message: string;
 }
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class DeleteEntityDialogService {
 
-    constructor(
-        private dialog: MatDialog) {
-    }
+    constructor(private dialog: MatDialog) { }
 
     public show(options: DeleteEntityDialogOptions): Promise<DeleteEntityDialogResult> {
         const dialogRef = this.dialog.open(DeleteEntityDialogComponent, {

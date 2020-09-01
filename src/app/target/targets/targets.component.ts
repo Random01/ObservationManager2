@@ -27,10 +27,10 @@ export class TargetsComponent extends EntityListComponent<Target> {
     ];
 
     constructor(
-        protected service: TargetService,
-        protected deleteEntityDialogService: DeleteEntityDialogService,
-        protected route: ActivatedRoute,
-        protected router: Router,
+        service: TargetService,
+        deleteEntityDialogService: DeleteEntityDialogService,
+        route: ActivatedRoute,
+        router: Router,
     ) {
         super(service, deleteEntityDialogService, route, router);
 
