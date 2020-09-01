@@ -31,11 +31,11 @@ import { MatTooltipModule, MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material
         MatTooltipModule,
         MatListModule,
         MatCheckboxModule,
-        MatExpansionModule
+        MatExpansionModule,
     ],
     providers: [
-        { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: 1000 }
-    ]
+        { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: 1000 },
+    ],
 })
 
 export class MaterialModule { }

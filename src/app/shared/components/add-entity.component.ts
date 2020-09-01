@@ -6,7 +6,9 @@ import { BaseEntityComponent } from './base-entity.component';
 
 export abstract class AddEntityComponent<T extends Entity> extends BaseEntityComponent<T> implements OnInit {
 
-    constructor(protected storageService: StorageService<T>) {
+    constructor(
+        protected storageService: StorageService<T>,
+    ) {
         super();
     }
 

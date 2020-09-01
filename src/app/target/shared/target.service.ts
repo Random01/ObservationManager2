@@ -21,8 +21,9 @@ interface SearchParams {
 export class TargetService extends StorageService<Target> {
 
     constructor(
-        protected http: HttpClient,
-        protected jwtService: JwtService) {
+        http: HttpClient,
+        jwtService: JwtService,
+    ) {
         super('/targets', http, jwtService);
     }
 

@@ -10,13 +10,13 @@ import { AddSiteDialogService } from '../add-site-dialog';
     templateUrl: '../../shared/components/entity-selector/entity-selector.component.html',
     styleUrls: [
         '../../shared/components/entity-selector/entity-selector.component.css'
-    ]
+    ],
 })
 export class SiteSelectorComponent extends EntitySelectorComponent<Site, SiteService> {
 
     constructor(
-        protected storageService: SiteService,
-        protected dialogService: AddSiteDialogService,
+        storageService: SiteService,
+        dialogService: AddSiteDialogService,
     ) {
         super(storageService, dialogService);
 

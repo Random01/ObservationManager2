@@ -3,10 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({ providedIn: 'root' })
 export class WebWorkerIntegration {
 
-    constructor() {
-    }
-
-    run(url: string, data: any): Promise<any> {
+    public run(url: string, data: any): Promise<any> {
         return new Promise((success, fail) => {
             if ((<any>window).Worker) {
                 const worker = new Worker(url);

@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-
 import { RouterModule } from '@angular/router';
 
 import { MaterialModule } from '../shared/material.module';
@@ -15,7 +14,7 @@ import { AddSiteComponent } from './add-site/add-site.component';
 import { SitesRoutingModule } from './sites-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { SiteSelectorComponent } from './site-selector';
-import { AddSiteDialogService, AddSiteDialogComponent } from './add-site-dialog';
+import { AddSiteDialogComponent } from './add-site-dialog';
 
 @NgModule({
     imports: [
@@ -25,7 +24,7 @@ import { AddSiteDialogService, AddSiteDialogComponent } from './add-site-dialog'
         RouterModule,
         SitesRoutingModule,
         SharedModule,
-        MaterialModule
+        MaterialModule,
     ],
     declarations: [
         SitesComponent,
@@ -33,16 +32,15 @@ import { AddSiteDialogService, AddSiteDialogComponent } from './add-site-dialog'
         EditSiteComponent,
         AddSiteComponent,
         AddSiteDialogComponent,
-        SiteSelectorComponent
+        SiteSelectorComponent,
     ],
     exports: [
-        SiteSelectorComponent
+        SiteSelectorComponent,
     ],
     providers: [
-        AddSiteDialogService
     ],
     entryComponents: [
-        AddSiteDialogComponent
+        AddSiteDialogComponent,
     ]
 })
 

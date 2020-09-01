@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { MatDialogRef } from '@angular/material/dialog';
+
 import { AddEntityDialogComponent } from '../../shared/components/add-entity-dialog.component';
 import { Site } from '../../shared/models/models';
 import { SiteService } from '../shared/site.service';
@@ -13,10 +14,12 @@ import { SiteService } from '../shared/site.service';
     ]
 })
 export class AddSiteDialogComponent extends AddEntityDialogComponent<Site, SiteService> {
+
     constructor(
-        protected storageService: SiteService,
-        protected dialogRef: MatDialogRef<AddSiteDialogComponent, Site>
+        storageService: SiteService,
+        dialogRef: MatDialogRef<AddSiteDialogComponent, Site>,
     ) {
         super(storageService, dialogRef);
     }
+
 }

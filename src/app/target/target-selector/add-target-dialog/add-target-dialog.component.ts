@@ -14,9 +14,10 @@ import { Target } from '../../../shared/models/models';
     ]
 })
 export class AddTargetDialogComponent extends AddEntityDialogComponent<Target, TargetService> {
+    
     constructor(
-        protected storageService: TargetService,
-        protected dialogRef: MatDialogRef<AddTargetDialogComponent, Target>
+        storageService: TargetService,
+        dialogRef: MatDialogRef<AddTargetDialogComponent, Target>,
     ) {
         super(storageService, dialogRef);
     }

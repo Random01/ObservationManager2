@@ -11,26 +11,26 @@ const sitesRoutes: Routes = [
   {
     path: 'sites',
     component: SitesComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
   },
   {
     path: 'sites/new-site',
     component: AddSiteComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
   },
   {
     path: 'sites/:id',
     component: EditSiteComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
   },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forChild(sitesRoutes)
+    RouterModule.forChild(sitesRoutes),
   ],
   exports: [
-    RouterModule
+    RouterModule,
   ]
 })
 export class SitesRoutingModule { }

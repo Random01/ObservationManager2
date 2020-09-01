@@ -6,17 +6,18 @@ import { Site } from '../../shared/models/models';
 import { AddNewEntityDialogService } from '../../shared/services/add-new-entity-dialog.service';
 import { AddSiteDialogComponent } from './add-site-dialog.component';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AddSiteDialogService extends AddNewEntityDialogService<Site> {
 
     constructor(
-        protected dialog: MatDialog) {
+        dialog: MatDialog,
+    ) {
         super(dialog);
     }
 
-    createDialog() {
+    protected createDialog() {
         return this.dialog.open(AddSiteDialogComponent, {
-            width: '300px'
+            width: '300px',
         });
     }
 

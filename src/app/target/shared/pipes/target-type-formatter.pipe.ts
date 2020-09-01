@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+
 import { TargetType } from '../../../shared/models/target-type.model';
 import { TargetTypeService } from '../target-type.service';
 
@@ -6,7 +7,7 @@ import { TargetTypeService } from '../target-type.service';
 export class TargetTypeFormatterPipe implements PipeTransform {
 
     constructor(
-        protected targetTypeService: TargetTypeService
+        protected readonly targetTypeService: TargetTypeService,
     ) {
     }
 

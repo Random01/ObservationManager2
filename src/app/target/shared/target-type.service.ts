@@ -18,7 +18,7 @@ export class TargetTypeService {
         [TargetType.DoubleStar]: 'Double Star',
         [TargetType.Asterism]: 'Asterism',
         [TargetType.Quasar]: 'Quasar',
-        [TargetType.UnspecifiedDeepSkyObject]: 'Unspecified Deep-Sky Object'
+        [TargetType.UnspecifiedDeepSkyObject]: 'Unspecified Deep-Sky Object',
     };
 
     public getName(type: TargetType): string {
@@ -39,7 +39,7 @@ export class TargetTypeService {
             TargetType.DoubleStar,
             TargetType.Asterism,
             TargetType.Quasar,
-            TargetType.UnspecifiedDeepSkyObject
+            TargetType.UnspecifiedDeepSkyObject,
         ];
     }
 

@@ -6,7 +6,7 @@ import { TargetSearchParams } from './target-search-params.model';
     templateUrl: './target-search-params.component.html',
     styleUrls: [
         './target-search-params.component.css'
-    ]
+    ],
 })
 export class TargetSearchParamsComponent {
 
