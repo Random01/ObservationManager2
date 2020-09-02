@@ -5,6 +5,7 @@ import { Lens } from '../../shared/models/equipment/equipment';
 import { LensService } from '../shared/lens.service';
 import { EntityListComponent } from '../../shared/components/entity-list.component';
 import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
+import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
     selector: 'om-lenses',
@@ -25,8 +26,9 @@ export class LensesComponent extends EntityListComponent<Lens> {
         deleteEntityDialogService: DeleteEntityDialogService,
         route: ActivatedRoute,
         router: Router,
+        appContext: AppContextService,
     ) {
-        super(lensService, deleteEntityDialogService, route, router);
+        super(lensService, deleteEntityDialogService, route, router, appContext);
     }
 
 }

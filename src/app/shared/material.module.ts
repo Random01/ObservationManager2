@@ -15,8 +15,12 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule, MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
+    imports:[
+        MatSnackBarModule,
+    ],
     exports: [
         MatButtonModule,
         MatInputModule,
@@ -32,6 +36,7 @@ import { MatTooltipModule, MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material
         MatListModule,
         MatCheckboxModule,
         MatExpansionModule,
+        MatSnackBarModule,
     ],
     providers: [
         { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: 1000 },

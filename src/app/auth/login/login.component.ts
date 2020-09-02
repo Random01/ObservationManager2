@@ -6,6 +6,7 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 
 import { AuthenticationService } from '../shared';
 import { BaseComponent } from '../../shared/components';
+import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
     selector: 'om-login',
@@ -23,8 +24,9 @@ export class LoginComponent extends BaseComponent {
     constructor(
         private router: Router,
         private authenticationService: AuthenticationService,
+        appContext: AppContextService,
     ) {
-        super();
+        super(appContext);
     }
 
     public onSubmit() {

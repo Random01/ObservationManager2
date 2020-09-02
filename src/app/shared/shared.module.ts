@@ -9,6 +9,7 @@ import { DateTimeInputComponent } from './components/date-time-input/date-time-i
 import { DeleteEntityDialogComponent } from './components/delete-entity-dialog/delete-entity-dialog.component';
 import { DegreesFormatter } from './models/pipes/degrees-formatter.pipe';
 import { EyepieceFocalLengthPipe } from './models/pipes/eyepiece-focal-length-formatter.pipe';
+import { MessageService } from './services/message.service';
 
 @NgModule({
     imports: [
@@ -36,6 +37,7 @@ import { EyepieceFocalLengthPipe } from './models/pipes/eyepiece-focal-length-fo
     ],
     providers: [
         DecimalPipe,
+        MessageService,
     ]
 })
 

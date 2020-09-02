@@ -3,27 +3,31 @@ import { OnInit } from '@angular/core';
 import { BaseComponent } from './base-component';
 import { StorageService } from '../services/storage.service';
 import { Entity } from '../models/entity.model';
+import { AppContextService } from '../services/app-context.service';
 
 export abstract class EntityComponent<T extends Entity> extends BaseComponent implements OnInit {
 
-    selectedItem: T;
-    items: T[];
+    public selectedItem: T;
+    public items: T[];
 
-    constructor(protected storageService: StorageService<T>) {
-        super();
+    constructor(
+        protected storageService: StorageService<T>,
+        appContext: AppContextService,
+    ) {
+        super(appContext);
     }
 
-    loadAllItems(): void {
+    public loadAllItems(): void {
         this.storageService
             .getAll()
             .then(x => this.items = x);
     }
 
-    createNew(): void {
+    public createNew(): void {
         this.selectedItem = this.storageService.createNew();
     }
 
-    addNewItem(): void {
+    public addNewItem(): void {
         if (this.selectedItem != null) {
             this.isLoading = true;
             this.storageService.add(this.selectedItem).then(() => {
@@ -32,7 +36,7 @@ export abstract class EntityComponent<T extends Entity> extends BaseComponent im
         }
     }
 
-    updateItem(): void {
+    public updateItem(): void {
         if (this.selectedItem != null && this.selectedItem.isValid()) {
             this.isLoading = true;
             this.storageService.update(this.selectedItem).then(() => {
@@ -41,15 +45,15 @@ export abstract class EntityComponent<T extends Entity> extends BaseComponent im
         }
     }
 
-    onSelect(item: T) {
+    public onSelect(item: T) {
         this.selectedItem = item;
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.loadAllItems();
     }
 
-    removeItem(item: any): void {
+    public removeItem(item: any): void {
         this.storageService.delete(item._id).then();
     }
 

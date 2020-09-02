@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Target } from '../../shared/models/target.model';
 import { TargetService } from '../shared/target.service';
-
 import { EntityListComponent } from '../../shared/components/entity-list.component';
 import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
 import { TargetSearchParams } from '../target-search-params/target-search-params.model';
 import { RequestParams } from '../../shared/services/request-params.model';
-import { ActivatedRoute, Router } from '@angular/router';
+import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
     selector: 'om-targets',
@@ -16,9 +16,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class TargetsComponent extends EntityListComponent<Target> {
 
-    searchParams: TargetSearchParams;
+    public searchParams: TargetSearchParams;
 
-    displayedColumns: string[] = [
+    public displayedColumns: string[] = [
         'name',
         'type',
         'constellation',
@@ -31,8 +31,9 @@ export class TargetsComponent extends EntityListComponent<Target> {
         deleteEntityDialogService: DeleteEntityDialogService,
         route: ActivatedRoute,
         router: Router,
+        appContext: AppContextService,
     ) {
-        super(service, deleteEntityDialogService, route, router);
+        super(service, deleteEntityDialogService, route, router, appContext);
 
         this.searchParams = new TargetSearchParams();
     }

@@ -9,14 +9,14 @@ import { AddFilterDialogService } from '../add-filter-dialog';
     selector: 'om-filter-selector',
     templateUrl: '../../shared/components/entity-selector/entity-selector.component.html',
     styleUrls: [
-        '../../shared/components/entity-selector/entity-selector.component.css'
-    ]
+        '../../shared/components/entity-selector/entity-selector.component.css',
+    ],
 })
 export class FilterSelectorComponent extends EntitySelectorComponent<Filter, FilterService> {
 
     constructor(
         protected filterService: FilterService,
-        protected addFilterService: AddFilterDialogService
+        protected addFilterService: AddFilterDialogService,
     ) {
         super(filterService, addFilterService);
 

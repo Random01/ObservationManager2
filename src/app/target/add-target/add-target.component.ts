@@ -6,6 +6,7 @@ import { AddEntityComponent } from '../../shared/components/add-entity.component
 
 import { Target } from '../../shared/models/models';
 import { TargetService } from '../shared/target.service';
+import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
     selector: 'om-add-target',
@@ -14,10 +15,11 @@ import { TargetService } from '../shared/target.service';
 export class AddTargetComponent extends AddEntityComponent<Target> {
 
     constructor(
-        private router: Router,
+        private readonly router: Router,
         service: TargetService,
+        appContext: AppContextService,
     ) {
-        super(service);
+        super(service, appContext);
     }
 
     goBack() {

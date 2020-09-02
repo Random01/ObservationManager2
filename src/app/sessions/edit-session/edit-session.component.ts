@@ -6,29 +6,32 @@ import { EditEntityComponent } from '../../shared/components/edit-entity.compone
 
 import { SessionService } from '../shared/session.service';
 import { Session } from '../../shared/models/models';
+import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
     selector: 'om-edit-session',
-    templateUrl: './edit-session.component.html'
+    templateUrl: './edit-session.component.html',
 })
 export class EditSessionComponent extends EditEntityComponent<Session> {
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        service: SessionService) {
-        super(service);
+        service: SessionService,
+        appContext: AppContextService,
+    ) {
+        super(service, appContext);
     }
 
     getItemId(): string {
         return this.route.snapshot.paramMap.get('sessionId');
     }
 
-    goBack() {
+    public goBack() {
         this.router.navigate(['/sessions']);
     }
 
-    showObservations() {
+    public showObservations() {
         this.router.navigate([`/sessions/${this.getItemId()}/observations`]);
     }
 }

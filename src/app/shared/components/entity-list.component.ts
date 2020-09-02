@@ -1,22 +1,24 @@
 import { OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { saveAs } from 'file-saver';
 
 import { Entity } from '../models/models';
 import { StorageService } from '../services/storage.service';
 import { DeleteEntityDialogService } from './delete-entity-dialog/delete-entity-dialog.service';
 import { PaginatedListComponent } from './paginated-list.component';
-import { ActivatedRoute, Router } from '@angular/router';
-
-import { saveAs } from 'file-saver';
+import { AppContextService } from '../services/app-context.service';
 
 export abstract class EntityListComponent<T extends Entity> extends PaginatedListComponent<T> implements OnInit {
 
     constructor(
         protected storageService: StorageService<T>,
         protected deleteEntityDialogService: DeleteEntityDialogService,
-        protected route: ActivatedRoute,
-        protected router: Router,
+        route: ActivatedRoute,
+        router: Router,
+        appContext: AppContextService,
     ) {
-        super(route, router);
+        super(route, router, appContext);
     }
 
     async loadItems(): Promise<void> {

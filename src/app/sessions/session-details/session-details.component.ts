@@ -13,6 +13,7 @@ import { Target } from '../../shared/models/models';
 import { BaseComponent } from '../../shared/components/base-component';
 import { ObservationService } from '../../observations/shared/observation.service';
 import { Eyepiece, Scope, Filter } from '../../shared/models/equipment/equipment';
+import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
     selector: 'om-session-details',
@@ -21,18 +22,18 @@ import { Eyepiece, Scope, Filter } from '../../shared/models/equipment/equipment
 })
 export class SessionDetailsComponent extends BaseComponent implements OnInit {
 
-    session: Session;
-    editMode: Boolean;
+    public session: Session;
+    public editMode: Boolean;
 
     constructor(
         private route: ActivatedRoute,
         private sessionService: SessionService,
         private dialog: MatDialog,
         private observationService: ObservationService,
+        appContext: AppContextService,
     ) {
-        super();
+        super(appContext);
     }
-
 
     create(): void {
         this.startLoading();
@@ -74,7 +75,7 @@ export class SessionDetailsComponent extends BaseComponent implements OnInit {
                 target: new Target(),
                 scope: new Scope(),
                 filter: new Filter(),
-                eyepiece: new Eyepiece()
+                eyepiece: new Eyepiece(),
             })
         });
 

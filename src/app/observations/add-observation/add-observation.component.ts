@@ -7,6 +7,7 @@ import { ObservationService } from '../shared/observation.service';
 
 import { AddEntityComponent } from '../../shared/components/add-entity.component';
 import { SessionService } from '../../sessions/shared/session.service';
+import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
     selector: 'om-add-observation',
@@ -18,8 +19,9 @@ export class AddObservationComponent extends AddEntityComponent<Observation> {
         private router: Router,
         observationService: ObservationService,
         private sessionService: SessionService,
+        appContext: AppContextService,
     ) {
-        super(observationService);
+        super(observationService, appContext);
     }
 
     getSessionId(): string {

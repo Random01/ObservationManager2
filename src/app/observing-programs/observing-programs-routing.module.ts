@@ -12,31 +12,31 @@ const routes: Routes = [
     {
         path: 'observing-programs/new-observing-program',
         component: AddObservingProgramComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
     },
     {
         path: 'observing-programs/:programId',
         component: EditObservingProgramComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
     },
     {
         path: 'observing-programs',
         component: ObservingProgramsComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
     },
     {
         path: 'observing-programs/statistics/:programId',
         component: ObservingProgramStatisticsComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
     }
 ];
 
 @NgModule({
     imports: [
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
     ],
     exports: [
-        RouterModule
+        RouterModule,
     ]
 })
 export class ObservingProgramsRoutingModule { }

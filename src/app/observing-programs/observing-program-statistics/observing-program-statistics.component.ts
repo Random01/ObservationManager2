@@ -1,34 +1,37 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+
 import { ObservingProgramsService } from '../shared/observing-programs.service';
 import { PaginatedListComponent } from '../../shared/components/paginated-list.component';
 import { RequestParams } from '../../shared/services/request-params.model';
-import { Router, ActivatedRoute } from '@angular/router';
 import { TargetStatistics } from '../shared/target-statistics.model';
 import { ObservingProgramStatisticsRequestParams } from '../shared/observing-program-satistics-request-params.model';
 import ObservingProgramStatistics from '../shared/observing-program-statistics.model';
+import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
     selector: 'om-observing-program-statistics',
     templateUrl: './observing-program-statistics.component.html',
-    styleUrls: ['./observing-program-statistics.component.css']
+    styleUrls: ['./observing-program-statistics.component.css'],
 })
 export class ObservingProgramStatisticsComponent extends PaginatedListComponent<TargetStatistics> implements OnInit {
 
-    displayedColumns: string[] = [
+    public displayedColumns: string[] = [
         'name',
         'type',
         'constellation',
         'observed',
     ];
 
-    observingProgramStatistics: ObservingProgramStatistics;
+    public observingProgramStatistics: ObservingProgramStatistics;
 
     constructor(
-        protected route: ActivatedRoute,
-        protected router: Router,
+        route: ActivatedRoute,
+        router: Router,
         protected observingProgramService: ObservingProgramsService,
+        appContext: AppContextService,
     ) {
-        super(route, router);
+        super(route, router, appContext);
     }
 
     protected getRequestParams(): RequestParams {

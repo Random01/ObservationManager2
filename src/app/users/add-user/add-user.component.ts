@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AddEntityComponent } from '../../shared/components/add-entity.component';
 import { User } from '../../shared/models/user.model';
 import { UserService } from '../shared/user.service';
+import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
     selector: 'om-add-user',
@@ -15,8 +16,9 @@ export class AddUserComponent extends AddEntityComponent<User> {
     constructor(
         private router: Router,
         service: UserService,
+        appContext: AppContextService,
     ) {
-        super(service);
+        super(service, appContext);
     }
 
     goBack() {

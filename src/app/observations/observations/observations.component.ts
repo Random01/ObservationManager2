@@ -7,12 +7,13 @@ import { EntityListComponent } from '../../shared/components/entity-list.compone
 import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
 import ObservationSearchParameters from '../observation-search/observation-search-parameters.model';
 import { RequestParams } from '../../shared/services/request-params.model';
+import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
     selector: 'om-observations',
     templateUrl: './observations.component.html',
     styleUrls: [
-        './observations.component.css'
+        './observations.component.css',
     ]
 })
 export class ObservationsComponent extends EntityListComponent<Observation> {
@@ -33,8 +34,9 @@ export class ObservationsComponent extends EntityListComponent<Observation> {
         deleteEntityDialogService: DeleteEntityDialogService,
         route: ActivatedRoute,
         router: Router,
+        appContext: AppContextService,
     ) {
-        super(observationService, deleteEntityDialogService, route, router);
+        super(observationService, deleteEntityDialogService, route, router, appContext);
 
         this.searchParameters = new ObservationSearchParameters();
     }

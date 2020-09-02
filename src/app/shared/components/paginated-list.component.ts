@@ -9,6 +9,7 @@ import { RequestParams } from '../services/request-params.model';
 
 import PageChangedEvent from '../interfaces/page-change-event.interface';
 import PaginatedListQueryParams from '../interfaces/paginated-list-query-params.interface';
+import { AppContextService } from '../services/app-context.service';
 
 export abstract class PaginatedListComponent<T> extends BaseComponent implements OnInit, OnDestroy {
 
@@ -24,9 +25,10 @@ export abstract class PaginatedListComponent<T> extends BaseComponent implements
 
     constructor(
         protected readonly route: ActivatedRoute,
-        protected readonly router: Router
+        protected readonly router: Router,
+        appContext: AppContextService,
     ) {
-        super();
+        super(appContext);
     }
 
     protected getRequestParams(): RequestParams {

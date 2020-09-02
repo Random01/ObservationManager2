@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EditEntityComponent } from '../../shared/components/edit-entity.component';
 import { Observation } from '../../shared/models/models';
 import { ObservationService } from '../shared/observation.service';
+import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
     selector: 'om-edit-observation',
@@ -16,8 +17,9 @@ export class EditObservationComponent extends EditEntityComponent<Observation> {
         private route: ActivatedRoute,
         private router: Router,
         service: ObservationService,
+        appContext: AppContextService,
     ) {
-        super(service);
+        super(service, appContext);
     }
 
     public getItemId(): string {

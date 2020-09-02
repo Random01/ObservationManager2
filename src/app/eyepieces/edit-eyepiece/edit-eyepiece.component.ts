@@ -6,18 +6,21 @@ import { EditEntityComponent } from '../../shared/components/edit-entity.compone
 
 import { Eyepiece } from '../../shared/models/equipment/equipment';
 import { EyepieceService } from '../shared/eyepiece.service';
+import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
     selector: 'om-edit-eyepiece',
-    templateUrl: './edit-eyepiece.component.html'
+    templateUrl: './edit-eyepiece.component.html',
 })
 export class EditEyepieceComponent extends EditEntityComponent<Eyepiece> {
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        eyepiece: EyepieceService) {
-        super(eyepiece);
+        eyepiece: EyepieceService,
+        appContext: AppContextService,
+    ) {
+        super(eyepiece, appContext);
     }
 
     getItemId(): string {

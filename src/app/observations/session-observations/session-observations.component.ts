@@ -9,18 +9,19 @@ import { EntityListComponent } from '../../shared/components/entity-list.compone
 import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
 import { ObservationSearchParams } from '../shared/observation-search-params.model';
 import { RequestParams } from '../../shared/services/request-params.model';
+import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
     selector: 'om-session-observations',
     templateUrl: './session-observations.component.html',
     styleUrls: [
         './session-observations.component.css'
-    ]
+    ],
 })
 export class SessionObservationsComponent extends EntityListComponent<Observation> {
 
-    items: Observation[];
-    session: Session;
+    public items: Observation[];
+    public session: Session;
 
     displayedColumns: string[] = [
         'date',
@@ -38,8 +39,9 @@ export class SessionObservationsComponent extends EntityListComponent<Observatio
         observationService: ObservationService,
         protected sessionService: SessionService,
         deleteEntityDialogService: DeleteEntityDialogService,
+        appContext: AppContextService,
     ) {
-        super(observationService, deleteEntityDialogService, route, router);
+        super(observationService, deleteEntityDialogService, route, router, appContext);
     }
 
     protected getRequestParams(): RequestParams {
@@ -71,7 +73,7 @@ export class SessionObservationsComponent extends EntityListComponent<Observatio
             'sessions',
             this.getSessionId(),
             'observations',
-            'new-observation'
+            'new-observation',
         ]);
     }
 

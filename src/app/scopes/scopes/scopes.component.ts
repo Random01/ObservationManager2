@@ -6,15 +6,16 @@ import { Scope } from '../../shared/models/equipment/scope.model';
 import { ScopeService } from '../shared/scope.service';
 import { EntityListComponent } from '../../shared/components/entity-list.component';
 import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
+import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
     selector: 'om-scopes',
     templateUrl: './scopes.component.html',
-    styleUrls: ['./scopes.component.css']
+    styleUrls: ['./scopes.component.css'],
 })
 export class ScopesComponent extends EntityListComponent<Scope> {
 
-    displayedColumns: string[] = [
+    public displayedColumns: string[] = [
         'model',
         'aperture',
         'focalLength',
@@ -23,12 +24,13 @@ export class ScopesComponent extends EntityListComponent<Scope> {
     ];
 
     constructor(
-        protected service: ScopeService,
-        protected deleteEntityDialogService: DeleteEntityDialogService,
-        protected route: ActivatedRoute,
-        protected router: Router,
+        service: ScopeService,
+        deleteEntityDialogService: DeleteEntityDialogService,
+        route: ActivatedRoute,
+        router: Router,
+        appContext: AppContextService,
     ) {
-        super(service, deleteEntityDialogService, route, router);
+        super(service, deleteEntityDialogService, route, router, appContext);
     }
 
 }
