@@ -24,6 +24,10 @@ export abstract class AddEntityDialogComponent<T extends Entity, S extends Stora
         this.dialogRef.close();
     }
 
+    public isValid() {
+        return !!this.item?.isValid();
+    }
+
     ngOnInit(): void {
         this.item = this.storageService.createNew();
     }

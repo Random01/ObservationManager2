@@ -19,6 +19,7 @@ export abstract class AddEntityComponent<T extends Entity> extends BaseEntityCom
 
         try {
             await this.storageService.add(this.item);
+            this.showSuccessMessage();
             this.goBack();
         } catch (error) {
             this.handleError(error);
@@ -32,6 +33,7 @@ export abstract class AddEntityComponent<T extends Entity> extends BaseEntityCom
 
         try {
             await this.storageService.add(this.item);
+            this.showSuccessMessage();
             this.item = await this.createNew();
         } catch (error) {
             this.handleError(error);
@@ -47,7 +49,7 @@ export abstract class AddEntityComponent<T extends Entity> extends BaseEntityCom
     public abstract goBack(): void;
 
     public isValid(): boolean {
-        return this.item != null && this.item.isValid();
+        return !!this.item?.isValid();
     }
 
     public async ngOnInit() {
@@ -60,6 +62,14 @@ export abstract class AddEntityComponent<T extends Entity> extends BaseEntityCom
         } finally {
             this.endLoading();
         }
+    }
+
+    protected getSuccessMessage() {
+        return 'A new item has been added';
+    }
+
+    protected showSuccessMessage() {
+        this.appContext.messageService.info(this.getSuccessMessage());
     }
 
 }

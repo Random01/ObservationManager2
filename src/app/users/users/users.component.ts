@@ -15,7 +15,7 @@ export class UsersComponent extends EntityListComponent<User> {
 
     public displayedColumns = [
         'name',
-        'actions'
+        'actions',
     ];
 
     constructor(

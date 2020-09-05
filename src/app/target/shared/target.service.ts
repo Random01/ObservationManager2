@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-
 import { HttpClient } from '@angular/common/http';
+
+import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { Target } from '../../shared/models/target.model';
 import { StorageService } from '../../shared/services/storage.service';
-import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { JwtService } from '../../auth/shared/jwt.service';
 import { TargetType } from '../../shared/models/target-type.model';
 import { GalaxyTarget } from '../../shared/models/target-types/deep-sky/galaxy-target.model';
@@ -31,16 +31,16 @@ export class TargetService extends StorageService<Target> {
         return new Target(params);
     }
 
-    public search(searchParams: SearchParams): Observable<Target[]> {
-        if (searchParams.name.trim() === '') {
+    public search({ name, maxCount }: SearchParams): Observable<Target[]> {
+        name = (name || '').trim();
+        if (name === '') {
             return of([]);
         }
 
-        const url = `${this.getUrl()}?name=${searchParams.name}&maxCount=${searchParams.maxCount}`;
-
+        const url = `${this.getUrl()}?name=${name}&maxCount=${maxCount}`;
         return this.http.get<Target[]>(url)
             .pipe(
-                map((targets) => targets.map(item => this.deserialize(item)))
+                map(targets => targets.map(item => this.deserialize(item)))
             );
     }
 

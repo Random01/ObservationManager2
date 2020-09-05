@@ -26,36 +26,36 @@ export class TargetSelectorComponent implements OnInit {
     private _target: Target;
 
     @Input()
-    set target(target: Target) {
+    public set target(target: Target) {
         if (this._target !== target) {
             this._target = target;
             this.searhControl.setValue(this._target);
         }
     }
 
-    get target(): Target {
+    public get target(): Target {
         return this._target;
     }
 
     @Output()
-    targetChange: EventEmitter<Target> = new EventEmitter();
+    public readonly targetChange = new EventEmitter<Target>();
 
-    targets$: Observable<Target[]>;
+    public targets$: Observable<Target[]>;
 
-    searhControl: FormControl = new FormControl();
+    public readonly searhControl = new FormControl();
 
     @Input()
     canAdd: boolean;
 
-    private searchTerms = new Subject<string>();
+    private readonly searchTerms = new Subject<string>();
 
     constructor(
         private targetService: TargetService,
         private dialogService: AddTargetDialogService,
     ) { }
 
-    displayFn(target?: Target): string | undefined {
-        return target ? target.name : undefined;
+    public displayFn(target: Target): string {
+        return target?.name;
     }
 
     search(term: string): void {
@@ -66,26 +66,26 @@ export class TargetSelectorComponent implements OnInit {
         this.targets$ = this.searchTerms.pipe(
             debounceTime(300),
             distinctUntilChanged(),
-            switchMap((term: string) => this.targetService.search({
+            switchMap(term => this.targetService.search({
                 name: term || '',
-                maxCount: 10
+                maxCount: 10,
             }))
         );
     }
 
-    onTargetSelected(target?: Target) {
+    onTargetSelected(target: Target) {
         if (this.target !== target) {
             this.target = target;
             this.targetChange.emit(target);
         }
     }
 
-    clearSelection() {
+    public clearSelection() {
         this.onTargetSelected(new Target());
     }
 
-    openDialog() {
-        this.dialogService.openDialog().then((result) => {
+    public openDialog() {
+        this.dialogService.openDialog().then(result => {
             if (result) {
                 this.onTargetSelected(result);
             }

@@ -9,17 +9,17 @@ import { AuthGuardService } from '../auth/shared/auth-guard.service';
 const routes: Routes = [
     {
         path: 'users',
-        component: UsersComponent
+        component: UsersComponent,
     },
     {
         path: 'users/new-user',
         component: AddUserComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
     },
     {
         path: 'users/profile',
         component: UserProfileComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
     }
 ];
 
@@ -28,7 +28,7 @@ const routes: Routes = [
         RouterModule.forChild(routes)
     ],
     exports: [
-        RouterModule
+        RouterModule,
     ]
 })
 export class UsersRoutingModule { }

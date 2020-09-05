@@ -11,7 +11,7 @@ import { Target } from '../../../shared/models/models';
     templateUrl: './add-target-dialog.component.html',
     styleUrls: [
         './add-target-dialog.component.css'
-    ]
+    ],
 })
 export class AddTargetDialogComponent extends AddEntityDialogComponent<Target, TargetService> {
     

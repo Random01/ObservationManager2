@@ -13,15 +13,15 @@ import { AppContextService } from '../services/app-context.service';
 
 export abstract class PaginatedListComponent<T> extends BaseComponent implements OnInit, OnDestroy {
 
-    items: T[];
-    currentPage = 0;
-    pageSize = 10;
-    pageSizeOptions = [5, 10];
-    totalCount = 0;
-    sortField?: string;
-    sortDirection?: SortOrder;
+    public items: T[];
+    public currentPage = 0;
+    public pageSize = 10;
+    public pageSizeOptions = [5, 10];
+    public totalCount = 0;
+    public sortField?: string;
+    public sortDirection?: SortOrder;
 
-    queryParamsSubscription: Subscription;
+    public queryParamsSubscription: Subscription;
 
     constructor(
         protected readonly route: ActivatedRoute,
