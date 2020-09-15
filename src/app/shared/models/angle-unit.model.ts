@@ -19,5 +19,5 @@ export class AngleType {
         AngleType.Arcmin,
         AngleType.Deg,
         AngleType.Rad
-    ]
+    ];
 }

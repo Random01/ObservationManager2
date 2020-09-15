@@ -20,7 +20,7 @@ export class DateTimeInputComponent {
         return this._date;
     }
 
-    @Input('dateTime')
+    @Input()
     set dateTime(value: Date) {
         this._date = value;
     }

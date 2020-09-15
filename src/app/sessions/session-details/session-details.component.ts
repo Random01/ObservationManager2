@@ -85,7 +85,7 @@ export class SessionDetailsComponent extends BaseComponent implements OnInit {
             try {
                 await this.observationService.add(result);
             } finally {
-                this.endLoading()
+                this.endLoading();
             }
         }
     }

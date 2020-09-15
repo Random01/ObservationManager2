@@ -1,4 +1,4 @@
 export const environment = {
-  production: true,
-  omServiceEndpoint: '../api'
+    production: true,
+    omServiceEndpoint: '../api'
 };

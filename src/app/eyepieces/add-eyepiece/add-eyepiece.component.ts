@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { Router } from '@angular/router';
 
 import { EyepieceService } from '../shared/eyepiece.service';
@@ -12,7 +11,7 @@ import { AppContextService } from '../../shared/services/app-context.service';
     templateUrl: './add-eyepiece.component.html',
 })
 export class AddEyepieceComponent extends AddEntityComponent<Eyepiece> {
-    
+
     constructor(
         private readonly router: Router,
         eyepieceService: EyepieceService,

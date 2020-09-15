@@ -11,7 +11,7 @@ import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
     selector: 'om-add-observation',
-    templateUrl: './add-observation.component.html'
+    templateUrl: './add-observation.component.html',
 })
 export class AddObservationComponent extends AddEntityComponent<Observation> {
     constructor(

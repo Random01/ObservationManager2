@@ -18,7 +18,7 @@ import { MatTooltipModule, MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
-    imports:[
+    imports: [
         MatSnackBarModule,
     ],
     exports: [

@@ -14,8 +14,8 @@ export class RequestParams {
         Object.assign(this, { ...props });
     }
 
-    protected getQueryParams(): { name: string, value: any }[] {
-        const params: { name: string, value: any }[] = [];
+    protected getQueryParams(): { name: string; value: any }[] {
+        const params: { name: string; value: any }[] = [];
 
         params.push({ name: 'page', value: this.page });
         params.push({ name: 'size', value: this.size });

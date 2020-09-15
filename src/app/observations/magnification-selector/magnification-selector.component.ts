@@ -12,7 +12,7 @@ import {
 })
 export class MagnificationSelectorComponent {
 
-    //#region [Eyepiece]
+    // #region [Eyepiece]
 
     private _eyepiece: Eyepiece;
 
@@ -30,9 +30,9 @@ export class MagnificationSelectorComponent {
         this.updateMagnification();
     }
 
-    //#endregion
+    // #endregion
 
-    //#region [Magnification]
+    // #region [Magnification]
 
     private _magnification: number;
 
@@ -48,9 +48,9 @@ export class MagnificationSelectorComponent {
     @Output()
     public magnificationChange: EventEmitter<number> = new EventEmitter();
 
-    //#endregion
+    // #endregion
 
-    //#region [Scope]
+    // #region [Scope]
 
     private _scope: Scope;
 
@@ -64,7 +64,7 @@ export class MagnificationSelectorComponent {
         this.updateMagnification();
     }
 
-    //#endregion
+    // #endregion
 
     @Input()
     lens: Lens;

@@ -56,47 +56,47 @@ import { UserProfileMenuComponent } from './main/userProfileMenu/user-profile-me
 import { ObservingProgramsModule } from './observing-programs/observing-programs.module';
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    FormsModule,
-    AppRoutingModule,
-    ScopesModule,
-    SessionsModule,
-    MatButtonModule,
-    MatNativeDateModule,
-    MatInputModule,
-    MatDatepickerModule,
-    TargetModule,
-    ObservationsModule,
-    SiteModule,
-    EyepieceModule,
-    FilterModule,
-    HttpClientModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatListModule,
-    MatTableModule,
-    UsersModule,
-    LensesModule,
-    EquipmentModule,
-    AuthModule,
-    MatIconModule,
-    MatMenuModule,
-    ObservingProgramsModule
-  ],
-  declarations: [
-    AppComponent,
-    UserProfileMenuComponent
-  ],
-  exports: [
-    MatButtonModule,
-    MatNativeDateModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatIconModule,
-    MatTableModule
-  ],
-  bootstrap: [AppComponent]
+    imports: [
+        BrowserModule,
+        FormsModule,
+        AppRoutingModule,
+        ScopesModule,
+        SessionsModule,
+        MatButtonModule,
+        MatNativeDateModule,
+        MatInputModule,
+        MatDatepickerModule,
+        TargetModule,
+        ObservationsModule,
+        SiteModule,
+        EyepieceModule,
+        FilterModule,
+        HttpClientModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatListModule,
+        MatTableModule,
+        UsersModule,
+        LensesModule,
+        EquipmentModule,
+        AuthModule,
+        MatIconModule,
+        MatMenuModule,
+        ObservingProgramsModule
+    ],
+    declarations: [
+        AppComponent,
+        UserProfileMenuComponent
+    ],
+    exports: [
+        MatButtonModule,
+        MatNativeDateModule,
+        MatInputModule,
+        MatDatepickerModule,
+        MatIconModule,
+        MatTableModule
+    ],
+    bootstrap: [AppComponent]
 })
 
 export class AppModule { }

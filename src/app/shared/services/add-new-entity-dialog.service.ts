@@ -16,7 +16,7 @@ export abstract class AddNewEntityDialogService<T extends Entity> {
                 .afterClosed()
                 .subscribe((result: T) => {
                     subscription.unsubscribe();
-                    
+
                     if (result) {
                         success(result);
                     } else {

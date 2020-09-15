@@ -1,6 +1,7 @@
+import { Injectable } from '@angular/core';
+
 import { TargetType } from '../../shared/models/target-type.model';
 import { TargetTypeItem } from './interfaces/target-search-params.interface';
-import { Injectable } from "@angular/core";
 
 @Injectable({ providedIn: 'root' })
 export class TargetTypeService {

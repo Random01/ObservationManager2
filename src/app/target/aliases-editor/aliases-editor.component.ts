@@ -38,7 +38,7 @@ export class AliasesEditorComponent {
     }
 
     public removeAlias(alias: string): void {
-        this.aliasRemoved.emit(alias)
+        this.aliasRemoved.emit(alias);
         this.validate();
     }
 

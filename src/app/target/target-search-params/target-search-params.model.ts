@@ -12,7 +12,7 @@ export class TargetSearchParams extends RequestParams {
         Object.assign(this, props);
     }
 
-    protected getQueryParams(): { name: string, value: any }[] {
+    protected getQueryParams(): { name: string; value: any }[] {
         const params = super.getQueryParams();
 
         params.push({ name: 'name', value: this.name });

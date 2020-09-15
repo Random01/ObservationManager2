@@ -12,7 +12,7 @@ import { AppContextService } from '../../shared/services/app-context.service';
     templateUrl: './add-filter.component.html',
 })
 export class AddFilterComponent extends AddEntityComponent<Filter> {
-    
+
     constructor(
         private router: Router,
         service: FilterService,

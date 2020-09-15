@@ -8,7 +8,7 @@ import { Target } from '../../shared/models/target.model';
     styleUrls: ['./target.component.css'],
 })
 export class TargetComponent {
-    
+
     @Input() target: Target;
 
     public onAliasAdded(alias: string) {

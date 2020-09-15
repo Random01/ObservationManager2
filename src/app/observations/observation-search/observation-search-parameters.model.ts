@@ -37,7 +37,7 @@ export default class ObservationSearchParameters extends RequestParams {
         this.filter = new Filter();
     }
 
-    protected getQueryParams(): { name: string, value: any }[] {
+    protected getQueryParams(): { name: string; value: any }[] {
         const params = super.getQueryParams();
 
         params.push({ name: 'scope', value: this.scope.id });
