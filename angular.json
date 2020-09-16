@@ -71,12 +71,6 @@
             }
           }
         },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "om-manager:build"
-          }
-        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -91,34 +85,6 @@
             "assets": [
               "src/favicon.ico",
               "src/assets"
-            ]
-          }
-        }
-      }
-    },
-    "om-manager-e2e": {
-      "root": "e2e/",
-      "projectType": "application",
-      "prefix": "",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "om-manager:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "om-manager:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
             ]
           }
         }
