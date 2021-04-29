@@ -1,4 +1,4 @@
-const Entity = require('./entity');
+const Entity = require('./entity.model');
 
 class EquipmentItem extends Entity {
 

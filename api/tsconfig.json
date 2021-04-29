@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "target": "es5",
+    "outDir": "dist",
+    "baseUrl": ".",
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "downlevelIteration": true,
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      ":authentication*": ["./authentication*"],
+      ":authentication": ["./authentication/index.ts"],
+
+      ":common*": ["./common*"],
+
+      ":config*": ["./config*"],
+      ":config": ["./config/index.ts"],
+
+      ":data*": ["./data*"],
+      ":data": ["./data/index.ts"],
+
+      ":routers*": ["./routers*"]
+    }
+  }
+}
