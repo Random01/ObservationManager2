@@ -15,3 +15,4 @@ _temp
 /.vscode
 /dist
 /api/public
+/api/dist
