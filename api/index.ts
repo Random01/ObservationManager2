@@ -1,8 +1,6 @@
 import express from 'express';
 import session from 'express-session';
 
-import bodyParser from 'body-parser';
-
 import mongoose from 'mongoose';
 
 import passport from './config/passport';
@@ -15,8 +13,8 @@ const PORT = process.env.PORT || 3001;
 
 app.use(express.static(__dirname + '/public'));
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use(session({
     secret: 'conduit',
