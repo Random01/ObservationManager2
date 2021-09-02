@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start_app": "ng serve",
-    "start_server": "cd api && npm run start",
+    "start_server": "cd api && npm run start:watch",
     "start": "concurrently --kill-others \"npm run start_app\" \"npm run start_server\"",
     "build": "ng build --prod",
     "test": "ng test",

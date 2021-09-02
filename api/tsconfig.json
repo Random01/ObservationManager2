@@ -1,13 +1,15 @@
 {
   "compilerOptions": {
     "esModuleInterop": true,
-    "target": "es5",
+    "target": "ES6",
     "outDir": "dist",
     "baseUrl": ".",
     "noUnusedLocals": true,
     "noUnusedParameters": false,
     "downlevelIteration": true,
     "forceConsistentCasingInFileNames": true,
+    "module": "CommonJS",
+    "moduleResolution": "node",
     "paths": {
       ":authentication*": ["./authentication*"],
       ":authentication": ["./authentication/index.ts"],
