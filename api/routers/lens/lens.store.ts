@@ -11,7 +11,7 @@ export class LensStore extends BaseMongooseStore<any, Lens> {
         super(db.model('lenses', LensSchema));
     }
 
-    public getById({ id, userId }) {
+    public getById({ id, userId }: { id: string; userId: string }) {
         return super.getById({
             id,
             userId,

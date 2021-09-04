@@ -12,7 +12,7 @@ export class TargetStore extends BaseMongooseStore<any, Target> {
         super(db.model('targets', TargetSchema));
     }
 
-    public getById({ id, userId }) {
+    public getById({ id, userId }: { id: string; userId: string }) {
         return super.getById({
             id,
             userId,
@@ -23,7 +23,7 @@ export class TargetStore extends BaseMongooseStore<any, Target> {
         });
     }
 
-    public getItems({ requestParameters }) {
+    public getItems({ requestParameters }: any) {
         return super.getItems({
             requestParameters,
             populationDetails: [
@@ -59,7 +59,7 @@ export class TargetStore extends BaseMongooseStore<any, Target> {
                     if (err) {
                         fail(err);
                     } else {
-                        success(undefined);
+                        success({ success: true });
                     }
                 });
             })

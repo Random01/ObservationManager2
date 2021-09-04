@@ -11,7 +11,7 @@ export class ScopeStore extends BaseMongooseStore<any, Scope> {
         super(db.model('scopes', ScopeSchema));
     }
 
-    public getById({ id, userId }) {
+    public getById({ id, userId }: { id: string; userId: string }) {
         return super.getById({
             id,
             userId,

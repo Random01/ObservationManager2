@@ -16,11 +16,11 @@ export class Entity {
         return id != null ? new ObjectID(id) : undefined;
     }
 
-    public toDate(date) {
+    public toDate(date: any) {
         return date;
     }
 
-    public toNumber(number) {
+    public toNumber(number: any) {
         return number;
     }
 

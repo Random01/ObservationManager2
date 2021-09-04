@@ -11,7 +11,7 @@ export class FilterStore extends BaseMongooseStore<any, Filter> {
         super(db.model('filters', FilterSchema));
     }
 
-    public getById({ id, userId }) {
+    public getById({ id, userId }: { id: string; userId: string }) {
         return super.getById({
             id, userId, populationDetails: [
                 ['userCreated', '_id userName firstName lastName'],

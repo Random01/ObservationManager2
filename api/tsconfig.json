@@ -7,6 +7,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": false,
     "downlevelIteration": true,
+    "noImplicitAny": true,
     "forceConsistentCasingInFileNames": true,
     "module": "CommonJS",
     "moduleResolution": "node"

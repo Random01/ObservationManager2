@@ -11,7 +11,7 @@ export class SessionStore extends BaseMongooseStore<any, Session> {
         super(db.model('sessions', SessionSchema));
     }
 
-    public getById({ id, userId }) {
+    public getById({ id, userId }: { id: string; userId: string }) {
         return super.getById({
             id, userId, populationDetails: [
                 ['userCreated', '_id userName firstName lastName'],
@@ -21,7 +21,7 @@ export class SessionStore extends BaseMongooseStore<any, Session> {
         });
     }
 
-    public getItems({ requestParameters }) {
+    public getItems({ requestParameters }: any) {
         return super.getItems({
             requestParameters,
             populationDetails: [

@@ -5,15 +5,26 @@ import { Connection } from 'mongoose';
 import { BaseMongooseStore, PaginatedItems } from '../common';
 import { ObservationModel } from '../observation';
 
+import { ObservingProgram } from './observing-program.interface';
 import { ObservingProgramSchema } from './observing-program.schema';
 
-export class ObservingProgramStore extends BaseMongooseStore<any, any> {
+interface OverallStatistics {
+    observedCount: number;
+    totalCount: number;
+}
+
+interface Statistics {
+    target: any;
+    observations: any[];
+}
+
+export class ObservingProgramStore extends BaseMongooseStore<any, ObservingProgram> {
 
     constructor(db: Connection) {
         super(db.model('observing-programs', ObservingProgramSchema));
     }
 
-    public getById({ id, userId }) {
+    public getById({ id, userId }: { id: string; userId: string }) {
         return super.getById({
             id,
             userId,
@@ -28,14 +39,14 @@ export class ObservingProgramStore extends BaseMongooseStore<any, any> {
     /**
      * Gets an overall statistics for a selected observing program.
      */
-    public getOverallStatistics({ id }): Promise<{ observedCount: number; totalCount: number }> {
+    public getOverallStatistics({ id }: { id: string }): Promise<OverallStatistics> {
         return this.model
             .getById(id)
-            .then(observingProgram => Promise.all([
+            .then((observingProgram: ObservingProgram) => Promise.all([
                 observingProgram.targets,
                 (ObservationModel as any).getByTargets(observingProgram.targets)
             ]))
-            .then(([targets, observations]) => {
+            .then(([targets, observations]: [any[], any[]]) => {
                 const observationsToTarget = groupBy(observations, o => o.target);
                 const observedTargets = filter(targets, target => !!observationsToTarget[target.id]);
 
@@ -49,10 +60,10 @@ export class ObservingProgramStore extends BaseMongooseStore<any, any> {
     /**
      * Returns a list of observed objects.
      */
-    public getStatistics({ id, page, size }): Promise<PaginatedItems<any>> {
+    public getStatistics({ id, page, size }: { id: string; page: number; size: number }): Promise<PaginatedItems<Statistics>> {
         return this.model
             .getById(id)
-            .then(observingProgram => {
+            .then((observingProgram: ObservingProgram) => {
                 const startIndex = page * size;
                 const targets = observingProgram.targets.slice(startIndex, startIndex + size);
 
@@ -62,7 +73,7 @@ export class ObservingProgramStore extends BaseMongooseStore<any, any> {
                     observingProgram.targets.length,
                 ]);
             })
-            .then(([targets, observations, totalCount]) => {
+            .then(([targets, observations, totalCount]: [any[], any[], number]) => {
                 const observationsToTarget = groupBy(observations, o => o.target);
                 const targetsStatistics = targets.map(target => ({
                     target,
@@ -71,7 +82,7 @@ export class ObservingProgramStore extends BaseMongooseStore<any, any> {
 
                 return {
                     items: targetsStatistics,
-                    pageCount: page != null ? page : 0,
+                    pageCount: page ?? 0,
                     pages: size != null ? Math.ceil(totalCount / size) : 1,
                     totalCount,
                 };
