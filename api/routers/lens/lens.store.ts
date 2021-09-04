@@ -2,9 +2,10 @@ import { Connection } from 'mongoose';
 
 import { BaseMongooseStore } from '../common';
 
+import { Lens } from './lens.interface';
 import { LensSchema } from './lens.schema';
 
-export class LensStore extends BaseMongooseStore<any, any> {
+export class LensStore extends BaseMongooseStore<any, Lens> {
 
     constructor(db: Connection) {
         super(db.model('lenses', LensSchema));
@@ -21,13 +22,13 @@ export class LensStore extends BaseMongooseStore<any, any> {
         });
     }
 
-    public getAll(): Promise<any[]> {
+    public getAll(): Promise<Lens[]> {
         return new Promise((success, fail) => {
             this.model
                 .find()
                 .populate('userCreated')
                 .populate('userModified')
-                .exec((err: Error, docs: any[]) => {
+                .exec((err: Error, docs: Lens[]) => {
                     if (err) {
                         fail(err);
                     } else {

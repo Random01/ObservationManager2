@@ -2,15 +2,16 @@ import { Connection } from 'mongoose';
 
 import { BaseMongooseStore } from '../common';
 
+import { Scope } from './scope.interface';
 import { ScopeSchema } from './scope.schema';
 
-export class ScopeStore extends BaseMongooseStore<any, any> {
+export class ScopeStore extends BaseMongooseStore<any, Scope> {
 
     constructor(db: Connection) {
         super(db.model('scopes', ScopeSchema));
     }
 
-    public getById({ id, userId }): Promise<any> {
+    public getById({ id, userId }) {
         return super.getById({
             id,
             userId,

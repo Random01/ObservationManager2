@@ -2,9 +2,10 @@ import { Connection } from 'mongoose';
 
 import { BaseMongooseStore } from '../common';
 
+import { Site } from './site.interface';
 import { SiteSchema } from './site.schema';
 
-export class SiteStore extends BaseMongooseStore<any, any> {
+export class SiteStore extends BaseMongooseStore<any, Site> {
 
     constructor(db: Connection) {
         super(db.model('sites', SiteSchema));

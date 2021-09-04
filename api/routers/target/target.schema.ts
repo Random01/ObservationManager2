@@ -1,16 +1,10 @@
 import { Schema } from 'mongoose';
 
+import { EntitySchema } from '../common/schemas';
+
 export const TargetSchema = new Schema({
-    dateCreated: Date,
-    dateModified: Date,
-    userCreated: {
-        type: Schema.Types.ObjectId,
-        ref: 'users',
-    },
-    userModified: {
-        type: Schema.Types.ObjectId,
-        ref: 'users',
-    },
+    ...EntitySchema,
+
     name: String,
     aliases: [String],
     description: String,
@@ -29,7 +23,7 @@ export const TargetSchema = new Schema({
  * @param {String} name
  * @returns {Promise}
  */
-TargetSchema.statics.findByName = function (name: string) {
+TargetSchema.statics.findByName = function (name: string): Promise<any> {
     return new Promise((success, fail) => {
         this.find({
             name: new RegExp(name, 'i'),

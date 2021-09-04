@@ -3,9 +3,10 @@ import { Connection } from 'mongoose';
 import { BaseMongooseStore } from '../common';
 
 import { TargetCsvLoader } from './target-csv-loader.service';
+import { Target } from './target.interface';
 import { TargetSchema } from './target.schema';
 
-export class TargetStore extends BaseMongooseStore<any, any> {
+export class TargetStore extends BaseMongooseStore<any, Target> {
 
     constructor(db: Connection) {
         super(db.model('targets', TargetSchema));
@@ -33,8 +34,8 @@ export class TargetStore extends BaseMongooseStore<any, any> {
         });
     }
 
-    public search(params: any): Promise<any[]> {
-        const { name, maxCount = 10 }: { name: string; maxCount: number } = params;
+    public search(params: { name: string; maxCount: number }): Promise<Target[]> {
+        const { name, maxCount = 10 } = params;
 
         return new Promise((success, fail) => {
             this.model

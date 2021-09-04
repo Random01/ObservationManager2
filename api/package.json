@@ -4,6 +4,7 @@
     "description": "Backend for Observation Manager App",
     "main": "index.js",
     "scripts": {
+        "tsc": "tsc",
         "start": "node dist/index.js",
         "start:watch": "set NODE_ENV=development && nodemon --inspect=42492 dist/index.js --debug-brk",
         "build": "webpack --mode production",

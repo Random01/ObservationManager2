@@ -7,7 +7,7 @@ import { CsvReader } from '../../common/services/csv-reader';
 import { DataConfig } from '../../data';
 
 import { TargetType } from './target-type.enum';
-import { Target } from './target.entity';
+import { Target } from './target.interface';
 
 const enum TargetFieldIndex {
     name = 0,

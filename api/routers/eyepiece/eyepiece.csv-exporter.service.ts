@@ -2,7 +2,7 @@ import { Response } from 'express';
 
 import { BaseTxtExporter } from '../common';
 
-import { Eyepiece } from './eyepiece.entity';
+import { Eyepiece } from './eyepiece.interface';
 
 export class EyepieceCsvExporter extends BaseTxtExporter<Eyepiece> {
 

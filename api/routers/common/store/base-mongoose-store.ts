@@ -3,7 +3,7 @@ import { ObjectID } from 'mongodb';
 import { BaseModel } from './base-model.interface';
 import { PaginatedItems } from './paginated-items.interface';
 import { GetItemsRequestParameters } from './get-items-request-parameters.interface';
-import { Entity } from './entity.interface';
+import { Entity } from '../interfaces';
 
 export class BaseMongooseStore<TModel extends BaseModel, TEntity extends Entity> {
 

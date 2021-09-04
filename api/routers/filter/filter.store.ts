@@ -1,8 +1,8 @@
 import { Connection } from 'mongoose';
 
-import { BaseMongooseStore } from '../common/store/base-mongoose-store';
+import { BaseMongooseStore } from '../common/store';
 
-import { Filter } from './filter.entity';
+import { Filter } from './filter.interface';
 import { FilterSchema } from './filter.schema';
 
 export class FilterStore extends BaseMongooseStore<any, Filter> {
@@ -11,7 +11,7 @@ export class FilterStore extends BaseMongooseStore<any, Filter> {
         super(db.model('filters', FilterSchema));
     }
 
-    public getById({ id, userId }): Promise<Filter> {
+    public getById({ id, userId }) {
         return super.getById({
             id, userId, populationDetails: [
                 ['userCreated', '_id userName firstName lastName'],

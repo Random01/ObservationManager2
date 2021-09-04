@@ -2,7 +2,7 @@ import { Response } from 'express';
 
 import { BaseTxtExporter } from '../common';
 
-import { Filter } from './filter.entity';
+import { Filter } from './filter.interface';
 
 /**
  * Exports Filters to CSV file.
