@@ -16,14 +16,14 @@ import { AppContextService } from '../../shared/services/app-context.service';
 })
 export class LoginComponent extends BaseComponent {
 
-    public loginForm = new FormGroup({
+    public readonly loginForm = new FormGroup({
         email: new FormControl('', Validators.required),
         password: new FormControl('', Validators.required)
     });
 
     constructor(
-        private router: Router,
-        private authenticationService: AuthenticationService,
+        private readonly router: Router,
+        private readonly authenticationService: AuthenticationService,
         appContext: AppContextService,
     ) {
         super(appContext);

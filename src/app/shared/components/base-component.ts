@@ -1,12 +1,15 @@
 import { AppContextService } from '../services/app-context.service';
+import { DestroyableComponent } from './destroyable.component';
 
-export class BaseComponent {
+export class BaseComponent extends DestroyableComponent {
+
+    public isLoading = false;
 
     constructor(
         protected readonly appContext: AppContextService,
-    ) { }
-
-    public isLoading = false;
+    ) {
+        super();
+    }
 
     public startLoading(): void {
         this.isLoading = true;

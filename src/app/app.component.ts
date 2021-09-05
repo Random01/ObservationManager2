@@ -8,10 +8,9 @@ import { AuthenticationService } from './auth/shared/authentication.service';
 })
 export class AppComponent implements OnInit {
 
-    opened = true;
+    public opened = true;
 
-    constructor(
-        private authenticationService: AuthenticationService) { }
+    constructor(private readonly authenticationService: AuthenticationService) { }
 
     ngOnInit(): void {
         this.authenticationService.populate();

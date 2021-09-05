@@ -14,21 +14,21 @@ import { AppContextService } from '../../shared/services/app-context.service';
 })
 export class RegisterComponent extends BaseComponent {
 
-    profileForm = new FormGroup({
+    public readonly profileForm = new FormGroup({
         userName: new FormControl('', Validators.required),
         email: new FormControl('', Validators.required),
         password: new FormControl('', Validators.required),
     });
 
     constructor(
-        private userService: UserService,
-        private router: Router,
+        private readonly userService: UserService,
+        private readonly router: Router,
         appContext: AppContextService,
     ) {
         super(appContext);
     }
 
-    onSubmit() {
+    public onSubmit() {
         const { userName, email, password } = this.profileForm.value;
 
         if (userName && email && password) {
@@ -51,7 +51,7 @@ export class RegisterComponent extends BaseComponent {
         }
     }
 
-    goBack() {
+    public goBack() {
         this.router.navigate(['/login']);
     }
 }
