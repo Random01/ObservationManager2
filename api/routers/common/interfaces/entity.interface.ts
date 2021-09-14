@@ -1,7 +1,7 @@
 import { ObjectID } from 'mongodb';
 
 export interface Entity {
-    id: number;
+    id: ObjectID;
 
     dateModified?: Date;
     dateCreated?: Date;

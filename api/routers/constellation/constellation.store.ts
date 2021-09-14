@@ -4,8 +4,8 @@ import { DataConfig } from '../../data';
 
 import { BaseMongooseStore } from '../common';
 
-import { CsvReader } from './../../common/services/csv-reader';
-import { Constellation } from './constellation.entity';
+import { CsvReader } from './../../common/services';
+import { Constellation } from './constellation.interface';
 
 import { ConstellationSchema } from './constellation.schema';
 

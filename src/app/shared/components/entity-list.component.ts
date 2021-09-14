@@ -12,8 +12,8 @@ import { AppContextService } from '../services/app-context.service';
 export abstract class EntityListComponent<T extends Entity> extends PaginatedListComponent<T> implements OnInit {
 
     constructor(
-        protected storageService: StorageService<T>,
-        protected deleteEntityDialogService: DeleteEntityDialogService,
+        protected readonly storageService: StorageService<T>,
+        protected readonly deleteEntityDialogService: DeleteEntityDialogService,
         route: ActivatedRoute,
         router: Router,
         appContext: AppContextService,
@@ -58,6 +58,10 @@ export abstract class EntityListComponent<T extends Entity> extends PaginatedLis
     }
 
     async exportToCsv() {
+        return this.export('.csv');
+    }
+
+    protected async export(type = '.csv') {
         this.startLoading();
 
         const request = this.getRequestParams();
@@ -66,7 +70,10 @@ export abstract class EntityListComponent<T extends Entity> extends PaginatedLis
         request.size = 100;
 
         try {
-            saveAs(await this.storageService.exportItems(request), this.getExportFileName() + '.csv');
+            saveAs(await this.storageService.exportItems(request), this.getExportFileName() + type);
+        } catch (error) {
+            this.appContext.messageService.error('Unable to export');
+            this.appContext.logger.error(error);
         } finally {
             this.endLoading();
         }

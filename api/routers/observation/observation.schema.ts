@@ -1,16 +1,9 @@
 import { Schema } from 'mongoose';
 
+import { EntitySchema } from '../common/schemas';
+
 export const ObservationSchema = new Schema({
-    dateCreated: Date,
-    dateModified: Date,
-    userCreated: {
-        type: Schema.Types.ObjectId,
-        ref: 'users',
-    },
-    userModified: {
-        type: Schema.Types.ObjectId,
-        ref: 'users',
-    },
+    ...EntitySchema,
 
     observer: {
         type: Schema.Types.ObjectId,
@@ -64,13 +57,12 @@ ObservationSchema.statics.getByTargets = function (targetIds: string[]): Promise
             target: {
                 '$in': targetIds,
             },
-        })
-            .exec((err: Error, observations: any[]) => {
-                if (err) {
-                    fail(err);
-                } else {
-                    success(observations);
-                }
-            });
+        }).exec((err: Error, observations: any[]) => {
+            if (err) {
+                fail(err);
+            } else {
+                success(observations);
+            }
+        });
     });
 };

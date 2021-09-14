@@ -1,6 +1,8 @@
+import { Entity } from '../common';
+
 import { TargetType } from './target-type.enum';
 
-export interface Target {
+export interface Target extends Entity {
     name: string;
     originalName: string;
     type: TargetType;

@@ -2,7 +2,7 @@ import { Response } from 'express';
 
 import { BaseTxtExporter } from '../common';
 
-import { Scope } from './scope.entity';
+import { Scope } from './scope.interface';
 
 export class ScopeTxtExporter extends BaseTxtExporter<Scope> {
 

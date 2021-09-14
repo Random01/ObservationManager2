@@ -15,7 +15,7 @@ export class ConstellationsService extends StorageService<Constellation> {
         super('/constellations', http, jwtService);
     }
 
-    createNew(params?: any): Constellation {
+    public createNew(params?: any): Constellation {
         return new Constellation(params);
     }
 

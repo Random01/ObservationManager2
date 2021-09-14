@@ -2,11 +2,19 @@ import { Response } from 'express';
 
 import { BaseTxtExporter } from '../common';
 
-export class SessionTxtExporter extends BaseTxtExporter {
+import { Session } from './session.interface';
 
-    public export(res: Response, session: any) {
+export class SessionTxtExporter extends BaseTxtExporter<Session> {
+
+    public export(res: Response, sessions: Session[]) {
         res.set('Content-Type', 'text/plain');
-        res.send(Buffer.from(JSON.stringify(session)));
+        res.send(Buffer.from(this.exportSession(sessions[0])));
+    }
+
+    private exportSession(session: Session) {
+        const rows: string[] = [];
+        rows.push(`${session.begin} - ${session.end}`);
+        return rows.join('/n/r');
     }
 
 }

@@ -2,7 +2,7 @@ import { Component, Input, OnInit, EventEmitter, Output, OnDestroy, ChangeDetect
 
 import { Observable, Subscription } from 'rxjs';
 
-import { VendorService } from '../shared/vendor.service';
+import { VendorService } from '../shared';
 
 @Component({
     selector: 'om-vendor-selector',
@@ -14,16 +14,13 @@ export class VendorSelectorComponent implements OnInit, OnDestroy {
 
     protected subscriptions: Subscription[] = [];
 
-    @Input() vendor: String;
-    @Output() vendorChange = new EventEmitter<string>();
+    @Input() public vendor = '';
+    @Output() public readonly vendorChange = new EventEmitter<string>();
 
     public vendors: string[] = [];
     public filteredVendors: Observable<string[]>;
 
-    constructor(
-        private vendorService: VendorService,
-    ) {
-    }
+    constructor(private readonly vendorService: VendorService) { }
 
     public onVendorChange(model: string) {
         this.vendor = model;

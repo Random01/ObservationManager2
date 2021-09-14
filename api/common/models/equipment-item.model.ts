@@ -1,12 +1,12 @@
-const Entity = require('./entity.model');
+import { Entity } from './entity.model';
 
-class EquipmentItem extends Entity {
+export class EquipmentItem extends Entity {
 
-    constructor(params) {
+    public model: string;
+    public vendor: string;
+
+    constructor(params: Partial<EquipmentItem>) {
         super(params);
-
-        this.model = undefined;
-        this.vendor = undefined;
 
         if (params) {
             if (params.hasOwnProperty('model')) {
@@ -18,5 +18,3 @@ class EquipmentItem extends Entity {
         }
     }
 }
-
-module.exports = EquipmentItem;

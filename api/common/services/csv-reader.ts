@@ -1,6 +1,11 @@
 import fs from 'fs';
 import readline from 'readline';
 
+interface CsvReadResult {
+    definition: string[];
+    rows: string[][];
+};
+
 export class CsvReader {
 
     private readonly path: string;
@@ -9,14 +14,14 @@ export class CsvReader {
         this.path = path;
     }
 
-    public read({ separator } = { separator: ';' }): Promise<any> {
+    public read({ separator } = { separator: ';' }): Promise<CsvReadResult> {
         return new Promise((success, fail) => {
             const readLine = readline.createInterface({
                 input: fs.createReadStream(this.path),
                 console: false,
             } as any);
 
-            const lines = [];
+            const lines: string[][] = [];
             readLine
                 .on('line', line => lines.push(line.split(separator)))
                 .on('close', () => {

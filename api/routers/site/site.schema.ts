@@ -1,16 +1,10 @@
 import { Schema } from 'mongoose';
 
+import { EntitySchema } from '../common/schemas';
+
 export const SiteSchema = new Schema({
-    dateCreated: Date,
-    dateModified: Date,
-    userCreated: {
-        type: Schema.Types.ObjectId,
-        ref: 'users',
-    },
-    userModified: {
-        type: Schema.Types.ObjectId,
-        ref: 'users',
-    },
+    ...EntitySchema,
+
     name: {
         type: String,
         required: true,
