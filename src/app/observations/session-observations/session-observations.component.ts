@@ -20,10 +20,10 @@ import { AppContextService } from '../../shared/services/app-context.service';
 })
 export class SessionObservationsComponent extends EntityListComponent<Observation> {
 
-    public items: Observation[];
-    public session: Session;
+    public items: Observation[] = [];
+    public session: Session | null = null;
 
-    displayedColumns: string[] = [
+    public readonly displayedColumns: string[] = [
         'date',
         'targetName',
         'scopeModel',
@@ -37,7 +37,7 @@ export class SessionObservationsComponent extends EntityListComponent<Observatio
         route: ActivatedRoute,
         router: Router,
         observationService: ObservationService,
-        protected sessionService: SessionService,
+        private readonly sessionService: SessionService,
         deleteEntityDialogService: DeleteEntityDialogService,
         appContext: AppContextService,
     ) {
@@ -45,30 +45,28 @@ export class SessionObservationsComponent extends EntityListComponent<Observatio
     }
 
     protected getRequestParams(): RequestParams {
-        const params = new ObservationSearchParams();
-
-        params.sessionId = this.getSessionId();
-
-        return params;
+        return Object.assign(new ObservationSearchParams(), {
+            sessionId: this.getSessionId(),
+        });
     }
 
     // tslint:disable-next-line:use-life-cycle-interface
-    ngOnInit(): void {
+    public ngOnInit(): void {
         super.ngOnInit();
         this.loadSession();
     }
 
-    loadSession(): void {
+    private loadSession(): void {
         this.sessionService
             .getById(this.getSessionId())
             .then(session => this.session = session);
     }
 
-    getSessionId(): string {
+    private getSessionId(): string {
         return this.route.snapshot.paramMap.get('sessionId');
     }
 
-    addNewObservation() {
+    public addNewObservation() {
         this.router.navigate([
             'sessions',
             this.getSessionId(),
@@ -77,11 +75,20 @@ export class SessionObservationsComponent extends EntityListComponent<Observatio
         ]);
     }
 
-    backToSession() {
+    public backToSession() {
         this.router.navigate(['sessions', this.getSessionId()]);
     }
 
-    backToMySessions() {
+    public backToMySessions() {
         this.router.navigate(['sessions']);
     }
+
+    public exportToTxt() {
+        this.export('.txt');
+    }
+
+    protected getExportFileName(): string {
+        return 'Observations';
+    }
+
 }

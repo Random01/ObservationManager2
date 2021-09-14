@@ -14,7 +14,7 @@ import { AppContextService } from '../../shared/services/app-context.service';
 })
 export class FiltersComponent extends EntityListComponent<Filter> {
 
-    public displayedColumns: string[] = [
+    public readonly displayedColumns: string[] = [
         'model',
         'vendor',
         'filterType',
@@ -31,7 +31,7 @@ export class FiltersComponent extends EntityListComponent<Filter> {
         super(service, deleteEntityDialogService, route, router, appContext);
     }
 
-    getExportFileName() {
+    protected getExportFileName(): string {
         return 'Filters';
     }
 }

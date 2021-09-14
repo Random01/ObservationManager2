@@ -6,21 +6,17 @@ import { GetItemsRequestParameters } from '../store';
 
 export class RouterFactory {
 
-    public readonly store: any;
-    public readonly router: any;
-    public readonly exporter: any;
-
-    constructor(store: any, router: any, exporter: any) {
+    constructor(
+        public readonly store: any,
+        public readonly router: any,
+        public readonly exporter: any,
+    ) {
         if (!store) {
             throw new Error('store should be provided.');
         }
         if (!router) {
             throw new Error('router should be provided.');
         }
-
-        this.store = store;
-        this.router = router;
-        this.exporter = exporter;
 
         this.setUp();
     }
@@ -50,19 +46,27 @@ export class RouterFactory {
         return (req as any).payload ? (req as any).payload.id : undefined;
     }
 
-    public exportItemsHandler(req: Request, res: Response) {
+    public exportItemsHandler<T>(req: Request, res: Response) {
         this.store.getItems({
             requestParameters: this.parseRequestParams(req),
             userId: this.getUserId(req),
         }).then(
-            (items: { items: any[] }) => this.export(res, items.items),
+            (result: { items: T[] }) => this.export(res, result.items),
             (error: Error) => this.handleError(res, error),
         );
     }
 
-    protected export(res: Response, items: any[]) {
-        const exporter = this.exporter.getExporter();
-        exporter.export(res, items);
+    protected export<T>(res: Response, items: T[]) {
+        try {
+            if (!this.exporter) {
+                throw new Error('Exporter is not implemented.');
+            }
+
+            const exporter = this.exporter.getExporter();
+            exporter.export(res, items);
+        } catch (err) {
+            this.handleError(res, err);
+        }
     }
 
     public addNewHandler(req: Request, res: Response) {

@@ -14,11 +14,11 @@ import { AppContextService } from '../../shared/services/app-context.service';
 })
 export class LensesComponent extends EntityListComponent<Lens> {
 
-    public displayedColumns: string[] = [
+    public readonly displayedColumns: string[] = [
         'model',
         'vendor',
         'factor',
-        'actions'
+        'actions',
     ];
 
     constructor(
@@ -29,6 +29,10 @@ export class LensesComponent extends EntityListComponent<Lens> {
         appContext: AppContextService,
     ) {
         super(lensService, deleteEntityDialogService, route, router, appContext);
+    }
+
+    protected getExportFileName(): string {
+        return 'Lenses';
     }
 
 }
