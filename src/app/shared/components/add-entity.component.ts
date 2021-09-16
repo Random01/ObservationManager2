@@ -8,7 +8,7 @@ import { AppContextService } from '../services/app-context.service';
 export abstract class AddEntityComponent<T extends Entity> extends BaseEntityComponent<T> implements OnInit {
 
     constructor(
-        protected storageService: StorageService<T>,
+        protected readonly storageService: StorageService<T>,
         appContext: AppContextService,
     ) {
         super(appContext);
@@ -22,7 +22,7 @@ export abstract class AddEntityComponent<T extends Entity> extends BaseEntityCom
             this.showSuccessMessage();
             this.goBack();
         } catch (error) {
-            this.handleError(error);
+            this.handleError(error, 'Unable to add a new item');
         } finally {
             this.endLoading();
         }
@@ -36,7 +36,7 @@ export abstract class AddEntityComponent<T extends Entity> extends BaseEntityCom
             this.showSuccessMessage();
             this.item = await this.createNew();
         } catch (error) {
-            this.handleError(error);
+            this.handleError(error, 'Unable to add a new item');
         } finally {
             this.endLoading();
         }
@@ -52,16 +52,13 @@ export abstract class AddEntityComponent<T extends Entity> extends BaseEntityCom
         return !!this.item?.isValid();
     }
 
-    public async ngOnInit() {
+    public ngOnInit() {
         this.startLoading();
 
-        try {
-            this.item = await this.createNew();
-        } catch (error) {
-            this.handleError(error);
-        } finally {
-            this.endLoading();
-        }
+        this.createNew()
+            .then(item => this.item = item)
+            .catch(error => this.handleError(error))
+            .finally(() => this.endLoading());
     }
 
     protected getSuccessMessage() {

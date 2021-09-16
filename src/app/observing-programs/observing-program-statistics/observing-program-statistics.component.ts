@@ -16,7 +16,7 @@ import { AppContextService } from '../../shared/services/app-context.service';
 })
 export class ObservingProgramStatisticsComponent extends PaginatedListComponent<TargetStatistics> implements OnInit {
 
-    public displayedColumns: string[] = [
+    public readonly displayedColumns: string[] = [
         'name',
         'type',
         'constellation',
@@ -54,15 +54,15 @@ export class ObservingProgramStatisticsComponent extends PaginatedListComponent<
         this.totalCount = stat.totalCount;
     }
 
-    getObservingProgramId(): string {
+    private getObservingProgramId(): string {
         return this.route.snapshot.paramMap.get('programId');
     }
 
-    goBack(): void {
+    public goBack(): void {
         this.router.navigate(['/observing-programs']);
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         super.ngOnInit();
         this.observingProgramService
             .getObservingProgramStatistics(this.getObservingProgramId())

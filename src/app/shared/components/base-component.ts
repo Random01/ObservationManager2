@@ -1,4 +1,4 @@
-import { AppContextService } from '../services/app-context.service';
+import { AppContextService } from '../services';
 import { DestroyableComponent } from './destroyable.component';
 
 export class BaseComponent extends DestroyableComponent {
@@ -19,8 +19,8 @@ export class BaseComponent extends DestroyableComponent {
         this.isLoading = false;
     }
 
-    protected handleError(error: any): void {
-        this.appContext.messageService.error(error);
+    protected handleError(error: any, errorMessage?: string): void {
+        this.appContext.messageService.error(errorMessage || error);
         this.appContext.logger.error(error);
     }
 

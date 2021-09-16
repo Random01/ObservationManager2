@@ -32,24 +32,37 @@ export abstract class EntityListComponent<T extends Entity> extends PaginatedLis
         requestParams.sortField = this.sortField;
 
         try {
-            const response = await this.storageService.getItems(requestParams);
+            const { items, totalCount } = await this.storageService.getItems(requestParams);
 
-            this.items = response.items;
-            this.totalCount = response.totalCount;
+            this.items = items;
+            this.totalCount = totalCount;
+        } catch (error) {
+            this.appContext.messageService.error('Unable to load items');
+            this.appContext.logger.error(error);
         } finally {
             this.endLoading();
         }
     }
 
-    async remove(entity: any) {
+    protected async remove(entity: any) {
         const result = await this.deleteEntityDialogService.show({
             message: 'Are you sure?',
         });
 
-        if (result.success) {
-            this.startLoading();
+        if (!result.success) {
+            return;
+        }
+
+        this.startLoading();
+
+        try {
             await this.storageService.delete(entity.id);
             return this.loadItems();
+        } catch (error) {
+            this.appContext.messageService.error('Unable to remove item');
+            this.appContext.logger.error(error);
+        } finally {
+            this.endLoading();
         }
     }
 

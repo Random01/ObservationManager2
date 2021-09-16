@@ -11,26 +11,26 @@ const routes: Routes = [
     {
         path: 'sessions',
         component: SessionsComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
     },
     {
         path: 'sessions/new-session',
         component: AddSessionComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
     },
     {
         path: 'sessions/:sessionId',
         component: EditSessionComponent,
-        canActivate: [AuthGuardService]
-    }
+        canActivate: [AuthGuardService],
+    },
 ];
 
 @NgModule({
     imports: [
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
     ],
     exports: [
-        RouterModule
-    ]
+        RouterModule,
+    ],
 })
 export class SessionsRoutingModule { }

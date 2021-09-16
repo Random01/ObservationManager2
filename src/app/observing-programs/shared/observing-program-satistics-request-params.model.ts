@@ -4,6 +4,10 @@ export class ObservingProgramStatisticsRequestParams extends RequestParams {
 
     public observingProgramId: string;
 
+    constructor(params?: Partial<ObservingProgramStatisticsRequestParams>) {
+        super(params);
+    }
+
     protected getQueryParams(): { name: string; value: any }[] {
         const params = super.getQueryParams();
 

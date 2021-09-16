@@ -29,7 +29,7 @@ import { SiteModule } from '../sites/site.module';
         SessionsRoutingModule,
         SharedModule,
         MaterialModule,
-        SiteModule
+        SiteModule,
     ],
     declarations: [
         SessionsComponent,
@@ -37,7 +37,7 @@ import { SiteModule } from '../sites/site.module';
         SessionDetailsComponent,
         AddSessionComponent,
         EditSessionComponent,
-        SessionInfoComponent
+        SessionInfoComponent,
     ],
     exports: [
         SessionInfoComponent,

@@ -8,7 +8,7 @@ import { AppContextService } from '../services/app-context.service';
 export abstract class EditEntityComponent<T extends Entity> extends BaseEntityComponent<T> implements OnInit {
 
     constructor(
-        protected storageService: StorageService<T>,
+        protected readonly storageService: StorageService<T>,
         appContext: AppContextService,
     ) {
         super(appContext);
@@ -20,7 +20,7 @@ export abstract class EditEntityComponent<T extends Entity> extends BaseEntityCo
             await this.storageService.update(this.item);
             this.goBack();
         } catch (error) {
-            this.handleError(error);
+            this.handleError(error, 'Unable to update item');
         } finally {
             this.endLoading();
         }
@@ -30,11 +30,13 @@ export abstract class EditEntityComponent<T extends Entity> extends BaseEntityCo
 
     protected abstract getItemId(): string;
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.startLoading();
+
         this.storageService.getById(this.getItemId())
             .then(loadedItem => this.item = loadedItem)
-            .then(() => this.endLoading());
+            .catch(err => this.handleError(err, 'Unable to load items'))
+            .finally(() => this.endLoading());
     }
 
     public isValid(): boolean {

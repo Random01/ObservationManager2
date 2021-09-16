@@ -14,7 +14,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "aot": true,
-            "outputPath": "dist/om-manager",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -91,5 +91,8 @@
       }
     }
   },
-  "defaultProject": "om-manager"
+  "defaultProject": "om-manager",
+  "cli": {
+    "analytics": false
+  }
 }
