@@ -1,7 +1,15 @@
-import { Component, Input, OnInit, EventEmitter, Output, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import {
+    Component,
+    Input,
+    OnInit,
+    EventEmitter,
+    Output,
+    ChangeDetectionStrategy,
+} from '@angular/core';
 
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 
+import { DestroyableComponent } from '../../shared/components/destroyable.component';
 import { VendorService } from '../shared';
 
 @Component({
@@ -10,17 +18,17 @@ import { VendorService } from '../shared';
     styleUrls: ['./vendor-selector.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class VendorSelectorComponent implements OnInit, OnDestroy {
-
-    protected subscriptions: Subscription[] = [];
+export class VendorSelectorComponent extends DestroyableComponent implements OnInit {
 
     @Input() public vendor = '';
     @Output() public readonly vendorChange = new EventEmitter<string>();
 
     public vendors: string[] = [];
-    public filteredVendors: Observable<string[]>;
+    public filteredVendors$: Observable<string[]>;
 
-    constructor(private readonly vendorService: VendorService) { }
+    constructor(private readonly vendorService: VendorService) {
+        super();
+    }
 
     public onVendorChange(model: string) {
         this.vendor = model;
@@ -28,19 +36,15 @@ export class VendorSelectorComponent implements OnInit, OnDestroy {
     }
 
     public ngOnInit() {
-        this.subscriptions.push(
+        this.handle(
             this.vendorService.getAllSuggestions().subscribe(vendors => {
                 this.vendors = vendors.map(vendor => vendor.name);
 
-                this.filteredVendors = new Observable((subscriber) => {
+                this.filteredVendors$ = new Observable((subscriber) => {
                     subscriber.next(this.vendors);
                 });
             })
         );
-    }
-
-    public ngOnDestroy(): void {
-        this.subscriptions.forEach(subscription => subscription.unsubscribe());
     }
 
 }

@@ -15,7 +15,7 @@ export class ObservingProgram extends Entity {
         Object.assign(this, params);
     }
 
-    public serialize(): Object {
+    public override serialize(): Object {
         return Object.assign(super.serialize(), {
             name: this.name,
             description: this.description,
@@ -23,7 +23,7 @@ export class ObservingProgram extends Entity {
         });
     }
 
-    public deserialize(state: any): void {
+    public override deserialize(state: any): void {
         super.deserialize(state);
 
         this.name = state.name;

@@ -2,7 +2,7 @@
 
     <mat-paginator
         [length]="targets.length"
-        [(pageSize)]="pageSize"
+        [pageSize]="pageSize"
         [pageSizeOptions]="pageSizeOptions"
         (page)=onPageChanged($event)>
     </mat-paginator>
@@ -36,7 +36,7 @@
 
     <mat-paginator
         [length]="totalCount"
-        [(pageSize)]="pageSize"
+        [pageSize]="pageSize"
         [pageSizeOptions]="pageSizeOptions"
         (page)=onPageChanged($event)>
     </mat-paginator>

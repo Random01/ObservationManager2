@@ -8,7 +8,7 @@ export class ObservingProgramStatisticsRequestParams extends RequestParams {
         super(params);
     }
 
-    protected getQueryParams(): { name: string; value: any }[] {
+    protected override getQueryParams(): { name: string; value: any }[] {
         const params = super.getQueryParams();
 
         params.push({ name: 'id', value: this.observingProgramId });

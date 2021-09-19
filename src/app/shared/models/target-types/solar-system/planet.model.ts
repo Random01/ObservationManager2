@@ -1,5 +1,5 @@
 import { SolarSystemTarget } from './solar-system-target.model';
 
-export class PlanetTraget extends SolarSystemTarget {
+export class PlanetTarget extends SolarSystemTarget {
 
 }

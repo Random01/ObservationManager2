@@ -39,7 +39,7 @@ export class Target extends Entity {
         Object.assign(this, params);
     }
 
-    serialize(): Object {
+    public override serialize(): Object {
         return Object.assign(super.serialize(), {
             name: this.name,
             type: this.type,
@@ -50,7 +50,7 @@ export class Target extends Entity {
         });
     }
 
-    deserialize(state: any): void {
+    public override deserialize(state: any): void {
         super.deserialize(state);
 
         this.copy(state, [
@@ -64,7 +64,7 @@ export class Target extends Entity {
         this.position.deserialize(state.position || {});
     }
 
-    public isValid(): boolean {
+    public override isValid(): boolean {
         return this.name != null && this.name.trim().length > 0;
     }
 }

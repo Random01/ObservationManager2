@@ -7,18 +7,20 @@
             placeholder="Target"
             aria-label="Number"
             matInput
-            [formControl]="searhControl"
+            [formControl]="searchControl"
             [matAutocomplete]="auto"
-            (keyup)="search(searhControl.value)">
+            (keyup)="search(searchControl.value)" />
 
         <mat-autocomplete
             #auto="matAutocomplete"
             [displayWith]="displayFn"
-            (optionSelected)="onTargetSelected(searhControl.value)">
+            (optionSelected)="onTargetSelected(searchControl.value)"
+        >
             <mat-option
-                *ngFor="let trgt of targets$ | async"
-                [value]="trgt">
-            {{trgt.name}}
+                *ngFor="let target of targets$ | async"
+                [value]="target"
+            >
+                {{ target.name }}
             </mat-option>
         </mat-autocomplete>
 
@@ -29,7 +31,8 @@
             aria-label="Clear"
             matTooltip="Clear"
             (click)="clearSelection()"
-            *ngIf="target && target.id">
+            *ngIf="target && target.id"
+        >
             <mat-icon>close</mat-icon>
         </button>
 
@@ -39,7 +42,8 @@
         *ngIf="canAdd"
         mat-button
         mat-icon-button
-        (click)="openDialog()">
+        (click)="openDialog()"
+    >
         <mat-icon>add</mat-icon>
     </button>
 

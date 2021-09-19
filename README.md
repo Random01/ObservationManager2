@@ -1,10 +1,22 @@
 # OM
 
-## Installation
+## Install Database
 
-1. "npm install"
+1. Run "docker run --name mongodb -d -p 27017:27017 mongo"
 
-1. "npm run start"
+## Run Backend
+
+1. Run "cd api && npm install"
+
+1. Run "cd api && npm run build:watch"
+
+1. Run "cd api && CONNECTION_STRING='mongodb://localhost:27017/' npm run start:watch"
+
+## Run Frontend
+
+1. Run "npm install"
+
+1. Run "npm run start_app"
 
 1. Run "chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security"
 

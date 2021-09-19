@@ -14,16 +14,15 @@ import { MaterialModule } from '../shared/material.module';
         FormsModule,
         RouterModule,
         RouterModule,
-        MaterialModule
+        MaterialModule,
     ],
     declarations: [
         EquipmentComponent,
-        VendorSelectorComponent
+        VendorSelectorComponent,
     ],
     exports: [
         EquipmentComponent,
-        VendorSelectorComponent
-    ]
+        VendorSelectorComponent,
+    ],
 })
-
 export class EquipmentModule { }

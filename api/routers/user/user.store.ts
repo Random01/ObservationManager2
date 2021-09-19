@@ -6,8 +6,8 @@ import { UserSchema } from './user.schema';
 
 export class UserStore extends BaseMongooseStore<any, any> {
 
-    constructor(db: Connection) {
-        super(db.model('users', UserSchema));
-    }
+  constructor(db: Connection) {
+    super(db.model('users', UserSchema));
+  }
 
 }

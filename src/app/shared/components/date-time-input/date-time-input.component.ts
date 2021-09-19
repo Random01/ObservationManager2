@@ -1,56 +1,55 @@
 import {
-    Component,
-    Input,
-    Output,
-    EventEmitter
+  Component,
+  Input,
+  Output,
+  EventEmitter
 } from '@angular/core';
 
 import * as moment from 'moment';
 
 @Component({
-    selector: 'om-date-time-input',
-    templateUrl: './date-time-input.component.html',
-    styleUrls: ['./date-time-input.component.css']
+  selector: 'om-date-time-input',
+  templateUrl: './date-time-input.component.html',
+  styleUrls: ['./date-time-input.component.css'],
 })
 export class DateTimeInputComponent {
 
-    private _date: Date;
+  private _date: Date;
+  public get dateTime(): Date {
+    return this._date;
+  }
 
-    get dateTime(): Date {
-        return this._date;
+  @Input()
+  public set dateTime(value: Date) {
+    this._date = value;
+  }
+
+  public get time(): string {
+    if (this.dateTime) {
+      return moment(this.dateTime).format('HH:mm');
     }
+    return '';
+  }
 
-    @Input()
-    set dateTime(value: Date) {
-        this._date = value;
+  public set time(value: string) {
+    if (value) {
+      const [hours, minutes] = value.split(':');
+      this._date.setHours(parseFloat(hours), parseFloat(minutes));
     }
+  }
 
-    get time(): string {
-        if (this.dateTime) {
-            return moment(this.dateTime).format('HH:mm');
-        }
-        return '';
-    }
+  @Output() public readonly dateTimeChange = new EventEmitter<Date>();
 
-    set time(value: string) {
-        if (value) {
-            const [hours, minutes] = value.split(':');
-            this._date.setHours(parseFloat(hours), parseFloat(minutes));
-        }
-    }
+  @Input() public datePlaceholder: string;
+  @Input() public timePlaceholder: string;
+  @Input() public dateHint: string;
+  @Input() public timeHint: string;
 
-    @Output() dateTimeChange = new EventEmitter<Date>();
+  public onDateChanged(): void {
+    this.dateTimeChange.emit(this.dateTime);
+  }
 
-    @Input() datePlaceholder: string;
-    @Input() timePlaceholder: string;
-    @Input() dateHint: string;
-    @Input() timeHint: string;
+  public onTimeChanged(): void {
 
-    onDateChanged(): void {
-        this.dateTimeChange.emit(this.dateTime);
-    }
-
-    onTimeChanged(): void {
-
-    }
+  }
 }

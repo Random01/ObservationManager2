@@ -1,50 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-
-import { AuthenticationService } from '../../auth/shared/authentication.service';
-import { User } from '../../shared/models/user.model';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { Store } from '@ngrx/store';
+
+import { selectAuthState } from '../../store/auth';
+import * as AuthApiActions from '../../store/auth/auth.actions';
+
 @Component({
-    selector: 'om-user-profile-menu',
-    templateUrl: './user-profile-menu.component.html',
-    styleUrls: ['./user-profile-menu.component.css']
+  selector: 'om-user-profile-menu',
+  templateUrl: './user-profile-menu.component.html',
+  styleUrls: ['./user-profile-menu.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UserProfileMenuComponent implements OnInit {
+export class UserProfileMenuComponent {
 
-    public isAuthenticated: boolean;
-    public currentUser: User;
-    public isWorking: boolean;
+  public readonly authState$ = this.store.select(selectAuthState);
 
-    ngOnInit(): void {
-        this.isWorking = true;
+  constructor(
+    private readonly router: Router,
+    private readonly store: Store,
+  ) { }
 
-        this.authenticationService
-            .isAuthenticated
-            .subscribe(isAuthenticated => {
-                this.isAuthenticated = isAuthenticated;
-                this.isWorking = false;
-            });
+  public logOut() {
+    this.store.dispatch(AuthApiActions.logout());
+  }
 
-        this.authenticationService
-            .currentUser
-            .subscribe(user => {
-                this.currentUser = user;
-            });
-    }
-
-    constructor(
-        private readonly router: Router,
-        private readonly authenticationService: AuthenticationService,
-    ) { }
-
-    signOut() {
-        this.authenticationService.signOut().then(() => {
-            this.router.navigate(['/']);
-        });
-    }
-
-    editProfile() {
-        this.router.navigate(['/users/profile']);
-    }
+  public editProfile() {
+    this.router.navigate(['/users/profile']);
+  }
 
 }

@@ -22,7 +22,7 @@ export class Site extends Entity {
         Object.assign(this, params);
     }
 
-    serialize(): Object {
+    public override serialize(): Object {
         return Object.assign(super.serialize(), {
             name: this.name,
             timezone: this.timezone,
@@ -33,7 +33,7 @@ export class Site extends Entity {
         });
     }
 
-    deserialize(state: any): void {
+    public override deserialize(state: any): void {
         super.deserialize(state);
 
         this.copy(state, [
@@ -47,11 +47,11 @@ export class Site extends Entity {
         this.coord.latitude.deserialize(state.latitude);
     }
 
-    public getDisplayName(): string {
+    public override getDisplayName(): string {
         return this.name;
     }
 
-    public isValid(): boolean {
+    public override isValid(): boolean {
         return this.name != null && this.name.length > 0;
     }
 }

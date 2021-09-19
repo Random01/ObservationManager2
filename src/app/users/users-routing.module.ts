@@ -20,15 +20,15 @@ const routes: Routes = [
         path: 'users/profile',
         component: UserProfileComponent,
         canActivate: [AuthGuardService],
-    }
+    },
 ];
 
 @NgModule({
     imports: [
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
     ],
     exports: [
         RouterModule,
-    ]
+    ],
 })
 export class UsersRoutingModule { }

@@ -1,66 +1,79 @@
 import { Injectable } from '@angular/core';
 
-import { BehaviorSubject, ReplaySubject } from 'rxjs';
-import { distinctUntilChanged } from 'rxjs/operators';
+import { BehaviorSubject, from, Observable, of, ReplaySubject } from 'rxjs';
+import { distinctUntilChanged, map, tap } from 'rxjs/operators';
 
+import { LoggingService } from '../../shared/services/logging.service';
 import { User } from '../../shared/models/user.model';
-import { SignInResultPayload } from '../../users/shared/signIn-result-payload.model';
+import { SignInResultPayload } from '../../users/shared/sign-in-result-payload.model';
 import { UserService } from '../../users/shared/user.service';
 import { JwtService } from './jwt.service';
+import { Credentials } from './credentials.interface';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
 
-    private currentUserSubject = new BehaviorSubject<User>({} as User);
-    public currentUser = this.currentUserSubject.asObservable().pipe(distinctUntilChanged());
+  private readonly currentUserSubject = new BehaviorSubject<User>(User.UnauthorizedUser);
+  public readonly currentUser$ = this.currentUserSubject.asObservable().pipe(
+    distinctUntilChanged()
+  );
 
-    private isAuthenticatedSubject = new ReplaySubject<boolean>(1);
-    public isAuthenticated = this.isAuthenticatedSubject.asObservable();
+  private readonly isAuthenticatedSubject = new ReplaySubject<boolean>(1);
+  public readonly isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
 
-    constructor(
-        private userService: UserService,
-        private jwtService: JwtService,
-    ) {
-    }
+  constructor(
+    private readonly userService: UserService,
+    private readonly jwtService: JwtService,
+    private readonly loggingService: LoggingService,
+  ) { }
 
-    public signOut(): Promise<void> {
-        this.jwtService.removeToken();
-        this.currentUserSubject.next({} as User);
-        this.isAuthenticatedSubject.next(false);
+  public logOut(): Observable<void> {
+    this.jwtService.removeToken();
+    this.currentUserSubject.next(User.UnauthorizedUser);
+    this.isAuthenticatedSubject.next(false);
 
-        return Promise.resolve();
-    }
+    return of(undefined);
+  }
 
-    public setAut(result: SignInResultPayload): void {
-        this.jwtService.setToken(result.token);
-        this.currentUserSubject.next(result.user);
-        this.isAuthenticatedSubject.next(true);
-    }
+  public populate(): Observable<User> {
+    return from(this.populateInternal());
+  }
 
-    public async populate() {
-        if (this.jwtService.getToken()) {
-            try {
-                const result = await this.userService.getUser();
-                this.setAut(result);
-            } catch (ex) {
-                this.signOut();
-            }
-        } else {
-            this.signOut();
-        }
-    }
+  public getCurrentUser(): User {
+    return this.currentUserSubject.value;
+  }
 
-    public getCurrentUser(): User {
-        return this.currentUserSubject.value;
-    }
+  public logIn({ email, password }: Credentials): Observable<User> {
+    return this.userService.authenticate(email, password)
+      .pipe(
+        tap(result => this.setAut(result)),
+        map(x => x.user),
+      );
+  }
 
-    public async signIn(userName: String, password: String) {
-        const result = await this.userService.authenticate(userName, password);
+  private async populateInternal(): Promise<User> {
+    if (this.jwtService.getToken()) {
+      try {
+        const result = await this.userService.getUser();
         this.setAut(result);
-        return result;
-    }
+        return result.user;
+      } catch (ex) {
+        this.loggingService.error(ex);
+        this.logOut();
 
-    public isAuth(): boolean {
-        return this.jwtService.isTokenExpired();
+        return User.UnauthorizedUser;
+      }
+    } else {
+      this.logOut();
+
+      return User.UnauthorizedUser;
     }
+  }
+
+  private setAut({ token, user }: SignInResultPayload): void {
+    this.jwtService.setToken(token);
+    this.currentUserSubject.next(user);
+    this.isAuthenticatedSubject.next(true);
+  }
+
 }

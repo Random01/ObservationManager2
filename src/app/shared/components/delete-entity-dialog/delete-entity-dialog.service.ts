@@ -1,28 +1,22 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
+import { DeleteEntityDialogOptions } from './delete-entity-dialog-options.interface';
+import { DeleteEntityDialogResult } from './delete-entity-dialog-result.interface';
 import { DeleteEntityDialogComponent } from './delete-entity-dialog.component';
-
-export interface DeleteEntityDialogResult {
-    success: boolean;
-}
-
-export interface DeleteEntityDialogOptions {
-    message: string;
-}
 
 @Injectable({ providedIn: 'root' })
 export class DeleteEntityDialogService {
 
-    constructor(private dialog: MatDialog) { }
+  constructor(private readonly dialog: MatDialog) { }
 
-    public show(options: DeleteEntityDialogOptions): Promise<DeleteEntityDialogResult> {
-        const dialogRef = this.dialog.open(DeleteEntityDialogComponent, {
-            width: '250px',
-            data: options,
-        });
+  public show(options: DeleteEntityDialogOptions): Promise<DeleteEntityDialogResult> {
+    const dialogRef = this.dialog.open(DeleteEntityDialogComponent, {
+      width: '250px',
+      data: options,
+    });
 
-        return dialogRef.afterClosed().toPromise();
-    }
+    return dialogRef.afterClosed().toPromise();
+  }
 
 }

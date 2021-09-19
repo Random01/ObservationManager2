@@ -18,7 +18,7 @@ export class Session extends Entity {
      */
     public site: Site;
     /**
-     * Comments on the (optical or electronical) equipment used
+     * Comments on the (optical or electronic) equipment used
      */
     public equipment: string;
     /**
@@ -37,7 +37,7 @@ export class Session extends Entity {
         Object.assign(this, params);
     }
 
-    public serialize(): Object {
+    public override serialize(): Object {
         return Object.assign(super.serialize(), {
             begin: this.serializeDate(this.begin),
             end: this.serializeDate(this.end),
@@ -48,7 +48,7 @@ export class Session extends Entity {
         });
     }
 
-    public deserialize(state: any): void {
+    public override deserialize(state: any): void {
         super.deserialize(state);
 
         this.begin = this.parseDate(state.begin);

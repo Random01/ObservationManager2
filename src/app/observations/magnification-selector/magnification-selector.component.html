@@ -13,14 +13,15 @@
 
     <div
         class="slider"
-        *ngIf="isSliderVisible()">
+        *ngIf="isSliderVisible()"
+    >
         <mat-slider
             thumbLabel
             [min]="minFocalLength"
             [max]="maxFocalLength"
             [step]="step"
-            [(value)]="selectedFocalLenght"
-            [tickInterval]="true">
+            [(value)]="selectedFocalLength"
+            [tickInterval]="1">
         </mat-slider>
     </div>
 

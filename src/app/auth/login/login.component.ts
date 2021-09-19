@@ -1,44 +1,45 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Validators, FormGroup, FormControl } from '@angular/forms';
 
-import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 
-import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { map } from 'rxjs/operators';
 
-import { AuthenticationService } from '../shared';
+import * as AuthApiActions from '../../store/auth/auth.actions';
 import { BaseComponent } from '../../shared/components';
 import { AppContextService } from '../../shared/services/app-context.service';
 
+import { selectAuthState } from 'app/store/auth';
+
+
 @Component({
-    selector: 'om-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'om-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent extends BaseComponent {
 
-    public readonly loginForm = new FormGroup({
-        email: new FormControl('', Validators.required),
-        password: new FormControl('', Validators.required)
-    });
+  public override readonly isLoading$ = this.store.select(selectAuthState)
+    .pipe(map(state => state.isWorking));
 
-    constructor(
-        private readonly router: Router,
-        private readonly authenticationService: AuthenticationService,
-        appContext: AppContextService,
-    ) {
-        super(appContext);
+  public readonly loginForm = new FormGroup({
+    email: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
+  });
+
+  constructor(
+    appContext: AppContextService,
+    private readonly store: Store,
+  ) {
+    super(appContext);
+  }
+
+  public onSubmit() {
+    if (this.loginForm.valid) {
+      const { email, password } = this.loginForm.value;
+      this.store.dispatch(AuthApiActions.login({ credentials: { email, password } }));
     }
-
-    public onSubmit() {
-        const { email, password } = this.loginForm.value;
-
-        if (email && password) {
-            this.startLoading();
-            this.authenticationService.signIn(email, password).then(() => {
-                this.endLoading();
-                this.router.navigate(['/']);
-            }, () => this.endLoading());
-        }
-    }
+  }
 
 }

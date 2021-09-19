@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Lens } from '../../shared/models/equipment/equipment';
@@ -8,31 +8,32 @@ import { DeleteEntityDialogService } from '../../shared/components/delete-entity
 import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
-    selector: 'om-lenses',
-    templateUrl: './lenses.component.html',
-    styleUrls: ['./lenses.component.css'],
+  selector: 'om-lenses',
+  templateUrl: './lenses.component.html',
+  styleUrls: ['./lenses.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LensesComponent extends EntityListComponent<Lens> {
 
-    public readonly displayedColumns: string[] = [
-        'model',
-        'vendor',
-        'factor',
-        'actions',
-    ];
+  public readonly displayedColumns: string[] = [
+    'model',
+    'vendor',
+    'factor',
+    'actions',
+  ];
 
-    constructor(
-        lensService: LensService,
-        deleteEntityDialogService: DeleteEntityDialogService,
-        route: ActivatedRoute,
-        router: Router,
-        appContext: AppContextService,
-    ) {
-        super(lensService, deleteEntityDialogService, route, router, appContext);
-    }
+  constructor(
+    lensService: LensService,
+    deleteEntityDialogService: DeleteEntityDialogService,
+    route: ActivatedRoute,
+    router: Router,
+    appContext: AppContextService,
+  ) {
+    super(lensService, deleteEntityDialogService, route, router, appContext);
+  }
 
-    protected getExportFileName(): string {
-        return 'Lenses';
-    }
+  protected override getExportFileName(): string {
+    return 'lenses';
+  }
 
 }

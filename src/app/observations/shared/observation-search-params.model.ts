@@ -2,22 +2,20 @@ import { RequestParams } from '../../shared/services/request-params.model';
 
 export class ObservationSearchParams extends RequestParams {
 
-    public sessionId: string;
+  public sessionId: string;
 
-    public targetId: string;
+  public targetId: string;
 
-    constructor(props?: Partial<ObservationSearchParams>) {
-        super(props);
-        Object.assign(this, props);
-    }
+  constructor(props?: Partial<ObservationSearchParams>) {
+    super(props);
+  }
 
-    protected getQueryParams(): { name: string; value: any }[] {
-        const params = super.getQueryParams();
-
-        params.push({ name: 'session', value: this.sessionId });
-        params.push({ name: 'target', value: this.targetId });
-
-        return params;
-    }
+  protected override getQueryParams(): { name: string; value: any }[] {
+    return [
+      ...super.getQueryParams(),
+      { name: 'session', value: this.sessionId },
+      { name: 'target', value: this.targetId },
+    ];
+  }
 
 }

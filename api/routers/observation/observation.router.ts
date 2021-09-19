@@ -10,27 +10,31 @@ import { ObservationExporterService } from './observation.exporter.service';
 
 class ObservationRouterFactory extends RouterFactory {
 
-    public static create(
-        app: core.Express,
-        store: BaseMongooseStore<any, any>,
-        path: string,
-        exporter: ObservationExporterService,
-    ) {
-        const router = express.Router();
-        const rf = new ObservationRouterFactory(store, router, exporter);
+  public static override create(
+    app: core.Express,
+    store: BaseMongooseStore<any, any>,
+    path: string,
+    exporter: ObservationExporterService,
+  ) {
+    const router = express.Router();
+    const rf = new ObservationRouterFactory(store, router, exporter);
 
-        app.use('/api' + path, router);
+    app.use('/api' + path, router);
 
-        return rf;
-    }
+    return rf;
+  }
 
 }
 
 export class ObservationRouter {
 
-    constructor(app: core.Express, db: Connection) {
-        ObservationRouterFactory.create(
-            app, new ObservationStore(db), '/observations', new ObservationExporterService());
-    }
+  constructor(app: core.Express, db: Connection) {
+    ObservationRouterFactory.create(
+      app,
+      new ObservationStore(db),
+      '/observations',
+      new ObservationExporterService(),
+    );
+  }
 
 }

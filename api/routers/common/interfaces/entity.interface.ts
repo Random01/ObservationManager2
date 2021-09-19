@@ -1,11 +1,11 @@
-import { ObjectID } from 'mongodb';
+import { ObjectId } from 'mongodb';
 
 export interface Entity {
-    id: ObjectID;
+  id: ObjectId;
 
-    dateModified?: Date;
-    dateCreated?: Date;
+  dateModified?: Date;
+  dateCreated?: Date;
 
-    userModified?: ObjectID;
-    userCreated?: ObjectID;
+  userModified?: ObjectId;
+  userCreated?: ObjectId;
 }

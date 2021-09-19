@@ -8,32 +8,32 @@ import { DeleteEntityDialogService } from '../../shared/components/delete-entity
 import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
-    selector: 'om-eyepieces',
-    templateUrl: './eyepieces.component.html',
-    styleUrls: ['./eyepieces.component.css'],
+  selector: 'om-eyepieces',
+  templateUrl: './eyepieces.component.html',
+  styleUrls: ['./eyepieces.component.css'],
 })
 export class EyepiecesComponent extends EntityListComponent<Eyepiece> {
 
-    displayedColumns: string[] = [
-        'model',
-        'vendor',
-        'focalLength',
-        'apparentFOV',
-        'actions',
-    ];
+  public readonly displayedColumns: string[] = [
+    'model',
+    'vendor',
+    'focalLength',
+    'apparentFOV',
+    'actions',
+  ];
 
-    constructor(
-        service: EyepieceService,
-        deleteEntityDialogService: DeleteEntityDialogService,
-        route: ActivatedRoute,
-        router: Router,
-        appContext: AppContextService,
-    ) {
-        super(service, deleteEntityDialogService, route, router, appContext);
-    }
+  constructor(
+    service: EyepieceService,
+    deleteEntityDialogService: DeleteEntityDialogService,
+    route: ActivatedRoute,
+    router: Router,
+    appContext: AppContextService,
+  ) {
+    super(service, deleteEntityDialogService, route, router, appContext);
+  }
 
-    getExportFileName() {
-        return 'Eyepieces';
-    }
+  public override getExportFileName() {
+    return 'eyepieces';
+  }
 
 }

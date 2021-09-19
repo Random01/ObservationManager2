@@ -1,22 +1,22 @@
-<div class="om-add-lens">
-    <div>
-        <h2 class="mat-h2">Add New Lens</h2>
-    </div>
-    
-    <div *ngIf="item">
-        <om-lens [lens]=item></om-lens>
-    </div>
+<div class="om-add-lens"
+  *ngIf="{ item: item$ | async } as data"
+>
+  <div>
+    <h2 class="mat-h2">Add New Lens</h2>
+  </div>
+  
+  <div *ngIf="data.item">
+    <om-lens [lens]="data.item"></om-lens>
+  </div>
 
-    <mat-list-item></mat-list-item>
-
-    <div>
-        <button 
-            mat-button
-            color="primary"
-            [disabled]="!isValid()"
-            (click)=addItem()>Add</button>
-        <button
-            mat-button
-            (click)=goBack()>Back</button>
-    </div>
+  <div>
+    <button 
+      mat-button
+      color="primary"
+      [disabled]="!isValid()"
+      (click)="addItem()">Add</button>
+    <button
+      mat-button
+      (click)="goBack()">Back</button>
+  </div>
 </div>

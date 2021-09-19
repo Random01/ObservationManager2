@@ -1,87 +1,100 @@
-<div class="om-filters">
-    <div>
-        <h2 class="mat-h2">My Filters</h2>
-    </div>
+<div
+  class="om-filters"
+  *ngIf="{ page: page$ | async } as data"
+>
+  <div>
+    <h2 class="mat-h2">My Filters</h2>
+  </div>
     
-    <mat-paginator
-        [length]="totalCount"
-        [(pageSize)]="pageSize"
-        [pageSizeOptions]="pageSizeOptions"
-        [pageIndex]="currentPage"
-        showFirstLastButtons="true"
-        (page)=onPageChanged($event)>
-    </mat-paginator>
+  <mat-paginator
+    showFirstLastButtons="true"
+    [length]="data.page.totalCount"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    [pageIndex]="currentPage"
+    (page)="onPageChanged($event)">
+  </mat-paginator>
 
-    <mat-table
-        [dataSource]="items"
-        class="mat-elevation-z8">
+  <mat-table
+    [dataSource]="data.page.items"
+    class="mat-elevation-z8"
+  >
     
-        <ng-container matColumnDef="model">
-            <mat-header-cell *matHeaderCellDef>Model</mat-header-cell>
-            <mat-cell *matCellDef="let filter">{{filter.model}}</mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="model">
+      <mat-header-cell *matHeaderCellDef>Model</mat-header-cell>
+      <mat-cell *matCellDef="let filter">{{filter.model}}</mat-cell>
+    </ng-container>
     
-        <ng-container matColumnDef="vendor">
-            <mat-header-cell *matHeaderCellDef>Vendor</mat-header-cell>
-            <mat-cell *matCellDef="let filter">{{filter.vendor}}</mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="vendor">
+      <mat-header-cell *matHeaderCellDef>Vendor</mat-header-cell>
+      <mat-cell *matCellDef="let filter">{{filter.vendor}}</mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="filterType">
-                <mat-header-cell *matHeaderCellDef>Filter Type</mat-header-cell>
-                <mat-cell *matCellDef="let filter">{{filter.filterType}}</mat-cell>
-            </ng-container>
+    <ng-container matColumnDef="filterType">
+      <mat-header-cell *matHeaderCellDef>Filter Type</mat-header-cell>
+      <mat-cell *matCellDef="let filter">{{filter.filterType}}</mat-cell>
+    </ng-container>
     
-        <ng-container matColumnDef="actions">
-            <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
-            <mat-cell *matCellDef="let filter">
-                <button mat-icon-button
-                        routerLink="/filters/{{filter.id}}">
-                        <mat-icon
-                            aria-label="Click to edit">
-                            edit
-                        </mat-icon>
-                </button>
-                <button
-                    mat-icon-button
-                    (click)=remove(filter)>
-                        <mat-icon
-                            aria-label="Click to delete">
-                            delete
-                        </mat-icon>
-                </button>
-            </mat-cell>
-        </ng-container>
-    
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    
-    </mat-table>
-
-    <mat-paginator
-        [length]="totalCount"
-        [(pageSize)]="pageSize"
-        [pageSizeOptions]="pageSizeOptions"
-        [pageIndex]="currentPage"
-        showFirstLastButtons="true"
-        (page)=onPageChanged($event)>
-    </mat-paginator>
-    
-    <mat-divider></mat-divider>
-
-    <div>
-        <button 
-            mat-button
-            color="primary"
-            routerLink="/filters/new-filter"
-            color="primary">Add New Filter</button>
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+      <mat-cell *matCellDef="let filter">
+        <button
+          mat-icon-button
+          title="Edit Filter"
+          routerLink="/filters/{{filter.id}}"
+        >
+          <mat-icon
+            aria-label="Click to edit"
+          >
+            edit
+          </mat-icon>
+        </button>
 
         <button
-            mat-button
-            routerLink="/equipment">Back to Equipment</button>
-        
-        <button
-            mat-button
-            (click)="exportToCsv()">Export To CSV</button>
-    </div>
+          mat-icon-button
+          title="Delete Filter"
+          (click)="remove(filter)"
+        >
+          <mat-icon
+            aria-label="Click to delete"
+          >
+            delete
+          </mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    
+  </mat-table>
+
+  <mat-paginator
+    showFirstLastButtons="true"
+    [length]="data.page.totalCount"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    [pageIndex]="currentPage"
+    (page)="onPageChanged($event)">
+  </mat-paginator>
+    
+  <hr/>
+
+  <div>
+
+    <button 
+      mat-button
+      routerLink="/filters/new-filter"
+      color="primary">Add New Filter</button>
+
+    <button
+      mat-button
+      routerLink="/equipment">Back to Equipment</button>
+      
+    <button
+      mat-button
+      (click)="exportToCsv()">Export To CSV</button>
+
+  </div>
     
 </div>

@@ -18,14 +18,14 @@ export class Optics extends EquipmentItem {
         Object.assign(this, params);
     }
 
-    public serialize(): Object {
+    public override serialize(): Object {
         return Object.assign(super.serialize(), {
             aperture: this.aperture,
             type: this.type ? this.type.serialize() : null,
         });
     }
 
-    public deserialize(state: any): void {
+    public override deserialize(state: any): void {
         super.deserialize(state);
 
         this.aperture = state.aperture;

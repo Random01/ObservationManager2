@@ -1,7 +1,11 @@
 <form
     class="om-register-component"
     [formGroup]=profileForm
-    (ngSubmit)="onSubmit()">
+    (ngSubmit)="onSubmit()"
+    *ngIf="{
+        isLoading: isLoading$ | async
+     } as data"
+>
 
     <div>
         <h2 class="mat-h2">Register</h2>
@@ -43,7 +47,10 @@
             mat-button
             type="submit"
             color="primary"
-            [disabled]="!profileForm.valid">Register</button>
+            [disabled]="!profileForm.valid || data.isLoading"
+        >
+            Register
+        </button>
 
         <button
             mat-button

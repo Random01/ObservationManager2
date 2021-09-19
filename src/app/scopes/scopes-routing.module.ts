@@ -7,29 +7,29 @@ import { EditScopeComponent } from './edit-scope/edit-scope.component';
 import { AuthGuardService } from '../auth/shared/auth-guard.service';
 
 const scopesRoutes: Routes = [
-    {
-        path: 'scopes',
-        component: ScopesComponent,
-        canActivate: [AuthGuardService]
-    },
-    {
-        path: 'scopes/new-scope',
-        component: AddScopeComponent,
-        canActivate: [AuthGuardService]
-    },
-    {
-        path: 'scopes/:id',
-        component: EditScopeComponent,
-        canActivate: [AuthGuardService]
-    }
+  {
+    path: 'scopes',
+    component: ScopesComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'scopes/new-scope',
+    component: AddScopeComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'scopes/:id',
+    component: EditScopeComponent,
+    canActivate: [AuthGuardService],
+  },
 ];
 
 @NgModule({
-    imports: [
-        RouterModule.forChild(scopesRoutes)
-    ],
-    exports: [
-        RouterModule
-    ]
+  imports: [
+    RouterModule.forChild(scopesRoutes),
+  ],
+  exports: [
+    RouterModule,
+  ],
 })
 export class ScopesRoutingModule { }

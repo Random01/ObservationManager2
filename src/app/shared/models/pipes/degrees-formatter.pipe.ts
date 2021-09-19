@@ -1,10 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
+
 import { Degrees } from '../degrees.model';
 
 @Pipe({ name: 'degreesFormatter' })
 export class DegreesFormatter implements PipeTransform {
 
-    transform(deg: Degrees): string {
+    public transform(deg: Degrees): string {
         if (deg == null) {
             return '';
         }

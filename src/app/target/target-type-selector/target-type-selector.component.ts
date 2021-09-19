@@ -5,31 +5,32 @@ import { TargetTypeService } from '../shared/target-type.service';
 import { TargetTypeItem } from '../shared/interfaces/target-search-params.interface';
 
 @Component({
-    selector: 'om-target-type-selector',
-    templateUrl: './target-type-selector.component.html',
-    styleUrls: ['./target-type-selector.component.css']
+  selector: 'om-target-type-selector',
+  templateUrl: './target-type-selector.component.html',
+  styleUrls: ['./target-type-selector.component.css']
 })
 export class TargetTypeSelectorComponent implements OnInit {
 
-    @Input() targetType: TargetType;
-    @Output() targetTypeChange = new EventEmitter<TargetType>();
+  @Input() public targetType: TargetType;
 
-    targetTypes: TargetTypeItem[] = [];
+  @Output() public readonly targetTypeChange = new EventEmitter<TargetType>();
 
-    constructor(
-        private targetTypeService: TargetTypeService,
-    ) { }
+  public targetTypes: TargetTypeItem[] = [];
 
-    ngOnInit() {
-        this.targetTypeService
-            .getAllTargetTypes()
-            .then((targetTypes) => {
-                this.targetTypes = targetTypes;
-            });
-    }
+  constructor(
+    private readonly targetTypeService: TargetTypeService,
+  ) { }
 
-    onChange(value: TargetType): void {
-        this.targetTypeChange.emit(value);
-    }
+  public ngOnInit() {
+    this.targetTypeService
+      .getAllTargetTypes()
+      .then(targetTypes => {
+        this.targetTypes = targetTypes;
+      });
+  }
+
+  public onChange(value: TargetType): void {
+    this.targetTypeChange.emit(value);
+  }
 
 }

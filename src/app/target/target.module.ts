@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -21,38 +20,32 @@ import { TargetTypeFormatterPipe } from './shared/pipes/target-type-formatter.pi
 import { AddTargetDialogComponent } from './target-selector/add-target-dialog';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        BrowserModule,
-        FormsModule,
-        ReactiveFormsModule,
-        TargetsRoutingModule,
-        MaterialModule,
-    ],
-    declarations: [
-        TargetSelectorComponent,
-        AddTargetComponent,
-        EditTargetComponent,
-        TargetsComponent,
-        TargetComponent,
-        ConstellationSelectorComponent,
-        TargetTypeSelectorComponent,
-        DeclinationSelectorComponent,
-        RightAscensionSelectorComponent,
-        AliasesEditorComponent,
-        TargetSearchParamsComponent,
-        TargetTypeFormatterPipe,
-        AddTargetDialogComponent,
-    ],
-    exports: [
-        TargetSelectorComponent,
-        TargetTypeFormatterPipe,
-    ],
-    entryComponents: [
-        AddTargetDialogComponent,
-    ],
-    providers: [
-    ]
+  imports: [
+    CommonModule,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TargetsRoutingModule,
+    MaterialModule,
+  ],
+  declarations: [
+    TargetSelectorComponent,
+    AddTargetComponent,
+    EditTargetComponent,
+    TargetsComponent,
+    TargetComponent,
+    ConstellationSelectorComponent,
+    TargetTypeSelectorComponent,
+    DeclinationSelectorComponent,
+    RightAscensionSelectorComponent,
+    AliasesEditorComponent,
+    TargetSearchParamsComponent,
+    TargetTypeFormatterPipe,
+    AddTargetDialogComponent,
+  ],
+  exports: [
+    TargetSelectorComponent,
+    TargetTypeFormatterPipe,
+  ],
 })
-
 export class TargetModule { }

@@ -8,15 +8,15 @@ import { JwtService } from '../../auth/shared/jwt.service';
 @Injectable({ providedIn: 'root' })
 export class ScopeService extends StorageService<Scope> {
 
-    constructor(
-        protected http: HttpClient,
-        protected jwtService: JwtService,
-    ) {
-        super('/scopes', http, jwtService);
-    }
+  constructor(
+    http: HttpClient,
+    jwtService: JwtService,
+  ) {
+    super('/scopes', http, jwtService);
+  }
 
-    public createNew(params?: Partial<Scope>): Scope {
-        return new Scope(params);
-    }
+  public createNew(params?: Partial<Scope>): Scope {
+    return new Scope(params);
+  }
 
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { EyepieceService } from '../shared/eyepiece.service';
@@ -7,20 +7,21 @@ import { Eyepiece } from '../../shared/models/equipment/equipment';
 import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
-    selector: 'om-add-eyepiece',
-    templateUrl: './add-eyepiece.component.html',
+  selector: 'om-add-eyepiece',
+  templateUrl: './add-eyepiece.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddEyepieceComponent extends AddEntityComponent<Eyepiece> {
 
-    constructor(
-        private readonly router: Router,
-        eyepieceService: EyepieceService,
-        appContext: AppContextService,
-    ) {
-        super(eyepieceService, appContext);
-    }
+  constructor(
+    private readonly router: Router,
+    eyepieceService: EyepieceService,
+    appContext: AppContextService,
+  ) {
+    super(eyepieceService, appContext);
+  }
 
-    goBack() {
-        this.router.navigate(['/eyepieces']);
-    }
+  public goBack() {
+    this.router.navigate(['/eyepieces']);
+  }
 }

@@ -6,9 +6,11 @@
             placeholder="Constellation"
             (selectionChange)="onConstellationChange($event.value)">
             <mat-option>None</mat-option>
-            <mat-option *ngFor="let cnst of filteredConstellations | async"
-                        [value]="cnst">
-                {{cnst.name}} ({{cnst.code}})
+            <mat-option
+                *ngFor="let constellation of filteredConstellations | async"
+                [value]="constellation"
+            >
+                {{constellation.name}} ({{constellation.code}})
             </mat-option>
         </mat-select>
 

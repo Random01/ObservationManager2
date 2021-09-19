@@ -6,9 +6,9 @@ import { LoggingService } from './logging.service';
 @Injectable({ providedIn: 'root' })
 export class AppContextService {
 
-    constructor(
-        public readonly messageService: MessageService,
-        public readonly logger: LoggingService,
-    ) { }
+  constructor(
+    public readonly messageService: MessageService,
+    public readonly logger: LoggingService,
+  ) { }
 
 }

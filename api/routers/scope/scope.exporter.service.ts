@@ -1,9 +1,13 @@
-import { ScopeTxtExporter } from './scope.txt-exporter.service';
+import { Scope } from './scope.interface';
+import { ScopeCsvExporter } from './scope.csv-exporter.service';
+import { ExporterFactory, ExportType } from './../common/export';
 
-export class ScopeExporterFactory {
+export class ScopeExporterFactory extends ExporterFactory<Scope> {
 
-    public getExporter() {
-        return new ScopeTxtExporter();
-    }
+  constructor() {
+    super([
+      [ExportType.CSV, ScopeCsvExporter],
+    ]);
+  }
 
 }

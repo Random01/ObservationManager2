@@ -1,52 +1,52 @@
 <div class="om-target-component">
 
-    <!-- Target Type -->
-    <om-target-type-selector
-        [(targetType)]="target.type">
-    </om-target-type-selector>
+  <!-- Target Type -->
+  <om-target-type-selector
+    [(targetType)]="target.type">
+  </om-target-type-selector>
 
-    <!-- Target name -->
-    <mat-form-field>
-        <input
-            matInput
-            type="text"
-            autocomplete="off"
-            [(ngModel)]="target.name"
-            placeholder="Name"/>
-    </mat-form-field>
+  <!-- Target name -->
+  <mat-form-field>
+    <input
+      matInput
+      type="text"
+      autocomplete="off"
+      [(ngModel)]="target.name"
+      placeholder="Name"/>
+  </mat-form-field>
 
-    <!-- Target Description -->
-    <mat-form-field>
-        <textarea
-            matInput
-            placeholder="Description"
-            matTextareaAutosize
-            matAutosizeMinRows="5"
-            [(ngModel)]="target.description">
-        </textarea>
-    </mat-form-field>
+  <!-- Target Description -->
+  <mat-form-field>
+    <textarea
+      matInput
+      placeholder="Description"
+      matTextareaAutosize
+      matAutosizeMinRows="5"
+      [(ngModel)]="target.description">
+    </textarea>
+  </mat-form-field>
 
-    <span>RA</span>
-    <om-right-ascension-selector
-        [(ra)]="target.position.ra">
-    </om-right-ascension-selector>
+  <span>RA</span>
+  <om-right-ascension-selector
+    [(ra)]="target.position.ra">
+  </om-right-ascension-selector>
 
-    <span>Dec</span>
-    <om-declination-selector
-        [(dec)]="target.position.dec">
-    </om-declination-selector>
+  <span>Dec</span>
+  <om-declination-selector
+    [(dec)]="target.position.dec">
+  </om-declination-selector>
 
-    <!-- Constellation -->
-    <om-constellation-selector
-        [(constellation)]="target.constellation">
-    </om-constellation-selector>
+  <!-- Constellation -->
+  <om-constellation-selector
+    [(constellation)]="target.constellation">
+  </om-constellation-selector>
 
-    <!-- Alias Names -->
-    <om-aliases-editor
-        [aliases]="target.alliases"
-        (aliasAdded)="onAliasAdded($event)"
-        (aliasRemoved)="onAliasRemoved($event)"
-    >
-    </om-aliases-editor>
+  <!-- Alias Names -->
+  <om-aliases-editor
+    [aliases]="target.alliases"
+    (aliasAdded)="onAliasAdded($event)"
+    (aliasRemoved)="onAliasRemoved($event)"
+  >
+  </om-aliases-editor>
     
 </div>

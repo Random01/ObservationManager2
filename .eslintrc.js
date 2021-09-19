@@ -16,10 +16,7 @@ module.exports = {
         "browser": true,
         "node": true
     },
-    "extends": [
-        "prettier",
-        "prettier/@typescript-eslint"
-    ],
+    "extends": [],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "project": "tsconfig.json",
@@ -60,7 +57,6 @@ module.exports = {
                 "accessibility": "explicit"
             }
         ],
-        "@typescript-eslint/indent": "error",
         "@typescript-eslint/member-delimiter-style": [
             "error",
             {
@@ -88,6 +84,7 @@ module.exports = {
         "@typescript-eslint/no-unused-expressions": "error",
         "@typescript-eslint/no-use-before-define": "error",
         "@typescript-eslint/prefer-function-type": "error",
+        "@typescript-eslint/no-shadow": "warn",
         "@typescript-eslint/quotes": [
             "error",
             "single"
@@ -156,12 +153,7 @@ module.exports = {
             "error",
             "rxjs/Rx"
         ],
-        "no-shadow": [
-            "error",
-            {
-                "hoist": "all"
-            }
-        ],
+        "no-shadow": "off",
         "no-throw-literal": "error",
         "no-trailing-spaces": "error",
         "no-undef-init": "error",
@@ -179,5 +171,11 @@ module.exports = {
                 ]
             }
         ]
-    }
+    },
+    "overrides": [{
+        "files": ["*.ts"],
+        "rules": {
+            "@typescript-eslint/naming-convention": "off"
+        }
+    }]
 };

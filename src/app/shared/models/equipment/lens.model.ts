@@ -15,13 +15,13 @@ export class Lens extends EquipmentItem {
         Object.assign(this, params);
     }
 
-    public serialize(): Object {
+    public override serialize(): Object {
         return Object.assign(super.serialize(), {
             factor: this.factor,
         });
     }
 
-    public deserialize(state: any): void {
+    public override deserialize(state: any): void {
         super.deserialize(state);
 
         this.factor = state.factor;

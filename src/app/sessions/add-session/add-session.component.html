@@ -1,25 +1,30 @@
-<div class="om-add-session">
+<div class="om-add-session"
+  *ngIf="{ item: item$ | async } as data"
+>
 
-    <div>
-        <h2 class="mat-h2">Add New Session</h2>
-    </div>
+  <div>
+    <h2 class="mat-h2">Add New Session</h2>
+  </div>
 
-    <div *ngIf="item">
-        <om-session [session]="item"></om-session>
-    </div>
+  <div *ngIf="data.item">
+    <om-session [session]="data.item"></om-session>
+  </div>
 
-    <div>
-        <button
-            mat-button
-            (click)="addItem()">Add</button>
+  <div>
+    <button
+      mat-button
+      [disabled]="!isValid()"
+      (click)="addItem()">Add</button>
 
-        <button
-            mat-button
-            color="primary"
-            (click)="addAndGo()">Add and go to fill observations</button>
+    <button
+      mat-button
+      color="primary"
+      [disabled]="!isValid()"
+      (click)="addAndGo()">Add and go to fill observations</button>
 
-        <button
-            mat-button
-            (click)="goBack()">Back</button>
-    </div>
+    <button
+      mat-button
+      (click)="goBack()">Back</button>
+
+  </div>
 </div>

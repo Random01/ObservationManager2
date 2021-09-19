@@ -3,6 +3,10 @@ import { UserRole } from './user-role.model';
 
 export class User extends Entity {
 
+    public static readonly EmptyUser = new User();
+
+    public static readonly UnauthorizedUser = new User();
+
     public firstName: string;
 
     public lastName: string;
@@ -20,7 +24,7 @@ export class User extends Entity {
         Object.assign(this, params);
     }
 
-    public serialize(): Object {
+    public override serialize(): Object {
         return Object.assign(super.serialize(), {
             firstName: this.firstName,
             lastName: this.lastName,
@@ -31,11 +35,11 @@ export class User extends Entity {
         });
     }
 
-    public deserialize(state: any): void {
+    public override deserialize(state: any): void {
         super.deserialize(state);
 
         this.copy(state, [
-            'firtName',
+            'firstName',
             'lastName',
             'userName',
             'password',

@@ -3,12 +3,12 @@
 import { Observation } from '../../shared/models/models';
 
 @Component({
-    selector: 'om-observation',
-    templateUrl: './observation.component.html',
-    styleUrls: ['./observation.component.css'],
+  selector: 'om-observation',
+  templateUrl: './observation.component.html',
+  styleUrls: ['./observation.component.css'],
 })
 export class ObservationComponent {
 
-    @Input() observation: Observation;
+  @Input() public observation: Observation | null = null;
 
 }

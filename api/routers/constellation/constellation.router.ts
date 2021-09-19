@@ -8,8 +8,8 @@ import { ConstellationStore } from './constellation.store';
 
 export class ConstellationRouter {
 
-    constructor(app: core.Express, db: Connection) {
-        RouterFactory.create(app, new ConstellationStore(db), '/constellations');
-    }
+  constructor(app: core.Express, db: Connection) {
+    RouterFactory.create(app, new ConstellationStore(db), '/constellations');
+  }
 
 }

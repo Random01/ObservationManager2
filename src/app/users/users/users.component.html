@@ -1,61 +1,82 @@
-<div class="om-users">
-    <div>
-        <h2 class="mat-h2">Users</h2>
-    </div>
+<div
+  class="om-users"
+  *ngIf="{ page: page$ | async } as data"
+>
+  <div>
+    <h2 class="mat-h2">Users</h2>
+  </div>
 
-    <mat-paginator
-        [length]="totalCount"
-        [(pageSize)]="pageSize"
-        [pageSizeOptions]="pageSizeOptions"
-        showFirstLastButtons="true"
-        (page)=onPageChanged($event)>
-    </mat-paginator>
+  <mat-paginator
+    showFirstLastButtons="true"
+    [length]="data.page.totalCount"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="onPageChanged($event)">
+  </mat-paginator>
 
-    <mat-table
-        [dataSource]="items"
-        class="mat-elevation-z8">
+  <mat-table
+    [dataSource]="data.page.items"
+    class="mat-elevation-z8"
+  >
 
-        <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
-            <mat-cell *matCellDef="let user">{{user.name}}</mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+      <mat-cell *matCellDef="let user">{{user.name}}</mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="actions">
-            <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
-            <mat-cell *matCellDef="let user">
-                <button mat-icon-button routerLink="/users/{{user.id}}">
-                <mat-icon aria-label="Click to edit">
-                    edit
-                </mat-icon>
-                </button>
-                <button mat-icon-button (click)=remove(user)>
-                <mat-icon aria-label="Click to delete">
-                    delete
-                </mat-icon>
-                </button>
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+      <mat-cell *matCellDef="let user">
 
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
+        <button
+          mat-icon-button
+          title="Edit User"
+          routerLink="/users/{{user.id}}"
+        >
+          <mat-icon
+            aria-label="Click to edit"
+          >
+            edit
+          </mat-icon>
+        </button>
 
-    <mat-paginator
-        [length]="totalCount"
-        [(pageSize)]="pageSize"
-        [pageSizeOptions]="pageSizeOptions"
-        showFirstLastButtons="true"
-        (page)=onPageChanged($event)>
-    </mat-paginator>
+        <button
+          mat-icon-button
+          (click)="remove(user)"
+        >
+          <mat-icon
+            aria-label="Click to delete"
+          >
+            delete
+          </mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
 
-    <hr />
-    <div>
-        <button mat-button
-            routerLink="/users/new-user"
-            color="primary">Add New User</button>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
 
-        <button mat-button
-            routerLink="/equipment">Back</button>
-        
-    </div>
+  <mat-paginator
+    showFirstLastButtons="true"
+    [length]="data.page.totalCount"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="onPageChanged($event)">
+  </mat-paginator>
+
+  <hr />
+
+  <div>
+
+    <button 
+      mat-button
+      routerLink="/users/new-user"
+      color="primary">Add New User</button>
+
+    <button
+      mat-button
+      routerLink="/equipment">Back</button>
+      
+  </div>
 </div>

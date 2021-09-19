@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+
+import { BehaviorSubject } from 'rxjs';
 
 import { ObservingProgramsService } from '../shared/observing-programs.service';
 import { PaginatedListComponent } from '../../shared/components/paginated-list.component';
@@ -10,65 +12,63 @@ import ObservingProgramStatistics from '../shared/observing-program-statistics.m
 import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
-    selector: 'om-observing-program-statistics',
-    templateUrl: './observing-program-statistics.component.html',
-    styleUrls: ['./observing-program-statistics.component.css'],
+  selector: 'om-observing-program-statistics',
+  templateUrl: './observing-program-statistics.component.html',
+  styleUrls: ['./observing-program-statistics.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ObservingProgramStatisticsComponent extends PaginatedListComponent<TargetStatistics> implements OnInit {
 
-    public readonly displayedColumns: string[] = [
-        'name',
-        'type',
-        'constellation',
-        'observed',
-    ];
+  public readonly displayedColumns: string[] = [
+    'name',
+    'type',
+    'constellation',
+    'observed',
+  ];
 
-    public observingProgramStatistics: ObservingProgramStatistics;
+  private readonly statisticsSubject = new BehaviorSubject<ObservingProgramStatistics>(null);
+  public readonly statistics$ = this.statisticsSubject.asObservable();
 
-    constructor(
-        route: ActivatedRoute,
-        router: Router,
-        protected observingProgramService: ObservingProgramsService,
-        appContext: AppContextService,
-    ) {
-        super(route, router, appContext);
-    }
+  constructor(
+    private readonly observingProgramService: ObservingProgramsService,
+    route: ActivatedRoute,
+    router: Router,
+    appContext: AppContextService,
+  ) {
+    super(route, router, appContext);
+  }
 
-    protected getRequestParams(): RequestParams {
-        const params = new ObservingProgramStatisticsRequestParams();
+  public override async loadItems(): Promise<void> {
+    const request = this.getRequestParams();
+    const stat = await this.observingProgramService.getStatistics(request as ObservingProgramStatisticsRequestParams);
 
-        params.size = this.pageSize;
-        params.page = this.currentPage;
-        params.sortDirection = this.sortDirection;
-        params.sortField = this.sortField;
-        params.observingProgramId = this.getObservingProgramId();
+    this.itemsSubject$.next(stat);
+  }
 
-        return params;
-    }
+  public goBack(): void {
+    this.router.navigate(['/observing-programs']);
+  }
 
-    async loadItems(): Promise<void> {
-        const request = this.getRequestParams();
-        const stat = await this.observingProgramService.getStatistics(request as ObservingProgramStatisticsRequestParams);
+  public override ngOnInit(): void {
+    super.ngOnInit();
 
-        this.items = stat.items;
-        this.totalCount = stat.totalCount;
-    }
+    this.observingProgramService
+      .getObservingProgramStatistics(this.getObservingProgramId())
+      .then(response => this.statisticsSubject.next(response));
+  }
 
-    private getObservingProgramId(): string {
-        return this.route.snapshot.paramMap.get('programId');
-    }
+  private getObservingProgramId(): string {
+    return this.route.snapshot.paramMap.get('programId');
+  }
 
-    public goBack(): void {
-        this.router.navigate(['/observing-programs']);
-    }
-
-    public ngOnInit(): void {
-        super.ngOnInit();
-        this.observingProgramService
-            .getObservingProgramStatistics(this.getObservingProgramId())
-            .then(response => {
-                this.observingProgramStatistics = response;
-            });
-    }
+  protected override getRequestParams(): RequestParams {
+    return new ObservingProgramStatisticsRequestParams({
+      size: this.pageSize,
+      page: this.currentPage,
+      sortDirection: this.sortDirection,
+      sortField: this.sortField,
+      observingProgramId: this.getObservingProgramId(),
+    });
+  }
 
 }

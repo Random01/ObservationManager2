@@ -11,25 +11,25 @@ export class EquipmentItem extends Entity {
         Object.assign(this, params);
     }
 
-    public serialize(): Object {
+    public override serialize(): Object {
         return Object.assign(super.serialize(), {
             model: this.model,
             vendor: this.vendor,
         });
     }
 
-    public deserialize(state: any): void {
+    public override deserialize(state: any): void {
         super.deserialize(state);
 
         this.model = state.model;
         this.vendor = state.vendor;
     }
 
-    public getDisplayName(): string {
+    public override getDisplayName(): string {
         return this.model;
     }
 
-    public isValid(): boolean {
+    public override isValid(): boolean {
         return this.model != null && this.model.trim().length > 0;
     }
 }

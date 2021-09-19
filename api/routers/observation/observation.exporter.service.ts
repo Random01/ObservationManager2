@@ -1,18 +1,14 @@
 import { Observation } from './observation.interface';
 import { ObservationTxtExporter } from './observation.txt-exporter.service';
 
-import { Exporter, ExporterFactory, ExportType } from '../common/export';
+import { ExporterFactory, ExportType } from '../common/export';
 
-export class ObservationExporterService implements ExporterFactory {
+export class ObservationExporterService extends ExporterFactory<Observation> {
 
-    public getExporter(_: ExportType): Exporter<Observation> {
-        return new ObservationTxtExporter();
-    }
+  constructor() {
+    super([
+      [ExportType.TXT, ObservationTxtExporter],
+    ]);
+  }
 
 }
-
-
-
-
-
-

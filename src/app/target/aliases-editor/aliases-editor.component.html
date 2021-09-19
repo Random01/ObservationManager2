@@ -9,7 +9,7 @@
 
                 <button
                     mat-icon-button
-                    (click)=removeAlias(alias)>
+                    (click)="removeAlias(alias)">
                     <mat-icon aria-label="Click to delete">
                         delete
                     </mat-icon>
@@ -33,7 +33,7 @@
         <button 
             mat-button
             [disabled]="!isValid"
-            (click)=addNewAlias()>Add</button>
+            (click)="addNewAlias()">Add</button>
 
     </div>
 </div>

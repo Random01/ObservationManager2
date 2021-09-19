@@ -9,8 +9,13 @@ import { ScopeStore } from './scope.store';
 
 export class ScopeRouter {
 
-    constructor(app: core.Express, db: Connection) {
-        RouterFactory.create(app, new ScopeStore(db), '/scopes', new ScopeExporterFactory());
-    }
+  constructor(app: core.Express, db: Connection) {
+    RouterFactory.create(
+      app,
+      new ScopeStore(db),
+      '/scopes',
+      new ScopeExporterFactory(),
+    );
+  }
 
 }

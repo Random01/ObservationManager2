@@ -13,13 +13,13 @@ export class Filter extends EquipmentItem {
         Object.assign(this, params);
     }
 
-    public serialize(): Object {
+    public override serialize(): Object {
         return Object.assign(super.serialize(), {
             filterType: this.filterType,
         });
     }
 
-    public deserialize(state: any): void {
+    public override deserialize(state: any): void {
         super.deserialize(state);
 
         this.filterType = state.filterType;

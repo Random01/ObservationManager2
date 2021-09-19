@@ -1,9 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-
-import { Observable } from 'rxjs';
+import { Component, Input } from '@angular/core';
 
 import { Filter } from '../../shared/models/equipment/filter.model';
-import { FilterType } from '../../shared/models/equipment/filter-type.enum';
 import { FilterTypeService } from '../shared/filter-type.service';
 
 @Component({
@@ -11,16 +8,12 @@ import { FilterTypeService } from '../shared/filter-type.service';
     templateUrl: './filter.component.html',
     styleUrls: ['./filter.component.css']
 })
-export class FilterComponent implements OnInit {
+export class FilterComponent {
 
-    @Input() public filter: Filter;
+    @Input() public filter?: Filter;
 
-    public filterTypes$: Observable<FilterType[]>;
+    public readonly filterTypes$ = this.filterTypeService.getAll();
 
-    constructor(private filterTypeService: FilterTypeService) {
-    }
+    constructor(private readonly filterTypeService: FilterTypeService) { }
 
-    public ngOnInit(): void {
-        this.filterTypes$ = this.filterTypeService.getAll();
-    }
 }

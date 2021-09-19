@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+
 import { DeepSkyFindingDetails } from '../../../shared/models/finding-details/deep-sky-finding-details.model';
 
 @Component({
@@ -6,10 +7,9 @@ import { DeepSkyFindingDetails } from '../../../shared/models/finding-details/de
     templateUrl: './deep-sky-finding-details.component.html',
     styleUrls: ['./deep-sky-finding-details.component.css']
 })
-
 export class DeepSkyFindingDetailsComponent implements OnInit {
 
-    @Input() findingDetails: DeepSkyFindingDetails;
+    @Input() public findingDetails: DeepSkyFindingDetails | null = null;
 
     ngOnInit() {
     }

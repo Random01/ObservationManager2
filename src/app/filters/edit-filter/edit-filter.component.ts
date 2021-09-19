@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { EditEntityComponent } from '../../shared/components/edit-entity.component';
-
 import { Filter } from '../../shared/models/equipment/equipment';
 import { FilterService } from '../shared/filter.service';
 import { AppContextService } from '../../shared/services/app-context.service';
@@ -15,19 +14,19 @@ import { AppContextService } from '../../shared/services/app-context.service';
 export class EditFilterComponent extends EditEntityComponent<Filter> {
 
     constructor(
-        private route: ActivatedRoute,
-        private router: Router,
+        private readonly route: ActivatedRoute,
+        private readonly router: Router,
         service: FilterService,
         appContext: AppContextService,
     ) {
         super(service, appContext);
     }
 
-    getItemId(): string {
+    public getItemId(): string {
         return this.route.snapshot.paramMap.get('filterId');
     }
 
-    goBack() {
+    public goBack() {
         this.router.navigate(['/filters']);
     }
 

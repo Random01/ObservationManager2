@@ -39,11 +39,7 @@ import { AddEyepieceDialogComponent } from './add-eyepiece-dialog';
     exports: [
         EyepieceSelectorComponent,
     ],
-    providers: [
-    ],
-    entryComponents: [
-        AddEyepieceDialogComponent,
-    ]
+    providers: []
 })
 
 export class EyepieceModule { }

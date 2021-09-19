@@ -1,13 +1,12 @@
-import { Pipe, PipeTransform } from '@angular/core';
-import { Eyepiece } from '../equipment/equipment';
 import { DecimalPipe } from '@angular/common';
+import { Pipe, PipeTransform } from '@angular/core';
+
+import { Eyepiece } from '../equipment/equipment';
 
 @Pipe({ name: 'eyepieceFocalLength' })
 export class EyepieceFocalLengthPipe implements PipeTransform {
 
-    constructor(
-        private decimalPipe: DecimalPipe) {
-    }
+    constructor(private readonly decimalPipe: DecimalPipe) { }
 
     private format(value: number): string {
         return this.decimalPipe.transform(value, '0.1');

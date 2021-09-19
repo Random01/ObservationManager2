@@ -17,11 +17,11 @@ export class MagnificationSelectorComponent {
     private _eyepiece: Eyepiece;
 
     @Input()
-    get eyepiece(): Eyepiece {
+    public get eyepiece(): Eyepiece {
         return this._eyepiece;
     }
 
-    set eyepiece(eyepiece: Eyepiece) {
+    public set eyepiece(eyepiece: Eyepiece) {
         this._eyepiece = eyepiece;
         if (eyepiece) {
             this.minFocalLength = eyepiece.focalLength;
@@ -37,16 +37,16 @@ export class MagnificationSelectorComponent {
     private _magnification: number;
 
     @Input()
-    get magnification(): number {
+    public get magnification(): number {
         return this._magnification;
     }
 
-    set magnification(magnification: number) {
+    public set magnification(magnification: number) {
         this._magnification = magnification;
     }
 
     @Output()
-    public magnificationChange: EventEmitter<number> = new EventEmitter();
+    public readonly magnificationChange = new EventEmitter<number>();
 
     // #endregion
 
@@ -55,29 +55,28 @@ export class MagnificationSelectorComponent {
     private _scope: Scope;
 
     @Input()
-    get scope(): Scope {
+    public get scope(): Scope {
         return this._scope;
     }
 
-    set scope(scope: Scope) {
+    public set scope(scope: Scope) {
         this._scope = scope;
         this.updateMagnification();
     }
 
     // #endregion
 
-    @Input()
-    lens: Lens;
+    @Input() public lens: Lens;
 
     minFocalLength = 1;
     maxFocalLength = 10;
     step = 1;
-    selectedFocalLenght = 3;
+    selectedFocalLength = 3;
 
     calculateMagnification(): number | null {
         if (this.scope && this.eyepiece) {
             const factor = this.lens != null && this.lens.factor != null ? this.lens.factor : 1.0;
-            const eyepieceFocalLength = this.eyepiece.isZoomEyepiece ? this.selectedFocalLenght : this.eyepiece.focalLength;
+            const eyepieceFocalLength = this.eyepiece.isZoomEyepiece ? this.selectedFocalLength : this.eyepiece.focalLength;
             return Math.round((this.scope.focalLength / eyepieceFocalLength) * factor);
         }
         return null;

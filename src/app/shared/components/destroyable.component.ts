@@ -1,7 +1,8 @@
-import { OnDestroy } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 
 import { Unsubscribable } from 'rxjs';
 
+@Component({ template: '' })
 export class DestroyableComponent implements OnDestroy {
 
     private readonly subscriptions: Unsubscribable[] = [];

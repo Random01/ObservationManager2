@@ -9,8 +9,13 @@ import { EyepieceStore } from './eyepiece.store';
 
 export class EyepieceRouter {
 
-    constructor(app: core.Express, db: Connection) {
-        RouterFactory.create(app, new EyepieceStore(db), '/eyepieces', new EyepieceExporterFactory());
-    }
+  constructor(app: core.Express, db: Connection) {
+    RouterFactory.create(
+      app,
+      new EyepieceStore(db),
+      '/eyepieces',
+      new EyepieceExporterFactory(),
+    );
+  }
 
 }

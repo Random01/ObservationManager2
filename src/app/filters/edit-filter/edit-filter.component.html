@@ -1,10 +1,12 @@
-<div class="om-edit-filter">
+<div class="om-edit-filter"
+    *ngIf="{ item: item$ | async } as data"
+>
         <div>
             <h2 class="mat-h2">Edit Filter</h2>
         </div>
                 
-        <div *ngIf="item">
-            <om-filter [filter]=item></om-filter>
+        <div *ngIf="data.item">
+            <om-filter [filter]="data.item"></om-filter>
         </div>
     
         <div>
@@ -12,9 +14,9 @@
                 mat-button
                 color="primary"
                 [disabled]="!isValid()"
-                (click)=updateItem()>Update</button>
+                (click)="updateItem()">Update</button>
             <button
                 mat-button
-                (click)=goBack()>Back</button>
+                (click)="goBack()">Back</button>
         </div>
     </div>

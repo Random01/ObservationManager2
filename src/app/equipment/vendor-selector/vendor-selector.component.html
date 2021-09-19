@@ -11,9 +11,9 @@
             #auto="matAutocomplete">
 
             <mat-option
-                *ngFor="let vnd of filteredVendors | async"
+                *ngFor="let vnd of filteredVendors$ | async"
                 [value]="vnd">
-                {{vnd}}
+                {{ vnd }}
             </mat-option>
             
         </mat-autocomplete>

@@ -8,5 +8,5 @@ import { Site } from '../../shared/models/site.model';
     styleUrls: ['./site.component.css'],
 })
 export class SiteComponent {
-    @Input() site: Site;
+    @Input() public site: Site;
 }

@@ -7,129 +7,127 @@ import { JwtService } from '../../auth/shared/jwt.service';
 import { RequestParams } from './request-params.model';
 import { PaginatedResponsePayload } from '../interfaces/paginated-response-payload.interface';
 import { ResponseStatus } from './response-status.model';
+import { ExportRequestParams } from './export-request-params.model';
 
 export abstract class StorageService<T extends Entity> {
 
-    constructor(
-        public readonly url: string,
-        protected readonly http: HttpClient,
-        protected readonly jwtService: JwtService
-    ) {
+  constructor(
+    public readonly url: string,
+    protected readonly http: HttpClient,
+    protected readonly jwtService: JwtService
+  ) { }
+
+  public getRecent(): Promise<T[]> {
+    return this.getAll();
+  }
+
+  public async add(newItem: T): Promise<AddResultPayload> {
+    if (!newItem) {
+      throw new Error('newItem should be provided');
     }
 
-    protected getUrl(): string {
-        return environment.omServiceEndpoint + this.url;
-    }
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.getAuthorizationToken(),
+      }),
+    };
 
-    public getRecent(): Promise<T[]> {
-        return this.getAll();
-    }
+    const result = await this.http.post<T>(this.getUrl(), newItem.serialize(), httpOptions).toPromise();
 
-    public async add(newItem: T): Promise<AddResultPayload> {
-        if (!newItem) {
-            throw new Error('newItem should be provided');
-        }
+    return new AddResultPayload({
+      status: ResponseStatus.Ok,
+      payload: this.deserialize(result),
+    });
+  }
 
-        const httpOptions = {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/json',
-                'Authorization': this.getAuthorizationToken(),
-            }),
-        };
+  public async getById(id: String): Promise<T> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': this.getAuthorizationToken(),
+      }),
+    };
 
-        const result = await this.http.post<T>(this.getUrl(), newItem.serialize(), httpOptions).toPromise();
+    const result = await this.http.get<any>(this.getUrl() + '/' + id, httpOptions).toPromise();
+    return this.deserialize(result);
+  }
 
-        return new AddResultPayload({
-            status: ResponseStatus.Ok,
-            payload: this.deserialize(result),
-        });
-    }
+  public async getAll(): Promise<T[]> {
+    return (await this.getItems(new RequestParams())).items;
+  }
 
-    public async getById(id: String): Promise<T> {
-        const httpOptions = {
-            headers: new HttpHeaders({
-                'Authorization': this.getAuthorizationToken(),
-            }),
-        };
+  /**
+   * Returns a paginated list of items.
+   * @param request
+   */
+  public async getItems(request: RequestParams): Promise<PaginatedResponsePayload<T>> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': this.getAuthorizationToken(),
+      })
+    };
 
-        const result = await this.http.get<any>(this.getUrl() + '/' + id, httpOptions).toPromise();
-        return this.deserialize(result);
-    }
+    const url = this.getUrl() + '?' + request.getQueryString();
+    const result = await this.http.get<any>(url, httpOptions).toPromise();
 
-    public async getAll(): Promise<T[]> {
-        return (await this.getItems(new RequestParams())).items;
-    }
+    return {
+      ...result,
+      items: result.items.map((item: any) => this.deserialize(item)),
+    };
+  }
 
-    /**
-     * Returns a paginated list of items.
-     * @param request
-     */
-    public async getItems(request: RequestParams): Promise<PaginatedResponsePayload<T>> {
-        const httpOptions = {
-            headers: new HttpHeaders({
-                'Authorization': this.getAuthorizationToken(),
-            })
-        };
+  public async exportItems(request: ExportRequestParams): Promise<Blob> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': this.getAuthorizationToken(),
+        'Content-Type': 'application/octet-stream',
+      }),
+      responseType: 'blob',
+    } as any;
 
-        const url = this.getUrl() + '?' + request.getQueryString();
-        const result = await this.http.get<any>(url, httpOptions).toPromise();
+    const url = this.getUrl() + '/export?' + request.getQueryString();
+    return await this.http.get<Blob>(url, httpOptions).toPromise() as any;
+  }
 
-        return {
-            ...result,
-            items: result.items.map((item: any) => this.deserialize(item)),
-        };
-    }
+  public update(entity: T): Promise<Boolean> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.getAuthorizationToken(),
+      }),
+    };
 
-    public async exportItems(request: RequestParams): Promise<Blob> {
-        const httpOptions = {
-            headers: new HttpHeaders({
-                'Authorization': this.getAuthorizationToken(),
-                'Content-Type': 'application/octet-stream',
-            }),
-            responseType: 'blob',
-        } as any;
+    return this.http.put<T>(this.getUrl() + '/' + entity.id, entity.serialize(), httpOptions)
+      .toPromise()
+      .then(() => true, () => false);
+  }
 
-        const url = this.getUrl() + '/export?' + request.getQueryString();
-        return await this.http.get<Blob>(url, httpOptions).toPromise() as any;
-    }
+  public delete(id: String): Promise<Boolean> {
+    const url = `${this.getUrl()}/${id}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.getAuthorizationToken(),
+      })
+    };
 
-    protected getAuthorizationToken(): string {
-        return this.jwtService.getToken();
-    }
+    return this.http.delete<Boolean>(url, httpOptions).toPromise();
+  }
 
-    public update(entity: T): Promise<Boolean> {
-        const httpOptions = {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/json',
-                'Authorization': this.getAuthorizationToken(),
-            }),
-        };
+  abstract createNew(params?: Partial<T>): T;
 
-        return this.http.put<T>(this.getUrl() + '/' + entity.id, entity.serialize(), httpOptions)
-            .toPromise()
-            .then(
-                () => true,
-                () => false,
-            );
-    }
+  public deserialize(state: any): T {
+    const item = this.createNew();
+    item.deserialize(state);
+    return item;
+  }
 
-    public delete(id: String): Promise<Boolean> {
-        const url = `${this.getUrl()}/${id}`;
-        const httpOptions = {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/json',
-                'Authorization': this.getAuthorizationToken(),
-            })
-        };
+  protected getAuthorizationToken(): string {
+    return this.jwtService.getToken();
+  }
 
-        return this.http.delete<Boolean>(url, httpOptions).toPromise();
-    }
+  protected getUrl(): string {
+    return environment.omServiceEndpoint + this.url;
+  }
 
-    abstract createNew(params?: any): T;
-
-    public deserialize(state: any): T {
-        const item = this.createNew();
-        item.deserialize(state);
-        return item;
-    }
 }

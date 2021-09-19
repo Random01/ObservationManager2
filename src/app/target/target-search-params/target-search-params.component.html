@@ -1,24 +1,32 @@
 <div class="om-target-search-params">
 
-    <!-- Name -->
-    <mat-form-field>
-        <input
-            matInput
-            type="text"
-            placeholder="Name"
-            autocomplete="off"
-            [(ngModel)]="searchParams.name" />
-    </mat-form-field>
+  <!-- Name -->
+  <mat-form-field>
+    <input
+      matInput
+      type="text"
+      placeholder="Name"
+      autocomplete="off"
+      [(ngModel)]="searchParams.name" />
+  </mat-form-field>
 
-    <!-- Type -->
-    <om-target-type-selector
-        [(targetType)]="searchParams.type">
-    </om-target-type-selector>
+  <!-- Type -->
+  <om-target-type-selector
+    [(targetType)]="searchParams.type">
+  </om-target-type-selector>
 
-    <button
-        mat-button
-        (click)="onSearch()">
-        Search
-    </button>
+  <button
+    mat-button
+    (click)="onSearch()"
+  >
+    Search
+  </button>
+
+  <button
+    mat-button
+    (click)="clear()"
+  >
+    Clear
+  </button>
 
 </div>

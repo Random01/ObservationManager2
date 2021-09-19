@@ -9,36 +9,30 @@ import { DateTimeInputComponent } from './components/date-time-input/date-time-i
 import { DeleteEntityDialogComponent } from './components/delete-entity-dialog/delete-entity-dialog.component';
 import { DegreesFormatter } from './models/pipes/degrees-formatter.pipe';
 import { EyepieceFocalLengthPipe } from './models/pipes/eyepiece-focal-length-formatter.pipe';
-import { MessageService } from './services/message.service';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        BrowserModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MaterialModule,
-    ],
-    entryComponents: [
-        DeleteEntityDialogComponent,
-    ],
-    declarations: [
-        DegreesInputComponent,
-        DateTimeInputComponent,
-        DegreesFormatter,
-        EyepieceFocalLengthPipe,
-        DeleteEntityDialogComponent,
-    ],
-    exports: [
-        DegreesInputComponent,
-        DateTimeInputComponent,
-        DegreesFormatter,
-        EyepieceFocalLengthPipe,
-    ],
-    providers: [
-        DecimalPipe,
-        MessageService,
-    ]
+  imports: [
+    CommonModule,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
+  ],
+  declarations: [
+    DegreesInputComponent,
+    DateTimeInputComponent,
+    DegreesFormatter,
+    EyepieceFocalLengthPipe,
+    DeleteEntityDialogComponent,
+  ],
+  exports: [
+    DegreesInputComponent,
+    DateTimeInputComponent,
+    DegreesFormatter,
+    EyepieceFocalLengthPipe,
+  ],
+  providers: [
+    DecimalPipe,
+  ],
 })
-
 export class SharedModule { }

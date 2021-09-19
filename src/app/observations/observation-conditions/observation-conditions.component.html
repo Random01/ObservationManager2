@@ -3,14 +3,14 @@
     <!-- Seeing -->
     <mat-form-field>
         <mat-select
-                placeholder="Seeing"
-                [(value)]="observation.seeing">
-                <mat-option>None</mat-option>
-                <mat-option
-                        *ngFor="let seeingItem of seeingTypes; let i = index"
-                        [value]="seeingItem.seeing">
-                        ({{i + 1}}) {{ seeingItem.name }}
-                </mat-option>
+            placeholder="Seeing"
+            [(value)]="observation.seeing">
+            <mat-option>None</mat-option>
+            <mat-option
+                *ngFor="let seeingItem of seeingTypes$ | async; let i = index"
+                [value]="seeingItem.seeing">
+                ({{i + 1}}) {{ seeingItem.name }}
+            </mat-option>
         </mat-select>
     </mat-form-field>
 

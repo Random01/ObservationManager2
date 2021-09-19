@@ -1,15 +1,17 @@
 <div class="om-target-type-selector">
-        <mat-form-field>
-                <mat-select
-                        placeholder="Target Type"
-                        [value]="targetType"
-                        (selectionChange)="onChange($event.value)">
-                        <mat-option>None</mat-option>
-                        <mat-option
-                                *ngFor="let targetType of targetTypes"
-                                [value]="targetType.type">
-                                {{ targetType.name }}
-                        </mat-option>
-                </mat-select>
-        </mat-form-field>
+  <mat-form-field>
+    <mat-select
+      placeholder="Target Type"
+      [value]="targetType"
+      (selectionChange)="onChange($event.value)"
+    >
+      <mat-option>None</mat-option>
+      <mat-option
+        *ngFor="let targetType of targetTypes"
+        [value]="targetType.type"
+      >
+        {{ targetType.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 </div>

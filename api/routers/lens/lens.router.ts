@@ -9,8 +9,13 @@ import { LensStore } from './lens.store';
 
 export class LensRouter {
 
-    constructor(app: core.Express, db: Connection) {
-        RouterFactory.create(app, new LensStore(db), '/lenses', new LensExporterFactory());
-    }
+  constructor(app: core.Express, db: Connection) {
+    RouterFactory.create(
+      app,
+      new LensStore(db),
+      '/lenses',
+      new LensExporterFactory(),
+    );
+  }
 
 }

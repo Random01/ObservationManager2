@@ -1,9 +1,13 @@
+import { ExporterFactory, ExportType } from './../common/export';
 import { FilterCsvExporter } from './filter.csv-exporter.service';
+import { Filter } from './filter.interface';
 
-export class FilterCsvExporterFactory {
+export class FilterExporterFactory extends ExporterFactory<Filter> {
 
-    public getExporter() {
-        return new FilterCsvExporter();
-    }
+  constructor() {
+    super([
+      [ExportType.CSV, FilterCsvExporter],
+    ]);
+  }
 
 }

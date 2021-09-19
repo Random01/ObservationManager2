@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { Router } from '@angular/router';
 
@@ -8,20 +8,21 @@ import { FilterService } from '../shared/filter.service';
 import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
-    selector: 'om-add-filter',
-    templateUrl: './add-filter.component.html',
+  selector: 'om-add-filter',
+  templateUrl: './add-filter.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddFilterComponent extends AddEntityComponent<Filter> {
 
-    constructor(
-        private router: Router,
-        service: FilterService,
-        appContext: AppContextService,
-    ) {
-        super(service, appContext);
-    }
+  constructor(
+    private readonly router: Router,
+    service: FilterService,
+    appContext: AppContextService,
+  ) {
+    super(service, appContext);
+  }
 
-    goBack() {
-        this.router.navigate(['/filters']);
-    }
+  public goBack() {
+    this.router.navigate(['/filters']);
+  }
 }

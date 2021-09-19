@@ -1,4 +1,4 @@
-﻿import { Component } from '@angular/core';
+﻿import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Filter } from '../../shared/models/equipment/equipment';
@@ -8,30 +8,32 @@ import { DeleteEntityDialogService } from '../../shared/components/delete-entity
 import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
-    selector: 'om-filters',
-    templateUrl: './filters.component.html',
-    styleUrls: ['./filters.component.css'],
+  selector: 'om-filters',
+  templateUrl: './filters.component.html',
+  styleUrls: ['./filters.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FiltersComponent extends EntityListComponent<Filter> {
 
-    public readonly displayedColumns: string[] = [
-        'model',
-        'vendor',
-        'filterType',
-        'actions',
-    ];
+  public readonly displayedColumns: string[] = [
+    'model',
+    'vendor',
+    'filterType',
+    'actions',
+  ];
 
-    constructor(
-        service: FilterService,
-        deleteEntityDialogService: DeleteEntityDialogService,
-        route: ActivatedRoute,
-        router: Router,
-        appContext: AppContextService,
-    ) {
-        super(service, deleteEntityDialogService, route, router, appContext);
-    }
+  constructor(
+    service: FilterService,
+    deleteEntityDialogService: DeleteEntityDialogService,
+    route: ActivatedRoute,
+    router: Router,
+    appContext: AppContextService,
+  ) {
+    super(service, deleteEntityDialogService, route, router, appContext);
+  }
 
-    protected getExportFileName(): string {
-        return 'Filters';
-    }
+  protected override getExportFileName() {
+    return 'eyepieces';
+  }
+
 }

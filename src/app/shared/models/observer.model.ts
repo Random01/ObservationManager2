@@ -13,7 +13,7 @@ export class Observer extends Entity {
         Object.assign(this, params);
     }
 
-    public serialize(): Object {
+    public override serialize(): Object {
         return Object.assign(super.serialize(), {
             name: this.name,
             surname: this.surname,
@@ -21,7 +21,7 @@ export class Observer extends Entity {
         });
     }
 
-    public deserialize(state: any): void {
+    public override deserialize(state: any): void {
         super.deserialize(state);
 
         this.copy(state, [

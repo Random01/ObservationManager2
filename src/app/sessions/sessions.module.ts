@@ -20,28 +20,27 @@ import { SessionInfoComponent } from './session-info/session-info.component';
 import { SiteModule } from '../sites/site.module';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        BrowserModule,
-        FormsModule,
-        RouterModule,
-        NoopAnimationsModule,
-        SessionsRoutingModule,
-        SharedModule,
-        MaterialModule,
-        SiteModule,
-    ],
-    declarations: [
-        SessionsComponent,
-        SessionComponent,
-        SessionDetailsComponent,
-        AddSessionComponent,
-        EditSessionComponent,
-        SessionInfoComponent,
-    ],
-    exports: [
-        SessionInfoComponent,
-    ],
+  imports: [
+    CommonModule,
+    BrowserModule,
+    FormsModule,
+    RouterModule,
+    NoopAnimationsModule,
+    SessionsRoutingModule,
+    SharedModule,
+    MaterialModule,
+    SiteModule,
+  ],
+  declarations: [
+    SessionsComponent,
+    SessionComponent,
+    SessionDetailsComponent,
+    AddSessionComponent,
+    EditSessionComponent,
+    SessionInfoComponent,
+  ],
+  exports: [
+    SessionInfoComponent,
+  ],
 })
-
 export class SessionsModule { }

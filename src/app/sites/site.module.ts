@@ -17,31 +17,25 @@ import { SiteSelectorComponent } from './site-selector';
 import { AddSiteDialogComponent } from './add-site-dialog';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        BrowserModule,
-        FormsModule,
-        RouterModule,
-        SitesRoutingModule,
-        SharedModule,
-        MaterialModule,
-    ],
-    declarations: [
-        SitesComponent,
-        SiteComponent,
-        EditSiteComponent,
-        AddSiteComponent,
-        AddSiteDialogComponent,
-        SiteSelectorComponent,
-    ],
-    exports: [
-        SiteSelectorComponent,
-    ],
-    providers: [
-    ],
-    entryComponents: [
-        AddSiteDialogComponent,
-    ]
+  imports: [
+    CommonModule,
+    BrowserModule,
+    FormsModule,
+    RouterModule,
+    SitesRoutingModule,
+    SharedModule,
+    MaterialModule,
+  ],
+  declarations: [
+    SitesComponent,
+    SiteComponent,
+    EditSiteComponent,
+    AddSiteComponent,
+    AddSiteDialogComponent,
+    SiteSelectorComponent,
+  ],
+  exports: [
+    SiteSelectorComponent,
+  ],
 })
-
 export class SiteModule { }

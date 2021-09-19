@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AddEntityComponent } from '../../shared/components/add-entity.component';
@@ -8,20 +7,21 @@ import { ObservingProgramsService } from '../shared/observing-programs.service';
 import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
-    selector: 'om-add-observing-program',
-    templateUrl: './add-observing-program.component.html',
+  selector: 'om-add-observing-program',
+  templateUrl: './add-observing-program.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddObservingProgramComponent extends AddEntityComponent<ObservingProgram> {
 
-    constructor(
-        private router: Router,
-        service: ObservingProgramsService,
-        appContext: AppContextService,
-    ) {
-        super(service, appContext);
-    }
+  constructor(
+    private readonly router: Router,
+    service: ObservingProgramsService,
+    appContext: AppContextService,
+  ) {
+    super(service, appContext);
+  }
 
-    goBack() {
-        this.router.navigate(['/observing-programs']);
-    }
+  public goBack() {
+    this.router.navigate(['/observing-programs']);
+  }
 }

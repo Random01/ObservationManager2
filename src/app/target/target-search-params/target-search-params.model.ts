@@ -3,22 +3,20 @@ import { TargetType } from '../../shared/models/target-type.model';
 
 export class TargetSearchParams extends RequestParams {
 
-    public name: string;
+  public name: string;
 
-    public type: TargetType;
+  public type: TargetType;
 
-    constructor(props?: Partial<TargetSearchParams>) {
-        super(props);
-        Object.assign(this, props);
-    }
+  constructor(props?: Partial<TargetSearchParams>) {
+    super(props);
+  }
 
-    protected getQueryParams(): { name: string; value: any }[] {
-        const params = super.getQueryParams();
-
-        params.push({ name: 'name', value: this.name });
-        params.push({ name: 'type', value: this.type });
-
-        return params;
-    }
+  protected override getQueryParams(): { name: string; value: any }[] {
+    return [
+      ...super.getQueryParams(),
+      { name: 'name', value: this.name },
+      { name: 'type', value: this.type },
+    ];
+  }
 
 }

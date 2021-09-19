@@ -10,16 +10,6 @@ export class Entity implements Serializable {
         Object.assign(this, params);
     }
 
-    protected copy(state: any, fields: string[]): void {
-        for (const field of fields) {
-            if (this[field] != null && this[field].deserialize != null) {
-                this[field].deserialize(state[field] || {});
-            } else {
-                this[field] = state[field];
-            }
-        }
-    }
-
     public serialize(params?: { lightWeight: boolean }): Object {
         if (params != null && params.lightWeight === true) {
             return this.id;
@@ -39,6 +29,10 @@ export class Entity implements Serializable {
         return true;
     }
 
+    public getDisplayName(): string {
+        return null;
+    }
+
     protected parseDate(value?: string): Date {
         if (value) {
             return moment(value).toDate();
@@ -54,7 +48,14 @@ export class Entity implements Serializable {
         return value ? value.id : null;
     }
 
-    public getDisplayName(): string {
-        return null;
+    protected copy(state: any, fields: string[]): void {
+        for (const field of fields) {
+            if (this[field] != null && this[field].deserialize != null) {
+                this[field].deserialize(state[field] || {});
+            } else {
+                this[field] = state[field];
+            }
+        }
     }
+
 }

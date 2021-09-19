@@ -13,48 +13,48 @@ import { GlobularClusterTarget } from '../../shared/models/target-types/deep-sky
 import { CometTarget } from '../../shared/models/target-types/solar-system/comet-target.model';
 
 interface SearchParams {
-    name: string;
-    maxCount: number;
+  name: string;
+  maxCount: number;
 }
 
 @Injectable({ providedIn: 'root' })
 export class TargetService extends StorageService<Target> {
 
-    constructor(
-        http: HttpClient,
-        jwtService: JwtService,
-    ) {
-        super('/targets', http, jwtService);
+  constructor(
+    http: HttpClient,
+    jwtService: JwtService,
+  ) {
+    super('/targets', http, jwtService);
+  }
+
+  public createNew(params?: Partial<Target>): Target {
+    return new Target(params);
+  }
+
+  public search({ name, maxCount }: SearchParams): Observable<Target[]> {
+    name = (name || '').trim();
+    if (name === '') {
+      return of([]);
     }
 
-    public createNew(params?: Partial<Target>): Target {
+    const url = `${this.getUrl()}?name=${name}&maxCount=${maxCount}`;
+    return this.http.get<Target[]>(url)
+      .pipe(
+        map(targets => targets.map(item => this.deserialize(item)))
+      );
+  }
+
+  protected create(targetType: TargetType, params?: any): Target {
+    switch (targetType) {
+      case TargetType.Galaxy:
+        return new GalaxyTarget(params);
+      case TargetType.GlobularCluster:
+        return new GlobularClusterTarget(params);
+      case TargetType.Comet:
+        return new CometTarget(params);
+      default:
         return new Target(params);
     }
-
-    public search({ name, maxCount }: SearchParams): Observable<Target[]> {
-        name = (name || '').trim();
-        if (name === '') {
-            return of([]);
-        }
-
-        const url = `${this.getUrl()}?name=${name}&maxCount=${maxCount}`;
-        return this.http.get<Target[]>(url)
-            .pipe(
-                map(targets => targets.map(item => this.deserialize(item)))
-            );
-    }
-
-    protected create(targetType: TargetType, params?: any): Target {
-        switch (targetType) {
-            case TargetType.Galaxy:
-                return new GalaxyTarget(params);
-            case TargetType.GlobularCluster:
-                return new GlobularClusterTarget(params);
-            case TargetType.Comet:
-                return new CometTarget(params);
-            default:
-                return new Target(params);
-        }
-    }
+  }
 
 }

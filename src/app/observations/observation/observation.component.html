@@ -1,79 +1,79 @@
 ﻿<div class="om-observation">
 
-    <!-- Session Info -->
-    <om-session-info
-        [session]="observation.session"
-        *ngIf="observation.session">
-    </om-session-info>
+  <!-- Session Info -->
+  <om-session-info
+    [session]="observation.session"
+    *ngIf="observation.session">
+  </om-session-info>
 
-    <!-- Target -->
-    <div class="om-target">
-        <om-target-selector
-            [(target)]="observation.target"
-            [canAdd]="true">
-        </om-target-selector>
-    </div>
+  <!-- Target -->
+  <div class="om-target">
+    <om-target-selector
+      [(target)]="observation.target"
+      [canAdd]="true">
+    </om-target-selector>
+  </div>
 
-    <!-- Start of observation (Date) -->
-    <!-- Start of observation (Time) -->
-    <om-date-time-input
-        [(dateTime)]="observation.begin"
-        datePlaceholder="Start Date"
-        timePlaceholder="Time"
-        dateHint="Date of observation"
-        timeHint="Time of observation">
-    </om-date-time-input>
+  <!-- Start of observation (Date) -->
+  <!-- Start of observation (Time) -->
+  <om-date-time-input
+    [(dateTime)]="observation.begin"
+    datePlaceholder="Start Date"
+    timePlaceholder="Time"
+    dateHint="Date of observation"
+    timeHint="Time of observation">
+  </om-date-time-input>
 
-    <!-- End Date -->
-    <!-- End of an observation session (Date) -->
-    <!-- End of observation session -->
-    <om-date-time-input
-        [(dateTime)]="observation.end"
-        datePlaceholder="End date"
-        timePlaceholder="Time"
-        dateHint="Date of observation session"
-        timeHint="Time of observation">
-    </om-date-time-input>
+  <!-- End Date -->
+  <!-- End of an observation session (Date) -->
+  <!-- End of observation session -->
+  <om-date-time-input
+    [(dateTime)]="observation.end"
+    datePlaceholder="End date"
+    timePlaceholder="Time"
+    dateHint="Date of observation session"
+    timeHint="Time of observation">
+  </om-date-time-input>
 
-    <!-- Result -->
-    <mat-form-field
-        *ngIf="observation.result">
-        <textarea
-            matInput
-            placeholder="Notes"
-            matTextareaAutosize
-            matAutosizeMinRows="5"
-            [(ngModel)]="observation.result.description">
-        </textarea>
-    </mat-form-field>
+  <!-- Result -->
+  <mat-form-field
+    *ngIf="observation.result">
+    <textarea
+      matInput
+      placeholder="Notes"
+      matTextareaAutosize
+      matAutosizeMinRows="5"
+      [(ngModel)]="observation.result.description">
+    </textarea>
+  </mat-form-field>
     
-    <h3 class="mat-subheading-2">Equipment</h3>
+  <h3 class="mat-subheading-2">Equipment</h3>
 
-    <om-scope-selector
-        [(item)]="observation.scope">
-    </om-scope-selector>
+  <om-scope-selector
+    [(item)]="observation.scope">
+  </om-scope-selector>
 
-    <om-eyepiece-selector
-        [(item)]="observation.eyepiece">
-    </om-eyepiece-selector>
+  <om-eyepiece-selector
+    [(item)]="observation.eyepiece">
+  </om-eyepiece-selector>
 
-    <om-magnification-selector
-        [eyepiece]="observation.eyepiece"
-        [scope]="observation.scope"
-        [(magnification)]="observation.magnification">
-    </om-magnification-selector>
+  <om-magnification-selector
+    [eyepiece]="observation.eyepiece"
+    [scope]="observation.scope"
+    [(magnification)]="observation.magnification">
+  </om-magnification-selector>
 
-    <om-filter-selector
-        [(item)]="observation.filter">
-    </om-filter-selector>
+  <om-filter-selector
+    [(item)]="observation.filter">
+  </om-filter-selector>
 
-    <om-lens-selector
-        [(item)]="observation.lens">
-    </om-lens-selector>
+  <om-lens-selector
+    [(item)]="observation.lens">
+  </om-lens-selector>
 
-    <h3 class="mat-subheading-2">Conditions</h3>
+  <h3 class="mat-subheading-2">Conditions</h3>
 
-    <om-observation-conditions [observation]="observation">
-    </om-observation-conditions>
+  <om-observation-conditions [observation]="observation">
+  </om-observation-conditions>
 
 </div>

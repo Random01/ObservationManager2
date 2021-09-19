@@ -6,17 +6,16 @@ import { TargetTypeService } from '../target-type.service';
 @Pipe({ name: 'targetTypeFormatter' })
 export class TargetTypeFormatterPipe implements PipeTransform {
 
-    constructor(
-        protected readonly targetTypeService: TargetTypeService,
-    ) {
+  constructor(
+    public readonly targetTypeService: TargetTypeService,
+  ) { }
+
+  public transform(targetType?: TargetType): string {
+    if (targetType == null) {
+      return '';
     }
 
-    transform(targetType?: TargetType): string {
-        if (targetType == null) {
-            return '';
-        }
-
-        return this.targetTypeService.getName(targetType);
-    }
+    return this.targetTypeService.getName(targetType);
+  }
 
 }

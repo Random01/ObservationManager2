@@ -1,48 +1,54 @@
-<form
-    class="om-login-component"
-    [formGroup]="loginForm"
-    (ngSubmit)="onSubmit()">
+<div *ngIf="{
+    isLoading: isLoading$ | async
+ } as data">
 
-    <div>
-        <h2 class="mat-h2">Login</h2>
-    </div>
+    <form
+        class="om-login-component"
+        [formGroup]="loginForm"
+        (ngSubmit)="onSubmit()">
 
-    <div>
-        <div class="form-field">
-            <mat-form-field>
-                <input
-                    matInput
-                    autocomplete="username"
-                    placeholder="E-mail or Username"
-                    formControlName="email"/>
-
-            </mat-form-field>
+        <div>
+            <h2 class="mat-h2">Login</h2>
         </div>
 
-        <div class="form-field">
-            <mat-form-field>
-                <input
-                    matInput
-                    placeholder="Password"
-                    formControlName="password"
-                    type="password"/>
+        <div>
+            <div class="form-field">
+                <mat-form-field>
+                    <input
+                        matInput
+                        autocomplete="username"
+                        placeholder="E-mail or Username"
+                        formControlName="email"/>
 
-            </mat-form-field>
+                </mat-form-field>
+            </div>
+
+            <div class="form-field">
+                <mat-form-field>
+                    <input
+                        matInput
+                        placeholder="Password"
+                        formControlName="password"
+                        type="password"/>
+
+                </mat-form-field>
+            </div>
+
         </div>
 
-    </div>
+        <div class="form-buttons">
+            <button
+                mat-button
+                type="submit"
+                color="primary"
+                [disabled]="!loginForm.valid || data.isLoading">Sign in</button>
 
-    <div class="form-buttons">
-        <button
-            mat-button
-            type="submit"
-            color="primary"
-            [disabled]="!loginForm.valid">Sign in</button>
+            <button
+                mat-button
+                routerLink="/register">Create an account</button>
 
-        <button
-            mat-button
-            routerLink="/register">Create an account</button>
+        </div>
 
-    </div>
+    </form>
 
-</form>
+</div>

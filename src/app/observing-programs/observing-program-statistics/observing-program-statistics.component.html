@@ -1,70 +1,84 @@
-<div class="om-observing-program-statistics">
+<div
+  class="om-observing-program-statistics"
+  *ngIf="{
+    page: page$ | async,
+    statistics: statistics$ | async
+  } as data"
+>
 
-    <div>
-        <h2>Statistics</h2>
-    </div>
+  <div>
+    <h2 class="mat-h2">Statistics</h2>
+  </div>
 
-    <div *ngIf="observingProgramStatistics">
-        <h4>Total Objects: {{observingProgramStatistics.totalCount}}</h4>
-        <h4>Observed Objects: {{observingProgramStatistics.observedCount}}</h4>
-        <h4>Completeness: {{observingProgramStatistics.getCompletenes()*100}}%</h4>
-    </div>
+  <div *ngIf="data.statistics">
+    <h4>Total Objects: {{ data.statistics.totalCount }}</h4>
+    <h4>Observed Objects: {{ data.statistics.observedCount }}</h4>
+    <h4>Completeness: {{ data.statistics.getCompletenes()*100 }}%</h4>
+  </div>
 
-    <mat-paginator
-            [length]="totalCount"
-            [(pageSize)]="pageSize"
-            [pageSizeOptions]="pageSizeOptions"
-            [pageIndex]="currentPage"
-            showFirstLastButtons="true"
-            (page)=onPageChanged($event)>
-    </mat-paginator>
+  <mat-paginator
+    showFirstLastButtons="true"
+    [length]="data.page.totalCount"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    [pageIndex]="currentPage"
+    (page)="onPageChanged($event)"
+  >
+  </mat-paginator>
 
-    <mat-table
-        [dataSource]="items"
-        class="mat-elevation-z8">
+  <mat-table
+    class="mat-elevation-z8"
+    [dataSource]="data.page.items"
+  >
 
-        <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
-            <mat-cell *matCellDef="let item">{{item.target.name}}</mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+      <mat-cell *matCellDef="let item">{{ item.target.name }}</mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="type">
-            <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
-            <mat-cell *matCellDef="let item">{{item.target.type | targetTypeFormatter}}</mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="type">
+      <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
+      <mat-cell *matCellDef="let item">{{ item.target.type | targetTypeFormatter }}</mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="constellation">
-            <mat-header-cell *matHeaderCellDef>Constellation</mat-header-cell>
-            <mat-cell *matCellDef="let item">{{item.target.constellation}}</mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="constellation">
+      <mat-header-cell *matHeaderCellDef>Constellation</mat-header-cell>
+      <mat-cell *matCellDef="let item">{{ item.target.constellation }}</mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="observed">
-            <mat-header-cell *matHeaderCellDef>Observed</mat-header-cell>
-            <mat-cell *matCellDef="let item">
-                    <mat-icon *ngIf="item.observed">
-                            check
-                    </mat-icon>
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="observed">
+      <mat-header-cell *matHeaderCellDef>Observed</mat-header-cell>
+      <mat-cell *matCellDef="let item">
+        <mat-icon
+          *ngIf="item.observed"
+        >
+          check
+        </mat-icon>
+      </mat-cell>
+    </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
     </mat-table>
 
-    <mat-paginator
-        [length]="totalCount"
-        [(pageSize)]="pageSize"
-        [pageSizeOptions]="pageSizeOptions"
-        [pageIndex]="currentPage"
-        showFirstLastButtons="true"
-        (page)=onPageChanged($event)>
-    </mat-paginator>
+  <mat-paginator
+    showFirstLastButtons="true"
+    [length]="data.page.totalCount"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    [pageIndex]="currentPage"
+    (page)="onPageChanged($event)">
+  </mat-paginator>
 
-    <div>
-        <button
-            mat-button
-            (click)=goBack()>Back</button>
-    </div>
+  <hr/>
+
+  <div>
+
+    <button
+      mat-button
+      (click)="goBack()">Back</button>
+
+  </div>
 
 </div>

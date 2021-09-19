@@ -1,0 +1,1 @@
+1. CONNECTION_STRING='mongodb+srv://$USER$:$PASSWORD$@$DB_LINK$?retryWrites=true&w=majority' npm run start:watch

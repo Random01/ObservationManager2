@@ -1,30 +1,19 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { Observation } from '../../shared/models/models';
 import { SeeingTypeService } from '../shared';
-import { SeeingItem } from '../shared/seeing-type.interface';
 
 @Component({
     selector: 'om-observation-conditions',
     templateUrl: './observation-conditions.component.html',
-    styleUrls: [
-        './observation-conditions.component.css'
-    ]
+    styleUrls: ['./observation-conditions.component.css'],
 })
-export class ObservationConditionsComponent implements OnInit {
+export class ObservationConditionsComponent {
 
-    @Input()
-    observation: Observation;
+    @Input() public observation: Observation | null = null;
 
-    seeingTypes: SeeingItem[];
+    public readonly seeingTypes$ = this.seeingTypeService.getSeeingOptions();
 
-    constructor(
-        private seeingTypeService: SeeingTypeService,
-    ) {
-    }
-
-    async ngOnInit() {
-        this.seeingTypes = await this.seeingTypeService.getSeeingOptions();
-    }
+    constructor(private readonly seeingTypeService: SeeingTypeService) { }
 
 }

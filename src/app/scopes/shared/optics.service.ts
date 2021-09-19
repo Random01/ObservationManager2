@@ -1,23 +1,23 @@
 import { Injectable } from '@angular/core';
 
-import { OpticsType } from '../../shared/models/equipment/optics-type.model';
-
 import { Observable, of } from 'rxjs';
+
+import { OpticsType } from '../../shared/models/equipment/optics-type.model';
 
 @Injectable({ providedIn: 'root' })
 export class OpticsService {
 
-    private static names: string[] = [
-        'Naked eye',
-        'Binoculars',
-        'Newton',
-        'Refractor',
-        'Cassegrain',
-        'Schmidt-Cassegrain',
-        'Maksutov',
-    ];
+  private readonly names: string[] = [
+    'Naked eye',
+    'Binoculars',
+    'Newton',
+    'Refractor',
+    'Cassegrain',
+    'Schmidt-Cassegrain',
+    'Maksutov',
+  ];
 
-    getOpticsTypes(): Observable<OpticsType[]> {
-        return of(OpticsService.names.map(name => new OpticsType({ name })));
-    }
+  public getOpticsTypes(): Observable<OpticsType[]> {
+    return of(this.names.map(name => new OpticsType({ name })));
+  }
 }

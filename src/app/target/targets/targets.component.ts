@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Target } from '../../shared/models/target.model';
@@ -10,41 +10,40 @@ import { RequestParams } from '../../shared/services/request-params.model';
 import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
-    selector: 'om-targets',
-    templateUrl: './targets.component.html',
-    styleUrls: ['./targets.component.css']
+  selector: 'om-targets',
+  templateUrl: './targets.component.html',
+  styleUrls: ['./targets.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TargetsComponent extends EntityListComponent<Target> {
 
-    public searchParams: TargetSearchParams;
+  public searchParams = new TargetSearchParams();
 
-    public displayedColumns: string[] = [
-        'name',
-        'type',
-        'constellation',
-        'alliases',
-        'actions',
-    ];
+  public readonly displayedColumns: string[] = [
+    'name',
+    'type',
+    'constellation',
+    'alliases',
+    'actions',
+  ];
 
-    constructor(
-        service: TargetService,
-        deleteEntityDialogService: DeleteEntityDialogService,
-        route: ActivatedRoute,
-        router: Router,
-        appContext: AppContextService,
-    ) {
-        super(service, deleteEntityDialogService, route, router, appContext);
+  constructor(
+    service: TargetService,
+    deleteEntityDialogService: DeleteEntityDialogService,
+    route: ActivatedRoute,
+    router: Router,
+    appContext: AppContextService,
+  ) {
+    super(service, deleteEntityDialogService, route, router, appContext);
+  }
 
-        this.searchParams = new TargetSearchParams();
-    }
+  public onSearch(searchParams: TargetSearchParams) {
+    this.searchParams = searchParams;
+    this.loadItems();
+  }
 
-    protected getRequestParams(): RequestParams {
-        return this.searchParams;
-    }
-
-    onSearch(searchParams: TargetSearchParams) {
-        this.searchParams = searchParams;
-        this.loadItems();
-    }
+  protected override getRequestParams(): RequestParams {
+    return this.searchParams;
+  }
 
 }

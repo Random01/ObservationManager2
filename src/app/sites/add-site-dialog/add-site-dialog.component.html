@@ -1,17 +1,22 @@
-<div class="om-add-site">
-    <div>
-        <h2 class="mat-h2">Add New Site</h2>
-    </div>
-    <div *ngIf="item">
-        <om-site [site]=item></om-site>
-    </div>
-    <div>
-        <button 
-            mat-button
-            color="primary"
-            (click)=addItem()>Add</button>
-        <button
-            mat-button
-            (click)=cancel()>Cancel</button>
-    </div>
+<div class="om-add-site"
+  *ngIf="{ item: item$ | async } as data"
+>
+  <div>
+    <h2 class="mat-h2">Add New Site</h2>
+  </div>
+
+  <div *ngIf="data.item">
+    <om-site [site]="data.item"></om-site>
+  </div>
+
+  <div>
+    <button 
+      mat-button
+      color="primary"
+      [disabled]="!isValid()"
+      (click)="addItem()">Add</button>
+    <button
+      mat-button
+      (click)="cancel()">Cancel</button>
+  </div>
 </div>

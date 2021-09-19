@@ -5,21 +5,20 @@ import { Router } from '@angular/router';
 import { Session } from '../../shared/models/models';
 
 @Component({
-    selector: 'om-session-info',
-    templateUrl: './session-info.component.html',
-    styleUrls: [
-        './session-info.component.css'
-    ]
+  selector: 'om-session-info',
+  templateUrl: './session-info.component.html',
+  styleUrls: [
+    './session-info.component.css'
+  ],
 })
 export class SessionInfoComponent {
-    @Input() session: Session;
+  @Input() session?: Session;
 
-    constructor(
-        private router: Router
-    ) {
-    }
+  constructor(
+    private readonly router: Router,
+  ) { }
 
-    goToSession(): void {
-        this.router.navigate([`/sessions/${this.session.id}`]);
-    }
+  public goToSession(): void {
+    this.router.navigate([`/sessions/${this.session.id}`]);
+  }
 }

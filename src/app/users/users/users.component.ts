@@ -13,7 +13,7 @@ import { AppContextService } from '../../shared/services/app-context.service';
 })
 export class UsersComponent extends EntityListComponent<User> {
 
-    public displayedColumns = [
+    public readonly displayedColumns = [
         'name',
         'actions',
     ];

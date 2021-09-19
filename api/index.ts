@@ -9,7 +9,7 @@ import { dbConfig } from './config';
 import { RouterProvider } from './routers';
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 
 app.use(express.static(__dirname + '/public'));
 

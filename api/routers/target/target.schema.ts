@@ -27,7 +27,7 @@ TargetSchema.statics.findByName = function (name: string): Promise<any> {
     return new Promise((success, fail) => {
         this.find({
             name: new RegExp(name, 'i'),
-        }, (err, targets) => {
+        }, (err: any, targets: any) => {
             if (err) {
                 fail(err);
             } else {
@@ -43,7 +43,7 @@ TargetSchema.statics.findByNames = function (names: string[]) {
             name: {
                 '$in': names.map(name => name),
             },
-        }, (err, targets) => {
+        }, (err: any, targets: unknown) => {
             if (err) {
                 fail(err);
             } else {

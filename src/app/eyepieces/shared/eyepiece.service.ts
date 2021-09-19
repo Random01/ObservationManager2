@@ -8,14 +8,14 @@ import { JwtService } from '../../auth/shared/jwt.service';
 @Injectable({ providedIn: 'root' })
 export class EyepieceService extends StorageService<Eyepiece> {
 
-    constructor(
-        http: HttpClient,
-        jwtService: JwtService,
-    ) {
-        super('/eyepieces', http, jwtService);
-    }
+  constructor(
+    http: HttpClient,
+    jwtService: JwtService,
+  ) {
+    super('/eyepieces', http, jwtService);
+  }
 
-    createNew(params?: any): Eyepiece {
-        return new Eyepiece(params);
-    }
+  public createNew(params?: Partial<Eyepiece>): Eyepiece {
+    return new Eyepiece(params);
+  }
 }

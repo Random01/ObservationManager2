@@ -20,7 +20,7 @@ export class DeepSkyTargetType extends Target {
         Object.assign(this, params);
     }
 
-    serialize(): Object {
+    public override serialize(): Object {
         return Object.assign(super.serialize(), {
             smallDiameter: this.smallDiameter,
             largeDiameter: this.largeDiameter,

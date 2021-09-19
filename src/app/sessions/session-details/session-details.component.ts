@@ -16,78 +16,78 @@ import { Eyepiece, Scope, Filter } from '../../shared/models/equipment/equipment
 import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
-    selector: 'om-session-details',
-    templateUrl: './session-details.component.html',
-    styleUrls: ['./session-details.component.css'],
+  selector: 'om-session-details',
+  templateUrl: './session-details.component.html',
+  styleUrls: ['./session-details.component.css'],
 })
 export class SessionDetailsComponent extends BaseComponent implements OnInit {
 
-    public session: Session;
-    public editMode: Boolean;
+  public session: Session;
+  public editMode = false;
 
-    constructor(
-        private route: ActivatedRoute,
-        private sessionService: SessionService,
-        private dialog: MatDialog,
-        private observationService: ObservationService,
-        appContext: AppContextService,
-    ) {
-        super(appContext);
+  constructor(
+    private readonly route: ActivatedRoute,
+    private readonly sessionService: SessionService,
+    private readonly dialog: MatDialog,
+    private readonly observationService: ObservationService,
+    appContext: AppContextService,
+  ) {
+    super(appContext);
+  }
+
+  public create(): void {
+    this.startLoading();
+    this.sessionService.add(this.session).then(() => {
+      this.endLoading();
+    });
+  }
+
+  public update(): void {
+    this.startLoading();
+    this.sessionService.update(this.session).then(() => {
+      this.endLoading();
+    });
+  }
+
+  public loadSession(): void {
+    const sessionId = this.route.snapshot.paramMap.get('id');
+    this.editMode = !!sessionId;
+    if (sessionId) {
+      this.startLoading();
+      this.sessionService.getById(sessionId).then(session => {
+        this.session = session;
+        this.endLoading();
+      });
+    } else {
+      this.session = new Session();
     }
+  }
 
-    create(): void {
-        this.startLoading();
-        this.sessionService.add(this.session).then(() => {
-            this.endLoading();
-        });
+  public ngOnInit(): void {
+    this.loadSession();
+  }
+
+  public async addNewObservation() {
+    const dialogRef = this.dialog.open(ObservationDialogComponent, {
+      width: '400px',
+      data: new Observation({
+        session: this.session,
+        target: new Target(),
+        scope: new Scope(),
+        filter: new Filter(),
+        eyepiece: new Eyepiece(),
+      })
+    });
+
+    const result = await dialogRef.afterClosed().toPromise();
+    if (result) {
+      this.startLoading();
+      try {
+        await this.observationService.add(result);
+      } finally {
+        this.endLoading();
+      }
     }
-
-    update(): void {
-        this.startLoading();
-        this.sessionService.update(this.session).then(() => {
-            this.endLoading();
-        });
-    }
-
-    loadSession(): void {
-        const sessionId = this.route.snapshot.paramMap.get('id');
-        this.editMode = !!sessionId;
-        if (sessionId) {
-            this.startLoading();
-            this.sessionService.getById(sessionId).then(session => {
-                this.session = session;
-                this.endLoading();
-            });
-        } else {
-            this.session = new Session();
-        }
-    }
-
-    ngOnInit(): void {
-        this.loadSession();
-    }
-
-    public async addNewObservation() {
-        const dialogRef = this.dialog.open(ObservationDialogComponent, {
-            width: '400px',
-            data: new Observation({
-                session: this.session,
-                target: new Target(),
-                scope: new Scope(),
-                filter: new Filter(),
-                eyepiece: new Eyepiece(),
-            })
-        });
-
-        const result = await dialogRef.afterClosed().toPromise();
-        if (result) {
-            this.startLoading();
-            try {
-                await this.observationService.add(result);
-            } finally {
-                this.endLoading();
-            }
-        }
-    }
+  }
 
 }

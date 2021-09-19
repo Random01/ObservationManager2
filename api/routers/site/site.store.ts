@@ -11,7 +11,7 @@ export class SiteStore extends BaseMongooseStore<any, Site> {
         super(db.model('sites', SiteSchema));
     }
 
-    public getById({ id, userId }: { id: string; userId: string }) {
+    public override getById({ id, userId }: { id: string; userId: string }) {
         return super.getById({
             id, userId, populationDetails: [
                 ['userCreated', '_id userName firstName lastName'],

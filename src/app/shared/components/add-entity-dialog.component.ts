@@ -1,35 +1,40 @@
-import { OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 import { Entity } from '../models/models';
 import { StorageService } from '../services/storage.service';
 
-export abstract class AddEntityDialogComponent<T extends Entity, S extends StorageService<T>> implements OnInit {
+@Component({ template: '' })
+export abstract class AddEntityDialogComponent<TEntity extends Entity, SType extends StorageService<TEntity>> implements OnInit {
 
-    public item: T;
+  protected readonly itemSubject = new BehaviorSubject<TEntity | null>(null);
+  public readonly item$ = this.itemSubject.asObservable();
 
-    constructor(
-        protected readonly storageService: S,
-        protected readonly dialogRef: any,
-    ) { }
+  constructor(
+    @Inject('storageService') protected readonly storageService: SType,
+    @Inject('dialogRef') protected readonly dialogRef: any,
+  ) { }
 
-    public addItem(): void {
-        if (this.item) {
-            this.storageService.add(this.item).then(result => {
-                this.dialogRef.close(result.payload);
-            });
-        }
+  public addItem(): void {
+    const item = this.itemSubject.getValue();
+    if (item) {
+      this.storageService.add(item).then(result => {
+        this.dialogRef.close(result.payload);
+      });
     }
+  }
 
-    public cancel(): void {
-        this.dialogRef.close();
-    }
+  public cancel(): void {
+    this.dialogRef.close();
+  }
 
-    public isValid() {
-        return !!this.item?.isValid();
-    }
+  public isValid() {
+    return !!this.itemSubject.getValue()?.isValid();
+  }
 
-    ngOnInit(): void {
-        this.item = this.storageService.createNew();
-    }
+  public ngOnInit(): void {
+    this.itemSubject.next(this.storageService.createNew());
+  }
 
 }

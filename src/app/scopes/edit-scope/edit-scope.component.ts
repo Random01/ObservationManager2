@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -9,26 +9,27 @@ import { ScopeService } from '../shared/scope.service';
 import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
-    selector: 'om-edit-scope',
-    templateUrl: './edit-scope.component.html',
+  selector: 'om-edit-scope',
+  templateUrl: './edit-scope.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EditScopeComponent extends EditEntityComponent<Scope> {
 
-    constructor(
-        private route: ActivatedRoute,
-        private router: Router,
-        service: ScopeService,
-        appContext: AppContextService,
-    ) {
-        super(service, appContext);
-    }
+  constructor(
+    private readonly route: ActivatedRoute,
+    private readonly router: Router,
+    service: ScopeService,
+    appContext: AppContextService,
+  ) {
+    super(service, appContext);
+  }
 
-    public getItemId(): string {
-        return this.route.snapshot.paramMap.get('id');
-    }
+  public getItemId(): string {
+    return this.route.snapshot.paramMap.get('id');
+  }
 
-    public goBack() {
-        this.router.navigate(['/scopes']);
-    }
+  public goBack() {
+    this.router.navigate(['/scopes']);
+  }
 
 }

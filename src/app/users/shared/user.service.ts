@@ -1,76 +1,77 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { User } from '../../shared/models/user.model';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
+import { User } from '../../shared/models/user.model';
 import { StorageService } from '../../shared/services/storage.service';
-import { SignInResultPayload } from './signIn-result-payload.model';
+import { SignInResultPayload } from './sign-in-result-payload.model';
 import { JwtService } from '../../auth/shared/jwt.service';
 
 @Injectable({ providedIn: 'root' })
 export class UserService extends StorageService<User> {
 
-    constructor(
-        protected http: HttpClient,
-        protected jwtService: JwtService,
-    ) {
-        super('/users', http, jwtService);
-    }
+  constructor(
+    http: HttpClient,
+    jwtService: JwtService,
+  ) {
+    super('/users', http, jwtService);
+  }
 
-    deserialize(state: any): User {
-        return new User(state);
-    }
+  public override deserialize(state: any): User {
+    return new User(state);
+  }
 
-    createNew(): User {
-        return new User();
-    }
+  public override createNew(): User {
+    return new User();
+  }
 
-    public async authenticate(userName: String, password: String): Promise<SignInResultPayload> {
-        const httpOptions = {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/json',
-            }),
-        };
-        const data = { user: { userName: userName, password: password } };
+  public authenticate(userName: String, password: String): Observable<SignInResultPayload> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    };
+    const data = { user: { userName, password } };
 
-        const { user } = await this.http.post<any>(this.getUrl() + '/login', data, httpOptions).toPromise();
-        return new SignInResultPayload({
-            token: user.token,
-            user: new User({
-                userName: user.userName,
-                email: user.email,
-            }),
-        });
-    }
+    return this.http.post<any>(this.getUrl() + '/login', data, httpOptions).pipe(
+      map(({ user }) => new SignInResultPayload({
+        token: user.token,
+        user: new User({
+          userName: user.userName,
+          email: user.email,
+        }),
+      })),
+    );
+  }
 
-    public async getUser(): Promise<SignInResultPayload> {
-        const httpOptions = {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/json',
-                'Authorization': this.getAuthorizationToken(),
-            })
-        };
+  public async getUser(): Promise<SignInResultPayload> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.getAuthorizationToken(),
+      })
+    };
 
-        const { user } = await this.http.get<any>(this.getUrl() + '/user', httpOptions).toPromise();
-        return new SignInResultPayload({
-            token: user.token,
-            user: new User({
-                userName: user.userName,
-                email: user.email,
-            })
-        });
-    }
+    const { user } = await this.http.get<any>(this.getUrl() + '/user', httpOptions).toPromise();
+    return new SignInResultPayload({
+      token: user.token,
+      user: new User({
+        userName: user.userName,
+        email: user.email,
+      })
+    });
+  }
 
-    public register(user: User): Promise<User> {
-        const httpOptions = {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/json',
-            })
-        };
+  public register(user: User): Observable<void> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      })
+    };
 
-        return this.http
-            .post<any>(this.getUrl() + '/', user, httpOptions)
-            .toPromise();
-    }
+    return this.http.post<any>(this.getUrl() + '/', user, httpOptions);
+  }
 
 }

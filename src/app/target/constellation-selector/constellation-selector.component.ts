@@ -6,41 +6,41 @@ import { Constellation } from '../../shared/models/constellation.mode';
 import { ConstellationsService } from '../../constellations/shared/constellations.service';
 
 @Component({
-    selector: 'om-constellation-selector',
-    templateUrl: './constellation-selector.component.html',
-    styleUrls: ['./constellation-selector.component.css'],
+  selector: 'om-constellation-selector',
+  templateUrl: './constellation-selector.component.html',
+  styleUrls: ['./constellation-selector.component.css'],
 })
 export class ConstellationSelectorComponent implements OnInit {
 
-    @Input()
-    constellation: Constellation;
+  @Input()
+  public constellation: Constellation;
 
-    @Output()
-    constellationChange = new EventEmitter<Constellation>();
+  @Output()
+  public readonly constellationChange = new EventEmitter<Constellation>();
 
-    public isLoading = false;
-    public constellations: Constellation[] = [];
-    public filteredConstellations: Observable<Constellation[]>;
+  public isLoading = false;
+  public constellations: Constellation[] = [];
+  public filteredConstellations: Observable<Constellation[]>;
 
-    constructor(
-        private constellationService: ConstellationsService) {
+  constructor(
+    private readonly constellationService: ConstellationsService,
+  ) { }
+
+  public onConstellationChange(model: Constellation) {
+    this.constellation = model;
+    this.constellationChange.emit(model);
+  }
+
+  public async ngOnInit() {
+    this.isLoading = true;
+    try {
+      this.constellations = await this.constellationService.getAll();
+      this.filteredConstellations = new Observable(subscriber => {
+        subscriber.next(this.constellations);
+      });
+    } finally {
+      this.isLoading = false;
     }
-
-    onConstellationChange(model: Constellation) {
-        this.constellation = model;
-        this.constellationChange.emit(model);
-    }
-
-    async ngOnInit() {
-        this.isLoading = true;
-        try {
-            this.constellations = await this.constellationService.getAll();
-            this.filteredConstellations = new Observable((subscriber) => {
-                subscriber.next(this.constellations);
-            });
-        } finally {
-            this.isLoading = false;
-        }
-    }
+  }
 
 }

@@ -5,15 +5,15 @@ import { Scope } from '../scope';
 import { Eyepiece } from '../eyepiece';
 
 export interface Observation extends Entity {
-    begin: Date;
-    end: Date;
-    seeing: number;
-    site: Partial<Site>;
-    session: Partial<Session>;
-    target: Partial<any>;
-    scope: Partial<Scope>;
-    eyepiece: Partial<Eyepiece>;
-    result: {
-        description: string;
-    };
+  begin: Date;
+  end: Date;
+  seeing: number;
+  site: Partial<Site>;
+  session: Partial<Session>;
+  target: Partial<any>;
+  scope: Partial<Scope>;
+  eyepiece: Partial<Eyepiece>;
+  result: {
+    description: string;
+  };
 }

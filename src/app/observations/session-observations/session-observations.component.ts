@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -12,83 +12,76 @@ import { RequestParams } from '../../shared/services/request-params.model';
 import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
-    selector: 'om-session-observations',
-    templateUrl: './session-observations.component.html',
-    styleUrls: [
-        './session-observations.component.css'
-    ],
+  selector: 'om-session-observations',
+  templateUrl: './session-observations.component.html',
+  styleUrls: ['./session-observations.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SessionObservationsComponent extends EntityListComponent<Observation> {
 
-    public items: Observation[] = [];
-    public session: Session | null = null;
+  public session: Session | null = null;
 
-    public readonly displayedColumns: string[] = [
-        'date',
-        'targetName',
-        'scopeModel',
-        'eyepieceModel',
-        'filterModel',
-        'result',
-        'actions',
-    ];
+  public readonly displayedColumns: string[] = [
+    'date',
+    'targetName',
+    'scopeModel',
+    'eyepieceModel',
+    'filterModel',
+    'result',
+    'actions',
+  ];
 
-    constructor(
-        route: ActivatedRoute,
-        router: Router,
-        observationService: ObservationService,
-        private readonly sessionService: SessionService,
-        deleteEntityDialogService: DeleteEntityDialogService,
-        appContext: AppContextService,
-    ) {
-        super(observationService, deleteEntityDialogService, route, router, appContext);
-    }
+  constructor(
+    private readonly sessionService: SessionService,
+    route: ActivatedRoute,
+    router: Router,
+    observationService: ObservationService,
+    deleteEntityDialogService: DeleteEntityDialogService,
+    appContext: AppContextService,
+  ) {
+    super(observationService, deleteEntityDialogService, route, router, appContext);
+  }
 
-    protected getRequestParams(): RequestParams {
-        return Object.assign(new ObservationSearchParams(), {
-            sessionId: this.getSessionId(),
-        });
-    }
+  public override ngOnInit(): void {
+    super.ngOnInit();
+    this.loadSession();
+  }
 
-    // tslint:disable-next-line:use-life-cycle-interface
-    public ngOnInit(): void {
-        super.ngOnInit();
-        this.loadSession();
-    }
+  public getSessionId(): string {
+    return this.route.snapshot.paramMap.get('sessionId');
+  }
 
-    private loadSession(): void {
-        this.sessionService
-            .getById(this.getSessionId())
-            .then(session => this.session = session);
-    }
+  public addNewObservation() {
+    this.router.navigate([
+      'sessions',
+      this.getSessionId(),
+      'observations',
+      'new-observation',
+    ]);
+  }
 
-    private getSessionId(): string {
-        return this.route.snapshot.paramMap.get('sessionId');
-    }
+  public backToSession() {
+    this.router.navigate(['sessions', this.getSessionId()]);
+  }
 
-    public addNewObservation() {
-        this.router.navigate([
-            'sessions',
-            this.getSessionId(),
-            'observations',
-            'new-observation',
-        ]);
-    }
+  public backToMySessions() {
+    this.router.navigate(['sessions']);
+  }
 
-    public backToSession() {
-        this.router.navigate(['sessions', this.getSessionId()]);
-    }
+  protected override getExportFileName(): string {
+    return 'Observations';
+  }
 
-    public backToMySessions() {
-        this.router.navigate(['sessions']);
-    }
+  protected override getRequestParams(): RequestParams {
+    return Object.assign(new ObservationSearchParams(), {
+      sessionId: this.getSessionId(),
+    });
+  }
 
-    public exportToTxt() {
-        this.export('.txt');
-    }
-
-    protected getExportFileName(): string {
-        return 'Observations';
-    }
+  private loadSession(): void {
+    this.sessionService
+      .getById(this.getSessionId())
+      .then(session => this.session = session);
+  }
 
 }

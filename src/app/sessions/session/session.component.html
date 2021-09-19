@@ -1,72 +1,72 @@
 ﻿<div class="om-session-component">
 
-        <!-- Start Date -->
-        <!-- Start of an observation session (Time) -->
-        <!-- Start of observation session -->
-        <om-date-time-input
-                [(dateTime)]="session.begin"
-                datePlaceholder="Start date"
-                timePlaceholder="Time"
-                dateHint="Start of observation session"
-                timeHint="Time">
-        </om-date-time-input>
+  <!-- Start Date -->
+  <!-- Start of an observation session (Time) -->
+  <!-- Start of observation session -->
+  <om-date-time-input
+    [(dateTime)]="session.begin"
+    datePlaceholder="Start date"
+    timePlaceholder="Time"
+    dateHint="Start of observation session"
+    timeHint="Time">
+  </om-date-time-input>
 
-        <!-- End Date -->
-        <!-- End of an observation session (Date) -->
-        <!-- End of observation session -->
-        <om-date-time-input
-                [(dateTime)]="session.end"
-                datePlaceholder="End date"
-                timePlaceholder="Time"
-                dateHint="End of observation session"
-                timeHint="Time">
-        </om-date-time-input>
+  <!-- End Date -->
+  <!-- End of an observation session (Date) -->
+  <!-- End of observation session -->
+  <om-date-time-input
+    [(dateTime)]="session.end"
+    datePlaceholder="End date"
+    timePlaceholder="Time"
+    dateHint="End of observation session"
+    timeHint="Time">
+  </om-date-time-input>
         
-        <!-- site where session took place -->
-        <om-site-selector [(item)]="session.site"></om-site-selector>
+  <!-- site where session took place -->
+  <om-site-selector [(item)]="session.site"></om-site-selector>
 
-        <!-- Comments about the weather situation -->
-        <mat-form-field
-                class="weather-input">
-                <textarea
-                        matInput
-                        placeholder="Weather"
-                        matTextareaAutosize
-                        matAutosizeMinRows="5"
-                        [(ngModel)]="session.weather">
-                </textarea>
-                <mat-hint align="start">
-                        <strong>Comments about the weather situation</strong>
-                </mat-hint>
-        </mat-form-field>
+  <!-- Comments about the weather situation -->
+  <mat-form-field
+    class="weather-input">
+    <textarea
+      matInput
+      placeholder="Weather"
+      matTextareaAutosize
+      matAutosizeMinRows="5"
+      [(ngModel)]="session.weather">
+    </textarea>
+    <mat-hint align="start">
+      <strong>Comments about the weather situation</strong>
+    </mat-hint>
+  </mat-form-field>
 
-        <!-- Equipment -->
-        <mat-form-field
-                class="equipment-input">
-                <textarea
-                        matInput
-                        placeholder="Equipment"
-                        matTextareaAutosize
-                        matAutosizeMinRows="2"
-                        [(ngModel)]="session.equipment">
-                </textarea>
-                <mat-hint align="start">
-                        <strong>Comments on the (optical or electronical) equipment used</strong>
-                </mat-hint>
-        </mat-form-field>
+  <!-- Equipment -->
+  <mat-form-field
+    class="equipment-input">
+    <textarea
+      matInput
+      placeholder="Equipment"
+      matTextareaAutosize
+      matAutosizeMinRows="2"
+      [(ngModel)]="session.equipment">
+    </textarea>
+    <mat-hint align="start">
+      <strong>Comments on the (optical or electronical) equipment used</strong>
+    </mat-hint>
+  </mat-form-field>
 
-        <!-- Any other comments -->
-        <mat-form-field class="om-comments-input">
-                <textarea
-                        matInput
-                        placeholder="Comments"
-                        matTextareaAutosize
-                        matAutosizeMinRows="5"
-                        [(ngModel)]="session.comments">
-                </textarea>
-                <mat-hint align="start">
-                        <strong>Any other comments</strong>
-                </mat-hint>
-        </mat-form-field>
+  <!-- Any other comments -->
+  <mat-form-field class="om-comments-input">
+    <textarea
+      matInput
+      placeholder="Comments"
+      matTextareaAutosize
+      matAutosizeMinRows="5"
+      [(ngModel)]="session.comments">
+    </textarea>
+    <mat-hint align="start">
+      <strong>Any other comments</strong>
+    </mat-hint>
+  </mat-form-field>
 
 </div>

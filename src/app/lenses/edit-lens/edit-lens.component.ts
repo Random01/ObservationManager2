@@ -9,26 +9,26 @@ import { LensService } from '../shared/lens.service';
 import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
-    selector: 'om-edit-lens',
-    templateUrl: './edit-lens.component.html',
+  selector: 'om-edit-lens',
+  templateUrl: './edit-lens.component.html',
 })
 export class EditLensComponent extends EditEntityComponent<Lens> {
 
-    constructor(
-        private route: ActivatedRoute,
-        private router: Router,
-        lensService: LensService,
-        appContext: AppContextService,
-    ) {
-        super(lensService, appContext);
-    }
+  constructor(
+    private readonly route: ActivatedRoute,
+    private readonly router: Router,
+    lensService: LensService,
+    appContext: AppContextService,
+  ) {
+    super(lensService, appContext);
+  }
 
-    getItemId(): string {
-        return this.route.snapshot.paramMap.get('lensId');
-    }
+  public getItemId(): string {
+    return this.route.snapshot.paramMap.get('lensId');
+  }
 
-    goBack() {
-        this.router.navigate(['/lenses']);
-    }
+  public goBack() {
+    this.router.navigate(['/lenses']);
+  }
 
 }

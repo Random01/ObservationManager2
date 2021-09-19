@@ -20,7 +20,7 @@ export class Eyepiece extends EquipmentItem {
         Object.assign(this, params);
     }
 
-    public serialize(): Object {
+    public override serialize(): Object {
         return Object.assign(super.serialize(), {
             focalLength: this.focalLength,
             maxFocalLength: this.maxFocalLength,
@@ -28,7 +28,7 @@ export class Eyepiece extends EquipmentItem {
         });
     }
 
-    public deserialize(state: any): void {
+    public override deserialize(state: any): void {
         super.deserialize(state);
 
         this.focalLength = state.focalLength;

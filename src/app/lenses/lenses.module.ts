@@ -33,11 +33,7 @@ import { AddLensDialogComponent } from './add-lens-dialog';
     exports: [
         LensSelectorComponent,
     ],
-    entryComponents: [
-        AddLensDialogComponent,
-    ],
-    providers: [
-    ]
+    providers: []
 })
 
 export class LensesModule { }

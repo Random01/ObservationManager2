@@ -1,14 +1,10 @@
-.om-entity-selector{
+.om-entity-selector {
     width: 100%;
-
-    display: -webkit-flex;
-	display: flex;
-	-webkit-flex-direction: row;
-	flex-direction: row;
-	align-items: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
-.om-entity-selector > .select {
-	-webkit-flex: auto;
-	flex: auto;
+.om-entity-selector>.select {
+    flex: auto;
 }

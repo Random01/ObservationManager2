@@ -1,5 +1,4 @@
 import { Optics } from './optics.model';
-import { OpticsType } from './optics-type.model';
 
 /**
  * type definition for telescopes using eyepieces
@@ -14,13 +13,13 @@ export class Scope extends Optics {
         Object.assign(this, params);
     }
 
-    public serialize(): Object {
+    public override serialize(): Object {
         return Object.assign(super.serialize(), {
             focalLength: this.focalLength,
         });
     }
 
-    public deserialize(state: any): void {
+    public override deserialize(state: any): void {
         super.deserialize(state);
 
         this.focalLength = state.focalLength;

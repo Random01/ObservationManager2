@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 
 import { MatSelectModule } from '@angular/material/select';
-
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -16,31 +15,36 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule, MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
-    imports: [
-        MatSnackBarModule,
-    ],
-    exports: [
-        MatButtonModule,
-        MatInputModule,
-        MatTableModule,
-        MatIconModule,
-        MatPaginatorModule,
-        MatAutocompleteModule,
-        MatSelectModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatSliderModule,
-        MatTooltipModule,
-        MatListModule,
-        MatCheckboxModule,
-        MatExpansionModule,
-        MatSnackBarModule,
-    ],
-    providers: [
-        { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: 1000 },
-    ],
+  imports: [
+    MatSnackBarModule,
+  ],
+  exports: [
+    MatButtonModule,
+    MatInputModule,
+    MatTableModule,
+    MatIconModule,
+    MatPaginatorModule,
+    MatAutocompleteModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSliderModule,
+    MatTooltipModule,
+    MatListModule,
+    MatCheckboxModule,
+    MatExpansionModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    MatProgressSpinnerModule,
+    MatDividerModule,
+  ],
+  providers: [
+    { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: 1000 },
+  ],
 })
-
 export class MaterialModule { }

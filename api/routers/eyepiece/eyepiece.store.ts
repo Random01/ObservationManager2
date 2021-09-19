@@ -7,8 +7,8 @@ import { EyepieceSchema } from './eyepiece.schema';
 
 export class EyepieceStore extends BaseMongooseStore<any, Eyepiece> {
 
-    constructor(db: Connection) {
-        super(db.model('eyepieces', EyepieceSchema));
-    }
+  constructor(db: Connection) {
+    super(db.model('eyepieces', EyepieceSchema));
+  }
 
 }

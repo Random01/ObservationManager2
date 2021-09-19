@@ -1,91 +1,104 @@
-﻿<div class="om-eyepieces">
-    <div>
-        <h2>My Eyepieces</h2>
-    </div>
+﻿<div
+  class="om-eyepieces"
+  *ngIf="{ page: page$ | async } as data"
+>
+  <div>
+    <h2 class="mat-h2">My Eyepieces</h2>
+  </div>
 
-    <mat-paginator
-        [length]="totalCount"
-        [(pageSize)]="pageSize"
-        [pageSizeOptions]="pageSizeOptions"
-        [pageIndex]="currentPage"
-        showFirstLastButtons="true"
-        (page)=onPageChanged($event)>
-    </mat-paginator>
+  <mat-paginator
+    showFirstLastButtons="true"
+    [length]="data.page.totalCount"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    [pageIndex]="currentPage"
+    (page)="onPageChanged($event)">
+  </mat-paginator>
 
-    <mat-table
-        [dataSource]="items"
-        class="mat-elevation-z8">
+  <mat-table
+    [dataSource]="data.page.items"
+    class="mat-elevation-z8"
+  >
 
-        <ng-container matColumnDef="model">
-            <mat-header-cell *matHeaderCellDef>Model</mat-header-cell>
-            <mat-cell *matCellDef="let eyepiece">{{eyepiece.model}}</mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="model">
+      <mat-header-cell *matHeaderCellDef>Model</mat-header-cell>
+      <mat-cell *matCellDef="let eyepiece">{{ eyepiece.model }}</mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="vendor">
-                <mat-header-cell *matHeaderCellDef>Vendor</mat-header-cell>
-                <mat-cell *matCellDef="let eyepiece">{{eyepiece.vendor}}</mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="vendor">
+      <mat-header-cell *matHeaderCellDef>Vendor</mat-header-cell>
+      <mat-cell *matCellDef="let eyepiece">{{ eyepiece.vendor }}</mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="focalLength">
-            <mat-header-cell *matHeaderCellDef>Focal Length (mm)</mat-header-cell>
-            <mat-cell *matCellDef="let eyepiece">{{eyepiece | eyepieceFocalLength}}</mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="focalLength">
+      <mat-header-cell *matHeaderCellDef>Focal Length (mm)</mat-header-cell>
+      <mat-cell *matCellDef="let eyepiece">{{ eyepiece | eyepieceFocalLength }}</mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="apparentFOV">
-            <mat-header-cell *matHeaderCellDef>Apparent FOV (deg)</mat-header-cell>
-            <mat-cell *matCellDef="let eyepiece">{{eyepiece.apparentFOV | number:'0.1'}}</mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="apparentFOV">
+      <mat-header-cell *matHeaderCellDef>Apparent FOV (deg)</mat-header-cell>
+      <mat-cell *matCellDef="let eyepiece">{{ eyepiece.apparentFOV | number:'0.1' }}</mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="actions">
-            <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
-            <mat-cell *matCellDef="let eyepiece">
-                <button mat-icon-button
-                        routerLink="/eyepieces/{{eyepiece.id}}">
-                        <mat-icon
-                            aria-label="Click to edit">
-                            edit
-                        </mat-icon>
-                </button>
-                <button
-                    mat-icon-button
-                    (click)=remove(eyepiece)>
-                        <mat-icon
-                            aria-label="Click to delete">
-                            delete
-                        </mat-icon>
-                </button>
-            </mat-cell>
-        </ng-container>
-
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-
-    </mat-table>
-
-    <mat-paginator
-        [length]="totalCount"
-        [(pageSize)]="pageSize"
-        [pageSizeOptions]="pageSizeOptions"
-        [pageIndex]="currentPage"
-        showFirstLastButtons="true"
-        (page)=onPageChanged($event)>
-    </mat-paginator>
-
-    <mat-divider></mat-divider>
-
-    <div>
-        <button 
-            mat-button
-            routerLink="/eyepieces/new-eyepiece"
-            color="primary">Add New Eyepiece</button>
-
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+      <mat-cell *matCellDef="let eyepiece">
         <button
-            mat-button
-            routerLink="/equipment">Back to Equipment</button>
-
+          mat-icon-button
+          title="Edit Eyepiece"
+          routerLink="/eyepieces/{{eyepiece.id}}"
+        >
+          <mat-icon
+            aria-label="Click to edit"
+          >
+            edit
+          </mat-icon>
+        </button>
         <button
-            mat-button
-            (click)="exportToCsv()">Export To CSV</button>
+          mat-icon-button
+          title="Delete Eyepiece"
+          (click)="remove(eyepiece)"
+        >
+          <mat-icon
+            aria-label="Click to delete"
+          >
+            delete
+          </mat-icon>
+        </button>
+        </mat-cell>
+    </ng-container>
 
-    </div>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+
+  <mat-paginator
+    showFirstLastButtons="true"
+    [length]="data.page.totalCount"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    [pageIndex]="currentPage"
+    (page)="onPageChanged($event)">
+  </mat-paginator>
+
+  <hr/>
+
+  <div>
+
+    <button 
+      mat-button
+      routerLink="/eyepieces/new-eyepiece"
+      color="primary">Add New Eyepiece</button>
+
+    <button
+      mat-button
+      routerLink="/equipment">Back to Equipment</button>
+
+    <button
+      mat-button
+      (click)="exportToCsv()">Export To CSV</button>
+
+  </div>
+
 </div>

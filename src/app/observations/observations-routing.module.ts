@@ -8,44 +8,44 @@ import { SessionObservationsComponent } from './session-observations/session-obs
 import { AuthGuardService } from '../auth/shared/auth-guard.service';
 
 const routes: Routes = [
-    {
-        path: 'observations/new-observation',
-        component: AddObservationComponent,
-        canActivate: [AuthGuardService],
-    },
-    {
-        path: 'observations/:observationId',
-        component: EditObservationComponent,
-        canActivate: [AuthGuardService],
-    },
-    {
-        path: 'observations',
-        component: ObservationsComponent,
-        canActivate: [AuthGuardService],
-    },
-    {
-        path: 'sessions/:sessionId/observations',
-        component: SessionObservationsComponent,
-        canActivate: [AuthGuardService],
-    },
-    {
-        path: 'sessions/:sessionId/observations/new-observation',
-        component: AddObservationComponent,
-        canActivate: [AuthGuardService],
-    },
-    {
-        path: 'sessions/:sessionId/observations/:observationId',
-        component: EditObservationComponent,
-        canActivate: [AuthGuardService],
-    }
+  {
+    path: 'observations/new-observation',
+    component: AddObservationComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'observations/:observationId',
+    component: EditObservationComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'observations',
+    component: ObservationsComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'sessions/:sessionId/observations',
+    component: SessionObservationsComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'sessions/:sessionId/observations/new-observation',
+    component: AddObservationComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'sessions/:sessionId/observations/:observationId',
+    component: EditObservationComponent,
+    canActivate: [AuthGuardService],
+  },
 ];
 
 @NgModule({
-    imports: [
-        RouterModule.forChild(routes),
-    ],
-    exports: [
-        RouterModule,
-    ]
+  imports: [
+    RouterModule.forChild(routes),
+  ],
+  exports: [
+    RouterModule,
+  ],
 })
 export class ObservationsRoutingModule { }

@@ -1,4 +1,6 @@
-<div class="om-targets">
+<div class="om-targets"
+  *ngIf="{ page: page$ | async } as data"
+>
   <div>
     <h2 class="mat-h2">Objects</h2>
   </div>
@@ -18,17 +20,18 @@
   </mat-expansion-panel>
 
   <mat-paginator
-    [length]="totalCount"
-    [(pageSize)]="pageSize"
+    showFirstLastButtons="true"
+    [length]="data.page.totalCount"
+    [pageSize]="pageSize"
     [pageSizeOptions]="pageSizeOptions"
     [pageIndex]="currentPage"
-    showFirstLastButtons="true"
-    (page)=onPageChanged($event)>
+    (page)="onPageChanged($event)">
   </mat-paginator>
 
   <mat-table
-        [dataSource]="items"
-        class="mat-elevation-z8">
+    class="mat-elevation-z8"
+    [dataSource]="data.page.items"
+  >
 
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
@@ -53,12 +56,20 @@
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
       <mat-cell *matCellDef="let target">
-        <button mat-icon-button routerLink="/objects/{{target.id}}">
+        <button
+          mat-icon-button
+          title="Edit Object"
+          routerLink="/objects/{{target.id}}"
+        >
           <mat-icon aria-label="Click to edit">
             edit
           </mat-icon>
         </button>
-        <button mat-icon-button (click)=remove(target)>
+        <button
+          mat-icon-button
+          title="Delete Object"
+          (click)="remove(target)"
+        >
           <mat-icon aria-label="Click to delete">
             delete
           </mat-icon>
@@ -71,25 +82,26 @@
   </mat-table>
 
   <mat-paginator
-    [length]="totalCount"
-    [(pageSize)]="pageSize"
+    showFirstLastButtons="true"
+    [length]="data.page.totalCount"
+    [pageSize]="pageSize"
     [pageSizeOptions]="pageSizeOptions"
     [pageIndex]="currentPage"
-    showFirstLastButtons="true"
-    (page)=onPageChanged($event)>
+    (page)="onPageChanged($event)">
   </mat-paginator>
 
   <hr />
   
   <div>
-      <button 
-          mat-button
-          routerLink="/objects/new-object"
-          color="primary">Add New Object</button>
+    
+    <button 
+      mat-button
+      routerLink="/objects/new-object"
+      color="primary">Add New Object</button>
 
-      <button
-          mat-button
-          routerLink="/">Back to Main Page</button>
+    <button
+      mat-button
+      routerLink="/">Back to Main Page</button>
       
   </div>
 

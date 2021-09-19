@@ -9,26 +9,26 @@ import { EyepieceService } from '../shared/eyepiece.service';
 import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
-    selector: 'om-edit-eyepiece',
-    templateUrl: './edit-eyepiece.component.html',
+  selector: 'om-edit-eyepiece',
+  templateUrl: './edit-eyepiece.component.html',
 })
 export class EditEyepieceComponent extends EditEntityComponent<Eyepiece> {
 
-    constructor(
-        private route: ActivatedRoute,
-        private router: Router,
-        eyepiece: EyepieceService,
-        appContext: AppContextService,
-    ) {
-        super(eyepiece, appContext);
-    }
+  constructor(
+    private readonly route: ActivatedRoute,
+    private readonly router: Router,
+    eyepiece: EyepieceService,
+    appContext: AppContextService,
+  ) {
+    super(eyepiece, appContext);
+  }
 
-    getItemId(): string {
-        return this.route.snapshot.paramMap.get('id');
-    }
+  public getItemId(): string {
+    return this.route.snapshot.paramMap.get('id');
+  }
 
-    goBack() {
-        this.router.navigate(['/eyepieces']);
-    }
+  public goBack() {
+    this.router.navigate(['/eyepieces']);
+  }
 
 }

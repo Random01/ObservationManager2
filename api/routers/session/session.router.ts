@@ -9,8 +9,13 @@ import { SessionStore } from './session.store';
 
 export class SessionRouter {
 
-    constructor(app: core.Express, db: Connection) {
-        RouterFactory.create(app, new SessionStore(db), '/sessions', new SessionExporterFactory());
-    }
+  constructor(app: core.Express, db: Connection) {
+    RouterFactory.create(
+      app,
+      new SessionStore(db),
+      '/sessions',
+      new SessionExporterFactory(),
+    );
+  }
 
 }

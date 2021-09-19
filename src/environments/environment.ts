@@ -5,5 +5,5 @@
 
 export const environment = {
     production: false,
-    omServiceEndpoint: 'http://localhost:3001/api'
+    omServiceEndpoint: 'http://localhost:3002/api',
 };

@@ -14,33 +14,28 @@ import { MaterialModule } from '../shared/material.module';
 import { ScopeSelectorComponent } from './scope-selector';
 import { AddScopeDialogService, AddScopeDialogComponent } from './add-scope-dialog';
 
-
 @NgModule({
-    imports: [
-        BrowserModule,
-        FormsModule,
-        RouterModule,
-        ScopesRoutingModule,
-        EquipmentModule,
-        MaterialModule,
-    ],
-    declarations: [
-        ScopesComponent,
-        ScopeComponent,
-        AddScopeComponent,
-        EditScopeComponent,
-        ScopeSelectorComponent,
-        AddScopeDialogComponent,
-    ],
-    exports: [
-        ScopeSelectorComponent,
-    ],
-    providers: [
-        AddScopeDialogService,
-    ],
-    entryComponents: [
-        AddScopeDialogComponent,
-    ]
+  imports: [
+    BrowserModule,
+    FormsModule,
+    RouterModule,
+    ScopesRoutingModule,
+    EquipmentModule,
+    MaterialModule,
+  ],
+  declarations: [
+    ScopesComponent,
+    ScopeComponent,
+    AddScopeComponent,
+    EditScopeComponent,
+    ScopeSelectorComponent,
+    AddScopeDialogComponent,
+  ],
+  exports: [
+    ScopeSelectorComponent,
+  ],
+  providers: [
+    AddScopeDialogService,
+  ],
 })
-
 export class ScopesModule { }

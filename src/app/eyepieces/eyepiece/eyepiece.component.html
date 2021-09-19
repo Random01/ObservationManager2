@@ -9,10 +9,6 @@
             [(ngModel)]="eyepiece.model"/>
     </mat-form-field>
 
-    <om-vendor-selector
-        [(vendor)]="eyepiece.vendor">
-    </om-vendor-selector>
-
     <mat-checkbox [(ngModel)]="isZoomEyepiece">Zoom eyepiece</mat-checkbox>
 
     <mat-form-field
@@ -58,6 +54,8 @@
             [(ngModel)]="eyepiece.apparentFOV"/>
     </mat-form-field>
 
-    
+    <om-vendor-selector
+        [(vendor)]="eyepiece.vendor">
+    </om-vendor-selector>
 
 </div>

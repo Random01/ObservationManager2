@@ -14,14 +14,14 @@ import { AppContextService } from '../../shared/services/app-context.service';
 export class AddUserComponent extends AddEntityComponent<User> {
 
     constructor(
-        private router: Router,
+        private readonly router: Router,
         service: UserService,
         appContext: AppContextService,
     ) {
         super(service, appContext);
     }
 
-    goBack() {
+    public goBack() {
         this.router.navigate(['/users']);
     }
 }

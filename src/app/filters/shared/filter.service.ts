@@ -1,5 +1,4 @@
 ﻿import { Injectable } from '@angular/core';
-
 import { HttpClient } from '@angular/common/http';
 
 import { Filter } from '../../shared/models/equipment/filter.model';
@@ -10,13 +9,13 @@ import { JwtService } from '../../auth/shared/jwt.service';
 export class FilterService extends StorageService<Filter> {
 
     constructor(
-        protected http: HttpClient,
-        protected jwtService: JwtService,
+        http: HttpClient,
+        jwtService: JwtService,
     ) {
         super('/filters', http, jwtService);
     }
 
-    createNew(params?: any): Filter {
+    public createNew(params?: any): Filter {
         return new Filter(params);
     }
 }

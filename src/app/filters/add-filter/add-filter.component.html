@@ -1,18 +1,25 @@
-<div class="om-add-filter">
-        <div>
-            <h2 class="mat-h2">Add New Filter</h2>
-        </div>
-        <div *ngIf="item">
-            <om-filter [filter]=item></om-filter>
-        </div>
-        <div>
-            <button 
-                mat-button
-                color="primary"
-                [disabled]="!isValid()"
-                (click)=addItem()>Add</button>
-            <button
-                mat-button
-                (click)=goBack()>Back</button>
-        </div>
-    </div>
+<div class="om-add-filter"
+  *ngIf="{ item: item$ | async } as data"
+>
+  <div>
+    <h2 class="mat-h2">Add New Filter</h2>
+  </div>
+  
+  <div *ngIf="data.item">
+    <om-filter [filter]="data.item"></om-filter>
+  </div>
+
+  <div>
+
+    <button 
+      mat-button
+      color="primary"
+      [disabled]="!isValid()"
+      (click)="addItem()">Add</button>
+
+    <button
+      mat-button
+      (click)="goBack()">Back</button>
+
+  </div>
+</div>

@@ -8,15 +8,15 @@ import { JwtService } from '../../auth/shared/jwt.service';
 @Injectable({ providedIn: 'root' })
 export class ConstellationsService extends StorageService<Constellation> {
 
-    constructor(
-        http: HttpClient,
-        jwtService: JwtService,
-    ) {
-        super('/constellations', http, jwtService);
-    }
+  constructor(
+    http: HttpClient,
+    jwtService: JwtService,
+  ) {
+    super('/constellations', http, jwtService);
+  }
 
-    public createNew(params?: any): Constellation {
-        return new Constellation(params);
-    }
+  public createNew(params?: Partial<Constellation>): Constellation {
+    return new Constellation(params);
+  }
 
 }

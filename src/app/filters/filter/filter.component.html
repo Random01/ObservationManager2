@@ -1,28 +1,30 @@
 <div class="om-filter">
 
-        <mat-form-field>
-                <input
-                        matInput
-                        type="text"
-                        autocomplete="off"
-                        placeholder="Model"
-                        [(ngModel)]="filter.model"/>
-        </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      type="text"
+      autocomplete="off"
+      placeholder="Model"
+      [(ngModel)]="filter.model" />
+  </mat-form-field>
 
-        <mat-form-field>
-                <mat-select
-                        placeholder="Filter Type"
-                        [(value)]="filter.filterType">
-                        <mat-option
-                                *ngFor="let filterType of filterTypes$ | async"
-                                [value]="filterType">
-                                {{ filterType }}
-                        </mat-option>
-                </mat-select>
-        </mat-form-field>
+  <mat-form-field>
+    <mat-select
+      placeholder="Filter Type"
+      [(value)]="filter.filterType"
+    >
+      <mat-option
+        *ngFor="let filterType of filterTypes$ | async"
+        [value]="filterType"
+      >
+        {{ filterType }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
-        <om-vendor-selector
-                [(vendor)]="filter.vendor">
-        </om-vendor-selector>
+  <om-vendor-selector
+    [(vendor)]="filter.vendor">
+  </om-vendor-selector>
 
 </div>
