@@ -8,6 +8,7 @@ import { DeleteEntityDialogService } from '../../shared/components/delete-entity
 import { TargetSearchParams } from '../target-search-params/target-search-params.model';
 import { RequestParams } from '../../shared/services/request-params.model';
 import { AppContextService } from '../../shared/services/app-context.service';
+import { AuthenticationService } from '../../auth/shared';
 
 @Component({
   selector: 'om-targets',
@@ -33,6 +34,7 @@ export class TargetsComponent extends EntityListComponent<Target> {
     route: ActivatedRoute,
     router: Router,
     appContext: AppContextService,
+    private readonly authService: AuthenticationService,
   ) {
     super(service, deleteEntityDialogService, route, router, appContext);
   }
@@ -40,6 +42,19 @@ export class TargetsComponent extends EntityListComponent<Target> {
   public onSearch(searchParams: TargetSearchParams) {
     this.searchParams = searchParams;
     this.loadItems();
+  }
+
+  public canEdit(target: Target) {
+    return this.isCreatedByUser(target);
+  }
+
+  public canDelete(target: Target) {
+    return this.isCreatedByUser(target);
+  }
+
+  public isCreatedByUser(target: Target) {
+    return target.userCreated?.id != null
+      && (target.userCreated?.id === this.authService.getCurrentUser().id);
   }
 
   protected override getRequestParams(): RequestParams {

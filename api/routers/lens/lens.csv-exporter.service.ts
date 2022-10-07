@@ -9,7 +9,7 @@ export class LensCsvExporter extends BaseCsvExporter<Lens> {
     res.set('Content-Type', 'text/plain');
     let content = 'Model;Vendor;Factor\r\n';
     items.forEach(({ model, vendor, factor }) => {
-      content += `${model};${vendor};${factor}\r\n`;
+      content += `${model};${vendor || ''};${factor || ''}\r\n`;
     });
     res.send(Buffer.from(content));
   }

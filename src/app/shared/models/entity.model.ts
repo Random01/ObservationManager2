@@ -1,61 +1,70 @@
 import { Serializable } from '../interfaces/serializable.interface';
 
-import * as moment from 'moment';
+import moment from 'moment';
 
 export class Entity implements Serializable {
 
-    public id: string;
+  public id: string;
 
-    constructor(params?: Partial<Entity>) {
-        Object.assign(this, params);
-    }
+  public userCreated: Entity;
+  public userUpdated: Entity;
 
-    public serialize(params?: { lightWeight: boolean }): Object {
-        if (params != null && params.lightWeight === true) {
-            return this.id;
-        }
-        return { id: this.id };
-    }
+  constructor(params?: Partial<Entity>) {
+    Object.assign(this, params);
+  }
 
-    public deserialize(state: any): void {
-        if (typeof state === 'string') {
-            this.id = state;
-        } else {
-            this.id = state._id;
-        }
+  public serialize(params?: { lightWeight: boolean }): Object {
+    if (params != null && params.lightWeight === true) {
+      return this.id;
     }
+    return { id: this.id };
+  }
 
-    public isValid(): boolean {
-        return true;
+  public deserialize(state: any): void {
+    if (typeof state === 'string') {
+      this.id = state;
+    } else {
+      this.id = state._id;
+      if (state.userCreated) {
+        this.userCreated = new Entity({ id: state.userCreated._id });
+      }
+      if (state.userUpdated) {
+        this.userUpdated = new Entity({ id: state.userUpdated._id });
+      }
     }
+  }
 
-    public getDisplayName(): string {
-        return null;
-    }
+  public isValid(): boolean {
+    return true;
+  }
 
-    protected parseDate(value?: string): Date {
-        if (value) {
-            return moment(value).toDate();
-        }
-        return null;
-    }
+  public getDisplayName(): string {
+    return null;
+  }
 
-    protected serializeDate(value?: Date): string {
-        return value ? value.toISOString() : null;
+  protected parseDate(value?: string): Date {
+    if (value) {
+      return moment(value).toDate();
     }
+    return null;
+  }
 
-    protected serializeEntity(value?: Entity) {
-        return value ? value.id : null;
-    }
+  protected serializeDate(value?: Date): string {
+    return value ? value.toISOString() : null;
+  }
 
-    protected copy(state: any, fields: string[]): void {
-        for (const field of fields) {
-            if (this[field] != null && this[field].deserialize != null) {
-                this[field].deserialize(state[field] || {});
-            } else {
-                this[field] = state[field];
-            }
-        }
+  protected serializeEntity(value?: Entity) {
+    return value ? value.id : null;
+  }
+
+  protected copy(state: any, fields: string[]): void {
+    for (const field of fields) {
+      if (this[field] != null && this[field].deserialize != null) {
+        this[field].deserialize(state[field] || {});
+      } else {
+        this[field] = state[field];
+      }
     }
+  }
 
 }

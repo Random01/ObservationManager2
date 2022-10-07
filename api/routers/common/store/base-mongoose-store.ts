@@ -41,7 +41,7 @@ export class BaseMongooseStore<TModel extends BaseModel, TEntity extends Entity>
 
     const request = {
       ...restRequestParams,
-      userCreated: userId,
+      ...(userId ? { userCreated: userId } : undefined),
     };
 
     return new Promise((success, fail) => {

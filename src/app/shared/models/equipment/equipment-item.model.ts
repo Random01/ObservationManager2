@@ -2,34 +2,33 @@
 
 export class EquipmentItem extends Entity {
 
-    public model: string;
+  public model: string;
 
-    public vendor: string;
+  public vendor: string;
 
-    constructor(params?: Partial<EquipmentItem>) {
-        super(params);
-        Object.assign(this, params);
-    }
+  constructor(params?: Partial<EquipmentItem>) {
+    super(params);
+  }
 
-    public override serialize(): Object {
-        return Object.assign(super.serialize(), {
-            model: this.model,
-            vendor: this.vendor,
-        });
-    }
+  public override serialize(): Object {
+    return Object.assign(super.serialize(), {
+      model: this.model,
+      vendor: this.vendor,
+    });
+  }
 
-    public override deserialize(state: any): void {
-        super.deserialize(state);
+  public override deserialize(state: any): void {
+    super.deserialize(state);
 
-        this.model = state.model;
-        this.vendor = state.vendor;
-    }
+    this.model = state.model;
+    this.vendor = state.vendor;
+  }
 
-    public override getDisplayName(): string {
-        return this.model;
-    }
+  public override getDisplayName(): string {
+    return this.model;
+  }
 
-    public override isValid(): boolean {
-        return this.model != null && this.model.trim().length > 0;
-    }
+  public override isValid(): boolean {
+    return this.model != null && this.model.trim().length > 0;
+  }
 }

@@ -9,7 +9,7 @@ import { Target } from '../../shared/models/target.model';
 })
 export class TargetComponent {
 
-  @Input() target: Target;
+  @Input() public target?: Target;
 
   public onAliasAdded(alias: string) {
     this.target.alliases = [...this.target.alliases || [], alias];

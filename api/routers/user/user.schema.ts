@@ -57,6 +57,7 @@ UserSchema.methods.generateJWT = function () {
 UserSchema.methods.toAuthJSON = function () {
   const self = this as any;
   return {
+    _id: self._id,
     userName: self.userName,
     email: self.email,
     token: self.generateJWT(),

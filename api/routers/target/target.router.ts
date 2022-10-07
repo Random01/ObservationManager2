@@ -41,9 +41,15 @@ class TargetRouterFactory extends RouterFactory {
         (error: Error) => this.handleError(res, error)
       );
     } else {
-      super.getItemsHandler(req, res);
+      this.store.getItems({
+        requestParameters: this.parseRequestParams(req),
+      }).then(
+        (items: any[]) => res.json(items),
+        (error: Error) => this.handleError(res, error),
+      );
     }
   }
+
 }
 
 export class TargetRouter {

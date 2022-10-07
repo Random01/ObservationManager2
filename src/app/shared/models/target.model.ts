@@ -5,66 +5,61 @@ import { EquatorialCoordinates } from './equatorial-coordinates.model';
 
 export class Target extends Entity {
 
-    /**
-     * most common name
-     */
-    public name: string;
+  /**
+   * most common name
+   */
+  public name: string;
 
-    public type: TargetType;
+  public type: TargetType;
 
-    /**
-     * alternative names
-     */
-    public alliases: string[];
+  /**
+   * alternative names
+   */
+  public alliases: string[] = [];
 
-    /**
-     * notes on targets
-     */
-    public description: string;
+  /**
+   * notes on targets
+   */
+  public description: string;
 
-    /**
-     * constellation is optional because it can be derived from position
-     */
-    public constellation: Constellation;
+  /**
+   * constellation is optional because it can be derived from position
+   */
+  public constellation = new Constellation();
 
-    public position: EquatorialCoordinates;
+  public position = new EquatorialCoordinates();
 
-    constructor(params?: Partial<Target>) {
-        super(params);
+  constructor(params?: Partial<Target>) {
+    super(params);
+  }
 
-        this.alliases = [];
-        this.constellation = new Constellation();
-        this.position = new EquatorialCoordinates();
+  public override serialize(): Object {
+    return Object.assign(super.serialize(), {
+      name: this.name,
+      type: this.type,
+      alliases: this.alliases,
+      description: this.description,
+      constellation: this.constellation != null ? this.constellation.code : null,
+      position: this.position ? this.position.serialize() : null,
+    });
+  }
 
-        Object.assign(this, params);
-    }
+  public override deserialize(state: any): void {
+    super.deserialize(state);
 
-    public override serialize(): Object {
-        return Object.assign(super.serialize(), {
-            name: this.name,
-            type: this.type,
-            alliases: this.alliases,
-            description: this.description,
-            constellation: this.constellation != null ? this.constellation.code : null,
-            position: this.position ? this.position.serialize() : null,
-        });
-    }
+    this.copy(state, [
+      'name',
+      'type',
+      'alliases',
+      'description',
+    ]);
 
-    public override deserialize(state: any): void {
-        super.deserialize(state);
+    this.constellation.deserialize(state.constellation || {});
+    this.position.deserialize(state.position || {});
+  }
 
-        this.copy(state, [
-            'name',
-            'type',
-            'alliases',
-            'description',
-        ]);
+  public override isValid(): boolean {
+    return this.name != null && this.name.trim().length > 0;
+  }
 
-        this.constellation.deserialize(state.constellation || {});
-        this.position.deserialize(state.position || {});
-    }
-
-    public override isValid(): boolean {
-        return this.name != null && this.name.trim().length > 0;
-    }
 }

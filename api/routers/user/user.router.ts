@@ -27,7 +27,10 @@ class UserRouterFactory extends RouterFactory {
       if (!user) {
         return res.sendStatus(401);
       } else {
-        return res.json({ success: true, user: user.toAuthJSON() });
+        return res.json({
+          success: true,
+          user: user.toAuthJSON(),
+        });
       }
     });
   }

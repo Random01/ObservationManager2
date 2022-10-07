@@ -3,32 +3,31 @@ import { OpticsType } from './optics-type.model';
 
 export class Optics extends EquipmentItem {
 
-    /**
-     * Aperture in [mm]
-     */
-    public aperture?: number;
+  /**
+   * Aperture in [mm]
+   */
+  public aperture?: number;
 
-    /**
-     * Type of optic. The type is optional but should be given if known!
-     */
-    public type?: OpticsType;
+  /**
+   * Type of optic. The type is optional but should be given if known!
+   */
+  public type?: OpticsType;
 
-    constructor(params?: Partial<Optics>) {
-        super(params);
-        Object.assign(this, params);
-    }
+  constructor(params?: Partial<Optics>) {
+    super(params);
+  }
 
-    public override serialize(): Object {
-        return Object.assign(super.serialize(), {
-            aperture: this.aperture,
-            type: this.type ? this.type.serialize() : null,
-        });
-    }
+  public override serialize(): Object {
+    return Object.assign(super.serialize(), {
+      aperture: this.aperture,
+      type: this.type ? this.type.serialize() : null,
+    });
+  }
 
-    public override deserialize(state: any): void {
-        super.deserialize(state);
+  public override deserialize(state: any): void {
+    super.deserialize(state);
 
-        this.aperture = state.aperture;
-        this.type = state.type;
-    }
+    this.aperture = state.aperture;
+    this.type = state.type;
+  }
 }

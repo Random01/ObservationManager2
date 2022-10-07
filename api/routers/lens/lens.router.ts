@@ -4,7 +4,6 @@ import { Connection } from 'mongoose';
 
 import { RouterFactory } from '../common';
 import { LensExporterFactory } from './lens-exporter.service';
-
 import { LensStore } from './lens.store';
 
 export class LensRouter {
