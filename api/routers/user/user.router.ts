@@ -89,7 +89,7 @@ class UserRouterFactory extends RouterFactory {
       });
     }
 
-    const user: any = new UserModel();
+    const user = new UserModel();
 
     user.userName = userName;
     user.email = email;

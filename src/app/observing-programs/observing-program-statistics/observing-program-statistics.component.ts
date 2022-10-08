@@ -7,7 +7,7 @@ import { ObservingProgramsService } from '../shared/observing-programs.service';
 import { PaginatedListComponent } from '../../shared/components/paginated-list.component';
 import { RequestParams } from '../../shared/services/request-params.model';
 import { TargetStatistics } from '../shared/target-statistics.model';
-import { ObservingProgramStatisticsRequestParams } from '../shared/observing-program-satistics-request-params.model';
+import { ObservingProgramStatisticsRequestParams } from '../shared/observing-program-statistics-request-params.model';
 import ObservingProgramStatistics from '../shared/observing-program-statistics.model';
 import { AppContextService } from '../../shared/services/app-context.service';
 

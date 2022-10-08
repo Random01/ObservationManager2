@@ -1,13 +1,14 @@
 export default class ObservingProgramStatistics {
 
-    public totalCount: number;
-    public observedCount: number;
+  public readonly totalCount: number;
+  public readonly observedCount: number;
 
-    constructor(params?: Partial<ObservingProgramStatistics>) {
-        Object.assign(this, params);
-    }
+  constructor(params?: Partial<ObservingProgramStatistics>) {
+    Object.assign(this, params);
+  }
 
-    public getCompletenes(): number {
-        return this.observedCount / this.totalCount;
-    }
+  public getCompleteness(): number {
+    return this.totalCount > 0
+      ? this.observedCount / this.totalCount : 0;
+  }
 }

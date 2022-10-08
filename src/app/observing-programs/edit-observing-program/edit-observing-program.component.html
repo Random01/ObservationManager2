@@ -1,22 +1,23 @@
-<div class="om-edit-observing-program"
-    *ngIf="{ item: item$ | async } as data"
+<div
+  class="om-edit-observing-program"
+  *ngIf="{ item: item$ | async } as data"
 >
-    <div>
-        <h2 class="mat-h2">Edit Observing Program</h2>
-    </div>
+  <div>
+    <h2 class="mat-h2">Edit Observing Program</h2>
+  </div>
             
-    <div *ngIf="data.item">
-        <om-observing-program [program]="data.item"></om-observing-program>
-    </div>
+  <div *ngIf="data.item">
+    <om-observing-program [program]="data.item"></om-observing-program>
+  </div>
 
-    <div>
-        <button
-            mat-button
-            color="primary"
-            [disabled]="!isValid()"
-            (click)="updateItem()">Update</button>
-        <button
-            mat-button
-            (click)="goBack()">Back</button>
-    </div>
+  <div>
+    <button
+      mat-button
+      color="primary"
+      [disabled]="!isValid()"
+      (click)="updateItem()">Update</button>
+    <button
+      mat-button
+      (click)="goBack()">Back</button>
+  </div>
 </div>

@@ -13,7 +13,7 @@
   <div *ngIf="data.statistics">
     <h4>Total Objects: {{ data.statistics.totalCount }}</h4>
     <h4>Observed Objects: {{ data.statistics.observedCount }}</h4>
-    <h4>Completeness: {{ data.statistics.getCompletenes()*100 }}%</h4>
+    <h4>Completeness: {{ data.statistics.getCompleteness()*100 }}%</h4>
   </div>
 
   <mat-paginator

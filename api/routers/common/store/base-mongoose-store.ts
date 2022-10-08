@@ -5,6 +5,18 @@ import { PaginatedItems } from './paginated-items.interface';
 import { GetItemsRequestParameters } from './get-items-request-parameters.interface';
 import { Entity } from '../interfaces';
 
+export interface GetByIdParameter {
+  id: string;
+  userId?: string;
+  populationDetails?: string[][];
+}
+
+export interface GetItemsParameters {
+  requestParameters: GetItemsRequestParameters;
+  populationDetails?: string[][];
+  userId?: string;
+}
+
 export class BaseMongooseStore<TModel extends BaseModel, TEntity extends Entity> {
 
   protected readonly model: TModel;
@@ -29,11 +41,7 @@ export class BaseMongooseStore<TModel extends BaseModel, TEntity extends Entity>
     });
   }
 
-  public getItems({ requestParameters, userId, populationDetails = [] }: {
-    requestParameters: GetItemsRequestParameters;
-    populationDetails?: string[][];
-    userId?: string;
-  }): Promise<PaginatedItems<TEntity>> {
+  public getItems({ requestParameters, userId, populationDetails = [] }: GetItemsParameters): Promise<PaginatedItems<TEntity>> {
     const {
       page, size, sortField, sortDirection,
       ...restRequestParams
@@ -81,11 +89,7 @@ export class BaseMongooseStore<TModel extends BaseModel, TEntity extends Entity>
 
   }
 
-  public getById({ id, userId, populationDetails = [] }: {
-    id: string;
-    userId?: string;
-    populationDetails?: string[][];
-  }): Promise<TEntity> {
+  public getById({ id, userId, populationDetails = [] }: GetByIdParameter): Promise<TEntity> {
     return new Promise((success, fail) => {
       const query = this.model.findOne({
         _id: id,

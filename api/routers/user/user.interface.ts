@@ -7,4 +7,6 @@ export interface User {
   email: string;
   hash: string;
   salt: string;
+  setPassword(password: string): void;
+  toAuthJSON(): string;
 }

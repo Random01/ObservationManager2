@@ -3,37 +3,39 @@ import { Target } from './target.model';
 
 export class ObservingProgram extends Entity {
 
-    public name: string;
+  public name: string;
 
-    public description: string;
+  public description: string;
 
-    public targets: Target[];
+  public targets: Target[] = [];
 
-    constructor(params?: Partial<ObservingProgram>) {
-        super(params);
-        this.targets = [];
-        Object.assign(this, params);
-    }
+  constructor(params?: Partial<ObservingProgram>) {
+    super(params);
+  }
 
-    public override serialize(): Object {
-        return Object.assign(super.serialize(), {
-            name: this.name,
-            description: this.description,
-            targets: this.targets.map((target) => target.id),
-        });
-    }
+  public override serialize(): Object {
+    return Object.assign(super.serialize(), {
+      name: this.name,
+      description: this.description,
+      targets: this.targets.map((target) => target.id),
+    });
+  }
 
-    public override deserialize(state: any): void {
-        super.deserialize(state);
+  public override deserialize(state: any): void {
+    super.deserialize(state);
 
-        this.name = state.name;
-        this.description = state.description;
+    this.name = state.name;
+    this.description = state.description;
 
-        this.targets = (state.targets || []).map((targetState: any) => {
-            const target = new Target();
-            target.deserialize(targetState);
-            return target;
-        });
-    }
+    this.targets = (state.targets || []).map((targetState: any) => {
+      const target = new Target();
+      target.deserialize(targetState);
+      return target;
+    });
+  }
+
+  public override isValid(): boolean {
+    return this.name != null && this.name.trim().length > 0;
+  }
 
 }

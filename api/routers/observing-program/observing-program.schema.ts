@@ -7,7 +7,7 @@ import { EntitySchema } from '../common/schemas';
 export const ObservingProgramSchema = new Schema({
   ...EntitySchema,
 
-  name: String,
+  name: { type: String, required: true },
   description: String,
   targets: [{
     type: Schema.Types.ObjectId,
