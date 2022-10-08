@@ -17,17 +17,17 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(session({
-    secret: 'conduit',
-    cookie: { maxAge: 60000 },
-    resave: false,
-    saveUninitialized: false,
+  secret: 'conduit',
+  cookie: { maxAge: 60000 },
+  resave: false,
+  saveUninitialized: false,
 }));
 
 mongoose.connect(dbConfig.url);
 
 const isProduction = process.env.NODE_ENV === 'production';
 if (!isProduction) {
-    mongoose.set('debug', true);
+  mongoose.set('debug', true);
 }
 
 app.use(passport.initialize());
@@ -37,13 +37,13 @@ const dataBase = mongoose.connection;
 
 dataBase.on('error', console.error.bind(console, 'connection error:'));
 dataBase.once('open', () => {
-    new RouterProvider(app, dataBase);
+  new RouterProvider(app);
 
-    app.use('/*', (_, res) => {
-        res.sendFile(__dirname + '/public/index.html');
-    });
+  app.use('/*', (_, res) => {
+    res.sendFile(__dirname + '/public/index.html');
+  });
 
-    app.listen(PORT, () => {
-        console.log(`Example app listening on port ${PORT}!`);
-    });
+  app.listen(PORT, () => {
+    console.log(`Example app listening on port ${PORT}!`);
+  });
 });

@@ -1,16 +1,14 @@
 import * as core from 'express-serve-static-core';
 
-import { Connection } from 'mongoose';
-
 import { ObservingProgramRouterFactory } from './observing-program-router.factory';
 import { ObservingProgramStore } from './observing-program.store';
 
 export class ObservingProgramRouter {
 
-  constructor(app: core.Express, db: Connection) {
+  constructor(app: core.Express) {
     ObservingProgramRouterFactory.create(
       app,
-      new ObservingProgramStore(db),
+      new ObservingProgramStore(),
       '/observing-programs',
     );
   }

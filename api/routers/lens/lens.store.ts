@@ -1,14 +1,12 @@
-import { Connection } from 'mongoose';
-
 import { BaseMongooseStore } from '../common';
 
 import { Lens } from './lens.interface';
-import { LensSchema } from './lens.schema';
+import { LensModel } from './lens.model';
 
 export class LensStore extends BaseMongooseStore<any, Lens> {
 
-  constructor(db: Connection) {
-    super(db.model('lenses', LensSchema));
+  constructor() {
+    super(LensModel);
   }
 
   public override getById({ id, userId }: { id: string; userId: string }) {

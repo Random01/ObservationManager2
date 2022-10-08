@@ -1,14 +1,11 @@
-import { Connection } from 'mongoose';
-
 import { BaseMongooseStore } from '../common';
-
-import { ObservationSchema } from './observation.schema';
 import { Observation } from './observation.interface';
+import { ObservationModel } from './observation.model';
 
 export class ObservationStore extends BaseMongooseStore<any, Observation> {
 
-  constructor(db: Connection) {
-    super(db.model('observations', ObservationSchema));
+  constructor() {
+    super(ObservationModel);
   }
 
   public override getById({ id, userId }: { id: string; userId: string }) {

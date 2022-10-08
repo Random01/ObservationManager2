@@ -1,5 +1,4 @@
 import express from 'express';
-import { Connection } from 'mongoose';
 
 import * as core from 'express-serve-static-core';
 
@@ -28,10 +27,10 @@ class ObservationRouterFactory extends RouterFactory {
 
 export class ObservationRouter {
 
-  constructor(app: core.Express, db: Connection) {
+  constructor(app: core.Express) {
     ObservationRouterFactory.create(
       app,
-      new ObservationStore(db),
+      new ObservationStore(),
       '/observations',
       new ObservationExporterService(),
     );

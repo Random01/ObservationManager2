@@ -1,14 +1,12 @@
-import { Connection } from 'mongoose';
-
 import { BaseMongooseStore } from '../common/store';
 
 import { Filter } from './filter.interface';
-import { FilterSchema } from './filter.schema';
+import { FilterModel } from './filter.model';
 
 export class FilterStore extends BaseMongooseStore<any, Filter> {
 
-  constructor(db: Connection) {
-    super(db.model('filters', FilterSchema));
+  constructor() {
+    super(FilterModel);
   }
 
   public override getById({ id, userId }: { id: string; userId: string }) {

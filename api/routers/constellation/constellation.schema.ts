@@ -1,6 +1,8 @@
 import { Schema } from 'mongoose';
 
-export const ConstellationSchema = new Schema({
+import { Constellation } from './constellation.interface';
+
+export const ConstellationSchema = new Schema<Constellation>({
   code: String,
   name: String,
 });

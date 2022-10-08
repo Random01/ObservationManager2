@@ -10,7 +10,7 @@ export class SiteTxtExporter extends BaseCsvExporter<Site> {
     res.set('Content-Type', 'text/plain');
     let content = 'Name;Timezone;Geographical Latitude;Geographical Longitude;Elevation (m)\r\n';
     items.forEach(({ name, timezone, latitude, longitude, elevation }) => {
-      content += `${name};${timezone};${latitude};${longitude};${elevation}\r\n`;
+      content += `${name};${timezone || ''};${latitude || ''};${longitude || ''};${elevation || ''}\r\n`;
     });
     res.send(Buffer.from(content));
   }

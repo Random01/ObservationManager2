@@ -13,7 +13,7 @@ export class FilterCsvExporter extends BaseCsvExporter<Filter> {
     res.set('Content-Type', 'text/plain');
     let content = 'Model;Vendor;Filter Type\r\n';
     items.forEach(({ model, vendor, filterType }) => {
-      content += `${model};${vendor};${filterType}\r\n`;
+      content += `${model};${vendor || ''};${filterType || ''}\r\n`;
     });
     res.send(Buffer.from(content));
   }

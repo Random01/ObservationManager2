@@ -1,8 +1,6 @@
 import express, { Request, Response } from 'express';
 import * as core from 'express-serve-static-core';
 
-import { Connection } from 'mongoose';
-
 import passport from 'passport';
 
 import { auth } from '../authentication';
@@ -127,8 +125,8 @@ class UserRouterFactory extends RouterFactory {
 
 export class UserRouter {
 
-  constructor(app: core.Express, db: Connection) {
-    UserRouterFactory.create(app, new UserStore(db), '/users');
+  constructor(app: core.Express) {
+    UserRouterFactory.create(app, new UserStore(), '/users');
   }
 
 }

@@ -1,15 +1,11 @@
 import express, { Request, Response } from 'express';
 import * as core from 'express-serve-static-core';
 
-import { Connection } from 'mongoose';
-
 export class VendorRouter {
 
-  constructor(app: core.Express, _: Connection) {
+  constructor(app: core.Express) {
     const router = express.Router();
-
     router.get('/', this.getAll.bind(this));
-
     app.use('/api/vendors', router);
   }
 

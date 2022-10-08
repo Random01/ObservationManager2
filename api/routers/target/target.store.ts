@@ -1,15 +1,13 @@
-import { Connection } from 'mongoose';
-
 import { BaseMongooseStore } from '../common';
 
 import { TargetCsvLoader } from './target-csv-loader.service';
 import { Target } from './target.interface';
-import { TargetSchema } from './target.schema';
+import { TargetModel } from './target.model';
 
 export class TargetStore extends BaseMongooseStore<any, Target> {
 
-  constructor(db: Connection) {
-    super(db.model('targets', TargetSchema));
+  constructor() {
+    super(TargetModel);
   }
 
   public override getById({ id, userId }: { id: string; userId: string }) {

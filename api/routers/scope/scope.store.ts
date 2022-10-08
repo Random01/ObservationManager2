@@ -1,14 +1,12 @@
-import { Connection } from 'mongoose';
-
 import { BaseMongooseStore } from '../common';
 
 import { Scope } from './scope.interface';
-import { ScopeSchema } from './scope.schema';
+import { ScopeModel } from './scope.model';
 
 export class ScopeStore extends BaseMongooseStore<any, Scope> {
 
-  constructor(db: Connection) {
-    super(db.model('scopes', ScopeSchema));
+  constructor() {
+    super(ScopeModel);
   }
 
   public override getById({ id, userId }: { id: string; userId: string }) {

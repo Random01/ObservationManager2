@@ -1,18 +1,15 @@
 import * as core from 'express-serve-static-core';
 
-import { Connection } from 'mongoose';
-
 import { RouterFactory } from '../common';
-
 import { ScopeExporterFactory } from './scope.exporter.service';
 import { ScopeStore } from './scope.store';
 
 export class ScopeRouter {
 
-  constructor(app: core.Express, db: Connection) {
+  constructor(app: core.Express) {
     RouterFactory.create(
       app,
-      new ScopeStore(db),
+      new ScopeStore(),
       '/scopes',
       new ScopeExporterFactory(),
     );

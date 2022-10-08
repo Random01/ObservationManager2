@@ -1,10 +1,7 @@
 import express, { Request, Response } from 'express';
 import * as core from 'express-serve-static-core';
 
-import { Connection } from 'mongoose';
-
 import { RouterFactory } from '../common';
-
 import { TargetStore } from './target.store';
 
 class TargetRouterFactory extends RouterFactory {
@@ -54,8 +51,8 @@ class TargetRouterFactory extends RouterFactory {
 
 export class TargetRouter {
 
-  constructor(app: core.Express, db: Connection) {
-    TargetRouterFactory.create(app, new TargetStore(db), '/targets');
+  constructor(app: core.Express) {
+    TargetRouterFactory.create(app, new TargetStore(), '/targets');
   }
 
 }

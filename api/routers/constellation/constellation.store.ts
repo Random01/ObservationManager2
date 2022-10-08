@@ -1,18 +1,13 @@
-import { Connection } from 'mongoose';
-
 import { DataConfig } from '../../data';
-
 import { BaseMongooseStore } from '../common';
-
 import { CsvReader } from './../../common/services';
 import { Constellation } from './constellation.interface';
-
-import { ConstellationSchema } from './constellation.schema';
+import { ConstellationModel } from './constellation.model';
 
 export class ConstellationStore extends BaseMongooseStore<any, any> {
 
-  constructor(db: Connection) {
-    super(db.model('constellations', ConstellationSchema));
+  constructor() {
+    super(ConstellationModel);
   }
 
   public async upload() {

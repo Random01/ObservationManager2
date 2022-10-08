@@ -1,14 +1,11 @@
-import { Connection } from 'mongoose';
-
 import { BaseMongooseStore, GetItemsRequestParameters } from '../common';
-
 import { Session } from './session.interface';
-import { SessionSchema } from './session.schema';
+import { SessionModel } from './session.model';
 
 export class SessionStore extends BaseMongooseStore<any, Session> {
 
-  constructor(db: Connection) {
-    super(db.model('sessions', SessionSchema));
+  constructor() {
+    super(SessionModel);
   }
 
   public override getById({ id, userId }: { id: string; userId: string }) {
@@ -22,7 +19,10 @@ export class SessionStore extends BaseMongooseStore<any, Session> {
   }
 
   public override getItems({ requestParameters, userId }:
-    { requestParameters: GetItemsRequestParameters; userId: string }
+    {
+      requestParameters: GetItemsRequestParameters;
+      userId: string;
+    }
   ) {
     return super.getItems({
       requestParameters,

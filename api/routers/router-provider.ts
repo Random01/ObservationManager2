@@ -1,5 +1,3 @@
-import { Connection } from 'mongoose';
-
 import * as core from 'express-serve-static-core';
 
 import { ConstellationRouter } from './constellation';
@@ -17,19 +15,19 @@ import { VendorRouter } from './vendor';
 
 export class RouterProvider {
 
-  constructor(app: core.Express, dataBase: Connection) {
-    new FilterRouter(app, dataBase);
-    new ScopeRouter(app, dataBase);
-    new ConstellationRouter(app, dataBase);
-    new UserRouter(app, dataBase);
-    new EyepieceRouter(app, dataBase);
-    new SiteRouter(app, dataBase);
-    new TargetRouter(app, dataBase);
-    new ObservationRouter(app, dataBase);
-    new SessionRouter(app, dataBase);
-    new LensRouter(app, dataBase);
-    new ObservingProgramRouter(app, dataBase);
-    new VendorRouter(app, dataBase);
+  constructor(app: core.Express) {
+    new FilterRouter(app);
+    new ScopeRouter(app);
+    new ConstellationRouter(app);
+    new UserRouter(app);
+    new EyepieceRouter(app);
+    new SiteRouter(app);
+    new TargetRouter(app);
+    new ObservationRouter(app);
+    new SessionRouter(app);
+    new LensRouter(app);
+    new ObservingProgramRouter(app);
+    new VendorRouter(app);
   }
 
 }

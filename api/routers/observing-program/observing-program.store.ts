@@ -1,23 +1,21 @@
-import { filter, groupBy } from 'lodash';
-
-import { Connection } from 'mongoose';
+import filter from 'lodash/filter';
+import groupBy from 'lodash/groupBy';
 
 import { BaseMongooseStore, PaginatedItems } from '../common';
 import { ObservationModel } from '../observation';
-
 import { ObservingProgram } from './observing-program.interface';
-import { ObservingProgramSchema } from './observing-program.schema';
 import { OverallStatistics } from './overall-statistics.interface';
 import { Statistics } from './statistics.interface';
 import { StatisticsRequest } from './statistics-request.interface';
+import { ObservingProgramModel } from './observing-program.model';
 
 export class ObservingProgramStore extends BaseMongooseStore<any, ObservingProgram> {
 
-  constructor(db: Connection) {
-    super(db.model('observing-programs', ObservingProgramSchema));
+  constructor() {
+    super(ObservingProgramModel);
   }
 
-  public override getById({ id, userId }: { id: string; userId: string }) {
+  public override getById({ id, userId }: { id: string; userId: string }): Promise<ObservingProgram> {
     return super.getById({
       id, userId, populationDetails: [
         ['userCreated', '_id userName firstName lastName'],
