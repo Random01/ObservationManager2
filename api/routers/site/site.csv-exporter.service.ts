@@ -4,7 +4,7 @@ import { BaseCsvExporter } from '../common';
 
 import { Site } from './site.interface';
 
-export class SiteTxtExporter extends BaseCsvExporter<Site> {
+export class SiteCvsExporter extends BaseCsvExporter<Site> {
 
   public export(res: Response, items: Site[]): void {
     res.set('Content-Type', 'text/plain');

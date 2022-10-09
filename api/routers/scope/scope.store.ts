@@ -3,7 +3,7 @@ import { BaseMongooseStore } from '../common';
 import { Scope } from './scope.interface';
 import { ScopeModel } from './scope.model';
 
-export class ScopeStore extends BaseMongooseStore<any, Scope> {
+export class ScopeStore extends BaseMongooseStore<typeof ScopeModel, Scope> {
 
   constructor() {
     super(ScopeModel);

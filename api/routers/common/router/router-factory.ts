@@ -3,14 +3,15 @@ import * as core from 'express-serve-static-core';
 
 import { auth } from '../../authentication/auth';
 import { ExporterFactory, ExportType } from '../export';
-import { GetItemsRequestParameters } from '../store';
+import { Entity } from '../interfaces';
+import { GetItemsRequestParameters, BaseMongooseStore } from '../store';
 
-export class RouterFactory<T = any> {
+export class RouterFactory<TEntity extends Entity, TStore extends BaseMongooseStore<any, TEntity>> {
 
   constructor(
-    public readonly store: any,
-    public readonly router: any,
-    public readonly exporter?: ExporterFactory<T>,
+    public readonly store: TStore,
+    public readonly router: core.Router,
+    public readonly exporter?: ExporterFactory<TEntity>,
   ) {
     if (!store) {
       throw new Error('store should be provided.');
@@ -41,7 +42,7 @@ export class RouterFactory<T = any> {
       requestParameters: this.parseRequestParams(req),
       userId: this.getUserId(req),
     }).then(
-      (result: { items: T[] }) => this.export(res, result.items, exportType),
+      result => this.export(res, result.items, exportType),
       (error: Error) => this.handleError(res, error),
     );
   }
@@ -51,7 +52,7 @@ export class RouterFactory<T = any> {
       entity: this.parse(req),
       userId: this.getUserId(req),
     }).then(
-      (entity: any) => res.json(entity),
+      entity => res.json(entity),
       (error: Error) => this.handleError(res, error),
     );
   }
@@ -62,7 +63,7 @@ export class RouterFactory<T = any> {
       userId: this.getUserId(req),
       populationDetails: [],
     }).then(
-      (entity: any) => res.json(entity),
+      entity => res.json(entity),
       (error: Error) => this.handleError(res, error),
     );
   }
@@ -72,7 +73,7 @@ export class RouterFactory<T = any> {
       entity: this.parse(req),
       userId: this.getUserId(req),
     }).then(
-      (entity: any) => res.json(entity),
+      entity => res.json(entity),
       (error: Error) => this.handleError(res, error),
     );
   }
@@ -92,7 +93,7 @@ export class RouterFactory<T = any> {
       requestParameters: this.parseRequestParams(req),
       userId: this.getUserId(req),
     }).then(
-      (items: any[]) => res.json(items),
+      items => res.json(items),
       (error: Error) => this.handleError(res, error),
     );
   }
@@ -140,15 +141,13 @@ export class RouterFactory<T = any> {
     return (req as any)?.payload?.id;
   }
 
-  protected export(res: Response, items: T[], exportType: ExportType): void {
+  protected export(res: Response, items: TEntity[], exportType: ExportType): void {
     try {
       if (!this.exporter) {
         throw new Error('Exporter is not implemented.');
       }
 
-      const exporter = this.exporter.getExporter(exportType);
-      // TODO: fix any
-      exporter.export(res, items as any[]);
+      this.exporter.getExporter(exportType).export(res, items);
     } catch (err) {
       this.handleError(res, err);
     }

@@ -9,7 +9,7 @@ import { RouterFactory } from '../common';
 import { UserStore } from './user.store';
 import { UserModel } from './user.model';
 
-class UserRouterFactory extends RouterFactory {
+class UserRouterFactory extends RouterFactory<any, any> {
 
   public static override create(app: core.Express, store: UserStore, path: string) {
     const router = express.Router();

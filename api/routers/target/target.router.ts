@@ -4,7 +4,7 @@ import * as core from 'express-serve-static-core';
 import { RouterFactory } from '../common';
 import { TargetStore } from './target.store';
 
-class TargetRouterFactory extends RouterFactory {
+class TargetRouterFactory extends RouterFactory<any, any> {
 
   public override parseRequestParams(req: Request) {
     const requestParams = super.parseRequestParams(req);

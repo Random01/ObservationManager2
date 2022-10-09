@@ -7,7 +7,7 @@ import { BaseMongooseStore, RouterFactory } from '../common';
 import { ObservationStore } from './observation.store';
 import { ObservationExporterService } from './observation.exporter.service';
 
-class ObservationRouterFactory extends RouterFactory {
+class ObservationRouterFactory extends RouterFactory<any, any> {
 
   public static override create(
     app: core.Express,

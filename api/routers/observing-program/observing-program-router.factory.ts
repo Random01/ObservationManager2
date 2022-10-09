@@ -5,8 +5,9 @@ import { ExporterFactory, RouterFactory } from '../common';
 import { auth } from '../authentication';
 
 import { ObservingProgramStore } from './observing-program.store';
+import { ObservingProgram } from './observing-program.interface';
 
-export class ObservingProgramRouterFactory extends RouterFactory {
+export class ObservingProgramRouterFactory extends RouterFactory<ObservingProgram, any> {
 
   public static override create(
     app: core.Express,

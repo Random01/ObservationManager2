@@ -17,7 +17,7 @@ export class ObservingProgram extends Entity {
     return Object.assign(super.serialize(), {
       name: this.name,
       description: this.description,
-      targets: this.targets.map((target) => target.id),
+      targets: this.targets.map(target => target.id),
     });
   }
 

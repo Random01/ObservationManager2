@@ -3,7 +3,7 @@ import { BaseMongooseStore } from '../common';
 import { Lens } from './lens.interface';
 import { LensModel } from './lens.model';
 
-export class LensStore extends BaseMongooseStore<any, Lens> {
+export class LensStore extends BaseMongooseStore<typeof LensModel, Lens> {
 
   constructor() {
     super(LensModel);

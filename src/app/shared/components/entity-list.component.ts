@@ -53,7 +53,7 @@ export abstract class EntityListComponent<T extends Entity> extends PaginatedLis
 
   protected async remove(entity: T) {
     const result = await this.deleteEntityDialogService.show({
-      message: 'Are you sure?',
+      message: 'Are you sure want to delete this item?',
     });
 
     if (!result.success) {
