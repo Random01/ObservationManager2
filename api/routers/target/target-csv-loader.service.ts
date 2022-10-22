@@ -1,7 +1,4 @@
-
-
-
-import { map } from 'lodash';
+import map from 'lodash/map';
 
 import { CsvReader } from '../../common/services/csv-reader';
 import { DataConfig } from '../../data';
