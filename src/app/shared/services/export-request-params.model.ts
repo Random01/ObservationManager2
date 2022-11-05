@@ -1,4 +1,4 @@
-import { ExportType } from '../../../../api/routers/common';
+import { ExportType } from '../models/export-type.model';
 import { Param, RequestParams } from './request-params.model';
 
 export class ExportRequestParams extends RequestParams {

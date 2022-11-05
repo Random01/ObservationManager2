@@ -9,7 +9,7 @@ import { DeleteEntityDialogService } from './delete-entity-dialog/delete-entity-
 import { PaginatedListComponent } from './paginated-list.component';
 import { AppContextService } from '../services/app-context.service';
 import { ExportRequestParams } from '../services';
-import { ExportType } from '../../../../api/routers/common';
+import { ExportType } from '../models/export-type.model';
 
 export abstract class EntityListComponent<T extends Entity> extends PaginatedListComponent<T> implements OnInit {
 
