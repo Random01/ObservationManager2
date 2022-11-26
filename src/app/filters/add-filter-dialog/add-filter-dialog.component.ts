@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatLegacyDialogRef as MatDialogRef } from '@angular/material/legacy-dialog';
 
 import { Filter } from '../../shared/models/equipment/equipment';
 import { AddEntityDialogComponent } from '../../shared/components/add-entity-dialog.component';
