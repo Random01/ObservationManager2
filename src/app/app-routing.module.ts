@@ -20,9 +20,8 @@ const routes: Routes = [
     RouterModule.forRoot(
       routes,
       {
-        enableTracing: environment.production,
-        relativeLinkResolution: 'legacy',
-      },
+    enableTracing: environment.production
+},
     )
   ],
 })
