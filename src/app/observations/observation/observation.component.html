@@ -1,4 +1,4 @@
-﻿<div class="om-observation">
+﻿﻿<div class="om-observation">
 
   <!-- Session Info -->
   <om-session-info
@@ -47,7 +47,7 @@
     </textarea>
   </mat-form-field>
     
-  <h3 class="mat-subheading-2">Equipment</h3>
+  <h3 class="mat-subtitle-1">Equipment</h3>
 
   <om-scope-selector
     [(item)]="observation.scope">
@@ -71,7 +71,7 @@
     [(item)]="observation.lens">
   </om-lens-selector>
 
-  <h3 class="mat-subheading-2">Conditions</h3>
+  <h3 class="mat-subtitle-1">Conditions</h3>
 
   <om-observation-conditions [observation]="observation">
   </om-observation-conditions>

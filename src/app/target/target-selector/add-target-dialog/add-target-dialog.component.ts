@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { MatLegacyDialogRef as MatDialogRef } from '@angular/material/legacy-dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 
 import { AddEntityDialogComponent } from '../../../shared/components/add-entity-dialog.component';
 import { TargetService } from '../../shared/target.service';

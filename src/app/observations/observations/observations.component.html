@@ -1,4 +1,4 @@
-﻿<div class="om-observations"
+﻿﻿<div class="om-observations"
   *ngIf="{
     page: page$ | async,
     searchParameters: searchParameters$ | async
@@ -50,27 +50,27 @@
 
     <ng-container matColumnDef="targetName">
       <mat-header-cell *matHeaderCellDef>Target</mat-header-cell>
-      <mat-cell *matCellDef="let observation">{{observation.target.name}}</mat-cell>
+      <mat-cell *matCellDef="let observation">{{ observation.target.name }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="scopeModel">
       <mat-header-cell *matHeaderCellDef>Scope</mat-header-cell>
-      <mat-cell *matCellDef="let observation">{{observation.scope.model}}</mat-cell>
+      <mat-cell *matCellDef="let observation">{{ observation.scope.model }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="eyepieceModel">
       <mat-header-cell *matHeaderCellDef>Eyepiece</mat-header-cell>
-      <mat-cell *matCellDef="let observation">{{observation.eyepiece.model}}</mat-cell>
+      <mat-cell *matCellDef="let observation">{{ observation.eyepiece.model }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="filterModel">
       <mat-header-cell *matHeaderCellDef>Filter</mat-header-cell>
-      <mat-cell *matCellDef="let observation">{{observation.filter.model}}</mat-cell>
+      <mat-cell *matCellDef="let observation">{{ observation.filter.model }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="result">
       <mat-header-cell *matHeaderCellDef>Result</mat-header-cell>
-      <mat-cell *matCellDef="let observation">{{observation.result.description}}</mat-cell>
+      <mat-cell *matCellDef="let observation">{{ observation.result.description }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="actions">
@@ -78,8 +78,8 @@
       <mat-cell *matCellDef="let observation">
         <button
           mat-icon-button
+          matTooltip="Edit Observation"
           routerLink="/observations/{{observation.id}}"
-          title="Edit Observation"
         >
           <mat-icon>
             edit
@@ -89,8 +89,8 @@
         <button
           *ngIf="observation.session && observation.session.id"
           mat-icon-button
+          matTooltip="View Session"
           routerLink="/sessions/{{observation.session.id}}"
-          title="View Session"
         >
           <mat-icon>
             view_headline

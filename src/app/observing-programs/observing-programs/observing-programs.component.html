@@ -28,8 +28,8 @@
       <mat-cell *matCellDef="let program">
         <button
           mat-icon-button
+          matTooltip="View Program"
           routerLink="/observing-programs/statistics/{{program.id}}"
-          title="View Program"
         >
           <mat-icon
             aria-label="Click to view"
@@ -40,8 +40,8 @@
 
         <button
           mat-icon-button
+          matTooltip="Edit Program"
           routerLink="/observing-programs/{{program.id}}"
-          title="Edit Program"
         >
           <mat-icon
             aria-label="Click to edit"
@@ -52,8 +52,8 @@
 
         <button
           mat-icon-button
+          matTooltip="Delete Program"
           (click)="remove(program)"
-          title="Delete Program"
         >
           <mat-icon
             aria-label="Click to delete"
@@ -83,11 +83,16 @@
       mat-button
       color="primary"
       routerLink="/observing-programs/new-observing-program"
-      color="primary">Add New Program</button>
+    >
+      Add New Program
+    </button>
 
     <button
       mat-button
-      routerLink="/">Back to Main Page</button>
+      routerLink="/"
+    >
+      Back to Main Page
+    </button>
       
   </div>
     

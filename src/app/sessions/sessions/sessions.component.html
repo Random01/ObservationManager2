@@ -6,11 +6,11 @@
     </div>
 
     <mat-paginator
+        showFirstLastButtons="true"
         [length]="data.page.totalCount"
         [pageSize]="pageSize"
         [pageSizeOptions]="pageSizeOptions"
         [pageIndex]="currentPage"
-        showFirstLastButtons="true"
         (page)="onPageChanged($event)">
     </mat-paginator>
 
@@ -23,17 +23,17 @@
             <mat-header-cell
                 *matHeaderCellDef
                 mat-sort-header="begin">Date</mat-header-cell>
-            <mat-cell *matCellDef="let session">{{session.begin|date:'MMM d, y'}}</mat-cell>
+            <mat-cell *matCellDef="let session">{{ session.begin | date:'MMM d, y' }}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="site">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Site</mat-header-cell>
-            <mat-cell *matCellDef="let session">{{session.site.name}}</mat-cell>
+            <mat-cell *matCellDef="let session">{{ session.site.name }}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="weather">
             <mat-header-cell *matHeaderCellDef>Weather</mat-header-cell>
-            <mat-cell *matCellDef="let session">{{session.weather}}</mat-cell>
+            <mat-cell *matCellDef="let session">{{ session.weather }}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="actions">
@@ -42,8 +42,8 @@
 
                 <button
                     mat-icon-button
+                    matTooltip="Edit Session"
                     routerLink="/sessions/{{session.id}}"
-                    title="Edit Session"
                 >
                         <mat-icon
                             aria-label="Click to edit"
@@ -54,8 +54,8 @@
 
                 <button
                     mat-icon-button
+                    matTooltip="View Observations"
                     routerLink="/sessions/{{session.id}}/observations"
-                    title="View Observations"
                 >
                         <mat-icon
                             aria-label="Click to view observations"
@@ -66,8 +66,8 @@
 
                 <button
                     mat-icon-button
+                    matTooltip="Delete Session"
                     (click)="remove(session)"
-                    title="Delete Session"
                 >
                         <mat-icon
                             aria-label="Click to delete"
@@ -84,23 +84,32 @@
     </mat-table>
 
     <mat-paginator
+        showFirstLastButtons="true"
         [length]="data.page.totalCount"
         [pageSize]="pageSize"
         [pageSizeOptions]="pageSizeOptions"
         [pageIndex]="currentPage"
-        showFirstLastButtons="true"
         (page)="onPageChanged($event)">
     </mat-paginator>
 
     <hr/>
 
     <div>
-        <button mat-button
-                color="primary"
-                routerLink="/sessions/new-session">New Session</button>
+        
+        <button
+            mat-button
+            color="primary"
+            routerLink="/sessions/new-session"
+        >
+            New Session
+        </button>
 
-        <button mat-button
-                routerLink="/">Back to Main Page</button>
+        <button
+            mat-button
+            routerLink="/"
+        >
+            Back to Main Page
+        </button>
 
     </div>
 </div>

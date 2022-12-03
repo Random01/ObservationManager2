@@ -2,6 +2,6 @@
     display: inline-block;
 }
 
-.om-degrees-selector .mat-form-field {
+.om-degrees-selector .mat-mdc-form-field {
     max-width: 75px;
 }

@@ -19,9 +19,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(
       routes,
-      {
-    enableTracing: environment.production
-},
+      { enableTracing: !environment.production },
     )
   ],
 })

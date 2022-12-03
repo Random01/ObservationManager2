@@ -1,4 +1,4 @@
-﻿<div
+﻿﻿<div
   class="om-eyepieces"
   *ngIf="{ page: page$ | async } as data"
 >
@@ -45,7 +45,7 @@
       <mat-cell *matCellDef="let eyepiece">
         <button
           mat-icon-button
-          title="Edit Eyepiece"
+          matTooltip="Edit Eyepiece"
           routerLink="/eyepieces/{{eyepiece.id}}"
         >
           <mat-icon
@@ -56,7 +56,7 @@
         </button>
         <button
           mat-icon-button
-          title="Delete Eyepiece"
+          matTooltip="Delete Eyepiece"
           (click)="remove(eyepiece)"
         >
           <mat-icon

@@ -1,6 +1,6 @@
 import { OnInit, Output, EventEmitter, Input, Component, Inject, ChangeDetectorRef } from '@angular/core';
 
-import { MatLegacySelectChange as MatSelectChange } from '@angular/material/legacy-select';
+import { MatSelectChange } from '@angular/material/select';
 
 import { StorageService } from '../../services/storage.service';
 import { Entity } from '../../models/models';

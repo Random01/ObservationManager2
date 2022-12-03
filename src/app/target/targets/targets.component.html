@@ -36,22 +36,22 @@
 
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
-      <mat-cell *matCellDef="let target">{{target.name}}</mat-cell>
+      <mat-cell *matCellDef="let target">{{ target.name }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="type">
       <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
-      <mat-cell *matCellDef="let target">{{target.type | targetTypeFormatter}}</mat-cell>
+      <mat-cell *matCellDef="let target">{{ target.type | targetTypeFormatter }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="constellation">
       <mat-header-cell *matHeaderCellDef>Constellation</mat-header-cell>
-      <mat-cell *matCellDef="let target">{{target.constellation.id}}</mat-cell>
+      <mat-cell *matCellDef="let target">{{ target.constellation.id }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="alliases">
       <mat-header-cell *matHeaderCellDef>Alias Names</mat-header-cell>
-      <mat-cell *matCellDef="let target">{{target.alliases}}</mat-cell>
+      <mat-cell *matCellDef="let target">{{ target.alliases }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="actions">
@@ -60,23 +60,25 @@
         <button
           *ngIf="canEdit(target)"
           mat-icon-button
-          title="Edit Object"
+          matTooltip="Edit Object"
           routerLink="/objects/{{target.id}}"
         >
           <mat-icon aria-label="Click to edit">
             edit
           </mat-icon>
         </button>
+
         <button
           *ngIf="canDelete(target)"
           mat-icon-button
-          title="Delete Object"
+          matTooltip="Delete Object"
           (click)="remove(target)"
         >
           <mat-icon aria-label="Click to delete">
             delete
           </mat-icon>
         </button>
+
       </mat-cell>
     </ng-container>
 

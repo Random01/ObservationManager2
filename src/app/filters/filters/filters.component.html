@@ -40,7 +40,7 @@
       <mat-cell *matCellDef="let filter">
         <button
           mat-icon-button
-          title="Edit Filter"
+          matTooltip="Edit Filter"
           routerLink="/filters/{{filter.id}}"
         >
           <mat-icon
@@ -52,7 +52,7 @@
 
         <button
           mat-icon-button
-          title="Delete Filter"
+          matTooltip="Delete Filter"
           (click)="remove(filter)"
         >
           <mat-icon

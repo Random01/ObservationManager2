@@ -1,4 +1,4 @@
-﻿<div class="om-scopes"
+﻿﻿<div class="om-scopes"
   *ngIf="{ page: page$ | async } as data"
 >
   <div>
@@ -45,7 +45,7 @@
         <button
           mat-icon-button
           routerLink="/scopes/{{scope.id}}"
-          title="Edit Scope"
+          matTooltip="Edit Scope"
         >
           <mat-icon
             aria-label="Click to edit">
@@ -55,7 +55,7 @@
         <button
           mat-icon-button
           (click)="remove(scope)"
-          title="Delete Scope"
+          matTooltip="Delete Scope"
         >
           <mat-icon
             aria-label="Click to delete">

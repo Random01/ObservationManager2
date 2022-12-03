@@ -2,6 +2,6 @@
     display: inline-block;
 }
 
-.om-declination-selector-component .mat-form-field {
+.om-declination-selector-component .mat-mdc-form-field {
     max-width: 75px;
 }

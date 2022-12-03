@@ -55,7 +55,7 @@
       <mat-cell *matCellDef="let site">
         <button
           mat-icon-button
-          title="Edit Site"
+          matTooltip="Edit Site"
           routerLink="/sites/{{site.id}}"
         >
           <mat-icon
@@ -67,7 +67,7 @@
 
         <button
           mat-icon-button
-          title="Delete Site"
+          matTooltip="Delete Site"
           (click)="remove(site)"
         >
           <mat-icon

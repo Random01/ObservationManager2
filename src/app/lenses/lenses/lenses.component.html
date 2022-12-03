@@ -39,8 +39,8 @@
       <mat-cell *matCellDef="let lens">
         <button
           mat-icon-button
+          matTooltip="Edit Lens"
           routerLink="/lenses/{{lens.id}}"
-          title="Edit Lens"
         >
           <mat-icon
             aria-label="Click to edit"
@@ -50,8 +50,8 @@
         </button>
         <button
           mat-icon-button
+          matTooltip="Delete Lens"
           (click)="remove(lens)"
-          title="Delete Lens"
         >
           <mat-icon
             aria-label="Click to delete"

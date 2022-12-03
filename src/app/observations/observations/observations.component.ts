@@ -1,6 +1,8 @@
 ﻿import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { BehaviorSubject } from 'rxjs';
+
 import { Observation } from '../../shared/models/models';
 import { ObservationService } from '../shared/observation.service';
 import { EntityListComponent } from '../../shared/components/entity-list.component';
@@ -8,7 +10,6 @@ import { DeleteEntityDialogService } from '../../shared/components/delete-entity
 import ObservationSearchParameters from '../observation-search/observation-search-parameters.model';
 import { RequestParams } from '../../shared/services/request-params.model';
 import { AppContextService } from '../../shared/services/app-context.service';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'om-observations',

@@ -15,13 +15,12 @@
         class="slider"
         *ngIf="isSliderVisible()"
     >
+        <!-- TODO: The 'tickInterval' property no longer exists -->
         <mat-slider
             thumbLabel
             [min]="minFocalLength"
             [max]="maxFocalLength"
-            [step]="step"
-            [(value)]="selectedFocalLength"
-            [tickInterval]="1">
+            [step]="step"><input matSliderThumb [(value)]="selectedFocalLength" />
         </mat-slider>
     </div>
 

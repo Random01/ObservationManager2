@@ -2,6 +2,6 @@
     display: inline-block;
 }
 
-.om-right-ascension-selector .mat-form-field {
+.om-right-ascension-selector .mat-mdc-form-field {
     max-width: 75px;
 }
