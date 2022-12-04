@@ -1,26 +1,29 @@
 ﻿﻿<div class="om-session-component">
 
-  <!-- Start Date -->
-  <!-- Start of an observation session (Time) -->
-  <!-- Start of observation session -->
-  <om-date-time-input
-    [(dateTime)]="session.begin"
-    datePlaceholder="Start date"
-    timePlaceholder="Time"
-    dateHint="Start of observation session"
-    timeHint="Time">
-  </om-date-time-input>
+  <div class="line">
+    <!-- Start Date -->
+    <!-- Start of an observation session (Time) -->
+    <!-- Start of observation session -->
+    <om-date-time-input
+      [(dateTime)]="session.begin"
+      datePlaceholder="Start date"
+      timePlaceholder="Time"
+      dateHint="Start of observation session"
+      timeHint="Time">
+    </om-date-time-input>
 
-  <!-- End Date -->
-  <!-- End of an observation session (Date) -->
-  <!-- End of observation session -->
-  <om-date-time-input
-    [(dateTime)]="session.end"
-    datePlaceholder="End date"
-    timePlaceholder="Time"
-    dateHint="End of observation session"
-    timeHint="Time">
-  </om-date-time-input>
+    <!-- End Date -->
+    <!-- End of an observation session (Date) -->
+    <!-- End of observation session -->
+    <om-date-time-input
+      [(dateTime)]="session.end"
+      datePlaceholder="End date"
+      timePlaceholder="Time"
+      dateHint="End of observation session"
+      timeHint="Time">
+    </om-date-time-input>
+
+  </div>
         
   <!-- site where session took place -->
   <om-site-selector [(item)]="session.site"></om-site-selector>

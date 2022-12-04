@@ -9,9 +9,7 @@ import { SiteService } from '../shared/site.service';
 @Component({
   selector: 'om-add-site-dialog',
   templateUrl: './add-site-dialog.component.html',
-  styleUrls: [
-    './add-site-dialog.component.css',
-  ],
+  styleUrls: ['./add-site-dialog.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddSiteDialogComponent extends AddEntityDialogComponent<Site, SiteService> {

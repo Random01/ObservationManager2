@@ -1,3 +1,5 @@
-.om-eyepieces .mat-column-actions {
-
+.mat-column-actions {
+  width: 32px;
+  text-align: center;
+  font-weight: bold;
 }

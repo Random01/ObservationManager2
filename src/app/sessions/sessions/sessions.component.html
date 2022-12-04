@@ -1,23 +1,25 @@
-<div class="om-sessions-component"
-    *ngIf="{ page: page$ | async } as data"
+<div
+  class="om-sessions-component"
+  *ngIf="{ page: page$ | async } as data"
 >
-    <div>
-        <h2 class="mat-h2">My Sessions</h2>
-    </div>
+  <div class="header">
+    <h2 class="mat-h2">My Sessions</h2>
+  </div>
 
-    <mat-paginator
-        showFirstLastButtons="true"
-        [length]="data.page.totalCount"
-        [pageSize]="pageSize"
-        [pageSizeOptions]="pageSizeOptions"
-        [pageIndex]="currentPage"
-        (page)="onPageChanged($event)">
-    </mat-paginator>
+  <mat-paginator
+    showFirstLastButtons="true"
+    [length]="data.page.totalCount"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    [pageIndex]="currentPage"
+    (page)="onPageChanged($event)">
+  </mat-paginator>
 
     <mat-table
-        [dataSource]="data.page.items"
-        matSort
-        class="mat-elevation-z8">
+      [dataSource]="data.page.items"
+      matSort
+      class="mat-elevation-z8"
+    >
 
         <ng-container matColumnDef="begin">
             <mat-header-cell
@@ -83,33 +85,33 @@
 
     </mat-table>
 
-    <mat-paginator
-        showFirstLastButtons="true"
-        [length]="data.page.totalCount"
-        [pageSize]="pageSize"
-        [pageSizeOptions]="pageSizeOptions"
-        [pageIndex]="currentPage"
-        (page)="onPageChanged($event)">
-    </mat-paginator>
+  <mat-paginator
+    showFirstLastButtons="true"
+    [length]="data.page.totalCount"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    [pageIndex]="currentPage"
+    (page)="onPageChanged($event)">
+  </mat-paginator>
 
-    <hr/>
+  <hr/>
 
-    <div>
-        
-        <button
-            mat-button
-            color="primary"
-            routerLink="/sessions/new-session"
-        >
-            New Session
-        </button>
+  <div class="footer">
 
-        <button
-            mat-button
-            routerLink="/"
-        >
-            Back to Main Page
-        </button>
+    <button
+      mat-button
+      color="primary"
+      routerLink="/sessions/new-session"
+    >
+      New Session
+    </button>
 
-    </div>
+    <button
+      mat-button
+      routerLink="/"
+    >
+      Back to Main Page
+    </button>
+
+  </div>
 </div>

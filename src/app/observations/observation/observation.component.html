@@ -14,26 +14,32 @@
     </om-target-selector>
   </div>
 
-  <!-- Start of observation (Date) -->
-  <!-- Start of observation (Time) -->
-  <om-date-time-input
-    [(dateTime)]="observation.begin"
-    datePlaceholder="Start Date"
-    timePlaceholder="Time"
-    dateHint="Date of observation"
-    timeHint="Time of observation">
-  </om-date-time-input>
+  <div class="line">
 
-  <!-- End Date -->
-  <!-- End of an observation session (Date) -->
-  <!-- End of observation session -->
-  <om-date-time-input
-    [(dateTime)]="observation.end"
-    datePlaceholder="End date"
-    timePlaceholder="Time"
-    dateHint="Date of observation session"
-    timeHint="Time of observation">
-  </om-date-time-input>
+    <!-- Start of observation (Date) -->
+    <!-- Start of observation (Time) -->
+    <om-date-time-input
+      class="item"
+      [(dateTime)]="observation.begin"
+      datePlaceholder="Start Date"
+      timePlaceholder="Time"
+      dateHint="Date of observation"
+      timeHint="Time of observation">
+    </om-date-time-input>
+
+    <!-- End Date -->
+    <!-- End of an observation session (Date) -->
+    <!-- End of observation session -->
+    <om-date-time-input
+      class="item"
+      [(dateTime)]="observation.end"
+      datePlaceholder="End date"
+      timePlaceholder="Time"
+      dateHint="Date of observation session"
+      timeHint="Time of observation">
+    </om-date-time-input>
+
+  </div>
 
   <!-- Result -->
   <mat-form-field

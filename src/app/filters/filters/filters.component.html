@@ -22,17 +22,17 @@
     
     <ng-container matColumnDef="model">
       <mat-header-cell *matHeaderCellDef>Model</mat-header-cell>
-      <mat-cell *matCellDef="let filter">{{filter.model}}</mat-cell>
+      <mat-cell *matCellDef="let filter">{{ filter.model }}</mat-cell>
     </ng-container>
     
     <ng-container matColumnDef="vendor">
       <mat-header-cell *matHeaderCellDef>Vendor</mat-header-cell>
-      <mat-cell *matCellDef="let filter">{{filter.vendor}}</mat-cell>
+      <mat-cell *matCellDef="let filter">{{ filter.vendor }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="filterType">
       <mat-header-cell *matHeaderCellDef>Filter Type</mat-header-cell>
-      <mat-cell *matCellDef="let filter">{{filter.filterType}}</mat-cell>
+      <mat-cell *matCellDef="let filter">{{ filter.filterType }}</mat-cell>
     </ng-container>
     
     <ng-container matColumnDef="actions">
@@ -80,7 +80,7 @@
     
   <hr/>
 
-  <div>
+  <div class="footer">
 
     <button 
       mat-button

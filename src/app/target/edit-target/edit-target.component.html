@@ -1,22 +1,33 @@
 <div class="om-edit-target"
   *ngIf="{ item: item$ | async } as data"
 >
-  <div>
-    <h2>Edit Object</h2>
+  <div class="header">
+    <h2 class="mat-h2">Edit Object</h2>
   </div>
 
   <div *ngIf="data.item">
     <om-target [target]="data.item"></om-target>
   </div>
 
-  <div>
+  <hr />
+
+  <div class="footer">
+
     <button
-        mat-button
-        color="primary"
-        [disabled]="!isValid()"
-        (click)="updateItem()">Update</button>
+      mat-button
+      color="primary"
+      [disabled]="!isValid()"
+      (click)="updateItem()"
+    >
+      Update
+    </button>
+
     <button
-        mat-button
-        (click)="goBack()">Back</button>
+      mat-button
+      (click)="goBack()"
+    >
+      Back
+    </button>
+
   </div>
 </div>

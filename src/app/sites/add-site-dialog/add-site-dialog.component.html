@@ -1,7 +1,8 @@
-<div class="om-add-site"
+<div
+  class="om-add-site"
   *ngIf="{ item: item$ | async } as data"
 >
-  <div>
+  <div class="footer">
     <h2 class="mat-h2">Add New Site</h2>
   </div>
 
@@ -9,14 +10,26 @@
     <om-site [site]="data.item"></om-site>
   </div>
 
-  <div>
+  <hr/>
+
+  <div class="footer">
+
     <button 
       mat-button
       color="primary"
       [disabled]="!isValid()"
-      (click)="addItem()">Add</button>
+      (click)="addItem()"
+    >
+      Add
+    </button>
+
     <button
       mat-button
-      (click)="cancel()">Cancel</button>
+      (click)="cancel()"
+    >
+      Cancel
+    </button>
+
   </div>
+
 </div>

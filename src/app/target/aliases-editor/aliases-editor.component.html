@@ -1,39 +1,43 @@
 <div class="om-aliases-editor">
 
-    <mat-list
-        dense>
-        <mat-list-item
-            *ngFor="let alias of aliases">
-            <div>
-                <span>{{alias}}</span>
+  <mat-list
+    dense>
+    <mat-list-item
+      *ngFor="let alias of aliases">
+      <div>
+        <span>{{alias}}</span>
 
-                <button
-                    mat-icon-button
-                    (click)="removeAlias(alias)">
-                    <mat-icon aria-label="Click to delete">
-                        delete
-                    </mat-icon>
-                </button>
+        <button
+          mat-icon-button
+          (click)="removeAlias(alias)"
+        >
+          <mat-icon aria-label="Click to delete">
+            delete
+          </mat-icon>
+        </button>
 
-            </div>
-        </mat-list-item>
-    </mat-list>
+      </div>
+    </mat-list-item>
+  </mat-list>
 
     <div>
-        <mat-form-field>
-            <input
-                matInput
-                autocomplete="off"
-                [(ngModel)]="newAlias"
-                (ngModelChange)="validate()"
-                type="text"
-                placeholder="New Alias" />
-        </mat-form-field>
+      <mat-form-field>
+          <input
+              matInput
+              autocomplete="off"
+              [(ngModel)]="newAlias"
+              (ngModelChange)="validate()"
+              type="text"
+              placeholder="New Alias" />
+      </mat-form-field>
 
-        <button 
-            mat-button
-            [disabled]="!isValid"
-            (click)="addNewAlias()">Add</button>
+      <button 
+        mat-button
+        [disabled]="!isValid"
+        (click)="addNewAlias()"
+      >
+        Add
+      </button>
 
     </div>
 </div>

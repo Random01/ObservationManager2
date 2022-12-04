@@ -1,4 +1,4 @@
-﻿import { Component } from '@angular/core';
+﻿import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { EyepieceService } from '../shared/eyepiece.service';
@@ -11,6 +11,7 @@ import { AppContextService } from '../../shared/services/app-context.service';
   selector: 'om-eyepieces',
   templateUrl: './eyepieces.component.html',
   styleUrls: ['./eyepieces.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EyepiecesComponent extends EntityListComponent<Eyepiece> {
 

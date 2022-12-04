@@ -26,7 +26,8 @@
   >
   </mat-paginator>
 
-  <mat-table
+  <table
+    mat-table
     class="mat-elevation-z8"
     [dataSource]="data.page.items"
   >
@@ -60,7 +61,7 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
-    </mat-table>
+  </table>
 
   <mat-paginator
     showFirstLastButtons="true"
@@ -77,7 +78,10 @@
 
     <button
       mat-button
-      (click)="goBack()">Back</button>
+      (click)="goBack()"
+    >
+      Back
+    </button>
 
   </div>
 

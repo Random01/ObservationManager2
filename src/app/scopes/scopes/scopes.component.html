@@ -14,9 +14,10 @@
     (page)="onPageChanged($event)">
   </mat-paginator>
 
-  <mat-table
-    [dataSource]="data.page.items"
+  <table
+    mat-table
     class="mat-elevation-z8"
+    [dataSource]="data.page.items"
   >
 
     <ng-container matColumnDef="model">
@@ -44,8 +45,8 @@
       <mat-cell *matCellDef="let scope">
         <button
           mat-icon-button
-          routerLink="/scopes/{{scope.id}}"
           matTooltip="Edit Scope"
+          routerLink="/scopes/{{scope.id}}"
         >
           <mat-icon
             aria-label="Click to edit">
@@ -54,8 +55,8 @@
         </button>
         <button
           mat-icon-button
-          (click)="remove(scope)"
           matTooltip="Delete Scope"
+          (click)="remove(scope)"
         >
           <mat-icon
             aria-label="Click to delete">
@@ -68,7 +69,7 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
-  </mat-table>
+  </table>
 
   <mat-paginator
     showFirstLastButtons="true"
@@ -81,7 +82,8 @@
 
   <hr/>
 
-  <div>
+  <div class="footer">
+
     <button 
       mat-button
       color="primary"

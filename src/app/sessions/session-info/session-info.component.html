@@ -1,15 +1,19 @@
 <div class="om-session-info">
 
-    <!-- Session -->
-    <mat-form-field>
-        <input
-            disabled
-            matInput
-            placeholder="Session"
-            value="{{session.begin|date:'MMM d, y, hh:mm'}} - {{session.end|date:'MMM d, y, hh:mm'}}"/>
-    </mat-form-field>
+  <!-- Session -->
+  <mat-form-field>
+    <input
+      disabled
+      matInput
+      placeholder="Session"
+      value="{{session.begin|date:'MMM d, y, hh:mm'}} - {{session.end|date:'MMM d, y, hh:mm'}}"/>
+  </mat-form-field>
 
-    <button 
-        mat-button
-        (click)="goToSession()">Go to Session</button>
+  <button 
+    mat-button
+    (click)="goToSession()"
+  >
+    Go to Session
+  </button>
+  
 </div>

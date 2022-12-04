@@ -1,7 +1,7 @@
 <div class="om-add-observation"
   *ngIf="{ item: item$ | async } as data"
 >
-  <div>
+  <div class="header">
     <h2 class="mat-h2">Add New Observation</h2>
   </div>
 
@@ -9,7 +9,9 @@
     <om-observation [observation]="data.item"></om-observation>
   </div>
 
-  <div>
+  <hr />
+
+  <div class="footer">
     <button 
       mat-button
       color="primary"

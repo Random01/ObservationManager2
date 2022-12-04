@@ -5,7 +5,7 @@ import { Target } from '../../shared/models/target.model';
 @Component({
   selector: 'om-target',
   templateUrl: './target.component.html',
-  styleUrls: ['./target.component.css'],
+  styleUrls: ['./target.component.less'],
 })
 export class TargetComponent {
 

@@ -7,29 +7,29 @@ import { EditFilterComponent } from './edit-filter/edit-filter.component';
 import { AuthGuardService } from '../auth/shared/auth-guard.service';
 
 const routes: Routes = [
-    {
-        path: 'filters/new-filter',
-        component: AddFilterComponent,
-        canActivate: [AuthGuardService],
-    },
-    {
-        path: 'filters/:filterId',
-        component: EditFilterComponent,
-        canActivate: [AuthGuardService],
-    },
-    {
-        path: 'filters',
-        component: FiltersComponent,
-        canActivate: [AuthGuardService],
-    }
+  {
+    path: 'filters/new-filter',
+    component: AddFilterComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'filters/:filterId',
+    component: EditFilterComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'filters',
+    component: FiltersComponent,
+    canActivate: [AuthGuardService],
+  }
 ];
 
 @NgModule({
-    imports: [
-        RouterModule.forChild(routes),
-    ],
-    exports: [
-        RouterModule,
-    ],
+  imports: [
+    RouterModule.forChild(routes),
+  ],
+  exports: [
+    RouterModule,
+  ],
 })
 export class FiltersRoutingModule { }

@@ -1,10 +1,10 @@
 import {
-    Component,
-    Input,
-    OnInit,
-    EventEmitter,
-    Output,
-    ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+  EventEmitter,
+  Output,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 
 import { Observable } from 'rxjs';
@@ -13,38 +13,38 @@ import { DestroyableComponent } from '../../shared/components/destroyable.compon
 import { VendorService } from '../shared';
 
 @Component({
-    selector: 'om-vendor-selector',
-    templateUrl: './vendor-selector.component.html',
-    styleUrls: ['./vendor-selector.component.css'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'om-vendor-selector',
+  templateUrl: './vendor-selector.component.html',
+  styleUrls: ['./vendor-selector.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VendorSelectorComponent extends DestroyableComponent implements OnInit {
 
-    @Input() public vendor = '';
-    @Output() public readonly vendorChange = new EventEmitter<string>();
+  @Input() public vendor = '';
+  @Output() public readonly vendorChange = new EventEmitter<string>();
 
-    public vendors: string[] = [];
-    public filteredVendors$: Observable<string[]>;
+  public vendors: string[] = [];
+  public filteredVendors$: Observable<string[]>;
 
-    constructor(private readonly vendorService: VendorService) {
-        super();
-    }
+  constructor(private readonly vendorService: VendorService) {
+    super();
+  }
 
-    public onVendorChange(model: string) {
-        this.vendor = model;
-        this.vendorChange.emit(model);
-    }
+  public onVendorChange(model: string) {
+    this.vendor = model;
+    this.vendorChange.emit(model);
+  }
 
-    public ngOnInit() {
-        this.handle(
-            this.vendorService.getAllSuggestions().subscribe(vendors => {
-                this.vendors = vendors.map(vendor => vendor.name);
+  public ngOnInit() {
+    this.handle(
+      this.vendorService.getAllSuggestions().subscribe(vendors => {
+        this.vendors = vendors.map(vendor => vendor.name);
 
-                this.filteredVendors$ = new Observable((subscriber) => {
-                    subscriber.next(this.vendors);
-                });
-            })
-        );
-    }
+        this.filteredVendors$ = new Observable((subscriber) => {
+          subscriber.next(this.vendors);
+        });
+      })
+    );
+  }
 
 }

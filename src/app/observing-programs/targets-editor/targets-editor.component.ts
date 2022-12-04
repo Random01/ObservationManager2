@@ -23,7 +23,7 @@ export class TargetsEditorComponent implements OnChanges {
     public paginatedTargets: Target[];
     public totalCount = 0;
 
-    @Input() public targets: Target[];
+    @Input() public targets?: Target[];
     @Output() public readonly targetsChange = new EventEmitter<Target[]>();
 
     public readonly displayedColumns: string[] = [
@@ -31,9 +31,9 @@ export class TargetsEditorComponent implements OnChanges {
         'actions',
     ];
 
-    newTarget: Target;
+    public newTarget: Target;
 
-    addNewTarget(): void {
+    public addNewTarget(): void {
         if (this.newTarget) {
             this.targets = [...this.targets, this.newTarget];
             this.newTarget = null;
@@ -41,26 +41,27 @@ export class TargetsEditorComponent implements OnChanges {
         }
     }
 
-    removeTarget(target: Target): void {
+    public removeTarget(target: Target): void {
         const index = this.targets.indexOf(target);
         this.targets.splice(index, 1);
         this.targets = [...this.targets];
         this.targetsChange.emit(this.targets);
     }
 
-    onPageChanged(pageEvent: PageEvent): void {
+    public onPageChanged(pageEvent: PageEvent): void {
         this.currentPage = pageEvent.pageIndex;
         this.pageSize = pageEvent.pageSize;
         this.updateList();
     }
 
-    updateList(): void {
+    public ngOnChanges(_: { [propKey: string]: SimpleChange }) {
+        this.updateList();
+    }
+
+    private updateList(): void {
         this.paginatedTargets = this.targets.slice(
             this.currentPage * this.pageSize,
             this.currentPage * this.pageSize + this.pageSize);
     }
 
-    ngOnChanges(_: { [propKey: string]: SimpleChange }) {
-        this.updateList();
-    }
 }

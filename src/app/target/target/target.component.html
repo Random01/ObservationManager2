@@ -26,15 +26,21 @@
     </textarea>
   </mat-form-field>
 
-  <span>RA</span>
-  <om-right-ascension-selector
-    [(ra)]="target.position.ra">
-  </om-right-ascension-selector>
+  <div class="line">
+    <div class="item">
+      <om-right-ascension-selector
+        [(ra)]="target.position.ra">
+      </om-right-ascension-selector>
+      <span>RA</span>
+    </div>
 
-  <span>Dec</span>
-  <om-declination-selector
-    [(dec)]="target.position.dec">
-  </om-declination-selector>
+    <div class="item">
+      <om-declination-selector
+        [(dec)]="target.position.dec">
+      </om-declination-selector>
+      <span>Dec</span>
+    </div>
+  </div>
 
   <!-- Constellation -->
   <om-constellation-selector

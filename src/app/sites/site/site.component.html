@@ -1,42 +1,51 @@
 ﻿﻿<div class="om-site">
 
-    <mat-form-field>
-        <input
-            matInput
-            type="text"
-            autocomplete="off"
-            [(ngModel)]="site.name"
-            placeholder="Name" />
-    </mat-form-field>
+  <!-- Site Name -->
+  <mat-form-field>
+    <input
+      matInput
+      type="text"
+      autocomplete="off"
+      [(ngModel)]="site.name"
+      placeholder="Name" />
+  </mat-form-field>
 
-    <!-- Timezone -->
-    <mat-form-field>
-        <input
-            matInput
-            type="number"
-            autocomplete="off"
-            [(ngModel)]="site.timezone"
-            placeholder="Timezone (min)" />
-    </mat-form-field>
+  <!-- Timezone -->
+  <mat-form-field>
+    <input
+      matInput
+      type="number"
+      autocomplete="off"
+      [(ngModel)]="site.timezone"
+      placeholder="Timezone (min)" />
+  </mat-form-field>
 
-    <!-- Elevation -->
-    <mat-form-field>
-        <input
-            matInput
-            type="number"
-            autocomplete="off"
-            [(ngModel)]="site.elevation"
-            placeholder="Elevation (m)" />
-    </mat-form-field>
+  <!-- Elevation -->
+  <mat-form-field>
+    <input
+      matInput
+      type="number"
+      autocomplete="off"
+      [(ngModel)]="site.elevation"
+      placeholder="Elevation (m)" />
+  </mat-form-field>
 
-    <span>Latitude</span>
-    <om-degrees-input
+  <div class="line">
+
+    <div class="item">
+      <om-degrees-input
         [(degrees)]="site.coord.latitude">
-    </om-degrees-input>
+      </om-degrees-input>
+      <span>Latitude</span>
+    </div>
 
-    <span>Longitude</span>
-    <om-degrees-input
+    <div class="item">
+      <om-degrees-input
         [(degrees)]="site.coord.longitude">
-    </om-degrees-input>
+      </om-degrees-input>
+      <span>Longitude</span>
+    </div>
+
+  </div>
 
 </div>
