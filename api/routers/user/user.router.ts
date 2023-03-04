@@ -48,7 +48,7 @@ class UserRouterFactory extends RouterFactory<any, any> {
       });
     }
 
-    passport.authenticate('local', { session: false }, (err, user, info) => {
+    passport.authenticate('local', { session: false }, (err: any, user: any, info: any) => {
       if (err) {
         return next(err);
       }
