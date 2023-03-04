@@ -2,6 +2,7 @@
 
   <!-- Site Name -->
   <mat-form-field>
+    <mat-label>Name</mat-label>
     <input
       matInput
       type="text"
@@ -12,6 +13,7 @@
 
   <!-- Timezone -->
   <mat-form-field>
+    <mat-label>Timezone (min)</mat-label>
     <input
       matInput
       type="number"
@@ -22,6 +24,7 @@
 
   <!-- Elevation -->
   <mat-form-field>
+    <mat-label>Elevation (m)</mat-label>
     <input
       matInput
       type="number"
@@ -34,16 +37,16 @@
 
     <div class="item">
       <om-degrees-input
+        title="Latitude"
         [(degrees)]="site.coord.latitude">
       </om-degrees-input>
-      <span>Latitude</span>
     </div>
 
     <div class="item">
       <om-degrees-input
+        title="Longitude"
         [(degrees)]="site.coord.longitude">
       </om-degrees-input>
-      <span>Longitude</span>
     </div>
 
   </div>

@@ -9,7 +9,7 @@ export class AddTargetDialogService extends AddNewEntityDialogService<Target> {
 
   public createDialog() {
     return this.dialog.open(AddTargetDialogComponent, {
-      width: '350px',
+      width: '550px',
     });
   }
 

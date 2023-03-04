@@ -1,34 +1,38 @@
 <div class="om-degrees-selector">
 
-    <mat-form-field>
-        <input
-            matInput
-            autocomplete="off"
-            [(ngModel)]="degrees.degrees"
-            type="number"
-            placeholder="Degrees" />
-    </mat-form-field>
+  <mat-form-field>
+    <mat-label>°</mat-label>
+    <input
+      matInput
+      autocomplete="off"
+      [(ngModel)]="degrees.degrees"
+      type="number"
+      placeholder="Degrees" />
+    <mat-hint *ngIf="title">{{ title }}</mat-hint>
+  </mat-form-field>
 
-    <mat-form-field>
-        <input
-            matInput
-            autocomplete="off"
-            [(ngModel)]="degrees.arcminutes"
-            type="number"
-            min="0"
-            max="59"
-            placeholder="Arcminutes" />
-    </mat-form-field>
+  <mat-form-field>
+    <mat-label>′</mat-label>
+    <input
+      matInput
+      autocomplete="off"
+      [(ngModel)]="degrees.arcminutes"
+      type="number"
+      min="0"
+      max="59"
+      placeholder="Arcminutes" />
+  </mat-form-field>
 
-    <mat-form-field>
-        <input
-            matInput
-            autocomplete="off"
-            [(ngModel)]="degrees.arcseconds"
-            type="number"
-            min="0"
-            max="59"
-            placeholder="Arcseconds" />
-    </mat-form-field>
+  <mat-form-field>
+    <mat-label>″</mat-label>
+    <input
+      matInput
+      autocomplete="off"
+      [(ngModel)]="degrees.arcseconds"
+      type="number"
+      min="0"
+      max="59"
+      placeholder="Arcseconds" />
+  </mat-form-field>
 
 </div>

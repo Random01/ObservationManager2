@@ -6,17 +6,17 @@
   <div>
     <button
       mat-button
-      *ngIf="editMode===false"
+      *ngIf="!editMode"
       (click)="create()">Create</button>
 
     <button
       mat-button
-      *ngIf="editMode===true"
+      *ngIf="editMode"
       (click)="update()">Update</button>
 
     <button
       mat-button
-      *ngIf="editMode===true"
+      *ngIf="editMode"
       (click)="addNewObservation()">Add New Observation</button> 
 
     <button

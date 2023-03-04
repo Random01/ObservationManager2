@@ -8,9 +8,7 @@ import { EyepieceService } from '../shared/eyepiece.service';
 @Component({
   selector: 'om-add-eyepiece-dialog',
   templateUrl: './add-eyepiece-dialog.component.html',
-  styleUrls: [
-    './add-eyepiece-dialog.component.css',
-  ],
+  styleUrls: ['./add-eyepiece-dialog.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddEyepieceDialogComponent extends AddEntityDialogComponent<Eyepiece, EyepieceService> {

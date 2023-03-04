@@ -29,12 +29,12 @@
   <om-site-selector [(item)]="session.site"></om-site-selector>
 
   <!-- Comments about the weather situation -->
-  <mat-form-field
-    class="weather-input">
+  <mat-form-field class="weather-input">
+    <mat-label>Weather</mat-label>
     <textarea
       matInput
-      placeholder="Weather"
       matTextareaAutosize
+      placeholder="Weather"
       matAutosizeMinRows="5"
       [(ngModel)]="session.weather">
     </textarea>
@@ -44,12 +44,12 @@
   </mat-form-field>
 
   <!-- Equipment -->
-  <mat-form-field
-    class="equipment-input">
+  <mat-form-field class="equipment-input">
+    <mat-label>Equipment</mat-label>
     <textarea
       matInput
-      placeholder="Equipment"
       matTextareaAutosize
+      placeholder="Equipment"
       matAutosizeMinRows="2"
       [(ngModel)]="session.equipment">
     </textarea>
@@ -60,6 +60,7 @@
 
   <!-- Any other comments -->
   <mat-form-field class="om-comments-input">
+    <mat-label>Comments</mat-label>
     <textarea
       matInput
       placeholder="Comments"

@@ -8,6 +8,11 @@ import { Component, Input, ChangeDetectionStrategy, Output, EventEmitter } from 
 })
 export class AliasesEditorComponent {
 
+  public readonly displayedColumns: string[] = [
+    'alias',
+    'actions',
+  ];
+
   private _aliases: string[];
 
   @Input() public set aliases(value: string[]) {

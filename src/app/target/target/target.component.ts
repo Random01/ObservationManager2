@@ -16,6 +16,7 @@ export class TargetComponent {
   }
 
   public onAliasRemoved(alias: string) {
-    this.target.alliases = (this.target.alliases || []).filter(x => x !== alias);
+    this.target.alliases = (this.target.alliases || [])
+      .filter(x => x !== alias);
   }
 }

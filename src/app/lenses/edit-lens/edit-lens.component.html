@@ -1,7 +1,8 @@
-<div class="om-edit-lens"
+<div
+  class="om-edit-lens"
   *ngIf="{ item: item$ | async } as data"
 >
-  <div>
+  <div class="header">
     <h2 class="mat-h2">Edit Lens</h2>
   </div>
           
@@ -9,14 +10,20 @@
     <om-lens [lens]="data.item"></om-lens>
   </div>
 
-  <div>
+  <hr/>
+
+  <div class="footer">
+
     <button
       mat-button
       color="primary"
       [disabled]="!isValid()"
       (click)="updateItem()">Update</button>
+
     <button
       mat-button
       (click)="goBack()">Back</button>
+
   </div>
+  
 </div>

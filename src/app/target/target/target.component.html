@@ -7,6 +7,7 @@
 
   <!-- Target name -->
   <mat-form-field>
+    <mat-label>Name</mat-label>
     <input
       matInput
       type="text"
@@ -17,10 +18,11 @@
 
   <!-- Target Description -->
   <mat-form-field>
+    <mat-label>Description</mat-label>
     <textarea
       matInput
-      placeholder="Description"
       matTextareaAutosize
+      placeholder="Description"
       matAutosizeMinRows="5"
       [(ngModel)]="target.description">
     </textarea>
@@ -31,14 +33,12 @@
       <om-right-ascension-selector
         [(ra)]="target.position.ra">
       </om-right-ascension-selector>
-      <span>RA</span>
     </div>
 
     <div class="item">
       <om-declination-selector
         [(dec)]="target.position.dec">
       </om-declination-selector>
-      <span>Dec</span>
     </div>
   </div>
 

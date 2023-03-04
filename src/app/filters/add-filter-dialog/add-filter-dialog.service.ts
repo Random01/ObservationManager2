@@ -9,7 +9,7 @@ export class AddFilterDialogService extends AddNewEntityDialogService<Filter> {
 
   public createDialog() {
     return this.dialog.open(AddFilterDialogComponent, {
-      width: '350px',
+      width: '550px',
     });
   }
 

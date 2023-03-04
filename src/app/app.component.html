@@ -1,50 +1,50 @@
 <mat-toolbar
-    class="om-toolbar"
-    color="primary"
+  class="om-toolbar"
+  color="primary"
 >
-    <span class="om-title">
-        <button mat-icon-button (click)="toggleSideNav()">
-            <mat-icon>menu</mat-icon>
-        </button>
-        <span>OM</span>
-    </span>
+  <span class="om-title">
+    <button mat-icon-button (click)="toggleSideNav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>OM</span>
+  </span>
 
-    <span class="example-fill-remaining-space"></span>
-    <span>
-        <om-user-profile-menu></om-user-profile-menu>
-    </span>
+  <span class="example-fill-remaining-space"></span>
+  <span>
+    <om-user-profile-menu></om-user-profile-menu>
+  </span>
 </mat-toolbar>
 
 <mat-sidenav-container class="om-sidebar-container">
 
-    <mat-sidenav
-        class="om-sidenav"
-        mode="side"
-        [opened]="opened$ | async"
-    >
+  <mat-sidenav
+    class="om-sidenav"
+    mode="side"
+    [opened]="opened$ | async"
+  >
 
-        <mat-nav-list>
+    <mat-nav-list>
 
-            <div *ngFor="let group of navigationLinks; last as isLast">
-                <a
-                    mat-list-item
-                    href="..."
-                    *ngFor="let item of group"
-                    [routerLink]="item.link"
-                    routerLinkActive="active"
-                >
-                    {{ item.title }}
-                </a>
+      <div *ngFor="let group of navigationLinks; last as isLast">
+        <a
+          mat-list-item
+          href="..."
+          *ngFor="let item of group"
+          [routerLink]="item.link"
+          routerLinkActive="active"
+        >
+          {{ item.title }}
+        </a>
 
-                <mat-divider *ngIf="!isLast"></mat-divider>
-            </div>
+        <mat-divider *ngIf="!isLast"></mat-divider>
+      </div>
 
-        </mat-nav-list>
+    </mat-nav-list>
 
-    </mat-sidenav>
+  </mat-sidenav>
 
-    <mat-sidenav-content class="om-sidenav-content">
-        <router-outlet></router-outlet>
-    </mat-sidenav-content>
+  <mat-sidenav-content class="om-sidenav-content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
 
 </mat-sidenav-container>

@@ -1,22 +1,29 @@
-<div class="om-edit-scope"
-    *ngIf="{ item: item$ | async } as data"
+<div
+  class="om-edit-scope"
+  *ngIf="{ item: item$ | async } as data"
 >
-    <div>
-        <h2 class="mat-h2">Edit Scope</h2>
-    </div>
+  <div class="header">
+    <h2 class="mat-h2">Edit Scope</h2>
+  </div>
             
-    <div *ngIf="data.item">
-        <om-scope [scope]="data.item"></om-scope>
-    </div>
+  <div *ngIf="data.item">
+    <om-scope [scope]="data.item"></om-scope>
+  </div>
 
-    <div>
-        <button
-            mat-button
-            color="primary"
-            [disabled]="!isValid()"
-            (click)="updateItem()">Update</button>
-        <button
-            mat-button
-            (click)="goBack()">Back</button>
-    </div>
+  <hr/>
+
+  <div class="footer">
+
+    <button
+      mat-button
+      color="primary"
+      [disabled]="!isValid()"
+      (click)="updateItem()">Update</button>
+
+    <button
+      mat-button
+      (click)="goBack()">Back</button>
+
+  </div>
+
 </div>

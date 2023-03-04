@@ -1,4 +1,5 @@
-<div class="om-add-session"
+<div
+  class="om-add-session"
   *ngIf="{ item: item$ | async } as data"
 >
 
@@ -9,6 +10,8 @@
   <div *ngIf="data.item">
     <om-session [session]="data.item"></om-session>
   </div>
+
+  <hr/>
 
   <div>
     <button
@@ -27,4 +30,5 @@
       (click)="goBack()">Back</button>
 
   </div>
+  
 </div>

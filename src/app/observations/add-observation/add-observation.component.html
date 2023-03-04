@@ -1,4 +1,5 @@
-<div class="om-add-observation"
+<div
+  class="om-add-observation"
   *ngIf="{ item: item$ | async } as data"
 >
   <div class="header">
@@ -12,17 +13,21 @@
   <hr />
 
   <div class="footer">
+
     <button 
       mat-button
       color="primary"
       [disabled]="!isValid()"
       (click)="addItem()">Add</button>
+
     <button 
       mat-button
       [disabled]="!isValid()"
       (click)="addItemAndContinue()">Add and Continue</button>
+
     <button
       mat-button
       (click)="goBack()">Back</button>
+      
   </div>
 </div>

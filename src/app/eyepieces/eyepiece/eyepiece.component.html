@@ -1,61 +1,71 @@
 ﻿﻿<div class="om-eyepiece">
 
-    <mat-form-field>
-        <input
-            matInput
-            autocomplete="off"
-            type="text"
-            placeholder="Model"
-            [(ngModel)]="eyepiece.model"/>
-    </mat-form-field>
+  <mat-form-field>
+    <mat-label>Model</mat-label>
+    <input
+      matInput
+      autocomplete="off"
+      type="text"
+      placeholder="Model"
+      [(ngModel)]="eyepiece.model"/>
+  </mat-form-field>
 
-    <mat-checkbox [(ngModel)]="isZoomEyepiece">Zoom eyepiece</mat-checkbox>
+  <mat-checkbox [(ngModel)]="isZoomEyepiece">
+    Zoom eyepiece
+  </mat-checkbox>
 
-    <mat-form-field
-        *ngIf="isZoomEyepiece">
-        <input
-            matInput
-            autocomplete="off"
-            type="number"
-            min="0"
-            placeholder="Min. focal length (mm)"
-            [(ngModel)]="eyepiece.focalLength"/>
-    </mat-form-field>
+  <mat-form-field
+    *ngIf="isZoomEyepiece"
+  >
+    <mat-label>Min. focal length (mm)</mat-label>
+    <input
+      matInput
+      autocomplete="off"
+      type="number"
+      min="0"
+      placeholder="Min. focal length (mm)"
+      [(ngModel)]="eyepiece.focalLength"/>
+  </mat-form-field>
     
-    <mat-form-field
-        *ngIf="isZoomEyepiece">
-        <input
-            matInput
-            autocomplete="off"
-            type="number"
-            min="0"
-            placeholder="Max. focal length (mm)"
-            [(ngModel)]="eyepiece.maxFocalLength"/>
-    </mat-form-field>
+  <mat-form-field
+    *ngIf="isZoomEyepiece"
+  >
+    <mat-label>Max. focal length (mm)</mat-label>
+    <input
+      matInput
+      autocomplete="off"
+      type="number"
+      min="0"
+      placeholder="Max. focal length (mm)"
+      [(ngModel)]="eyepiece.maxFocalLength"/>
+  </mat-form-field>
 
-    <mat-form-field
-        *ngIf="isZoomEyepiece===false">
-        <input
-            matInput
-            autocomplete="off"
-            type="number"
-            min="0"
-            placeholder="Focal Length (mm)"
-            [(ngModel)]="eyepiece.focalLength"/>
-    </mat-form-field>
+  <mat-form-field
+    *ngIf="!isZoomEyepiece"
+  >
+    <mat-label>Focal Length (mm)</mat-label>
+    <input
+      matInput
+      autocomplete="off"
+      type="number"
+      min="0"
+      placeholder="Focal Length (mm)"
+      [(ngModel)]="eyepiece.focalLength"/>
+  </mat-form-field>
 
-    <mat-form-field>
-        <input
-            matInput
-            autocomplete="off"
-            type="number"
-            min="0"
-            placeholder="Apparent FOV (deg)"
-            [(ngModel)]="eyepiece.apparentFOV"/>
-    </mat-form-field>
+  <mat-form-field>
+    <mat-label>Apparent FOV (deg)</mat-label>
+    <input
+      matInput
+      autocomplete="off"
+      type="number"
+      min="0"
+      placeholder="Apparent FOV (deg)"
+      [(ngModel)]="eyepiece.apparentFOV"/>
+  </mat-form-field>
 
-    <om-vendor-selector
-        [(vendor)]="eyepiece.vendor">
-    </om-vendor-selector>
+  <om-vendor-selector
+    [(vendor)]="eyepiece.vendor">
+  </om-vendor-selector>
 
 </div>

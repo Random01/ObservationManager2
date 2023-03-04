@@ -3,7 +3,7 @@
   *ngIf="{ item: item$ | async } as data"
 >
 
-  <div>
+  <div class="header">
     <h2 class="mat-h2">Add New Observing Program</h2>
   </div>
 
@@ -11,7 +11,9 @@
     <om-observing-program [program]="data.item"></om-observing-program>
   </div>
 
-  <div>
+  <hr/>
+
+  <div class="footer">
     <button
       mat-button
       color="primary"

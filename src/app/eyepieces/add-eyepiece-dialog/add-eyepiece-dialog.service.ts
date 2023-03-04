@@ -14,7 +14,7 @@ export class AddEyepieceDialogService extends AddNewEntityDialogService<Eyepiece
 
   protected createDialog(): MatDialogRef<AddEyepieceDialogComponent, Eyepiece> {
     return this.dialog.open(AddEyepieceDialogComponent, {
-      width: '350px',
+      width: '550px',
     });
   }
 

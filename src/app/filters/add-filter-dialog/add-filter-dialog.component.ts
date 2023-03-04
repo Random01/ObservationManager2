@@ -9,9 +9,7 @@ import { FilterService } from '../shared/filter.service';
 @Component({
   selector: 'om-add-filter-dialog',
   templateUrl: './add-filter-dialog.component.html',
-  styleUrls: [
-    './add-filter-dialog.component.css',
-  ],
+  styleUrls: ['./add-filter-dialog.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddFilterDialogComponent extends AddEntityDialogComponent<Filter, FilterService> {

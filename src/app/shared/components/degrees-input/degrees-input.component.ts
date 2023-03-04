@@ -1,4 +1,10 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 
 import { Degrees } from '../../models/degrees.model';
 
@@ -10,6 +16,7 @@ import { Degrees } from '../../models/degrees.model';
 })
 export class DegreesInputComponent {
 
+  @Input() public title: string | null = null;
   @Input() public degrees: Degrees | null = null;
   @Output() public readonly degreesChange = new EventEmitter<Degrees>();
 

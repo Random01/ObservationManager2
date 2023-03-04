@@ -1,25 +1,27 @@
 <div class="om-lens">
 
-    <mat-form-field>
-        <input
-            matInput
-            type="text"
-            autocomplete="off"
-            placeholder="Model"
-            [(ngModel)]="lens.model" />
-    </mat-form-field>
+  <mat-form-field>
+    <mat-label>Model</mat-label>
+    <input
+      matInput
+      type="text"
+      autocomplete="off"
+      placeholder="Model"
+      [(ngModel)]="lens.model" />
+  </mat-form-field>
 
-    <mat-form-field>
-        <input
-            matInput
-            type="number"
-            autocomplete="off"
-            placeholder="Factor"
-            [(ngModel)]="lens.factor" />
-    </mat-form-field>
+  <mat-form-field>
+    <mat-label>Factor</mat-label>
+    <input
+      matInput
+      type="number"
+      autocomplete="off"
+      placeholder="Factor"
+      [(ngModel)]="lens.factor" />
+  </mat-form-field>
 
-    <om-vendor-selector
-        [(vendor)]="lens.vendor">
-    </om-vendor-selector>
+  <om-vendor-selector
+    [(vendor)]="lens.vendor">
+  </om-vendor-selector>
 
 </div>

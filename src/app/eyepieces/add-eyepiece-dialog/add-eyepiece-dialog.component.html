@@ -1,20 +1,31 @@
-<div class="om-add-eyepiece-dialog"
-    *ngIf="{ item: item$ | async } as data"
+<h2 mat-dialog-title>Add New Eyepiece</h2>
+
+<div
+  mat-dialog-content 
+  class="om-add-eyepiece"
+  *ngIf="{ item: item$ | async } as data"
 >
-    <div>
-        <h2 class="mat-h2">Add New Eyepiece</h2>
-    </div>
-    <div *ngIf="data.item">
-        <om-eyepiece [eyepiece]="data.item"></om-eyepiece>
-    </div>
-    <div>
-        <button 
-            mat-button
-            color="primary"
-            [disabled]="!isValid()"
-            (click)="addItem()">Add</button>
-        <button
-            mat-button
-            (click)="cancel()">Cancel</button>
-    </div>
+  <div *ngIf="data.item">
+   <om-eyepiece [eyepiece]="data.item"></om-eyepiece>
+  </div>
+</div>
+
+<div mat-dialog-actions align="end">
+
+  <button
+    mat-button
+    (click)="cancel()"
+  >
+    Cancel
+  </button>
+
+  <button 
+    mat-button
+    color="primary"
+    [disabled]="!isValid()"
+    (click)="addItem()"
+  >
+    Add
+  </button>
+
 </div>

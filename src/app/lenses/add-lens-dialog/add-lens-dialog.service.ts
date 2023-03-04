@@ -9,7 +9,7 @@ export class AddLensDialogService extends AddNewEntityDialogService<Lens> {
 
   protected createDialog() {
     return this.dialog.open(AddLensDialogComponent, {
-      width: '300px',
+      width: '550px',
     });
   }
 

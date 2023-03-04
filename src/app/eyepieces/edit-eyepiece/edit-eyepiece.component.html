@@ -1,23 +1,30 @@
-<div class="om-edit-eyepiece"
-    *ngIf="{ item: item$ | async } as data"
+<div
+  class="om-edit-eyepiece"
+  *ngIf="{ item: item$ | async } as data"
 >
 
-    <div>
-        <h2 class="mat-h2">Edit Eyepiece</h2>
-    </div>
+  <div>
+    <h2 class="mat-h2">Edit Eyepiece</h2>
+  </div>
             
-    <div *ngIf="data.item">
-        <om-eyepiece [eyepiece]="data.item"></om-eyepiece>
-    </div>
+  <div *ngIf="data.item">
+    <om-eyepiece [eyepiece]="data.item"></om-eyepiece>
+  </div>
 
-    <div>
-        <button
-            mat-button
-            color="primary"
-            [disabled]="!isValid()"
-            (click)="updateItem()">Update</button>
-        <button
-            mat-button
-            (click)="goBack()">Back</button>
-    </div>
+  <hr/>
+
+  <div>
+
+    <button
+      mat-button
+      color="primary"
+      [disabled]="!isValid()"
+      (click)="updateItem()">Update</button>
+
+    <button
+      mat-button
+      (click)="goBack()">Back</button>
+
+  </div>
+
 </div>

@@ -9,7 +9,7 @@ export class AddSiteDialogService extends AddNewEntityDialogService<Site> {
 
   protected createDialog() {
     return this.dialog.open(AddSiteDialogComponent, {
-      width: '500px',
+      width: '550px',
     });
   }
 

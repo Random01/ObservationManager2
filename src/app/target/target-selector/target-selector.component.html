@@ -1,48 +1,48 @@
 <div class="om-target-selector">
 
-    <mat-form-field>
-        
-        <input
-            type="text"
-            placeholder="Target"
-            aria-label="Number"
-            matInput
-            [formControl]="searchControl"
-            [matAutocomplete]="auto"
-            (keyup)="search(searchControl.value)" />
+  <mat-form-field>
+    <mat-label>Target</mat-label>
+    <input
+      matInput
+      type="text"
+      placeholder="Target"
+      aria-label="Number"
+      [formControl]="searchControl"
+      [matAutocomplete]="auto"
+      (keyup)="search(searchControl.value)" />
 
-        <mat-autocomplete
-            #auto="matAutocomplete"
-            [displayWith]="displayFn"
-            (optionSelected)="onTargetSelected(searchControl.value)"
-        >
-            <mat-option
-                *ngFor="let target of targets$ | async"
-                [value]="target"
-            >
-                {{ target.name }}
-            </mat-option>
-        </mat-autocomplete>
-
-        <button
-            matSuffix
-            mat-icon-button
-            aria-label="Clear"
-            matTooltip="Clear"
-            (click)="clearSelection()"
-            *ngIf="target && target.id"
-        >
-            <mat-icon>close</mat-icon>
-        </button>
-
-    </mat-form-field>
+    <mat-autocomplete
+      #auto="matAutocomplete"
+      [displayWith]="displayFn"
+      (optionSelected)="onTargetSelected(searchControl.value)"
+    >
+      <mat-option
+        *ngFor="let target of targets$ | async"
+        [value]="target"
+      >
+        {{ target.name }}
+      </mat-option>
+    </mat-autocomplete>
 
     <button
-        *ngIf="canAdd"
-        mat-icon-button
-        (click)="openDialog()"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      matTooltip="Clear"
+      (click)="clearSelection()"
+      *ngIf="target && target.id"
     >
-        <mat-icon>add</mat-icon>
+      <mat-icon>close</mat-icon>
     </button>
+
+  </mat-form-field>
+
+  <button
+    *ngIf="canAdd"
+    mat-icon-button
+    (click)="openDialog()"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
 
 </div>

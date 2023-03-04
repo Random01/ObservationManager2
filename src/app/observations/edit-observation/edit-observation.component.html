@@ -1,25 +1,29 @@
-<div class="om-edit-observation"
-    *ngIf="{ item: item$ | async } as data"
+<div
+  class="om-edit-observation"
+  *ngIf="{ item: item$ | async } as data"
 >
 
-    <div>
-        <h2 class="mat-h2">Update Observation</h2>
-    </div>
+  <div class="header">
+    <h2 class="mat-h2">Update Observation</h2>
+  </div>
     
-    <div *ngIf="data.item">
-        <om-observation [observation]="data.item"></om-observation>
-    </div>
+  <div *ngIf="data.item">
+    <om-observation [observation]="data.item"></om-observation>
+  </div>
 
-    <div>
-        <button
-            mat-button
-            color="primary"
-            [disabled]="!isValid()"
-            (click)="updateItem()">Update</button>
-        <button
-            mat-button
-            [disabled]="!isValid()"
-            (click)="goBack()">Back</button>
-    </div>
+  <hr/>
+
+  <div class="footer">
+    <button
+      mat-button
+      color="primary"
+      [disabled]="!isValid()"
+      (click)="updateItem()">Update</button>
+
+    <button
+        mat-button
+        [disabled]="!isValid()"
+        (click)="goBack()">Back</button>
+  </div>
 
 </div>
