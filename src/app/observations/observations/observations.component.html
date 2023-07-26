@@ -17,7 +17,9 @@
     </mat-expansion-panel-header>
     
     <div *ngIf="data.searchParameters">
-      <om-observation-search [searchParameters]="data.searchParameters">
+      <om-observation-search
+        [searchParameters]="data.searchParameters"
+      >
       </om-observation-search>
 
       <div>

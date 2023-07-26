@@ -1,7 +1,11 @@
 <div
   class="om-targets"
-  *ngIf="{ page: page$ | async } as data"
+  *ngIf="{
+    page: page$ | async,
+    searchParameters: searchParameters$ | async
+  } as data"
 >
+
   <div>
     <h2 class="mat-h2">Objects</h2>
   </div>
@@ -14,8 +18,9 @@
     </mat-expansion-panel-header>
   
     <om-target-search-params
-      [searchParams]="searchParams"
-      (search)="onSearch($event)">
+      [searchParams]="data.searchParameters"
+      (search)="onSearch($event)"
+    >
     </om-target-search-params>
   
   </mat-expansion-panel>

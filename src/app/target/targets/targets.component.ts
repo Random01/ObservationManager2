@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { BehaviorSubject } from 'rxjs';
+
 import { Target } from '../../shared/models/target.model';
 import { TargetService } from '../shared/target.service';
 import { EntityListComponent } from '../../shared/components/entity-list.component';
@@ -13,12 +15,14 @@ import { AuthenticationService } from '../../auth/shared';
 @Component({
   selector: 'om-targets',
   templateUrl: './targets.component.html',
-  styleUrls: ['./targets.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TargetsComponent extends EntityListComponent<Target> {
 
-  public searchParams = new TargetSearchParams();
+  private readonly searchParametersSubject = new BehaviorSubject<TargetSearchParams>(
+    new TargetSearchParams()
+  );
+  public readonly searchParameters$ = this.searchParametersSubject.asObservable();
 
   public readonly displayedColumns: string[] = [
     'name',
@@ -40,7 +44,7 @@ export class TargetsComponent extends EntityListComponent<Target> {
   }
 
   public onSearch(searchParams: TargetSearchParams) {
-    this.searchParams = searchParams;
+    this.searchParametersSubject.next(searchParams);
     this.loadItems();
   }
 
@@ -57,8 +61,11 @@ export class TargetsComponent extends EntityListComponent<Target> {
       && (target.userCreated?.id === this.authService.getCurrentUser().id);
   }
 
-  protected override getRequestParams(): RequestParams {
-    return this.searchParams;
+  protected override getRequestParams(params?: Partial<RequestParams>): RequestParams {
+    return new TargetSearchParams({
+      ...this.searchParametersSubject.getValue(),
+      ...params,
+    });
   }
 
 }

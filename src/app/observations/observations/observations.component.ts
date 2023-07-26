@@ -52,8 +52,11 @@ export class ObservationsComponent extends EntityListComponent<Observation> {
     this.search();
   }
 
-  protected override getRequestParams(): RequestParams {
-    return this.searchParametersSubject.getValue();
+  protected override getRequestParams(params?: Partial<RequestParams>): RequestParams {
+    return new ObservationSearchParameters({
+      ...this.searchParametersSubject.getValue(),
+      ...params,
+    });
   }
 
 }
