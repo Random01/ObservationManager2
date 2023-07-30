@@ -2,25 +2,33 @@
   class="om-observing-programs"
   *ngIf="{ page: page$ | async } as data"
 >
-  <div>
+  <div class="header">
     <h2 class="mat-h2">Observing Programs</h2>
   </div>
 
   <mat-paginator
+    showFirstLastButtons="true"
     [length]="data.page.totalCount"
     [pageSize]="pageSize"
     [pageSizeOptions]="pageSizeOptions"
+    [pageIndex]="currentPage"
     (page)="onPageChanged($event)">
   </mat-paginator>
     
-  <mat-table
-    [dataSource]="data.page.items"
+  <table
+    mat-table
     class="mat-elevation-z8"
+    [dataSource]="data.page.items"
   >
 
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
-      <mat-cell *matCellDef="let program">{{program.name}}</mat-cell>
+      <mat-cell *matCellDef="let program">{{ program.name }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+      <mat-cell *matCellDef="let program">{{ program.description }}</mat-cell>
     </ng-container>
         
     <ng-container matColumnDef="actions">
@@ -67,18 +75,21 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
-  </mat-table>
+  </table>
 
   <mat-paginator
-      [length]="data.page.totalCount"
-      [pageSize]="pageSize"
-      [pageSizeOptions]="pageSizeOptions"
-      (page)="onPageChanged($event)">
+    showFirstLastButtons="true"
+    [length]="data.page.totalCount"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    [pageIndex]="currentPage"
+    (page)="onPageChanged($event)">
   </mat-paginator>
     
   <hr/>
     
-  <div>
+  <div class="footer">
+
     <button 
       mat-button
       color="primary"

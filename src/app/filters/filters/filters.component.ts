@@ -10,7 +10,7 @@ import { AppContextService } from '../../shared/services/app-context.service';
 @Component({
   selector: 'om-filters',
   templateUrl: './filters.component.html',
-  styleUrls: ['./filters.component.css'],
+  styleUrls: ['./filters.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FiltersComponent extends EntityListComponent<Filter> {

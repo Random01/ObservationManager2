@@ -1,13 +1,16 @@
 <div class="om-targets-editor">
 
   <mat-paginator
+    showFirstLastButtons="true"
     [length]="targets.length"
     [pageSize]="pageSize"
     [pageSizeOptions]="pageSizeOptions"
+    [pageIndex]="currentPage"
     (page)="onPageChanged($event)">
   </mat-paginator>
 
-  <mat-table
+  <table
+    mat-table
     class="mat-elevation-z8"
     [dataSource]="paginatedTargets"   
   >
@@ -37,12 +40,14 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
-  </mat-table>
+  </table>
 
   <mat-paginator
+    showFirstLastButtons="true"
     [length]="totalCount"
     [pageSize]="pageSize"
     [pageSizeOptions]="pageSizeOptions"
+    [pageIndex]="currentPage"
     (page)="onPageChanged($event)">
   </mat-paginator>
 

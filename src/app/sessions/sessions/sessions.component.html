@@ -15,75 +15,79 @@
     (page)="onPageChanged($event)">
   </mat-paginator>
 
-    <mat-table
-      [dataSource]="data.page.items"
-      matSort
-      class="mat-elevation-z8"
-    >
+  <table
+    mat-table
+    matSort
+    class="mat-elevation-z8"
+    [dataSource]="data.page.items"
+  >
 
-        <ng-container matColumnDef="begin">
-            <mat-header-cell
-                *matHeaderCellDef
-                mat-sort-header="begin">Date</mat-header-cell>
-            <mat-cell *matCellDef="let session">{{ session.begin | date:'MMM d, y' }}</mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="begin">
+      <mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header="begin"
+      >
+        Date
+      </mat-header-cell>
+      <mat-cell *matCellDef="let session">{{ session.begin | date:'MMM d, y' }}</mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="site">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Site</mat-header-cell>
-            <mat-cell *matCellDef="let session">{{ session.site.name }}</mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="site">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Site</mat-header-cell>
+      <mat-cell *matCellDef="let session">{{ session.site.name }}</mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="weather">
-            <mat-header-cell *matHeaderCellDef>Weather</mat-header-cell>
-            <mat-cell *matCellDef="let session">{{ session.weather }}</mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="weather">
+      <mat-header-cell *matHeaderCellDef>Weather</mat-header-cell>
+      <mat-cell *matCellDef="let session">{{ session.weather }}</mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="actions">
-            <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
-            <mat-cell *matCellDef="let session">
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+      <mat-cell *matCellDef="let session">
 
-                <button
-                    mat-icon-button
-                    matTooltip="Edit Session"
-                    routerLink="/sessions/{{session.id}}"
-                >
-                        <mat-icon
-                            aria-label="Click to edit"
-                        >
-                            edit
-                        </mat-icon>
-                </button>
+        <button
+          mat-icon-button
+          matTooltip="Edit Session"
+          routerLink="/sessions/{{session.id}}"
+        >
+          <mat-icon
+            aria-label="Click to edit"
+          >
+            edit
+          </mat-icon>
+        </button>
 
-                <button
-                    mat-icon-button
-                    matTooltip="View Observations"
-                    routerLink="/sessions/{{session.id}}/observations"
-                >
-                        <mat-icon
-                            aria-label="Click to view observations"
-                        >
-                            view_headline
-                        </mat-icon>
-                </button>
+        <button
+          mat-icon-button
+          matTooltip="View Observations"
+          routerLink="/sessions/{{session.id}}/observations"
+        >
+          <mat-icon
+            aria-label="Click to view observations"
+          >
+            view_headline
+          </mat-icon>
+        </button>
 
-                <button
-                    mat-icon-button
-                    matTooltip="Delete Session"
-                    (click)="remove(session)"
-                >
-                        <mat-icon
-                            aria-label="Click to delete"
-                        >
-                            delete
-                        </mat-icon>
-                </button>
-            </mat-cell>
-        </ng-container>
+        <button
+          mat-icon-button
+          matTooltip="Delete Session"
+          (click)="remove(session)"
+        >
+          <mat-icon
+            aria-label="Click to delete"
+          >
+            delete
+          </mat-icon>
+        </button>
+        </mat-cell>
+      </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
-    </mat-table>
+  </table>
 
   <mat-paginator
     showFirstLastButtons="true"

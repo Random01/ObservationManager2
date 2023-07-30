@@ -1,7 +1,8 @@
-<div class="om-lenses"
+<div
+  class="om-lenses"
   *ngIf="{ page: page$ | async } as data"
 >
-  <div>
+  <div class="header">
     <h2 class="mat-h2">My Lenses</h2>
   </div>
 
@@ -14,7 +15,8 @@
     (page)="onPageChanged($event)">
   </mat-paginator>
 
-  <mat-table
+  <table
+    mat-table
     class="mat-elevation-z8"
     [dataSource]="data.page.items"
   >
@@ -65,7 +67,7 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
-  </mat-table>
+  </table>
 
   <mat-paginator
     showFirstLastButtons="true"
@@ -78,19 +80,29 @@
 
   <hr/>
     
-  <div>
+  <div class="footer">
+
     <button 
       mat-button
       color="primary"
-      routerLink="/lenses/new-lens">Add New Lens</button>
+      routerLink="/lenses/new-lens"
+    >
+      Add New Lens
+    </button>
 
     <button
       mat-button
-      routerLink="/equipment">Back to Equipment</button>
+      routerLink="/equipment"
+    >
+      Back to Equipment
+    </button>
       
     <button
       mat-button
-      (click)="exportToCsv()">Export To CSV</button>
+      (click)="exportToCsv()"
+    >
+      Export To CSV
+    </button>
       
   </div>
 </div>

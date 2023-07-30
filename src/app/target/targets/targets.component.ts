@@ -15,6 +15,7 @@ import { AuthenticationService } from '../../auth/shared';
 @Component({
   selector: 'om-targets',
   templateUrl: './targets.component.html',
+  styleUrls: ['./targets.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TargetsComponent extends EntityListComponent<Target> {

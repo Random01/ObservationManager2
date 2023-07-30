@@ -10,7 +10,7 @@ import { AppContextService } from '../../shared/services/app-context.service';
 @Component({
   selector: 'om-lenses',
   templateUrl: './lenses.component.html',
-  styleUrls: ['./lenses.component.css'],
+  styleUrls: ['./lenses.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LensesComponent extends EntityListComponent<Lens> {

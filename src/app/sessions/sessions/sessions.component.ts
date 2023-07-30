@@ -11,7 +11,7 @@ import { AppContextService } from '../../shared/services/app-context.service';
 @Component({
   selector: 'om-sessions',
   templateUrl: './sessions.component.html',
-  styleUrls: ['./sessions.component.css'],
+  styleUrls: ['./sessions.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SessionsComponent extends EntityListComponent<Session> {

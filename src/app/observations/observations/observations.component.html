@@ -89,7 +89,7 @@
         </button>
         
         <button
-          *ngIf="observation.session && observation.session.id"
+          *ngIf="observation.session?.id"
           mat-icon-button
           matTooltip="View Session"
           routerLink="/sessions/{{observation.session.id}}"

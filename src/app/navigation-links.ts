@@ -7,10 +7,6 @@ export const NavigationLinks: { link: string; title: string }[][] = [
   ],
   [
     {
-      link: 'equipment',
-      title: 'Equipment',
-    },
-    {
       link: 'scopes',
       title: 'Scopes',
     },

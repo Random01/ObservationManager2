@@ -10,15 +10,14 @@ import { AppContextService } from '../../shared/services/app-context.service';
 @Component({
   selector: 'om-observing-programs',
   templateUrl: './observing-programs.component.html',
-  styleUrls: [
-    './observing-programs.component.css'
-  ],
+  styleUrls: ['./observing-programs.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ObservingProgramsComponent extends EntityListComponent<ObservingProgram> {
 
   public readonly displayedColumns: string[] = [
     'name',
+    'description',
     'actions',
   ];
 

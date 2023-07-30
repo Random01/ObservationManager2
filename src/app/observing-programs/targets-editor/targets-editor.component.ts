@@ -5,7 +5,9 @@ import {
   EventEmitter,
   OnChanges,
   SimpleChange,
+  ChangeDetectionStrategy,
 } from '@angular/core';
+
 import { PageEvent } from '@angular/material/paginator';
 
 import { Target } from '../../shared/models/models';
@@ -13,7 +15,7 @@ import { Target } from '../../shared/models/models';
 @Component({
   selector: 'om-targets-editor',
   templateUrl: './targets-editor.component.html',
-  styleUrls: ['./targets-editor.component.css'],
+  styleUrls: ['./targets-editor.component.less'],
 })
 export class TargetsEditorComponent implements OnChanges {
 
