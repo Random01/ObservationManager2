@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router, CanActivate } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -7,7 +7,7 @@ import { tap } from 'rxjs/operators';
 import { AuthenticationService } from './authentication.service';
 
 @Injectable({ providedIn: 'root' })
-export class AuthGuardService implements CanActivate {
+export class AuthGuardService  {
 
   constructor(
     private readonly authService: AuthenticationService,
