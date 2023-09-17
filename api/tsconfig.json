@@ -6,7 +6,7 @@
     "baseUrl": ".",
     "noUnusedLocals": true,
     "noUnusedParameters": false,
-    "downlevelIteration": true,
+    "downlevelIteration": false,
     "noImplicitAny": true,
     "forceConsistentCasingInFileNames": true,
     "module": "CommonJS",
