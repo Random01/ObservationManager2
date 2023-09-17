@@ -25,5 +25,5 @@
 ## Docker
 
 1. "docker build . -t falserandom/om"
-   
+
 1. "docker run -d -p 48900:3001 falserandom/om" OR "docker run -d -p 48900:3001 -e SECRET='...' -e CONNECTION_STRING='...' falserandom/om"
