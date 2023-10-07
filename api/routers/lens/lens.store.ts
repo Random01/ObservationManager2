@@ -18,20 +18,4 @@ export class LensStore extends BaseMongooseStore<typeof LensModel, Lens> {
     });
   }
 
-  public override getAll(): Promise<Lens[]> {
-    return new Promise((success, fail) => {
-      this.model
-        .find()
-        .populate('userCreated')
-        .populate('userModified')
-        .exec((err: Error, docs: Lens[]) => {
-          if (err) {
-            fail(err);
-          } else {
-            success(docs);
-          }
-        });
-    });
-  }
-
 }
