@@ -13,8 +13,8 @@ import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
   selector: 'om-session-observations',
-  templateUrl: './session-observations.component.html',
-  styleUrls: ['./session-observations.component.less'],
+  templateUrl: 'session-observations.component.html',
+  styleUrls: ['session-observations.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SessionObservationsComponent extends EntityListComponent<Observation> {
@@ -72,8 +72,9 @@ export class SessionObservationsComponent extends EntityListComponent<Observatio
     return 'Observations';
   }
 
-  protected override getRequestParams(): RequestParams {
+  protected override getRequestParams(params?: Partial<RequestParams>): RequestParams {
     return new ObservationSearchParams({
+      ...params,
       sessionId: this.getSessionId(),
     });
   }
