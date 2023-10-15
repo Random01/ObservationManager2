@@ -7,20 +7,21 @@ export class Entity {
   public readonly dateModified: Date;
   public readonly userCreated: string;
   public readonly userModified: string;
+  public readonly description: string;
 
   constructor(params: Partial<Entity>) {
     Object.assign(this, params);
   }
 
-  public toId(id: string) {
+  public toId(id: string): ObjectId {
     return id != null ? new ObjectId(id) : undefined;
   }
 
-  public toDate(date: any) {
+  public toDate(date: Date): Date {
     return date;
   }
 
-  public toNumber(number: any) {
+  public toNumber(number: number): number {
     return number;
   }
 
@@ -31,6 +32,8 @@ export class Entity {
       dateModified: this.toDate(this.dateModified),
       userCreated: this.toId(this.userCreated),
       userModified: this.toId(this.userModified),
+      description: this.description,
     };
   }
+
 }

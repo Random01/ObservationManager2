@@ -68,4 +68,14 @@
     [(vendor)]="eyepiece.vendor">
   </om-vendor-selector>
 
+  <!-- Description -->
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <textarea
+      matInput
+      autocomplete="off"
+      placeholder="Description" 
+      [(ngModel)]="eyepiece.description"></textarea>
+  </mat-form-field>
+
 </div>

@@ -7,8 +7,8 @@
       matInput
       type="text"
       autocomplete="off"
-      [(ngModel)]="site.name"
-      placeholder="Name" />
+      placeholder="Name"
+      [(ngModel)]="site.name" />
   </mat-form-field>
 
   <!-- Timezone -->
@@ -18,8 +18,8 @@
       matInput
       type="number"
       autocomplete="off"
-      [(ngModel)]="site.timezone"
-      placeholder="Timezone (min)" />
+      placeholder="Timezone (min)"
+      [(ngModel)]="site.timezone" />
   </mat-form-field>
 
   <!-- Elevation -->
@@ -29,8 +29,8 @@
       matInput
       type="number"
       autocomplete="off"
-      [(ngModel)]="site.elevation"
-      placeholder="Elevation (m)" />
+      placeholder="Elevation (m)"
+      [(ngModel)]="site.elevation" />
   </mat-form-field>
 
   <div class="line">
@@ -50,5 +50,15 @@
     </div>
 
   </div>
+
+  <!-- Description -->
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <textarea
+      matInput
+      autocomplete="off"
+      placeholder="Description" 
+      [(ngModel)]="site.description"></textarea>
+  </mat-form-field>
 
 </div>

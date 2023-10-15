@@ -18,11 +18,6 @@ export class Target extends Entity {
   public alliases: string[] = [];
 
   /**
-   * notes on targets
-   */
-  public description: string;
-
-  /**
    * constellation is optional because it can be derived from position
    */
   public constellation = new Constellation();
@@ -38,7 +33,6 @@ export class Target extends Entity {
       name: this.name,
       type: this.type,
       alliases: this.alliases,
-      description: this.description,
       constellation: this.constellation != null ? this.constellation.code : null,
       position: this.position ? this.position.serialize() : null,
     });

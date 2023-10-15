@@ -24,4 +24,14 @@
     [(vendor)]="lens.vendor">
   </om-vendor-selector>
 
+  <!-- Description -->
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <textarea
+      matInput
+      autocomplete="off"
+      placeholder="Description" 
+      [(ngModel)]="lens.description"></textarea>
+  </mat-form-field>
+
 </div>

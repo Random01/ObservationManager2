@@ -4,8 +4,8 @@ import { Eyepiece } from '../../shared/models/equipment/eyepiece.model';
 
 @Component({
   selector: 'om-eyepiece',
-  templateUrl: './eyepiece.component.html',
-  styleUrls: ['./eyepiece.component.css'],
+  templateUrl: 'eyepiece.component.html',
+  styleUrls: ['eyepiece.component.less'],
 })
 export class EyepieceComponent {
 

@@ -117,10 +117,20 @@ export class BaseMongooseStore<TModel extends BaseModel, TEntity extends Entity>
         return;
       }
 
-      entity.dateCreated = entity.dateModified = new Date();
-      entity.userCreated = entity.userModified = new ObjectId(userId);
+      const date = new Date();
+      const id = new ObjectId(userId);
 
-      this.model.create(entity, (err: Error, result: TEntity) => {
+      const modifiedEntity = {
+        ...entity,
+
+        userCreated: id,
+        userModified: id,
+
+        dateCreated: date,
+        dateModified: date,
+      };
+
+      this.model.create(modifiedEntity, (err: Error, result: TEntity) => {
         if (err) {
           fail(err);
         } else {
@@ -137,17 +147,20 @@ export class BaseMongooseStore<TModel extends BaseModel, TEntity extends Entity>
         return;
       }
 
-      entity.dateModified = new Date();
-      entity.userModified = new ObjectId(userId);
+      const modifiedEntity = {
+        ...entity,
+        userModified: new ObjectId(userId),
+        dateModified: new Date(),
+      };
 
       this.model.updateOne({
-        _id: entity.id,
+        _id: modifiedEntity.id,
         userCreated: userId,
-      }, entity, (err: Error) => {
+      }, modifiedEntity, (err: Error) => {
         if (err) {
           fail(err);
         } else {
-          success(entity);
+          success(modifiedEntity);
         }
       });
     });

@@ -4,9 +4,6 @@ import { Target } from './target.model';
 export class ObservingProgram extends Entity {
 
   public name: string;
-
-  public description: string;
-
   public targets: Target[] = [];
 
   constructor(params?: Partial<ObservingProgram>) {
@@ -16,7 +13,6 @@ export class ObservingProgram extends Entity {
   public override serialize(): Object {
     return Object.assign(super.serialize(), {
       name: this.name,
-      description: this.description,
       targets: this.targets.map(target => target.id),
     });
   }
@@ -25,7 +21,6 @@ export class ObservingProgram extends Entity {
     super.deserialize(state);
 
     this.name = state.name;
-    this.description = state.description;
 
     this.targets = (state.targets || []).map((targetState: any) => {
       const target = new Target();

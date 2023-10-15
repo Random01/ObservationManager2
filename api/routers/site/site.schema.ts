@@ -17,5 +17,5 @@ export const SiteSchema = new Schema({
   code: {
     type: String,
     maxlength: 250,
-  }
+  },
 });

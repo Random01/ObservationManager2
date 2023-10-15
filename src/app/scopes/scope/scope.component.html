@@ -7,7 +7,7 @@
       autocomplete="off"
       type="text"
       placeholder="Model"
-      [(ngModel)]="scope.model"/>
+      [(ngModel)]="scope.model" />
   </mat-form-field>
 
   <mat-form-field>
@@ -18,7 +18,7 @@
       type="number"
       min="0"
       placeholder="Aperture (mm)"
-      [(ngModel)]="scope.aperture"/>
+      [(ngModel)]="scope.aperture" />
   </mat-form-field>
 
   <mat-form-field>
@@ -29,11 +29,21 @@
       type="number"
       min="0"
       placeholder="Focal Length (mm)"
-      [(ngModel)]="scope.focalLength"/>
+      [(ngModel)]="scope.focalLength" />
   </mat-form-field>
 
   <om-vendor-selector
     [(vendor)]="scope.vendor">
   </om-vendor-selector>
+
+  <!-- Description -->
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <textarea
+      matInput
+      autocomplete="off"
+      placeholder="Description" 
+      [(ngModel)]="scope.description"></textarea>
+  </mat-form-field>
   
 </div>

@@ -1,11 +1,13 @@
 import { ObjectId } from 'mongodb';
 
 export interface Entity {
-  id: ObjectId;
+  readonly id: ObjectId;
 
-  dateModified?: Date;
-  dateCreated?: Date;
+  readonly dateModified?: Date;
+  readonly dateCreated?: Date;
 
-  userModified?: ObjectId;
-  userCreated?: ObjectId;
+  readonly userModified?: ObjectId;
+  readonly userCreated?: ObjectId;
+
+  readonly description?: string;
 }

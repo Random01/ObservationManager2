@@ -29,4 +29,14 @@
     [(vendor)]="filter.vendor">
   </om-vendor-selector>
 
+  <!-- Description -->
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <textarea
+      matInput
+      autocomplete="off"
+      placeholder="Description" 
+      [(ngModel)]="filter.description"></textarea>
+  </mat-form-field>
+
 </div>

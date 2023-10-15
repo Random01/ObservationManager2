@@ -9,6 +9,8 @@ export class Entity implements Serializable {
   public userCreated: Entity;
   public userUpdated: Entity;
 
+  public description: string;
+
   constructor(params?: Partial<Entity>) {
     Object.assign(this, params);
   }
@@ -17,7 +19,10 @@ export class Entity implements Serializable {
     if (params != null && params.lightWeight === true) {
       return this.id;
     }
-    return { id: this.id };
+    return {
+      id: this.id,
+      description: this.description,
+    };
   }
 
   public deserialize(state: any): void {
@@ -25,6 +30,8 @@ export class Entity implements Serializable {
       this.id = state;
     } else {
       this.id = state._id;
+      this.description = state.description;
+
       if (state.userCreated) {
         this.userCreated = new Entity({ id: state.userCreated._id });
       }
