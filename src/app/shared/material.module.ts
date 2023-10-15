@@ -15,14 +15,19 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipDefaultOptions, MatTooltipModule, MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogConfig, MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDividerModule } from '@angular/material/divider';
 
-export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
+
+export const matTooltipDefaultOptions: MatTooltipDefaultOptions = {
   showDelay: 1000,
   hideDelay: 1000,
   touchendHideDelay: 1000,
+};
+
+export const matDialogConfig: MatDialogConfig = {
+  hasBackdrop: true,
 };
 
 @NgModule({
@@ -50,7 +55,8 @@ export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
     MatDividerModule,
   ],
   providers: [
-    { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: myCustomTooltipDefaults },
+    { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: matTooltipDefaultOptions },
+    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: matDialogConfig },
   ],
 })
 export class MaterialModule { }
