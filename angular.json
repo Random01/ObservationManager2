@@ -73,11 +73,11 @@
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "om-manager:build"
+                      "buildTarget": "om-manager:build"
                     },
                     "configurations": {
                         "production": {
-                            "browserTarget": "om-manager:build:production"
+                          "buildTarget": "om-manager:build:production"
                         }
                     }
                 },
