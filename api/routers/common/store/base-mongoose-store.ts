@@ -2,20 +2,9 @@ import { ObjectId } from 'mongodb';
 
 import { BaseModel } from './base-model.interface';
 import { PaginatedItems } from './paginated-items.interface';
-import { GetItemsRequestParameters } from './get-items-request-parameters.interface';
 import { Entity } from '../interfaces';
-
-export interface GetByIdParameter {
-  id: string;
-  userId?: string;
-  populationDetails?: string[][];
-}
-
-export interface GetItemsParameters {
-  requestParameters: GetItemsRequestParameters;
-  populationDetails?: string[][];
-  userId?: string;
-}
+import { GetItemsParameters } from './get-items-parameters.interface';
+import { GetByIdParameter } from './get-by-id-parameter.interface';
 
 export class BaseMongooseStore<TModel extends BaseModel, TEntity extends Entity> {
 
