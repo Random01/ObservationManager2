@@ -1,5 +1,7 @@
 import express from 'express';
 import session from 'express-session';
+import compression from 'compression';
+import errorhandler from 'errorhandler';
 
 import mongoose from 'mongoose';
 
@@ -23,15 +25,17 @@ app.use(session({
   saveUninitialized: false,
 }));
 
-mongoose.connect(dbConfig.url);
-
-const isProduction = process.env.NODE_ENV === 'production';
-if (!isProduction) {
-  mongoose.set('debug', true);
-}
-
 app.use(passport.initialize());
 app.use(passport.session());
+
+mongoose.connect(dbConfig.url);
+
+if (process.env.NODE_ENV === 'development') {
+  app.use(errorhandler());
+  mongoose.set('debug', true);
+} else {
+  app.use(compression({ level: 1 }));
+}
 
 const dataBase = mongoose.connection;
 
