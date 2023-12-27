@@ -48,6 +48,6 @@ dataBase.once('open', () => {
   });
 
   app.listen(PORT, () => {
-    console.log(`Example app listening on port ${PORT}!`);
+    console.log(`The app is listening on port ${PORT}!`);
   });
 });
