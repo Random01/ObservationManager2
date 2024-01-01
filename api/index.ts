@@ -5,6 +5,8 @@ import errorhandler from 'errorhandler';
 
 import mongoose from 'mongoose';
 
+import MongoStore from 'connect-mongo';
+
 import passport from './config/passport';
 import { dbConfig } from './config';
 
@@ -23,6 +25,9 @@ app.use(session({
   cookie: { maxAge: 60000 },
   resave: false,
   saveUninitialized: false,
+  store: MongoStore.create({
+    mongoUrl: dbConfig.url,
+  }),
 }));
 
 app.use(passport.initialize());
@@ -48,6 +53,6 @@ dataBase.once('open', () => {
   });
 
   app.listen(PORT, () => {
-    console.log(`The app is listening on port ${PORT}!`);
+    console.log(`Server started on port ${PORT}!`);
   });
 });
