@@ -4,7 +4,7 @@ import { TargetCsvLoader } from './target-csv-loader.service';
 import { Target } from './target.interface';
 import { TargetModel } from './target.model';
 
-export class TargetStore extends BaseMongooseStore<any, Target> {
+export class TargetStore extends BaseMongooseStore<typeof TargetModel, Target> {
 
   constructor() {
     super(TargetModel);
@@ -14,67 +14,43 @@ export class TargetStore extends BaseMongooseStore<any, Target> {
     return super.getById({
       id,
       userId,
-      populationDetails: [
-        ['userCreated', '_id userName firstName lastName'],
-        ['userModified', '_id userName firstName lastName'],
-      ],
+      populationDetails: {
+        'userCreated': ['_id', 'userName', 'firstName', 'lastName'],
+        'userModified': ['_id', 'userName', 'firstName', 'lastName'],
+      },
     });
   }
 
   public override getItems({ requestParameters }: any) {
     return super.getItems({
       requestParameters,
-      populationDetails: [
-        ['userCreated', '_id userName firstName lastName'],
-        ['userModified', '_id userName firstName lastName'],
-      ],
+      populationDetails: {
+        'userCreated': ['_id', 'userName', 'firstName', 'lastName'],
+        'userModified': ['_id', 'userName', 'firstName', 'lastName'],
+      },
     });
   }
 
-  public override search(params: { name: string; maxCount: number }): Promise<Target[]> {
+  public override search(params: { name: string; maxCount: number }) {
     const { name, maxCount = 10 } = params;
 
-    return new Promise((success, fail) => {
-      this.model
-        .find({ name: new RegExp(name) })
-        .limit(maxCount)
-        .exec((err: Error, docs: any) => {
-          if (err) {
-            fail(err);
-          } else {
-            success(docs);
-          }
-        });
-    });
+    return this.model
+      .find({ name: new RegExp(name) })
+      .limit(maxCount)
+      .exec();
   }
 
-  public upload() {
+  public async upload() {
     const loader = new TargetCsvLoader();
-    return loader.load().then(targets =>
-      new Promise((success, fail) => {
-        this.model.insertMany(targets, (err: Error) => {
-          if (err) {
-            fail(err);
-          } else {
-            success({ success: true });
-          }
-        });
-      })
-    );
+    const targets = await loader.load();
+    await this.model.insertMany(targets);
+    return ({ success: true });
   }
 
   public loadAllTargetsFromDb() {
-    return new Promise((success, fail) => {
-      this.model
-        .find()
-        .exec((err: Error, docs: any) => {
-          if (err) {
-            fail(err);
-          } else {
-            success(docs);
-          }
-        });
-    });
+    return this.model
+      .find()
+      .exec();
   }
 
   public loadTargetsFromCsv() {

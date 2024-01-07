@@ -6,12 +6,14 @@ import { BaseMongooseStore, RouterFactory } from '../common';
 
 import { ObservationStore } from './observation.store';
 import { ObservationExporterService } from './observation.exporter.service';
+import { ObservationModel } from './observation.model';
+import { Observation } from './observation.interface';
 
 class ObservationRouterFactory extends RouterFactory<any, any> {
 
   public static override create(
     app: core.Express,
-    store: BaseMongooseStore<any, any>,
+    store: BaseMongooseStore<typeof ObservationModel, Observation>,
     path: string,
     exporter: ObservationExporterService,
   ) {

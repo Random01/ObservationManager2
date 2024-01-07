@@ -3,6 +3,7 @@ import { sign } from 'jsonwebtoken';
 import { Schema } from 'mongoose';
 
 import { authConfig } from '../../config';
+import { User } from './user.interface';
 
 export const UserSchema = new Schema({
   dateCreated: Date,
@@ -29,16 +30,14 @@ export const UserSchema = new Schema({
   salt: String,
 });
 
-UserSchema.methods.setPassword = function (password: string) {
-  const self = this as any;
-  self.salt = randomBytes(16).toString('hex');
-  self.hash = pbkdf2Sync(password, self.salt, 10000, 512, 'sha512').toString('hex');
+UserSchema.methods.setPassword = function (this: User, password: string) {
+  this.salt = randomBytes(16).toString('hex');
+  this.hash = pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
 };
 
-UserSchema.methods.validPassword = function (password: string) {
-  const self = this as any;
-  const hash = pbkdf2Sync(password, self.salt, 10000, 512, 'sha512').toString('hex');
-  return self.hash === hash;
+UserSchema.methods.validPassword = function (this: User, password: string) {
+  const hash = pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
+  return this.hash === hash;
 };
 
 UserSchema.methods.generateJWT = function () {
@@ -46,20 +45,18 @@ UserSchema.methods.generateJWT = function () {
   const exp = new Date(today);
   exp.setDate(today.getDate() + 60);
 
-  const self = this as any;
   return sign({
-    id: self._id,
-    userName: self.userName,
+    id: this._id,
+    userName: this.userName,
     exp: Math.trunc(exp.getTime() / 1000),
   }, authConfig.secret);
 };
 
 UserSchema.methods.toAuthJSON = function () {
-  const self = this as any;
   return {
-    _id: self._id,
-    userName: self.userName,
-    email: self.email,
-    token: self.generateJWT(),
+    _id: this._id,
+    userName: this.userName,
+    email: this.email,
+    token: this.generateJWT(),
   };
 };

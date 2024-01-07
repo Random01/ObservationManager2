@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
+import { model } from 'mongoose';
 
 import { ConstellationSchema } from './constellation.schema';
 
-export const ConstellationModel = mongoose.model('constellations', ConstellationSchema);
+export const ConstellationModel = model('constellations', ConstellationSchema);

@@ -6,7 +6,7 @@ import { BaseTxtExporter } from '../common';
 
 export class ObservationTxtExporter extends BaseTxtExporter<Observation> {
 
-  public export(res: Response, items: Observation[]) {
+  public export(res: Response, items: Observation[]): void {
     res.set('Content-Type', 'text/plain');
     const content = this.getContent(items);
     res.send(Buffer.from(content));

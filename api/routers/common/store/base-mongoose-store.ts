@@ -1,12 +1,12 @@
 import { ObjectId } from 'mongodb';
+import { Model } from 'mongoose';
 
-import { BaseModel } from './base-model.interface';
 import { PaginatedItems } from './paginated-items.interface';
 import { Entity } from '../interfaces';
 import { GetItemsParameters } from './get-items-parameters.interface';
 import { GetByIdParameter } from './get-by-id-parameter.interface';
 
-export class BaseMongooseStore<TModel extends BaseModel, TEntity extends Entity> {
+export class BaseMongooseStore<TModel extends Model<any>, TEntity extends Entity> {
 
   protected readonly model: TModel;
 
@@ -19,18 +19,10 @@ export class BaseMongooseStore<TModel extends BaseModel, TEntity extends Entity>
   }
 
   public getAll(): Promise<TEntity[]> {
-    return new Promise<TEntity[]>((success, fail) => {
-      this.model.find().exec((err: Error, result: TEntity[]) => {
-        if (err) {
-          fail(err);
-        } else {
-          success(result);
-        }
-      });
-    });
+    return this.model.find().exec();
   }
 
-  public getItems({ requestParameters, userId, populationDetails = [] }: GetItemsParameters): Promise<PaginatedItems<TEntity>> {
+  public async getItems({ requestParameters, userId, populationDetails = {} }: GetItemsParameters): Promise<PaginatedItems<TEntity>> {
     const {
       page, size, sortField, sortDirection,
       ...restRequestParams
@@ -41,132 +33,84 @@ export class BaseMongooseStore<TModel extends BaseModel, TEntity extends Entity>
       ...(userId ? { userCreated: userId } : undefined),
     };
 
-    return new Promise((success, fail) => {
-      this.model.find(request).count((err: Error, count: number) => {
-        if (err) {
-          fail(err);
-        } else {
-          const query = this.model.find(request);
+    const count = await this.model.find(request).countDocuments();
+    const query = this.model.find(request);
 
-          if (sortField != null && sortDirection != null) {
-            query.sort({ [sortField]: sortDirection === 'asc' ? 1 : -1 });
-          }
+    if (sortField != null && sortDirection != null) {
+      query.sort({ [sortField]: sortDirection === 'asc' ? 1 : -1 });
+    }
 
-          populationDetails.forEach(items => {
-            query.populate(...items);
-          });
-
-          if (size != null && page != null) {
-            query.limit(size).skip(page * size);
-          }
-
-          query.exec((innerError: Error, result: any) => {
-            if (innerError) {
-              fail(innerError);
-            } else {
-              success({
-                items: result,
-                pageCount: page != null ? page : 0,
-                pages: size != null ? Math.ceil(count / size) : 1,
-                totalCount: count,
-              });
-            }
-          });
-        }
-      });
+    Object.keys(populationDetails).forEach(key => {
+      query.populate(key, populationDetails[key]);
     });
 
+    if (size != null && page != null) {
+      query.limit(size).skip(page * size);
+    }
+
+    return query.exec().then(result => ({
+      items: result,
+      pageCount: page != null ? page : 0,
+      pages: size != null ? Math.ceil(count / size) : 1,
+      totalCount: count,
+    }));
   }
 
-  public getById({ id, userId, populationDetails = [] }: GetByIdParameter): Promise<TEntity> {
-    return new Promise((success, fail) => {
-      const query = this.model.findOne({
-        _id: id,
-        userCreated: userId,
-      });
-
-      populationDetails.forEach(items => {
-        query.populate(...items);
-      });
-
-      query.exec((err: Error, result: TEntity) => {
-        if (err) {
-          fail(err);
-        } else {
-          success(result);
-        }
-      });
+  public getById({ id, userId, populationDetails = {} }: GetByIdParameter): Promise<TEntity> {
+    const query = this.model.findOne({
+      _id: id,
+      userCreated: userId,
     });
+
+    Object.keys(populationDetails).forEach(key => {
+      query.populate(key, populationDetails[key]);
+    });
+
+    return query.exec();
   }
 
   public add({ entity, userId }: { entity: TEntity; userId: string }): Promise<TEntity> {
-    return new Promise<TEntity>((success, fail) => {
-      if (!entity) {
-        fail(new Error('entity should be provided.'));
-        return;
-      }
+    if (!entity) {
+      throw new Error('entity should be provided.');
+    }
 
-      const date = new Date();
-      const id = new ObjectId(userId);
+    const date = new Date();
+    const id = new ObjectId(userId);
 
-      const modifiedEntity = {
-        ...entity,
+    return this.model.create({
+      ...entity,
 
-        userCreated: id,
-        userModified: id,
+      userCreated: id,
+      userModified: id,
 
-        dateCreated: date,
-        dateModified: date,
-      };
-
-      this.model.create(modifiedEntity, (err: Error, result: TEntity) => {
-        if (err) {
-          fail(err);
-        } else {
-          success(result);
-        }
-      });
+      dateCreated: date,
+      dateModified: date,
     });
   }
 
-  public update({ entity, userId }: { entity: TEntity; userId: string }): Promise<TEntity> {
-    return new Promise<TEntity>((success, fail) => {
-      if (!entity) {
-        fail(new Error('entity should be provided.'));
-        return;
-      }
+  public async update({ entity, userId }: { entity: TEntity; userId: string }): Promise<TEntity> {
+    if (!entity) {
+      throw new Error('entity should be provided.');
+    }
 
-      const modifiedEntity = {
-        ...entity,
-        userModified: new ObjectId(userId),
-        dateModified: new Date(),
-      };
+    const modifiedEntity = {
+      ...entity,
+      userModified: new ObjectId(userId),
+      dateModified: new Date(),
+    };
 
-      this.model.updateOne({
-        _id: modifiedEntity.id,
-        userCreated: userId,
-      }, modifiedEntity, (err: Error) => {
-        if (err) {
-          fail(err);
-        } else {
-          success(modifiedEntity);
-        }
-      });
-    });
+    await this.model.updateOne({
+      _id: modifiedEntity.id,
+      userCreated: userId,
+    }, modifiedEntity);
+
+    return modifiedEntity;
   }
 
-  public delete({ id, userId }: { id: string; userId: string }): Promise<void> {
-    return new Promise((success, fail) => {
-      this.model.deleteOne({
-        _id: id,
-        userCreated: userId,
-      }, (err: Error) => {
-        if (err) {
-          fail(err);
-        } else {
-          success(undefined);
-        }
-      });
+  public async delete({ id, userId }: { id: string; userId: string }) {
+    return await this.model.deleteOne({
+      _id: id,
+      userCreated: userId,
     });
   }
 

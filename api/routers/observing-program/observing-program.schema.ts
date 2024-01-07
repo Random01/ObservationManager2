@@ -7,7 +7,10 @@ import { EntitySchema } from '../common/schemas';
 export const ObservingProgramSchema = new Schema({
   ...EntitySchema,
 
-  name: { type: String, required: true },
+  name: {
+    type: String,
+    required: true,
+  },
   description: String,
   targets: [{
     type: Schema.Types.ObjectId,
@@ -16,15 +19,7 @@ export const ObservingProgramSchema = new Schema({
 });
 
 ObservingProgramSchema.statics.getById = function (id: string): Promise<any> {
-  return new Promise((success, fail) => {
-    this.findOne({ _id: new ObjectId(id) })
-      .populate('targets _id name')
-      .exec((err: Error, observingProgram: any) => {
-        if (err) {
-          fail(err);
-        } else {
-          success(observingProgram);
-        }
-      });
-  });
+  return this.findOne({ _id: new ObjectId(id) })
+    .populate('targets _id name')
+    .exec();
 };

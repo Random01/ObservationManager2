@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose';
+import { Schema, SchemaTypes } from 'mongoose';
 
 import { EntitySchema } from '../common/schemas';
 
@@ -24,7 +24,7 @@ export const SessionSchema = new Schema({
     maxlength: 1024,
   },
   site: {
-    type: Schema.Types.ObjectId,
+    type: SchemaTypes.ObjectId,
     ref: 'sites',
   },
 });
