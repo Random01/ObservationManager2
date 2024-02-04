@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Constellation } from '../../shared/models/constellation.mode';
+import { Constellation } from '../../shared/models/constellation.model';
 import { StorageService } from '../../shared/services/storage.service';
 import { JwtService } from '../../auth/shared/jwt.service';
 

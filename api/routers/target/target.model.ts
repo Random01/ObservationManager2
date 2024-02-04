@@ -1,6 +1,5 @@
-import mongoose from 'mongoose';
+import { model } from 'mongoose';
 
-import { Target } from './target.interface';
 import { TargetSchema } from './target.schema';
 
-export const TargetModel = mongoose.model<Target>('targets', TargetSchema);
+export const TargetModel = model('targets', TargetSchema);

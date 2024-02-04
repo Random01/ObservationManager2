@@ -93,11 +93,11 @@ class UserRouterFactory extends RouterFactory<any, any> {
 
     user.userName = userName;
     user.email = email;
-    user.setPassword(password);
+    (user as any).setPassword(password);
 
     user.save().then(() => res.json({
       success: true,
-      user: user.toAuthJSON(),
+      user: (user as any).toAuthJSON(),
     })).catch(next);
   }
 

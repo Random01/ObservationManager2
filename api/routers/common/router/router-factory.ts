@@ -61,7 +61,6 @@ export class RouterFactory<TEntity extends Entity, TStore extends BaseMongooseSt
     this.store.getById({
       id: req.params.id,
       userId: this.getUserId(req),
-      populationDetails: [],
     }).then(
       entity => res.json(entity),
       (error: Error) => this.handleError(res, error),

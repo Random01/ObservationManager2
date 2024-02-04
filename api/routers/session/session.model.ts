@@ -1,6 +1,5 @@
-import mongoose from 'mongoose';
+import {model} from 'mongoose';
 
-import { Session } from './session.interface';
 import { SessionSchema } from './session.schema';
 
-export const SessionModel = mongoose.model<Session>('sessions', SessionSchema);
+export const SessionModel = model('sessions', SessionSchema);

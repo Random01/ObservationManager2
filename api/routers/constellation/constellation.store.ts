@@ -4,7 +4,7 @@ import { CsvReader } from './../../common/services';
 import { Constellation } from './constellation.interface';
 import { ConstellationModel } from './constellation.model';
 
-export class ConstellationStore extends BaseMongooseStore<any, any> {
+export class ConstellationStore extends BaseMongooseStore<typeof ConstellationModel, any> {
 
   constructor() {
     super(ConstellationModel);
@@ -12,15 +12,7 @@ export class ConstellationStore extends BaseMongooseStore<any, any> {
 
   public async upload() {
     const constellations = await this.loadFromCsv();
-    return new Promise((success, fail) => {
-      this.model.insertMany(constellations, (err: Error) => {
-        if (err) {
-          fail(err);
-        } else {
-          success(undefined);
-        }
-      });
-    });
+    await this.model.insertMany(constellations);
   }
 
   private async loadFromCsv(): Promise<Constellation[]> {

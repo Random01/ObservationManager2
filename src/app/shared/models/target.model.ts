@@ -1,6 +1,6 @@
 ﻿import { Entity } from './entity.model';
 import { TargetType } from './target-type.model';
-import { Constellation } from './constellation.mode';
+import { Constellation } from './constellation.model';
 import { EquatorialCoordinates } from './equatorial-coordinates.model';
 
 export class Target extends Entity {

@@ -18,11 +18,11 @@ passport.use(new LocalStrategy({
     }).catch(done);
 }));
 
-passport.serializeUser((user: any, done: any) => {
+passport.serializeUser((user: any, done) => {
   done(null, user.id);
 });
 
-passport.deserializeUser((user: any, done: any) => {
+passport.deserializeUser((user: any, done) => {
   UserModel.findById(user.id, (err: any, usr: any) => {
     done(err, usr);
   });

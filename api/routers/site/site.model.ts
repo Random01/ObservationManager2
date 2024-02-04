@@ -1,6 +1,5 @@
-import mongoose from 'mongoose';
+import { model } from 'mongoose';
 
-import { Site } from './site.interface';
 import { SiteSchema } from './site.schema';
 
-export const SiteModel = mongoose.model<Site>('sites', SiteSchema);
+export const SiteModel = model('sites', SiteSchema);

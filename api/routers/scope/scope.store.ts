@@ -10,11 +10,12 @@ export class ScopeStore extends BaseMongooseStore<typeof ScopeModel, Scope> {
   }
 
   public override getById({ id, userId }: { id: string; userId: string }) {
+    const userFields = ['_id', 'userName', 'firstName', 'lastName'];
     return super.getById({
-      id, userId, populationDetails: [
-        ['userCreated', '_id userName firstName lastName'],
-        ['userModified', '_id userName firstName lastName'],
-      ],
+      id, userId, populationDetails: {
+        'userCreated': userFields,
+        'userModified': userFields,
+      },
     });
   }
 }

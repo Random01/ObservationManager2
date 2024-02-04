@@ -52,17 +52,9 @@ export const ObservationSchema = new Schema({
 });
 
 ObservationSchema.statics.getByTargets = function (targetIds: string[]): Promise<any[]> {
-  return new Promise((success, fail) => {
-    this.find({
-      target: {
-        '$in': targetIds,
-      },
-    }).exec((err: Error, observations: any[]) => {
-      if (err) {
-        fail(err);
-      } else {
-        success(observations);
-      }
-    });
-  });
+  return this.find({
+    target: {
+      '$in': targetIds,
+    },
+  }).exec();
 };

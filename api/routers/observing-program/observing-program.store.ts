@@ -9,19 +9,20 @@ import { Statistics } from './statistics.interface';
 import { StatisticsRequest } from './statistics-request.interface';
 import { ObservingProgramModel } from './observing-program.model';
 
-export class ObservingProgramStore extends BaseMongooseStore<any, ObservingProgram> {
+export class ObservingProgramStore extends BaseMongooseStore<typeof ObservingProgramModel, ObservingProgram> {
 
   constructor() {
     super(ObservingProgramModel);
   }
 
   public override getById({ id, userId }: { id: string; userId: string }): Promise<ObservingProgram> {
+    const userFields = ['_id', 'userName', 'firstName', 'lastName'];
     return super.getById({
-      id, userId, populationDetails: [
-        ['userCreated', '_id userName firstName lastName'],
-        ['userModified', '_id userName firstName lastName'],
-        ['targets', '_id name'],
-      ],
+      id, userId, populationDetails: {
+        'userCreated': userFields,
+        'userModified': userFields,
+        'targets': ['_id', 'name'],
+      },
     });
   }
 
@@ -29,7 +30,7 @@ export class ObservingProgramStore extends BaseMongooseStore<any, ObservingProgr
    * Gets an overall statistics for a selected observing program.
    */
   public getOverallStatistics({ id }: { id: string }): Promise<OverallStatistics> {
-    return this.model
+    return (this.model as any)
       .getById(id)
       .then((observingProgram: ObservingProgram) => Promise.all([
         observingProgram.targets,
@@ -50,7 +51,7 @@ export class ObservingProgramStore extends BaseMongooseStore<any, ObservingProgr
    * Returns a list of observed objects.
    */
   public getStatistics({ id, page, size }: StatisticsRequest): Promise<PaginatedItems<Statistics>> {
-    return this.model
+    return (this.model as any)
       .getById(id)
       .then((observingProgram: ObservingProgram) => {
         const startIndex = page * size;

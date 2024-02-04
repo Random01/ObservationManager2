@@ -2,6 +2,6 @@ import { GetItemsRequestParameters } from './get-items-request-parameters.interf
 
 export interface GetItemsParameters {
   requestParameters: GetItemsRequestParameters;
-  populationDetails?: string[][];
   userId?: string;
+  populationDetails?: Record<string, string[]>;
 }

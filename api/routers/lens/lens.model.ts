@@ -1,6 +1,5 @@
-import mongoose from 'mongoose';
+import { model } from 'mongoose';
 
-import { Lens } from './lens.interface';
 import { LensSchema } from './lens.schema';
 
-export const LensModel = mongoose.model<Lens>('lenses', LensSchema);
+export const LensModel = model('lenses', LensSchema);

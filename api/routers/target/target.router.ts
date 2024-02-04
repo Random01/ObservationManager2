@@ -3,8 +3,9 @@ import * as core from 'express-serve-static-core';
 
 import { RouterFactory } from '../common';
 import { TargetStore } from './target.store';
+import { Target } from './target.interface';
 
-class TargetRouterFactory extends RouterFactory<any, any> {
+class TargetRouterFactory extends RouterFactory<Target, any> {
 
   public override parseRequestParams(req: Request) {
     const requestParams = super.parseRequestParams(req);

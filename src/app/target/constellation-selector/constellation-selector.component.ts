@@ -2,7 +2,7 @@ import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
-import { Constellation } from '../../shared/models/constellation.mode';
+import { Constellation } from '../../shared/models/constellation.model';
 import { ConstellationsService } from '../../constellations/shared/constellations.service';
 
 @Component({
