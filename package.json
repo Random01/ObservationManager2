@@ -1,6 +1,6 @@
 {
   "name": "observation-manager",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "description": "OM helps you to keep your observations.",
   "scripts": {
     "ng": "ng",
