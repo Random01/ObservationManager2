@@ -14,8 +14,8 @@ import { selectAuthState } from 'app/store/auth';
 
 @Component({
   selector: 'om-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  templateUrl: 'login.component.html',
+  styleUrls: ['login.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent extends BaseComponent {
