@@ -17,3 +17,4 @@ _temp
 /dist
 /api/public
 /api/dist
+coverage
