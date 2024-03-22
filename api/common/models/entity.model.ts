@@ -2,26 +2,26 @@ import { ObjectId } from 'mongodb';
 
 export class Entity {
 
-  public readonly id: string;
-  public readonly dateCreated: Date;
-  public readonly dateModified: Date;
-  public readonly userCreated: string;
-  public readonly userModified: string;
-  public readonly description: string;
+  public readonly id: string | undefined;
+  public readonly dateCreated: Date | undefined;
+  public readonly dateModified: Date | undefined;
+  public readonly userCreated: string | undefined;
+  public readonly userModified: string | undefined;
+  public readonly description: string | undefined;
 
-  constructor(params: Partial<Entity>) {
+  constructor(params?: Partial<Entity>) {
     Object.assign(this, params);
   }
 
-  public toId(id: string): ObjectId {
+  public toId(id: string | undefined): ObjectId | undefined {
     return id != null ? new ObjectId(id) : undefined;
   }
 
-  public toDate(date: Date): Date {
+  public toDate(date: Date | undefined): Date | undefined {
     return date;
   }
 
-  public toNumber(number: number): number {
+  public toNumber(number: number | undefined): number | undefined {
     return number;
   }
 

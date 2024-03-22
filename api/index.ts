@@ -20,6 +20,10 @@ app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+if (!dbConfig.url) {
+  throw new Error('DB connection string should be provided.');
+}
+
 app.use(session({
   secret: 'conduit',
   cookie: { maxAge: 60000 },

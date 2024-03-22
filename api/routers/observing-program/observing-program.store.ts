@@ -1,4 +1,3 @@
-import filter from 'lodash/filter';
 import groupBy from 'lodash/groupBy';
 
 import { BaseMongooseStore, PaginatedItems } from '../common';
@@ -38,7 +37,7 @@ export class ObservingProgramStore extends BaseMongooseStore<typeof ObservingPro
       ]))
       .then(([targets, observations]: [any[], any[]]) => {
         const observationsToTarget = groupBy(observations, o => o.target);
-        const observedTargets = filter(targets, target => !!observationsToTarget[target.id]);
+        const observedTargets = targets.filter(target => !!observationsToTarget[target.id]);
 
         return {
           observedCount: observedTargets.length,

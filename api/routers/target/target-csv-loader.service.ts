@@ -1,5 +1,3 @@
-import map from 'lodash/map';
-
 import { CsvReader } from '../../common/services/csv-reader';
 import { DataConfig } from '../../data';
 
@@ -37,11 +35,9 @@ const enum TargetFieldIndex {
 
 export class TargetCsvLoader {
 
-  private readonly typeToTypeMap: Map<string, TargetType>;
+  private readonly typeToTypeMap = new Map<string, TargetType>();
 
   constructor() {
-    this.typeToTypeMap = new Map();
-
     this.typeToTypeMap.set('*', TargetType.Star);
     this.typeToTypeMap.set('**', TargetType.DoubleStar);
     this.typeToTypeMap.set('*Ass', TargetType.Asterism);
@@ -65,7 +61,7 @@ export class TargetCsvLoader {
     this.typeToTypeMap.set('EmN', TargetType.BrightNebula);
   }
 
-  private parseRa(ra: string): number | null {
+  private parseRa(ra: string | null | undefined): number | null {
     if (ra == null) {
       return null;
     }
@@ -76,7 +72,7 @@ export class TargetCsvLoader {
       parseFloat(seconds) / 240.0;
   }
 
-  private parseDec(dec: string): number | null {
+  private parseDec(dec: string | null | undefined): number | null {
     if (dec == null) {
       return null;
     }
@@ -99,7 +95,7 @@ export class TargetCsvLoader {
     return `${catalogName} ${number.replace(/^0+/g, '')}`;
   }
 
-  private parseAliases(identifiersString: string): string[] {
+  private parseAliases(identifiersString: string): string[] | undefined {
     const identifiers = identifiersString != null ? identifiersString.split(',') : undefined;
     if (identifiers == null || identifiers.length === 0) {
       return undefined;
@@ -113,12 +109,9 @@ export class TargetCsvLoader {
       if (!isNaN(value)) {
         return value;
       }
-    } catch (ex) {
-    }
+    } catch (ex) { }
     return undefined;
   }
-
-
 
   public async load(): Promise<Target[]> {
     const reader = new CsvReader({
@@ -128,7 +121,7 @@ export class TargetCsvLoader {
     const data = await reader.read();
     // Name;Type;RA;Dec;Const;MajAx;MinAx;PosAng;B-Mag;V-Mag;J-Mag;H-Mag;K-Mag;
     // SurfBr;Hubble;Cstar U-Mag;Cstar B-Mag;Cstar V-Mag;M;NGC;IC;Cstar Names;Identifiers;Common names;NED notes;OpenNGC notes
-    return map(data.rows, (row: string[]) => {
+    return data.rows.map(row => {
       const name = row[TargetFieldIndex.name];
       const type = row[TargetFieldIndex.type];
       const ra = row[TargetFieldIndex.ra];

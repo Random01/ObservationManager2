@@ -8,6 +8,10 @@ function getTokenFromHeader(req: Request) {
   return req.headers.authorization;
 }
 
+if (!authConfig.secret) {
+  throw new Error('Secret should be provided.');
+}
+
 export const auth = {
   required: jwt({
     secret: authConfig.secret,

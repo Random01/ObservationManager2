@@ -88,7 +88,7 @@ export class BaseMongooseStore<TModel extends Model<any>, TEntity extends Entity
     });
   }
 
-  public async update({ entity, userId }: { entity: TEntity; userId: string }): Promise<TEntity> {
+  public async update({ entity, userId }: { entity: TEntity; userId: string | undefined }): Promise<TEntity> {
     if (!entity) {
       throw new Error('entity should be provided.');
     }
