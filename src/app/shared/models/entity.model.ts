@@ -15,7 +15,7 @@ export class Entity implements Serializable {
     Object.assign(this, params);
   }
 
-  public serialize(params?: { lightWeight: boolean }): Object {
+  public serialize(params?: { lightWeight: boolean }): any {
     if (params != null && params.lightWeight === true) {
       return this.id;
     }

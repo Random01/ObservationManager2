@@ -6,19 +6,19 @@ import { EquatorialCoordinates } from './equatorial-coordinates.model';
 export class Target extends Entity {
 
   /**
-   * most common name
+   * Most common name.
    */
   public name: string;
 
   public type: TargetType;
 
   /**
-   * alternative names
+   * Alternative names.
    */
   public alliases: string[] = [];
 
   /**
-   * constellation is optional because it can be derived from position
+   * Constellation is optional because it can be derived from position.
    */
   public constellation = new Constellation();
 
@@ -28,14 +28,15 @@ export class Target extends Entity {
     super(params);
   }
 
-  public override serialize(): Object {
-    return Object.assign(super.serialize(), {
+  public override serialize(): any {
+    return {
+      ...super.serialize(),
       name: this.name,
       type: this.type,
       alliases: this.alliases,
       constellation: this.constellation != null ? this.constellation.code : null,
       position: this.position ? this.position.serialize() : null,
-    });
+    };
   }
 
   public override deserialize(state: any): void {

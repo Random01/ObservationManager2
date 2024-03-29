@@ -1,30 +1,29 @@
+import { FormControl } from '@angular/forms';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
-import { TargetService } from '../shared/target.service';
-import { Target } from '../../shared/models/models';
-
 import { Subject, Observable } from 'rxjs';
-
 import {
   debounceTime,
   distinctUntilChanged,
   switchMap
 } from 'rxjs/operators';
 
-import { UntypedFormControl } from '@angular/forms';
+import { TargetService } from '../shared/target.service';
+import { Target } from '../../shared/models/models';
 import { AddTargetDialogService } from './add-target-dialog';
+
+function isTarget(item: string | Target): item is Target {
+  return item instanceof Target;
+}
 
 @Component({
   selector: 'om-target-selector',
-  templateUrl: './target-selector.component.html',
-  styleUrls: [
-    './target-selector.component.css',
-  ],
+  templateUrl: 'target-selector.component.html',
+  styleUrls: ['target-selector.component.css'],
 })
 export class TargetSelectorComponent implements OnInit {
 
   private _target: Target;
-
   @Input()
   public set target(target: Target) {
     if (this._target !== target) {
@@ -32,21 +31,21 @@ export class TargetSelectorComponent implements OnInit {
       this.searchControl.setValue(this._target);
     }
   }
-
   public get target(): Target {
     return this._target;
   }
+
+  @Input()
+  public canAdd = false;
 
   @Output()
   public readonly targetChange = new EventEmitter<Target>();
 
   public targets$: Observable<Target[]>;
 
-  public readonly searchControl = new UntypedFormControl();
+  public readonly searchControl = new FormControl<Target>(null);
 
-  @Input() public canAdd: boolean;
-
-  private readonly searchTerms = new Subject<string>();
+  private readonly searchTerms$ = new Subject<string>();
 
   constructor(
     private readonly targetService: TargetService,
@@ -57,12 +56,12 @@ export class TargetSelectorComponent implements OnInit {
     return target?.name;
   }
 
-  public search(term: string): void {
-    this.searchTerms.next(term);
+  public search(term: string | Target): void {
+    this.searchTerms$.next(isTarget(term) ? term.name : term);
   }
 
   public ngOnInit(): void {
-    this.targets$ = this.searchTerms.pipe(
+    this.targets$ = this.searchTerms$.pipe(
       debounceTime(300),
       distinctUntilChanged(),
       switchMap(term => this.targetService.search({

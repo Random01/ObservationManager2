@@ -99,9 +99,11 @@ export class RouterFactory<TEntity extends Entity, TStore extends BaseMongooseSt
 
   public parseRequestParams(req: Request): GetItemsRequestParameters {
     return {
-      ...req.query,
-      size: typeof req.query.size === 'string' ? parseInt(req.query.size, 10) : undefined,
-      page: typeof req.query.page === 'string' ? parseInt(req.query.page, 10) : undefined,
+      sortDirection: this.toString(req.query.sortDirection),
+      sortField: this.toString(req.query.sortField),
+      userCreated: this.toString(req.query.userCreated),
+      size: this.toNumber(req.query.size),
+      page: this.toNumber(req.query.page),
     };
   }
 
@@ -150,6 +152,14 @@ export class RouterFactory<TEntity extends Entity, TStore extends BaseMongooseSt
     } catch (err) {
       this.handleError(res, err);
     }
+  }
+
+  private toString(queryParam: undefined | string | string[] | qs.ParsedQs | qs.ParsedQs[]): string | undefined {
+    return typeof queryParam === 'string' ? queryParam : undefined;
+  }
+
+  private toNumber(queryParam: undefined | string | string[] | qs.ParsedQs | qs.ParsedQs[]): number | undefined {
+    return typeof queryParam === 'string' ? parseInt(queryParam, 10) : undefined;
   }
 
 }

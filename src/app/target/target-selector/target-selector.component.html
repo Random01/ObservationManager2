@@ -25,12 +25,12 @@
     </mat-autocomplete>
 
     <button
+      *ngIf="target?.id"
       matSuffix
       mat-icon-button
       aria-label="Clear"
       matTooltip="Clear"
       (click)="clearSelection()"
-      *ngIf="target && target.id"
     >
       <mat-icon>close</mat-icon>
     </button>
