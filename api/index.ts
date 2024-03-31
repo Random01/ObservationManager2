@@ -13,7 +13,6 @@ import { dbConfig } from './config';
 import { RouterProvider } from './routers';
 
 const app = express();
-const PORT = process.env.PORT || 3002;
 
 app.use(express.static(__dirname + '/public'));
 
@@ -25,7 +24,7 @@ if (!dbConfig.url) {
 }
 
 app.use(session({
-  secret: 'conduit',
+  secret: process.env.SESSION_SECRET || 'conduit',
   cookie: { maxAge: 60000 },
   resave: false,
   saveUninitialized: false,
@@ -56,6 +55,7 @@ dataBase.once('open', () => {
     res.sendFile(__dirname + '/public/index.html');
   });
 
+  const PORT = process.env.PORT || 3002;
   app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}!`);
   });
