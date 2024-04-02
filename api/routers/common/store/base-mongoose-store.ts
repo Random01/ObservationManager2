@@ -1,4 +1,4 @@
-import { ObjectId } from 'mongodb';
+import { DeleteResult, ObjectId } from 'mongodb';
 import { Model } from 'mongoose';
 
 import { PaginatedItems } from './paginated-items.interface';
@@ -8,21 +8,13 @@ import { GetByIdParameter } from './get-by-id-parameter.interface';
 
 export class BaseMongooseStore<TModel extends Model<any>, TEntity extends Entity> {
 
-  protected readonly model: TModel;
-
-  constructor(model: TModel) {
-    if (!model) {
-      throw new Error('model should be defined.');
-    }
-
-    this.model = model;
-  }
+  constructor(protected readonly model: TModel) { }
 
   public getAll(): Promise<TEntity[]> {
     return this.model.find().exec();
   }
 
-  public async getItems({ requestParameters, userId, populationDetails = {} }: GetItemsParameters): Promise<PaginatedItems<TEntity>> {
+  public getItems({ requestParameters, userId, populationDetails = {} }: GetItemsParameters): Promise<PaginatedItems<TEntity>> {
     const {
       page, size, sortField, sortDirection,
       ...restRequestParams
@@ -33,9 +25,7 @@ export class BaseMongooseStore<TModel extends Model<any>, TEntity extends Entity
       ...(userId ? { userCreated: userId } : undefined),
     };
 
-    const count = await this.model.find(request).countDocuments();
     const query = this.model.find(request);
-
     if (sortField != null && sortDirection != null) {
       query.sort({ [sortField]: sortDirection === 'asc' ? 1 : -1 });
     }
@@ -48,11 +38,14 @@ export class BaseMongooseStore<TModel extends Model<any>, TEntity extends Entity
       query.limit(size).skip(page * size);
     }
 
-    return query.exec().then(result => ({
-      items: result,
+    return Promise.all([
+      this.model.find(request).countDocuments(),
+      query.exec()
+    ]).then(([totalCount, items]) => ({
+      items,
       pageCount: page != null ? page : 0,
-      pages: size != null ? Math.ceil(count / size) : 1,
-      totalCount: count,
+      pages: size != null ? Math.ceil(totalCount / size) : 1,
+      totalCount,
     }));
   }
 
@@ -107,8 +100,8 @@ export class BaseMongooseStore<TModel extends Model<any>, TEntity extends Entity
     return modifiedEntity;
   }
 
-  public async delete({ id, userId }: { id: string; userId: string }) {
-    return await this.model.deleteOne({
+  public delete({ id, userId }: { id: string; userId: string }): Promise<DeleteResult> {
+    return this.model.deleteOne({
       _id: id,
       userCreated: userId,
     });
