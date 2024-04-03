@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/naming-convention
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 const path = require('path');
@@ -12,7 +13,9 @@ module.exports = {
   target: 'node',
 
   node: {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     __dirname: false,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     __filename: false,
   },
 
@@ -30,7 +33,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts'],
   },
 
   plugins: [
