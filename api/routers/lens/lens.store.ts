@@ -12,7 +12,9 @@ export class LensStore extends BaseMongooseStore<typeof LensModel, Lens> {
   public override getById({ id, userId }: { id: string; userId: string }) {
     const userFields = ['_id', 'userName', 'firstName', 'lastName'];
     return super.getById({
-      id, userId, populationDetails: {
+      id,
+      userId,
+      populationDetails: {
         'userCreated': userFields,
         'userModified': userFields,
       },

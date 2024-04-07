@@ -1,18 +1,18 @@
 import * as core from 'express-serve-static-core';
 
-import { RouterFactory } from '../common';
+import { BaseEntityRouter } from '../common';
 import { ScopeExporterFactory } from './scope.exporter.service';
 import { ScopeStore } from './scope.store';
+import { Scope } from './scope.interface';
 
-export class ScopeRouter {
+export class ScopeRouter extends BaseEntityRouter<Scope, ScopeStore> {
 
-  constructor(app: core.Express) {
-    RouterFactory.create(
-      app,
-      new ScopeStore(),
-      '/scopes',
-      new ScopeExporterFactory(),
-    );
+  constructor(
+    router: core.Router,
+    store = new ScopeStore(),
+    exporter = new ScopeExporterFactory(),
+  ) {
+    super(router, store, exporter);
   }
 
 }
