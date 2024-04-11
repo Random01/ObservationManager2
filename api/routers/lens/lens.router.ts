@@ -1,18 +1,19 @@
 import * as core from 'express-serve-static-core';
 
-import { RouterFactory } from '../common';
+import { BaseEntityRouter } from '../common';
+
 import { LensExporterFactory } from './lens-exporter.service';
 import { LensStore } from './lens.store';
+import { Lens } from './lens.interface';
 
-export class LensRouter {
+export class LensRouter extends BaseEntityRouter<Lens, LensStore> {
 
-  constructor(app: core.Express) {
-    RouterFactory.create(
-      app,
-      new LensStore(),
-      '/lenses',
-      new LensExporterFactory(),
-    );
+  constructor(
+    router: core.Router,
+    store = new LensStore(),
+    exporter = new LensExporterFactory(),
+  ) {
+    super(router, store, exporter);
   }
 
 }

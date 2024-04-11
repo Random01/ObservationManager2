@@ -1,13 +1,17 @@
 import * as core from 'express-serve-static-core';
 
-import { RouterFactory } from '../common/router/router-factory';
+import { BaseEntityRouter } from '../common/router';
 
 import { ConstellationStore } from './constellation.store';
 
-export class ConstellationRouter {
+// todo: use Constellation
+export class ConstellationRouter extends BaseEntityRouter<any, ConstellationStore> {
 
-  constructor(app: core.Express) {
-    RouterFactory.create(app, new ConstellationStore(), '/constellations');
+  constructor(
+    router: core.Router,
+    store = new ConstellationStore(),
+  ) {
+    super(router, store);
   }
 
 }

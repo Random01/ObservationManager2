@@ -1,15 +1,15 @@
-import express, { Request, Response } from 'express';
-import * as core from 'express-serve-static-core';
+import { Request, Response } from 'express';
 
-export class VendorRouter {
+import { BaseRouter } from '../common';
 
-  constructor(app: core.Express) {
-    const router = express.Router();
-    router.get('/', this.getAll.bind(this));
-    app.use('/api/vendors', router);
+export class VendorRouter extends BaseRouter {
+
+  protected override setUp(): void {
+    this.router.get('/', this.getAll.bind(this));
   }
 
-  public getAll(_: Request, res: Response): void {
+  private getAll(_: Request, res: Response): void {
+    // todo: should be in DB
     res.json([
       { name: 'Sky Watcher' },
       { name: 'Deep-Sky' },

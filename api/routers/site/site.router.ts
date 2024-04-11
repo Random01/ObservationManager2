@@ -1,16 +1,18 @@
 import * as core from 'express-serve-static-core';
 
-import { RouterFactory } from '../common';
+import { BaseEntityRouter } from '../common';
 import { SiteExporterFactory } from './site.exporter.service';
 import { SiteStore } from './site.store';
+import { Site } from './site.interface';
 
-export class SiteRouter {
-  constructor(app: core.Express) {
-    RouterFactory.create(
-      app,
-      new SiteStore(),
-      '/sites',
-      new SiteExporterFactory(),
-    );
+export class SiteRouter extends BaseEntityRouter<Site, SiteStore> {
+
+  constructor(
+    router: core.Router,
+    store = new SiteStore(),
+    exporter = new SiteExporterFactory(),
+  ) {
+    super(router, store, exporter);
   }
+
 }

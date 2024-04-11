@@ -1,27 +1,82 @@
-import express, { Request, Response } from 'express';
+import { Request, Response } from 'express';
 import * as core from 'express-serve-static-core';
 
 import passport from 'passport';
 
 import { auth } from '../authentication';
-import { RouterFactory } from '../common';
+import { BaseEntityRouter } from '../common';
 
 import { UserStore } from './user.store';
 import { UserModel } from './user.model';
 
-class UserRouterFactory extends RouterFactory<any, any> {
+// todo: use user here
+export class UserRouter extends BaseEntityRouter<any, UserStore> {
 
-  public static override create(app: core.Express, store: UserStore, path: string) {
-    const router = express.Router();
-    const rf = new UserRouterFactory(store, router, undefined);
+  constructor(
+    router: core.Router,
+    store = new UserStore(),
+  ) {
+    super(router, store);
+  }
 
-    app.use('/api' + path, router);
+  protected override setUp() {
+    this.router.get('/', auth.required, this.getUserById.bind(this));
+    this.router.post('/', this.createNewUser.bind(this));
+    this.router.post('/login', this.logIn.bind(this));
+    this.router.get('/user', auth.required, this.getUserInfo.bind(this));
+  }
 
-    return rf;
+  private getUserInfo(req: Request, res: Response, next: any) {
+    this.store.getById({ id: this.getUserId(req) }).then((user: any) => {
+      if (!user) {
+        return res.sendStatus(401);
+      } else {
+        return res.json({
+          success: true,
+          user: user.toAuthJSON(),
+        });
+      }
+    }).catch(next);
+  }
+
+  private createNewUser(req: Request, res: Response, next: any) {
+    const { userName, password, email } = req.body;
+
+    if (!userName) {
+      return res.status(422).json({
+        success: false,
+        errors: { userName: 'can\'t be blank' },
+      });
+    }
+
+    if (!email) {
+      return res.status(422).json({
+        success: false,
+        errors: { email: 'can\'t be blank' },
+      });
+    }
+
+    if (!password) {
+      return res.status(422).json({
+        success: false,
+        errors: { password: 'can\'t be blank' },
+      });
+    }
+
+    const user = new UserModel();
+
+    user.userName = userName;
+    user.email = email;
+    (user as any).setPassword(password);
+
+    user.save().then(() => res.json({
+      success: true,
+      user: (user as any).toAuthJSON(),
+    })).catch(next);
   }
 
   private getUserById(req: Request, res: Response) {
-    this.store.getById(this.getUserId(req)).then((user: any) => {
+    this.store.getById({ id: this.getUserId(req) }).then(user => {
       if (!user) {
         return res.sendStatus(401);
       } else {
@@ -63,70 +118,6 @@ class UserRouterFactory extends RouterFactory<any, any> {
         return res.status(422).json(info);
       }
     })(req, res, next);
-  }
-
-  private createNewUser(req: Request, res: Response, next: any) {
-    const { userName, password, email } = req.body;
-
-    if (!userName) {
-      return res.status(422).json({
-        success: false,
-        errors: { userName: 'can\'t be blank' },
-      });
-    }
-
-    if (!email) {
-      return res.status(422).json({
-        success: false,
-        errors: { email: 'can\'t be blank' },
-      });
-    }
-
-    if (!password) {
-      return res.status(422).json({
-        success: false,
-        errors: { password: 'can\'t be blank' },
-      });
-    }
-
-    const user = new UserModel();
-
-    user.userName = userName;
-    user.email = email;
-    (user as any).setPassword(password);
-
-    user.save().then(() => res.json({
-      success: true,
-      user: (user as any).toAuthJSON(),
-    })).catch(next);
-  }
-
-  private getUserInfo(req: Request, res: Response, next: any) {
-    this.store.getById({ id: this.getUserId(req) }).then((user: any) => {
-      if (!user) {
-        return res.sendStatus(401);
-      } else {
-        return res.json({
-          success: true,
-          user: user.toAuthJSON(),
-        });
-      }
-    }).catch(next);
-  }
-
-  protected override setUp() {
-    this.router.get('/', auth.required, this.getUserById.bind(this));
-    this.router.post('/', this.createNewUser.bind(this));
-    this.router.post('/login', this.logIn.bind(this));
-    this.router.get('/user', auth.required, this.getUserInfo.bind(this));
-  }
-
-}
-
-export class UserRouter {
-
-  constructor(app: core.Express) {
-    UserRouterFactory.create(app, new UserStore(), '/users');
   }
 
 }

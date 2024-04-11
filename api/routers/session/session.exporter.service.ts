@@ -6,7 +6,7 @@ export class SessionExporterFactory extends ExporterFactory<Session> {
 
   constructor() {
     super([
-      [ExportType.CSV, SessionTxtExporter],
+      [ExportType.TXT, SessionTxtExporter],
     ]);
   }
 

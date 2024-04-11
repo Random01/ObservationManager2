@@ -1,18 +1,18 @@
 import * as core from 'express-serve-static-core';
 
-import { RouterFactory } from '../common/router/router-factory';
+import { BaseEntityRouter } from '../common/router';
 import { EyepieceExporterFactory } from './eyepiece.exporter.service';
 import { EyepieceStore } from './eyepiece.store';
+import { Eyepiece } from './eyepiece.interface';
 
-export class EyepieceRouter {
+export class EyepieceRouter extends BaseEntityRouter<Eyepiece, EyepieceStore> {
 
-  constructor(app: core.Express) {
-    RouterFactory.create(
-      app,
-      new EyepieceStore(),
-      '/eyepieces',
-      new EyepieceExporterFactory(),
-    );
+  constructor(
+    router: core.Router,
+    store = new EyepieceStore(),
+    exporter = new EyepieceExporterFactory(),
+  ) {
+    super(router, store, exporter);
   }
 
 }

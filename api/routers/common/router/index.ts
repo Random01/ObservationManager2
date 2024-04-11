@@ -1,2 +1,2 @@
-export * from './router-factory';
+export * from './base-router';
 export * from './base-entity.router';
