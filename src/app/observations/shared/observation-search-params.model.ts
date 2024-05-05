@@ -1,20 +1,20 @@
-import { RequestParams } from '../../shared/services/request-params.model';
+import { Param, RequestParams } from '../../shared/services/request-params.model';
 
 export class ObservationSearchParams extends RequestParams {
 
-  public sessionId: string;
+  public readonly session: string;
 
-  public targetId: string;
+  public readonly target: string;
 
   constructor(props?: Partial<ObservationSearchParams>) {
     super(props);
   }
 
-  protected override getQueryParams(): { name: string; value: any }[] {
+  protected override getQueryParams(): Param[] {
     return [
       ...super.getQueryParams(),
-      { name: 'session', value: this.sessionId },
-      { name: 'target', value: this.targetId },
+      { name: 'session', value: this.session },
+      { name: 'target', value: this.target },
     ];
   }
 

@@ -20,8 +20,8 @@ export class ObservationService extends StorageService<Observation> {
     return new Observation(params);
   }
 
-  public getSessionObservations(sessionId: string) {
-    return this.getItems(new ObservationSearchParams({ sessionId, page: 0, size: 10 }));
+  public getSessionObservations(session: string) {
+    return this.getItems(new ObservationSearchParams({ session, page: 0, size: 10 }));
   }
 
 }

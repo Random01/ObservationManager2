@@ -3,18 +3,17 @@ import { Param, RequestParams } from './request-params.model';
 
 export class ExportRequestParams extends RequestParams {
 
-  public exportType: ExportType;
+  public readonly exportType: ExportType;
 
   constructor(props: Partial<ExportRequestParams> = {}) {
     super(props);
   }
 
   protected override getQueryParams(): Param[] {
-    const result = super.getQueryParams();
-
-    result.push({ name: 'exportType', value: this.exportType });
-
-    return result;
+    return [
+      ...super.getQueryParams(),
+      { name: 'exportType', value: this.exportType },
+    ];
   }
 
 }

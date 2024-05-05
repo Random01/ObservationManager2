@@ -6,7 +6,6 @@ import { ObservationStore } from './observation.store';
 import { ObservationExporterService } from './observation.exporter.service';
 import { Observation } from './observation.interface';
 
-
 export class ObservationRouter extends BaseEntityRouter<Observation, ObservationStore> {
 
   constructor(
@@ -18,9 +17,10 @@ export class ObservationRouter extends BaseEntityRouter<Observation, Observation
   }
 
   public parseRequestParams(req: Request): GetItemsRequestParameters {
+    const session = this.toString(req.query.session);
     return {
       ...super.parseRequestParams(req),
-      session: this.toString(req.query.session),
+      ...(session ? { session } : undefined),
     };
   }
 

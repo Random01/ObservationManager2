@@ -1,6 +1,8 @@
 import { OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { firstValueFrom } from 'rxjs';
+
 import { saveAs } from 'file-saver';
 
 import { Entity } from '../models/models';
@@ -63,7 +65,8 @@ export abstract class EntityListComponent<T extends Entity> extends PaginatedLis
     this.startLoading();
 
     try {
-      await this.storageService.delete(entity.id);
+      // todo: remove 'firstValueFrom' and use Observables
+      await firstValueFrom(this.storageService.delete(entity.id));
       return this.loadItems();
     } catch (error) {
       this.handleError(error, 'Unable to remove item');
@@ -85,17 +88,20 @@ export abstract class EntityListComponent<T extends Entity> extends PaginatedLis
         + `_${date.getFullYear()}_${date.getMonth() + 1}_${date.getDate()}_${date.getHours()}_${date.getMinutes()}`
         + this.getExtension(exportType);
 
-      const exportParams = new ExportRequestParams({
-        ...this.getRequestParams(),
-        exportType,
-      });
-
+      const exportParams = this.getExportRequestParameters(exportType);
       saveAs(await this.storageService.exportItems(exportParams), fileName);
     } catch (error) {
       this.handleError(error, 'Unable to export');
     } finally {
       this.endLoading();
     }
+  }
+
+  protected getExportRequestParameters(exportType: ExportType): ExportRequestParams {
+    return new ExportRequestParams({
+      ...this.getRequestParams(),
+      exportType,
+    });
   }
 
   private getExtension(exportType: ExportType): string {

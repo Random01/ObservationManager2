@@ -1,5 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 
+import { firstValueFrom } from 'rxjs';
+
 import { Entity } from '../models/entity.model';
 import { StorageService } from '../services/storage.service';
 import { BaseEntityComponent } from './base-entity.component';
@@ -21,7 +23,7 @@ export abstract class AddEntityComponent<T extends Entity> extends BaseEntityCom
 
     try {
       const item = this.itemSubject.getValue();
-      await this.storageService.add(item);
+      await firstValueFrom(this.storageService.add(item));
       this.showSuccessMessage();
       this.goBack();
     } catch (error) {
@@ -36,7 +38,7 @@ export abstract class AddEntityComponent<T extends Entity> extends BaseEntityCom
 
     try {
       const item = this.itemSubject.getValue();
-      await this.storageService.add(item);
+      await firstValueFrom(this.storageService.add(item));
       this.showSuccessMessage();
 
       const newItem = await this.createNew();

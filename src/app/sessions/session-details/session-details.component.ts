@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { MatDialog } from '@angular/material/dialog';
 
+import { finalize, firstValueFrom } from 'rxjs';
+
 import { Session } from '../../shared/models/session.model';
 import { SessionService } from '../shared/session.service';
 
@@ -37,16 +39,22 @@ export class SessionDetailsComponent extends BaseComponent implements OnInit {
 
   public create(): void {
     this.startLoading();
-    this.sessionService.add(this.session).then(() => {
-      this.endLoading();
-    });
+
+    this.handle(
+      this.sessionService.add(this.session)
+        .pipe(finalize(() => this.endLoading()))
+        .subscribe()
+    );
   }
 
   public update(): void {
     this.startLoading();
-    this.sessionService.update(this.session).then(() => {
-      this.endLoading();
-    });
+
+    this.handle(
+      this.sessionService.update(this.session)
+        .pipe(finalize(() => this.endLoading()))
+        .subscribe()
+    );
   }
 
   public loadSession(): void {
@@ -79,11 +87,12 @@ export class SessionDetailsComponent extends BaseComponent implements OnInit {
       })
     });
 
+    // todo: use Observable here instead of toPromise
     const result = await dialogRef.afterClosed().toPromise();
     if (result) {
       this.startLoading();
       try {
-        await this.observationService.add(result);
+        await firstValueFrom(this.observationService.add(result));
       } finally {
         this.endLoading();
       }

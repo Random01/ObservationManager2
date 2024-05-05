@@ -1,5 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+import { Observable, catchError, firstValueFrom, map, of } from 'rxjs';
+
 import { Entity } from '../models/entity.model';
 import { AddResultPayload } from './add-result-payload.model';
 import { environment } from '../../../environments/environment';
@@ -21,7 +23,7 @@ export abstract class StorageService<T extends Entity> {
     return this.getAll();
   }
 
-  public async add(newItem: T): Promise<AddResultPayload> {
+  public add(newItem: T): Observable<AddResultPayload> {
     if (!newItem) {
       throw new Error('newItem should be provided');
     }
@@ -33,12 +35,13 @@ export abstract class StorageService<T extends Entity> {
       }),
     };
 
-    const result = await this.http.post<T>(this.getUrl(), newItem.serialize(), httpOptions).toPromise();
-
-    return new AddResultPayload({
-      status: ResponseStatus.Ok,
-      payload: this.deserialize(result),
-    });
+    return this.http.post<T>(this.getUrl(), newItem.serialize(), httpOptions)
+      .pipe(
+        map(result => new AddResultPayload({
+          status: ResponseStatus.Ok,
+          payload: this.deserialize(result),
+        })),
+      );
   }
 
   public async getById(id: String): Promise<T> {
@@ -76,7 +79,7 @@ export abstract class StorageService<T extends Entity> {
     };
   }
 
-  public async exportItems(request: ExportRequestParams): Promise<Blob> {
+  public exportItems(request: ExportRequestParams): Promise<Blob> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': this.getAuthorizationToken(),
@@ -86,10 +89,11 @@ export abstract class StorageService<T extends Entity> {
     } as any;
 
     const url = this.getUrl() + '/export?' + request.getQueryString();
-    return await this.http.get<Blob>(url, httpOptions).toPromise() as any;
+    // todo: fix as unknown as Promise<Blob>
+    return firstValueFrom(this.http.get<Blob>(url, httpOptions)) as unknown as Promise<Blob>;
   }
 
-  public update(entity: T): Promise<Boolean> {
+  public update(entity: T): Observable<Boolean> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -98,11 +102,13 @@ export abstract class StorageService<T extends Entity> {
     };
 
     return this.http.put<T>(this.getUrl() + '/' + entity.id, entity.serialize(), httpOptions)
-      .toPromise()
-      .then(() => true, () => false);
+      .pipe(
+        map(() => true),
+        catchError(() => of(false))
+      );
   }
 
-  public delete(id: String): Promise<Boolean> {
+  public delete(id: String): Observable<Boolean> {
     const url = `${this.getUrl()}/${id}`;
     const httpOptions = {
       headers: new HttpHeaders({
@@ -111,10 +117,10 @@ export abstract class StorageService<T extends Entity> {
       })
     };
 
-    return this.http.delete<Boolean>(url, httpOptions).toPromise();
+    return this.http.delete<Boolean>(url, httpOptions);
   }
 
-  abstract createNew(params?: Partial<T>): T;
+  public abstract createNew(params?: Partial<T>): T;
 
   public deserialize(state: any): T {
     const item = this.createNew();

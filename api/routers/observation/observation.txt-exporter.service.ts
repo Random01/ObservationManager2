@@ -13,7 +13,7 @@ export class ObservationTxtExporter extends BaseTxtExporter<Observation> {
   }
 
   private get(observation: Observation): string {
-    let row = observation.target.name + '. ';
+    let row = observation.target?.name + '. ';
 
     if (observation.eyepiece && observation.scope) {
       const zoom = Math.fround(observation.scope.focalLength / observation.eyepiece.focalLength);

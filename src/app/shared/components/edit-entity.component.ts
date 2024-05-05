@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { finalize } from 'rxjs';
+
 import { Entity } from '../models/entity.model';
 import { StorageService } from '../services/storage.service';
 import { BaseEntityComponent } from './base-entity.component';
@@ -15,17 +17,17 @@ export abstract class EditEntityComponent<T extends Entity> extends BaseEntityCo
     super(appContext);
   }
 
-  public async updateItem() {
+  public updateItem(): void {
     this.startLoading();
-    try {
-      const item = this.itemSubject.getValue();
-      await this.storageService.update(item);
-      this.goBack();
-    } catch (error) {
-      this.handleError(error, 'Unable to update item');
-    } finally {
-      this.endLoading();
-    }
+
+    this.handle(
+      this.storageService.update(this.itemSubject.getValue())
+        .pipe(finalize(() => this.endLoading()))
+        .subscribe({
+          complete: () => this.goBack(),
+          error: error => this.handleError(error, 'Unable to update item'),
+        }),
+    );
   }
 
   public abstract goBack(): void;

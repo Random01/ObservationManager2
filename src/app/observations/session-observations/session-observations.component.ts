@@ -10,6 +10,9 @@ import { DeleteEntityDialogService } from '../../shared/components/delete-entity
 import { ObservationSearchParams } from '../shared/observation-search-params.model';
 import { RequestParams } from '../../shared/services/request-params.model';
 import { AppContextService } from '../../shared/services/app-context.service';
+import { ExportType } from '../../shared/models/export-type.model';
+import { ExportRequestParams } from '../../shared/services';
+import { SessionObservationExportRequestParams } from './session-observation-export-request-params.model';
 
 @Component({
   selector: 'om-session-observations',
@@ -75,7 +78,14 @@ export class SessionObservationsComponent extends EntityListComponent<Observatio
   protected override getRequestParams(params?: Partial<RequestParams>): RequestParams {
     return new ObservationSearchParams({
       ...params,
-      sessionId: this.getSessionId(),
+      session: this.getSessionId(),
+    });
+  }
+
+  protected override getExportRequestParameters(exportType: ExportType): ExportRequestParams {
+    return new SessionObservationExportRequestParams({
+      ...super.getExportRequestParameters(exportType),
+      session: this.getSessionId(),
     });
   }
 

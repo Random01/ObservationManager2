@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
+import { firstValueFrom } from 'rxjs';
+
 import { Observation } from '../../shared/models/models';
 import { ObservationService } from '../shared/observation.service';
 import { AddEntityComponent } from '../../shared/components/add-entity.component';
@@ -44,7 +46,7 @@ export class AddObservationComponent extends AddEntityComponent<Observation> {
 
     try {
       const item = this.itemSubject.getValue();
-      await this.storageService.add(item);
+      await firstValueFrom(this.storageService.add(item));
 
       const newItem = await this.createNew({
         // Copy previous settings to a new instance for convenience

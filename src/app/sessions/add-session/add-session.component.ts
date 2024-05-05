@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { firstValueFrom } from 'rxjs';
+
 import { SessionService } from '../shared/session.service';
 import { Session } from '../../shared/models/models';
 import { AddEntityComponent } from '../../shared/components/add-entity.component';
@@ -30,7 +32,7 @@ export class AddSessionComponent extends AddEntityComponent<Session> {
 
     try {
       const item = this.itemSubject.getValue();
-      const result = await this.storageService.add(item);
+      const result = await firstValueFrom(this.storageService.add(item));
       if (result.isSuccess()) {
         this.router.navigate([`/sessions/${result.payload.id}/observations/new-observation`]);
       }

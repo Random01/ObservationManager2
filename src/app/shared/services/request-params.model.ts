@@ -7,27 +7,25 @@ export interface Param<T = any> {
 
 export class RequestParams {
 
-  public page: number;
+  public readonly page: number;
 
-  public size: number;
+  public readonly size: number;
 
-  public sortField?: string;
+  public readonly sortField?: string;
 
-  public sortDirection?: SortOrder;
+  public readonly sortDirection?: SortOrder;
 
   constructor(props: Partial<RequestParams> = {}) {
     Object.assign(this, { ...props });
   }
 
   protected getQueryParams(): Param[] {
-    const params: Param[] = [];
-
-    params.push({ name: 'page', value: this.page });
-    params.push({ name: 'size', value: this.size });
-    params.push({ name: 'sortField', value: this.sortField });
-    params.push({ name: 'sortDirection', value: this.sortDirection });
-
-    return params;
+    return [
+      { name: 'page', value: this.page },
+      { name: 'size', value: this.size },
+      { name: 'sortField', value: this.sortField },
+      { name: 'sortDirection', value: this.sortDirection }
+    ];
   }
 
   public getQueryString(): string {
