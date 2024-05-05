@@ -2,7 +2,7 @@
   class="om-session-observations"
   *ngIf="{ page: page$ | async } as data"
 >
-  <div class="header">
+  <div>
     <h2 class="mat-h2">Observations</h2>
   </div>
 
@@ -17,6 +17,7 @@
     [length]="data.page.totalCount"
     [pageSize]="pageSize"
     [pageSizeOptions]="pageSizeOptions"
+    [pageIndex]="currentPage"
     (page)="onPageChanged($event)">
   </mat-paginator>
 
@@ -96,6 +97,7 @@
     [length]="data.page.totalCount"
     [pageSize]="pageSize"
     [pageSizeOptions]="pageSizeOptions"
+    [pageIndex]="currentPage"
     (page)="onPageChanged($event)">
   </mat-paginator>
 

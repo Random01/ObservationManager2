@@ -4,4 +4,5 @@ export interface GetItemsRequestParameters {
   sortField?: string;
   sortDirection?: string;
   userCreated?: string;
+  [key: string]: string | number;
 }

@@ -23,7 +23,7 @@ export abstract class BaseEntityRouter<TEntity extends Entity, TStore extends Ba
   }
 
   public exportItemsHandler(req: Request, res: Response): void {
-    const exportType = (String(req.query.exportType) || ExportType.TXT) as ExportType;
+    const exportType = String(req.query.exportType || ExportType.TXT) as ExportType;
 
     this.store.getItems({
       requestParameters: this.parseRequestParams(req),

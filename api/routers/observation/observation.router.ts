@@ -1,19 +1,27 @@
-import * as core from 'express-serve-static-core';
+import { Request, Router } from 'express-serve-static-core';
 
-import { BaseEntityRouter } from '../common';
+import { BaseEntityRouter, GetItemsRequestParameters } from '../common';
 
 import { ObservationStore } from './observation.store';
 import { ObservationExporterService } from './observation.exporter.service';
 import { Observation } from './observation.interface';
 
+
 export class ObservationRouter extends BaseEntityRouter<Observation, ObservationStore> {
 
   constructor(
-    router: core.Router,
+    router: Router,
     store = new ObservationStore(),
     exporter = new ObservationExporterService(),
   ) {
     super(router, store, exporter);
+  }
+
+  public parseRequestParams(req: Request): GetItemsRequestParameters {
+    return {
+      ...super.parseRequestParams(req),
+      session: this.toString(req.query.session),
+    };
   }
 
 }

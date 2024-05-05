@@ -12,7 +12,7 @@ export class ObservationTxtExporter extends BaseTxtExporter<Observation> {
     res.send(Buffer.from(content));
   }
 
-  private get(observation: Observation) {
+  private get(observation: Observation): string {
     let row = observation.target.name + '. ';
 
     if (observation.eyepiece && observation.scope) {

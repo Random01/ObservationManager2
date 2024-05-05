@@ -80,9 +80,9 @@ export abstract class EntityListComponent<T extends Entity> extends PaginatedLis
     this.startLoading();
 
     try {
-      const cd = new Date();
+      const date = new Date();
       const fileName = this.getExportFileName()
-        + `_${cd.getFullYear()}_${cd.getMonth() + 1}_${cd.getDate()}_${cd.getHours()}_${cd.getMinutes()}`
+        + `_${date.getFullYear()}_${date.getMonth() + 1}_${date.getDate()}_${date.getHours()}_${date.getMinutes()}`
         + this.getExtension(exportType);
 
       const exportParams = new ExportRequestParams({
