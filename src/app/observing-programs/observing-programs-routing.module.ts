@@ -9,34 +9,34 @@ import { ObservingProgramStatisticsComponent } from './observing-program-statist
 import { AuthGuardService } from '../auth/shared/auth-guard.service';
 
 const routes: Routes = [
-    {
-        path: 'observing-programs/new-observing-program',
-        component: AddObservingProgramComponent,
-        canActivate: [AuthGuardService],
-    },
-    {
-        path: 'observing-programs/:programId',
-        component: EditObservingProgramComponent,
-        canActivate: [AuthGuardService],
-    },
-    {
-        path: 'observing-programs',
-        component: ObservingProgramsComponent,
-        canActivate: [AuthGuardService],
-    },
-    {
-        path: 'observing-programs/statistics/:programId',
-        component: ObservingProgramStatisticsComponent,
-        canActivate: [AuthGuardService],
-    }
+  {
+    path: 'observing-programs/new-observing-program',
+    component: AddObservingProgramComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'observing-programs/:programId',
+    component: EditObservingProgramComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'observing-programs',
+    component: ObservingProgramsComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'observing-programs/statistics/:programId',
+    component: ObservingProgramStatisticsComponent,
+    canActivate: [AuthGuardService],
+  }
 ];
 
 @NgModule({
-    imports: [
-        RouterModule.forChild(routes),
-    ],
-    exports: [
-        RouterModule,
-    ]
+  imports: [
+    RouterModule.forChild(routes),
+  ],
+  exports: [
+    RouterModule,
+  ],
 })
 export class ObservingProgramsRoutingModule { }

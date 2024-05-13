@@ -18,10 +18,7 @@ import { Site } from '../../shared/models/models';
 
 @Component({
   selector: 'om-observation-search',
-  templateUrl: './observation-search.component.html',
-  styleUrls: [
-    './observation-search.component.css'
-  ],
+  templateUrl: 'observation-search.component.html',
 })
 export class ObservationSearchComponent implements OnInit {
 

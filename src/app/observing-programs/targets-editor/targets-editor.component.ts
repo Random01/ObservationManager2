@@ -14,8 +14,8 @@ import { Target } from '../../shared/models/models';
 
 @Component({
   selector: 'om-targets-editor',
-  templateUrl: './targets-editor.component.html',
-  styleUrls: ['./targets-editor.component.less'],
+  templateUrl: 'targets-editor.component.html',
+  styleUrls: ['targets-editor.component.less'],
 })
 export class TargetsEditorComponent implements OnChanges {
 

@@ -8,7 +8,7 @@ import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
   selector: 'om-add-observing-program',
-  templateUrl: './add-observing-program.component.html',
+  templateUrl: 'add-observing-program.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddObservingProgramComponent extends AddEntityComponent<ObservingProgram> {

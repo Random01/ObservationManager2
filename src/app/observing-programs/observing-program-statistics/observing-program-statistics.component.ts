@@ -13,8 +13,7 @@ import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
   selector: 'om-observing-program-statistics',
-  templateUrl: './observing-program-statistics.component.html',
-  styleUrls: ['./observing-program-statistics.component.less'],
+  templateUrl: 'observing-program-statistics.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ObservingProgramStatisticsComponent extends PaginatedListComponent<TargetStatistics> implements OnInit {

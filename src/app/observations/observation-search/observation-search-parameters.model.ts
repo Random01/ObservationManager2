@@ -10,46 +10,31 @@ import { RequestParams } from '../../shared/services/request-params.model';
 
 export default class ObservationSearchParameters extends RequestParams {
 
-  public scope: Scope;
-
-  public site: Site;
-
-  public eyepiece: Eyepiece;
-
-  public lens: Lens;
-
-  public target: Target;
-
-  public filter: Filter;
-
-  public startDate: Date;
-
-  public endDate: Date;
+  public readonly scope = new Scope();
+  public readonly site = new Site();
+  public readonly eyepiece = new Eyepiece();
+  public readonly lens = new Lens();
+  public readonly target = new Target();
+  public readonly filter = new Filter();
+  public readonly startDate: Date;
+  public readonly endDate: Date;
 
   constructor(props?: Partial<ObservationSearchParameters>) {
     super(props);
-
-    this.scope = new Scope();
-    this.site = new Site();
-    this.eyepiece = new Eyepiece();
-    this.lens = new Lens();
-    this.target = new Target();
-    this.filter = new Filter();
   }
 
   protected override getQueryParams(): { name: string; value: any }[] {
-    const params = super.getQueryParams();
-
-    params.push({ name: 'scope', value: this.scope.id });
-    params.push({ name: 'site', value: this.site.id });
-    params.push({ name: 'eyepiece', value: this.eyepiece.id });
-    params.push({ name: 'lens', value: this.lens.id });
-    params.push({ name: 'target', value: this.target.id });
-    params.push({ name: 'filter', value: this.filter.id });
-    params.push({ name: 'startDate', value: this.startDate });
-    params.push({ name: 'endDate', value: this.endDate });
-
-    return params;
+    return [
+      ...super.getQueryParams(),
+      { name: 'scope', value: this.scope.id },
+      { name: 'site', value: this.site.id },
+      { name: 'eyepiece', value: this.eyepiece.id },
+      { name: 'lens', value: this.lens.id },
+      { name: 'target', value: this.target.id },
+      { name: 'filter', value: this.filter.id },
+      { name: 'startDate', value: this.startDate },
+      { name: 'endDate', value: this.endDate },
+    ];
   }
 
 }

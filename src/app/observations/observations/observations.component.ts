@@ -13,8 +13,8 @@ import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
   selector: 'om-observations',
-  templateUrl: './observations.component.html',
-  styleUrls: ['./observations.component.less'],
+  templateUrl: 'observations.component.html',
+  styleUrls: ['observations.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ObservationsComponent extends EntityListComponent<Observation> {
