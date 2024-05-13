@@ -1,17 +1,25 @@
 <div>
-    <div *ngIf="observation">
-        <om-observation [observation]="observation">
-        </om-observation>
-    </div>
+  <div *ngIf="observation">
+    <om-observation [observation]="observation">
+    </om-observation>
+  </div>
 
-    <hr/>
+  <hr/>
 
-    <div>
-        <button (click)="update()"
-                mat-button>Update</button>
-                
-        <button (click)="goBack()"
-                mat-button>Back</button>
-    </div>
+  <div>
+    <button
+      mat-button
+      (click)="update()"
+    >
+      Update
+    </button>
+            
+    <button
+      mat-button
+      (click)="goBack()"
+    >
+      Back
+    </button>
+  </div>
     
 </div>

@@ -32,7 +32,7 @@ export class AddObservationComponent extends AddEntityComponent<Observation> {
 
   public override async createNew(params?: Partial<Observation>) {
     const item = await super.createNew(params);
-    const session = await this.sessionService.getById(this.getSessionId());
+    const session = await firstValueFrom(this.sessionService.getById(this.getSessionId()));
 
     item.session = session;
     item.site = session.site;

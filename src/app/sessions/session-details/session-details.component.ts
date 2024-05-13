@@ -3,13 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 
 import { MatDialog } from '@angular/material/dialog';
 
-import { finalize, firstValueFrom } from 'rxjs';
+import { BehaviorSubject, finalize, firstValueFrom } from 'rxjs';
 
 import { Session } from '../../shared/models/session.model';
 import { SessionService } from '../shared/session.service';
-
 import { ObservationDialogComponent } from '../../observations/observation-dialog/observation-dialog.component';
-
 import { Observation } from '../../shared/models/observation.model';
 import { Target } from '../../shared/models/models';
 import { BaseComponent } from '../../shared/components/base-component';
@@ -23,7 +21,8 @@ import { AppContextService } from '../../shared/services/app-context.service';
 })
 export class SessionDetailsComponent extends BaseComponent implements OnInit {
 
-  public session: Session;
+  public session: Session | null = null;
+
   public editMode = false;
 
   constructor(
@@ -61,10 +60,14 @@ export class SessionDetailsComponent extends BaseComponent implements OnInit {
     this.editMode = !!sessionId;
     if (sessionId) {
       this.startLoading();
-      this.sessionService.getById(sessionId).then(session => {
-        this.session = session;
-        this.endLoading();
-      });
+
+      this.handle(
+        this.sessionService.getById(sessionId)
+          .pipe(finalize(() => this.endLoading()))
+          .subscribe(session => {
+            this.session = session;
+          })
+      );
     } else {
       this.session = new Session();
     }

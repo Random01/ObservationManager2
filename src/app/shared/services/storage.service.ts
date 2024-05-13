@@ -47,15 +47,17 @@ export abstract class StorageService<T extends Entity> {
       );
   }
 
-  public async getById(id: String): Promise<T> {
+  public getById(id: String): Observable<T> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': this.getAuthorizationToken(),
       }),
     };
 
-    const result = await this.http.get<any>(this.getUrl() + '/' + id, httpOptions).toPromise();
-    return this.deserialize(result);
+    return this.http.get<any>(this.getUrl() + '/' + id, httpOptions)
+      .pipe(
+        map(result => this.deserialize(result))
+      );
   }
 
   public async getAll(): Promise<T[]> {

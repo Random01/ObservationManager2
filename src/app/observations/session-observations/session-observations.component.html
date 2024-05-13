@@ -1,6 +1,9 @@
 <div
   class="om-session-observations"
-  *ngIf="{ page: page$ | async } as data"
+  *ngIf="{
+    page: page$ | async,
+    session: session$ | async
+  } as data"
 >
   <div>
     <h2 class="mat-h2">Observations</h2>
@@ -8,8 +11,8 @@
 
   <!-- Session Info -->
   <om-session-info
-    *ngIf="session"
-    [session]="session">
+    *ngIf="data.session"
+    [session]="data.session">
   </om-session-info>
 
   <mat-paginator

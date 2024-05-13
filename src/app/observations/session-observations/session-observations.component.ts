@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Observation, Session } from '../../shared/models/models';
+import { map, switchMap } from 'rxjs';
+
+import { Observation } from '../../shared/models/models';
 import { ObservationService } from '../shared/observation.service';
 import { SessionService } from '../../sessions/shared/session.service';
 import { EntityListComponent } from '../../shared/components/entity-list.component';
@@ -22,7 +23,10 @@ import { SessionObservationExportRequestParams } from './session-observation-exp
 })
 export class SessionObservationsComponent extends EntityListComponent<Observation> {
 
-  public session: Session | null = null;
+  public readonly session$ = this.route.params.pipe(
+    map(params => params['sessionId']),
+    switchMap(sessionId => this.sessionService.getById(sessionId)),
+  );
 
   public readonly displayedColumns: string[] = [
     'date',
@@ -43,11 +47,6 @@ export class SessionObservationsComponent extends EntityListComponent<Observatio
     appContext: AppContextService,
   ) {
     super(observationService, deleteEntityDialogService, route, router, appContext);
-  }
-
-  public override ngOnInit(): void {
-    super.ngOnInit();
-    this.loadSession();
   }
 
   public getSessionId(): string {
@@ -87,12 +86,6 @@ export class SessionObservationsComponent extends EntityListComponent<Observatio
       ...super.getExportRequestParameters(exportType),
       session: this.getSessionId(),
     });
-  }
-
-  private loadSession(): void {
-    this.sessionService
-      .getById(this.getSessionId())
-      .then(session => this.session = session);
   }
 
 }

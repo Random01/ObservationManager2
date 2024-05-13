@@ -35,10 +35,14 @@ export abstract class EditEntityComponent<T extends Entity> extends BaseEntityCo
   public ngOnInit(): void {
     this.startLoading();
 
-    this.storageService.getById(this.getItemId())
-      .then(item => this.itemSubject.next(item))
-      .catch(err => this.handleError(err, 'Unable to load items'))
-      .finally(() => this.endLoading());
+    this.handle(
+      this.storageService.getById(this.getItemId())
+        .pipe(finalize(() => this.endLoading()))
+        .subscribe({
+          next: item => this.itemSubject.next(item),
+          error: error => this.handleError(error, 'Unable to load items'),
+        })
+    );
   }
 
   public isValid(): boolean {
