@@ -19,8 +19,7 @@ import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
   selector: 'om-session-details',
-  templateUrl: './session-details.component.html',
-  styleUrls: ['./session-details.component.css'],
+  templateUrl: 'session-details.component.html',
 })
 export class SessionDetailsComponent extends BaseComponent implements OnInit {
 

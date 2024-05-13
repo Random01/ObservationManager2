@@ -4,8 +4,8 @@ import { Scope } from '../../shared/models/equipment/scope.model';
 
 @Component({
   selector: 'om-scope',
-  templateUrl: './scope.component.html',
-  styleUrls: ['./scope.component.css'],
+  templateUrl: 'scope.component.html',
+  styleUrls: ['scope.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScopeComponent {

@@ -10,7 +10,7 @@ import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
   selector: 'om-add-session',
-  templateUrl: './add-session.component.html',
+  templateUrl: 'add-session.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddSessionComponent extends AddEntityComponent<Session> {

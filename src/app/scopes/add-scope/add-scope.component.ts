@@ -9,7 +9,7 @@ import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
   selector: 'om-add-scope',
-  templateUrl: './add-scope.component.html',
+  templateUrl: 'add-scope.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddScopeComponent extends AddEntityComponent<Scope> {

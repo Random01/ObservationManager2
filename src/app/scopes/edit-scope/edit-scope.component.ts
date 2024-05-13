@@ -10,7 +10,7 @@ import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
   selector: 'om-edit-scope',
-  templateUrl: './edit-scope.component.html',
+  templateUrl: 'edit-scope.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EditScopeComponent extends EditEntityComponent<Scope> {

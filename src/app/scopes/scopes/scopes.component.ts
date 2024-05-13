@@ -9,8 +9,8 @@ import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
   selector: 'om-scopes',
-  templateUrl: './scopes.component.html',
-  styleUrls: ['./scopes.component.less'],
+  templateUrl: 'scopes.component.html',
+  styleUrls: ['scopes.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScopesComponent extends EntityListComponent<Scope> {

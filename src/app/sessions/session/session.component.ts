@@ -4,8 +4,8 @@ import { Session } from '../../shared/models/models';
 
 @Component({
   selector: 'om-session',
-  templateUrl: './session.component.html',
-  styleUrls: ['./session.component.less'],
+  templateUrl: 'session.component.html',
+  styleUrls: ['session.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SessionComponent {

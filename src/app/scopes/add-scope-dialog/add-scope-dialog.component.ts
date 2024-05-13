@@ -8,10 +8,7 @@ import { ScopeService } from '../shared/scope.service';
 
 @Component({
   selector: 'om-add-scope-dialog',
-  templateUrl: './add-scope-dialog.component.html',
-  styleUrls: [
-    './add-scope-dialog.component.css'
-  ],
+  templateUrl: 'add-scope-dialog.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddScopeDialogComponent extends AddEntityDialogComponent<Scope, ScopeService> {

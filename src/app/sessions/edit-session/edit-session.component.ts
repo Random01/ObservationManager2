@@ -8,7 +8,7 @@ import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
   selector: 'om-edit-session',
-  templateUrl: './edit-session.component.html',
+  templateUrl: 'edit-session.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EditSessionComponent extends EditEntityComponent<Session> {
