@@ -3,10 +3,10 @@ import { Component, Input } from '@angular/core';
 import { User } from '../../shared/models/user.model';
 
 @Component({
-    selector: 'om-user',
-    templateUrl: './user.component.html',
-    styleUrls: ['./user.component.css']
+  selector: 'om-user',
+  templateUrl: 'user.component.html',
+  styleUrls: ['user.component.less']
 })
 export class UserComponent {
-    @Input() user: User;
+  @Input() user?: User;
 }

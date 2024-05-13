@@ -2,8 +2,7 @@ import { Component, Input, ChangeDetectionStrategy, Output, EventEmitter } from 
 
 @Component({
   selector: 'om-aliases-editor',
-  templateUrl: './aliases-editor.component.html',
-  styleUrls: ['./aliases-editor.component.css'],
+  templateUrl: 'aliases-editor.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AliasesEditorComponent {

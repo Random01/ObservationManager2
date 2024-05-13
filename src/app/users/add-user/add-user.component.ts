@@ -8,20 +8,20 @@ import { UserService } from '../shared/user.service';
 import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
-    selector: 'om-add-user',
-    templateUrl: './add-user.component.html',
+  selector: 'om-add-user',
+  templateUrl: './add-user.component.html',
 })
 export class AddUserComponent extends AddEntityComponent<User> {
 
-    constructor(
-        private readonly router: Router,
-        service: UserService,
-        appContext: AppContextService,
-    ) {
-        super(service, appContext);
-    }
+  constructor(
+    private readonly router: Router,
+    service: UserService,
+    appContext: AppContextService,
+  ) {
+    super(service, appContext);
+  }
 
-    public goBack() {
-        this.router.navigate(['/users']);
-    }
+  public goBack() {
+    this.router.navigate(['/users']);
+  }
 }

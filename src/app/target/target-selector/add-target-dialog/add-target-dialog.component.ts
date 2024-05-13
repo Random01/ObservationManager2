@@ -8,8 +8,7 @@ import { Target } from '../../../shared/models/models';
 
 @Component({
   selector: 'om-add-target-dialog',
-  templateUrl: './add-target-dialog.component.html',
-  styleUrls: ['./add-target-dialog.component.css'],
+  templateUrl: 'add-target-dialog.component.html',
 })
 export class AddTargetDialogComponent extends AddEntityDialogComponent<Target, TargetService> {
 

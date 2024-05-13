@@ -11,7 +11,7 @@ import { TargetTypeItem } from '../shared/interfaces/target-search-params.interf
 })
 export class TargetTypeSelectorComponent implements OnInit {
 
-  @Input() public targetType: TargetType;
+  @Input() public targetType?: TargetType;
 
   @Output() public readonly targetTypeChange = new EventEmitter<TargetType>();
 

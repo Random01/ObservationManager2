@@ -7,13 +7,13 @@ import { ConstellationsService } from '../../constellations/shared/constellation
 
 @Component({
   selector: 'om-constellation-selector',
-  templateUrl: './constellation-selector.component.html',
-  styleUrls: ['./constellation-selector.component.css'],
+  templateUrl: 'constellation-selector.component.html',
+  styleUrls: ['constellation-selector.component.less'],
 })
 export class ConstellationSelectorComponent implements OnInit {
 
   @Input()
-  public constellation: Constellation;
+  public constellation?: Constellation;
 
   @Output()
   public readonly constellationChange = new EventEmitter<Constellation>();

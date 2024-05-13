@@ -8,7 +8,7 @@ import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
   selector: 'om-add-target',
-  templateUrl: './add-target.component.html',
+  templateUrl: 'add-target.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddTargetComponent extends AddEntityComponent<Target> {

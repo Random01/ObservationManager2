@@ -9,8 +9,8 @@ import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
   selector: 'om-sites',
-  templateUrl: './sites.component.html',
-  styleUrls: ['./sites.component.less'],
+  templateUrl: 'sites.component.html',
+  styleUrls: ['sites.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SitesComponent extends EntityListComponent<Site> {

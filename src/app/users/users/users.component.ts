@@ -8,24 +8,24 @@ import { DeleteEntityDialogService } from '../../shared/components/delete-entity
 import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
-    selector: 'om-users',
-    templateUrl: './users.component.html',
+  selector: 'om-users',
+  templateUrl: 'users.component.html',
 })
 export class UsersComponent extends EntityListComponent<User> {
 
-    public readonly displayedColumns = [
-        'name',
-        'actions',
-    ];
+  public readonly displayedColumns = [
+    'name',
+    'actions',
+  ];
 
-    constructor(
-        userService: UserService,
-        deleteEntityDialogService: DeleteEntityDialogService,
-        route: ActivatedRoute,
-        router: Router,
-        appContext: AppContextService,
-    ) {
-        super(userService, deleteEntityDialogService, route, router, appContext);
-    }
+  constructor(
+    userService: UserService,
+    deleteEntityDialogService: DeleteEntityDialogService,
+    route: ActivatedRoute,
+    router: Router,
+    appContext: AppContextService,
+  ) {
+    super(userService, deleteEntityDialogService, route, router, appContext);
+  }
 
 }

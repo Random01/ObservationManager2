@@ -8,7 +8,7 @@ import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
   selector: 'om-edit-target',
-  templateUrl: './edit-target.component.html',
+  templateUrl: 'edit-target.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EditTargetComponent extends EditEntityComponent<Target> {

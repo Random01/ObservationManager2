@@ -4,8 +4,8 @@ import { Dec } from '../../shared/models/dec.model';
 
 @Component({
   selector: 'om-declination-selector',
-  templateUrl: './declination-selector.component.html',
-  styleUrls: ['./declination-selector.component.css'],
+  templateUrl: 'declination-selector.component.html',
+  styleUrls: ['declination-selector.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DeclinationSelectorComponent {
