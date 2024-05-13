@@ -12,11 +12,7 @@ export class ScopeService extends StorageService<Scope> {
     http: HttpClient,
     jwtService: JwtService,
   ) {
-    super('/scopes', http, jwtService);
-  }
-
-  public createNew(params?: Partial<Scope>): Scope {
-    return new Scope(params);
+    super('/scopes', http, jwtService, Scope);
   }
 
 }

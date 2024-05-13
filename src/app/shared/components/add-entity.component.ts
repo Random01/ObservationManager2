@@ -51,7 +51,7 @@ export abstract class AddEntityComponent<T extends Entity> extends BaseEntityCom
   }
 
   public createNew(params?: Partial<T>): Promise<T> {
-    return Promise.resolve(this.storageService.createNew(params));
+    return Promise.resolve(new this.storageService.createNew(params));
   }
 
   public abstract goBack(): void;

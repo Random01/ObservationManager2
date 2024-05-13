@@ -12,10 +12,7 @@ export class EyepieceService extends StorageService<Eyepiece> {
     http: HttpClient,
     jwtService: JwtService,
   ) {
-    super('/eyepieces', http, jwtService);
+    super('/eyepieces', http, jwtService, Eyepiece);
   }
 
-  public createNew(params?: Partial<Eyepiece>): Eyepiece {
-    return new Eyepiece(params);
-  }
 }

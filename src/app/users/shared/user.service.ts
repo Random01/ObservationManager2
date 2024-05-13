@@ -16,15 +16,11 @@ export class UserService extends StorageService<User> {
     http: HttpClient,
     jwtService: JwtService,
   ) {
-    super('/users', http, jwtService);
+    super('/users', http, jwtService, User);
   }
 
   public override deserialize(state: any): User {
     return new User(state);
-  }
-
-  public override createNew(): User {
-    return new User();
   }
 
   public authenticate(userName: String, password: String): Observable<SignInResultPayload> {

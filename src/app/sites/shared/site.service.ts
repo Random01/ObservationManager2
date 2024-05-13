@@ -8,14 +8,11 @@ import { JwtService } from '../../auth/shared/jwt.service';
 @Injectable({ providedIn: 'root' })
 export class SiteService extends StorageService<Site> {
 
-    constructor(
-        http: HttpClient,
-        jwtService: JwtService,
-    ) {
-        super('/sites', http, jwtService);
-    }
+  constructor(
+    http: HttpClient,
+    jwtService: JwtService,
+  ) {
+    super('/sites', http, jwtService, Site);
+  }
 
-    public createNew(params: any): Site {
-        return new Site(params);
-    }
 }

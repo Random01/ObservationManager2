@@ -24,11 +24,7 @@ export class TargetService extends StorageService<Target> {
     http: HttpClient,
     jwtService: JwtService,
   ) {
-    super('/targets', http, jwtService);
-  }
-
-  public createNew(params?: Partial<Target>): Target {
-    return new Target(params);
+    super('/targets', http, jwtService, Target);
   }
 
   public search({ name, maxCount }: SearchParams): Observable<Target[]> {

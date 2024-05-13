@@ -12,11 +12,7 @@ export class SessionService extends StorageService<Session> {
     http: HttpClient,
     jwtService: JwtService,
   ) {
-    super('/sessions', http, jwtService);
-  }
-
-  public override createNew(params?: Partial<Session>): Session {
-    return new Session(params);
+    super('/sessions', http, jwtService, Session);
   }
 
 }

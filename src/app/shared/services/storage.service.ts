@@ -11,12 +11,15 @@ import { PaginatedResponsePayload } from '../interfaces/paginated-response-paylo
 import { ResponseStatus } from './response-status.model';
 import { ExportRequestParams } from './export-request-params.model';
 
+type EntityConstructor<T> = new (s?: Partial<T>) => T;;
+
 export abstract class StorageService<T extends Entity> {
 
   constructor(
     public readonly url: string,
     protected readonly http: HttpClient,
-    protected readonly jwtService: JwtService
+    protected readonly jwtService: JwtService,
+    public readonly createNew: EntityConstructor<T>,
   ) { }
 
   public getRecent(): Promise<T[]> {
@@ -120,10 +123,8 @@ export abstract class StorageService<T extends Entity> {
     return this.http.delete<Boolean>(url, httpOptions);
   }
 
-  public abstract createNew(params?: Partial<T>): T;
-
   public deserialize(state: any): T {
-    const item = this.createNew();
+    const item = new this.createNew();
     item.deserialize(state);
     return item;
   }

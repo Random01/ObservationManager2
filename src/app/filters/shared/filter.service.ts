@@ -12,10 +12,7 @@ export class FilterService extends StorageService<Filter> {
     http: HttpClient,
     jwtService: JwtService,
   ) {
-    super('/filters', http, jwtService);
+    super('/filters', http, jwtService, Filter);
   }
 
-  public createNew(params?: Partial<Filter>): Filter {
-    return new Filter(params);
-  }
 }

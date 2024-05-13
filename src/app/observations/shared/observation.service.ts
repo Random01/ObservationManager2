@@ -13,11 +13,7 @@ export class ObservationService extends StorageService<Observation> {
     http: HttpClient,
     jwtService: JwtService,
   ) {
-    super('/observations', http, jwtService);
-  }
-
-  public createNew(params?: Partial<Observation>): Observation {
-    return new Observation(params);
+    super('/observations', http, jwtService, Observation);
   }
 
   public getSessionObservations(session: string) {

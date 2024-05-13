@@ -39,7 +39,7 @@ export abstract class AddEntityDialogComponent<TEntity extends Entity, SType ext
   }
 
   public ngOnInit(): void {
-    this.itemSubject.next(this.storageService.createNew());
+    this.itemSubject.next(new this.storageService.createNew());
   }
 
 }

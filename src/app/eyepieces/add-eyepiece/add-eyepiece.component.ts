@@ -8,7 +8,7 @@ import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
   selector: 'om-add-eyepiece',
-  templateUrl: './add-eyepiece.component.html',
+  templateUrl: 'add-eyepiece.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddEyepieceComponent extends AddEntityComponent<Eyepiece> {

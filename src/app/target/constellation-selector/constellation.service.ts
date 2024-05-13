@@ -12,11 +12,7 @@ export class ConstellationService extends StorageService<Constellation> {
     http: HttpClient,
     jwtService: JwtService,
   ) {
-    super('/constellations', http, jwtService);
-  }
-
-  public createNew(params?: Partial<Constellation>): Constellation {
-    return new Constellation(params);
+    super('/constellations', http, jwtService, Constellation);
   }
 
 }

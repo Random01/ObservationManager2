@@ -17,11 +17,7 @@ export class ObservingProgramsService extends StorageService<ObservingProgram> {
     http: HttpClient,
     jwtService: JwtService,
   ) {
-    super('/observing-programs', http, jwtService);
-  }
-
-  public createNew(params?: any): ObservingProgram {
-    return new ObservingProgram(params);
+    super('/observing-programs', http, jwtService, ObservingProgram);
   }
 
   public getStatistics(request: ObservingProgramStatisticsRequestParams): Promise<PaginatedResponsePayload<TargetStatistics>> {
