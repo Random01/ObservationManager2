@@ -5,7 +5,7 @@ import { Scope } from '../../shared/models/equipment/scope.model';
 @Component({
   selector: 'om-scope',
   templateUrl: 'scope.component.html',
-  styleUrls: ['scope.component.css'],
+  styleUrls: ['scope.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScopeComponent {
