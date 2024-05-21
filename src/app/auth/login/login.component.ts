@@ -7,7 +7,6 @@ import { map } from 'rxjs/operators';
 
 import * as AuthApiActions from '../../store/auth/auth.actions';
 import { BaseComponent } from '../../shared/components';
-import { AppContextService } from '../../shared/services/app-context.service';
 
 import { selectAuthState } from 'app/store/auth';
 
@@ -29,10 +28,9 @@ export class LoginComponent extends BaseComponent {
   });
 
   constructor(
-    appContext: AppContextService,
     private readonly store: Store,
   ) {
-    super(appContext);
+    super();
   }
 
   public onSubmit() {

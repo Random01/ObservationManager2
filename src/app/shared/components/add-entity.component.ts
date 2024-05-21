@@ -5,17 +5,15 @@ import { firstValueFrom } from 'rxjs';
 import { Entity } from '../models/entity.model';
 import { StorageService } from '../services/storage.service';
 import { BaseEntityComponent } from './base-entity.component';
-import { AppContextService } from '../services/app-context.service';
 
 @Component({ template: '' })
 export abstract class AddEntityComponent<T extends Entity> extends BaseEntityComponent<T> implements OnInit {
 
   constructor(
     protected readonly storageService: StorageService<T>,
-    appContext: AppContextService,
     protected readonly cdRef?: ChangeDetectorRef,
   ) {
-    super(appContext);
+    super();
   }
 
   public async addItem() {
@@ -79,7 +77,7 @@ export abstract class AddEntityComponent<T extends Entity> extends BaseEntityCom
   }
 
   protected showSuccessMessage() {
-    this.appContext.messageService.info(this.getSuccessMessage());
+    this.messageService.info(this.getSuccessMessage());
   }
 
 }

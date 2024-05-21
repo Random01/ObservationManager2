@@ -5,16 +5,14 @@ import { finalize } from 'rxjs';
 import { Entity } from '../models/entity.model';
 import { StorageService } from '../services/storage.service';
 import { BaseEntityComponent } from './base-entity.component';
-import { AppContextService } from '../services/app-context.service';
 
 @Component({ template: '' })
 export abstract class EditEntityComponent<T extends Entity> extends BaseEntityComponent<T> implements OnInit {
 
   constructor(
     protected readonly storageService: StorageService<T>,
-    appContext: AppContextService,
   ) {
-    super(appContext);
+    super();
   }
 
   public updateItem(): void {

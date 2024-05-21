@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 import { BehaviorSubject } from 'rxjs';
 
-import { AppContextService } from '../services';
 import { DestroyableComponent } from './destroyable.component';
+import { MessageService } from '../services/message.service';
 
 @Component({ template: '' })
 export class BaseComponent extends DestroyableComponent {
@@ -11,11 +11,8 @@ export class BaseComponent extends DestroyableComponent {
   protected readonly isLoadingSubject = new BehaviorSubject(false);
   public readonly isLoading$ = this.isLoadingSubject.asObservable();
 
-  constructor(
-    protected readonly appContext: AppContextService,
-  ) {
-    super();
-  }
+  protected readonly messageService = inject(MessageService);
+  protected readonly logger = inject(MessageService);
 
   public startLoading(): void {
     this.isLoadingSubject.next(true);
@@ -26,8 +23,8 @@ export class BaseComponent extends DestroyableComponent {
   }
 
   protected handleError(error: any, errorMessage?: string): void {
-    this.appContext.messageService.error(errorMessage || error);
-    this.appContext.logger.error(error);
+    this.messageService.error(errorMessage || error);
+    this.logger.error(error);
   }
 
 }

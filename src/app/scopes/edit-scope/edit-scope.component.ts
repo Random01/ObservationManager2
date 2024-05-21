@@ -6,7 +6,6 @@ import { EditEntityComponent } from '../../shared/components/edit-entity.compone
 
 import { Scope } from '../../shared/models/equipment/equipment';
 import { ScopeService } from '../shared/scope.service';
-import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
   selector: 'om-edit-scope',
@@ -19,9 +18,8 @@ export class EditScopeComponent extends EditEntityComponent<Scope> {
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     service: ScopeService,
-    appContext: AppContextService,
   ) {
-    super(service, appContext);
+    super(service);
   }
 
   public getItemId(): string {

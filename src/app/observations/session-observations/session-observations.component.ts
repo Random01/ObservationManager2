@@ -10,7 +10,6 @@ import { EntityListComponent } from '../../shared/components/entity-list.compone
 import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
 import { ObservationSearchParams } from '../shared/observation-search-params.model';
 import { RequestParams } from '../../shared/services/request-params.model';
-import { AppContextService } from '../../shared/services/app-context.service';
 import { ExportType } from '../../shared/models/export-type.model';
 import { ExportRequestParams } from '../../shared/services';
 import { SessionObservationExportRequestParams } from './session-observation-export-request-params.model';
@@ -44,9 +43,8 @@ export class SessionObservationsComponent extends EntityListComponent<Observatio
     router: Router,
     observationService: ObservationService,
     deleteEntityDialogService: DeleteEntityDialogService,
-    appContext: AppContextService,
   ) {
-    super(observationService, deleteEntityDialogService, route, router, appContext);
+    super(observationService, deleteEntityDialogService, route, router);
   }
 
   public getSessionId(): string {

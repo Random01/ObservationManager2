@@ -9,13 +9,12 @@ import { EntityListComponent } from '../../shared/components/entity-list.compone
 import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
 import { TargetSearchParams } from '../target-search-params/target-search-params.model';
 import { RequestParams } from '../../shared/services/request-params.model';
-import { AppContextService } from '../../shared/services/app-context.service';
 import { AuthenticationService } from '../../auth/shared';
 
 @Component({
   selector: 'om-targets',
-  templateUrl: './targets.component.html',
-  styleUrls: ['./targets.component.less'],
+  templateUrl: 'targets.component.html',
+  styleUrls: ['targets.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TargetsComponent extends EntityListComponent<Target> {
@@ -38,10 +37,9 @@ export class TargetsComponent extends EntityListComponent<Target> {
     deleteEntityDialogService: DeleteEntityDialogService,
     route: ActivatedRoute,
     router: Router,
-    appContext: AppContextService,
     private readonly authService: AuthenticationService,
   ) {
-    super(service, deleteEntityDialogService, route, router, appContext);
+    super(service, deleteEntityDialogService, route, router);
   }
 
   public onSearch(searchParams: TargetSearchParams) {

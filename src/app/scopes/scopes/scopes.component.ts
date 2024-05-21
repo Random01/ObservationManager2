@@ -5,7 +5,6 @@ import { Scope } from '../../shared/models/equipment/scope.model';
 import { ScopeService } from '../shared/scope.service';
 import { EntityListComponent } from '../../shared/components/entity-list.component';
 import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
-import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
   selector: 'om-scopes',
@@ -28,9 +27,8 @@ export class ScopesComponent extends EntityListComponent<Scope> {
     deleteEntityDialogService: DeleteEntityDialogService,
     route: ActivatedRoute,
     router: Router,
-    appContext: AppContextService,
   ) {
-    super(service, deleteEntityDialogService, route, router, appContext);
+    super(service, deleteEntityDialogService, route, router);
   }
 
   protected override getExportFileName(): string {

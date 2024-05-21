@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EditEntityComponent } from '../../shared/components/edit-entity.component';
 import { SessionService } from '../shared/session.service';
 import { Session } from '../../shared/models/models';
-import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
   selector: 'om-edit-session',
@@ -17,9 +16,8 @@ export class EditSessionComponent extends EditEntityComponent<Session> {
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     service: SessionService,
-    appContext: AppContextService,
   ) {
-    super(service, appContext);
+    super(service);
   }
 
   public goBack(): void {

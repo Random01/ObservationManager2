@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EditEntityComponent } from '../../shared/components/edit-entity.component';
 import { ObservingProgram } from '../../shared/models/observing-program.model';
 import { ObservingProgramsService } from '../shared/observing-programs.service';
-import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
   selector: 'om-edit-observing-program',
@@ -17,9 +16,8 @@ export class EditObservingProgramComponent extends EditEntityComponent<Observing
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     service: ObservingProgramsService,
-    appContext: AppContextService,
   ) {
-    super(service, appContext);
+    super(service);
   }
 
   public getItemId(): string {

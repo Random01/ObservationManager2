@@ -5,7 +5,6 @@ import { ScopeService } from '../shared/scope.service';
 
 import { AddEntityComponent } from '../../shared/components/add-entity.component';
 import { Scope } from '../../shared/models/equipment/equipment';
-import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
   selector: 'om-add-scope',
@@ -17,9 +16,8 @@ export class AddScopeComponent extends AddEntityComponent<Scope> {
   constructor(
     private readonly router: Router,
     service: ScopeService,
-    appContext: AppContextService,
   ) {
-    super(service, appContext);
+    super(service);
   }
 
   public goBack() {

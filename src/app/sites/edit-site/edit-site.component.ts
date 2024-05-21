@@ -4,11 +4,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EditEntityComponent } from '../../shared/components/edit-entity.component';
 import { SiteService } from '../shared/site.service';
 import { Site } from '../../shared/models/models';
-import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
   selector: 'om-edit-site',
-  templateUrl: './edit-site.component.html',
+  templateUrl: 'edit-site.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EditSiteComponent extends EditEntityComponent<Site> {
@@ -17,9 +16,8 @@ export class EditSiteComponent extends EditEntityComponent<Site> {
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     service: SiteService,
-    appContext: AppContextService,
   ) {
-    super(service, appContext);
+    super(service);
   }
 
   protected getItemId(): string {

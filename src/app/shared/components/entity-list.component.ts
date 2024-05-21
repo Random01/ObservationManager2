@@ -9,7 +9,6 @@ import { Entity } from '../models/models';
 import { StorageService } from '../services/storage.service';
 import { DeleteEntityDialogService } from './delete-entity-dialog/delete-entity-dialog.service';
 import { PaginatedListComponent } from './paginated-list.component';
-import { AppContextService } from '../services/app-context.service';
 import { ExportRequestParams } from '../services';
 import { ExportType } from '../models/export-type.model';
 
@@ -20,9 +19,8 @@ export abstract class EntityListComponent<T extends Entity> extends PaginatedLis
     protected readonly deleteEntityDialogService: DeleteEntityDialogService,
     route: ActivatedRoute,
     router: Router,
-    appContext: AppContextService,
   ) {
-    super(route, router, appContext);
+    super(route, router);
   }
 
   public override async loadItems(): Promise<void> {

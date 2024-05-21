@@ -10,7 +10,6 @@ import { SortOrder } from '../models/sort-order.model';
 import { RequestParams } from '../services/request-params.model';
 
 import PaginatedListQueryParams from '../interfaces/paginated-list-query-params.interface';
-import { AppContextService } from '../services/app-context.service';
 import { PaginatedResponsePayload } from '../interfaces/paginated-response-payload.interface';
 
 @Component({ template: '' })
@@ -33,9 +32,8 @@ export abstract class PaginatedListComponent<T> extends BaseComponent implements
   constructor(
     protected readonly route: ActivatedRoute,
     protected readonly router: Router,
-    appContext: AppContextService,
   ) {
-    super(appContext);
+    super();
   }
 
   public abstract loadItems(): Promise<void>;

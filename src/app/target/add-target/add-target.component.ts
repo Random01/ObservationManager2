@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { AddEntityComponent } from '../../shared/components/add-entity.component';
 import { Target } from '../../shared/models/models';
 import { TargetService } from '../shared/target.service';
-import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
   selector: 'om-add-target',
@@ -16,9 +15,8 @@ export class AddTargetComponent extends AddEntityComponent<Target> {
   constructor(
     private readonly router: Router,
     service: TargetService,
-    appContext: AppContextService,
   ) {
-    super(service, appContext);
+    super(service);
   }
 
   public goBack() {

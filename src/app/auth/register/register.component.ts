@@ -9,7 +9,6 @@ import { map } from 'rxjs/operators';
 import * as RegisterActions from '../../store/register/register.actions';
 import { User } from '../../shared/models/user.model';
 import { BaseComponent } from '../../shared/components/base-component';
-import { AppContextService } from '../../shared/services/app-context.service';
 
 import { selectRegisterState } from 'app/store/register';
 
@@ -33,9 +32,8 @@ export class RegisterComponent extends BaseComponent {
   constructor(
     private readonly store: Store,
     private readonly router: Router,
-    appContext: AppContextService,
   ) {
-    super(appContext);
+    super();
   }
 
   public onSubmit() {

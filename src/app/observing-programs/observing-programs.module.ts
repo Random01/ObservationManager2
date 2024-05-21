@@ -18,23 +18,23 @@ import { TargetModule } from '../target/target.module';
 import { ObservingProgramStatisticsComponent } from './observing-program-statistics/observing-program-statistics.component';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        BrowserModule,
-        FormsModule,
-        RouterModule,
-        MaterialModule,
-        ObservingProgramsRoutingModule,
-        TargetModule,
-    ],
-    declarations: [
-        AddObservingProgramComponent,
-        EditObservingProgramComponent,
-        ObservingProgramsComponent,
-        ObservingProgramComponent,
-        TargetsEditorComponent,
-        ObservingProgramStatisticsComponent,
-    ],
+  imports: [
+    CommonModule,
+    BrowserModule,
+    FormsModule,
+    RouterModule,
+    MaterialModule,
+    ObservingProgramsRoutingModule,
+    TargetModule,
+  ],
+  declarations: [
+    AddObservingProgramComponent,
+    EditObservingProgramComponent,
+    ObservingProgramsComponent,
+    ObservingProgramComponent,
+    TargetsEditorComponent,
+    ObservingProgramStatisticsComponent,
+  ],
 })
 
 export class ObservingProgramsModule { }

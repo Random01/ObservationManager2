@@ -9,7 +9,6 @@ import { RequestParams } from '../../shared/services/request-params.model';
 import { TargetStatistics } from '../shared/target-statistics.model';
 import { ObservingProgramStatisticsRequestParams } from '../shared/observing-program-statistics-request-params.model';
 import ObservingProgramStatistics from '../shared/observing-program-statistics.model';
-import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
   selector: 'om-observing-program-statistics',
@@ -32,9 +31,8 @@ export class ObservingProgramStatisticsComponent extends PaginatedListComponent<
     private readonly observingProgramService: ObservingProgramsService,
     route: ActivatedRoute,
     router: Router,
-    appContext: AppContextService,
   ) {
-    super(route, router, appContext);
+    super(route, router);
   }
 
   public override async loadItems(): Promise<void> {

@@ -7,11 +7,10 @@ import { Observation } from '../../shared/models/models';
 import { ObservationService } from '../shared/observation.service';
 import { AddEntityComponent } from '../../shared/components/add-entity.component';
 import { SessionService } from '../../sessions/shared/session.service';
-import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
   selector: 'om-add-observation',
-  templateUrl: './add-observation.component.html',
+  templateUrl: 'add-observation.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddObservationComponent extends AddEntityComponent<Observation> {
@@ -21,9 +20,8 @@ export class AddObservationComponent extends AddEntityComponent<Observation> {
     private readonly router: Router,
     observationService: ObservationService,
     private readonly sessionService: SessionService,
-    appContext: AppContextService,
   ) {
-    super(observationService, appContext);
+    super(observationService);
   }
 
   public goBack() {

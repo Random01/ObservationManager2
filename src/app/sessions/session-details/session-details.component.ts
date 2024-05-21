@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { MatDialog } from '@angular/material/dialog';
 
-import { BehaviorSubject, finalize, firstValueFrom } from 'rxjs';
+import { finalize, firstValueFrom } from 'rxjs';
 
 import { Session } from '../../shared/models/session.model';
 import { SessionService } from '../shared/session.service';
@@ -13,7 +13,6 @@ import { Target } from '../../shared/models/models';
 import { BaseComponent } from '../../shared/components/base-component';
 import { ObservationService } from '../../observations/shared/observation.service';
 import { Eyepiece, Scope, Filter } from '../../shared/models/equipment/equipment';
-import { AppContextService } from '../../shared/services/app-context.service';
 
 @Component({
   selector: 'om-session-details',
@@ -30,9 +29,8 @@ export class SessionDetailsComponent extends BaseComponent implements OnInit {
     private readonly sessionService: SessionService,
     private readonly dialog: MatDialog,
     private readonly observationService: ObservationService,
-    appContext: AppContextService,
   ) {
-    super(appContext);
+    super();
   }
 
   public create(): void {
