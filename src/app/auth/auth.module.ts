@@ -10,18 +10,18 @@ import { UsersModule } from '../users/users.module';
 import { MaterialModule } from '../shared/material.module';
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        FormsModule,
-        RouterModule,
-        AuthRoutingModule,
-        ReactiveFormsModule,
-        UsersModule,
-        MaterialModule,
-    ],
-    declarations: [
-        LoginComponent,
-        RegisterComponent,
-    ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    RouterModule,
+    AuthRoutingModule,
+    ReactiveFormsModule,
+    UsersModule,
+    MaterialModule,
+  ],
+  declarations: [
+    LoginComponent,
+    RegisterComponent,
+  ],
 })
 export class AuthModule { }

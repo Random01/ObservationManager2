@@ -5,16 +5,14 @@ import { Store } from '@ngrx/store';
 
 import { map } from 'rxjs/operators';
 
-import * as AuthApiActions from '../../store/auth/auth.actions';
-import { BaseComponent } from '../../shared/components';
-
+import * as AuthApiActions from 'app/store/auth/auth.actions';
 import { selectAuthState } from 'app/store/auth';
-
+import { BaseComponent } from 'app/shared/components';
 
 @Component({
   selector: 'om-login',
   templateUrl: 'login.component.html',
-  styleUrls: ['login.component.css'],
+  styleUrls: ['login.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent extends BaseComponent {

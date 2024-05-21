@@ -7,24 +7,27 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
-import { DestroyableComponent } from '../../shared/components/destroyable.component';
+import { DestroyableComponent } from 'app/shared/components/destroyable.component';
+
 import { VendorService } from '../shared';
 
 @Component({
   selector: 'om-vendor-selector',
-  templateUrl: './vendor-selector.component.html',
-  styleUrls: ['./vendor-selector.component.css'],
+  templateUrl: 'vendor-selector.component.html',
+  styleUrls: ['vendor-selector.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class VendorSelectorComponent extends DestroyableComponent implements OnInit {
+export class VendorSelectorComponent extends DestroyableComponent {
 
   @Input() public vendor = '';
   @Output() public readonly vendorChange = new EventEmitter<string>();
 
-  public vendors: string[] = [];
-  public filteredVendors$: Observable<string[]>;
+  public readonly vendors$: Observable<string[]> = this.vendorService.getAllSuggestions()
+    .pipe(
+      map(vendors => vendors.map(vendor => vendor.name)),
+    );
 
   constructor(private readonly vendorService: VendorService) {
     super();
@@ -33,18 +36,6 @@ export class VendorSelectorComponent extends DestroyableComponent implements OnI
   public onVendorChange(model: string) {
     this.vendor = model;
     this.vendorChange.emit(model);
-  }
-
-  public ngOnInit() {
-    this.handle(
-      this.vendorService.getAllSuggestions().subscribe(vendors => {
-        this.vendors = vendors.map(vendor => vendor.name);
-
-        this.filteredVendors$ = new Observable((subscriber) => {
-          subscriber.next(this.vendors);
-        });
-      })
-    );
   }
 
 }
