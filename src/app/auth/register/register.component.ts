@@ -15,8 +15,8 @@ import { selectRegisterState } from 'app/store/register';
 
 @Component({
   selector: 'om-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css'],
+  templateUrl: 'register.component.html',
+  styleUrls: ['register.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegisterComponent extends BaseComponent {
