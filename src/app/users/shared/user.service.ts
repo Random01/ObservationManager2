@@ -31,7 +31,7 @@ export class UserService extends StorageService<User> {
     };
     const data = { user: { userName, password } };
 
-    return this.http.post<any>(this.getUrl() + '/login', data, httpOptions).pipe(
+    return this.http.post<{ user: any }>(this.getUrl() + '/login', data, httpOptions).pipe(
       map(({ user }) => new SignInResultPayload({
         token: user.token,
         user: new User({
@@ -42,32 +42,32 @@ export class UserService extends StorageService<User> {
     );
   }
 
-  public async getUser(): Promise<SignInResultPayload> {
+  public getUser(): Observable<SignInResultPayload> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': this.getAuthorizationToken(),
-      })
+      }),
     };
 
-    const { user } = await this.http.get<any>(this.getUrl() + '/user', httpOptions).toPromise();
-    return new SignInResultPayload({
-      token: user.token,
-      user: new User({
-        userName: user.userName,
-        email: user.email,
-      })
-    });
+    return this.http.get<{ user: any }>(this.getUrl() + '/user', httpOptions)
+      .pipe(map(({ user }) => new SignInResultPayload({
+        token: user.token,
+        user: new User({
+          userName: user.userName,
+          email: user.email,
+        })
+      })));
   }
 
   public register(user: User): Observable<void> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-      })
+      }),
     };
 
-    return this.http.post<any>(this.getUrl() + '/', user, httpOptions);
+    return this.http.post<void>(this.getUrl() + '/', user, httpOptions);
   }
 
 }

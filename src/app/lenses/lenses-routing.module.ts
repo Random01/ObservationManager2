@@ -4,23 +4,23 @@ import { RouterModule, Routes } from '@angular/router';
 import { LensesComponent } from './lenses/lenses.component';
 import { AddLensComponent } from './add-lens/add-lens.component';
 import { EditLensComponent } from './edit-lens/edit-lens.component';
-import { AuthGuardService } from '../auth/shared/auth-guard.service';
+import { AuthGuard } from '../auth/shared/auth.guard';
 
 const routes: Routes = [
   {
     path: 'lenses',
     component: LensesComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuard]
   },
   {
     path: 'lenses/new-lens',
     component: AddLensComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuard]
   },
   {
     path: 'lenses/:lensId',
     component: EditLensComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuard]
   }
 ];
 

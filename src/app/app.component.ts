@@ -11,8 +11,8 @@ import * as NavigationMenuActions from './store/navigation-menu/navigation-menu.
 
 @Component({
   selector: 'om-app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.less'],
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {

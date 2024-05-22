@@ -4,23 +4,23 @@ import { RouterModule, Routes } from '@angular/router';
 import { ScopesComponent } from './scopes/scopes.component';
 import { AddScopeComponent } from './add-scope/add-scope.component';
 import { EditScopeComponent } from './edit-scope/edit-scope.component';
-import { AuthGuardService } from '../auth/shared/auth-guard.service';
+import { AuthGuard } from '../auth/shared/auth.guard';
 
 const scopesRoutes: Routes = [
   {
     path: 'scopes',
     component: ScopesComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuard],
   },
   {
     path: 'scopes/new-scope',
     component: AddScopeComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuard],
   },
   {
     path: 'scopes/:id',
     component: EditScopeComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuard],
   },
 ];
 

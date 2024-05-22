@@ -123,7 +123,7 @@ export abstract class BaseEntityRouter<TEntity extends Entity, TStore extends Ba
     }
   }
 
-  protected toString(queryParam: undefined | string | string[] | qs.ParsedQs | qs.ParsedQs[]): string | undefined {
+  protected override toString(queryParam: undefined | string | string[] | qs.ParsedQs | qs.ParsedQs[]): string | undefined {
     return typeof queryParam === 'string' ? queryParam : undefined;
   }
 

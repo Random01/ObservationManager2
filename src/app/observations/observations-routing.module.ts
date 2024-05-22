@@ -5,38 +5,38 @@ import { AddObservationComponent } from './add-observation/add-observation.compo
 import { ObservationsComponent } from './observations/observations.component';
 import { EditObservationComponent } from './edit-observation/edit-observation.component';
 import { SessionObservationsComponent } from './session-observations/session-observations.component';
-import { AuthGuardService } from '../auth/shared/auth-guard.service';
+import { AuthGuard } from '../auth/shared/auth.guard';
 
 const routes: Routes = [
   {
     path: 'observations/new-observation',
     component: AddObservationComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuard],
   },
   {
     path: 'observations/:observationId',
     component: EditObservationComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuard],
   },
   {
     path: 'observations',
     component: ObservationsComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuard],
   },
   {
     path: 'sessions/:sessionId/observations',
     component: SessionObservationsComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuard],
   },
   {
     path: 'sessions/:sessionId/observations/new-observation',
     component: AddObservationComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuard],
   },
   {
     path: 'sessions/:sessionId/observations/:observationId',
     component: EditObservationComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuard],
   },
 ];
 

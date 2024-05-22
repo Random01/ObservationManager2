@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { BehaviorSubject, from, Observable, of, ReplaySubject } from 'rxjs';
-import { distinctUntilChanged, map, tap } from 'rxjs/operators';
+import { catchError, distinctUntilChanged, map, switchMap, tap } from 'rxjs/operators';
 
 import { LoggingService } from '../../shared/services/logging.service';
 import { User } from '../../shared/models/user.model';
@@ -36,7 +36,24 @@ export class AuthenticationService {
   }
 
   public populate(): Observable<User> {
-    return from(this.populateInternal());
+    return of(this.jwtService.getToken())
+      .pipe(
+        switchMap(token => {
+          if (token) {
+            return this.userService.getUser().pipe(
+              tap(result => this.setAut(result)),
+              map(result => result.user),
+              catchError(error => {
+                this.loggingService.error(error);
+                return of(User.UnauthorizedUser);
+              }),
+            );
+          } else {
+            return of(User.UnauthorizedUser);
+          }
+        }),
+        tap(user => user === User.UnauthorizedUser && this.logOut()),
+      );
   }
 
   public getCurrentUser(): User {
@@ -49,25 +66,6 @@ export class AuthenticationService {
         tap(result => this.setAut(result)),
         map(x => x.user),
       );
-  }
-
-  private async populateInternal(): Promise<User> {
-    if (this.jwtService.getToken()) {
-      try {
-        const result = await this.userService.getUser();
-        this.setAut(result);
-        return result.user;
-      } catch (ex) {
-        this.loggingService.error(ex);
-        this.logOut();
-
-        return User.UnauthorizedUser;
-      }
-    } else {
-      this.logOut();
-
-      return User.UnauthorizedUser;
-    }
   }
 
   private setAut({ token, user }: SignInResultPayload): void {

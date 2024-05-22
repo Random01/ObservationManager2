@@ -4,23 +4,23 @@ import { RouterModule, Routes } from '@angular/router';
 import { TargetsComponent } from './targets/targets.component';
 import { AddTargetComponent } from './add-target/add-target.component';
 import { EditTargetComponent } from './edit-target/edit-target.component';
-import { AuthGuardService } from '../auth/shared/auth-guard.service';
+import { AuthGuard } from '../auth/shared/auth.guard';
 
 const targetsRoutes: Routes = [
   {
     path: 'objects',
     component: TargetsComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuard],
   },
   {
     path: 'objects/new-object',
     component: AddTargetComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuard],
   },
   {
     path: 'objects/:id',
     component: EditTargetComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuard],
   },
 ];
 
