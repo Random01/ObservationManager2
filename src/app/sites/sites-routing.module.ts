@@ -5,23 +5,23 @@ import { RouterModule, Routes } from '@angular/router';
 import { SitesComponent } from './sites/sites.component';
 import { AddSiteComponent } from './add-site/add-site.component';
 import { EditSiteComponent } from './edit-site/edit-site.component';
-import { AuthGuardService } from '../auth/shared/auth-guard.service';
+import { AuthGuard } from '../auth/shared/auth.guard';
 
 const sitesRoutes: Routes = [
   {
     path: 'sites',
     component: SitesComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuard],
   },
   {
     path: 'sites/new-site',
     component: AddSiteComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuard],
   },
   {
     path: 'sites/:id',
     component: EditSiteComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuard],
   },
 ];
 

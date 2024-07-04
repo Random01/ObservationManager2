@@ -4,23 +4,23 @@ import { RouterModule, Routes } from '@angular/router';
 import { FiltersComponent } from './filters/filters.component';
 import { AddFilterComponent } from './add-filter/add-filter.component';
 import { EditFilterComponent } from './edit-filter/edit-filter.component';
-import { AuthGuardService } from '../auth/shared/auth-guard.service';
+import { AuthGuard } from '../auth/shared/auth.guard';
 
 const routes: Routes = [
   {
     path: 'filters/new-filter',
     component: AddFilterComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuard],
   },
   {
     path: 'filters/:filterId',
     component: EditFilterComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuard],
   },
   {
     path: 'filters',
     component: FiltersComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuard],
   }
 ];
 

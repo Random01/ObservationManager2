@@ -1,25 +1,30 @@
-import { Request, Response } from 'express';
+import * as core from 'express-serve-static-core';
 
-import { BaseRouter } from '../common';
+import { BaseEntityRouter } from '../common';
+import { VendorStore } from './vendor.store';
 
-export class VendorRouter extends BaseRouter {
+// todo: use Vendor instead of any
+export class VendorRouter extends BaseEntityRouter<any, VendorStore> {
 
-  protected override setUp(): void {
-    this.router.get('/', this.getAll.bind(this));
+  constructor(
+    router: core.Router,
+    store = new VendorStore(),
+  ) {
+    super(router, store);
   }
 
-  private getAll(_: Request, res: Response): void {
-    // todo: should be in DB
-    res.json([
-      { name: 'Sky Watcher' },
-      { name: 'Deep-Sky' },
-      { name: 'Celestron' },
-      { name: 'Baader' },
-      { name: 'Astronomik' },
-      { name: 'Tele Vue' },
-      { name: 'Explore Scientific' },
-      { name: 'Lumicon' },
-    ]);
-  }
+  // private getAll(_: Request, res: Response): void {
+  //   // todo: should be in DB
+  //   res.json([
+  //     { name: 'Sky Watcher' },
+  //     { name: 'Deep-Sky' },
+  //     { name: 'Celestron' },
+  //     { name: 'Baader' },
+  //     { name: 'Astronomik' },
+  //     { name: 'Tele Vue' },
+  //     { name: 'Explore Scientific' },
+  //     { name: 'Lumicon' },
+  //   ]);
+  // }
 
 }

@@ -4,7 +4,7 @@ import { BaseEntityRouter } from '../common/router';
 
 import { ConstellationStore } from './constellation.store';
 
-// todo: use Constellation
+// todo: use Constellation instead of any
 export class ConstellationRouter extends BaseEntityRouter<any, ConstellationStore> {
 
   constructor(
