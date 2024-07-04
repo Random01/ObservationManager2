@@ -12,7 +12,7 @@ export class AsterismTarget extends DeepSkyTargetType {
         Object.assign(this, params);
     }
 
-    public override serialize(): Object {
+    public override serialize(): object {
         return Object.assign(super.serialize(), this, {
             positionAngle: this.positionAngle ? this.positionAngle.serialize() : null,
         });

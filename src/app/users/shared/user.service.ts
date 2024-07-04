@@ -23,7 +23,7 @@ export class UserService extends StorageService<User> {
     return new User(state);
   }
 
-  public authenticate(userName: String, password: String): Observable<SignInResultPayload> {
+  public authenticate(userName: string, password: string): Observable<SignInResultPayload> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',

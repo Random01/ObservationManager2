@@ -10,7 +10,7 @@ export class ObservingProgram extends Entity {
     super(params);
   }
 
-  public override serialize(): Object {
+  public override serialize(): Record<string, any> {
     return Object.assign(super.serialize(), {
       name: this.name,
       targets: this.targets.map(target => target.id),

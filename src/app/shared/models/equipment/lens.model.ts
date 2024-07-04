@@ -15,7 +15,7 @@ export class Lens extends EquipmentItem {
         Object.assign(this, params);
     }
 
-    public override serialize(): Object {
+    public override serialize(): object {
         return Object.assign(super.serialize(), {
             factor: this.factor,
         });

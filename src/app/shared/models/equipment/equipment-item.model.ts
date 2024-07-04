@@ -10,7 +10,7 @@ export class EquipmentItem extends Entity {
     super(params);
   }
 
-  public override serialize(): Object {
+  public override serialize(): Record<string, any> {
     return Object.assign(super.serialize(), {
       model: this.model,
       vendor: this.vendor,

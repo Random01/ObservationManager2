@@ -49,6 +49,7 @@ export class DateTimeInputComponent {
     this.dateTimeChange.emit(this.dateTime);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   public onTimeChanged(): void {
 
   }

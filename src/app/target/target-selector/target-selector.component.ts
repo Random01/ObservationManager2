@@ -87,7 +87,7 @@ export class TargetSelectorComponent implements OnInit {
       if (result) {
         this.onTargetSelected(result);
       }
-    }, () => { });
+    });
   }
 
 }

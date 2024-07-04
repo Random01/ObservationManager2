@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 
-import { BehaviorSubject, finalize } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 import { Entity } from '../models/models';
 import { StorageService } from '../services/storage.service';

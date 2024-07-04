@@ -11,7 +11,6 @@ import { ObservingProgramsRoutingModule } from './observing-programs-routing.mod
 import { AddObservingProgramComponent } from './add-observing-program/add-observing-program.component';
 import { EditObservingProgramComponent } from './edit-observing-program/edit-observing-program.component';
 import { ObservingProgramsComponent } from './observing-programs/observing-programs.component';
-import { ObservingProgramsService } from './shared/observing-programs.service';
 import { ObservingProgramComponent } from './observing-program/observing-program.component';
 import { TargetsEditorComponent } from './targets-editor/targets-editor.component';
 import { TargetModule } from '../target/target.module';

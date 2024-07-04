@@ -5,23 +5,23 @@ import { Optics } from './optics.model';
  */
 export class Scope extends Optics {
 
-    // focal length in [mm]
-    public focalLength?: number;
+  // focal length in [mm]
+  public focalLength?: number;
 
-    constructor(params?: Partial<Scope>) {
-        super(params);
-        Object.assign(this, params);
-    }
+  constructor(params?: Partial<Scope>) {
+    super(params);
+    Object.assign(this, params);
+  }
 
-    public override serialize(): Object {
-        return Object.assign(super.serialize(), {
-            focalLength: this.focalLength,
-        });
-    }
+  public override serialize(): Record<string, any> {
+    return Object.assign(super.serialize(), {
+      focalLength: this.focalLength,
+    });
+  }
 
-    public override deserialize(state: any): void {
-        super.deserialize(state);
+  public override deserialize(state: any): void {
+    super.deserialize(state);
 
-        this.focalLength = state.focalLength;
-    }
+    this.focalLength = state.focalLength;
+  }
 }

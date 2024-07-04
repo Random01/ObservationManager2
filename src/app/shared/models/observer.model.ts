@@ -2,32 +2,32 @@
 
 export class Observer extends Entity {
 
-    public name: string;
+  public name: string;
 
-    public surname: string;
+  public surname: string;
 
-    public contact: string;
+  public contact: string;
 
-    constructor(params?: Partial<Observer>) {
-        super(params);
-        Object.assign(this, params);
-    }
+  constructor(params?: Partial<Observer>) {
+    super(params);
+    Object.assign(this, params);
+  }
 
-    public override serialize(): Object {
-        return Object.assign(super.serialize(), {
-            name: this.name,
-            surname: this.surname,
-            contact: this.contact,
-        });
-    }
+  public override serialize(): Record<string, any> {
+    return Object.assign(super.serialize(), {
+      name: this.name,
+      surname: this.surname,
+      contact: this.contact,
+    });
+  }
 
-    public override deserialize(state: any): void {
-        super.deserialize(state);
+  public override deserialize(state: any): void {
+    super.deserialize(state);
 
-        this.copy(state, [
-            'name',
-            'surname',
-            'contact',
-        ]);
-    }
+    this.copy(state, [
+      'name',
+      'surname',
+      'contact',
+    ]);
+  }
 }

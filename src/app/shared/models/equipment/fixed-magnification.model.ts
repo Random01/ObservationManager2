@@ -14,7 +14,7 @@ export class FixedMagnificationOptics extends Optics {
         Object.assign(this, params);
     }
 
-    public override serialize(): Object {
+    public override serialize(): Record<string, any> {
         return Object.assign(super.serialize(), {
             magnification: this.magnification,
             trueField: this.trueField,

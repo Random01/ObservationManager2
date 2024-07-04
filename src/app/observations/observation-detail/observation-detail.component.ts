@@ -34,8 +34,4 @@ export class ObservationDetailComponent implements OnInit {
     this.location.back();
   }
 
-  public update(): void {
-
-  }
-
 }

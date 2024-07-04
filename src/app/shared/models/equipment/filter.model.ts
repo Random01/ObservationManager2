@@ -3,25 +3,25 @@ import { FilterType } from './filter-type.enum';
 
 export class Filter extends EquipmentItem {
 
-    public filterType: FilterType;
+  public filterType: FilterType;
 
-    // "O-III 2""
-    // "Thousand Oaks"
-    // "O-III"
-    constructor(params?: Partial<Filter>) {
-        super(params);
-        Object.assign(this, params);
-    }
+  // "O-III 2""
+  // "Thousand Oaks"
+  // "O-III"
+  constructor(params?: Partial<Filter>) {
+    super(params);
+    Object.assign(this, params);
+  }
 
-    public override serialize(): Object {
-        return Object.assign(super.serialize(), {
-            filterType: this.filterType,
-        });
-    }
+  public override serialize(): Record<string, any> {
+    return Object.assign(super.serialize(), {
+      filterType: this.filterType,
+    });
+  }
 
-    public override deserialize(state: any): void {
-        super.deserialize(state);
+  public override deserialize(state: any): void {
+    super.deserialize(state);
 
-        this.filterType = state.filterType;
-    }
+    this.filterType = state.filterType;
+  }
 }

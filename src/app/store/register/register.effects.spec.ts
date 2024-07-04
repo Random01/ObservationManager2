@@ -3,7 +3,8 @@ import { TestBed } from '@angular/core/testing';
 import { Subject, of } from 'rxjs';
 
 import { provideMockActions } from '@ngrx/effects/testing';
-import { TypedAction } from '@ngrx/store/src/models';
+import { Action } from '@ngrx/store';
+
 
 import { RegisterEffects } from './register.effects';
 import * as RegisterActions from './register.actions';
@@ -16,7 +17,7 @@ import { User } from 'app/shared/models/user.model';
 
 describe('RegisterEffects', () => {
 
-  let actions$: Subject<TypedAction<string>>;
+  let actions$: Subject<Action<string>>;
   let registerEffects: RegisterEffects;
 
   beforeEach(() => {

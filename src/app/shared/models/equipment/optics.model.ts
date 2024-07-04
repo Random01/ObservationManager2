@@ -17,7 +17,7 @@ export class Optics extends EquipmentItem {
     super(params);
   }
 
-  public override serialize(): Object {
+  public override serialize(): Record<string, any> {
     return Object.assign(super.serialize(), {
       aperture: this.aperture,
       type: this.type ? this.type.serialize() : null,

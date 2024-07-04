@@ -5,17 +5,17 @@ import { Serializable } from '../../interfaces/serializable.interface';
  */
 export class OpticsType implements Serializable {
 
-    public name: string;
+  public name: string;
 
-    constructor(param?: Partial<OpticsType>) {
-        Object.assign(this, param);
-    }
+  constructor(param?: Partial<OpticsType>) {
+    Object.assign(this, param);
+  }
 
-    public serialize(): Object {
-        return { name: this.name };
-    }
+  public serialize(): Record<string, any> {
+    return { name: this.name };
+  }
 
-    deserialize(state: any): void {
-        this.name = state.name;
-    }
+  deserialize(state: any): void {
+    this.name = state.name;
+  }
 }

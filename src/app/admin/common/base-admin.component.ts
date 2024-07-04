@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
+import { BehaviorSubject } from 'rxjs';
+
 import { BaseAdminComponentStore } from './base-admin-component.store';
 import { Column } from './column.interface';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'om-base-admin',
@@ -23,8 +24,10 @@ export class BaseAdminComponent<T = any> {
 
   public readonly displayedColumns$ = new BehaviorSubject<string[] | null>([]);
 
-  public remove(item: T): void { }
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  public remove(_item: T): void { }
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   public add(): void { }
 
 }

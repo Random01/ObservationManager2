@@ -5,7 +5,6 @@ import {
   EventEmitter,
   OnChanges,
   SimpleChange,
-  ChangeDetectionStrategy,
 } from '@angular/core';
 
 import { PageEvent } from '@angular/material/paginator';
@@ -56,7 +55,7 @@ export class TargetsEditorComponent implements OnChanges {
     this.updateList();
   }
 
-  public ngOnChanges(_: { [propKey: string]: SimpleChange }) {
+  public ngOnChanges(_: Record<string, SimpleChange>) {
     this.updateList();
   }
 
