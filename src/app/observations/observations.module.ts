@@ -26,6 +26,7 @@ import { EyepieceModule } from '../eyepieces/eyepiece.module';
 import { LensesModule } from '../lenses/lenses.module';
 import { FilterModule } from '../filters/filters.module';
 import { ObservationConditionsComponent } from './observation-conditions';
+import { DateTimeInputComponent } from '../shared/components/date-time-input';
 
 @NgModule({
   imports: [
@@ -42,6 +43,8 @@ import { ObservationConditionsComponent } from './observation-conditions';
     EyepieceModule,
     LensesModule,
     FilterModule,
+
+    DateTimeInputComponent,
   ],
   declarations: [
     ObservationComponent,

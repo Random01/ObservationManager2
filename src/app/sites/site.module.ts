@@ -15,6 +15,7 @@ import { SitesRoutingModule } from './sites-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { SiteSelectorComponent } from './site-selector';
 import { AddSiteDialogComponent } from './add-site-dialog';
+import { DegreesInputComponent } from '../shared/components/degrees-input';
 
 @NgModule({
   imports: [
@@ -25,6 +26,8 @@ import { AddSiteDialogComponent } from './add-site-dialog';
     SitesRoutingModule,
     SharedModule,
     MaterialModule,
+
+    DegreesInputComponent,
   ],
   declarations: [
     SitesComponent,

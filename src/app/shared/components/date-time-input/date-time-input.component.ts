@@ -4,13 +4,22 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import moment from 'moment';
 
 @Component({
   selector: 'om-date-time-input',
-  templateUrl: './date-time-input.component.html',
-  styleUrls: ['./date-time-input.component.css'],
+  templateUrl: 'date-time-input.component.html',
+  styleUrl: 'date-time-input.component.css',
+  standalone: true,
+  imports: [
+    MatFormFieldModule,
+    MatDatepickerModule,
+    FormsModule,
+  ],
 })
 export class DateTimeInputComponent {
 
