@@ -24,7 +24,7 @@ export class User extends Entity {
         Object.assign(this, params);
     }
 
-    public override serialize(): Object {
+    public override serialize(): Record<string, any> {
         return Object.assign(super.serialize(), {
             firstName: this.firstName,
             lastName: this.lastName,

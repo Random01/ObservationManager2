@@ -20,7 +20,7 @@ export class StartTarget extends Target {
         Object.assign(this, params);
     }
 
-    public override serialize(): Object {
+    public override serialize(): object {
         return Object.assign(super.serialize(), this, {
             apparentMag: this.apparentMag,
             classification: this.classification,

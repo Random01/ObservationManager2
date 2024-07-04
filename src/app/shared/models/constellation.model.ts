@@ -5,7 +5,7 @@ export class Constellation extends Entity {
   public code: string;
   public name: string;
 
-  public override serialize(): Object {
+  public override serialize(): Record<string, any> {
     return Object.assign(super.serialize(), {
       code: this.code,
       name: this.name

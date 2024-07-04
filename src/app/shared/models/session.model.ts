@@ -37,7 +37,7 @@ export class Session extends Entity {
         Object.assign(this, params);
     }
 
-    public override serialize(): Object {
+    public override serialize(): Record<string, any> {
         return Object.assign(super.serialize(), {
             begin: this.serializeDate(this.begin),
             end: this.serializeDate(this.end),

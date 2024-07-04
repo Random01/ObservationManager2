@@ -2,37 +2,37 @@
 
 export class Result implements Serializable {
 
-    public type: string;
+  public type: string;
 
-    /**
-     * Language
-     */
-    public lang: string;
+  /**
+   * Language
+   */
+  public lang: string;
 
-    /**
-     * Description of the finding
-     */
-    public description: string;
+  /**
+   * Description of the finding
+   */
+  public description: string;
 
-    /**
-     * Visual Rating
-     */
-    public rating: number;
+  /**
+   * Visual Rating
+   */
+  public rating: number;
 
-    constructor(params?: Partial<Result>) {
-        Object.assign(this, params);
-    }
+  constructor(params?: Partial<Result>) {
+    Object.assign(this, params);
+  }
 
-    public serialize(): Object {
-        return {
-            type: this.type,
-            lang: this.lang,
-            description: this.description,
-            rating: this.rating,
-        };
-    }
+  public serialize(): Record<string, any> {
+    return {
+      type: this.type,
+      lang: this.lang,
+      description: this.description,
+      rating: this.rating,
+    };
+  }
 
-    public deserialize(state: any): void {
-        Object.assign(this, state);
-    }
+  public deserialize(state: any): void {
+    Object.assign(this, state);
+  }
 }

@@ -47,7 +47,7 @@ export abstract class StorageService<T extends Entity> {
       );
   }
 
-  public getById(id: String): Observable<T> {
+  public getById(id: string): Observable<T> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': this.getAuthorizationToken(),
@@ -98,7 +98,7 @@ export abstract class StorageService<T extends Entity> {
     return firstValueFrom(this.http.get<Blob>(url, httpOptions)) as unknown as Promise<Blob>;
   }
 
-  public update(entity: T): Observable<Boolean> {
+  public update(entity: T): Observable<boolean> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -113,7 +113,7 @@ export abstract class StorageService<T extends Entity> {
       );
   }
 
-  public delete(id: String): Observable<Boolean> {
+  public delete(id: string): Observable<boolean> {
     const url = `${this.getUrl()}/${id}`;
     const httpOptions = {
       headers: new HttpHeaders({
@@ -122,7 +122,7 @@ export abstract class StorageService<T extends Entity> {
       })
     };
 
-    return this.http.delete<Boolean>(url, httpOptions);
+    return this.http.delete<boolean>(url, httpOptions);
   }
 
   public deserialize(state: any): T {

@@ -7,13 +7,14 @@ import { AuthenticationService } from 'app/auth/shared';
 
 import { AuthEffects } from './auth.effects';
 import * as AuthApiActions from './auth.actions';
-import { TypedAction } from '@ngrx/store/src/models';
+import { Action } from '@ngrx/store';
+
 import { User } from 'app/shared/models/user.model';
 
 describe('AuthEffects', () => {
 
   let authEffects: AuthEffects;
-  let actions$: ReplaySubject<TypedAction<string>>;
+  let actions$: ReplaySubject<Action<string>>;
   let authService: AuthenticationService;
 
   beforeEach(() => {

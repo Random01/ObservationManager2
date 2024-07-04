@@ -8,7 +8,7 @@ export class PositionAngle implements Serializable {
         Object.assign(this, params);
     }
 
-    public serialize(): Object {
+    public serialize(): Record<string, any> {
         return { unit: this.unit };
     }
 
