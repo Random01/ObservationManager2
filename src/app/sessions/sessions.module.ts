@@ -18,6 +18,7 @@ import { SessionsRoutingModule } from './sessions-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { SessionInfoComponent } from './session-info/session-info.component';
 import { SiteModule } from '../sites/site.module';
+import { DateTimeInputComponent } from '../shared/components/date-time-input';
 
 @NgModule({
   imports: [
@@ -30,6 +31,8 @@ import { SiteModule } from '../sites/site.module';
     SharedModule,
     MaterialModule,
     SiteModule,
+
+    DateTimeInputComponent,
   ],
   declarations: [
     SessionsComponent,

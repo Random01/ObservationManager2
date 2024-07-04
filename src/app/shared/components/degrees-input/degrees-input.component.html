@@ -5,10 +5,14 @@
     <input
       matInput
       autocomplete="off"
-      [(ngModel)]="degrees.degrees"
       type="number"
-      placeholder="Degrees" />
-    <mat-hint *ngIf="title">{{ title }}</mat-hint>
+      placeholder="Degrees"
+      [(ngModel)]="degrees.degrees" />
+
+    @if (title) {
+      <mat-hint>{{ title }}</mat-hint>
+    }
+
   </mat-form-field>
 
   <mat-form-field>
@@ -16,11 +20,11 @@
     <input
       matInput
       autocomplete="off"
-      [(ngModel)]="degrees.arcminutes"
       type="number"
       min="0"
       max="59"
-      placeholder="Arcminutes" />
+      placeholder="Arcminutes"
+      [(ngModel)]="degrees.arcminutes" />
   </mat-form-field>
 
   <mat-form-field>
@@ -28,11 +32,11 @@
     <input
       matInput
       autocomplete="off"
-      [(ngModel)]="degrees.arcseconds"
       type="number"
       min="0"
       max="59"
-      placeholder="Arcseconds" />
+      placeholder="Arcseconds"
+      [(ngModel)]="degrees.arcseconds" />
   </mat-form-field>
 
 </div>
