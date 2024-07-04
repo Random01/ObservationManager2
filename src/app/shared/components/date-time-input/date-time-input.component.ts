@@ -7,6 +7,7 @@ import {
 import { FormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 import moment from 'moment';
 
@@ -17,6 +18,7 @@ import moment from 'moment';
   standalone: true,
   imports: [
     MatFormFieldModule,
+    MatInputModule,
     MatDatepickerModule,
     FormsModule,
   ],
