@@ -1,5 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AsyncPipe, NgIf } from '@angular/common';
+
+import { MatButtonModule } from '@angular/material/button';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
 
 import { BehaviorSubject } from 'rxjs';
 
@@ -9,11 +15,22 @@ import { RequestParams } from '../../shared/services/request-params.model';
 import { TargetStatistics } from '../shared/target-statistics.model';
 import { ObservingProgramStatisticsRequestParams } from '../shared/observing-program-statistics-request-params.model';
 import ObservingProgramStatistics from '../shared/observing-program-statistics.model';
+import { TargetTypeFormatterPipe } from '../../target/shared/pipes/target-type-formatter.pipe';
 
 @Component({
   selector: 'om-observing-program-statistics',
   templateUrl: 'observing-program-statistics.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    MatButtonModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatIconModule,
+    NgIf,
+    AsyncPipe,
+    TargetTypeFormatterPipe,
+  ],
 })
 export class ObservingProgramStatisticsComponent extends PaginatedListComponent<TargetStatistics> implements OnInit {
 
