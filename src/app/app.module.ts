@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
@@ -38,48 +38,58 @@ import { reducers, metaReducers } from './store';
 import { AuthEffects } from './store/auth';
 import { RegisterEffects } from './store/register';
 
-@NgModule({ declarations: [
-        AppComponent,
-        UserProfileMenuComponent,
-    ],
-    exports: [
-        MatButtonModule,
-        MatNativeDateModule,
-        MatInputModule,
-        MatDatepickerModule,
-        MatIconModule,
-        MatTableModule,
-    ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
-        FormsModule,
-        AppRoutingModule,
-        ScopesModule,
-        SessionsModule,
-        MatButtonModule,
-        MatNativeDateModule,
-        MatInputModule,
-        MatDatepickerModule,
-        TargetModule,
-        ObservationsModule,
-        SiteModule,
-        EyepieceModule,
-        FilterModule,
-        MatToolbarModule,
-        MatSidenavModule,
-        MatListModule,
-        MatTableModule,
-        UsersModule,
-        LensesModule,
-        EquipmentModule,
-        AuthModule,
-        MatIconModule,
-        MatMenuModule,
-        ObservingProgramsModule,
-        StoreModule.forRoot(reducers, {
-            metaReducers,
-        }),
-        EffectsModule.forRoot([
-            AuthEffects,
-            RegisterEffects,
-        ])], providers: [provideHttpClient(withInterceptorsFromDi())] })
+@NgModule({
+  declarations: [
+    AppComponent,
+    UserProfileMenuComponent,
+  ],
+  exports: [
+    MatButtonModule,
+    MatNativeDateModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatIconModule,
+    MatTableModule,
+  ],
+  bootstrap: [AppComponent],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    ScopesModule,
+    SessionsModule,
+    MatButtonModule,
+    MatNativeDateModule,
+    MatInputModule,
+    MatDatepickerModule,
+    TargetModule,
+    ObservationsModule,
+    SiteModule,
+    EyepieceModule,
+    FilterModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatTableModule,
+    UsersModule,
+    LensesModule,
+    EquipmentModule,
+    AuthModule,
+    MatIconModule,
+    MatMenuModule,
+    ObservingProgramsModule,
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+    }),
+    EffectsModule.forRoot([
+      AuthEffects,
+      RegisterEffects,
+    ])],
+  providers: [
+    provideHttpClient(
+      withInterceptorsFromDi(),
+      withFetch()
+    ),
+  ]
+})
 export class AppModule { }
