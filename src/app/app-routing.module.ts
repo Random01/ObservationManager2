@@ -12,8 +12,14 @@ const routes: Routes = [
     component: EquipmentComponent,
   },
   {
+    path: 'observing-programs',
+    loadChildren: () => import('./observing-programs/observing-programs.module')
+      .then(m => m.ObservingProgramsModule),
+  },
+  {
     path: 'admin',
-    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
+    loadChildren: () => import('./admin/admin.module')
+      .then(m => m.AdminModule),
     canActivate: [AdminGuard],
   }
 ];

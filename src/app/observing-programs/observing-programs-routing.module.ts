@@ -10,22 +10,22 @@ import { AuthGuard } from '../auth/shared/auth.guard';
 
 const routes: Routes = [
   {
-    path: 'observing-programs/new-observing-program',
-    component: AddObservingProgramComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'observing-programs/:programId',
-    component: EditObservingProgramComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'observing-programs',
+    path: '',
     component: ObservingProgramsComponent,
     canActivate: [AuthGuard],
   },
   {
-    path: 'observing-programs/statistics/:programId',
+    path: 'new-observing-program',
+    component: AddObservingProgramComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: ':programId',
+    component: EditObservingProgramComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'statistics/:programId',
     component: ObservingProgramStatisticsComponent,
     canActivate: [AuthGuard],
   }
