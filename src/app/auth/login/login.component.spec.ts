@@ -4,7 +4,6 @@ import { TestBed } from '@angular/core/testing';
 import { provideMockStore } from '@ngrx/store/testing';
 
 import { LoginComponent } from './login.component';
-import { AppContextService } from '../../shared/services/app-context.service';
 
 describe('LoginComponent', () => {
 
@@ -14,7 +13,6 @@ describe('LoginComponent', () => {
       schemas: [NO_ERRORS_SCHEMA],
       providers: [
         provideMockStore(),
-        { provide: AppContextService, useValue: {} },
       ],
     }).compileComponents();
   });
