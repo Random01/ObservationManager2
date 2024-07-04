@@ -7,14 +7,26 @@ import {
   SimpleChange,
 } from '@angular/core';
 
-import { PageEvent } from '@angular/material/paginator';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 import { Target } from '../../shared/models/models';
+import { TargetModule } from '../../target/target.module';
 
 @Component({
   selector: 'om-targets-editor',
   templateUrl: 'targets-editor.component.html',
   styleUrls: ['targets-editor.component.less'],
+  standalone: true,
+  imports: [
+    MatPaginatorModule,
+    MatTableModule,
+    MatIconModule,
+    MatButtonModule,
+    TargetModule,
+  ],
 })
 export class TargetsEditorComponent implements OnChanges {
 

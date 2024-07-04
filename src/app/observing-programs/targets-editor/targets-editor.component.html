@@ -60,14 +60,15 @@
       </om-target-selector>
     </div>
 
-    <button
-      *ngIf="newTarget!=null"
-      mat-button
-      color="primary"
-      (click)="addNewTarget()"
-    >
-      Add Object
-    </button>
+    @if(newTarget != null) {
+      <button
+        mat-button
+        color="primary"
+        (click)="addNewTarget()"
+      >
+        Add Object
+      </button>
+    }
 
   </div>
 

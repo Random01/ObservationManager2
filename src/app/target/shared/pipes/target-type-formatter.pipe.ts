@@ -3,7 +3,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { TargetType } from '../../../shared/models/target-type.model';
 import { TargetTypeService } from '../target-type.service';
 
-@Pipe({ name: 'targetTypeFormatter' })
+@Pipe({
+  name: 'targetTypeFormatter',
+  pure: true,
+  standalone: true,
+})
 export class TargetTypeFormatterPipe implements PipeTransform {
 
   constructor(

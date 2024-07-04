@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { TargetSelectorComponent } from './target-selector/target-selector.component';
@@ -16,17 +15,10 @@ import { DeclinationSelectorComponent } from './declination-selector/declination
 import { RightAscensionSelectorComponent } from './right-ascension-selector/right-ascension-selector.component';
 import { AliasesEditorComponent } from './aliases-editor/aliases-editor.component';
 import { TargetSearchParamsComponent } from './target-search-params/target-search-params.component';
-import { TargetTypeFormatterPipe } from './shared/pipes/target-type-formatter.pipe';
 import { AddTargetDialogComponent } from './target-selector/add-target-dialog';
+import { TargetTypeFormatterPipe } from "./shared/pipes/target-type-formatter.pipe";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    TargetsRoutingModule,
-    MaterialModule,
-  ],
   declarations: [
     TargetSelectorComponent,
     AddTargetComponent,
@@ -39,11 +31,17 @@ import { AddTargetDialogComponent } from './target-selector/add-target-dialog';
     RightAscensionSelectorComponent,
     AliasesEditorComponent,
     TargetSearchParamsComponent,
-    TargetTypeFormatterPipe,
     AddTargetDialogComponent,
   ],
   exports: [
     TargetSelectorComponent,
+  ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TargetsRoutingModule,
+    MaterialModule,
     TargetTypeFormatterPipe,
   ],
 })
