@@ -22,7 +22,6 @@ import { AddTargetDialogComponent } from './target-selector/add-target-dialog';
 @NgModule({
   imports: [
     CommonModule,
-    BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     TargetsRoutingModule,

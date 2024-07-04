@@ -32,7 +32,6 @@ import { UsersModule } from './users/users.module';
 import { LensesModule } from './lenses/lenses.module';
 import { AuthModule } from './auth/auth.module';
 import { UserProfileMenuComponent } from './main/userProfileMenu/user-profile-menu.component';
-import { ObservingProgramsModule } from './observing-programs/observing-programs.module';
 
 import { reducers, metaReducers } from './store';
 import { AuthEffects } from './store/auth';
@@ -77,7 +76,6 @@ import { RegisterEffects } from './store/register';
     AuthModule,
     MatIconModule,
     MatMenuModule,
-    ObservingProgramsModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
     }),

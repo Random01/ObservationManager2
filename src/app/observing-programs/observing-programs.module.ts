@@ -19,9 +19,7 @@ import { ObservingProgramStatisticsComponent } from './observing-program-statist
 @NgModule({
   imports: [
     CommonModule,
-    BrowserModule,
     FormsModule,
-    RouterModule,
     MaterialModule,
     ObservingProgramsRoutingModule,
     TargetModule,
@@ -35,5 +33,4 @@ import { ObservingProgramStatisticsComponent } from './observing-program-statist
     ObservingProgramStatisticsComponent,
   ],
 })
-
 export class ObservingProgramsModule { }
