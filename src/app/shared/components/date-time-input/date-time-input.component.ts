@@ -5,7 +5,7 @@ import {
   EventEmitter
 } from '@angular/core';
 
-import * as moment from 'moment';
+import moment from 'moment';
 
 @Component({
   selector: 'om-date-time-input',

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
@@ -39,6 +39,19 @@ import { AuthEffects } from './store/auth';
 import { RegisterEffects } from './store/register';
 
 @NgModule({
+  declarations: [
+    AppComponent,
+    UserProfileMenuComponent,
+  ],
+  exports: [
+    MatButtonModule,
+    MatNativeDateModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatIconModule,
+    MatTableModule,
+  ],
+  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -54,7 +67,6 @@ import { RegisterEffects } from './store/register';
     SiteModule,
     EyepieceModule,
     FilterModule,
-    HttpClientModule,
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
@@ -72,20 +84,12 @@ import { RegisterEffects } from './store/register';
     EffectsModule.forRoot([
       AuthEffects,
       RegisterEffects,
-    ]),
-  ],
-  declarations: [
-    AppComponent,
-    UserProfileMenuComponent,
-  ],
-  exports: [
-    MatButtonModule,
-    MatNativeDateModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatIconModule,
-    MatTableModule,
-  ],
-  bootstrap: [AppComponent],
+    ])],
+  providers: [
+    provideHttpClient(
+      withInterceptorsFromDi(),
+      withFetch()
+    ),
+  ]
 })
 export class AppModule { }
