@@ -1,18 +1,17 @@
 <div class="om-constellation-selector">
+  <mat-form-field>
+    <mat-select
+      placeholder="Constellation"
+      (selectionChange)="onConstellationChange($event.value)"
+    >
+      <mat-option>None</mat-option>
+      <mat-option
+        *ngFor="let constellation of filteredConstellations | async"
+        [value]="constellation"
+      >
+        {{constellation.name}} ({{constellation.code}})
+      </mat-option>
+    </mat-select>
 
-    <mat-form-field>
-
-        <mat-select
-            placeholder="Constellation"
-            (selectionChange)="onConstellationChange($event.value)">
-            <mat-option>None</mat-option>
-            <mat-option
-                *ngFor="let constellation of filteredConstellations | async"
-                [value]="constellation"
-            >
-                {{constellation.name}} ({{constellation.code}})
-            </mat-option>
-        </mat-select>
-
-    </mat-form-field>
+  </mat-form-field>
 </div>

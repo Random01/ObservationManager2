@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { NgIf, AsyncPipe } from '@angular/common';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -24,8 +23,6 @@ import { ObservingProgramComponent } from '../observing-program';
 export class EditObservingProgramComponent extends EditEntityComponent<ObservingProgram> {
 
   constructor(
-    private readonly route: ActivatedRoute,
-    private readonly router: Router,
     service: ObservingProgramsService,
   ) {
     super(service);
@@ -33,10 +30,6 @@ export class EditObservingProgramComponent extends EditEntityComponent<Observing
 
   public getItemId(): string {
     return this.route.snapshot.paramMap.get('programId');
-  }
-
-  public goBack() {
-    this.router.navigate(['/observing-programs']);
   }
 
 }

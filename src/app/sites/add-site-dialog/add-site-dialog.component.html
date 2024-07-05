@@ -5,9 +5,9 @@
   class="om-add-site"
   *ngIf="{ item: item$ | async } as data"
 >
-  <div *ngIf="data.item">
+  @if (data.item) {
     <om-site [site]="data.item"></om-site>
-  </div>
+  }
 </div>
 
 <div mat-dialog-actions align="end">

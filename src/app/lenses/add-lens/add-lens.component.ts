@@ -1,25 +1,31 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { AsyncPipe, NgIf } from '@angular/common';
 
-import { Router } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 import { LensService } from '../shared/lens.service';
 import { AddEntityComponent } from '../../shared/components/add-entity.component';
 import { Lens } from '../../shared/models/equipment/equipment';
+import { LensComponent } from '../lens';
 
 @Component({
   selector: 'om-add-lens',
   templateUrl: 'add-lens.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    MatButtonModule,
+    NgIf,
+    AsyncPipe,
+    LensComponent,
+  ],
 })
 export class AddLensComponent extends AddEntityComponent<Lens> {
 
   constructor(
-    private readonly router: Router,
     lensService: LensService,
   ) {
     super(lensService);
   }
 
-  public goBack() {
-    this.router.navigate(['/lenses']);
-  }
 }

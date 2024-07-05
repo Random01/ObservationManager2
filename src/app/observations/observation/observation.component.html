@@ -1,10 +1,11 @@
 ﻿﻿<div class="om-observation">
 
   <!-- Session Info -->
-  <om-session-info
-    [session]="observation.session"
-    *ngIf="observation.session">
-  </om-session-info>
+  @if (observation.session) {
+    <om-session-info
+      [session]="observation.session">
+    </om-session-info>
+  }
 
   <!-- Target -->
   <div class="om-target">
@@ -20,11 +21,11 @@
     <!-- Start of observation (Time) -->
     <om-date-time-input
       class="item"
-      [(dateTime)]="observation.begin"
       datePlaceholder="Start Date"
       timePlaceholder="Time"
       dateHint="Date of observation"
-      timeHint="Time of observation">
+      timeHint="Time of observation"
+      [(dateTime)]="observation.begin">
     </om-date-time-input>
 
     <!-- End Date -->
@@ -32,28 +33,28 @@
     <!-- End of observation session -->
     <om-date-time-input
       class="item"
-      [(dateTime)]="observation.end"
       datePlaceholder="End date"
       timePlaceholder="Time"
       dateHint="Date of observation session"
-      timeHint="Time of observation">
+      timeHint="Time of observation"
+      [(dateTime)]="observation.end">
     </om-date-time-input>
 
   </div>
 
   <!-- Result -->
-  <mat-form-field
-    *ngIf="observation.result"
-  >
-    <mat-label>Notes</mat-label>
-    <textarea
-      matInput
-      placeholder="Notes"
-      matTextareaAutosize
-      matAutosizeMinRows="5"
-      [(ngModel)]="observation.result.description">
-    </textarea>
-  </mat-form-field>
+  @if (observation.result) {
+    <mat-form-field>
+      <mat-label>Notes</mat-label>
+      <textarea
+        matInput
+        placeholder="Notes"
+        matTextareaAutosize
+        matAutosizeMinRows="5"
+        [(ngModel)]="observation.result.description">
+      </textarea>
+    </mat-form-field>
+  }
     
   <h3 class="mat-subtitle-1">Equipment</h3>
 

@@ -8,20 +8,20 @@ import { AuthGuard } from '../auth/shared/auth.guard';
 
 const routes: Routes = [
   {
-    path: 'filters/new-filter',
+    path: '',
+    component: FiltersComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'new-filter',
     component: AddFilterComponent,
     canActivate: [AuthGuard],
   },
   {
-    path: 'filters/:filterId',
+    path: ':filterId',
     component: EditFilterComponent,
     canActivate: [AuthGuard],
   },
-  {
-    path: 'filters',
-    component: FiltersComponent,
-    canActivate: [AuthGuard],
-  }
 ];
 
 @NgModule({

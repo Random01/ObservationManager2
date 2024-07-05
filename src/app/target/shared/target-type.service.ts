@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 
+import { Observable, of } from 'rxjs';
+
 import { TargetType } from '../../shared/models/target-type.model';
 import { TargetTypeItem } from './interfaces/target-search-params.interface';
 
@@ -44,8 +46,8 @@ export class TargetTypeService {
     ];
   }
 
-  public getAllTargetTypes(): Promise<TargetTypeItem[]> {
-    return Promise.resolve(
+  public getAllTargetTypes(): Observable<TargetTypeItem[]> {
+    return of(
       this.getAllTypes()
         .map(type => ({ type: type, name: this.types[type] })));
   }

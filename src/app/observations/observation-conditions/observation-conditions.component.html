@@ -8,7 +8,8 @@
     <mat-option>None</mat-option>
     <mat-option
       *ngFor="let seeingItem of seeingTypes$ | async; let i = index"
-      [value]="seeingItem.seeing">
+      [value]="seeingItem.seeing"
+    >
       ({{i + 1}}) {{ seeingItem.name }}
     </mat-option>
   </mat-select>

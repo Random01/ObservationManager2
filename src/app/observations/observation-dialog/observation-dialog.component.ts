@@ -7,6 +7,7 @@ import { Observation } from '../../shared/models/observation.model';
 @Component({
   selector: 'om-observation-dialog',
   templateUrl: 'observation-dialog.component.html',
+  standalone: true,
 })
 export class ObservationDialogComponent {
 

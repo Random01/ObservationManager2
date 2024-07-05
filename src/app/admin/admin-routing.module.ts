@@ -5,7 +5,7 @@ import { VendorsComponent } from './vendors';
 import { AdminComponent } from './admin.component';
 import { FilterTypesComponent } from './filter-types';
 import { ConstellationsComponent } from './constellations';
-import { AdminGuard } from 'app/auth/shared';
+import { AdminGuard } from '../auth/shared';
 
 const routes: Routes = [
   {

@@ -1,25 +1,31 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { AsyncPipe, NgIf } from '@angular/common';
+
+import { MatButtonModule } from '@angular/material/button';
 
 import { AddEntityComponent } from '../../shared/components/add-entity.component';
 import { Site } from '../../shared/models/models';
 import { SiteService } from '../shared/site.service';
+import { SiteComponent } from '../site';
 
 @Component({
   selector: 'om-add-site',
   templateUrl: 'add-site.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    MatButtonModule,
+    SiteComponent,
+    NgIf,
+    AsyncPipe,
+  ],
 })
 export class AddSiteComponent extends AddEntityComponent<Site> {
 
   constructor(
-    private readonly router: Router,
     service: SiteService,
   ) {
     super(service);
   }
 
-  public goBack() {
-    this.router.navigate(['/sites']);
-  }
 }

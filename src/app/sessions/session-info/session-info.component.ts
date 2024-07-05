@@ -1,14 +1,25 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-
+import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
+
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 import { Session } from '../../shared/models/models';
 
 @Component({
   selector: 'om-session-info',
-  templateUrl: './session-info.component.html',
-  styleUrls: ['./session-info.component.less'],
+  templateUrl: 'session-info.component.html',
+  styleUrl: 'session-info.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    DatePipe,
+  ],
 })
 export class SessionInfoComponent {
   @Input() session?: Session;
@@ -18,6 +29,7 @@ export class SessionInfoComponent {
   ) { }
 
   public goToSession(): void {
+    // todo:
     this.router.navigate([`/sessions/${this.session.id}`]);
   }
 }

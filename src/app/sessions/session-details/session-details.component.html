@@ -1,23 +1,34 @@
 <div>
-  <div *ngIf="session">
+  @if (session) {
     <om-session [session]="session"></om-session>
-  </div>
+  }
+
   <hr/>
   <div>
-    <button
-      mat-button
-      *ngIf="!editMode"
-      (click)="create()">Create</button>
 
-    <button
-      mat-button
-      *ngIf="editMode"
-      (click)="update()">Update</button>
+    @if (!editMode) {
+      <button
+        mat-button
+        (click)="create()"
+      >
+        Create
+      </button>
+    }
 
-    <button
-      mat-button
-      *ngIf="editMode"
-      (click)="addNewObservation()">Add New Observation</button> 
+    @if (editMode) {
+      <button
+        mat-button
+        (click)="update()">Update</button>
+    }
+
+    @if (editMode) {
+      <button
+        mat-button
+        (click)="addNewObservation()"
+      >
+        Add New Observation
+      </button>
+    }
 
     <button
       mat-button

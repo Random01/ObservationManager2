@@ -6,9 +6,9 @@
   *ngIf="{ item: item$ | async } as data"
 >
 
-  <div *ngIf="data.item">
+  @if (data.item) {
     <om-scope [scope]="data.item"></om-scope>
-  </div>
+  }
   
 </div>
 

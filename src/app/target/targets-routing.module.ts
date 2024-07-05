@@ -8,17 +8,17 @@ import { AuthGuard } from '../auth/shared/auth.guard';
 
 const targetsRoutes: Routes = [
   {
-    path: 'objects',
+    path: '',
     component: TargetsComponent,
     canActivate: [AuthGuard],
   },
   {
-    path: 'objects/new-object',
+    path: 'new-object',
     component: AddTargetComponent,
     canActivate: [AuthGuard],
   },
   {
-    path: 'objects/:id',
+    path: ':id',
     component: EditTargetComponent,
     canActivate: [AuthGuard],
   },

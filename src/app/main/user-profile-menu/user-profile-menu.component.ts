@@ -1,16 +1,30 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { AsyncPipe, NgIf } from '@angular/common';
 
 import { Store } from '@ngrx/store';
 
+import { MatButtonModule } from '@angular/material/button';
+
 import { selectAuthState } from '../../store/auth';
 import * as AuthApiActions from '../../store/auth/auth.actions';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'om-user-profile-menu',
-  templateUrl: './user-profile-menu.component.html',
-  styleUrls: ['./user-profile-menu.component.css'],
+  templateUrl: 'user-profile-menu.component.html',
+  styleUrl: 'user-profile-menu.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    MatButtonModule,
+    MatMenuModule,
+    MatIconModule,
+    RouterLink,
+    NgIf,
+    AsyncPipe,
+  ],
 })
 export class UserProfileMenuComponent {
 

@@ -1,5 +1,11 @@
-import { FormControl } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
+
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { Subject, Observable } from 'rxjs';
 import {
@@ -11,6 +17,7 @@ import {
 import { TargetService } from '../shared/target.service';
 import { Target } from '../../shared/models/models';
 import { AddTargetDialogService } from './add-target-dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 function isTarget(item: string | Target): item is Target {
   return item instanceof Target;
@@ -19,7 +26,19 @@ function isTarget(item: string | Target): item is Target {
 @Component({
   selector: 'om-target-selector',
   templateUrl: 'target-selector.component.html',
-  styleUrls: ['target-selector.component.css'],
+  styleUrl: 'target-selector.component.less',
+  standalone: true,
+  imports: [
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    NgIf,
+    NgForOf,
+    AsyncPipe,
+  ],
 })
 export class TargetSelectorComponent implements OnInit {
 

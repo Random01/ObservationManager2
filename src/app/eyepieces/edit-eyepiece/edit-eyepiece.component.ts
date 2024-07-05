@@ -1,21 +1,28 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { NgIf, AsyncPipe } from '@angular/common';
 
-import { ActivatedRoute, Router } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 import { EditEntityComponent } from '../../shared/components/edit-entity.component';
-
 import { Eyepiece } from '../../shared/models/equipment/equipment';
 import { EyepieceService } from '../shared/eyepiece.service';
+import { EyepieceComponent } from '../eyepiece';
 
 @Component({
   selector: 'om-edit-eyepiece',
   templateUrl: 'edit-eyepiece.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    MatButtonModule,
+    NgIf,
+    AsyncPipe,
+    EyepieceComponent,
+  ],
 })
 export class EditEyepieceComponent extends EditEntityComponent<Eyepiece> {
 
   constructor(
-    private readonly route: ActivatedRoute,
-    private readonly router: Router,
     eyepiece: EyepieceService,
   ) {
     super(eyepiece);
@@ -23,10 +30,6 @@ export class EditEyepieceComponent extends EditEntityComponent<Eyepiece> {
 
   public getItemId(): string {
     return this.route.snapshot.paramMap.get('id');
-  }
-
-  public goBack() {
-    this.router.navigate(['/eyepieces']);
   }
 
 }

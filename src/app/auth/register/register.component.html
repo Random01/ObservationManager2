@@ -7,54 +7,48 @@
      } as data"
 >
 
-    <div>
-        <h2 class="mat-h2">Register</h2>
-    </div>
+  <div>
+    <h2 class="mat-h2">Register</h2>
+  </div>
 
-    <div class="register-profile">
-        <mat-form-field>
+  <div class="register-profile">
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Username"
+        formControlName="userName"/>
+    </mat-form-field>
 
-            <input
-                matInput
-                placeholder="Username"
-                formControlName="userName"/>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="E-mail"
+        formControlName="email"/>
+    </mat-form-field>
 
-        </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Password"
+        formControlName="password"
+        autocomplete="new-password"
+        type="password"/>
+    </mat-form-field>
+  </div>
 
-        <mat-form-field>
+  <div class="form-buttons">
+    <button 
+      mat-button
+      type="submit"
+      color="primary"
+      [disabled]="!profileForm.valid || data.isLoading"
+    >
+      Register
+    </button>
 
-            <input
-                matInput
-                placeholder="E-mail"
-                formControlName="email"/>
-
-        </mat-form-field>
-
-        <mat-form-field>
-
-            <input
-                matInput
-                placeholder="Password"
-                formControlName="password"
-                autocomplete="new-password"
-                type="password"/>
-
-        </mat-form-field>
-    </div>
-
-    <div class="form-buttons">
-        <button 
-            mat-button
-            type="submit"
-            color="primary"
-            [disabled]="!profileForm.valid || data.isLoading"
-        >
-            Register
-        </button>
-
-        <button
-            mat-button
-            (click)=goBack()>Back</button>
-    </div>
+    <button
+      mat-button
+      (click)=goBack()>Back</button>
+  </div>
 
 </form>

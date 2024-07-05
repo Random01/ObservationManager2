@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
 import { Vendor } from '../../shared/models/equipment/vendor.model';
+import { PaginatedItems } from '../../../../api/routers/common';
 
 @Injectable({ providedIn: 'root' })
 export class VendorService {
@@ -13,7 +14,7 @@ export class VendorService {
     private readonly http: HttpClient,
   ) { }
 
-  public getAllSuggestions(): Observable<Vendor[]> {
+  public getAllSuggestions(): Observable<PaginatedItems<Vendor>> {
     return this.getItems();
   }
 
@@ -21,8 +22,8 @@ export class VendorService {
     return environment.omServiceEndpoint + '/vendors';
   }
 
-  private getItems(): Observable<Vendor[]> {
-    return this.http.get<Vendor[]>(this.getUrl());
+  private getItems(): Observable<PaginatedItems<Vendor>> {
+    return this.http.get<PaginatedItems<Vendor>>(this.getUrl());
   }
 
 }

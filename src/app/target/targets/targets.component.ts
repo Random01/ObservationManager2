@@ -1,7 +1,14 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { AsyncPipe, NgIf } from '@angular/common';
 
 import { BehaviorSubject } from 'rxjs';
+
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { Target } from '../../shared/models/target.model';
 import { TargetService } from '../shared/target.service';
@@ -10,12 +17,27 @@ import { DeleteEntityDialogService } from '../../shared/components/delete-entity
 import { TargetSearchParams } from '../target-search-params/target-search-params.model';
 import { RequestParams } from '../../shared/services/request-params.model';
 import { AuthenticationService } from '../../auth/shared';
+import { TargetSearchParamsComponent } from "../target-search-params/target-search-params.component";
+import { TargetTypeFormatterPipe } from "../shared/pipes/target-type-formatter.pipe";
 
 @Component({
   selector: 'om-targets',
   templateUrl: 'targets.component.html',
-  styleUrls: ['targets.component.less'],
+  styleUrl: 'targets.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    MatPaginatorModule,
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    MatExpansionModule,
+    NgIf,
+    AsyncPipe,
+    RouterLink,
+    TargetSearchParamsComponent,
+    TargetTypeFormatterPipe,
+  ],
 })
 export class TargetsComponent extends EntityListComponent<Target> {
 

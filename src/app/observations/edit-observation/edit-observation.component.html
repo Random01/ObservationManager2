@@ -6,10 +6,10 @@
   <div class="header">
     <h2 class="mat-h2">Update Observation</h2>
   </div>
-    
-  <div *ngIf="data.item">
+
+  @if (data.item) {
     <om-observation [observation]="data.item"></om-observation>
-  </div>
+  }
 
   <hr/>
 
@@ -18,12 +18,18 @@
       mat-button
       color="primary"
       [disabled]="!isValid()"
-      (click)="updateItem()">Update</button>
+      (click)="updateItem()"
+    >
+      Update
+    </button>
 
     <button
-        mat-button
-        [disabled]="!isValid()"
-        (click)="goBack()">Back</button>
+      mat-button
+      [disabled]="!isValid()"
+      (click)="goBack()"
+    >
+      Back
+    </button>
   </div>
 
 </div>

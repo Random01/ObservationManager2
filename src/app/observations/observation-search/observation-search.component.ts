@@ -15,10 +15,23 @@ import { FilterService } from '../../filters/shared/filter.service';
 import { LensService } from '../../lenses/shared/lens.service';
 import { SiteService } from '../../sites/shared/site.service';
 import { Site } from '../../shared/models/models';
+import { TargetSelectorComponent } from "../../target/target-selector/target-selector.component";
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
+import { NgForOf } from '@angular/common';
 
 @Component({
   selector: 'om-observation-search',
   templateUrl: 'observation-search.component.html',
+  standalone: true,
+  imports: [
+    MatFormFieldModule,
+    MatSelectModule,
+    FormsModule,
+    NgForOf,
+    TargetSelectorComponent,
+  ],
 })
 export class ObservationSearchComponent implements OnInit {
 

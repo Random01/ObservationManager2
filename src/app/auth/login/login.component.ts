@@ -1,19 +1,33 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { Validators, FormGroup, FormControl } from '@angular/forms';
+import { Validators, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { AsyncPipe, NgIf } from '@angular/common';
+
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 import { Store } from '@ngrx/store';
 
 import { map } from 'rxjs/operators';
 
-import * as AuthApiActions from 'app/store/auth/auth.actions';
-import { selectAuthState } from 'app/store/auth';
-import { BaseComponent } from 'app/shared/components';
+import * as AuthApiActions from '../../store/auth/auth.actions';
+import { selectAuthState } from '../../store/auth';
+import { BaseComponent } from '../../shared/components';
 
 @Component({
   selector: 'om-login',
   templateUrl: 'login.component.html',
-  styleUrls: ['login.component.less'],
+  styleUrl: 'login.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    NgIf,
+    AsyncPipe,
+  ],
 })
 export class LoginComponent extends BaseComponent {
 

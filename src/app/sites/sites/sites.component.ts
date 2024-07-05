@@ -1,16 +1,37 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { AsyncPipe, DecimalPipe, NgIf } from '@angular/common';
+
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatIconModule } from '@angular/material/icon';
 
 import { Site } from '../../shared/models/site.model';
 import { SiteService } from '../shared/site.service';
 import { EntityListComponent } from '../../shared/components/entity-list.component';
 import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
+import { DegreesFormatterPipe } from '../../shared/models/pipes';
 
 @Component({
   selector: 'om-sites',
   templateUrl: 'sites.component.html',
   styleUrls: ['sites.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    MatPaginatorModule,
+    MatTableModule,
+    MatButtonModule,
+    MatTooltipModule,
+    MatIconModule,
+    RouterLink,
+    NgIf,
+    AsyncPipe,
+    DecimalPipe,
+    DegreesFormatterPipe,
+  ],
 })
 export class SitesComponent extends EntityListComponent<Site> {
 

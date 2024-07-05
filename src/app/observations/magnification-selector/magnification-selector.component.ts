@@ -1,4 +1,10 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSliderModule } from '@angular/material/slider';
+import { FormsModule } from '@angular/forms';
+
 import {
   Eyepiece,
   Scope,
@@ -7,8 +13,16 @@ import {
 
 @Component({
   selector: 'om-magnification-selector',
-  templateUrl: './magnification-selector.component.html',
-  styleUrls: ['./magnification-selector.component.css'],
+  templateUrl: 'magnification-selector.component.html',
+  styleUrl: 'magnification-selector.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    MatFormFieldModule,
+    MatInputModule,
+    MatSliderModule,
+    FormsModule,
+  ],
 })
 export class MagnificationSelectorComponent {
 

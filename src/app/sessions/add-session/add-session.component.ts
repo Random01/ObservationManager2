@@ -1,28 +1,33 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { AsyncPipe, NgIf } from '@angular/common';
+
+import { MatButtonModule } from '@angular/material/button';
 
 import { firstValueFrom } from 'rxjs';
 
 import { SessionService } from '../shared/session.service';
 import { Session } from '../../shared/models/models';
 import { AddEntityComponent } from '../../shared/components/add-entity.component';
+import { SessionComponent } from "../session/session.component";
 
 @Component({
   selector: 'om-add-session',
   templateUrl: 'add-session.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    MatButtonModule,
+    NgIf,
+    AsyncPipe,
+    SessionComponent,
+  ],
 })
 export class AddSessionComponent extends AddEntityComponent<Session> {
 
   constructor(
-    private readonly router: Router,
     service: SessionService,
   ) {
     super(service);
-  }
-
-  public goBack() {
-    this.router.navigate(['/sessions']);
   }
 
   public async addAndGo() {

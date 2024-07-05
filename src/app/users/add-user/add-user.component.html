@@ -6,9 +6,9 @@
     <h2 class="mat-h2">Add New User</h2>
   </div>
 
-  <div *ngIf="data.item">
+  @if (data.item) {
     <om-user [user]="data.item"></om-user>
-  </div>
+  }
 
   <div>
     <button 

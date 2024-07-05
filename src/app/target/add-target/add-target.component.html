@@ -1,4 +1,5 @@
-<div class="om-add-target"
+<div
+  class="om-add-target"
   *ngIf="{ item: item$ | async } as data"
 >
 
@@ -6,9 +7,9 @@
     <h2>Add New Object</h2>
   </div>
 
-  <div *ngIf="data.item">
+  @if(data.item) {
     <om-target [target]="data.item"></om-target>
-  </div>
+  }
 
   <hr/>
 

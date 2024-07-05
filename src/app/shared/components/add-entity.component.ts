@@ -52,8 +52,6 @@ export abstract class AddEntityComponent<T extends Entity> extends BaseEntityCom
     return Promise.resolve(new this.storageService.createNew(params));
   }
 
-  public abstract goBack(): void;
-
   public isValid(): boolean {
     const item = this.itemSubject.getValue();
     return !!item?.isValid();

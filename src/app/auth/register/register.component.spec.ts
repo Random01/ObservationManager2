@@ -1,22 +1,22 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
 
-import { Store } from '@ngrx/store';
-import { of } from 'rxjs';
+
+import { provideMockStore } from '@ngrx/store/testing';
 
 import { RegisterComponent } from './register.component';
+
 
 describe('RegisterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [RegisterComponent],
+      imports: [RegisterComponent],
       schemas: [NO_ERRORS_SCHEMA],
       providers: [
-        {
-          provide: Store,
-          useValue: { select: () => of() },
-        },
+        provideMockStore(),
+        provideNoopAnimations(),
       ],
     }).compileComponents();
   });

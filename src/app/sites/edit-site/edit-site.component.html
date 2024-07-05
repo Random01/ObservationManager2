@@ -5,10 +5,10 @@
   <div>
     <h2 class="mat-h2">Edit Site</h2>
   </div>
-            
-  <div *ngIf="data.item">
+
+  @if (data.item) {
     <om-site [site]="data.item"></om-site>
-  </div>
+  }
 
   <hr/>
 

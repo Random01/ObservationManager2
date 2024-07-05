@@ -9,11 +9,11 @@
     <h2 class="mat-h2">Observations</h2>
   </div>
 
-  <!-- Session Info -->
-  <om-session-info
-    *ngIf="data.session"
-    [session]="data.session">
-  </om-session-info>
+  @if (data.session) {
+    <!-- Session Info -->
+    <om-session-info [session]="data.session">
+    </om-session-info>
+  }
 
   <mat-paginator
     showFirstLastButtons="true"
@@ -66,11 +66,10 @@
         <button
           mat-icon-button
           matTooltip="Edit Observation"
-          routerLink="/sessions/{{getSessionId()}}/observations/{{observation.id}}"
+          [routerLink]="['/observations', observation.id]"
+          [queryParams]="{ returnUrl: this.router.url }"
         >
-          <mat-icon
-            aria-label="Click to edit"
-          >
+          <mat-icon aria-label="Click to edit">
             edit
           </mat-icon>
         </button>
@@ -81,7 +80,7 @@
           (click)="remove(observation)"
         >
           <mat-icon
-            aria-label="Click to delete"
+            aria-label="Click to delete Observation"
           >
             delete
           </mat-icon>

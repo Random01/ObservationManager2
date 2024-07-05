@@ -5,28 +5,31 @@
     <!-- Start of an observation session (Time) -->
     <!-- Start of observation session -->
     <om-date-time-input
-      [(dateTime)]="session.begin"
       datePlaceholder="Start date"
       timePlaceholder="Time"
       dateHint="Start of observation session"
-      timeHint="Time">
+      timeHint="Time"
+      [(dateTime)]="session.begin">
     </om-date-time-input>
 
     <!-- End Date -->
     <!-- End of an observation session (Date) -->
     <!-- End of observation session -->
     <om-date-time-input
-      [(dateTime)]="session.end"
       datePlaceholder="End date"
       timePlaceholder="Time"
       dateHint="End of observation session"
-      timeHint="Time">
+      timeHint="Time"
+      [(dateTime)]="session.end">
     </om-date-time-input>
 
   </div>
         
   <!-- site where session took place -->
-  <om-site-selector [(item)]="session.site"></om-site-selector>
+  <om-site-selector 
+    [(item)]="session.site"
+  >
+  </om-site-selector>
 
   <!-- Comments about the weather situation -->
   <mat-form-field class="weather-input">

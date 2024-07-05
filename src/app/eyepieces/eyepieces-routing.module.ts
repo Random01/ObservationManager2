@@ -9,17 +9,17 @@ import { AuthGuard } from '../auth/shared/auth.guard';
 
 const routes: Routes = [
   {
-    path: 'eyepieces',
+    path: '',
     component: EyepiecesComponent,
     canActivate: [AuthGuard],
   },
   {
-    path: 'eyepieces/new-eyepiece',
+    path: 'new-eyepiece',
     component: AddEyepieceComponent,
     canActivate: [AuthGuard],
   },
   {
-    path: 'eyepieces/:id',
+    path: ':id',
     component: EditEyepieceComponent,
     canActivate: [AuthGuard],
   },

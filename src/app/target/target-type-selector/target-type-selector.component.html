@@ -8,7 +8,7 @@
     >
       <mat-option>None</mat-option>
       <mat-option
-        *ngFor="let targetType of targetTypes"
+        *ngFor="let targetType of targetTypes$ | async"
         [value]="targetType.type"
       >
         {{ targetType.name }}

@@ -20,27 +20,19 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppComponent } from './app.component';
 
 import { AppRoutingModule } from './app-routing.module';
-import { ScopesModule } from './scopes/scopes.module';
-import { SessionsModule } from './sessions/sessions.module';
-import { TargetModule } from './target/target.module';
-import { ObservationsModule } from './observations/observations.module';
 import { EquipmentModule } from './equipment/equipment.module';
-import { SiteModule } from './sites/site.module';
-import { EyepieceModule } from './eyepieces/eyepiece.module';
-import { FilterModule } from './filters/filters.module';
 import { UsersModule } from './users/users.module';
-import { LensesModule } from './lenses/lenses.module';
 import { AuthModule } from './auth/auth.module';
-import { UserProfileMenuComponent } from './main/userProfileMenu/user-profile-menu.component';
 
 import { reducers, metaReducers } from './store';
 import { AuthEffects } from './store/auth';
 import { RegisterEffects } from './store/register';
+import { UserProfileMenuComponent } from './main/user-profile-menu';
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserProfileMenuComponent,
   ],
   exports: [
     MatButtonModule,
@@ -51,27 +43,23 @@ import { RegisterEffects } from './store/register';
     MatTableModule,
   ],
   bootstrap: [AppComponent],
+  providers: [
+    provideHttpClient(withInterceptorsFromDi(), withFetch()),
+    provideNoopAnimations(),
+  ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    ScopesModule,
-    SessionsModule,
     MatButtonModule,
     MatNativeDateModule,
     MatInputModule,
     MatDatepickerModule,
-    TargetModule,
-    ObservationsModule,
-    SiteModule,
-    EyepieceModule,
-    FilterModule,
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
     MatTableModule,
     UsersModule,
-    LensesModule,
     EquipmentModule,
     AuthModule,
     MatIconModule,
@@ -82,12 +70,9 @@ import { RegisterEffects } from './store/register';
     EffectsModule.forRoot([
       AuthEffects,
       RegisterEffects,
-    ])],
-  providers: [
-    provideHttpClient(
-      withInterceptorsFromDi(),
-      withFetch()
-    ),
-  ]
+    ]),
+
+    UserProfileMenuComponent,
+  ],
 })
 export class AppModule { }
