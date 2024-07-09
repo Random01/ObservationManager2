@@ -50,8 +50,4 @@ export const NavigationLinks: NavigationLink[][] = [
       title: 'Programs',
     },
   ],
-  [{
-    link: 'admin',
-    title: 'Administration',
-  }],
 ];
