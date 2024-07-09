@@ -5,7 +5,6 @@ import { TargetTypeService } from '../target-type.service';
 
 @Pipe({
   name: 'targetTypeFormatter',
-  pure: true,
   standalone: true,
 })
 export class TargetTypeFormatterPipe implements PipeTransform {

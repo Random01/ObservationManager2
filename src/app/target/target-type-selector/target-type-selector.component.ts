@@ -1,33 +1,36 @@
-import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy } from '@angular/core';
+import { AsyncPipe, NgForOf } from '@angular/common';
+
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 import { TargetType } from '../../shared/models/target-type.model';
 import { TargetTypeService } from '../shared/target-type.service';
-import { TargetTypeItem } from '../shared/interfaces/target-search-params.interface';
 
 @Component({
   selector: 'om-target-type-selector',
-  templateUrl: './target-type-selector.component.html',
-  styleUrls: ['./target-type-selector.component.css']
+  templateUrl: 'target-type-selector.component.html',
+  styleUrl: 'target-type-selector.component.less',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    MatFormFieldModule,
+    MatSelectModule,
+    NgForOf,
+    AsyncPipe,
+  ],
 })
-export class TargetTypeSelectorComponent implements OnInit {
+export class TargetTypeSelectorComponent {
 
   @Input() public targetType?: TargetType;
 
   @Output() public readonly targetTypeChange = new EventEmitter<TargetType>();
 
-  public targetTypes: TargetTypeItem[] = [];
+  public readonly targetTypes$ = this.targetTypeService.getAllTargetTypes();
 
   constructor(
     private readonly targetTypeService: TargetTypeService,
   ) { }
-
-  public ngOnInit() {
-    this.targetTypeService
-      .getAllTargetTypes()
-      .then(targetTypes => {
-        this.targetTypes = targetTypes;
-      });
-  }
 
   public onChange(value: TargetType): void {
     this.targetTypeChange.emit(value);

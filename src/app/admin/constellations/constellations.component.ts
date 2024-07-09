@@ -4,6 +4,7 @@ import { Column } from '../common';
 
 import { ConstellationsAdminService } from './constellations-admin.service';
 import { BaseEntityService } from '../common/base-entity.service';
+import { BaseAdminComponent } from "../common/base-admin.component";
 
 @Component({
   templateUrl: 'constellations.component.html',
@@ -11,7 +12,11 @@ import { BaseEntityService } from '../common/base-entity.service';
   providers: [{
     provide: BaseEntityService,
     useClass: ConstellationsAdminService,
-  }]
+  }],
+  standalone: true,
+  imports: [
+    BaseAdminComponent,
+  ],
 })
 export class ConstellationsComponent {
 

@@ -1,0 +1,51 @@
+<div
+  class="om-user-profile-menu"
+  *ngIf="{
+    authState: authState$ | async
+  } as data"
+>
+    
+  <span *ngIf="!data.authState.isAuthenticated">
+    <a
+      routerLink="/login"
+      class="text-bold text-white no-underline">Sign in</a> or <a routerLink="/register" class="text-bold text-white no-underline">Sign up</a>
+  </span>
+
+  <button
+    *ngIf="data.authState.isAuthenticated"
+    mat-icon-button
+    [matMenuTriggerFor]="menu"
+  >
+    <mat-icon>more_vert</mat-icon>
+  </button>
+
+    <mat-menu
+        #menu="matMenu">
+
+      <button
+        mat-menu-item
+        *ngIf="data.authState.isAuthenticated"
+        (click)="editProfile()"
+      >
+        <span>Signed in as {{ data.authState.user.userName }}</span>
+      </button>
+
+      <button
+        mat-menu-item
+        *ngIf="data.authState.isAuthenticated"
+        (click)="editProfile()"
+      >
+        <span>Your Profile</span>
+      </button>
+
+      <button
+        mat-menu-item
+        *ngIf="data.authState.isAuthenticated"
+        (click)="logOut()"
+      >
+        <span>Log out</span>
+      </button>
+
+    </mat-menu>
+    
+</div>

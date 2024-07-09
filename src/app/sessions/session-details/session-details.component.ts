@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 import { MatDialog } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 import { finalize, firstValueFrom } from 'rxjs';
 
@@ -13,10 +14,17 @@ import { Target } from '../../shared/models/models';
 import { BaseComponent } from '../../shared/components/base-component';
 import { ObservationService } from '../../observations/shared/observation.service';
 import { Eyepiece, Scope, Filter } from '../../shared/models/equipment/equipment';
+import { SessionComponent } from "../session/session.component";
 
 @Component({
   selector: 'om-session-details',
   templateUrl: 'session-details.component.html',
+  standalone: true,
+  imports: [
+    MatButtonModule,
+    RouterLink,
+    SessionComponent,
+  ],
 })
 export class SessionDetailsComponent extends BaseComponent implements OnInit {
 

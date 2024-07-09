@@ -13,7 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
 import { Target } from '../../shared/models/models';
-import { TargetModule } from '../../target/target.module';
+import { TargetSelectorComponent } from "../../target/target-selector/target-selector.component";
 
 @Component({
   selector: 'om-targets-editor',
@@ -25,7 +25,7 @@ import { TargetModule } from '../../target/target.module';
     MatTableModule,
     MatIconModule,
     MatButtonModule,
-    TargetModule,
+    TargetSelectorComponent,
   ],
 })
 export class TargetsEditorComponent implements OnChanges {

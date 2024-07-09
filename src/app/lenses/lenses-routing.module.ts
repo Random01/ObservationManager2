@@ -8,28 +8,28 @@ import { AuthGuard } from '../auth/shared/auth.guard';
 
 const routes: Routes = [
   {
-    path: 'lenses',
+    path: '',
     component: LensesComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
-    path: 'lenses/new-lens',
+    path: 'new-lens',
     component: AddLensComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
-    path: 'lenses/:lensId',
+    path: ':lensId',
     component: EditLensComponent,
-    canActivate: [AuthGuard]
-  }
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
   ],
   exports: [
-    RouterModule
-  ]
+    RouterModule,
+  ],
 })
 export class LensesRoutingModule { }

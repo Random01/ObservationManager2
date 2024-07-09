@@ -4,10 +4,12 @@ export interface NavigationLink {
 }
 
 export const NavigationLinks: NavigationLink[][] = [
-  [{
-    link: 'sessions/new-session',
-    title: 'New Session',
-  }],
+  [
+    {
+      link: 'sessions/new-session',
+      title: 'New Session',
+    },
+  ],
   [
     {
       link: 'scopes',
@@ -51,5 +53,5 @@ export const NavigationLinks: NavigationLink[][] = [
   [{
     link: 'admin',
     title: 'Administration',
-  }]
+  }],
 ];

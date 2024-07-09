@@ -1,5 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { AsyncPipe, DatePipe, NgIf } from '@angular/common';
+
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 import { Session } from '../../shared/models/session.model';
 import { SessionService } from '../shared/session.service';
@@ -10,8 +17,21 @@ import { DeleteEntityDialogService } from '../../shared/components/delete-entity
 @Component({
   selector: 'om-sessions',
   templateUrl: 'sessions.component.html',
-  styleUrls: ['sessions.component.less'],
+  styleUrl: 'sessions.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    MatPaginatorModule,
+    MatTableModule,
+    MatTooltipModule,
+    MatButtonModule,
+    MatIconModule,
+    
+    RouterLink,
+    NgIf,
+    AsyncPipe,
+    DatePipe,
+  ],
 })
 export class SessionsComponent extends EntityListComponent<Session> {
 

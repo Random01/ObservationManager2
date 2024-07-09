@@ -27,11 +27,11 @@
 
       <div *ngFor="let group of navigationLinks; last as isLast">
         <a
+          *ngFor="let item of group"
           mat-list-item
           href="..."
-          *ngFor="let item of group"
+          routerLinkActive="active-link"
           [routerLink]="item.link"
-          routerLinkActive="active"
         >
           {{ item.title }}
         </a>

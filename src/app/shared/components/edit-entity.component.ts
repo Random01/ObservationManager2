@@ -28,8 +28,6 @@ export abstract class EditEntityComponent<T extends Entity> extends BaseEntityCo
     );
   }
 
-  public abstract goBack(): void;
-
   public ngOnInit(): void {
     this.startLoading();
 

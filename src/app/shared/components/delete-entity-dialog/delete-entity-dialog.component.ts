@@ -1,5 +1,7 @@
 import { Component, Inject, ChangeDetectionStrategy } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 import { DeleteEntityDialogOptions } from './delete-entity-dialog-options.interface';
 import { DeleteEntityDialogResult } from './delete-entity-dialog-result.interface';
@@ -8,6 +10,11 @@ import { DeleteEntityDialogResult } from './delete-entity-dialog-result.interfac
   selector: 'om-delete-entity-dialog',
   templateUrl: 'delete-entity-dialog.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    MatDialogModule,
+    MatButtonModule,
+  ],
 })
 export class DeleteEntityDialogComponent {
 

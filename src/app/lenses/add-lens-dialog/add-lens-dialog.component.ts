@@ -1,16 +1,27 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { NgIf, AsyncPipe } from '@angular/common';
 
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 import { LensService } from '../shared/lens.service';
 import { Lens } from '../../shared/models/equipment/equipment';
 import { AddEntityDialogComponent } from '../../shared/components/add-entity-dialog.component';
+import { LensComponent } from '../lens';
 
 @Component({
   selector: 'om-add-lens-dialog',
-  templateUrl: './add-lens-dialog.component.html',
-  styleUrls: [
-    './add-lens-dialog.component.css',
+  templateUrl: 'add-lens-dialog.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    MatDialogModule,
+    MatButtonModule,
+
+    NgIf,
+    AsyncPipe,
+    
+    LensComponent,
   ],
 })
 export class AddLensDialogComponent extends AddEntityDialogComponent<Lens, LensService> {

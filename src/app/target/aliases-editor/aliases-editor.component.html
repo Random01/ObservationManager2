@@ -36,10 +36,10 @@
       <input
         matInput
         autocomplete="off"
-        [(ngModel)]="newAlias"
-        (ngModelChange)="validate()"
         type="text"
-        placeholder="New Alias" />
+        placeholder="New Alias"
+        [(ngModel)]="newAlias"
+        (ngModelChange)="validate()" />
     </mat-form-field>
 
     <button 

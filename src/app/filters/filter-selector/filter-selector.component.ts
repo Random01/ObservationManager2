@@ -1,4 +1,11 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { NgForOf } from '@angular/common';
+
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
 
 import { Filter } from '../../shared/models/equipment/equipment';
 import { FilterService } from '../shared/filter.service';
@@ -12,6 +19,15 @@ import { AddFilterDialogService } from '../add-filter-dialog';
     '../../shared/components/entity-selector/entity-selector.component.css',
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    MatFormFieldModule,
+    MatSelectModule,
+    MatIconModule,
+    MatButtonModule,
+    FormsModule,
+    NgForOf,
+  ],
 })
 export class FilterSelectorComponent extends EntitySelectorComponent<Filter, FilterService> {
 

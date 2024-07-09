@@ -9,17 +9,17 @@ import { AuthGuard } from '../auth/shared/auth.guard';
 
 const sitesRoutes: Routes = [
   {
-    path: 'sites',
+    path: '',
     component: SitesComponent,
     canActivate: [AuthGuard],
   },
   {
-    path: 'sites/new-site',
+    path: 'new-site',
     component: AddSiteComponent,
     canActivate: [AuthGuard],
   },
   {
-    path: 'sites/:id',
+    path: ':id',
     component: EditSiteComponent,
     canActivate: [AuthGuard],
   },

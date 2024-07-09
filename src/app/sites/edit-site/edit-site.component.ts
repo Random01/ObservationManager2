@@ -1,20 +1,28 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { AsyncPipe, NgIf } from '@angular/common';
+
+import { MatButtonModule } from '@angular/material/button';
 
 import { EditEntityComponent } from '../../shared/components/edit-entity.component';
 import { SiteService } from '../shared/site.service';
 import { Site } from '../../shared/models/models';
+import { SiteComponent } from '../site';
 
 @Component({
   selector: 'om-edit-site',
   templateUrl: 'edit-site.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    MatButtonModule,
+    SiteComponent,
+    NgIf,
+    AsyncPipe,
+  ],
 })
 export class EditSiteComponent extends EditEntityComponent<Site> {
 
   constructor(
-    private readonly route: ActivatedRoute,
-    private readonly router: Router,
     service: SiteService,
   ) {
     super(service);
@@ -22,10 +30,6 @@ export class EditSiteComponent extends EditEntityComponent<Site> {
 
   protected getItemId(): string {
     return this.route.snapshot.paramMap.get('id');
-  }
-
-  public goBack() {
-    this.router.navigate(['/sites']);
   }
 
 }

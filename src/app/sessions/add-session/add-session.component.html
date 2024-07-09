@@ -7,9 +7,9 @@
     <h2 class="mat-h2">Add New Session</h2>
   </div>
 
-  <div *ngIf="data.item">
+  @if (data.item) {
     <om-session [session]="data.item"></om-session>
-  </div>
+  }
 
   <hr/>
 

@@ -1,7 +1,14 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { AsyncPipe, DatePipe, NgIf } from '@angular/common';
 
 import { map, switchMap } from 'rxjs';
+
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { Observation } from '../../shared/models/models';
 import { ObservationService } from '../shared/observation.service';
@@ -13,12 +20,28 @@ import { RequestParams } from '../../shared/services/request-params.model';
 import { ExportType } from '../../shared/models/export-type.model';
 import { ExportRequestParams } from '../../shared/services';
 import { SessionObservationExportRequestParams } from './session-observation-export-request-params.model';
+import { SessionInfoComponent } from "../../sessions/session-info/session-info.component";
 
 @Component({
   selector: 'om-session-observations',
   templateUrl: 'session-observations.component.html',
-  styleUrls: ['session-observations.component.less'],
+  styleUrl: 'session-observations.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    MatPaginatorModule,
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTooltipModule,
+    
+    RouterLink,
+    NgIf,
+    AsyncPipe,
+    DatePipe,
+
+    SessionInfoComponent,
+  ],
 })
 export class SessionObservationsComponent extends EntityListComponent<Observation> {
 

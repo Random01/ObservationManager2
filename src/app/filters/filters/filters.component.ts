@@ -1,5 +1,12 @@
 ﻿import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { AsyncPipe, NgIf } from '@angular/common';
+
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { Filter } from '../../shared/models/equipment/equipment';
 import { FilterService } from '../shared/filter.service';
@@ -9,8 +16,19 @@ import { DeleteEntityDialogService } from '../../shared/components/delete-entity
 @Component({
   selector: 'om-filters',
   templateUrl: 'filters.component.html',
-  styleUrls: ['filters.component.less'],
+  styleUrl: 'filters.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    MatPaginatorModule,
+    MatTableModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTooltipModule,
+    RouterLink,
+    NgIf,
+    AsyncPipe,
+  ],
 })
 export class FiltersComponent extends EntityListComponent<Filter> {
 

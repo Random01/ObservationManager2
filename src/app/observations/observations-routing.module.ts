@@ -1,40 +1,19 @@
 import { NgModule } from '@angular/core';
 
 import { RouterModule, Routes } from '@angular/router';
-import { AddObservationComponent } from './add-observation/add-observation.component';
+
 import { ObservationsComponent } from './observations/observations.component';
 import { EditObservationComponent } from './edit-observation/edit-observation.component';
-import { SessionObservationsComponent } from './session-observations/session-observations.component';
 import { AuthGuard } from '../auth/shared/auth.guard';
 
 const routes: Routes = [
   {
-    path: 'observations/new-observation',
-    component: AddObservationComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'observations/:observationId',
-    component: EditObservationComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'observations',
+    path: '',
     component: ObservationsComponent,
     canActivate: [AuthGuard],
   },
   {
-    path: 'sessions/:sessionId/observations',
-    component: SessionObservationsComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'sessions/:sessionId/observations/new-observation',
-    component: AddObservationComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'sessions/:sessionId/observations/:observationId',
+    path: ':observationId',
     component: EditObservationComponent,
     canActivate: [AuthGuard],
   },

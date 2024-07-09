@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { AsyncPipe, NgIf } from '@angular/common';
+
+import { MatButtonModule } from '@angular/material/button';
 
 import { firstValueFrom } from 'rxjs';
 
@@ -7,25 +9,27 @@ import { Observation } from '../../shared/models/models';
 import { ObservationService } from '../shared/observation.service';
 import { AddEntityComponent } from '../../shared/components/add-entity.component';
 import { SessionService } from '../../sessions/shared/session.service';
+import { ObservationComponent } from "../observation/observation.component";
 
 @Component({
   selector: 'om-add-observation',
   templateUrl: 'add-observation.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    MatButtonModule,
+    AsyncPipe,
+    NgIf,
+    ObservationComponent,
+  ],
 })
 export class AddObservationComponent extends AddEntityComponent<Observation> {
 
   constructor(
-    private readonly route: ActivatedRoute,
-    private readonly router: Router,
     observationService: ObservationService,
     private readonly sessionService: SessionService,
   ) {
     super(observationService);
-  }
-
-  public goBack() {
-    this.router.navigate([`/sessions/${this.getSessionId()}/observations/`]);
   }
 
   public override async createNew(params?: Partial<Observation>) {
