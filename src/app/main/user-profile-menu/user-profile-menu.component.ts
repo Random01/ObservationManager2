@@ -5,11 +5,11 @@ import { AsyncPipe, NgIf } from '@angular/common';
 import { Store } from '@ngrx/store';
 
 import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 
 import { selectAuthState } from '../../store/auth';
 import * as AuthApiActions from '../../store/auth/auth.actions';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'om-user-profile-menu',

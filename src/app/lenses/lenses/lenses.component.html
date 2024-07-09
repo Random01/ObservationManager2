@@ -42,7 +42,7 @@
         <button
           mat-icon-button
           matTooltip="Edit Lens"
-          routerLink="/lenses/{{lens.id}}"
+          [routerLink]="['/lenses', lens.id]"
         >
           <mat-icon
             aria-label="Click to edit"

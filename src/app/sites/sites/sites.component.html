@@ -57,7 +57,7 @@
         <button
           mat-icon-button
           matTooltip="Edit Site"
-          routerLink="/sites/{{site.id}}"
+          [routerLink]="['/sites', site.id]"
         >
           <mat-icon
             aria-label="Click to edit"

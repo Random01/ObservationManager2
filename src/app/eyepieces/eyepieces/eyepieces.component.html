@@ -46,7 +46,7 @@
         <button
           mat-icon-button
           matTooltip="Edit Eyepiece"
-          routerLink="/eyepieces/{{eyepiece.id}}"
+          [routerLink]="['/eyepieces', eyepiece.id]"
         >
           <mat-icon
             aria-label="Click to edit"

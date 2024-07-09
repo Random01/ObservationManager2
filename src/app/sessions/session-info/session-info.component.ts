@@ -18,11 +18,13 @@ import { Session } from '../../shared/models/models';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+
     DatePipe,
   ],
 })
 export class SessionInfoComponent {
-  @Input() session?: Session;
+
+  @Input({ required: true }) session?: Session;
 
   constructor(
     private readonly router: Router,

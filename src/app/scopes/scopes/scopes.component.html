@@ -47,7 +47,7 @@
         <button
           mat-icon-button
           matTooltip="Edit Scope"
-          routerLink="/scopes/{{scope.id}}"
+          [routerLink]="['/scopes', scope.id]"
         >
           <mat-icon
             aria-label="Click to edit">

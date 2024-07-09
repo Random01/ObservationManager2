@@ -31,7 +31,7 @@
         <button
           mat-icon-button
           title="Edit User"
-          routerLink="/users/{{user.id}}"
+          [routerLink]="['/users', user.id]"
         >
           <mat-icon
             aria-label="Click to edit"

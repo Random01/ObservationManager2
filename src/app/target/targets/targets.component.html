@@ -66,7 +66,7 @@
           *ngIf="canEdit(target)"
           mat-icon-button
           matTooltip="Edit Object"
-          routerLink="/objects/{{target.id}}"
+          [routerLink]="['/objects', target.id]"
         >
           <mat-icon aria-label="Click to edit">
             edit

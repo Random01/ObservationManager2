@@ -41,7 +41,7 @@
         <button
           mat-icon-button
           matTooltip="Edit Filter"
-          routerLink="/filters/{{filter.id}}"
+          [routerLink]="['/filters', filter.id]"
         >
           <mat-icon
             aria-label="Click to edit"

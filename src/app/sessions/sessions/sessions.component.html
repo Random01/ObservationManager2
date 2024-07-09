@@ -49,7 +49,7 @@
         <button
           mat-icon-button
           matTooltip="Edit Session"
-          routerLink="/sessions/{{session.id}}"
+          [routerLink]="['/sessions', session.id]"
         >
           <mat-icon
             aria-label="Click to edit"
@@ -61,7 +61,7 @@
         <button
           mat-icon-button
           matTooltip="View Observations"
-          routerLink="/sessions/{{session.id}}/observations"
+          [routerLink]="['/sessions', session.id, 'observations']"
         >
           <mat-icon
             aria-label="Click to view observations"

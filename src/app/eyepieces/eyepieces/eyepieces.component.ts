@@ -1,5 +1,5 @@
 ﻿import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AsyncPipe, DecimalPipe, NgIf } from '@angular/common';
 
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -27,7 +27,6 @@ import { EyepieceFocalLengthPipe } from "../../shared/models/pipes/eyepiece-foca
     MatButtonModule,
     MatTooltipModule,
     RouterLink,
-    RouterLinkActive,
     NgIf,
     AsyncPipe,
     DecimalPipe,

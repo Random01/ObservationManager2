@@ -37,7 +37,7 @@
         <button
           mat-icon-button
           matTooltip="View Program"
-          routerLink="/observing-programs/statistics/{{program.id}}"
+          [routerLink]="['/observing-programs', 'statistics', program.id]"
         >
           <mat-icon
             aria-label="Click to view"
@@ -49,7 +49,7 @@
         <button
           mat-icon-button
           matTooltip="Edit Program"
-          routerLink="/observing-programs/{{program.id}}"
+          [routerLink]="['/observing-programs', program.id]"
         >
           <mat-icon
             aria-label="Click to edit"
