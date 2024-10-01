@@ -1,5 +1,5 @@
-import { DecimalPipe } from '@angular/common';
-import { Pipe, PipeTransform } from '@angular/core';
+import { formatNumber } from '@angular/common';
+import { Inject, LOCALE_ID, Pipe, PipeTransform } from '@angular/core';
 
 import { Eyepiece } from '../equipment/equipment';
 
@@ -9,13 +9,10 @@ import { Eyepiece } from '../equipment/equipment';
 })
 export class EyepieceFocalLengthPipe implements PipeTransform {
 
-  constructor(private readonly decimalPipe: DecimalPipe) { }
-
-  private format(value: number): string {
-    return this.decimalPipe.transform(value, '0.1');
-  }
+  constructor(@Inject(LOCALE_ID) private readonly locale: string) { }
 
   public transform(eyepiece: Eyepiece): string {
+    
     if (eyepiece == null) {
       return '';
     }
@@ -25,6 +22,10 @@ export class EyepieceFocalLengthPipe implements PipeTransform {
     } else {
       return this.format(eyepiece.focalLength);
     }
+  }
+
+  private format(value: number): string {
+    return formatNumber(value, '0.1', this.locale);
   }
 
 }

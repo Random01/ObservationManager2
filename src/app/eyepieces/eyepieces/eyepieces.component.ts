@@ -32,10 +32,6 @@ import { EyepieceFocalLengthPipe } from "../../shared/models/pipes/eyepiece-foca
     DecimalPipe,
     EyepieceFocalLengthPipe,
   ],
-  // todo: find a way to use DecimalPipe directly in eyepieceFocalLength
-  providers: [
-    DecimalPipe,
-  ],
 })
 export class EyepiecesComponent extends EntityListComponent<Eyepiece> {
 
