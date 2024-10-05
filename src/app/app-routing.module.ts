@@ -6,8 +6,18 @@ import { environment } from '../environments/environment';
 import { EquipmentComponent } from './equipment/equipment.component';
 import { AdminGuard, AuthGuard } from './auth/shared';
 import { PageNotFoundComponent } from './page-not-found';
+import { LoginComponent } from './auth/login';
+import { RegisterComponent } from './auth/register';
 
 const routes: Routes = [
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+  },
   {
     path: 'equipment',
     component: EquipmentComponent,

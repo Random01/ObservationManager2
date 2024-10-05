@@ -22,8 +22,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { EquipmentModule } from './equipment/equipment.module';
 import { UsersModule } from './users/users.module';
-import { AuthModule } from './auth/auth.module';
-
 import { reducers, metaReducers } from './store';
 import { AuthEffects } from './store/auth';
 import { RegisterEffects } from './store/register';
@@ -61,7 +59,6 @@ import { provideNoopAnimations } from '@angular/platform-browser/animations';
     MatTableModule,
     UsersModule,
     EquipmentModule,
-    AuthModule,
     MatIconModule,
     MatMenuModule,
     StoreModule.forRoot(reducers, {
