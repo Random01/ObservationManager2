@@ -25,7 +25,7 @@ export class EyepieceFocalLengthPipe implements PipeTransform {
   }
 
   private format(value: number): string {
-    return formatNumber(value, '0.1', this.locale);
+    return formatNumber(value, this.locale, '0.1');
   }
 
 }
