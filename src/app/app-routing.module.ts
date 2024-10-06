@@ -1,110 +1,118 @@
-import { NgModule } from '@angular/core';
+import { NgModule } from "@angular/core";
 
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from "@angular/router";
 
-import { environment } from '../environments/environment';
-import { EquipmentComponent } from './equipment/equipment.component';
-import { AdminGuard, AuthGuard } from './auth/shared';
-import { PageNotFoundComponent } from './page-not-found';
-import { LoginComponent } from './auth/login';
-import { RegisterComponent } from './auth/register';
+import { environment } from "../environments/environment";
+import { AdminGuard, AuthGuard } from "./auth/shared";
 
 const routes: Routes = [
   {
-    path: 'login',
-    component: LoginComponent,
+    path: "login",
+    loadComponent: () =>
+      import("./auth/login/login.component").then((c) => c.LoginComponent),
   },
   {
-    path: 'register',
-    component: RegisterComponent,
+    path: "register",
+    loadComponent: () =>
+      import("./auth/register/register.component").then(
+        (c) => c.RegisterComponent
+      ),
   },
   {
-    path: 'equipment',
-    component: EquipmentComponent,
+    path: "equipment",
+    loadComponent: () =>
+      import("./equipment/equipment.component").then(
+        (c) => c.EquipmentComponent
+      ),
   },
   {
-    path: 'observing-programs',
-    loadChildren: () => import('./observing-programs/observing-programs.module')
-      .then(m => m.ObservingProgramsModule),
-  },
-  {
-    path: 'admin',
-    loadChildren: () => import('./admin/admin.module')
-      .then(m => m.AdminModule),
+    path: "observing-programs",
+    loadChildren: () =>
+      import("./observing-programs/observing-programs.module").then(
+        (m) => m.ObservingProgramsModule
+      ),
     canActivate: [AdminGuard],
   },
   {
-    path: 'sites',
-    loadChildren: () => import('./sites/sites.module')
-      .then(m => m.SiteModule),
+    path: "admin",
+    loadChildren: () =>
+      import("./admin/admin.module").then((m) => m.AdminModule),
+    canActivate: [AdminGuard],
+  },
+  {
+    path: "sites",
+    loadChildren: () =>
+      import("./sites/sites.module").then((m) => m.SiteModule),
     canActivate: [AuthGuard],
   },
   {
-    path: 'scopes',
-    loadChildren: () => import('./scopes/scopes.module')
-      .then(m => m.ScopesModule),
+    path: "scopes",
+    loadChildren: () =>
+      import("./scopes/scopes.module").then((m) => m.ScopesModule),
     canActivate: [AuthGuard],
   },
   {
-    path: 'eyepieces',
-    loadChildren: () => import('./eyepieces/eyepiece.module')
-      .then(m => m.EyepieceModule),
+    path: "eyepieces",
+    loadChildren: () =>
+      import("./eyepieces/eyepiece.module").then((m) => m.EyepieceModule),
     canActivate: [AuthGuard],
   },
   {
-    path: 'filters',
-    loadChildren: () => import('./filters/filters.module')
-      .then(m => m.FilterModule),
+    path: "filters",
+    loadChildren: () =>
+      import("./filters/filters.module").then((m) => m.FilterModule),
     canActivate: [AuthGuard],
   },
   {
-    path: 'lenses',
-    loadChildren: () => import('./lenses/lenses.module')
-      .then(m => m.LensesModule),
+    path: "lenses",
+    loadChildren: () =>
+      import("./lenses/lenses.module").then((m) => m.LensesModule),
     canActivate: [AuthGuard],
   },
   {
-    path: 'objects',
-    loadChildren: () => import('./target/target.module')
-      .then(m => m.TargetModule),
+    path: "objects",
+    loadChildren: () =>
+      import("./target/target.module").then((m) => m.TargetModule),
     canActivate: [AuthGuard],
   },
   {
-    path: 'sessions',
-    loadChildren: () => import('./sessions/sessions.module')
-      .then(m => m.SessionsModule),
+    path: "sessions",
+    loadChildren: () =>
+      import("./sessions/sessions.module").then((m) => m.SessionsModule),
     canActivate: [AuthGuard],
   },
   {
-    path: 'users',
-    loadChildren: () => import('./users/users.module')
-      .then(m => m.UsersModule),
+    path: "users",
+    loadChildren: () =>
+      import("./users/users.module").then((m) => m.UsersModule),
     canActivate: [AuthGuard],
   },
   {
-    path: 'observations',
-    loadChildren: () => import('./observations/observations.module')
-      .then(m => m.ObservationsModule),
+    path: "observations",
+    loadChildren: () =>
+      import("./observations/observations.module").then(
+        (m) => m.ObservationsModule
+      ),
     canActivate: [AuthGuard],
   },
   {
-    path: '',
-    redirectTo: 'observations',
-    pathMatch: 'full',
+    path: "",
+    redirectTo: "observations",
+    pathMatch: "full",
   },
   {
-    path: '**',
-    component: PageNotFoundComponent,
+    path: "**",
+    loadComponent: () =>
+      import("./page-not-found/page-not-found.component").then(
+        (c) => c.PageNotFoundComponent
+      ),
   },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(
-      routes,
-      { enableTracing: !environment.production },
-    )
+    RouterModule.forRoot(routes, { enableTracing: !environment.production }),
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
