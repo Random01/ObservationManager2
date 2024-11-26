@@ -5,7 +5,10 @@ import { BehaviorSubject } from 'rxjs';
 import { DestroyableComponent } from './destroyable.component';
 import { MessageService } from '../services/message.service';
 
-@Component({ template: '' })
+@Component({
+    template: '',
+    standalone: false
+})
 export class BaseComponent extends DestroyableComponent {
 
   protected readonly isLoadingSubject = new BehaviorSubject(false);

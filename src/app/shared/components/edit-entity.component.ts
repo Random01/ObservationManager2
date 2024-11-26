@@ -6,7 +6,10 @@ import { Entity } from '../models/entity.model';
 import { StorageService } from '../services/storage.service';
 import { BaseEntityComponent } from './base-entity.component';
 
-@Component({ template: '' })
+@Component({
+    template: '',
+    standalone: false
+})
 export abstract class EditEntityComponent<T extends Entity> extends BaseEntityComponent<T> implements OnInit {
 
   constructor(

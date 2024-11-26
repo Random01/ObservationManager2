@@ -12,16 +12,15 @@ import { SessionService } from '../../sessions/shared/session.service';
 import { ObservationComponent } from "../observation/observation.component";
 
 @Component({
-  selector: 'om-add-observation',
-  templateUrl: 'add-observation.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    AsyncPipe,
-    NgIf,
-    ObservationComponent,
-  ],
+    selector: 'om-add-observation',
+    templateUrl: 'add-observation.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatButtonModule,
+        AsyncPipe,
+        NgIf,
+        ObservationComponent,
+    ]
 })
 export class AddObservationComponent extends AddEntityComponent<Observation> {
 

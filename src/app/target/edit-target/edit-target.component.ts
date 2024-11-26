@@ -9,16 +9,15 @@ import { Target } from '../../shared/models/models';
 import { TargetComponent } from '../target';
 
 @Component({
-  selector: 'om-edit-target',
-  templateUrl: 'edit-target.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    NgIf,
-    AsyncPipe,
-    TargetComponent,
-  ],
+    selector: 'om-edit-target',
+    templateUrl: 'edit-target.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatButtonModule,
+        NgIf,
+        AsyncPipe,
+        TargetComponent,
+    ]
 })
 export class EditTargetComponent extends EditEntityComponent<Target> {
 

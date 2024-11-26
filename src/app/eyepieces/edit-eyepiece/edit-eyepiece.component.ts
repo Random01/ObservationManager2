@@ -9,16 +9,15 @@ import { EyepieceService } from '../shared/eyepiece.service';
 import { EyepieceComponent } from '../eyepiece';
 
 @Component({
-  selector: 'om-edit-eyepiece',
-  templateUrl: 'edit-eyepiece.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    NgIf,
-    AsyncPipe,
-    EyepieceComponent,
-  ],
+    selector: 'om-edit-eyepiece',
+    templateUrl: 'edit-eyepiece.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatButtonModule,
+        NgIf,
+        AsyncPipe,
+        EyepieceComponent,
+    ]
 })
 export class EditEyepieceComponent extends EditEntityComponent<Eyepiece> {
 

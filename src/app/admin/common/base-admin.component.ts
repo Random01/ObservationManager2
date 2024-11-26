@@ -11,17 +11,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'om-base-admin',
-  templateUrl: 'base-admin.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatTableModule,
-    MatButtonModule,
-    MatIconModule,
-    AsyncPipe,
-    NgIf,
-  ]
+    selector: 'om-base-admin',
+    templateUrl: 'base-admin.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatTableModule,
+        MatButtonModule,
+        MatIconModule,
+        AsyncPipe,
+        NgIf,
+    ]
 })
 export class BaseAdminComponent<T = any> {
 

@@ -9,16 +9,15 @@ import { LensService } from '../shared/lens.service';
 import { LensComponent } from '../lens';
 
 @Component({
-  selector: 'om-edit-lens',
-  templateUrl: 'edit-lens.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    NgIf,
-    AsyncPipe,
-    LensComponent,
-  ],
+    selector: 'om-edit-lens',
+    templateUrl: 'edit-lens.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatButtonModule,
+        NgIf,
+        AsyncPipe,
+        LensComponent,
+    ]
 })
 export class EditLensComponent extends EditEntityComponent<Lens> {
 

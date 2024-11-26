@@ -13,21 +13,20 @@ import { EntitySelectorComponent } from '../../shared/components/entity-selector
 import { AddFilterDialogService } from '../add-filter-dialog';
 
 @Component({
-  selector: 'om-filter-selector',
-  templateUrl: '../../shared/components/entity-selector/entity-selector.component.html',
-  styleUrls: [
-    '../../shared/components/entity-selector/entity-selector.component.css',
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatSelectModule,
-    MatIconModule,
-    MatButtonModule,
-    FormsModule,
-    NgForOf,
-  ],
+    selector: 'om-filter-selector',
+    templateUrl: '../../shared/components/entity-selector/entity-selector.component.html',
+    styleUrls: [
+        '../../shared/components/entity-selector/entity-selector.component.css',
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatFormFieldModule,
+        MatSelectModule,
+        MatIconModule,
+        MatButtonModule,
+        FormsModule,
+        NgForOf,
+    ]
 })
 export class FilterSelectorComponent extends EntitySelectorComponent<Filter, FilterService> {
 

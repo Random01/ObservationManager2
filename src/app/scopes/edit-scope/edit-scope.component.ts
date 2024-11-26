@@ -9,16 +9,15 @@ import { ScopeService } from '../shared/scope.service';
 import { ScopeComponent } from '../scope';
 
 @Component({
-  selector: 'om-edit-scope',
-  templateUrl: 'edit-scope.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    ScopeComponent,
-    NgIf,
-    AsyncPipe,
-  ],
+    selector: 'om-edit-scope',
+    templateUrl: 'edit-scope.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatButtonModule,
+        ScopeComponent,
+        NgIf,
+        AsyncPipe,
+    ]
 })
 export class EditScopeComponent extends EditEntityComponent<Scope> {
 

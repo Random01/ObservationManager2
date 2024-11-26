@@ -6,7 +6,10 @@ import { Entity } from '../models/models';
 import { StorageService } from '../services/storage.service';
 import { DestroyableComponent } from './destroyable.component';
 
-@Component({ template: '' })
+@Component({
+    template: '',
+    standalone: false
+})
 export abstract class AddEntityDialogComponent<TEntity extends Entity, SType extends StorageService<TEntity>>
   extends DestroyableComponent implements OnInit {
 

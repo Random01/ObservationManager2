@@ -13,16 +13,15 @@ import { MatInputModule } from '@angular/material/input';
 import { Degrees } from '../../models/degrees.model';
 
 @Component({
-  selector: 'om-degrees-input',
-  templateUrl: 'degrees-input.component.html',
-  styleUrl: 'degrees-input.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-  ],
+    selector: 'om-degrees-input',
+    templateUrl: 'degrees-input.component.html',
+    styleUrl: 'degrees-input.component.css',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatFormFieldModule,
+        MatInputModule,
+        FormsModule,
+    ]
 })
 export class DegreesInputComponent {
 

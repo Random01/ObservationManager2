@@ -9,16 +9,15 @@ import { ObservingProgramsService } from '../shared/observing-programs.service';
 import { ObservingProgramComponent } from '../observing-program';
 
 @Component({
-  selector: 'om-add-observing-program',
-  templateUrl: 'add-observing-program.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    ObservingProgramComponent,
-    NgIf,
-    AsyncPipe,
-  ],
+    selector: 'om-add-observing-program',
+    templateUrl: 'add-observing-program.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatButtonModule,
+        ObservingProgramComponent,
+        NgIf,
+        AsyncPipe,
+    ]
 })
 export class AddObservingProgramComponent extends AddEntityComponent<ObservingProgram> {
 

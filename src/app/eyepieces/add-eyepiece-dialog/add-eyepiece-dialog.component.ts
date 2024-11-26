@@ -10,19 +10,16 @@ import { EyepieceService } from '../shared/eyepiece.service';
 import { EyepieceComponent } from '../eyepiece';
 
 @Component({
-  selector: 'om-add-eyepiece-dialog',
-  templateUrl: 'add-eyepiece-dialog.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatDialogModule,
-    MatButtonModule,
-
-    NgIf,
-    AsyncPipe,
-
-    EyepieceComponent,
-  ],
+    selector: 'om-add-eyepiece-dialog',
+    templateUrl: 'add-eyepiece-dialog.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatDialogModule,
+        MatButtonModule,
+        NgIf,
+        AsyncPipe,
+        EyepieceComponent,
+    ]
 })
 export class AddEyepieceDialogComponent extends AddEntityDialogComponent<Eyepiece, EyepieceService> {
 

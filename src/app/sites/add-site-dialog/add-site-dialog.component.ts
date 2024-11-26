@@ -10,19 +10,16 @@ import { SiteService } from '../shared/site.service';
 import { SiteComponent } from '../site';
 
 @Component({
-  selector: 'om-add-site-dialog',
-  templateUrl: 'add-site-dialog.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatDialogModule,
-    MatButtonModule,
-
-    NgIf,
-    AsyncPipe,
-
-    SiteComponent,
-  ],
+    selector: 'om-add-site-dialog',
+    templateUrl: 'add-site-dialog.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatDialogModule,
+        MatButtonModule,
+        NgIf,
+        AsyncPipe,
+        SiteComponent,
+    ]
 })
 export class AddSiteDialogComponent extends AddEntityDialogComponent<Site, SiteService> {
 

@@ -9,16 +9,15 @@ import { SiteService } from '../shared/site.service';
 import { SiteComponent } from '../site';
 
 @Component({
-  selector: 'om-add-site',
-  templateUrl: 'add-site.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    SiteComponent,
-    NgIf,
-    AsyncPipe,
-  ],
+    selector: 'om-add-site',
+    templateUrl: 'add-site.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatButtonModule,
+        SiteComponent,
+        NgIf,
+        AsyncPipe,
+    ]
 })
 export class AddSiteComponent extends AddEntityComponent<Site> {
 

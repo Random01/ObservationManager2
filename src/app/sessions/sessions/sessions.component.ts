@@ -15,23 +15,21 @@ import { SortOrder } from '../../shared/models/sort-order.model';
 import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
 
 @Component({
-  selector: 'om-sessions',
-  templateUrl: 'sessions.component.html',
-  styleUrl: 'sessions.component.less',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatPaginatorModule,
-    MatTableModule,
-    MatTooltipModule,
-    MatButtonModule,
-    MatIconModule,
-    
-    RouterLink,
-    NgIf,
-    AsyncPipe,
-    DatePipe,
-  ],
+    selector: 'om-sessions',
+    templateUrl: 'sessions.component.html',
+    styleUrl: 'sessions.component.less',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatPaginatorModule,
+        MatTableModule,
+        MatTooltipModule,
+        MatButtonModule,
+        MatIconModule,
+        RouterLink,
+        NgIf,
+        AsyncPipe,
+        DatePipe,
+    ]
 })
 export class SessionsComponent extends EntityListComponent<Session> {
 

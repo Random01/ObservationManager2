@@ -7,14 +7,13 @@ import { DeleteEntityDialogOptions } from './delete-entity-dialog-options.interf
 import { DeleteEntityDialogResult } from './delete-entity-dialog-result.interface';
 
 @Component({
-  selector: 'om-delete-entity-dialog',
-  templateUrl: 'delete-entity-dialog.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatDialogModule,
-    MatButtonModule,
-  ],
+    selector: 'om-delete-entity-dialog',
+    templateUrl: 'delete-entity-dialog.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatDialogModule,
+        MatButtonModule,
+    ]
 })
 export class DeleteEntityDialogComponent {
 

@@ -10,20 +10,18 @@ import { Observation } from '../../shared/models/models';
 import { SeeingTypeService } from '../shared';
 
 @Component({
-  selector: 'om-observation-conditions',
-  templateUrl: 'observation-conditions.component.html',
-  styleUrl: 'observation-conditions.component.less',
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule,
-    
-    FormsModule,
-    AsyncPipe,
-    NgForOf,
-  ],
+    selector: 'om-observation-conditions',
+    templateUrl: 'observation-conditions.component.html',
+    styleUrl: 'observation-conditions.component.less',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatFormFieldModule,
+        MatSelectModule,
+        MatInputModule,
+        FormsModule,
+        AsyncPipe,
+        NgForOf,
+    ]
 })
 export class ObservationConditionsComponent {
 

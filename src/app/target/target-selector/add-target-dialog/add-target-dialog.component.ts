@@ -10,18 +10,15 @@ import { Target } from '../../../shared/models/models';
 import { TargetComponent } from '../../target';
 
 @Component({
-  selector: 'om-add-target-dialog',
-  templateUrl: 'add-target-dialog.component.html',
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    MatDialogModule,
-
-    NgIf,
-    AsyncPipe,
-
-    TargetComponent,
-  ],
+    selector: 'om-add-target-dialog',
+    templateUrl: 'add-target-dialog.component.html',
+    imports: [
+        MatButtonModule,
+        MatDialogModule,
+        NgIf,
+        AsyncPipe,
+        TargetComponent,
+    ]
 })
 export class AddTargetDialogComponent extends AddEntityDialogComponent<Target, TargetService> {
 

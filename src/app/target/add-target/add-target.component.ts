@@ -9,16 +9,15 @@ import { TargetService } from '../shared/target.service';
 import { TargetComponent } from '../target';
 
 @Component({
-  selector: 'om-add-target',
-  templateUrl: 'add-target.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    NgIf,
-    AsyncPipe,
-    TargetComponent,
-  ],
+    selector: 'om-add-target',
+    templateUrl: 'add-target.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatButtonModule,
+        NgIf,
+        AsyncPipe,
+        TargetComponent,
+    ]
 })
 export class AddTargetComponent extends AddEntityComponent<Target> {
 

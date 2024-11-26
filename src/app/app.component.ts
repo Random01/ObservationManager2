@@ -10,10 +10,11 @@ import { selectNavigationMenu } from './store/navigation-menu';
 import * as NavigationMenuActions from './store/navigation-menu/navigation-menu.actions';
 
 @Component({
-  selector: 'om-app-root',
-  templateUrl: 'app.component.html',
-  styleUrl: 'app.component.less',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'om-app-root',
+    templateUrl: 'app.component.html',
+    styleUrl: 'app.component.less',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AppComponent implements OnInit {
 

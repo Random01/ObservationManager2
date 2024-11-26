@@ -12,20 +12,19 @@ import { MatSelectModule } from '@angular/material/select';
 
 
 @Component({
-  selector: 'om-filter',
-  templateUrl: 'filter.component.html',
-  styleUrl: 'filter.component.less',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    FormsModule,
-    VendorSelectorComponent,
-    NgForOf,
-    AsyncPipe,
-  ],
+    selector: 'om-filter',
+    templateUrl: 'filter.component.html',
+    styleUrl: 'filter.component.less',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        FormsModule,
+        VendorSelectorComponent,
+        NgForOf,
+        AsyncPipe,
+    ]
 })
 export class FilterComponent {
 

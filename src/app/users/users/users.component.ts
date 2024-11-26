@@ -12,18 +12,17 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'om-users',
-  templateUrl: 'users.component.html',
-  standalone: true,
-  imports: [
-    MatPaginatorModule,
-    MatTableModule,
-    MatIconModule,
-    MatButtonModule,
-    RouterLink,
-    NgIf,
-    AsyncPipe,
-  ],
+    selector: 'om-users',
+    templateUrl: 'users.component.html',
+    imports: [
+        MatPaginatorModule,
+        MatTableModule,
+        MatIconModule,
+        MatButtonModule,
+        RouterLink,
+        NgIf,
+        AsyncPipe,
+    ]
 })
 export class UsersComponent extends EntityListComponent<User> {
 

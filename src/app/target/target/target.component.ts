@@ -12,21 +12,20 @@ import { DeclinationSelectorComponent } from "../declination-selector/declinatio
 import { TargetTypeSelectorComponent } from "../target-type-selector/target-type-selector.component";
 
 @Component({
-  selector: 'om-target',
-  templateUrl: 'target.component.html',
-  styleUrl: 'target.component.less',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    AliasesEditorComponent,
-    RightAscensionSelectorComponent,
-    ConstellationSelectorComponent,
-    DeclinationSelectorComponent,
-    TargetTypeSelectorComponent,
-  ],
+    selector: 'om-target',
+    templateUrl: 'target.component.html',
+    styleUrl: 'target.component.less',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatFormFieldModule,
+        MatInputModule,
+        FormsModule,
+        AliasesEditorComponent,
+        RightAscensionSelectorComponent,
+        ConstellationSelectorComponent,
+        DeclinationSelectorComponent,
+        TargetTypeSelectorComponent,
+    ]
 })
 export class TargetComponent {
 

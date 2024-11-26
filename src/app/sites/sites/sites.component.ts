@@ -15,23 +15,22 @@ import { DeleteEntityDialogService } from '../../shared/components/delete-entity
 import { DegreesFormatterPipe } from '../../shared/models/pipes';
 
 @Component({
-  selector: 'om-sites',
-  templateUrl: 'sites.component.html',
-  styleUrls: ['sites.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatPaginatorModule,
-    MatTableModule,
-    MatButtonModule,
-    MatTooltipModule,
-    MatIconModule,
-    RouterLink,
-    NgIf,
-    AsyncPipe,
-    DecimalPipe,
-    DegreesFormatterPipe,
-  ],
+    selector: 'om-sites',
+    templateUrl: 'sites.component.html',
+    styleUrls: ['sites.component.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatPaginatorModule,
+        MatTableModule,
+        MatButtonModule,
+        MatTooltipModule,
+        MatIconModule,
+        RouterLink,
+        NgIf,
+        AsyncPipe,
+        DecimalPipe,
+        DegreesFormatterPipe,
+    ]
 })
 export class SitesComponent extends EntityListComponent<Site> {
 

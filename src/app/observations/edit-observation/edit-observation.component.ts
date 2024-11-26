@@ -9,16 +9,15 @@ import { ObservationService } from '../shared/observation.service';
 import { ObservationComponent } from '../observation';
 
 @Component({
-  selector: 'om-edit-observation',
-  templateUrl: 'edit-observation.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    AsyncPipe,
-    NgIf,
-    ObservationComponent,
-  ],
+    selector: 'om-edit-observation',
+    templateUrl: 'edit-observation.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatButtonModule,
+        AsyncPipe,
+        NgIf,
+        ObservationComponent,
+    ]
 })
 export class EditObservationComponent extends EditEntityComponent<Observation> {
 

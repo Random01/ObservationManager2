@@ -10,18 +10,17 @@ import { DateTimeInputComponent } from '../../shared/components/date-time-input'
 import { SiteSelectorComponent } from "../../sites/site-selector/site-selector.component";
 
 @Component({
-  selector: 'om-session',
-  templateUrl: 'session.component.html',
-  styleUrl: 'session.component.less',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    DateTimeInputComponent,
-    SiteSelectorComponent,
-  ],
+    selector: 'om-session',
+    templateUrl: 'session.component.html',
+    styleUrl: 'session.component.less',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatFormFieldModule,
+        MatInputModule,
+        FormsModule,
+        DateTimeInputComponent,
+        SiteSelectorComponent,
+    ]
 })
 export class SessionComponent {
   @Input() session?: Session;

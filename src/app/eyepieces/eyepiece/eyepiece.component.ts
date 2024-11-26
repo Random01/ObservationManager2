@@ -10,18 +10,17 @@ import { Eyepiece } from '../../shared/models/equipment/eyepiece.model';
 import { VendorSelectorComponent } from '../../equipment/vendor-selector';
 
 @Component({
-  selector: 'om-eyepiece',
-  templateUrl: 'eyepiece.component.html',
-  styleUrl: 'eyepiece.component.less',
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    MatCheckboxModule,
-    VendorSelectorComponent,
-    NgIf,
-  ],
+    selector: 'om-eyepiece',
+    templateUrl: 'eyepiece.component.html',
+    styleUrl: 'eyepiece.component.less',
+    imports: [
+        MatFormFieldModule,
+        MatInputModule,
+        FormsModule,
+        MatCheckboxModule,
+        VendorSelectorComponent,
+        NgIf,
+    ]
 })
 export class EyepieceComponent {
 

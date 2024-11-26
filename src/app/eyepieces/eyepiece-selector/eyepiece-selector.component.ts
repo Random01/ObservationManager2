@@ -13,21 +13,20 @@ import { EntitySelectorComponent } from '../../shared/components/entity-selector
 import { AddEyepieceDialogService } from '../add-eyepiece-dialog';
 
 @Component({
-  selector: 'om-eyepiece-selector',
-  templateUrl: '../../shared/components/entity-selector/entity-selector.component.html',
-  styleUrls: [
-    '../../shared/components/entity-selector/entity-selector.component.css'
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatSelectModule,
-    MatIconModule,
-    MatButtonModule,
-    FormsModule,
-    NgForOf,
-  ],
+    selector: 'om-eyepiece-selector',
+    templateUrl: '../../shared/components/entity-selector/entity-selector.component.html',
+    styleUrls: [
+        '../../shared/components/entity-selector/entity-selector.component.css'
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatFormFieldModule,
+        MatSelectModule,
+        MatIconModule,
+        MatButtonModule,
+        FormsModule,
+        NgForOf,
+    ]
 })
 export class EyepieceSelectorComponent extends EntitySelectorComponent<Eyepiece, EyepieceService> {
 

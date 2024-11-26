@@ -10,19 +10,16 @@ import { ScopeService } from '../shared/scope.service';
 import { ScopeComponent } from '../scope';
 
 @Component({
-  selector: 'om-add-scope-dialog',
-  templateUrl: 'add-scope-dialog.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatDialogModule,
-    MatButtonModule,
-
-    NgIf,
-    AsyncPipe,
-
-    ScopeComponent,
-  ],
+    selector: 'om-add-scope-dialog',
+    templateUrl: 'add-scope-dialog.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatDialogModule,
+        MatButtonModule,
+        NgIf,
+        AsyncPipe,
+        ScopeComponent,
+    ]
 })
 export class AddScopeDialogComponent extends AddEntityDialogComponent<Scope, ScopeService> {
 

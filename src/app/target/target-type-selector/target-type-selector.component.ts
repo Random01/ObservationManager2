@@ -8,17 +8,16 @@ import { TargetType } from '../../shared/models/target-type.model';
 import { TargetTypeService } from '../shared/target-type.service';
 
 @Component({
-  selector: 'om-target-type-selector',
-  templateUrl: 'target-type-selector.component.html',
-  styleUrl: 'target-type-selector.component.less',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatSelectModule,
-    NgForOf,
-    AsyncPipe,
-  ],
+    selector: 'om-target-type-selector',
+    templateUrl: 'target-type-selector.component.html',
+    styleUrl: 'target-type-selector.component.less',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatFormFieldModule,
+        MatSelectModule,
+        NgForOf,
+        AsyncPipe,
+    ]
 })
 export class TargetTypeSelectorComponent {
 

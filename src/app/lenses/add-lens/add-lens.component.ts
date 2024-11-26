@@ -9,16 +9,15 @@ import { Lens } from '../../shared/models/equipment/equipment';
 import { LensComponent } from '../lens';
 
 @Component({
-  selector: 'om-add-lens',
-  templateUrl: 'add-lens.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    NgIf,
-    AsyncPipe,
-    LensComponent,
-  ],
+    selector: 'om-add-lens',
+    templateUrl: 'add-lens.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatButtonModule,
+        NgIf,
+        AsyncPipe,
+        LensComponent,
+    ]
 })
 export class AddLensComponent extends AddEntityComponent<Lens> {
 

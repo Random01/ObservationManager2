@@ -23,25 +23,22 @@ import { SessionObservationExportRequestParams } from './session-observation-exp
 import { SessionInfoComponent } from "../../sessions/session-info/session-info.component";
 
 @Component({
-  selector: 'om-session-observations',
-  templateUrl: 'session-observations.component.html',
-  styleUrl: 'session-observations.component.less',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatPaginatorModule,
-    MatTableModule,
-    MatButtonModule,
-    MatIconModule,
-    MatTooltipModule,
-    
-    RouterLink,
-    NgIf,
-    AsyncPipe,
-    DatePipe,
-
-    SessionInfoComponent,
-  ],
+    selector: 'om-session-observations',
+    templateUrl: 'session-observations.component.html',
+    styleUrl: 'session-observations.component.less',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatPaginatorModule,
+        MatTableModule,
+        MatButtonModule,
+        MatIconModule,
+        MatTooltipModule,
+        RouterLink,
+        NgIf,
+        AsyncPipe,
+        DatePipe,
+        SessionInfoComponent,
+    ]
 })
 export class SessionObservationsComponent extends EntityListComponent<Observation> {
 

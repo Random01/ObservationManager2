@@ -14,7 +14,10 @@ import { StorageService } from '../../services/storage.service';
 import { Entity } from '../../models/models';
 import { AddNewEntityDialogService } from '../../services/add-new-entity-dialog.service';
 
-@Component({ template: '' })
+@Component({
+    template: '',
+    standalone: false
+})
 export class EntitySelectorComponent<T extends Entity, S extends StorageService<T>> implements OnInit {
 
   private _item: T | null;

@@ -12,16 +12,15 @@ import { MatInputModule } from '@angular/material/input';
 import moment from 'moment';
 
 @Component({
-  selector: 'om-date-time-input',
-  templateUrl: 'date-time-input.component.html',
-  styleUrl: 'date-time-input.component.css',
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    MatDatepickerModule,
-    FormsModule,
-  ],
+    selector: 'om-date-time-input',
+    templateUrl: 'date-time-input.component.html',
+    styleUrl: 'date-time-input.component.css',
+    imports: [
+        MatFormFieldModule,
+        MatInputModule,
+        MatDatepickerModule,
+        FormsModule,
+    ]
 })
 export class DateTimeInputComponent {
 

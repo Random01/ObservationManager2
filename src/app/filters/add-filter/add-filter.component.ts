@@ -9,16 +9,15 @@ import { FilterService } from '../shared/filter.service';
 import { FilterComponent } from '../filter/filter.component';
 
 @Component({
-  selector: 'om-add-filter',
-  templateUrl: 'add-filter.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    NgIf,
-    AsyncPipe,
-    FilterComponent,
-  ],
+    selector: 'om-add-filter',
+    templateUrl: 'add-filter.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatButtonModule,
+        NgIf,
+        AsyncPipe,
+        FilterComponent,
+    ]
 })
 export class AddFilterComponent extends AddEntityComponent<Filter> {
 

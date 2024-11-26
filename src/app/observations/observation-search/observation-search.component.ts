@@ -22,16 +22,15 @@ import { FormsModule } from '@angular/forms';
 import { NgForOf } from '@angular/common';
 
 @Component({
-  selector: 'om-observation-search',
-  templateUrl: 'observation-search.component.html',
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatSelectModule,
-    FormsModule,
-    NgForOf,
-    TargetSelectorComponent,
-  ],
+    selector: 'om-observation-search',
+    templateUrl: 'observation-search.component.html',
+    imports: [
+        MatFormFieldModule,
+        MatSelectModule,
+        FormsModule,
+        NgForOf,
+        TargetSelectorComponent,
+    ]
 })
 export class ObservationSearchComponent implements OnInit {
 

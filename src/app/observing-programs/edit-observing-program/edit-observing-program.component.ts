@@ -9,16 +9,15 @@ import { ObservingProgramsService } from '../shared/observing-programs.service';
 import { ObservingProgramComponent } from '../observing-program';
 
 @Component({
-  selector: 'om-edit-observing-program',
-  templateUrl: 'edit-observing-program.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    ObservingProgramComponent,
-    NgIf,
-    AsyncPipe,
-  ],
+    selector: 'om-edit-observing-program',
+    templateUrl: 'edit-observing-program.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatButtonModule,
+        ObservingProgramComponent,
+        NgIf,
+        AsyncPipe,
+    ]
 })
 export class EditObservingProgramComponent extends EditEntityComponent<ObservingProgram> {
 

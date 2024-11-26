@@ -17,19 +17,18 @@ import { BaseComponent } from '../../shared/components/base-component';
 import { selectRegisterState } from '../../store/register';
 
 @Component({
-  selector: 'om-register',
-  templateUrl: 'register.component.html',
-  styleUrl: 'register.component.less',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    ReactiveFormsModule,
-    NgIf,
-    AsyncPipe,
-  ],
+    selector: 'om-register',
+    templateUrl: 'register.component.html',
+    styleUrl: 'register.component.less',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        ReactiveFormsModule,
+        NgIf,
+        AsyncPipe,
+    ]
 })
 export class RegisterComponent extends BaseComponent {
 

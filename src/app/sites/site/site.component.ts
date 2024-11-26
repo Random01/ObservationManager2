@@ -7,17 +7,16 @@ import { FormsModule } from '@angular/forms';
 import { DegreesInputComponent } from 'app/shared/components/degrees-input';
 
 @Component({
-  selector: 'om-site',
-  templateUrl: 'site.component.html',
-  styleUrl: 'site.component.less',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    DegreesInputComponent,
-  ],
+    selector: 'om-site',
+    templateUrl: 'site.component.html',
+    styleUrl: 'site.component.less',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatFormFieldModule,
+        MatInputModule,
+        FormsModule,
+        DegreesInputComponent,
+    ]
 })
 export class SiteComponent {
   @Input() public site?: Site;

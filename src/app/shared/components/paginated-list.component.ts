@@ -12,7 +12,10 @@ import { RequestParams } from '../services/request-params.model';
 import PaginatedListQueryParams from '../interfaces/paginated-list-query-params.interface';
 import { PaginatedResponsePayload } from '../interfaces/paginated-response-payload.interface';
 
-@Component({ template: '' })
+@Component({
+    template: '',
+    standalone: false
+})
 export abstract class PaginatedListComponent<T> extends BaseComponent implements OnInit {
 
   protected readonly itemsSubject$ = new BehaviorSubject<PaginatedResponsePayload<T>>({

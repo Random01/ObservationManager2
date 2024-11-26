@@ -13,21 +13,20 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'om-lens-selector',
-  templateUrl: '../../shared/components/entity-selector/entity-selector.component.html',
-  styleUrls: [
-    '../../shared/components/entity-selector/entity-selector.component.css'
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatSelectModule,
-    MatIconModule,
-    MatButtonModule,
-    FormsModule,
-    NgForOf,
-  ],
+    selector: 'om-lens-selector',
+    templateUrl: '../../shared/components/entity-selector/entity-selector.component.html',
+    styleUrls: [
+        '../../shared/components/entity-selector/entity-selector.component.css'
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatFormFieldModule,
+        MatSelectModule,
+        MatIconModule,
+        MatButtonModule,
+        FormsModule,
+        NgForOf,
+    ]
 })
 export class LensSelectorComponent extends EntitySelectorComponent<Lens, LensService> {
 

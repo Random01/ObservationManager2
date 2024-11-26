@@ -17,24 +17,23 @@ import { ObservationConditionsComponent } from "../observation-conditions/observ
 
 
 @Component({
-  selector: 'om-observation',
-  templateUrl: 'observation.component.html',
-  styleUrl: 'observation.component.less',
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    TargetSelectorComponent,
-    SessionInfoComponent,
-    DateTimeInputComponent,
-    ScopeSelectorComponent,
-    EyepieceSelectorComponent,
-    MagnificationSelectorComponent,
-    FilterSelectorComponent,
-    LensSelectorComponent,
-    ObservationConditionsComponent,
-  ],
+    selector: 'om-observation',
+    templateUrl: 'observation.component.html',
+    styleUrl: 'observation.component.less',
+    imports: [
+        MatFormFieldModule,
+        MatInputModule,
+        FormsModule,
+        TargetSelectorComponent,
+        SessionInfoComponent,
+        DateTimeInputComponent,
+        ScopeSelectorComponent,
+        EyepieceSelectorComponent,
+        MagnificationSelectorComponent,
+        FilterSelectorComponent,
+        LensSelectorComponent,
+        ObservationConditionsComponent,
+    ]
 })
 export class ObservationComponent {
 

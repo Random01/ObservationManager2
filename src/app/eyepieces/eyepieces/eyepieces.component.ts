@@ -15,23 +15,22 @@ import { DeleteEntityDialogService } from '../../shared/components/delete-entity
 import { EyepieceFocalLengthPipe } from "../../shared/models/pipes/eyepiece-focal-length-formatter.pipe";
 
 @Component({
-  selector: 'om-eyepieces',
-  templateUrl: 'eyepieces.component.html',
-  styleUrl: 'eyepieces.component.less',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatPaginatorModule,
-    MatTableModule,
-    MatIconModule,
-    MatButtonModule,
-    MatTooltipModule,
-    RouterLink,
-    NgIf,
-    AsyncPipe,
-    DecimalPipe,
-    EyepieceFocalLengthPipe,
-  ],
+    selector: 'om-eyepieces',
+    templateUrl: 'eyepieces.component.html',
+    styleUrl: 'eyepieces.component.less',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatPaginatorModule,
+        MatTableModule,
+        MatIconModule,
+        MatButtonModule,
+        MatTooltipModule,
+        RouterLink,
+        NgIf,
+        AsyncPipe,
+        DecimalPipe,
+        EyepieceFocalLengthPipe,
+    ]
 })
 export class EyepiecesComponent extends EntityListComponent<Eyepiece> {
 

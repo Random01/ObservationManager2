@@ -21,23 +21,22 @@ import { TargetSearchParamsComponent } from "../target-search-params/target-sear
 import { TargetTypeFormatterPipe } from "../shared/pipes/target-type-formatter.pipe";
 
 @Component({
-  selector: 'om-targets',
-  templateUrl: 'targets.component.html',
-  styleUrl: 'targets.component.less',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatPaginatorModule,
-    MatTableModule,
-    MatButtonModule,
-    MatIconModule,
-    MatExpansionModule,
-    NgIf,
-    AsyncPipe,
-    RouterLink,
-    TargetSearchParamsComponent,
-    TargetTypeFormatterPipe,
-  ],
+    selector: 'om-targets',
+    templateUrl: 'targets.component.html',
+    styleUrl: 'targets.component.less',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatPaginatorModule,
+        MatTableModule,
+        MatButtonModule,
+        MatIconModule,
+        MatExpansionModule,
+        NgIf,
+        AsyncPipe,
+        RouterLink,
+        TargetSearchParamsComponent,
+        TargetTypeFormatterPipe,
+    ]
 })
 export class TargetsComponent extends EntityListComponent<Target> {
 

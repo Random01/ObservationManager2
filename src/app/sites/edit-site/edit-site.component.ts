@@ -9,16 +9,15 @@ import { Site } from '../../shared/models/models';
 import { SiteComponent } from '../site';
 
 @Component({
-  selector: 'om-edit-site',
-  templateUrl: 'edit-site.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    SiteComponent,
-    NgIf,
-    AsyncPipe,
-  ],
+    selector: 'om-edit-site',
+    templateUrl: 'edit-site.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatButtonModule,
+        SiteComponent,
+        NgIf,
+        AsyncPipe,
+    ]
 })
 export class EditSiteComponent extends EditEntityComponent<Site> {
 

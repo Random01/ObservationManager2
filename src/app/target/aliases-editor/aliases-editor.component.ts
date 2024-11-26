@@ -9,19 +9,18 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
-  selector: 'om-aliases-editor',
-  templateUrl: 'aliases-editor.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatTableModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatTooltipModule,
-    FormsModule,
-  ],
+    selector: 'om-aliases-editor',
+    templateUrl: 'aliases-editor.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatTableModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatIconModule,
+        MatTooltipModule,
+        FormsModule,
+    ]
 })
 export class AliasesEditorComponent {
 

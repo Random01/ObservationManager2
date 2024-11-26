@@ -18,19 +18,18 @@ import ObservingProgramStatistics from '../shared/observing-program-statistics.m
 import { TargetTypeFormatterPipe } from '../../target/shared/pipes/target-type-formatter.pipe';
 
 @Component({
-  selector: 'om-observing-program-statistics',
-  templateUrl: 'observing-program-statistics.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    MatPaginatorModule,
-    MatTableModule,
-    MatIconModule,
-    NgIf,
-    AsyncPipe,
-    TargetTypeFormatterPipe,
-  ],
+    selector: 'om-observing-program-statistics',
+    templateUrl: 'observing-program-statistics.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatButtonModule,
+        MatPaginatorModule,
+        MatTableModule,
+        MatIconModule,
+        NgIf,
+        AsyncPipe,
+        TargetTypeFormatterPipe,
+    ]
 })
 export class ObservingProgramStatisticsComponent extends PaginatedListComponent<TargetStatistics> implements OnInit {
 

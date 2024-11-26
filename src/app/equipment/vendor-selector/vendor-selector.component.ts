@@ -18,19 +18,18 @@ import { DestroyableComponent } from '../../shared/components/destroyable.compon
 import { VendorService } from '../shared';
 
 @Component({
-  selector: 'om-vendor-selector',
-  templateUrl: 'vendor-selector.component.html',
-  styleUrl: 'vendor-selector.component.less',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    MatAutocompleteModule,
-    AsyncPipe,
-    FormsModule,
-    NgForOf,
-  ],
+    selector: 'om-vendor-selector',
+    templateUrl: 'vendor-selector.component.html',
+    styleUrl: 'vendor-selector.component.less',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatFormFieldModule,
+        MatInputModule,
+        MatAutocompleteModule,
+        AsyncPipe,
+        FormsModule,
+        NgForOf,
+    ]
 })
 export class VendorSelectorComponent extends DestroyableComponent {
 

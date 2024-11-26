@@ -9,16 +9,15 @@ import { AsyncPipe, NgIf } from '@angular/common';
 import { EyepieceComponent } from '../eyepiece';
 
 @Component({
-  selector: 'om-add-eyepiece',
-  templateUrl: 'add-eyepiece.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    NgIf,
-    AsyncPipe,
-    EyepieceComponent,
-  ],
+    selector: 'om-add-eyepiece',
+    templateUrl: 'add-eyepiece.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatButtonModule,
+        NgIf,
+        AsyncPipe,
+        EyepieceComponent,
+    ]
 })
 export class AddEyepieceComponent extends AddEntityComponent<Eyepiece> {
 

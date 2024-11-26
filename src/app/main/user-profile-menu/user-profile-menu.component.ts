@@ -12,19 +12,18 @@ import { selectAuthState } from '../../store/auth';
 import * as AuthApiActions from '../../store/auth/auth.actions';
 
 @Component({
-  selector: 'om-user-profile-menu',
-  templateUrl: 'user-profile-menu.component.html',
-  styleUrl: 'user-profile-menu.component.less',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    MatMenuModule,
-    MatIconModule,
-    RouterLink,
-    NgIf,
-    AsyncPipe,
-  ],
+    selector: 'om-user-profile-menu',
+    templateUrl: 'user-profile-menu.component.html',
+    styleUrl: 'user-profile-menu.component.less',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatButtonModule,
+        MatMenuModule,
+        MatIconModule,
+        RouterLink,
+        NgIf,
+        AsyncPipe,
+    ]
 })
 export class UserProfileMenuComponent {
 

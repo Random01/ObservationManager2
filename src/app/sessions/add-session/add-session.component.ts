@@ -11,16 +11,15 @@ import { AddEntityComponent } from '../../shared/components/add-entity.component
 import { SessionComponent } from "../session/session.component";
 
 @Component({
-  selector: 'om-add-session',
-  templateUrl: 'add-session.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    NgIf,
-    AsyncPipe,
-    SessionComponent,
-  ],
+    selector: 'om-add-session',
+    templateUrl: 'add-session.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatButtonModule,
+        NgIf,
+        AsyncPipe,
+        SessionComponent,
+    ]
 })
 export class AddSessionComponent extends AddEntityComponent<Session> {
 

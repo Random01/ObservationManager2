@@ -14,21 +14,20 @@ import { EntityListComponent } from '../../shared/components/entity-list.compone
 import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
 
 @Component({
-  selector: 'om-filters',
-  templateUrl: 'filters.component.html',
-  styleUrl: 'filters.component.less',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatPaginatorModule,
-    MatTableModule,
-    MatIconModule,
-    MatButtonModule,
-    MatTooltipModule,
-    RouterLink,
-    NgIf,
-    AsyncPipe,
-  ],
+    selector: 'om-filters',
+    templateUrl: 'filters.component.html',
+    styleUrl: 'filters.component.less',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatPaginatorModule,
+        MatTableModule,
+        MatIconModule,
+        MatButtonModule,
+        MatTooltipModule,
+        RouterLink,
+        NgIf,
+        AsyncPipe,
+    ]
 })
 export class FiltersComponent extends EntityListComponent<Filter> {
 

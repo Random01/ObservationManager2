@@ -14,22 +14,21 @@ import { ObservingProgramsService } from '../shared/observing-programs.service';
 import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
 
 @Component({
-  selector: 'om-observing-programs',
-  templateUrl: 'observing-programs.component.html',
-  styleUrl: 'observing-programs.component.less',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    MatPaginatorModule,
-    MatIconModule,
-    MatTableModule,
-    MatTooltipModule,
-    NgIf,
-    AsyncPipe,
-    CommonModule,
-    RouterLink,
-  ],
+    selector: 'om-observing-programs',
+    templateUrl: 'observing-programs.component.html',
+    styleUrl: 'observing-programs.component.less',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatButtonModule,
+        MatPaginatorModule,
+        MatIconModule,
+        MatTableModule,
+        MatTooltipModule,
+        NgIf,
+        AsyncPipe,
+        CommonModule,
+        RouterLink,
+    ]
 })
 export class ObservingProgramsComponent extends EntityListComponent<ObservingProgram> {
 

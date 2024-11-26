@@ -7,16 +7,15 @@ import { BaseEntityService } from '../common/base-entity.service';
 import { BaseAdminComponent } from "../common/base-admin.component";
 
 @Component({
-  templateUrl: 'constellations.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{
-    provide: BaseEntityService,
-    useClass: ConstellationsAdminService,
-  }],
-  standalone: true,
-  imports: [
-    BaseAdminComponent,
-  ],
+    templateUrl: 'constellations.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [{
+            provide: BaseEntityService,
+            useClass: ConstellationsAdminService,
+        }],
+    imports: [
+        BaseAdminComponent,
+    ]
 })
 export class ConstellationsComponent {
 

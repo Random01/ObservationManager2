@@ -8,17 +8,16 @@ import { Scope } from '../../shared/models/equipment/scope.model';
 import { VendorSelectorComponent } from '../../equipment/vendor-selector';
 
 @Component({
-  selector: 'om-scope',
-  templateUrl: 'scope.component.html',
-  styleUrl: 'scope.component.less',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    VendorSelectorComponent,
-  ],
+    selector: 'om-scope',
+    templateUrl: 'scope.component.html',
+    styleUrl: 'scope.component.less',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatFormFieldModule,
+        MatInputModule,
+        FormsModule,
+        VendorSelectorComponent,
+    ]
 })
 export class ScopeComponent {
 

@@ -13,21 +13,20 @@ import { EntitySelectorComponent } from '../../shared/components/entity-selector
 import { AddScopeDialogService } from '../add-scope-dialog';
 
 @Component({
-  selector: 'om-scope-selector',
-  templateUrl: '../../shared/components/entity-selector/entity-selector.component.html',
-  styleUrls: [
-    '../../shared/components/entity-selector/entity-selector.component.css'
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatSelectModule,
-    MatIconModule,
-    MatButtonModule,
-    FormsModule,
-    NgForOf,
-  ],
+    selector: 'om-scope-selector',
+    templateUrl: '../../shared/components/entity-selector/entity-selector.component.html',
+    styleUrls: [
+        '../../shared/components/entity-selector/entity-selector.component.css'
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatFormFieldModule,
+        MatSelectModule,
+        MatIconModule,
+        MatButtonModule,
+        FormsModule,
+        NgForOf,
+    ]
 })
 export class ScopeSelectorComponent extends EntitySelectorComponent<Scope, ScopeService> {
 

@@ -13,21 +13,20 @@ import { Site } from '../../shared/models/models';
 import { AddSiteDialogService } from '../add-site-dialog';
 
 @Component({
-  selector: 'om-site-selector',
-  templateUrl: '../../shared/components/entity-selector/entity-selector.component.html',
-  styleUrls: [
-    '../../shared/components/entity-selector/entity-selector.component.css'
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatIconModule,
-    FormsModule,
-    NgForOf,
-  ],
+    selector: 'om-site-selector',
+    templateUrl: '../../shared/components/entity-selector/entity-selector.component.html',
+    styleUrls: [
+        '../../shared/components/entity-selector/entity-selector.component.css'
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatFormFieldModule,
+        MatSelectModule,
+        MatButtonModule,
+        MatIconModule,
+        FormsModule,
+        NgForOf,
+    ]
 })
 export class SiteSelectorComponent extends EntitySelectorComponent<Site, SiteService> {
 

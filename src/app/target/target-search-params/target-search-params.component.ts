@@ -9,16 +9,15 @@ import { TargetTypeSelectorComponent } from "../target-type-selector/target-type
 import { MatInputModule } from '@angular/material/input';
 
 @Component({
-  selector: 'om-target-search-params',
-  templateUrl: 'target-search-params.component.html',
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    FormsModule,
-    TargetTypeSelectorComponent,
-  ],
+    selector: 'om-target-search-params',
+    templateUrl: 'target-search-params.component.html',
+    imports: [
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        FormsModule,
+        TargetTypeSelectorComponent,
+    ]
 })
 export class TargetSearchParamsComponent {
 

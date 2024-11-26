@@ -20,23 +20,22 @@ import { RequestParams } from '../../shared/services/request-params.model';
 import { ObservationSearchComponent } from "../observation-search/observation-search.component";
 
 @Component({
-  selector: 'om-observations',
-  templateUrl: 'observations.component.html',
-  styleUrl: 'observations.component.less',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatExpansionModule,
-    MatPaginatorModule,
-    MatTableModule,
-    MatButtonModule,
-    MatIconModule,
-    MatTooltipModule,
-    NgIf,
-    AsyncPipe,
-    RouterLink,
-    ObservationSearchComponent,
-  ],
+    selector: 'om-observations',
+    templateUrl: 'observations.component.html',
+    styleUrl: 'observations.component.less',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatExpansionModule,
+        MatPaginatorModule,
+        MatTableModule,
+        MatButtonModule,
+        MatIconModule,
+        MatTooltipModule,
+        NgIf,
+        AsyncPipe,
+        RouterLink,
+        ObservationSearchComponent,
+    ]
 })
 export class ObservationsComponent extends EntityListComponent<Observation> {
 

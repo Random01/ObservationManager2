@@ -15,19 +15,18 @@ import { selectAuthState } from '../../store/auth';
 import { BaseComponent } from '../../shared/components';
 
 @Component({
-  selector: 'om-login',
-  templateUrl: 'login.component.html',
-  styleUrl: 'login.component.less',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    NgIf,
-    AsyncPipe,
-  ],
+    selector: 'om-login',
+    templateUrl: 'login.component.html',
+    styleUrl: 'login.component.less',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        NgIf,
+        AsyncPipe,
+    ]
 })
 export class LoginComponent extends BaseComponent {
 

@@ -9,16 +9,15 @@ import { Session } from '../../shared/models/models';
 import { SessionComponent } from '../session';
 
 @Component({
-  selector: 'om-edit-session',
-  templateUrl: 'edit-session.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    NgIf,
-    AsyncPipe,
-    SessionComponent,
-  ],
+    selector: 'om-edit-session',
+    templateUrl: 'edit-session.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatButtonModule,
+        NgIf,
+        AsyncPipe,
+        SessionComponent,
+    ]
 })
 export class EditSessionComponent extends EditEntityComponent<Session> {
 

@@ -10,17 +10,16 @@ import { Constellation } from '../../shared/models/constellation.model';
 import { ConstellationsService } from '../../constellations/shared/constellations.service';
 
 @Component({
-  selector: 'om-constellation-selector',
-  templateUrl: 'constellation-selector.component.html',
-  styleUrl: 'constellation-selector.component.less',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatSelectModule,
-    NgForOf,
-    AsyncPipe,
-  ],
+    selector: 'om-constellation-selector',
+    templateUrl: 'constellation-selector.component.html',
+    styleUrl: 'constellation-selector.component.less',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatFormFieldModule,
+        MatSelectModule,
+        NgForOf,
+        AsyncPipe,
+    ]
 })
 export class ConstellationSelectorComponent implements OnInit {
 

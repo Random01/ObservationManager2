@@ -24,21 +24,20 @@ function isTarget(item: string | Target): item is Target {
 }
 
 @Component({
-  selector: 'om-target-selector',
-  templateUrl: 'target-selector.component.html',
-  styleUrl: 'target-selector.component.less',
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
-    MatAutocompleteModule,
-    ReactiveFormsModule,
-    NgIf,
-    NgForOf,
-    AsyncPipe,
-  ],
+    selector: 'om-target-selector',
+    templateUrl: 'target-selector.component.html',
+    styleUrl: 'target-selector.component.less',
+    imports: [
+        MatFormFieldModule,
+        MatInputModule,
+        MatIconModule,
+        MatButtonModule,
+        MatAutocompleteModule,
+        ReactiveFormsModule,
+        NgIf,
+        NgForOf,
+        AsyncPipe,
+    ]
 })
 export class TargetSelectorComponent implements OnInit {
 

@@ -14,23 +14,21 @@ import { DeleteEntityDialogService } from '../../shared/components/delete-entity
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
-  selector: 'om-scopes',
-  templateUrl: 'scopes.component.html',
-  styleUrl: 'scopes.component.less',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatPaginatorModule,
-    MatTableModule,
-    MatButtonModule,
-    MatIconModule,
-    MatTooltipModule,
-
-    RouterLink,
-    NgIf,
-    AsyncPipe,
-    DecimalPipe,
-  ],
+    selector: 'om-scopes',
+    templateUrl: 'scopes.component.html',
+    styleUrl: 'scopes.component.less',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatPaginatorModule,
+        MatTableModule,
+        MatButtonModule,
+        MatIconModule,
+        MatTooltipModule,
+        RouterLink,
+        NgIf,
+        AsyncPipe,
+        DecimalPipe,
+    ]
 })
 export class ScopesComponent extends EntityListComponent<Scope> {
 
