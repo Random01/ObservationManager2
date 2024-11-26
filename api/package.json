@@ -39,16 +39,16 @@
     "@types/passport": "1.0.16",
     "@types/passport-local": "1.0.38",
     "clean-webpack-plugin": "4.0.0",
-    "copy-webpack-plugin": "11.0.0",
+    "copy-webpack-plugin": "12.0.2",
     "file-loader": "6.2.0",
-    "nodemon": "3.0.1",
-    "ts-loader": "9.4.4",
-    "typescript": "~5.1.6",
-    "webpack": "5.88.2",
-    "webpack-cli": "5.1.04",
+    "nodemon": "3.1.7",
+    "ts-loader": "9.5.1",
+    "typescript": "5.6.3",
+    "webpack": "5.96.1",
+    "webpack-cli": "5.1.4",
     "webpack-node-externals": "3.0.0"
   },
   "engines": {
-    "node": "18.17.1"
+    "node": "20.13.1"
   }
 }
