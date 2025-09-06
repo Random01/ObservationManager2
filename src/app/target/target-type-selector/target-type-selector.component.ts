@@ -1,5 +1,5 @@
 import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy } from '@angular/core';
-import { AsyncPipe, NgForOf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
@@ -13,11 +13,10 @@ import { TargetTypeService } from '../shared/target-type.service';
     styleUrl: 'target-type-selector.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        MatFormFieldModule,
-        MatSelectModule,
-        NgForOf,
-        AsyncPipe,
-    ]
+    MatFormFieldModule,
+    MatSelectModule,
+    AsyncPipe
+]
 })
 export class TargetTypeSelectorComponent {
 

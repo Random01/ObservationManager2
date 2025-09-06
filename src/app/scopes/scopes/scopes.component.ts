@@ -1,6 +1,6 @@
 ﻿import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { AsyncPipe, DecimalPipe, NgIf } from '@angular/common';
+import { AsyncPipe, DecimalPipe } from '@angular/common';
 
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
@@ -19,16 +19,15 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     styleUrl: 'scopes.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        MatPaginatorModule,
-        MatTableModule,
-        MatButtonModule,
-        MatIconModule,
-        MatTooltipModule,
-        RouterLink,
-        NgIf,
-        AsyncPipe,
-        DecimalPipe,
-    ]
+    MatPaginatorModule,
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTooltipModule,
+    RouterLink,
+    AsyncPipe,
+    DecimalPipe
+]
 })
 export class ScopesComponent extends EntityListComponent<Scope> {
 

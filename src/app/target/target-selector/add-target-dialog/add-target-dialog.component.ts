@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,12 +13,11 @@ import { TargetComponent } from '../../target';
     selector: 'om-add-target-dialog',
     templateUrl: 'add-target-dialog.component.html',
     imports: [
-        MatButtonModule,
-        MatDialogModule,
-        NgIf,
-        AsyncPipe,
-        TargetComponent,
-    ]
+    MatButtonModule,
+    MatDialogModule,
+    AsyncPipe,
+    TargetComponent
+]
 })
 export class AddTargetDialogComponent extends AddEntityDialogComponent<Target, TargetService> {
 

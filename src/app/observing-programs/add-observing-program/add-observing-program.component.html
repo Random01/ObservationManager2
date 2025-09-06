@@ -1,27 +1,25 @@
-<div
-  class="om-add-observing-program"
-  *ngIf="{ item: item$ | async } as data"
->
-
-  <div class="header">
-    <h2 class="mat-h2">Add New Observing Program</h2>
-  </div>
-
-  <div *ngIf="data.item">
-    <om-observing-program [program]="data.item"></om-observing-program>
-  </div>
-
-  <hr/>
-
-  <div class="footer">
-    <button
-      mat-button
-      color="primary"
-      [disabled]="!isValid()"
+@if ({ item: item$ | async }; as data) {
+  <div
+    class="om-add-observing-program"
+    >
+    <div class="header">
+      <h2 class="mat-h2">Add New Observing Program</h2>
+    </div>
+    @if (data.item) {
+      <div>
+        <om-observing-program [program]="data.item"></om-observing-program>
+      </div>
+    }
+    <hr/>
+    <div class="footer">
+      <button
+        mat-button
+        color="primary"
+        [disabled]="!isValid()"
       (click)="addItem()">Add</button>
-    <button
-      mat-button
+      <button
+        mat-button
       (click)="goBack()">Back</button>
+    </div>
   </div>
-
-</div>
+}

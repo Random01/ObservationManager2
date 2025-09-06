@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { AsyncPipe, NgForOf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -17,14 +17,13 @@ import { MatSelectModule } from '@angular/material/select';
     styleUrl: 'filter.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        MatFormFieldModule,
-        MatInputModule,
-        MatSelectModule,
-        FormsModule,
-        VendorSelectorComponent,
-        NgForOf,
-        AsyncPipe,
-    ]
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    FormsModule,
+    VendorSelectorComponent,
+    AsyncPipe
+]
 })
 export class FilterComponent {
 

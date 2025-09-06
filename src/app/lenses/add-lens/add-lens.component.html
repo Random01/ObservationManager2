@@ -1,32 +1,31 @@
-<div
-  class="om-add-lens"
-  *ngIf="{ item: item$ | async } as data"
->
-  <div>
-    <h2 class="mat-h2">Add New Lens</h2>
-  </div>
-  
-  <div *ngIf="data.item">
-    <om-lens [lens]="data.item"></om-lens>
-  </div>
-
-  <hr/>
-
-  <div>
-    <button 
-      mat-button
-      color="primary"
-      [disabled]="!isValid()"
-      (click)="addItem()"
+@if ({ item: item$ | async }; as data) {
+  <div
+    class="om-add-lens"
     >
-      Add
-    </button>
-
-    <button
-      mat-button
-      (click)="goBack()"
-    >
-      Back
-    </button>
+    <div>
+      <h2 class="mat-h2">Add New Lens</h2>
+    </div>
+    @if (data.item) {
+      <div>
+        <om-lens [lens]="data.item"></om-lens>
+      </div>
+    }
+    <hr/>
+    <div>
+      <button
+        mat-button
+        color="primary"
+        [disabled]="!isValid()"
+        (click)="addItem()"
+        >
+        Add
+      </button>
+      <button
+        mat-button
+        (click)="goBack()"
+        >
+        Back
+      </button>
+    </div>
   </div>
-</div>
+}

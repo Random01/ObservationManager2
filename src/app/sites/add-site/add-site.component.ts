@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 import { MatButtonModule } from '@angular/material/button';
 
@@ -13,11 +13,10 @@ import { SiteComponent } from '../site';
     templateUrl: 'add-site.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        MatButtonModule,
-        SiteComponent,
-        NgIf,
-        AsyncPipe,
-    ]
+    MatButtonModule,
+    SiteComponent,
+    AsyncPipe
+]
 })
 export class AddSiteComponent extends AddEntityComponent<Site> {
 

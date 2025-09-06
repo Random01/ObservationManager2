@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Validators, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -22,13 +22,12 @@ import { selectRegisterState } from '../../store/register';
     styleUrl: 'register.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        MatFormFieldModule,
-        MatInputModule,
-        MatButtonModule,
-        ReactiveFormsModule,
-        NgIf,
-        AsyncPipe,
-    ]
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    AsyncPipe
+]
 })
 export class RegisterComponent extends BaseComponent {
 

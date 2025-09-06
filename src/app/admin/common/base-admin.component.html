@@ -1,9 +1,9 @@
-<div *ngIf="{
+@if ({
   items: items$ | async,
   displayedColumns: displayedColumns$ | async
-} as data">
-
-  <!-- <mat-paginator
+  }; as data) {
+  <div>
+    <!-- <mat-paginator
     showFirstLastButtons="true"
     [length]="targets.length"
     [pageSize]="pageSize"
@@ -11,63 +11,53 @@
     [pageIndex]="currentPage"
     (page)="onPageChanged($event)">
   </mat-paginator> -->
-
   <table
     mat-table
     class="mat-elevation-z8"
-    [dataSource]="data.items"   
-  >
-
+    [dataSource]="data.items"
+    >
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
       <mat-cell *matCellDef="let item">{{ item.name }}</mat-cell>
     </ng-container>
-
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
       <mat-cell *matCellDef="let item">
-          <button
-            mat-icon-button
-            matTooltip="Delete"
-            (click)="remove(item)"
+        <button
+          mat-icon-button
+          matTooltip="Delete"
+          (click)="remove(item)"
           >
-            <mat-icon
-              aria-label="Click to delete"
+          <mat-icon
+            aria-label="Click to delete"
             >
-              delete
-            </mat-icon>
-          </button>
+            delete
+          </mat-icon>
+        </button>
       </mat-cell>
     </ng-container>
-
     <mat-header-row *matHeaderRowDef="data.displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: data.displayedColumns;"></mat-row>
-
   </table>
-
   <!-- <mat-paginator
-    showFirstLastButtons="true"
-    [length]="totalCount"
-    [pageSize]="pageSize"
-    [pageSizeOptions]="pageSizeOptions"
-    [pageIndex]="currentPage"
-    (page)="onPageChanged($event)">
-  </mat-paginator> -->
-
-  <div class="control-panel">
-
-    <!-- Target -->
-    <div>
-      <div>TEXT BOX</div>
-    </div>
-
-    <button
-      mat-button
-      color="primary"
-    >
-      Add
-    </button>
-
+  showFirstLastButtons="true"
+  [length]="totalCount"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="pageSizeOptions"
+  [pageIndex]="currentPage"
+  (page)="onPageChanged($event)">
+</mat-paginator> -->
+<div class="control-panel">
+  <!-- Target -->
+  <div>
+    <div>TEXT BOX</div>
   </div>
-
+  <button
+    mat-button
+    color="primary"
+    >
+    Add
+  </button>
 </div>
+</div>
+}

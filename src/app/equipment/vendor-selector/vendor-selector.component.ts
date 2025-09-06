@@ -5,7 +5,7 @@ import {
   Output,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { AsyncPipe, NgForOf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -23,13 +23,12 @@ import { VendorService } from '../shared';
     styleUrl: 'vendor-selector.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        MatFormFieldModule,
-        MatInputModule,
-        MatAutocompleteModule,
-        AsyncPipe,
-        FormsModule,
-        NgForOf,
-    ]
+    MatFormFieldModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    AsyncPipe,
+    FormsModule
+]
 })
 export class VendorSelectorComponent extends DestroyableComponent {
 

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { AsyncPipe, NgForOf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -15,13 +15,12 @@ import { SeeingTypeService } from '../shared';
     styleUrl: 'observation-conditions.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        MatFormFieldModule,
-        MatSelectModule,
-        MatInputModule,
-        FormsModule,
-        AsyncPipe,
-        NgForOf,
-    ]
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    FormsModule,
+    AsyncPipe
+]
 })
 export class ObservationConditionsComponent {
 

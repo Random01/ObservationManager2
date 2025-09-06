@@ -11,38 +11,41 @@
       [matAutocomplete]="auto"
       (keyup)="search(searchControl.value)" />
 
-    <mat-autocomplete
-      #auto="matAutocomplete"
-      [displayWith]="displayFn"
-      (optionSelected)="onTargetSelected(searchControl.value)"
-    >
-      <mat-option
-        *ngFor="let target of targets$ | async"
-        [value]="target"
-      >
-        {{ target.name }}
-      </mat-option>
-    </mat-autocomplete>
+      <mat-autocomplete
+        #auto="matAutocomplete"
+        [displayWith]="displayFn"
+        (optionSelected)="onTargetSelected(searchControl.value)"
+        >
+        @for (target of targets$ | async; track target) {
+          <mat-option
+            [value]="target"
+            >
+            {{ target.name }}
+          </mat-option>
+        }
+      </mat-autocomplete>
 
-    <button
-      *ngIf="target?.id"
-      matSuffix
-      mat-icon-button
-      aria-label="Clear"
-      matTooltip="Clear"
-      (click)="clearSelection()"
-    >
-      <mat-icon>close</mat-icon>
-    </button>
+      @if (target?.id) {
+        <button
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          matTooltip="Clear"
+          (click)="clearSelection()"
+          >
+          <mat-icon>close</mat-icon>
+        </button>
+      }
 
-  </mat-form-field>
+    </mat-form-field>
 
-  <button
-    *ngIf="canAdd"
-    mat-icon-button
-    (click)="openDialog()"
-  >
-    <mat-icon>add</mat-icon>
-  </button>
+    @if (canAdd) {
+      <button
+        mat-icon-button
+        (click)="openDialog()"
+        >
+        <mat-icon>add</mat-icon>
+      </button>
+    }
 
-</div>
+  </div>

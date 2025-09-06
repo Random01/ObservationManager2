@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
@@ -14,12 +14,11 @@ import { ScopeComponent } from '../scope';
     templateUrl: 'add-scope-dialog.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        MatDialogModule,
-        MatButtonModule,
-        NgIf,
-        AsyncPipe,
-        ScopeComponent,
-    ]
+    MatDialogModule,
+    MatButtonModule,
+    AsyncPipe,
+    ScopeComponent
+]
 })
 export class AddScopeDialogComponent extends AddEntityDialogComponent<Scope, ScopeService> {
 

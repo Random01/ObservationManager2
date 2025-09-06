@@ -1,30 +1,33 @@
 <h2 mat-dialog-title>Add New Filter</h2>
 
-<div
-  mat-dialog-content 
-  class="om-add-scope"
-  *ngIf="{ item: item$ | async } as data"
->
-  <div *ngIf="data.item">
-    <om-filter [filter]="data.item"></om-filter>
+@if ({ item: item$ | async }; as data) {
+  <div
+    mat-dialog-content
+    class="om-add-scope"
+    >
+    @if (data.item) {
+      <div>
+        <om-filter [filter]="data.item"></om-filter>
+      </div>
+    }
   </div>
-</div>
+}
 
 <div mat-dialog-actions align="end">
 
   <button
     mat-button
     (click)="cancel()"
-  >
+    >
     Cancel
   </button>
 
-  <button 
+  <button
     mat-button
     color="primary"
     [disabled]="!isValid()"
     (click)="addItem()"
-  >
+    >
     Add
   </button>
 

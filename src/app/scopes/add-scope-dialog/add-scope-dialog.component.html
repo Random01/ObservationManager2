@@ -1,16 +1,15 @@
 <h2 mat-dialog-title>Add New Scope</h2>
 
-<div
-  mat-dialog-content
-  class="om-add-scope"
-  *ngIf="{ item: item$ | async } as data"
->
-
-  @if (data.item) {
-    <om-scope [scope]="data.item"></om-scope>
-  }
-  
-</div>
+@if ({ item: item$ | async }; as data) {
+  <div
+    mat-dialog-content
+    class="om-add-scope"
+    >
+    @if (data.item) {
+      <om-scope [scope]="data.item"></om-scope>
+    }
+  </div>
+}
 
 <hr/>
 
@@ -19,16 +18,16 @@
   <button
     mat-button
     (click)="cancel()"
-  >
+    >
     Cancel
   </button>
 
-  <button 
+  <button
     mat-button
     color="primary"
     [disabled]="!isValid()"
     (click)="addItem()"
-  >
+    >
     Add
   </button>
 

@@ -6,7 +6,7 @@ import { Filter } from '../../shared/models/equipment/equipment';
 import { AddEntityDialogComponent } from '../../shared/components/add-entity-dialog.component';
 import { FilterService } from '../shared/filter.service';
 import { FilterComponent } from '../filter/filter.component';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
@@ -15,12 +15,11 @@ import { MatButtonModule } from '@angular/material/button';
     styleUrls: ['./add-filter-dialog.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        MatDialogModule,
-        MatButtonModule,
-        NgIf,
-        AsyncPipe,
-        FilterComponent,
-    ]
+    MatDialogModule,
+    MatButtonModule,
+    AsyncPipe,
+    FilterComponent
+]
 })
 export class AddFilterDialogComponent extends AddEntityDialogComponent<Filter, FilterService> {
   constructor(

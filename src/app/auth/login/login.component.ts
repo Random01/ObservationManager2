@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Validators, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -20,13 +20,12 @@ import { BaseComponent } from '../../shared/components';
     styleUrl: 'login.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        MatButtonModule,
-        MatFormFieldModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        NgIf,
-        AsyncPipe,
-    ]
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    AsyncPipe
+]
 })
 export class LoginComponent extends BaseComponent {
 

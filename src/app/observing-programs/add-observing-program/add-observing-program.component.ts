@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 import { MatButtonModule } from '@angular/material/button';
 
@@ -13,11 +13,10 @@ import { ObservingProgramComponent } from '../observing-program';
     templateUrl: 'add-observing-program.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        MatButtonModule,
-        ObservingProgramComponent,
-        NgIf,
-        AsyncPipe,
-    ]
+    MatButtonModule,
+    ObservingProgramComponent,
+    AsyncPipe
+]
 })
 export class AddObservingProgramComponent extends AddEntityComponent<ObservingProgram> {
 

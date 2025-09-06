@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -22,14 +22,13 @@ import { TargetTypeFormatterPipe } from '../../target/shared/pipes/target-type-f
     templateUrl: 'observing-program-statistics.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        MatButtonModule,
-        MatPaginatorModule,
-        MatTableModule,
-        MatIconModule,
-        NgIf,
-        AsyncPipe,
-        TargetTypeFormatterPipe,
-    ]
+    MatButtonModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatIconModule,
+    AsyncPipe,
+    TargetTypeFormatterPipe
+]
 })
 export class ObservingProgramStatisticsComponent extends PaginatedListComponent<TargetStatistics> implements OnInit {
 

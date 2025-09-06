@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { AsyncPipe, DecimalPipe, NgIf } from '@angular/common';
+import { AsyncPipe, DecimalPipe } from '@angular/common';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -19,16 +19,15 @@ import { DeleteEntityDialogService } from '../../shared/components/delete-entity
     styleUrl: 'lenses.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        MatPaginatorModule,
-        MatTableModule,
-        MatButtonModule,
-        MatIconModule,
-        MatTooltipModule,
-        RouterLink,
-        NgIf,
-        AsyncPipe,
-        DecimalPipe,
-    ]
+    MatPaginatorModule,
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTooltipModule,
+    RouterLink,
+    AsyncPipe,
+    DecimalPipe
+]
 })
 export class LensesComponent extends EntityListComponent<Lens> {
 

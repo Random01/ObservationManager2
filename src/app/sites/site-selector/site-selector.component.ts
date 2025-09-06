@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NgForOf } from '@angular/common';
+
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
@@ -20,13 +20,12 @@ import { AddSiteDialogService } from '../add-site-dialog';
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        MatFormFieldModule,
-        MatSelectModule,
-        MatButtonModule,
-        MatIconModule,
-        FormsModule,
-        NgForOf,
-    ]
+    MatFormFieldModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatIconModule,
+    FormsModule
+]
 })
 export class SiteSelectorComponent extends EntitySelectorComponent<Site, SiteService> {
 

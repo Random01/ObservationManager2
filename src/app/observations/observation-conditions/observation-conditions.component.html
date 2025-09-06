@@ -4,14 +4,15 @@
   <mat-select
     placeholder="Seeing"
     [(value)]="observation.seeing"
-  >
-    <mat-option>None</mat-option>
-    <mat-option
-      *ngFor="let seeingItem of seeingTypes$ | async; let i = index"
-      [value]="seeingItem.seeing"
     >
-      ({{i + 1}}) {{ seeingItem.name }}
-    </mat-option>
+    <mat-option>None</mat-option>
+    @for (seeingItem of seeingTypes$ | async; track seeingItem; let i = $index) {
+      <mat-option
+        [value]="seeingItem.seeing"
+        >
+        ({{i + 1}}) {{ seeingItem.name }}
+      </mat-option>
+    }
   </mat-select>
 </mat-form-field>
 
@@ -25,16 +26,16 @@
     min="0"
     placeholder="Faintest Star"
     [(ngModel)]="observation.faintestStar"/>
-</mat-form-field>
+  </mat-form-field>
 
-<!-- SkyQuality -->
-<mat-form-field class="item">
-  <mat-label>Brightness of night sky</mat-label>
-  <input
-    matInput
-    autocomplete="off"
-    type="number"
-    min="0"
-    placeholder="Brightness of night sky"
-    [(ngModel)]="observation.skyQuality"/>
-</mat-form-field>
+  <!-- SkyQuality -->
+  <mat-form-field class="item">
+    <mat-label>Brightness of night sky</mat-label>
+    <input
+      matInput
+      autocomplete="off"
+      type="number"
+      min="0"
+      placeholder="Brightness of night sky"
+      [(ngModel)]="observation.skyQuality"/>
+    </mat-form-field>

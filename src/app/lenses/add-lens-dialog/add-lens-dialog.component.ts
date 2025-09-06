@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { NgIf, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
@@ -14,12 +14,11 @@ import { LensComponent } from '../lens';
     templateUrl: 'add-lens-dialog.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        MatDialogModule,
-        MatButtonModule,
-        NgIf,
-        AsyncPipe,
-        LensComponent,
-    ]
+    MatDialogModule,
+    MatButtonModule,
+    AsyncPipe,
+    LensComponent
+]
 })
 export class AddLensDialogComponent extends AddEntityDialogComponent<Lens, LensService> {
 

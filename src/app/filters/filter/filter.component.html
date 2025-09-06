@@ -8,35 +8,36 @@
       autocomplete="off"
       placeholder="Model"
       [(ngModel)]="filter.model" />
-  </mat-form-field>
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Filter Type</mat-label>
-    <mat-select
-      placeholder="Filter Type"
-      [(value)]="filter.filterType"
-    >
-      <mat-option
-        *ngFor="let filterType of filterTypes$ | async"
-        [value]="filterType"
-      >
-        {{ filterType }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+    <mat-form-field>
+      <mat-label>Filter Type</mat-label>
+      <mat-select
+        placeholder="Filter Type"
+        [(value)]="filter.filterType"
+        >
+        @for (filterType of filterTypes$ | async; track filterType) {
+          <mat-option
+            [value]="filterType"
+            >
+            {{ filterType }}
+          </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
 
-  <om-vendor-selector
-    [(vendor)]="filter.vendor">
-  </om-vendor-selector>
+    <om-vendor-selector
+      [(vendor)]="filter.vendor">
+    </om-vendor-selector>
 
-  <!-- Description -->
-  <mat-form-field>
-    <mat-label>Description</mat-label>
-    <textarea
-      matInput
-      autocomplete="off"
-      placeholder="Description" 
+    <!-- Description -->
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        autocomplete="off"
+        placeholder="Description"
       [(ngModel)]="filter.description"></textarea>
-  </mat-form-field>
+    </mat-form-field>
 
-</div>
+  </div>

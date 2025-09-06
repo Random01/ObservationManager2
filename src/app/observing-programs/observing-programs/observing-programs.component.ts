@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { AsyncPipe, CommonModule, NgIf } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -19,16 +19,15 @@ import { DeleteEntityDialogService } from '../../shared/components/delete-entity
     styleUrl: 'observing-programs.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        MatButtonModule,
-        MatPaginatorModule,
-        MatIconModule,
-        MatTableModule,
-        MatTooltipModule,
-        NgIf,
-        AsyncPipe,
-        CommonModule,
-        RouterLink,
-    ]
+    MatButtonModule,
+    MatPaginatorModule,
+    MatIconModule,
+    MatTableModule,
+    MatTooltipModule,
+    AsyncPipe,
+    CommonModule,
+    RouterLink
+]
 })
 export class ObservingProgramsComponent extends EntityListComponent<ObservingProgram> {
 

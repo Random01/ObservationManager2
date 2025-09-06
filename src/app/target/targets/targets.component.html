@@ -1,124 +1,106 @@
-<div
-  class="om-targets"
-  *ngIf="{
-    page: page$ | async,
-    searchParameters: searchParameters$ | async
-  } as data"
->
-
-  <div>
-    <h2 class="mat-h2">Objects</h2>
-  </div>
-
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Search Panel
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-  
-    <om-target-search-params
-      [searchParams]="data.searchParameters"
-      (search)="onSearch($event)"
+@if ({
+  page: page$ | async,
+  searchParameters: searchParameters$ | async
+  }; as data) {
+  <div
+    class="om-targets"
     >
-    </om-target-search-params>
-  
-  </mat-expansion-panel>
-
-  <mat-paginator
-    showFirstLastButtons="true"
-    [length]="data.page.totalCount"
-    [pageSize]="pageSize"
-    [pageSizeOptions]="pageSizeOptions"
-    [pageIndex]="currentPage"
-    (page)="onPageChanged($event)">
-  </mat-paginator>
-
-  <mat-table
-    class="mat-elevation-z8"
-    [dataSource]="data.page.items"
-  >
-
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
-      <mat-cell *matCellDef="let target">{{ target.name }}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="type">
-      <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
-      <mat-cell *matCellDef="let target">{{ target.type | targetTypeFormatter }}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="constellation">
-      <mat-header-cell *matHeaderCellDef>Constellation</mat-header-cell>
-      <mat-cell *matCellDef="let target">{{ target.constellation.id }}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="alliases">
-      <mat-header-cell *matHeaderCellDef>Alias Names</mat-header-cell>
-      <mat-cell *matCellDef="let target">{{ target.alliases }}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="actions">
-      <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
-      <mat-cell *matCellDef="let target">
-        <button
-          *ngIf="canEdit(target)"
-          mat-icon-button
-          matTooltip="Edit Object"
-          [routerLink]="['/objects', target.id]"
+    <div>
+      <h2 class="mat-h2">Objects</h2>
+    </div>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Search Panel
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <om-target-search-params
+        [searchParams]="data.searchParameters"
+        (search)="onSearch($event)"
         >
-          <mat-icon aria-label="Click to edit">
-            edit
-          </mat-icon>
-        </button>
-
-        <button
-          *ngIf="canDelete(target)"
-          mat-icon-button
-          matTooltip="Delete Object"
-          (click)="remove(target)"
+      </om-target-search-params>
+    </mat-expansion-panel>
+    <mat-paginator
+      showFirstLastButtons="true"
+      [length]="data.page.totalCount"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="pageSizeOptions"
+      [pageIndex]="currentPage"
+      (page)="onPageChanged($event)">
+    </mat-paginator>
+    <mat-table
+      class="mat-elevation-z8"
+      [dataSource]="data.page.items"
+      >
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+        <mat-cell *matCellDef="let target">{{ target.name }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="type">
+        <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
+        <mat-cell *matCellDef="let target">{{ target.type | targetTypeFormatter }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="constellation">
+        <mat-header-cell *matHeaderCellDef>Constellation</mat-header-cell>
+        <mat-cell *matCellDef="let target">{{ target.constellation.id }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="alliases">
+        <mat-header-cell *matHeaderCellDef>Alias Names</mat-header-cell>
+        <mat-cell *matCellDef="let target">{{ target.alliases }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+        <mat-cell *matCellDef="let target">
+          @if (canEdit(target)) {
+            <button
+              mat-icon-button
+              matTooltip="Edit Object"
+              [routerLink]="['/objects', target.id]"
+              >
+              <mat-icon aria-label="Click to edit">
+                edit
+              </mat-icon>
+            </button>
+          }
+          @if (canDelete(target)) {
+            <button
+              mat-icon-button
+              matTooltip="Delete Object"
+              (click)="remove(target)"
+              >
+              <mat-icon aria-label="Click to delete">
+                delete
+              </mat-icon>
+            </button>
+          }
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator
+      showFirstLastButtons="true"
+      [length]="data.page.totalCount"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="pageSizeOptions"
+      [pageIndex]="currentPage"
+      (page)="onPageChanged($event)">
+    </mat-paginator>
+    <hr />
+    <div>
+      <button
+        mat-button
+        routerLink="/objects/new-object"
+        color="primary"
         >
-          <mat-icon aria-label="Click to delete">
-            delete
-          </mat-icon>
-        </button>
-
-      </mat-cell>
-    </ng-container>
-
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
-
-  <mat-paginator
-    showFirstLastButtons="true"
-    [length]="data.page.totalCount"
-    [pageSize]="pageSize"
-    [pageSizeOptions]="pageSizeOptions"
-    [pageIndex]="currentPage"
-    (page)="onPageChanged($event)">
-  </mat-paginator>
-
-  <hr />
-  
-  <div>
-    
-    <button 
-      mat-button
-      routerLink="/objects/new-object"
-      color="primary"
-    >
-      Add New Object
-    </button>
-
-    <button
-      mat-button
-      routerLink="/"
-    >
-      Back to Main Page
-    </button>
-      
+        Add New Object
+      </button>
+      <button
+        mat-button
+        routerLink="/"
+        >
+        Back to Main Page
+      </button>
+    </div>
   </div>
-
-</div>
+}

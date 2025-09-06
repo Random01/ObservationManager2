@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 import { MatButtonModule } from '@angular/material/button';
 
@@ -15,11 +15,10 @@ import { SessionComponent } from "../session/session.component";
     templateUrl: 'add-session.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        MatButtonModule,
-        NgIf,
-        AsyncPipe,
-        SessionComponent,
-    ]
+    MatButtonModule,
+    AsyncPipe,
+    SessionComponent
+]
 })
 export class AddSessionComponent extends AddEntityComponent<Session> {
 

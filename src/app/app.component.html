@@ -1,7 +1,7 @@
 <mat-toolbar
   class="om-toolbar"
   color="primary"
->
+  >
   <span class="om-title">
     <button mat-icon-button (click)="toggleSideNav()">
       <mat-icon>menu</mat-icon>
@@ -21,23 +21,27 @@
     class="om-sidenav"
     mode="side"
     [opened]="opened$ | async"
-  >
+    >
 
     <mat-nav-list>
 
-      <div *ngFor="let group of navigationLinks; last as isLast">
-        <a
-          *ngFor="let item of group"
-          mat-list-item
-          href="..."
-          routerLinkActive="active-link"
-          [routerLink]="item.link"
-        >
-          {{ item.title }}
-        </a>
-
-        <mat-divider *ngIf="!isLast"></mat-divider>
-      </div>
+      @for (group of navigationLinks; track group; let isLast = $last) {
+        <div>
+          @for (item of group; track item) {
+            <a
+              mat-list-item
+              href="..."
+              routerLinkActive="active-link"
+              [routerLink]="item.link"
+              >
+              {{ item.title }}
+            </a>
+          }
+          @if (!isLast) {
+            <mat-divider></mat-divider>
+          }
+        </div>
+      }
 
     </mat-nav-list>
 

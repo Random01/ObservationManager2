@@ -11,14 +11,15 @@
     <mat-select
       placeholder="Site"
       [(ngModel)]="searchParameters.site.id"
-    >
-      <mat-option>None</mat-option>
-      <mat-option
-        *ngFor="let site of sites"
-        [value]="site.id"
       >
-        {{ site.name }}
-      </mat-option>
+      <mat-option>None</mat-option>
+      @for (site of sites; track site) {
+        <mat-option
+          [value]="site.id"
+          >
+          {{ site.name }}
+        </mat-option>
+      }
     </mat-select>
     <mat-hint align="start">
       <strong>Site where session took place</strong>
@@ -30,25 +31,29 @@
     <mat-select
       placeholder="Telescopes, Binocularus &amp; Finders"
       [(ngModel)]="searchParameters.scope.id"
-    >
-        
+      >
+
       <mat-option>None</mat-option>
-      <mat-option *ngFor="let scope of scopes"
-                  [value]="scope.id">
+      @for (scope of scopes; track scope) {
+        <mat-option
+          [value]="scope.id">
           {{ scope.model }}
-      </mat-option>
+        </mat-option>
+      }
     </mat-select>
   </mat-form-field>
 
   <!-- Eyepiece -->
   <mat-form-field>
     <mat-select placeholder="Eyepieces"
-                [(ngModel)]="searchParameters.eyepiece.id">
+      [(ngModel)]="searchParameters.eyepiece.id">
       <mat-option>None</mat-option>
-      <mat-option *ngFor="let eyepiece of eyepieces"
-                  [value]="eyepiece.id">
+      @for (eyepiece of eyepieces; track eyepiece) {
+        <mat-option
+          [value]="eyepiece.id">
           {{ eyepiece.model }}
-      </mat-option>
+        </mat-option>
+      }
     </mat-select>
   </mat-form-field>
 
@@ -57,24 +62,28 @@
     <mat-select
       placeholder="Filters"
       [(ngModel)]="searchParameters.filter.id"
-    >
+      >
       <mat-option>None</mat-option>
-      <mat-option *ngFor="let filter of filters"
-                  [value]="filter.id">
+      @for (filter of filters; track filter) {
+        <mat-option
+          [value]="filter.id">
           {{ filter.model }}
-      </mat-option>
+        </mat-option>
+      }
     </mat-select>
   </mat-form-field>
 
   <!-- Lens -->
   <mat-form-field>
     <mat-select placeholder="Lenses"
-                [(ngModel)]="searchParameters.lens.id">
+      [(ngModel)]="searchParameters.lens.id">
       <mat-option>None</mat-option>
-      <mat-option *ngFor="let lens of lenses"
-                  [value]="lens.id">
+      @for (lens of lenses; track lens) {
+        <mat-option
+          [value]="lens.id">
           {{ lens.model }}
-      </mat-option>
+        </mat-option>
+      }
     </mat-select>
   </mat-form-field>
 

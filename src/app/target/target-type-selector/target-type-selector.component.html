@@ -5,14 +5,15 @@
       placeholder="Target Type"
       [value]="targetType"
       (selectionChange)="onChange($event.value)"
-    >
-      <mat-option>None</mat-option>
-      <mat-option
-        *ngFor="let targetType of targetTypes$ | async"
-        [value]="targetType.type"
       >
-        {{ targetType.name }}
-      </mat-option>
+      <mat-option>None</mat-option>
+      @for (targetType of targetTypes$ | async; track targetType) {
+        <mat-option
+          [value]="targetType.type"
+          >
+          {{ targetType.name }}
+        </mat-option>
+      }
     </mat-select>
   </mat-form-field>
 </div>

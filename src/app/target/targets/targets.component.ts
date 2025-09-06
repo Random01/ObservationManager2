@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 import { BehaviorSubject } from 'rxjs';
 
@@ -26,17 +26,16 @@ import { TargetTypeFormatterPipe } from "../shared/pipes/target-type-formatter.p
     styleUrl: 'targets.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        MatPaginatorModule,
-        MatTableModule,
-        MatButtonModule,
-        MatIconModule,
-        MatExpansionModule,
-        NgIf,
-        AsyncPipe,
-        RouterLink,
-        TargetSearchParamsComponent,
-        TargetTypeFormatterPipe,
-    ]
+    MatPaginatorModule,
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    MatExpansionModule,
+    AsyncPipe,
+    RouterLink,
+    TargetSearchParamsComponent,
+    TargetTypeFormatterPipe
+]
 })
 export class TargetsComponent extends EntityListComponent<Target> {
 
