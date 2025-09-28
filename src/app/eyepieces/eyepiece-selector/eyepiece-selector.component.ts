@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NgForOf } from '@angular/common';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -25,7 +24,6 @@ import { AddEyepieceDialogService } from '../add-eyepiece-dialog';
         MatIconModule,
         MatButtonModule,
         FormsModule,
-        NgForOf,
     ]
 })
 export class EyepieceSelectorComponent extends EntitySelectorComponent<Eyepiece, EyepieceService> {
