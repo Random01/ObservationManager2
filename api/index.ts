@@ -2,10 +2,9 @@ import express from 'express';
 import session from 'express-session';
 import compression from 'compression';
 import errorhandler from 'errorhandler';
-
 import mongoose from 'mongoose';
-
 import MongoStore from 'connect-mongo';
+import cors from 'cors';
 
 import passport from './config/passport';
 import { dbConfig } from './config';
@@ -18,6 +17,7 @@ app.use(express.static(__dirname + '/public'));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
 
 if (!dbConfig.url) {
   throw new Error('DB connection string should be provided.');
