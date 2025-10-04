@@ -8,16 +8,17 @@
       [(ngModel)]="vendor"
       (ngModelChange)="onVendorChange($event)" />
 
-    <mat-autocomplete
-      #auto="matAutocomplete">
+      <mat-autocomplete
+        #auto="matAutocomplete">
 
-      <mat-option
-        *ngFor="let vendor of vendors$ | async"
-        [value]="vendor"
-      >
-        {{ vendor }}
-      </mat-option>
-        
-    </mat-autocomplete>
-  </mat-form-field>
-</div>
+        @for (vendor of vendors$ | async; track vendor) {
+          <mat-option
+            [value]="vendor"
+            >
+            {{ vendor }}
+          </mat-option>
+        }
+
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>

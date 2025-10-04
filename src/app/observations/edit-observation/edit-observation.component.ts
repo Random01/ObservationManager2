@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 import { MatButtonModule } from '@angular/material/button';
 
@@ -13,11 +13,10 @@ import { ObservationComponent } from '../observation';
     templateUrl: 'edit-observation.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        MatButtonModule,
-        AsyncPipe,
-        NgIf,
-        ObservationComponent,
-    ]
+    MatButtonModule,
+    AsyncPipe,
+    ObservationComponent
+]
 })
 export class EditObservationComponent extends EditEntityComponent<Observation> {
 

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { AsyncPipe, DatePipe, NgIf } from '@angular/common';
+import { AsyncPipe, DatePipe } from '@angular/common';
 
 import { map, switchMap } from 'rxjs';
 
@@ -28,17 +28,16 @@ import { SessionInfoComponent } from "../../sessions/session-info/session-info.c
     styleUrl: 'session-observations.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        MatPaginatorModule,
-        MatTableModule,
-        MatButtonModule,
-        MatIconModule,
-        MatTooltipModule,
-        RouterLink,
-        NgIf,
-        AsyncPipe,
-        DatePipe,
-        SessionInfoComponent,
-    ]
+    MatPaginatorModule,
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTooltipModule,
+    RouterLink,
+    AsyncPipe,
+    DatePipe,
+    SessionInfoComponent
+]
 })
 export class SessionObservationsComponent extends EntityListComponent<Observation> {
 

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 import { MatButtonModule } from '@angular/material/button';
 
@@ -13,11 +13,10 @@ import { TargetComponent } from '../target';
     templateUrl: 'add-target.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        MatButtonModule,
-        NgIf,
-        AsyncPipe,
-        TargetComponent,
-    ]
+    MatButtonModule,
+    AsyncPipe,
+    TargetComponent
+]
 })
 export class AddTargetComponent extends AddEntityComponent<Target> {
 

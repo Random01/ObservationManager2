@@ -5,7 +5,7 @@ import { User } from '../../shared/models/user.model';
 import { UserService } from '../shared/user.service';
 import { EntityListComponent } from '../../shared/components/entity-list.component';
 import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,14 +15,13 @@ import { MatButtonModule } from '@angular/material/button';
     selector: 'om-users',
     templateUrl: 'users.component.html',
     imports: [
-        MatPaginatorModule,
-        MatTableModule,
-        MatIconModule,
-        MatButtonModule,
-        RouterLink,
-        NgIf,
-        AsyncPipe,
-    ]
+    MatPaginatorModule,
+    MatTableModule,
+    MatIconModule,
+    MatButtonModule,
+    RouterLink,
+    AsyncPipe
+]
 })
 export class UsersComponent extends EntityListComponent<User> {
 

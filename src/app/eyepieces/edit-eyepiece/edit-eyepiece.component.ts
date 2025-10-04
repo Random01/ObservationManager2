@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { NgIf, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 import { MatButtonModule } from '@angular/material/button';
 
@@ -13,11 +13,10 @@ import { EyepieceComponent } from '../eyepiece';
     templateUrl: 'edit-eyepiece.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        MatButtonModule,
-        NgIf,
-        AsyncPipe,
-        EyepieceComponent,
-    ]
+    MatButtonModule,
+    AsyncPipe,
+    EyepieceComponent
+]
 })
 export class EditEyepieceComponent extends EditEntityComponent<Eyepiece> {
 

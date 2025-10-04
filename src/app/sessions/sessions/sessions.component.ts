@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { AsyncPipe, DatePipe, NgIf } from '@angular/common';
+import { AsyncPipe, DatePipe } from '@angular/common';
 
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
@@ -20,16 +20,15 @@ import { DeleteEntityDialogService } from '../../shared/components/delete-entity
     styleUrl: 'sessions.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        MatPaginatorModule,
-        MatTableModule,
-        MatTooltipModule,
-        MatButtonModule,
-        MatIconModule,
-        RouterLink,
-        NgIf,
-        AsyncPipe,
-        DatePipe,
-    ]
+    MatPaginatorModule,
+    MatTableModule,
+    MatTooltipModule,
+    MatButtonModule,
+    MatIconModule,
+    RouterLink,
+    AsyncPipe,
+    DatePipe
+]
 })
 export class SessionsComponent extends EntityListComponent<Session> {
 

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 import { Store } from '@ngrx/store';
 
@@ -17,13 +17,12 @@ import * as AuthApiActions from '../../store/auth/auth.actions';
     styleUrl: 'user-profile-menu.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        MatButtonModule,
-        MatMenuModule,
-        MatIconModule,
-        RouterLink,
-        NgIf,
-        AsyncPipe,
-    ]
+    MatButtonModule,
+    MatMenuModule,
+    MatIconModule,
+    RouterLink,
+    AsyncPipe
+]
 })
 export class UserProfileMenuComponent {
 

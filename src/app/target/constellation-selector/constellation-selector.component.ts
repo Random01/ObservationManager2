@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, EventEmitter, Output, ChangeDetectionStrategy } from '@angular/core';
-import { AsyncPipe, NgForOf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 import { Observable } from 'rxjs';
 
@@ -15,11 +15,10 @@ import { ConstellationsService } from '../../constellations/shared/constellation
     styleUrl: 'constellation-selector.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        MatFormFieldModule,
-        MatSelectModule,
-        NgForOf,
-        AsyncPipe,
-    ]
+    MatFormFieldModule,
+    MatSelectModule,
+    AsyncPipe
+]
 })
 export class ConstellationSelectorComponent implements OnInit {
 

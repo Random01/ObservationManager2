@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { BaseAdminComponentStore } from './base-admin-component.store';
 import { Column } from './column.interface';
 
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,12 +15,11 @@ import { MatIconModule } from '@angular/material/icon';
     templateUrl: 'base-admin.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        MatTableModule,
-        MatButtonModule,
-        MatIconModule,
-        AsyncPipe,
-        NgIf,
-    ]
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    AsyncPipe
+]
 })
 export class BaseAdminComponent<T = any> {
 

@@ -1,6 +1,6 @@
 ﻿import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 import { BehaviorSubject } from 'rxjs';
 
@@ -25,17 +25,16 @@ import { ObservationSearchComponent } from "../observation-search/observation-se
     styleUrl: 'observations.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        MatExpansionModule,
-        MatPaginatorModule,
-        MatTableModule,
-        MatButtonModule,
-        MatIconModule,
-        MatTooltipModule,
-        NgIf,
-        AsyncPipe,
-        RouterLink,
-        ObservationSearchComponent,
-    ]
+    MatExpansionModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTooltipModule,
+    AsyncPipe,
+    RouterLink,
+    ObservationSearchComponent
+]
 })
 export class ObservationsComponent extends EntityListComponent<Observation> {
 

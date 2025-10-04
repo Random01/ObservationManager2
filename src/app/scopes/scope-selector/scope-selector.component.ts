@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NgForOf } from '@angular/common';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
@@ -25,7 +24,6 @@ import { AddScopeDialogService } from '../add-scope-dialog';
         MatIconModule,
         MatButtonModule,
         FormsModule,
-        NgForOf,
     ]
 })
 export class ScopeSelectorComponent extends EntitySelectorComponent<Scope, ScopeService> {

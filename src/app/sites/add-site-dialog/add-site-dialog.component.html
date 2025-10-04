@@ -1,21 +1,22 @@
 <h2 mat-dialog-title>Add New Site</h2>
 
-<div
-  mat-dialog-content 
-  class="om-add-site"
-  *ngIf="{ item: item$ | async } as data"
->
-  @if (data.item) {
-    <om-site [site]="data.item"></om-site>
-  }
-</div>
+@if ({ item: item$ | async }; as data) {
+  <div
+    mat-dialog-content
+    class="om-add-site"
+    >
+    @if (data.item) {
+      <om-site [site]="data.item"></om-site>
+    }
+  </div>
+}
 
 <div mat-dialog-actions align="end">
 
-  <button 
+  <button
     mat-button
     (click)="cancel()"
-  >
+    >
     Cancel
   </button>
 
@@ -24,7 +25,7 @@
     color="primary"
     [disabled]="!isValid()"
     (click)="addItem()"
-  >
+    >
     Add
   </button>
 

@@ -1,6 +1,6 @@
 ﻿import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NgIf } from '@angular/common';
+
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -14,13 +14,12 @@ import { VendorSelectorComponent } from '../../equipment/vendor-selector';
     templateUrl: 'eyepiece.component.html',
     styleUrl: 'eyepiece.component.less',
     imports: [
-        MatFormFieldModule,
-        MatInputModule,
-        FormsModule,
-        MatCheckboxModule,
-        VendorSelectorComponent,
-        NgIf,
-    ]
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatCheckboxModule,
+    VendorSelectorComponent
+]
 })
 export class EyepieceComponent {
 

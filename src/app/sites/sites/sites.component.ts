@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { AsyncPipe, DecimalPipe, NgIf } from '@angular/common';
+import { AsyncPipe, DecimalPipe } from '@angular/common';
 
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
@@ -20,17 +20,16 @@ import { DegreesFormatterPipe } from '../../shared/models/pipes';
     styleUrls: ['sites.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        MatPaginatorModule,
-        MatTableModule,
-        MatButtonModule,
-        MatTooltipModule,
-        MatIconModule,
-        RouterLink,
-        NgIf,
-        AsyncPipe,
-        DecimalPipe,
-        DegreesFormatterPipe,
-    ]
+    MatPaginatorModule,
+    MatTableModule,
+    MatButtonModule,
+    MatTooltipModule,
+    MatIconModule,
+    RouterLink,
+    AsyncPipe,
+    DecimalPipe,
+    DegreesFormatterPipe
+]
 })
 export class SitesComponent extends EntityListComponent<Site> {
 

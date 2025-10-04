@@ -1,6 +1,6 @@
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -28,16 +28,14 @@ function isTarget(item: string | Target): item is Target {
     templateUrl: 'target-selector.component.html',
     styleUrl: 'target-selector.component.less',
     imports: [
-        MatFormFieldModule,
-        MatInputModule,
-        MatIconModule,
-        MatButtonModule,
-        MatAutocompleteModule,
-        ReactiveFormsModule,
-        NgIf,
-        NgForOf,
-        AsyncPipe,
-    ]
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    AsyncPipe
+]
 })
 export class TargetSelectorComponent implements OnInit {
 

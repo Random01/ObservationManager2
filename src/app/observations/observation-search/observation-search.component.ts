@@ -19,18 +19,17 @@ import { TargetSelectorComponent } from "../../target/target-selector/target-sel
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
-import { NgForOf } from '@angular/common';
+
 
 @Component({
     selector: 'om-observation-search',
     templateUrl: 'observation-search.component.html',
     imports: [
-        MatFormFieldModule,
-        MatSelectModule,
-        FormsModule,
-        NgForOf,
-        TargetSelectorComponent,
-    ]
+    MatFormFieldModule,
+    MatSelectModule,
+    FormsModule,
+    TargetSelectorComponent
+]
 })
 export class ObservationSearchComponent implements OnInit {
 

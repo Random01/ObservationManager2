@@ -1,6 +1,6 @@
 ﻿import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { AsyncPipe, DecimalPipe, NgIf } from '@angular/common';
+import { AsyncPipe, DecimalPipe } from '@angular/common';
 
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
@@ -20,17 +20,16 @@ import { EyepieceFocalLengthPipe } from "../../shared/models/pipes/eyepiece-foca
     styleUrl: 'eyepieces.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        MatPaginatorModule,
-        MatTableModule,
-        MatIconModule,
-        MatButtonModule,
-        MatTooltipModule,
-        RouterLink,
-        NgIf,
-        AsyncPipe,
-        DecimalPipe,
-        EyepieceFocalLengthPipe,
-    ]
+    MatPaginatorModule,
+    MatTableModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTooltipModule,
+    RouterLink,
+    AsyncPipe,
+    DecimalPipe,
+    EyepieceFocalLengthPipe
+]
 })
 export class EyepiecesComponent extends EntityListComponent<Eyepiece> {
 

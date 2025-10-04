@@ -1,26 +1,23 @@
-<div
-  class="om-edit-site"
-  *ngIf="{ item: item$ | async } as data"
->
-  <div>
-    <h2 class="mat-h2">Edit Site</h2>
-  </div>
-
-  @if (data.item) {
-    <om-site [site]="data.item"></om-site>
-  }
-
-  <hr/>
-
-  <div>
-    <button
-      mat-button
-      color="primary"
-      [disabled]="!isValid()"
+@if ({ item: item$ | async }; as data) {
+  <div
+    class="om-edit-site"
+    >
+    <div>
+      <h2 class="mat-h2">Edit Site</h2>
+    </div>
+    @if (data.item) {
+      <om-site [site]="data.item"></om-site>
+    }
+    <hr/>
+    <div>
+      <button
+        mat-button
+        color="primary"
+        [disabled]="!isValid()"
       (click)="updateItem()">Update</button>
-    <button
-      mat-button
+      <button
+        mat-button
       (click)="goBack()">Back</button>
+    </div>
   </div>
-
-</div>
+}

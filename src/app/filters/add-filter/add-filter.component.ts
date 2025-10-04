@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 import { MatButtonModule } from '@angular/material/button';
 
@@ -13,11 +13,10 @@ import { FilterComponent } from '../filter/filter.component';
     templateUrl: 'add-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        MatButtonModule,
-        NgIf,
-        AsyncPipe,
-        FilterComponent,
-    ]
+    MatButtonModule,
+    AsyncPipe,
+    FilterComponent
+]
 })
 export class AddFilterComponent extends AddEntityComponent<Filter> {
 

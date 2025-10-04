@@ -3,14 +3,15 @@
     <mat-select
       placeholder="Constellation"
       (selectionChange)="onConstellationChange($event.value)"
-    >
-      <mat-option>None</mat-option>
-      <mat-option
-        *ngFor="let constellation of filteredConstellations | async"
-        [value]="constellation"
       >
-        {{constellation.name}} ({{constellation.code}})
-      </mat-option>
+      <mat-option>None</mat-option>
+      @for (constellation of filteredConstellations | async; track constellation) {
+        <mat-option
+          [value]="constellation"
+          >
+          {{constellation.name}} ({{constellation.code}})
+        </mat-option>
+      }
     </mat-select>
 
   </mat-form-field>

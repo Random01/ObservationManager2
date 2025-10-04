@@ -1,6 +1,6 @@
 ﻿import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
@@ -19,15 +19,14 @@ import { DeleteEntityDialogService } from '../../shared/components/delete-entity
     styleUrl: 'filters.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        MatPaginatorModule,
-        MatTableModule,
-        MatIconModule,
-        MatButtonModule,
-        MatTooltipModule,
-        RouterLink,
-        NgIf,
-        AsyncPipe,
-    ]
+    MatPaginatorModule,
+    MatTableModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTooltipModule,
+    RouterLink,
+    AsyncPipe
+]
 })
 export class FiltersComponent extends EntityListComponent<Filter> {
 

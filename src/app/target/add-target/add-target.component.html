@@ -1,36 +1,29 @@
-<div
-  class="om-add-target"
-  *ngIf="{ item: item$ | async } as data"
->
-
-  <div class="header">
-    <h2>Add New Object</h2>
-  </div>
-
-  @if (data.item) {
-    <om-target [target]="data.item"></om-target>
-  }
-
-  <hr/>
-
-  <div class="footer">
-
-    <button
-      mat-button
-      color="primary"
-      [disabled]="!isValid()"
-      (click)="addItem()"
+@if ({ item: item$ | async }; as data) {
+  <div
+    class="om-add-target"
     >
-      Add
-    </button>
-
-    <button
-      mat-button
-      (click)="goBack()"
-    >
-      Back
-    </button>
-
+    <div class="header">
+      <h2>Add New Object</h2>
+    </div>
+    @if (data.item) {
+      <om-target [target]="data.item"></om-target>
+    }
+    <hr/>
+    <div class="footer">
+      <button
+        mat-button
+        color="primary"
+        [disabled]="!isValid()"
+        (click)="addItem()"
+        >
+        Add
+      </button>
+      <button
+        mat-button
+        (click)="goBack()"
+        >
+        Back
+      </button>
+    </div>
   </div>
-  
-</div>
+}
