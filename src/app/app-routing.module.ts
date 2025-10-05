@@ -42,37 +42,37 @@ const routes: Routes = [
   {
     path: "sites",
     loadChildren: () =>
-      import("./sites/sites.module").then((m) => m.SiteModule),
+      import("./sites/sites.routing").then((m) => m.sitesRoutes),
     canActivate: [AuthGuard],
   },
   {
     path: "scopes",
     loadChildren: () =>
-      import("./scopes/scopes.module").then((m) => m.ScopesModule),
+      import("./scopes/scopes.routes").then((m) => m.scopesRoutes),
     canActivate: [AuthGuard],
   },
   {
     path: "eyepieces",
     loadChildren: () =>
-      import("./eyepieces/eyepiece.module").then((m) => m.EyepieceModule),
+      import("./eyepieces/eyepieces.routing").then((m) => m.routes),
     canActivate: [AuthGuard],
   },
   {
     path: "filters",
     loadChildren: () =>
-      import("./filters/filters.module").then((m) => m.FilterModule),
+      import("./filters/filters.routing").then((m) => m.routes),
     canActivate: [AuthGuard],
   },
   {
     path: "lenses",
     loadChildren: () =>
-      import("./lenses/lenses.module").then((m) => m.LensesModule),
+      import("./lenses/lenses.routing").then((r) => r.routes),
     canActivate: [AuthGuard],
   },
   {
     path: "objects",
     loadChildren: () =>
-      import("./target/target.module").then((m) => m.TargetModule),
+      import("./target/targets.routing").then((m) => m.targetsRoutes),
     canActivate: [AuthGuard],
   },
   {
@@ -115,4 +115,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

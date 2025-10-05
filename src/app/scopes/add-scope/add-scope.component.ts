@@ -9,14 +9,14 @@ import { Scope } from '../../shared/models/equipment/equipment';
 import { ScopeComponent } from '../scope';
 
 @Component({
-    selector: 'om-add-scope',
-    templateUrl: 'add-scope.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
+  selector: 'om-add-scope',
+  templateUrl: 'add-scope.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
     MatButtonModule,
     ScopeComponent,
     AsyncPipe
-]
+  ]
 })
 export class AddScopeComponent extends AddEntityComponent<Scope> {
 

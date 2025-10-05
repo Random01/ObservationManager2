@@ -2,21 +2,19 @@ import { NgModule } from '@angular/core';
 
 import { RouterModule, Routes } from '@angular/router';
 
-import { AddObservingProgramComponent } from './add-observing-program/add-observing-program.component';
 import { EditObservingProgramComponent } from './edit-observing-program/edit-observing-program.component';
-import { ObservingProgramsComponent } from './observing-programs/observing-programs.component';
 import { ObservingProgramStatisticsComponent } from './observing-program-statistics/observing-program-statistics.component';
 import { AuthGuard } from '../auth/shared/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: ObservingProgramsComponent,
+    loadComponent:()=>import('./observing-programs/observing-programs.component').then(c=>c.ObservingProgramsComponent),
     canActivate: [AuthGuard],
   },
   {
     path: 'new-observing-program',
-    component: AddObservingProgramComponent,
+    loadComponent: ()=>import('./add-observing-program/add-observing-program.component').then(c=>c.AddObservingProgramComponent),
     canActivate: [AuthGuard],
   },
   {
