@@ -1,0 +1,1064 @@
+<?xml version="1.0"?>
+<oal:observations version="2.1" xmlns:oal="https://github.com/openastronomylog/openastronomylog" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://github.com/openastronomylog/openastronomylog oal21.xsd">
+  <observers>
+    <observer id="id_AOIMqfmTjl">
+      <name>
+        <![CDATA[Add Your Fiven Name HERE]]>
+      </name>
+      <surname>
+        <![CDATA[Add Your Surname Name HERE]]>
+      </surname>
+      <contact>
+        <![CDATA[nicoskountouris@gmail.com]]>
+      </contact>
+      <account name="LiveSky.com">
+        <![CDATA[nicoskountouris@gmail.com]]>
+      </account>
+    </observer>
+  </observers>
+  <sites>
+    <site id="id_aZczqNEuWs">
+      <name>
+        <![CDATA[Mazotos Messier Site]]>
+      </name>
+      <longitude unit="deg">33.52417742001668</longitude>
+      <latitude unit="deg">34.79898957046562</latitude>
+      <elevation>1</elevation>
+      <timezone>120</timezone>
+    </site>
+    <site id="id_wqRyvMlYED">
+      <name>
+        <![CDATA[Nicosia]]>
+      </name>
+      <longitude unit="deg">33.348135634887065</longitude>
+      <latitude unit="deg">35.166383438437194</latitude>
+      <elevation>147</elevation>
+      <timezone>120</timezone>
+    </site>
+    <site id="id_KYjiTHsslm">
+      <name>
+        <![CDATA[Mazotos Acroyiali Restaurant]]>
+      </name>
+      <longitude unit="deg">33.52302777777778</longitude>
+      <latitude unit="deg">34.797888888888885</latitude>
+      <elevation>2</elevation>
+      <timezone>120</timezone>
+    </site>
+    <site id="id_wGZeHFQEUh">
+      <name>
+        <![CDATA[Xyliatos Dam]]>
+      </name>
+      <longitude unit="deg">33.037287409023556</longitude>
+      <latitude unit="deg">35.009279809621994</latitude>
+      <elevation>541</elevation>
+      <timezone>120</timezone>
+    </site>
+    <site id="id_5AZdygXgCz">
+      <name>
+        <![CDATA[Hotel by Jubilee]]>
+      </name>
+      <longitude unit="deg">32.87936111111111</longitude>
+      <latitude unit="deg">34.92747222222222</latitude>
+      <elevation>1757</elevation>
+      <timezone>120</timezone>
+    </site>
+    <site id="id_1qGZRE6igN">
+      <name>
+        <![CDATA[Pano Amiantos]]>
+      </name>
+      <longitude unit="deg">32.91768940968936</longitude>
+      <latitude unit="deg">34.933663127280305</latitude>
+      <elevation>1564</elevation>
+      <timezone>120</timezone>
+    </site>
+    <site id="id_OK5zVcTAYC">
+      <name>
+        <![CDATA[Papoutsa]]>
+      </name>
+      <longitude unit="deg">33.056687185929164</longitude>
+      <latitude unit="deg">34.907967258993274</latitude>
+      <elevation>1530</elevation>
+      <timezone>120</timezone>
+    </site>
+    <site id="id_AYrhK9BAk4">
+      <name>
+        <![CDATA[Lefkara Dam]]>
+      </name>
+      <longitude unit="deg">33.29416364820837</longitude>
+      <latitude unit="deg">34.8949847491554</latitude>
+      <elevation>400</elevation>
+      <timezone>120</timezone>
+    </site>
+    <site id="id_qnMbgDXj03">
+      <name>
+        <![CDATA[Panayia Tsambica]]>
+      </name>
+      <longitude unit="deg">33.39853930506985</longitude>
+      <latitude unit="deg">35.00533049330691</latitude>
+      <elevation>150</elevation>
+      <timezone>120</timezone>
+    </site>
+  </sites>
+  <sessions>
+    <session id="id_1xMsOf5Cg9">
+      <begin>2018-01-06T14:10:13.999Z</begin>
+      <end>2018-01-06T19:25:13.999Z</end>
+      <site>id_AYrhK9BAk4</site>
+      <comments>
+        <![CDATA[Pre observing notes:
+
+Observing with Agapios Elia and his Celestron C9.25â SCT. Using Callisto (FS128). Marios, Elias and Stelios were also there for the evening.
+
+]]>
+      </comments>
+    </session>
+  </sessions>
+  <targets>
+    <target id="id_4_0_43_3674937295934347376" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[Christmas Tree Cluster]]>
+      </name>
+    </target>
+    <target id="id_4_0_17_4323455642275896229" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[]]>
+      </name>
+    </target>
+    <target id="id_4_0_199_3746994889972270722" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[Heart Nebula]]>
+      </name>
+    </target>
+    <target id="id_4_0_173_3602879701896396838" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[Starfish Cluster]]>
+      </name>
+    </target>
+    <target id="id_4_0_220_3674937295934348166" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[]]>
+      </name>
+    </target>
+    <target id="id_4_0_318_3674937295934343666" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[]]>
+      </name>
+    </target>
+    <target id="id_4_0_20_4323455642275896225" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[]]>
+      </name>
+    </target>
+    <target id="id_4_0_147_3602879701896396836" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[Pinwheel Cluster]]>
+      </name>
+    </target>
+    <target id="id_4_0_933_3674937295934344046" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[]]>
+      </name>
+    </target>
+    <target id="id_4_0_131_3602879701896396850" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[]]>
+      </name>
+    </target>
+    <target id="id_4_0_188_3746994889972271152" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[Soul Nebula]]>
+      </name>
+    </target>
+    <target id="id_4_0_897_4395513236324104098" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[]]>
+      </name>
+    </target>
+    <target id="id_4_0_446_3674937295934343806" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[]]>
+      </name>
+    </target>
+    <target id="id_4_0_225_3602879701896396881" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[Bode's Nebulae]]>
+      </name>
+    </target>
+    <target id="id_1_0_19332_7" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[(7) Iris]]>
+      </name>
+    </target>
+    <target id="id_4_0_880_3746994889972256772" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[]]>
+      </name>
+    </target>
+    <target id="id_4_0_889_3746994889972256722" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[Flaming Star Nebula]]>
+      </name>
+    </target>
+    <target id="id_4_0_106_3674937295934347116" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[Rosette Nebula]]>
+      </name>
+    </target>
+    <target id="id_4_0_76_3674937295934347176" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[]]>
+      </name>
+    </target>
+    <target id="id_4_0_903_4395513236325006372" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[Barnard's Loop]]>
+      </name>
+    </target>
+    <target id="id_4_0_635_3674937295934347346" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[Hubble's Variable Nebula]]>
+      </name>
+    </target>
+    <target id="id_2_33353_17_72057594038628236" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[Mesarthim]]>
+      </name>
+    </target>
+    <target id="id_4_0_426_3602879701896396882" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[Bode's Nebulae]]>
+      </name>
+    </target>
+    <target id="id_4_0_854_3746994889972256842" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[]]>
+      </name>
+    </target>
+    <target id="id_6_1188_831_2161727821150148828" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[]]>
+      </name>
+    </target>
+    <target id="id_4_0_37_3674937295934347376" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[Cone Nebula]]>
+      </name>
+    </target>
+    <target id="id_4_0_42_3602879701896396842" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[Orion Nebula]]>
+      </name>
+    </target>
+    <target id="id_6_1188_1121_2161727821150148828" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[]]>
+      </name>
+    </target>
+    <target id="id_4_0_891_3746994889972273852" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[Witch Head nebula]]>
+      </name>
+    </target>
+    <target id="id_4_0_242_3674937295934344486" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[]]>
+      </name>
+    </target>
+    <target id="id_4_0_895_3746994889972274442" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[Seagull Nebula]]>
+      </name>
+    </target>
+    <target id="id_4_0_929_3674937295934344046" xsi:type="oal:observationTargetType">
+      <datasource>
+        <![CDATA[SkySafari]]>
+      </datasource>
+      <name>
+        <![CDATA[]]>
+      </name>
+    </target>
+  </targets>
+  <scopes>
+    <scope id="id_E78mGoYkb3" xsi:type="oal:scopeType">
+      <model>
+        <![CDATA[FS-128]]>
+      </model>
+      <vendor>
+        <![CDATA[Takahashi]]>
+      </vendor>
+      <aperture>128</aperture>
+      <focalLength>1040</focalLength>
+    </scope>
+    <scope id="id_pLFyo9baaW" xsi:type="oal:scopeType">
+      <model>
+        <![CDATA[FC-76]]>
+      </model>
+      <vendor>
+        <![CDATA[Takahashi]]>
+      </vendor>
+      <aperture>76</aperture>
+      <focalLength>570</focalLength>
+    </scope>
+    <scope id="id_ZypqOl3Upk" xsi:type="oal:scopeType">
+      <model>
+        <![CDATA[FL-55]]>
+      </model>
+      <vendor>
+        <![CDATA[Borg]]>
+      </vendor>
+      <aperture>55</aperture>
+      <focalLength>250</focalLength>
+    </scope>
+  </scopes>
+  <eyepieces>
+    <eyepiece id="id_GkdBLgNkoi">
+      <model>
+        <![CDATA[Nagler 22mm]]>
+      </model>
+      <vendor>
+        <![CDATA[Tele Vue]]>
+      </vendor>
+      <focalLength>22</focalLength>
+      <apparentFOV unit="deg">82</apparentFOV>
+    </eyepiece>
+    <eyepiece id="id_MO8kHTI4kT">
+      <model>
+        <![CDATA[Nagler 17mm]]>
+      </model>
+      <vendor>
+        <![CDATA[Tele Vue]]>
+      </vendor>
+      <focalLength>17</focalLength>
+      <apparentFOV unit="deg">82</apparentFOV>
+    </eyepiece>
+    <eyepiece id="id_wi7Nv8pFDf">
+      <model>
+        <![CDATA[Nagler 31mm]]>
+      </model>
+      <vendor>
+        <![CDATA[Tele Vue]]>
+      </vendor>
+      <focalLength>31</focalLength>
+      <apparentFOV unit="deg">82</apparentFOV>
+    </eyepiece>
+    <eyepiece id="id_jAvLGEzmh2">
+      <model>
+        <![CDATA[Nagler 12mm]]>
+      </model>
+      <vendor>
+        <![CDATA[Tele Vue]]>
+      </vendor>
+      <focalLength>12</focalLength>
+      <apparentFOV unit="deg">82</apparentFOV>
+    </eyepiece>
+    <eyepiece id="id_SZTdEaX5sC">
+      <model>
+        <![CDATA[ES24]]>
+      </model>
+      <vendor>
+        <![CDATA[Explore Scientific]]>
+      </vendor>
+      <focalLength>24</focalLength>
+      <apparentFOV unit="deg">68</apparentFOV>
+    </eyepiece>
+    <eyepiece id="id_huvIsonpkn">
+      <model>
+        <![CDATA[Nagler 13mm]]>
+      </model>
+      <vendor>
+        <![CDATA[Tele Vue]]>
+      </vendor>
+      <focalLength>13</focalLength>
+      <apparentFOV unit="deg">82</apparentFOV>
+    </eyepiece>
+    <eyepiece id="id_lNppYYs8eM">
+      <model>
+        <![CDATA[Nagler 7mm]]>
+      </model>
+      <vendor>
+        <![CDATA[Tele Vue]]>
+      </vendor>
+      <focalLength>7</focalLength>
+      <apparentFOV unit="deg">82</apparentFOV>
+    </eyepiece>
+    <eyepiece id="id_rAn3UBBDgn">
+      <model>
+        <![CDATA[Panoptic 24mm]]>
+      </model>
+      <vendor>
+        <![CDATA[Tele Vue]]>
+      </vendor>
+      <focalLength>24</focalLength>
+      <apparentFOV unit="deg">68</apparentFOV>
+    </eyepiece>
+    <eyepiece id="id_BKGNCCqH8f">
+      <model>
+        <![CDATA[Wide Field 40mm]]>
+      </model>
+      <vendor>
+        <![CDATA[Tele Vue]]>
+      </vendor>
+      <focalLength>40</focalLength>
+      <apparentFOV unit="deg">65</apparentFOV>
+    </eyepiece>
+    <eyepiece id="id_xFtHLcD99G">
+      <model>
+        <![CDATA[Ethos 3.7mm]]>
+      </model>
+      <vendor>
+        <![CDATA[Tele Vue]]>
+      </vendor>
+      <focalLength>3.700000047683716</focalLength>
+      <apparentFOV unit="deg">110</apparentFOV>
+    </eyepiece>
+    <eyepiece id="id_x4YgbL5PSg">
+      <model>
+        <![CDATA[Plossl 25mm]]>
+      </model>
+      <vendor>
+        <![CDATA[Tele Vue]]>
+      </vendor>
+      <focalLength>25</focalLength>
+      <apparentFOV unit="deg">50</apparentFOV>
+    </eyepiece>
+    <eyepiece id="id_W2M2HL6mDg">
+      <model>
+        <![CDATA[Plossl 15mm]]>
+      </model>
+      <vendor>
+        <![CDATA[Tele Vue]]>
+      </vendor>
+      <focalLength>15</focalLength>
+      <apparentFOV unit="deg">50</apparentFOV>
+    </eyepiece>
+    <eyepiece id="id_yd6Emm1763">
+      <model>
+        <![CDATA[Plossl 11mm]]>
+      </model>
+      <vendor>
+        <![CDATA[Tele Vue]]>
+      </vendor>
+      <focalLength>11</focalLength>
+      <apparentFOV unit="deg">50</apparentFOV>
+    </eyepiece>
+    <eyepiece id="id_9ZC5cPRfQi">
+      <model>
+        <![CDATA[Zoom 8.9mm]]>
+      </model>
+      <vendor>
+        <![CDATA[Leica]]>
+      </vendor>
+      <focalLength>8.899999618530273</focalLength>
+      <apparentFOV unit="deg">80</apparentFOV>
+    </eyepiece>
+    <eyepiece id="id_zB1BzcsOTP">
+      <model>
+        <![CDATA[Wide Field 40mm]]>
+      </model>
+      <vendor>
+        <![CDATA[Tele Vue]]>
+      </vendor>
+      <focalLength>40</focalLength>
+      <apparentFOV unit="deg">65</apparentFOV>
+    </eyepiece>
+  </eyepieces>
+  <lenses>
+    <lens id="id_onMzH1HTWe">
+      <model>
+        <![CDATA[BarCon 2.0x]]>
+      </model>
+      <vendor>
+        <![CDATA[AstroPhysics]]>
+      </vendor>
+      <factor>2.0</factor>
+    </lens>
+    <lens id="id_T5ACDQ5RIw">
+      <model>
+        <![CDATA[BarCon 1.5x]]>
+      </model>
+      <vendor>
+        <![CDATA[AstroPhysics]]>
+      </vendor>
+      <factor>1.5</factor>
+    </lens>
+  </lenses>
+  <filters/>
+  <imagers>
+    <ccdCameraType id="id_WbrUlR5t1k">
+      <model>
+        <![CDATA[D5500]]>
+      </model>
+      <vendor>
+        <![CDATA[Nikon]]>
+      </vendor>
+      <pixelsX>6045</pixelsX>
+      <pixelXSize>3.89</pixelXSize>
+      <pixelsY>4003</pixelsY>
+      <pixelYSize>3.89</pixelYSize>
+    </ccdCameraType>
+  </imagers>
+  <observation id="id_AXhEqVKCuW">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_4_0_43_3674937295934347376</target>
+    <begin>2018-01-06T18:24:18.783Z</begin>
+    <end>2018-01-06T18:24:18.783Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.91886329650879</sky-quality>
+    <scope>id_E78mGoYkb3</scope>
+    <eyepiece>id_GkdBLgNkoi</eyepiece>
+    <result>
+      <description/>
+    </result>
+  </observation>
+  <observation id="id_v9FpT62xAL">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_4_0_17_4323455642275896229</target>
+    <begin>2018-01-06T16:21:34.700Z</begin>
+    <end>2018-01-06T16:21:34.700Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.897565841674805</sky-quality>
+    <seeing>2</seeing>
+    <scope>id_ZypqOl3Upk</scope>
+    <eyepiece>id_SZTdEaX5sC</eyepiece>
+    <result>
+      <description/>
+    </result>
+  </observation>
+  <observation id="id_LjJFm4tk2n">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_4_0_199_3746994889972270722</target>
+    <begin>2018-01-06T16:58:33.280Z</begin>
+    <end>2018-01-06T16:58:33.280Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.91886329650879</sky-quality>
+    <seeing>2</seeing>
+    <scope>id_ZypqOl3Upk</scope>
+    <eyepiece>id_SZTdEaX5sC</eyepiece>
+    <result>
+      <description/>
+    </result>
+  </observation>
+  <observation id="id_vjhZ864qK8">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_4_0_173_3602879701896396838</target>
+    <begin>2018-01-06T18:14:53.860Z</begin>
+    <end>2018-01-06T18:14:53.860Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.91886329650879</sky-quality>
+    <scope>id_E78mGoYkb3</scope>
+    <eyepiece>id_GkdBLgNkoi</eyepiece>
+    <result>
+      <description/>
+    </result>
+  </observation>
+  <observation id="id_Z0FhY9xd1W">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_4_0_220_3674937295934348166</target>
+    <begin>2018-01-06T18:57:03.549Z</begin>
+    <end>2018-01-06T18:57:03.549Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.98884391784668</sky-quality>
+    <seeing>2</seeing>
+    <scope>id_E78mGoYkb3</scope>
+    <eyepiece>id_GkdBLgNkoi</eyepiece>
+    <result>
+      <description/>
+    </result>
+  </observation>
+  <observation id="id_wc2PINM7Cy">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_4_0_318_3674937295934343666</target>
+    <begin>2018-01-06T18:00:09.747Z</begin>
+    <end>2018-01-06T18:00:09.747Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.91886329650879</sky-quality>
+    <scope>id_E78mGoYkb3</scope>
+    <eyepiece>id_GkdBLgNkoi</eyepiece>
+    <result>
+      <description/>
+    </result>
+  </observation>
+  <observation id="id_MMJueNAed9">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_4_0_20_4323455642275896225</target>
+    <begin>2018-01-06T16:22:38.172Z</begin>
+    <end>2018-01-06T16:22:38.172Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.897565841674805</sky-quality>
+    <seeing>2</seeing>
+    <scope>id_ZypqOl3Upk</scope>
+    <eyepiece>id_SZTdEaX5sC</eyepiece>
+    <result>
+      <description/>
+    </result>
+  </observation>
+  <observation id="id_GmKa9I8rua">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_4_0_147_3602879701896396836</target>
+    <begin>2018-01-06T18:17:21.735Z</begin>
+    <end>2018-01-06T18:17:21.735Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.91886329650879</sky-quality>
+    <scope>id_E78mGoYkb3</scope>
+    <eyepiece>id_GkdBLgNkoi</eyepiece>
+    <result>
+      <description/>
+    </result>
+  </observation>
+  <observation id="id_XNGVD1yNom">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_4_0_933_3674937295934344046</target>
+    <begin>2018-01-06T18:15:31.483Z</begin>
+    <end>2018-01-06T18:15:31.483Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.91886329650879</sky-quality>
+    <scope>id_E78mGoYkb3</scope>
+    <eyepiece>id_GkdBLgNkoi</eyepiece>
+    <result>
+      <description/>
+    </result>
+  </observation>
+  <observation id="id_jqJO3c5f4r">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_4_0_131_3602879701896396850</target>
+    <begin>2018-01-06T18:56:04.656Z</begin>
+    <end>2018-01-06T18:56:04.656Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.98884391784668</sky-quality>
+    <seeing>2</seeing>
+    <scope>id_E78mGoYkb3</scope>
+    <eyepiece>id_GkdBLgNkoi</eyepiece>
+    <result>
+      <description/>
+    </result>
+  </observation>
+  <observation id="id_qomqcVhjH0">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_4_0_188_3746994889972271152</target>
+    <begin>2018-01-06T16:58:50.276Z</begin>
+    <end>2018-01-06T16:58:50.276Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.91886329650879</sky-quality>
+    <seeing>2</seeing>
+    <scope>id_ZypqOl3Upk</scope>
+    <eyepiece>id_SZTdEaX5sC</eyepiece>
+    <result>
+      <description/>
+    </result>
+  </observation>
+  <observation id="id_ZkEFBiMY2u">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_4_0_897_4395513236324104098</target>
+    <begin>2018-01-06T18:57:45.697Z</begin>
+    <end>2018-01-06T18:57:45.697Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.98884391784668</sky-quality>
+    <seeing>2</seeing>
+    <scope>id_E78mGoYkb3</scope>
+    <eyepiece>id_GkdBLgNkoi</eyepiece>
+    <result>
+      <description/>
+    </result>
+  </observation>
+  <observation id="id_pihAE6cvEE">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_4_0_446_3674937295934343806</target>
+    <begin>2018-01-06T18:14:41.860Z</begin>
+    <end>2018-01-06T18:14:41.860Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.91886329650879</sky-quality>
+    <scope>id_E78mGoYkb3</scope>
+    <eyepiece>id_GkdBLgNkoi</eyepiece>
+    <result>
+      <description/>
+    </result>
+  </observation>
+  <observation id="id_pHzFUpz9P0">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_4_0_225_3602879701896396881</target>
+    <begin>2018-01-06T19:22:48.875Z</begin>
+    <end>2018-01-06T19:22:48.875Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.98884391784668</sky-quality>
+    <seeing>2</seeing>
+    <scope>id_E78mGoYkb3</scope>
+    <eyepiece>id_GkdBLgNkoi</eyepiece>
+    <result>
+      <description/>
+    </result>
+  </observation>
+  <observation id="id_ut5sPW70FF">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_1_0_19332_7</target>
+    <begin>2018-01-06T19:15:15.840Z</begin>
+    <end>2018-01-06T19:15:15.840Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.98884391784668</sky-quality>
+    <seeing>2</seeing>
+    <scope>id_E78mGoYkb3</scope>
+    <eyepiece>id_GkdBLgNkoi</eyepiece>
+    <result>
+      <description/>
+    </result>
+  </observation>
+  <observation id="id_gSnSBRn9z2">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_4_0_880_3746994889972256772</target>
+    <begin>2018-01-06T17:59:15.717Z</begin>
+    <end>2018-01-06T17:59:15.717Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.91886329650879</sky-quality>
+    <scope>id_E78mGoYkb3</scope>
+    <eyepiece>id_GkdBLgNkoi</eyepiece>
+    <result>
+      <description/>
+    </result>
+  </observation>
+  <observation id="id_DO99KcXFiS">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_4_0_889_3746994889972256722</target>
+    <begin>2018-01-06T18:03:23.729Z</begin>
+    <end>2018-01-06T18:03:23.729Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.91886329650879</sky-quality>
+    <scope>id_E78mGoYkb3</scope>
+    <eyepiece>id_GkdBLgNkoi</eyepiece>
+    <result>
+      <description/>
+    </result>
+  </observation>
+  <observation id="id_Dq2NPf2RAB">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_4_0_106_3674937295934347116</target>
+    <begin>2018-01-06T18:39:29.052Z</begin>
+    <end>2018-01-06T18:39:29.052Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.98884391784668</sky-quality>
+    <seeing>2</seeing>
+    <scope>id_E78mGoYkb3</scope>
+    <eyepiece>id_wi7Nv8pFDf</eyepiece>
+    <result>
+      <description/>
+    </result>
+  </observation>
+  <observation id="id_HYlprbsA5v">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_4_0_76_3674937295934347176</target>
+    <begin>2018-01-06T18:39:08.052Z</begin>
+    <end>2018-01-06T18:39:08.052Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.91886329650879</sky-quality>
+    <seeing>2</seeing>
+    <scope>id_E78mGoYkb3</scope>
+    <eyepiece>id_wi7Nv8pFDf</eyepiece>
+    <result>
+      <description/>
+    </result>
+  </observation>
+  <observation id="id_sObAV07Loq">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_4_0_903_4395513236325006372</target>
+    <begin>2018-01-06T16:16:30.437Z</begin>
+    <end>2018-01-06T16:16:30.437Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.897565841674805</sky-quality>
+    <seeing>2</seeing>
+    <scope>id_ZypqOl3Upk</scope>
+    <eyepiece>id_SZTdEaX5sC</eyepiece>
+    <result>
+      <description>Clearly seen with Borg 55FL. The sheer size of the FOV allows to put the nebula onto perspective.</description>
+    </result>
+  </observation>
+  <observation id="id_vY7zM2yQnc">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_4_0_635_3674937295934347346</target>
+    <begin>2018-01-06T18:28:48.815Z</begin>
+    <end>2018-01-06T18:28:48.815Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.91886329650879</sky-quality>
+    <seeing>2</seeing>
+    <scope>id_E78mGoYkb3</scope>
+    <eyepiece>id_GkdBLgNkoi</eyepiece>
+    <result>
+      <description>But with Leica zoom</description>
+    </result>
+  </observation>
+  <observation id="id_5HG03rJXrT">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_2_33353_17_72057594038628236</target>
+    <begin>2018-01-06T19:08:39.526Z</begin>
+    <end>2018-01-06T19:08:39.526Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.98884391784668</sky-quality>
+    <seeing>2</seeing>
+    <scope>id_E78mGoYkb3</scope>
+    <eyepiece>id_GkdBLgNkoi</eyepiece>
+    <result>
+      <description/>
+    </result>
+  </observation>
+  <observation id="id_2rUwEhu6kH">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_4_0_426_3602879701896396882</target>
+    <begin>2018-01-06T19:22:41.873Z</begin>
+    <end>2018-01-06T19:22:41.873Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.98884391784668</sky-quality>
+    <seeing>2</seeing>
+    <scope>id_E78mGoYkb3</scope>
+    <eyepiece>id_GkdBLgNkoi</eyepiece>
+    <result>
+      <description/>
+    </result>
+  </observation>
+  <observation id="id_DO0JWuU8nI">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_4_0_854_3746994889972256842</target>
+    <begin>2018-01-06T18:13:20.187Z</begin>
+    <end>2018-01-06T18:13:20.187Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.91886329650879</sky-quality>
+    <scope>id_E78mGoYkb3</scope>
+    <eyepiece>id_GkdBLgNkoi</eyepiece>
+    <result>
+      <description/>
+    </result>
+  </observation>
+  <observation id="id_3OFLRFjViQ">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_6_1188_831_2161727821150148828</target>
+    <begin>2018-01-06T17:18:46.740Z</begin>
+    <end>2018-01-06T17:18:46.740Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.91886329650879</sky-quality>
+    <seeing>2</seeing>
+    <scope>id_E78mGoYkb3</scope>
+    <eyepiece>id_9ZC5cPRfQi</eyepiece>
+    <lens>id_onMzH1HTWe</lens>
+    <result>
+      <description>Trap F. Seen 5% of time</description>
+    </result>
+  </observation>
+  <observation id="id_q33A8aeEop">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_4_0_37_3674937295934347376</target>
+    <begin>2018-01-06T18:25:01.771Z</begin>
+    <end>2018-01-06T18:25:01.771Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.91886329650879</sky-quality>
+    <scope>id_E78mGoYkb3</scope>
+    <eyepiece>id_GkdBLgNkoi</eyepiece>
+    <result>
+      <description/>
+    </result>
+  </observation>
+  <observation id="id_KvFqciFFaV">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_4_0_42_3602879701896396842</target>
+    <begin>2018-01-06T17:23:54.308Z</begin>
+    <end>2018-01-06T17:23:54.308Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.91886329650879</sky-quality>
+    <seeing>2</seeing>
+    <scope>id_E78mGoYkb3</scope>
+    <eyepiece>id_MO8kHTI4kT</eyepiece>
+    <result>
+      <description/>
+    </result>
+  </observation>
+  <observation id="id_NvsKprbBKG">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_6_1188_1121_2161727821150148828</target>
+    <begin>2018-01-06T17:18:15.140Z</begin>
+    <end>2018-01-06T17:18:15.140Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.91886329650879</sky-quality>
+    <seeing>2</seeing>
+    <scope>id_E78mGoYkb3</scope>
+    <eyepiece>id_9ZC5cPRfQi</eyepiece>
+    <lens>id_onMzH1HTWe</lens>
+    <result>
+      <description>Trap E. Seen 70% of time Leica zoom.</description>
+    </result>
+  </observation>
+  <observation id="id_yvhY3RygwM">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_4_0_891_3746994889972273852</target>
+    <begin>2018-01-06T16:27:51.171Z</begin>
+    <end>2018-01-06T16:27:51.171Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.897565841674805</sky-quality>
+    <seeing>2</seeing>
+    <scope>id_ZypqOl3Upk</scope>
+    <eyepiece>id_SZTdEaX5sC</eyepiece>
+    <result>
+      <description/>
+    </result>
+  </observation>
+  <observation id="id_zADZk2vTw7">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_4_0_242_3674937295934344486</target>
+    <begin>2018-01-06T17:24:16.308Z</begin>
+    <end>2018-01-06T17:24:16.308Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.91886329650879</sky-quality>
+    <seeing>2</seeing>
+    <scope>id_E78mGoYkb3</scope>
+    <eyepiece>id_MO8kHTI4kT</eyepiece>
+    <result>
+      <description/>
+    </result>
+  </observation>
+  <observation id="id_cKjcBBnkcL">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_4_0_895_3746994889972274442</target>
+    <begin>2018-01-06T18:57:52.697Z</begin>
+    <end>2018-01-06T18:57:52.697Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.98884391784668</sky-quality>
+    <seeing>2</seeing>
+    <scope>id_E78mGoYkb3</scope>
+    <eyepiece>id_GkdBLgNkoi</eyepiece>
+    <result>
+      <description/>
+    </result>
+  </observation>
+  <observation id="id_oemICdZ5sm">
+    <observer>id_AOIMqfmTjl</observer>
+    <site>id_AYrhK9BAk4</site>
+    <session>id_1xMsOf5Cg9</session>
+    <target>id_4_0_929_3674937295934344046</target>
+    <begin>2018-01-06T18:16:27.951Z</begin>
+    <end>2018-01-06T18:16:27.951Z</end>
+    <sky-quality unit="mags-per-squarearcsec">20.91886329650879</sky-quality>
+    <scope>id_E78mGoYkb3</scope>
+    <eyepiece>id_GkdBLgNkoi</eyepiece>
+    <result>
+      <description/>
+    </result>
+  </observation>
+</oal:observations>
