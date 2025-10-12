@@ -27,72 +27,57 @@ const routes: Routes = [
   },
   {
     path: "observing-programs",
-    loadChildren: () =>
-      import("./observing-programs/observing-programs.module").then(
-        (m) => m.ObservingProgramsModule
-      ),
+    loadChildren: () => import("./observing-programs/observing-programs.routing").then(m => m.routes),
     canActivate: [AdminGuard],
   },
   {
     path: "admin",
-    loadChildren: () =>
-      import("./admin/admin.module").then((m) => m.AdminModule),
+    loadChildren: () => import("./admin/admin.module").then((m) => m.AdminModule),
     canActivate: [AdminGuard],
   },
   {
     path: "sites",
-    loadChildren: () =>
-      import("./sites/sites.routing").then((m) => m.sitesRoutes),
+    loadChildren: () => import("./sites/sites.routing").then((m) => m.sitesRoutes),
     canActivate: [AuthGuard],
   },
   {
     path: "scopes",
-    loadChildren: () =>
-      import("./scopes/scopes.routes").then((m) => m.scopesRoutes),
+    loadChildren: () => import("./scopes/scopes.routes").then((m) => m.scopesRoutes),
     canActivate: [AuthGuard],
   },
   {
     path: "eyepieces",
-    loadChildren: () =>
-      import("./eyepieces/eyepieces.routing").then((m) => m.routes),
+    loadChildren: () => import("./eyepieces/eyepieces.routing").then((m) => m.routes),
     canActivate: [AuthGuard],
   },
   {
     path: "filters",
-    loadChildren: () =>
-      import("./filters/filters.routing").then((m) => m.routes),
+    loadChildren: () => import("./filters/filters.routing").then((m) => m.routes),
     canActivate: [AuthGuard],
   },
   {
     path: "lenses",
-    loadChildren: () =>
-      import("./lenses/lenses.routing").then((r) => r.routes),
+    loadChildren: () => import("./lenses/lenses.routing").then((r) => r.routes),
     canActivate: [AuthGuard],
   },
   {
     path: "objects",
-    loadChildren: () =>
-      import("./target/targets.routing").then((m) => m.targetsRoutes),
+    loadChildren: () => import("./target/targets.routing").then((m) => m.targetsRoutes),
     canActivate: [AuthGuard],
   },
   {
     path: "sessions",
-    loadChildren: () =>
-      import("./sessions/sessions.module").then((m) => m.SessionsModule),
+    loadChildren: () => import("./sessions/sessions.routing").then((m) => m.routes),
     canActivate: [AuthGuard],
   },
   {
     path: "users",
-    loadChildren: () =>
-      import("./users/users.module").then((m) => m.UsersModule),
+    loadChildren: () => import("./users/users.module").then((m) => m.UsersModule),
     canActivate: [AuthGuard],
   },
   {
     path: "observations",
-    loadChildren: () =>
-      import("./observations/observations.module").then(
-        (m) => m.ObservationsModule
-      ),
+    loadChildren: () => import("./observations/observations.routing").then(r => r.routes),
     canActivate: [AuthGuard],
   },
   {
