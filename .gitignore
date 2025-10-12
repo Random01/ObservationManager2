@@ -1,3 +1,6 @@
+# Prettier
+.prettierrc
+.prettierignore
 /.angular/cache
 .idea
 node_modules
