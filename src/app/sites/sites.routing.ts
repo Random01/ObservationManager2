@@ -5,7 +5,7 @@ import { AuthGuard } from '../auth/shared/auth.guard';
 export const sitesRoutes: Routes = [
   {
     path: '',
-    loadComponent: () => import('./site/site.component').then(c => c.SiteComponent),
+    loadComponent: () => import('./sites/sites.component').then(c => c.SitesComponent),
     canActivate: [AuthGuard],
   },
   {

@@ -5,7 +5,7 @@ import { AuthGuard } from '../auth/shared/auth.guard';
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: () => import('./observation/observation.component').then(c => c.ObservationComponent),
+    loadComponent: () => import('./observations/observations.component').then(c => c.ObservationsComponent),
     canActivate: [AuthGuard],
   },
   {
