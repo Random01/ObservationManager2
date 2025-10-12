@@ -12,16 +12,16 @@ import {
 } from '../../shared/models/equipment/equipment';
 
 @Component({
-    selector: 'om-magnification-selector',
-    templateUrl: 'magnification-selector.component.html',
-    styleUrl: 'magnification-selector.component.css',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        MatFormFieldModule,
-        MatInputModule,
-        MatSliderModule,
-        FormsModule,
-    ]
+  selector: 'om-magnification-selector',
+  templateUrl: 'magnification-selector.component.html',
+  styleUrl: 'magnification-selector.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    MatFormFieldModule,
+    MatInputModule,
+    MatSliderModule,
+    FormsModule,
+  ]
 })
 export class MagnificationSelectorComponent {
 

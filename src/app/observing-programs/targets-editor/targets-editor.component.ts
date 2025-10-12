@@ -16,16 +16,16 @@ import { Target } from '../../shared/models/models';
 import { TargetSelectorComponent } from "../../target/target-selector/target-selector.component";
 
 @Component({
-    selector: 'om-targets-editor',
-    templateUrl: 'targets-editor.component.html',
-    styleUrls: ['targets-editor.component.less'],
-    imports: [
-        MatPaginatorModule,
-        MatTableModule,
-        MatIconModule,
-        MatButtonModule,
-        TargetSelectorComponent,
-    ]
+  selector: 'om-targets-editor',
+  templateUrl: 'targets-editor.component.html',
+  styleUrls: ['targets-editor.component.less'],
+  imports: [
+    MatPaginatorModule,
+    MatTableModule,
+    MatIconModule,
+    MatButtonModule,
+    TargetSelectorComponent,
+  ]
 })
 export class TargetsEditorComponent implements OnChanges {
 

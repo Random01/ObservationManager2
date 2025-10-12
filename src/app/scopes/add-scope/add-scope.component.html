@@ -1,25 +1,17 @@
 @if ({ item: item$ | async }; as data) {
-  <div
-    class="om-add-scope"
-    >
-    <div class="header">
-      <h2 class="mat-h2">Add New Scope</h2>
-    </div>
-    @if (data.item) {
-      <div>
-        <om-scope [scope]="data.item"></om-scope>
-      </div>
-    }
-    <hr/>
-    <div class="footer">
-      <button
-        mat-button
-        color="primary"
-        [disabled]="!isValid()"
-      (click)="addItem()">Add</button>
-      <button
-        mat-button
-      (click)="goBack()">Back</button>
-    </div>
+<div class="om-add-scope">
+  <div class="header">
+    <h2 class="mat-h2">Add New Scope</h2>
   </div>
+  @if (data.item) {
+    <div>
+      <om-scope [scope]="data.item"></om-scope>
+    </div>
+  }
+  <hr />
+  <div class="footer">
+    <button mat-button color="primary" [disabled]="!isValid()" (click)="addItem()">Add</button>
+    <button mat-button (click)="goBack()">Back</button>
+  </div>
+</div>
 }
