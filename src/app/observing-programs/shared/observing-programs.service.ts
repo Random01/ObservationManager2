@@ -12,37 +12,32 @@ import ObservingProgramStatistics from './observing-program-statistics.model';
 
 @Injectable({ providedIn: 'root' })
 export class ObservingProgramsService extends StorageService<ObservingProgram> {
-
-  constructor(
-    http: HttpClient,
-    jwtService: JwtService,
-  ) {
+  constructor(http: HttpClient, jwtService: JwtService) {
     super('/observing-programs', http, jwtService, ObservingProgram);
   }
 
   public getStatistics(request: ObservingProgramStatisticsRequestParams): Promise<PaginatedResponsePayload<TargetStatistics>> {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Authorization': this.getAuthorizationToken(),
+        Authorization: this.getAuthorizationToken(),
       }),
     };
 
     return new Promise<PaginatedResponsePayload<TargetStatistics>>((success) => {
       const url = `${this.getUrl()}/statistics/${request.observingProgramId}?${request.getQueryString()}`;
-      this.http.get<any>(url, httpOptions)
-        .subscribe(response => {
-          success({
-            ...response,
-            items: response.items.map((item: any) => this.parseTargetStatistics(item)),
-          });
+      this.http.get<any>(url, httpOptions).subscribe((response) => {
+        success({
+          ...response,
+          items: response.items.map((item: any) => this.parseTargetStatistics(item)),
         });
+      });
     });
   }
 
   public async getObservingProgramStatistics(observingProgramId: string): Promise<ObservingProgramStatistics> {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Authorization': this.getAuthorizationToken(),
+        Authorization: this.getAuthorizationToken(),
       }),
     };
 

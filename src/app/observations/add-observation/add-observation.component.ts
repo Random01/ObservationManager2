@@ -9,20 +9,15 @@ import { Observation } from '../../shared/models/models';
 import { ObservationService } from '../shared/observation.service';
 import { AddEntityComponent } from '../../shared/components/add-entity.component';
 import { SessionService } from '../../sessions/shared/session.service';
-import { ObservationComponent } from "../observation/observation.component";
+import { ObservationComponent } from '../observation/observation.component';
 
 @Component({
-    selector: 'om-add-observation',
-    templateUrl: 'add-observation.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-    MatButtonModule,
-    AsyncPipe,
-    ObservationComponent
-]
+  selector: 'om-add-observation',
+  templateUrl: 'add-observation.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatButtonModule, AsyncPipe, ObservationComponent],
 })
 export class AddObservationComponent extends AddEntityComponent<Observation> {
-
   constructor(
     observationService: ObservationService,
     private readonly sessionService: SessionService,
@@ -71,5 +66,4 @@ export class AddObservationComponent extends AddEntityComponent<Observation> {
   private getSessionId(): string {
     return this.route.snapshot.paramMap.get('sessionId');
   }
-
 }

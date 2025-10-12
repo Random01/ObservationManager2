@@ -7,4 +7,3 @@ export class VendorStore extends BaseMongooseStore<typeof VendorModel, any> {
     super(VendorModel);
   }
 }
-

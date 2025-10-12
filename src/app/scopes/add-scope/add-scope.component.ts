@@ -12,18 +12,10 @@ import { ScopeComponent } from '../scope';
   selector: 'om-add-scope',
   templateUrl: 'add-scope.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    MatButtonModule,
-    ScopeComponent,
-    AsyncPipe
-  ]
+  imports: [MatButtonModule, ScopeComponent, AsyncPipe],
 })
 export class AddScopeComponent extends AddEntityComponent<Scope> {
-
-  constructor(
-    service: ScopeService,
-  ) {
+  constructor(service: ScopeService) {
     super(service);
   }
-
 }

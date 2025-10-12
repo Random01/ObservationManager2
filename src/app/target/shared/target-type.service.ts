@@ -7,7 +7,6 @@ import { TargetTypeItem } from './interfaces/target-search-params.interface';
 
 @Injectable({ providedIn: 'root' })
 export class TargetTypeService {
-
   private readonly types = {
     [TargetType.OpenCluster]: 'Open Cluster',
     [TargetType.DarkNebula]: 'Dark Nebula',
@@ -47,9 +46,6 @@ export class TargetTypeService {
   }
 
   public getAllTargetTypes(): Observable<TargetTypeItem[]> {
-    return of(
-      this.getAllTypes()
-        .map(type => ({ type: type, name: this.types[type] })));
+    return of(this.getAllTypes().map((type) => ({ type: type, name: this.types[type] })));
   }
-
 }

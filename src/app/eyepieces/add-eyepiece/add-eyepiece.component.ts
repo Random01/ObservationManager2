@@ -9,21 +9,13 @@ import { AsyncPipe } from '@angular/common';
 import { EyepieceComponent } from '../eyepiece';
 
 @Component({
-    selector: 'om-add-eyepiece',
-    templateUrl: 'add-eyepiece.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-    MatButtonModule,
-    AsyncPipe,
-    EyepieceComponent
-]
+  selector: 'om-add-eyepiece',
+  templateUrl: 'add-eyepiece.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatButtonModule, AsyncPipe, EyepieceComponent],
 })
 export class AddEyepieceComponent extends AddEntityComponent<Eyepiece> {
-
-  constructor(
-    eyepieceService: EyepieceService,
-  ) {
+  constructor(eyepieceService: EyepieceService) {
     super(eyepieceService);
   }
-
 }

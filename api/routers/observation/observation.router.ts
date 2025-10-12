@@ -7,12 +7,7 @@ import { ObservationExporterService } from './observation.exporter.service';
 import { Observation } from './observation.interface';
 
 export class ObservationRouter extends BaseEntityRouter<Observation, ObservationStore> {
-
-  constructor(
-    router: Router,
-    store = new ObservationStore(),
-    exporter = new ObservationExporterService(),
-  ) {
+  constructor(router: Router, store = new ObservationStore(), exporter = new ObservationExporterService()) {
     super(router, store, exporter);
   }
 
@@ -23,5 +18,4 @@ export class ObservationRouter extends BaseEntityRouter<Observation, Observation
       ...(session ? { session } : undefined),
     };
   }
-
 }

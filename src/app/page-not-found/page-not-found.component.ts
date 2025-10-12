@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'om-page-not-found',
@@ -6,6 +6,4 @@ import { ChangeDetectionStrategy, Component } from "@angular/core";
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
-export class PageNotFoundComponent {
-
-}
+export class PageNotFoundComponent {}

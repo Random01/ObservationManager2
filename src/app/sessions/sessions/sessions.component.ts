@@ -15,40 +15,19 @@ import { SortOrder } from '../../shared/models/sort-order.model';
 import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
 
 @Component({
-    selector: 'om-sessions',
-    templateUrl: 'sessions.component.html',
-    styleUrl: 'sessions.component.less',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-    MatPaginatorModule,
-    MatTableModule,
-    MatTooltipModule,
-    MatButtonModule,
-    MatIconModule,
-    RouterLink,
-    AsyncPipe,
-    DatePipe
-]
+  selector: 'om-sessions',
+  templateUrl: 'sessions.component.html',
+  styleUrl: 'sessions.component.less',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatPaginatorModule, MatTableModule, MatTooltipModule, MatButtonModule, MatIconModule, RouterLink, AsyncPipe, DatePipe],
 })
 export class SessionsComponent extends EntityListComponent<Session> {
+  public readonly displayedColumns: string[] = ['begin', 'site', 'weather', 'actions'];
 
-  public readonly displayedColumns: string[] = [
-    'begin',
-    'site',
-    'weather',
-    'actions',
-  ];
-
-  constructor(
-    sessionService: SessionService,
-    deleteEntityDialogService: DeleteEntityDialogService,
-    route: ActivatedRoute,
-    router: Router,
-  ) {
+  constructor(sessionService: SessionService, deleteEntityDialogService: DeleteEntityDialogService, route: ActivatedRoute, router: Router) {
     super(sessionService, deleteEntityDialogService, route, router);
 
     this.sortDirection = SortOrder.Asc;
     this.sortField = 'begin';
   }
-
 }

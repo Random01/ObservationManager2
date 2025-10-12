@@ -2,7 +2,6 @@ import { RequestParams } from '../../shared/services/request-params.model';
 import { TargetType } from '../../shared/models/target-type.model';
 
 export class TargetSearchParams extends RequestParams {
-
   public readonly name: string;
 
   public readonly type: TargetType;
@@ -12,11 +11,6 @@ export class TargetSearchParams extends RequestParams {
   }
 
   protected override getQueryParams(): { name: string; value: any }[] {
-    return [
-      ...super.getQueryParams(),
-      { name: 'name', value: this.name },
-      { name: 'type', value: this.type },
-    ];
+    return [...super.getQueryParams(), { name: 'name', value: this.name }, { name: 'type', value: this.type }];
   }
-
 }

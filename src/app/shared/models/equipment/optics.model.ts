@@ -2,7 +2,6 @@ import { EquipmentItem } from './equipment-item.model';
 import { OpticsType } from './optics-type.model';
 
 export class Optics extends EquipmentItem {
-
   /**
    * Aperture in [mm]
    */

@@ -7,18 +7,14 @@ import { GetItemsParameters } from './get-items-parameters.interface';
 import { GetByIdParameter } from './get-by-id-parameter.interface';
 
 export class BaseMongooseStore<TModel extends Model<any>, TEntity extends Entity> {
-
-  constructor(protected readonly model: TModel) { }
+  constructor(protected readonly model: TModel) {}
 
   public getAll(): Promise<TEntity[]> {
     return this.model.find().exec();
   }
 
   public getItems({ requestParameters, userId, populationDetails = {} }: GetItemsParameters): Promise<PaginatedItems<TEntity>> {
-    const {
-      page, size, sortField, sortDirection,
-      ...restRequestParams
-    } = requestParameters;
+    const { page, size, sortField, sortDirection, ...restRequestParams } = requestParameters;
 
     const request = {
       ...restRequestParams,
@@ -30,7 +26,7 @@ export class BaseMongooseStore<TModel extends Model<any>, TEntity extends Entity
       query.sort({ [sortField]: sortDirection === 'asc' ? 1 : -1 });
     }
 
-    Object.keys(populationDetails).forEach(key => {
+    Object.keys(populationDetails).forEach((key) => {
       query.populate(key, populationDetails[key]);
     });
 
@@ -38,10 +34,7 @@ export class BaseMongooseStore<TModel extends Model<any>, TEntity extends Entity
       query.limit(size).skip(page * size);
     }
 
-    return Promise.all([
-      this.model.find(request).countDocuments(),
-      query.exec()
-    ]).then(([totalCount, items]) => ({
+    return Promise.all([this.model.find(request).countDocuments(), query.exec()]).then(([totalCount, items]) => ({
       items,
       pageCount: page != null ? page : 0,
       pages: size != null ? Math.ceil(totalCount / size) : 1,
@@ -55,7 +48,7 @@ export class BaseMongooseStore<TModel extends Model<any>, TEntity extends Entity
       userCreated: userId,
     });
 
-    Object.keys(populationDetails).forEach(key => {
+    Object.keys(populationDetails).forEach((key) => {
       query.populate(key, populationDetails[key]);
     });
 
@@ -92,10 +85,13 @@ export class BaseMongooseStore<TModel extends Model<any>, TEntity extends Entity
       dateModified: new Date(),
     };
 
-    await this.model.updateOne({
-      _id: modifiedEntity.id,
-      userCreated: userId,
-    }, modifiedEntity);
+    await this.model.updateOne(
+      {
+        _id: modifiedEntity.id,
+        userCreated: userId,
+      },
+      modifiedEntity,
+    );
 
     return modifiedEntity;
   }
@@ -110,5 +106,4 @@ export class BaseMongooseStore<TModel extends Model<any>, TEntity extends Entity
   public search(_: any): Promise<any[]> {
     return Promise.resolve([]);
   }
-
 }

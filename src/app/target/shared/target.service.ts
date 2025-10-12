@@ -19,11 +19,7 @@ interface SearchParams {
 
 @Injectable({ providedIn: 'root' })
 export class TargetService extends StorageService<Target> {
-
-  constructor(
-    http: HttpClient,
-    jwtService: JwtService,
-  ) {
+  constructor(http: HttpClient, jwtService: JwtService) {
     super('/targets', http, jwtService, Target);
   }
 
@@ -34,10 +30,7 @@ export class TargetService extends StorageService<Target> {
     }
 
     const url = `${this.getUrl()}?name=${name}&maxCount=${maxCount}`;
-    return this.http.get<Target[]>(url)
-      .pipe(
-        map(targets => targets.map(item => this.deserialize(item)))
-      );
+    return this.http.get<Target[]>(url).pipe(map((targets) => targets.map((item) => this.deserialize(item))));
   }
 
   protected create(targetType: TargetType, params?: any): Target {
@@ -52,5 +45,4 @@ export class TargetService extends StorageService<Target> {
         return new Target(params);
     }
   }
-
 }

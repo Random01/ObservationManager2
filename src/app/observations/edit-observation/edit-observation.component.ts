@@ -9,25 +9,17 @@ import { ObservationService } from '../shared/observation.service';
 import { ObservationComponent } from '../observation';
 
 @Component({
-    selector: 'om-edit-observation',
-    templateUrl: 'edit-observation.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-    MatButtonModule,
-    AsyncPipe,
-    ObservationComponent
-]
+  selector: 'om-edit-observation',
+  templateUrl: 'edit-observation.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatButtonModule, AsyncPipe, ObservationComponent],
 })
 export class EditObservationComponent extends EditEntityComponent<Observation> {
-
-  constructor(
-    service: ObservationService,
-  ) {
+  constructor(service: ObservationService) {
     super(service);
   }
 
   public override getItemId(): string {
     return this.route.snapshot.paramMap.get('observationId');
   }
-
 }

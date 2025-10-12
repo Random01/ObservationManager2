@@ -4,27 +4,25 @@
  * Barlow and Shapley lenses which might be used in addition to an eyepiece
  */
 export class Lens extends EquipmentItem {
+  /**
+   * Factors above 1 define an barlow lens, factors below 1 define a shapley lens.
+   */
+  public factor: number;
 
-    /**
-     * Factors above 1 define an barlow lens, factors below 1 define a shapley lens.
-     */
-    public factor: number;
+  constructor(params?: Partial<Lens>) {
+    super(params);
+    Object.assign(this, params);
+  }
 
-    constructor(params?: Partial<Lens>) {
-        super(params);
-        Object.assign(this, params);
-    }
+  public override serialize(): object {
+    return Object.assign(super.serialize(), {
+      factor: this.factor,
+    });
+  }
 
-    public override serialize(): object {
-        return Object.assign(super.serialize(), {
-            factor: this.factor,
-        });
-    }
+  public override deserialize(state: any): void {
+    super.deserialize(state);
 
-    public override deserialize(state: any): void {
-        super.deserialize(state);
-
-        this.factor = state.factor;
-    }
-
+    this.factor = state.factor;
+  }
 }

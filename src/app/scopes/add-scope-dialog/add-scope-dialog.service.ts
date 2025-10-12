@@ -6,7 +6,6 @@ import { AddScopeDialogComponent } from './add-scope-dialog.component';
 
 @Injectable({ providedIn: 'root' })
 export class AddScopeDialogService extends AddNewEntityDialogService<Scope> {
-
   public createDialog() {
     return this.dialog.open(AddScopeDialogComponent, {
       width: '550px',

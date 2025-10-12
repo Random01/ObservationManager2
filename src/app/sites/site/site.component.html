@@ -1,66 +1,38 @@
-﻿﻿<div class="om-site">
-
+﻿﻿
+<div class="om-site">
   <!-- Site Name -->
   <mat-form-field>
     <mat-label>Name</mat-label>
-    <input
-      matInput
-      type="text"
-      autocomplete="off"
-      placeholder="Name"
-      [(ngModel)]="site.name" />
+    <input matInput type="text" autocomplete="off" placeholder="Name" [(ngModel)]="site.name" />
   </mat-form-field>
 
   <!-- Timezone -->
   <mat-form-field>
     <mat-label>Timezone (min)</mat-label>
-    <input
-      matInput
-      type="number"
-      autocomplete="off"
-      placeholder="Timezone (min)"
-      [(ngModel)]="site.timezone" />
+    <input matInput type="number" autocomplete="off" placeholder="Timezone (min)" [(ngModel)]="site.timezone" />
   </mat-form-field>
 
   <!-- Elevation -->
   <mat-form-field>
     <mat-label>Elevation (m)</mat-label>
-    <input
-      matInput
-      type="number"
-      autocomplete="off"
-      placeholder="Elevation (m)"
-      [(ngModel)]="site.elevation" />
+    <input matInput type="number" autocomplete="off" placeholder="Elevation (m)" [(ngModel)]="site.elevation" />
   </mat-form-field>
 
   <div class="line">
-
     <!-- Latitude -->
     <div class="item">
-      <om-degrees-input
-        title="Latitude"
-        [(degrees)]="site.coord.latitude">
-      </om-degrees-input>
+      <om-degrees-input title="Latitude" [(degrees)]="site.coord.latitude"> </om-degrees-input>
     </div>
 
     <!-- Longitude -->
     <div class="item">
-      <om-degrees-input
-        title="Longitude"
-        [(degrees)]="site.coord.longitude">
-      </om-degrees-input>
+      <om-degrees-input title="Longitude" [(degrees)]="site.coord.longitude"> </om-degrees-input>
     </div>
-
   </div>
 
   <!-- Description -->
   <mat-form-field>
     <mat-label>Description</mat-label>
-    <textarea
-      matInput
-      autocomplete="off"
-      placeholder="Description" 
-      [(ngModel)]="site.description"></textarea>
+    <textarea matInput autocomplete="off" placeholder="Description" [(ngModel)]="site.description"></textarea>
   </mat-form-field>
-
 </div>

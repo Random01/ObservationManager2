@@ -31,10 +31,9 @@ const enum TargetFieldIndex {
   commonNames = 23,
   nedNotes = 24,
   openNgcNotes = 25,
-};
+}
 
 export class TargetCsvLoader {
-
   private readonly typeToTypeMap = new Map<string, TargetType>();
 
   constructor() {
@@ -67,9 +66,7 @@ export class TargetCsvLoader {
     }
 
     const [hours, minutes, seconds] = ra.split(':');
-    return parseFloat(hours) * 15.0 +
-      parseFloat(minutes) / 4.0 +
-      parseFloat(seconds) / 240.0;
+    return parseFloat(hours) * 15.0 + parseFloat(minutes) / 4.0 + parseFloat(seconds) / 240.0;
   }
 
   private parseDec(dec: string | null | undefined): number | null {
@@ -80,9 +77,7 @@ export class TargetCsvLoader {
     const [degreesString, arcminutesString, arcsecondsString] = dec.split(':');
     const degrees = parseFloat(degreesString);
 
-    return ((parseFloat(arcsecondsString) / 3600.0) +
-      (parseFloat(arcminutesString) / 60.0) +
-      Math.abs(degrees)) * Math.sign(degrees);
+    return (parseFloat(arcsecondsString) / 3600.0 + parseFloat(arcminutesString) / 60.0 + Math.abs(degrees)) * Math.sign(degrees);
   }
 
   private parseType(type: string): TargetType {
@@ -109,7 +104,7 @@ export class TargetCsvLoader {
       if (!isNaN(value)) {
         return value;
       }
-    } catch (ex) { }
+    } catch (ex) {}
     return undefined;
   }
 
@@ -121,7 +116,7 @@ export class TargetCsvLoader {
     const data = await reader.read();
     // Name;Type;RA;Dec;Const;MajAx;MinAx;PosAng;B-Mag;V-Mag;J-Mag;H-Mag;K-Mag;
     // SurfBr;Hubble;Cstar U-Mag;Cstar B-Mag;Cstar V-Mag;M;NGC;IC;Cstar Names;Identifiers;Common names;NED notes;OpenNGC notes
-    return data.rows.map(row => {
+    return data.rows.map((row) => {
       const name = row[TargetFieldIndex.name];
       const type = row[TargetFieldIndex.type];
       const ra = row[TargetFieldIndex.ra];
@@ -144,5 +139,4 @@ export class TargetCsvLoader {
       } as Target;
     });
   }
-
 }

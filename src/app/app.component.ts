@@ -10,20 +10,18 @@ import { selectNavigationMenu } from './store/navigation-menu';
 import * as NavigationMenuActions from './store/navigation-menu/navigation-menu.actions';
 
 @Component({
-    selector: 'om-app-root',
-    templateUrl: 'app.component.html',
-    styleUrl: 'app.component.less',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  selector: 'om-app-root',
+  templateUrl: 'app.component.html',
+  styleUrl: 'app.component.less',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class AppComponent implements OnInit {
-
-  public readonly opened$ = this.store.select(selectNavigationMenu)
-    .pipe(map(p => p.expanded));
+  public readonly opened$ = this.store.select(selectNavigationMenu).pipe(map((p) => p.expanded));
 
   public readonly navigationLinks = NavigationLinks;
 
-  constructor(private readonly store: Store) { }
+  constructor(private readonly store: Store) {}
 
   public ngOnInit(): void {
     this.store.dispatch(AuthApiActions.populate());
@@ -32,5 +30,4 @@ export class AppComponent implements OnInit {
   public toggleSideNav(): void {
     this.store.dispatch(NavigationMenuActions.toggle());
   }
-
 }

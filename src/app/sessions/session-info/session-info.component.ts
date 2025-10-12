@@ -9,24 +9,16 @@ import { MatInputModule } from '@angular/material/input';
 import { Session } from '../../shared/models/models';
 
 @Component({
-    selector: 'om-session-info',
-    templateUrl: 'session-info.component.html',
-    styleUrl: 'session-info.component.less',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        MatFormFieldModule,
-        MatInputModule,
-        MatButtonModule,
-        DatePipe,
-    ]
+  selector: 'om-session-info',
+  templateUrl: 'session-info.component.html',
+  styleUrl: 'session-info.component.less',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatFormFieldModule, MatInputModule, MatButtonModule, DatePipe],
 })
 export class SessionInfoComponent {
-
   @Input({ required: true }) session?: Session;
 
-  constructor(
-    private readonly router: Router,
-  ) { }
+  constructor(private readonly router: Router) {}
 
   public goToSession(): void {
     // todo:

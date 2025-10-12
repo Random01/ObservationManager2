@@ -1,7 +1,6 @@
 import { Param, RequestParams } from '../../shared/services/request-params.model';
 
 export class ObservationSearchParams extends RequestParams {
-
   public readonly session: string;
 
   public readonly target: string;
@@ -11,11 +10,6 @@ export class ObservationSearchParams extends RequestParams {
   }
 
   protected override getQueryParams(): Param[] {
-    return [
-      ...super.getQueryParams(),
-      { name: 'session', value: this.session },
-      { name: 'target', value: this.target },
-    ];
+    return [...super.getQueryParams(), { name: 'session', value: this.session }, { name: 'target', value: this.target }];
   }
-
 }

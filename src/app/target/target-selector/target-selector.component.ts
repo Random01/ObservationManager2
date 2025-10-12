@@ -8,11 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { Subject, Observable } from 'rxjs';
-import {
-  debounceTime,
-  distinctUntilChanged,
-  switchMap
-} from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
 import { TargetService } from '../shared/target.service';
 import { Target } from '../../shared/models/models';
@@ -24,21 +20,12 @@ function isTarget(item: string | Target): item is Target {
 }
 
 @Component({
-    selector: 'om-target-selector',
-    templateUrl: 'target-selector.component.html',
-    styleUrl: 'target-selector.component.less',
-    imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
-    MatAutocompleteModule,
-    ReactiveFormsModule,
-    AsyncPipe
-]
+  selector: 'om-target-selector',
+  templateUrl: 'target-selector.component.html',
+  styleUrl: 'target-selector.component.less',
+  imports: [MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, MatAutocompleteModule, ReactiveFormsModule, AsyncPipe],
 })
 export class TargetSelectorComponent implements OnInit {
-
   private _target: Target;
   @Input()
   public set target(target: Target) {
@@ -66,7 +53,7 @@ export class TargetSelectorComponent implements OnInit {
   constructor(
     private readonly targetService: TargetService,
     private readonly dialogService: AddTargetDialogService,
-  ) { }
+  ) {}
 
   public displayFn(target: Target): string {
     return target?.name;
@@ -80,10 +67,12 @@ export class TargetSelectorComponent implements OnInit {
     this.targets$ = this.searchTerms$.pipe(
       debounceTime(300),
       distinctUntilChanged(),
-      switchMap(term => this.targetService.search({
-        name: term || '',
-        maxCount: 10,
-      }))
+      switchMap((term) =>
+        this.targetService.search({
+          name: term || '',
+          maxCount: 10,
+        }),
+      ),
     );
   }
 
@@ -99,11 +88,10 @@ export class TargetSelectorComponent implements OnInit {
   }
 
   public openDialog() {
-    this.dialogService.openDialog().then(result => {
+    this.dialogService.openDialog().then((result) => {
       if (result) {
         this.onTargetSelected(result);
       }
     });
   }
-
 }

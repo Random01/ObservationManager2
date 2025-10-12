@@ -6,7 +6,6 @@ import { FilterType } from '../../shared/models/equipment/equipment';
 
 @Injectable({ providedIn: 'root' })
 export class FilterTypeService {
-
   public getAll(): Observable<FilterType[]> {
     return of([
       FilterType.Hbeta,

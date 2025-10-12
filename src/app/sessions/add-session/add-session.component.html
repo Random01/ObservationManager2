@@ -1,27 +1,16 @@
 @if ({ item: item$ | async }; as data) {
-  <div
-    class="om-add-session"
-    >
+  <div class="om-add-session">
     <div>
       <h2 class="mat-h2">Add New Session</h2>
     </div>
     @if (data.item) {
       <om-session [session]="data.item"></om-session>
     }
-    <hr/>
+    <hr />
     <div>
-      <button
-        mat-button
-        [disabled]="!isValid()"
-      (click)="addItem()">Add</button>
-      <button
-        mat-button
-        color="primary"
-        [disabled]="!isValid()"
-      (click)="addAndGo()">Add and go to fill observations</button>
-      <button
-        mat-button
-      (click)="goBack()">Back</button>
+      <button mat-button [disabled]="!isValid()" (click)="addItem()">Add</button>
+      <button mat-button color="primary" [disabled]="!isValid()" (click)="addAndGo()">Add and go to fill observations</button>
+      <button mat-button (click)="goBack()">Back</button>
     </div>
   </div>
 }

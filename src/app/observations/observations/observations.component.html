@@ -1,33 +1,24 @@
-﻿@if ({
-  page: page$ | async,
-  searchParameters: searchParameters$ | async
-  }; as data) {
-  <div
-    class="om-observations"
-    >
+﻿@if (
+  {
+    page: page$ | async,
+    searchParameters: searchParameters$ | async,
+  };
+  as data
+) {
+  <div class="om-observations">
     <div>
       <h2 class="mat-h2">My Observations</h2>
     </div>
     <mat-expansion-panel>
       <mat-expansion-panel-header>
-        <mat-panel-title>
-          Search Panel
-        </mat-panel-title>
+        <mat-panel-title> Search Panel </mat-panel-title>
       </mat-expansion-panel-header>
       @if (data.searchParameters) {
         <div>
-          <om-observation-search
-            [searchParameters]="data.searchParameters"
-            >
-          </om-observation-search>
+          <om-observation-search [searchParameters]="data.searchParameters"> </om-observation-search>
           <div>
-            <button
-              mat-button
-              color="primary"
-            (click)="search()">Search</button>
-            <button
-              mat-button
-            (click)="clearSearch()">Clear</button>
+            <button mat-button color="primary" (click)="search()">Search</button>
+            <button mat-button (click)="clearSearch()">Clear</button>
           </div>
         </div>
       }
@@ -38,12 +29,10 @@
       [pageSize]="pageSize"
       [pageSizeOptions]="pageSizeOptions"
       [pageIndex]="currentPage"
-      (page)="onPageChanged($event)">
+      (page)="onPageChanged($event)"
+    >
     </mat-paginator>
-    <mat-table
-      [dataSource]="data.page.items"
-      class="mat-elevation-z8"
-      >
+    <mat-table [dataSource]="data.page.items" class="mat-elevation-z8">
       <ng-container matColumnDef="targetName">
         <mat-header-cell *matHeaderCellDef>Target</mat-header-cell>
         <mat-cell *matCellDef="let observation">{{ observation.target.name }}</mat-cell>
@@ -67,30 +56,18 @@
       <ng-container matColumnDef="actions">
         <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
         <mat-cell *matCellDef="let observation">
-          <button
-            mat-icon-button
-            matTooltip="Edit Observation"
-            [routerLink]="['/observations', observation.id]"
-            >
-            <mat-icon aria-label="Click to edit">
-              edit
-            </mat-icon>
+          <button mat-icon-button matTooltip="Edit Observation" [routerLink]="['/observations', observation.id]">
+            <mat-icon aria-label="Click to edit"> edit </mat-icon>
           </button>
           @if (observation.session?.id) {
-            <button
-              mat-icon-button
-              matTooltip="View Session"
-              [routerLink]="['/sessions', observation.session.id]"
-              >
-              <mat-icon aria-label="Click to view session">
-                view_headline
-              </mat-icon>
+            <button mat-icon-button matTooltip="View Session" [routerLink]="['/sessions', observation.session.id]">
+              <mat-icon aria-label="Click to view session"> view_headline </mat-icon>
             </button>
           }
         </mat-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
     </mat-table>
     <mat-paginator
       showFirstLastButtons="true"
@@ -98,7 +75,8 @@
       [pageSize]="pageSize"
       [pageSizeOptions]="pageSizeOptions"
       [pageIndex]="currentPage"
-      (page)="onPageChanged($event)">
+      (page)="onPageChanged($event)"
+    >
     </mat-paginator>
   </div>
 }

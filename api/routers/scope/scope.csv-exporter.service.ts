@@ -5,7 +5,6 @@ import { BaseCsvExporter } from '../common';
 import { Scope } from './scope.interface';
 
 export class ScopeCsvExporter extends BaseCsvExporter<Scope> {
-
   public export(res: Response, items: Scope[]): void {
     res.set('Content-Type', 'text/plain');
     let content = 'Model;Aperture;Focal Length;Vendor\r\n';
@@ -14,5 +13,4 @@ export class ScopeCsvExporter extends BaseCsvExporter<Scope> {
     });
     res.send(Buffer.from(content));
   }
-
 }

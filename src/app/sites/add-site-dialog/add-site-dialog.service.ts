@@ -6,11 +6,9 @@ import { AddSiteDialogComponent } from './add-site-dialog.component';
 
 @Injectable({ providedIn: 'root' })
 export class AddSiteDialogService extends AddNewEntityDialogService<Site> {
-
   protected createDialog() {
     return this.dialog.open(AddSiteDialogComponent, {
       width: '550px',
     });
   }
-
 }

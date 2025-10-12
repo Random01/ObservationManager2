@@ -17,22 +17,14 @@ import { BaseComponent } from '../../shared/components/base-component';
 import { selectRegisterState } from '../../store/register';
 
 @Component({
-    selector: 'om-register',
-    templateUrl: 'register.component.html',
-    styleUrl: 'register.component.less',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    ReactiveFormsModule,
-    AsyncPipe
-]
+  selector: 'om-register',
+  templateUrl: 'register.component.html',
+  styleUrl: 'register.component.less',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatFormFieldModule, MatInputModule, MatButtonModule, ReactiveFormsModule, AsyncPipe],
 })
 export class RegisterComponent extends BaseComponent {
-
-  public override readonly isLoading$ = this.store.select(selectRegisterState)
-    .pipe(map(state => state.isWorking));
+  public override readonly isLoading$ = this.store.select(selectRegisterState).pipe(map((state) => state.isWorking));
 
   public readonly profileForm = new FormGroup({
     userName: new FormControl('', Validators.required),

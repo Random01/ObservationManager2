@@ -7,12 +7,10 @@ import { StorageService } from '../services/storage.service';
 import { DestroyableComponent } from './destroyable.component';
 
 @Component({
-    template: '',
-    standalone: false
+  template: '',
+  standalone: false,
 })
-export abstract class AddEntityDialogComponent<TEntity extends Entity, SType extends StorageService<TEntity>>
-  extends DestroyableComponent implements OnInit {
-
+export abstract class AddEntityDialogComponent<TEntity extends Entity, SType extends StorageService<TEntity>> extends DestroyableComponent implements OnInit {
   protected readonly itemSubject = new BehaviorSubject<TEntity | null>(null);
   public readonly item$ = this.itemSubject.asObservable();
 
@@ -26,10 +24,7 @@ export abstract class AddEntityDialogComponent<TEntity extends Entity, SType ext
   public addItem(): void {
     const item = this.itemSubject.getValue();
     if (item) {
-      this.handle(
-        this.storageService.add(item)
-          .subscribe(result => this.dialogRef.close(result.payload))
-      );
+      this.handle(this.storageService.add(item).subscribe((result) => this.dialogRef.close(result.payload)));
     }
   }
 
@@ -44,5 +39,4 @@ export abstract class AddEntityDialogComponent<TEntity extends Entity, SType ext
   public ngOnInit(): void {
     this.itemSubject.next(new this.storageService.createNew());
   }
-
 }

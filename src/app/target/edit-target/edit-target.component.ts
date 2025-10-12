@@ -9,25 +9,17 @@ import { Target } from '../../shared/models/models';
 import { TargetComponent } from '../target';
 
 @Component({
-    selector: 'om-edit-target',
-    templateUrl: 'edit-target.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-    MatButtonModule,
-    AsyncPipe,
-    TargetComponent
-]
+  selector: 'om-edit-target',
+  templateUrl: 'edit-target.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatButtonModule, AsyncPipe, TargetComponent],
 })
 export class EditTargetComponent extends EditEntityComponent<Target> {
-
-  constructor(
-    service: TargetService,
-  ) {
+  constructor(service: TargetService) {
     super(service);
   }
 
   public getItemId(): string {
     return this.route.snapshot.paramMap.get('id');
   }
-
 }

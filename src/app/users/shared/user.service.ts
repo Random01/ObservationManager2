@@ -11,11 +11,7 @@ import { JwtService } from '../../auth/shared/jwt.service';
 
 @Injectable({ providedIn: 'root' })
 export class UserService extends StorageService<User> {
-
-  constructor(
-    http: HttpClient,
-    jwtService: JwtService,
-  ) {
+  constructor(http: HttpClient, jwtService: JwtService) {
     super('/users', http, jwtService, User);
   }
 
@@ -32,13 +28,16 @@ export class UserService extends StorageService<User> {
     const data = { user: { userName, password } };
 
     return this.http.post<{ user: any }>(this.getUrl() + '/login', data, httpOptions).pipe(
-      map(({ user }) => new SignInResultPayload({
-        token: user.token,
-        user: new User({
-          userName: user.userName,
-          email: user.email,
-        }),
-      })),
+      map(
+        ({ user }) =>
+          new SignInResultPayload({
+            token: user.token,
+            user: new User({
+              userName: user.userName,
+              email: user.email,
+            }),
+          }),
+      ),
     );
   }
 
@@ -46,18 +45,22 @@ export class UserService extends StorageService<User> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.getAuthorizationToken(),
+        Authorization: this.getAuthorizationToken(),
       }),
     };
 
-    return this.http.get<{ user: any }>(this.getUrl() + '/user', httpOptions)
-      .pipe(map(({ user }) => new SignInResultPayload({
-        token: user.token,
-        user: new User({
-          userName: user.userName,
-          email: user.email,
-        })
-      })));
+    return this.http.get<{ user: any }>(this.getUrl() + '/user', httpOptions).pipe(
+      map(
+        ({ user }) =>
+          new SignInResultPayload({
+            token: user.token,
+            user: new User({
+              userName: user.userName,
+              email: user.email,
+            }),
+          }),
+      ),
+    );
   }
 
   public register(user: User): Observable<void> {
@@ -69,5 +72,4 @@ export class UserService extends StorageService<User> {
 
     return this.http.post<void>(this.getUrl() + '/', user, httpOptions);
   }
-
 }

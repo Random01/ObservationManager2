@@ -1,7 +1,6 @@
 import { ObjectId } from 'mongodb';
 
 export class Entity {
-
   public readonly id: string | undefined;
   public readonly dateCreated: Date | undefined;
   public readonly dateModified: Date | undefined;
@@ -35,5 +34,4 @@ export class Entity {
       description: this.description,
     };
   }
-
 }

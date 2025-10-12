@@ -1,5 +1,4 @@
 export default class ObservingProgramStatistics {
-
   public readonly totalCount: number;
   public readonly observedCount: number;
 
@@ -8,7 +7,6 @@ export default class ObservingProgramStatistics {
   }
 
   public getCompleteness(): number {
-    return this.totalCount > 0
-      ? this.observedCount / this.totalCount : 0;
+    return this.totalCount > 0 ? this.observedCount / this.totalCount : 0;
   }
 }

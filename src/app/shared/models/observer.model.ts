@@ -1,7 +1,6 @@
 ﻿import { Entity } from './entity.model';
 
 export class Observer extends Entity {
-
   public name: string;
 
   public surname: string;
@@ -24,10 +23,6 @@ export class Observer extends Entity {
   public override deserialize(state: any): void {
     super.deserialize(state);
 
-    this.copy(state, [
-      'name',
-      'surname',
-      'contact',
-    ]);
+    this.copy(state, ['name', 'surname', 'contact']);
   }
 }

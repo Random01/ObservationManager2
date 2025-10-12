@@ -7,11 +7,10 @@ import { BaseComponent } from './base-component';
 import { Entity } from '../models/entity.model';
 
 @Component({
-    template: '',
-    standalone: false
+  template: '',
+  standalone: false,
 })
 export abstract class BaseEntityComponent<T extends Entity> extends BaseComponent {
-
   protected readonly router = inject(Router);
   protected readonly route = inject(ActivatedRoute);
 
@@ -26,5 +25,4 @@ export abstract class BaseEntityComponent<T extends Entity> extends BaseComponen
       return this.router.navigate(['..'], { relativeTo: this.route });
     }
   }
-
 }

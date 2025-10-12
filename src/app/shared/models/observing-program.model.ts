@@ -2,7 +2,6 @@ import { Entity } from './models';
 import { Target } from './target.model';
 
 export class ObservingProgram extends Entity {
-
   public name: string;
   public targets: Target[] = [];
 
@@ -13,7 +12,7 @@ export class ObservingProgram extends Entity {
   public override serialize(): Record<string, any> {
     return Object.assign(super.serialize(), {
       name: this.name,
-      targets: this.targets.map(target => target.id),
+      targets: this.targets.map((target) => target.id),
     });
   }
 
@@ -32,5 +31,4 @@ export class ObservingProgram extends Entity {
   public override isValid(): boolean {
     return this.name != null && this.name.trim().length > 0;
   }
-
 }

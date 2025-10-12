@@ -18,38 +18,16 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   templateUrl: 'scopes.component.html',
   styleUrl: 'scopes.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    MatPaginatorModule,
-    MatTableModule,
-    MatButtonModule,
-    MatIconModule,
-    MatTooltipModule,
-    RouterLink,
-    AsyncPipe,
-    DecimalPipe
-  ]
+  imports: [MatPaginatorModule, MatTableModule, MatButtonModule, MatIconModule, MatTooltipModule, RouterLink, AsyncPipe, DecimalPipe],
 })
 export class ScopesComponent extends EntityListComponent<Scope> {
+  public readonly displayedColumns: string[] = ['model', 'aperture', 'focalLength', 'vendor', 'actions'];
 
-  public readonly displayedColumns: string[] = [
-    'model',
-    'aperture',
-    'focalLength',
-    'vendor',
-    'actions',
-  ];
-
-  constructor(
-    service: ScopeService,
-    deleteEntityDialogService: DeleteEntityDialogService,
-    route: ActivatedRoute,
-    router: Router,
-  ) {
+  constructor(service: ScopeService, deleteEntityDialogService: DeleteEntityDialogService, route: ActivatedRoute, router: Router) {
     super(service, deleteEntityDialogService, route, router);
   }
 
   protected override getExportFileName(): string {
     return 'scopes';
   }
-
 }

@@ -10,7 +10,6 @@ import { Observation } from '../../shared/models/observation.model';
   standalone: true,
 })
 export class ObservationDialogComponent {
-
   public observation: Observation;
 
   constructor(
@@ -27,5 +26,4 @@ export class ObservationDialogComponent {
   public add(): void {
     this.dialogRef.close(this.observation);
   }
-
 }

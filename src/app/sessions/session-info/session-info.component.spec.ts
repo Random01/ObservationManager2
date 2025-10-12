@@ -8,15 +8,11 @@ import { SessionInfoComponent } from './session-info.component';
 import { Session } from '../../shared/models/session.model';
 
 describe('SessionInfoComponent', () => {
-
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [SessionInfoComponent],
       schemas: [NO_ERRORS_SCHEMA],
-      providers: [
-        provideMockStore(),
-        provideNoopAnimations(),
-      ],
+      providers: [provideMockStore(), provideNoopAnimations()],
     }).compileComponents();
   });
 
@@ -29,5 +25,4 @@ describe('SessionInfoComponent', () => {
 
     expect(component).toBeDefined();
   });
-
 });

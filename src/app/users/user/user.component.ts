@@ -12,11 +12,7 @@ import { User } from '../../shared/models/user.model';
   styleUrl: 'user.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-  ],
+  imports: [MatFormFieldModule, MatInputModule, FormsModule],
 })
 export class UserComponent {
   @Input({ required: true }) user?: User;

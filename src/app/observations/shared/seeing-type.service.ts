@@ -7,7 +7,6 @@ import { SeeingItem } from './seeing-type.interface';
 
 @Injectable({ providedIn: 'root' })
 export class SeeingTypeService {
-
   public getSeeingOptions(): Observable<SeeingItem[]> {
     return of([
       { name: 'Perfect seeing, without a quiver.', seeing: SeeingType.Perfect },
@@ -17,5 +16,4 @@ export class SeeingTypeService {
       { name: 'Very bad seeing.', seeing: SeeingType.VeryBad },
     ]);
   }
-
 }

@@ -1,10 +1,11 @@
-@if ({
-  page: page$ | async,
-  statistics: statistics$ | async
-  }; as data) {
-  <div
-    class="om-observing-program-statistics"
-    >
+@if (
+  {
+    page: page$ | async,
+    statistics: statistics$ | async,
+  };
+  as data
+) {
+  <div class="om-observing-program-statistics">
     <div class="header">
       <h2 class="mat-h2">Statistics</h2>
     </div>
@@ -12,7 +13,7 @@
       <div>
         <h4>Total Objects: {{ data.statistics.totalCount }}</h4>
         <h4>Observed Objects: {{ data.statistics.observedCount }}</h4>
-        <h4>Completeness: {{ data.statistics.getCompleteness()*100 }}%</h4>
+        <h4>Completeness: {{ data.statistics.getCompleteness() * 100 }}%</h4>
       </div>
     }
     <mat-paginator
@@ -22,13 +23,9 @@
       [pageSizeOptions]="pageSizeOptions"
       [pageIndex]="currentPage"
       (page)="onPageChanged($event)"
-      >
+    >
     </mat-paginator>
-    <table
-      mat-table
-      class="mat-elevation-z8"
-      [dataSource]="data.page.items"
-      >
+    <table mat-table class="mat-elevation-z8" [dataSource]="data.page.items">
       <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
         <mat-cell *matCellDef="let item">{{ item.target.name }}</mat-cell>
@@ -45,15 +42,12 @@
         <mat-header-cell *matHeaderCellDef>Observed</mat-header-cell>
         <mat-cell *matCellDef="let item">
           @if (item.observed) {
-            <mat-icon
-              >
-              check
-            </mat-icon>
+            <mat-icon> check </mat-icon>
           }
         </mat-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
     </table>
     <mat-paginator
       showFirstLastButtons="true"
@@ -61,16 +55,12 @@
       [pageSize]="pageSize"
       [pageSizeOptions]="pageSizeOptions"
       [pageIndex]="currentPage"
-      (page)="onPageChanged($event)">
+      (page)="onPageChanged($event)"
+    >
     </mat-paginator>
-    <hr/>
+    <hr />
     <div class="footer">
-      <button
-        mat-button
-        (click)="goBack()"
-        >
-        Back
-      </button>
+      <button mat-button (click)="goBack()">Back</button>
     </div>
   </div>
 }

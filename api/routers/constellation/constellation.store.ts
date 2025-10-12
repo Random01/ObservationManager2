@@ -5,7 +5,6 @@ import { Constellation } from './constellation.interface';
 import { ConstellationModel } from './constellation.model';
 
 export class ConstellationStore extends BaseMongooseStore<typeof ConstellationModel, any> {
-
   constructor() {
     super(ConstellationModel);
   }
@@ -20,7 +19,7 @@ export class ConstellationStore extends BaseMongooseStore<typeof ConstellationMo
       path: DataConfig.constellationsCsvFilePath,
     });
 
-    const data = await reader.read({ separator: ',' }) as any;
+    const data = (await reader.read({ separator: ',' })) as any;
     return data.rows.map((row: any) => {
       const [_, constellation, IAU] = row;
       return {
@@ -29,5 +28,4 @@ export class ConstellationStore extends BaseMongooseStore<typeof ConstellationMo
       } as Constellation;
     });
   }
-
 }

@@ -12,4 +12,4 @@ export const enum TargetType {
   Asterism = 'AS',
   UnspecifiedDeepSkyObject = 'NA',
   Quasar = 'QS',
-};
+}

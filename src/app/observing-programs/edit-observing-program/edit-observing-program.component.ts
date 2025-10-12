@@ -9,25 +9,17 @@ import { ObservingProgramsService } from '../shared/observing-programs.service';
 import { ObservingProgramComponent } from '../observing-program';
 
 @Component({
-    selector: 'om-edit-observing-program',
-    templateUrl: 'edit-observing-program.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-    MatButtonModule,
-    ObservingProgramComponent,
-    AsyncPipe
-]
+  selector: 'om-edit-observing-program',
+  templateUrl: 'edit-observing-program.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatButtonModule, ObservingProgramComponent, AsyncPipe],
 })
 export class EditObservingProgramComponent extends EditEntityComponent<ObservingProgram> {
-
-  constructor(
-    service: ObservingProgramsService,
-  ) {
+  constructor(service: ObservingProgramsService) {
     super(service);
   }
 
   public getItemId(): string {
     return this.route.snapshot.paramMap.get('programId');
   }
-
 }

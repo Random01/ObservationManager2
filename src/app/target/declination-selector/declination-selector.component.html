@@ -1,37 +1,17 @@
 <div class="om-declination-selector-component">
-
   <mat-form-field>
     <mat-label>°</mat-label>
-    <input
-      matInput
-      type="number"
-      min="-90"
-      max="90"
-      placeholder="Degrees"
-      [(ngModel)]="dec.degrees" />
+    <input matInput type="number" min="-90" max="90" placeholder="Degrees" [(ngModel)]="dec.degrees" />
     <mat-hint>DEC</mat-hint>
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>′</mat-label>
-    <input
-      matInput
-      type="number"
-      min="0"
-      max="59"
-      placeholder="Arcminutes"
-      [(ngModel)]="dec.arcminutes" />
+    <input matInput type="number" min="0" max="59" placeholder="Arcminutes" [(ngModel)]="dec.arcminutes" />
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>″</mat-label>
-    <input
-      matInput
-      type="number"
-      min="0"
-      max="59"
-      placeholder="Arcseconds"
-      [(ngModel)]="dec.arcseconds" />
+    <input matInput type="number" min="0" max="59" placeholder="Arcseconds" [(ngModel)]="dec.arcseconds" />
   </mat-form-field>
-
 </div>

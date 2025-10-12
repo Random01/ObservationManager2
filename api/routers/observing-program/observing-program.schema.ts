@@ -12,10 +12,12 @@ export const ObservingProgramSchema = new Schema({
     required: true,
   },
   description: String,
-  targets: [{
-    type: Schema.Types.ObjectId,
-    ref: 'targets',
-  }],
+  targets: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'targets',
+    },
+  ],
 });
 
 ObservingProgramSchema.statics.getById = function (id: string): Promise<any> {

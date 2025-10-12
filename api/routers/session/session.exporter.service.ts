@@ -3,11 +3,7 @@ import { Session } from './session.interface';
 import { SessionTxtExporter } from './session.txt-exporter.service';
 
 export class SessionExporterFactory extends ExporterFactory<Session> {
-
   constructor() {
-    super([
-      [ExportType.TXT, SessionTxtExporter],
-    ]);
+    super([[ExportType.TXT, SessionTxtExporter]]);
   }
-
 }

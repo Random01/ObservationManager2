@@ -12,31 +12,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-    selector: 'om-users',
-    templateUrl: 'users.component.html',
-    imports: [
-    MatPaginatorModule,
-    MatTableModule,
-    MatIconModule,
-    MatButtonModule,
-    RouterLink,
-    AsyncPipe
-]
+  selector: 'om-users',
+  templateUrl: 'users.component.html',
+  imports: [MatPaginatorModule, MatTableModule, MatIconModule, MatButtonModule, RouterLink, AsyncPipe],
 })
 export class UsersComponent extends EntityListComponent<User> {
+  public readonly displayedColumns = ['name', 'actions'];
 
-  public readonly displayedColumns = [
-    'name',
-    'actions',
-  ];
-
-  constructor(
-    userService: UserService,
-    deleteEntityDialogService: DeleteEntityDialogService,
-    route: ActivatedRoute,
-    router: Router,
-  ) {
+  constructor(userService: UserService, deleteEntityDialogService: DeleteEntityDialogService, route: ActivatedRoute, router: Router) {
     super(userService, deleteEntityDialogService, route, router);
   }
-
 }

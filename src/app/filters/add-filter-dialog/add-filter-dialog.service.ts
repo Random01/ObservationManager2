@@ -6,11 +6,9 @@ import { AddFilterDialogComponent } from './add-filter-dialog.component';
 
 @Injectable({ providedIn: 'root' })
 export class AddFilterDialogService extends AddNewEntityDialogService<Filter> {
-
   public createDialog() {
     return this.dialog.open(AddFilterDialogComponent, {
       width: '550px',
     });
   }
-
 }

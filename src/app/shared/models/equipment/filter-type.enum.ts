@@ -11,13 +11,13 @@
 // <xsd:enumeration value="solar"/>
 
 export enum FilterType {
-    BroadBand = 'broad band',
-    NarrowBand = 'narrow band',
-    OIII = 'O-III',
-    Hbeta = 'H-beta',
-    Halpha = 'H-alpha',
-    Color = 'color',
-    Neutral = 'neutral',
-    Corrective = 'corrective',
-    Solar = 'solar',
+  BroadBand = 'broad band',
+  NarrowBand = 'narrow band',
+  OIII = 'O-III',
+  Hbeta = 'H-beta',
+  Halpha = 'H-alpha',
+  Color = 'color',
+  Neutral = 'neutral',
+  Corrective = 'corrective',
+  Solar = 'solar',
 }

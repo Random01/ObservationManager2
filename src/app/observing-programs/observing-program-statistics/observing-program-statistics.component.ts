@@ -18,26 +18,13 @@ import ObservingProgramStatistics from '../shared/observing-program-statistics.m
 import { TargetTypeFormatterPipe } from '../../target/shared/pipes/target-type-formatter.pipe';
 
 @Component({
-    selector: 'om-observing-program-statistics',
-    templateUrl: 'observing-program-statistics.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-    MatButtonModule,
-    MatPaginatorModule,
-    MatTableModule,
-    MatIconModule,
-    AsyncPipe,
-    TargetTypeFormatterPipe
-]
+  selector: 'om-observing-program-statistics',
+  templateUrl: 'observing-program-statistics.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatButtonModule, MatPaginatorModule, MatTableModule, MatIconModule, AsyncPipe, TargetTypeFormatterPipe],
 })
 export class ObservingProgramStatisticsComponent extends PaginatedListComponent<TargetStatistics> implements OnInit {
-
-  public readonly displayedColumns: string[] = [
-    'name',
-    'type',
-    'constellation',
-    'observed',
-  ];
+  public readonly displayedColumns: string[] = ['name', 'type', 'constellation', 'observed'];
 
   private readonly statisticsSubject = new BehaviorSubject<ObservingProgramStatistics>(null);
   public readonly statistics$ = this.statisticsSubject.asObservable();
@@ -64,9 +51,7 @@ export class ObservingProgramStatisticsComponent extends PaginatedListComponent<
   public override ngOnInit(): void {
     super.ngOnInit();
 
-    this.observingProgramService
-      .getObservingProgramStatistics(this.getObservingProgramId())
-      .then(response => this.statisticsSubject.next(response));
+    this.observingProgramService.getObservingProgramStatistics(this.getObservingProgramId()).then((response) => this.statisticsSubject.next(response));
   }
 
   private getObservingProgramId(): string {
@@ -82,5 +67,4 @@ export class ObservingProgramStatisticsComponent extends PaginatedListComponent<
       observingProgramId: this.getObservingProgramId(),
     });
   }
-
 }

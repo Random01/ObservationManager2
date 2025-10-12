@@ -9,7 +9,5 @@ import { User } from '../../shared/models/user.model';
   standalone: true,
 })
 export class UserProfileComponent {
-
   public user?: User;
-
 }

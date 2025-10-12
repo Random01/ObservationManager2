@@ -10,9 +10,7 @@ import { VendorSelectorComponent } from './vendor-selector.component';
 import { VendorService } from '../shared';
 import { createMock } from '../../shared/helper-method/create-mock';
 
-
 describe('VendorSelectorComponent', () => {
-
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [VendorSelectorComponent],
@@ -38,5 +36,4 @@ describe('VendorSelectorComponent', () => {
 
     expect(component).toBeDefined();
   });
-
 });

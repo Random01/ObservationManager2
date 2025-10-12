@@ -9,25 +9,17 @@ import { ScopeService } from '../shared/scope.service';
 import { ScopeComponent } from '../scope';
 
 @Component({
-    selector: 'om-edit-scope',
-    templateUrl: 'edit-scope.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-    MatButtonModule,
-    ScopeComponent,
-    AsyncPipe
-]
+  selector: 'om-edit-scope',
+  templateUrl: 'edit-scope.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatButtonModule, ScopeComponent, AsyncPipe],
 })
 export class EditScopeComponent extends EditEntityComponent<Scope> {
-
-  constructor(
-    service: ScopeService,
-  ) {
+  constructor(service: ScopeService) {
     super(service);
   }
 
   public getItemId(): string {
     return this.route.snapshot.paramMap.get('id');
   }
-
 }

@@ -12,11 +12,8 @@ import { Credentials } from './credentials.interface';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-
   private readonly currentUserSubject = new BehaviorSubject<User>(User.UnauthorizedUser);
-  public readonly currentUser$ = this.currentUserSubject.asObservable().pipe(
-    distinctUntilChanged()
-  );
+  public readonly currentUser$ = this.currentUserSubject.asObservable().pipe(distinctUntilChanged());
 
   private readonly isAuthenticatedSubject = new ReplaySubject<boolean>(1);
   public readonly isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
@@ -25,7 +22,7 @@ export class AuthenticationService {
     private readonly userService: UserService,
     private readonly jwtService: JwtService,
     private readonly loggingService: LoggingService,
-  ) { }
+  ) {}
 
   public logOut(): Observable<void> {
     this.jwtService.removeToken();
@@ -36,24 +33,23 @@ export class AuthenticationService {
   }
 
   public populate(): Observable<User> {
-    return of(this.jwtService.getToken())
-      .pipe(
-        switchMap(token => {
-          if (token) {
-            return this.userService.getUser().pipe(
-              tap(result => this.setAut(result)),
-              map(result => result.user),
-              catchError(error => {
-                this.loggingService.error(error);
-                return of(User.UnauthorizedUser);
-              }),
-            );
-          } else {
-            return of(User.UnauthorizedUser);
-          }
-        }),
-        tap(user => user === User.UnauthorizedUser && this.logOut()),
-      );
+    return of(this.jwtService.getToken()).pipe(
+      switchMap((token) => {
+        if (token) {
+          return this.userService.getUser().pipe(
+            tap((result) => this.setAut(result)),
+            map((result) => result.user),
+            catchError((error) => {
+              this.loggingService.error(error);
+              return of(User.UnauthorizedUser);
+            }),
+          );
+        } else {
+          return of(User.UnauthorizedUser);
+        }
+      }),
+      tap((user) => user === User.UnauthorizedUser && this.logOut()),
+    );
   }
 
   public getCurrentUser(): User {
@@ -61,11 +57,10 @@ export class AuthenticationService {
   }
 
   public logIn({ email, password }: Credentials): Observable<User> {
-    return this.userService.authenticate(email, password)
-      .pipe(
-        tap(result => this.setAut(result)),
-        map(x => x.user),
-      );
+    return this.userService.authenticate(email, password).pipe(
+      tap((result) => this.setAut(result)),
+      map((x) => x.user),
+    );
   }
 
   private setAut({ token, user }: SignInResultPayload): void {
@@ -73,5 +68,4 @@ export class AuthenticationService {
     this.currentUserSubject.next(user);
     this.isAuthenticatedSubject.next(true);
   }
-
 }

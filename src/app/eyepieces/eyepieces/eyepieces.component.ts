@@ -12,46 +12,23 @@ import { EyepieceService } from '../shared/eyepiece.service';
 import { Eyepiece } from '../../shared/models/equipment/equipment';
 import { EntityListComponent } from '../../shared/components/entity-list.component';
 import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
-import { EyepieceFocalLengthPipe } from "../../shared/models/pipes/eyepiece-focal-length-formatter.pipe";
+import { EyepieceFocalLengthPipe } from '../../shared/models/pipes/eyepiece-focal-length-formatter.pipe';
 
 @Component({
-    selector: 'om-eyepieces',
-    templateUrl: 'eyepieces.component.html',
-    styleUrl: 'eyepieces.component.less',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-    MatPaginatorModule,
-    MatTableModule,
-    MatIconModule,
-    MatButtonModule,
-    MatTooltipModule,
-    RouterLink,
-    AsyncPipe,
-    DecimalPipe,
-    EyepieceFocalLengthPipe
-]
+  selector: 'om-eyepieces',
+  templateUrl: 'eyepieces.component.html',
+  styleUrl: 'eyepieces.component.less',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatPaginatorModule, MatTableModule, MatIconModule, MatButtonModule, MatTooltipModule, RouterLink, AsyncPipe, DecimalPipe, EyepieceFocalLengthPipe],
 })
 export class EyepiecesComponent extends EntityListComponent<Eyepiece> {
+  public readonly displayedColumns: string[] = ['model', 'vendor', 'focalLength', 'apparentFOV', 'actions'];
 
-  public readonly displayedColumns: string[] = [
-    'model',
-    'vendor',
-    'focalLength',
-    'apparentFOV',
-    'actions',
-  ];
-
-  constructor(
-    service: EyepieceService,
-    deleteEntityDialogService: DeleteEntityDialogService,
-    route: ActivatedRoute,
-    router: Router,
-  ) {
+  constructor(service: EyepieceService, deleteEntityDialogService: DeleteEntityDialogService, route: ActivatedRoute, router: Router) {
     super(service, deleteEntityDialogService, route, router);
   }
 
   public override getExportFileName() {
     return 'eyepieces';
   }
-
 }

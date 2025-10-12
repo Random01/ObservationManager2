@@ -3,7 +3,6 @@ import { Serializable } from '../interfaces/serializable.interface';
 import moment from 'moment';
 
 export class Entity implements Serializable {
-
   public id: string;
 
   public userCreated: Entity;
@@ -73,5 +72,4 @@ export class Entity implements Serializable {
       }
     }
   }
-
 }

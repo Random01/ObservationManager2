@@ -12,30 +12,16 @@ import { EntitySelectorComponent } from '../../shared/components/entity-selector
 import { AddFilterDialogService } from '../add-filter-dialog';
 
 @Component({
-    selector: 'om-filter-selector',
-    templateUrl: '../../shared/components/entity-selector/entity-selector.component.html',
-    styleUrls: [
-        '../../shared/components/entity-selector/entity-selector.component.css',
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        MatFormFieldModule,
-        MatSelectModule,
-        MatIconModule,
-        MatButtonModule,
-        FormsModule,
-    ]
+  selector: 'om-filter-selector',
+  templateUrl: '../../shared/components/entity-selector/entity-selector.component.html',
+  styleUrls: ['../../shared/components/entity-selector/entity-selector.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatFormFieldModule, MatSelectModule, MatIconModule, MatButtonModule, FormsModule],
 })
 export class FilterSelectorComponent extends EntitySelectorComponent<Filter, FilterService> {
-
-  constructor(
-    filterService: FilterService,
-    addFilterService: AddFilterDialogService,
-    cdRef: ChangeDetectorRef,
-  ) {
+  constructor(filterService: FilterService, addFilterService: AddFilterDialogService, cdRef: ChangeDetectorRef) {
     super(filterService, addFilterService, cdRef);
 
     this.placeholder = 'Filters';
   }
-
 }

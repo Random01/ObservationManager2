@@ -6,13 +6,7 @@ import { Session } from './session.interface';
 import { SessionExporterFactory } from './session.exporter.service';
 
 export class SessionRouter extends BaseEntityRouter<Session, SessionStore> {
-
-  constructor(
-    router: core.Router,
-    store = new SessionStore(),
-    exporter = new SessionExporterFactory(),
-  ) {
+  constructor(router: core.Router, store = new SessionStore(), exporter = new SessionExporterFactory()) {
     super(router, store, exporter);
   }
-
 }

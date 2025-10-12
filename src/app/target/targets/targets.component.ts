@@ -17,40 +17,21 @@ import { DeleteEntityDialogService } from '../../shared/components/delete-entity
 import { TargetSearchParams } from '../target-search-params/target-search-params.model';
 import { RequestParams } from '../../shared/services/request-params.model';
 import { AuthenticationService } from '../../auth/shared';
-import { TargetSearchParamsComponent } from "../target-search-params/target-search-params.component";
-import { TargetTypeFormatterPipe } from "../shared/pipes/target-type-formatter.pipe";
+import { TargetSearchParamsComponent } from '../target-search-params/target-search-params.component';
+import { TargetTypeFormatterPipe } from '../shared/pipes/target-type-formatter.pipe';
 
 @Component({
-    selector: 'om-targets',
-    templateUrl: 'targets.component.html',
-    styleUrl: 'targets.component.less',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-    MatPaginatorModule,
-    MatTableModule,
-    MatButtonModule,
-    MatIconModule,
-    MatExpansionModule,
-    AsyncPipe,
-    RouterLink,
-    TargetSearchParamsComponent,
-    TargetTypeFormatterPipe
-]
+  selector: 'om-targets',
+  templateUrl: 'targets.component.html',
+  styleUrl: 'targets.component.less',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatPaginatorModule, MatTableModule, MatButtonModule, MatIconModule, MatExpansionModule, AsyncPipe, RouterLink, TargetSearchParamsComponent, TargetTypeFormatterPipe],
 })
 export class TargetsComponent extends EntityListComponent<Target> {
-
-  private readonly searchParametersSubject = new BehaviorSubject<TargetSearchParams>(
-    new TargetSearchParams()
-  );
+  private readonly searchParametersSubject = new BehaviorSubject<TargetSearchParams>(new TargetSearchParams());
   public readonly searchParameters$ = this.searchParametersSubject.asObservable();
 
-  public readonly displayedColumns: string[] = [
-    'name',
-    'type',
-    'constellation',
-    'alliases',
-    'actions',
-  ];
+  public readonly displayedColumns: string[] = ['name', 'type', 'constellation', 'alliases', 'actions'];
 
   constructor(
     service: TargetService,
@@ -76,8 +57,7 @@ export class TargetsComponent extends EntityListComponent<Target> {
   }
 
   public isCreatedByUser(target: Target) {
-    return target.userCreated?.id != null
-      && (target.userCreated?.id === this.authService.getCurrentUser().id);
+    return target.userCreated?.id != null && target.userCreated?.id === this.authService.getCurrentUser().id;
   }
 
   protected override getRequestParams(params?: Partial<RequestParams>): RequestParams {
@@ -86,5 +66,4 @@ export class TargetsComponent extends EntityListComponent<Target> {
       ...params,
     });
   }
-
 }

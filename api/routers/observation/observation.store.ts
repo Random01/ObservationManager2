@@ -4,7 +4,6 @@ import { Observation } from './observation.interface';
 import { ObservationModel } from './observation.model';
 
 export class ObservationStore extends BaseMongooseStore<typeof ObservationModel, Observation> {
-
   constructor() {
     super(ObservationModel);
   }
@@ -15,16 +14,16 @@ export class ObservationStore extends BaseMongooseStore<typeof ObservationModel,
       id,
       userId,
       populationDetails: {
-        'userCreated': userFields,
-        'userModified': userFields,
-        'observer': userFields,
-        'site': ['_id', 'name'],
-        'session': ['_id', 'begin', 'end', 'site'],
-        'scope': [],
-        'eyepiece': [],
-        'filter': ['_id', 'model'],
-        'lens': [],
-        'target': [],
+        userCreated: userFields,
+        userModified: userFields,
+        observer: userFields,
+        site: ['_id', 'name'],
+        session: ['_id', 'begin', 'end', 'site'],
+        scope: [],
+        eyepiece: [],
+        filter: ['_id', 'model'],
+        lens: [],
+        target: [],
       },
     });
   }
@@ -35,18 +34,17 @@ export class ObservationStore extends BaseMongooseStore<typeof ObservationModel,
       requestParameters,
       userId,
       populationDetails: {
-        'userCreated': userFields,
-        'userModified': userFields,
-        'observer': userFields,
-        'site': ['_id', 'name'],
-        'session': ['_id'],
-        'scope': ['_id', 'model', 'focalLength'],
-        'eyepiece': ['_id', 'model', 'focalLength'],
-        'filter': ['_id', 'model'],
-        'target': ['_id', 'name'],
-        'lens': ['_id', 'model'],
+        userCreated: userFields,
+        userModified: userFields,
+        observer: userFields,
+        site: ['_id', 'name'],
+        session: ['_id'],
+        scope: ['_id', 'model', 'focalLength'],
+        eyepiece: ['_id', 'model', 'focalLength'],
+        filter: ['_id', 'model'],
+        target: ['_id', 'name'],
+        lens: ['_id', 'model'],
       },
     });
   }
-
 }

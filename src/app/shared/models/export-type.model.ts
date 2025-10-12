@@ -1,5 +1,5 @@
 export enum ExportType {
-    CSV = 'csv',
-    TXT = 'txt',
-    XML = 'xml',
+  CSV = 'csv',
+  TXT = 'txt',
+  XML = 'xml',
 }

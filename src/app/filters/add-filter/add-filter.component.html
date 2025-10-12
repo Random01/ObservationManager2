@@ -1,7 +1,5 @@
 @if ({ item: item$ | async }; as data) {
-  <div
-    class="om-add-filter"
-    >
+  <div class="om-add-filter">
     <div>
       <h2 class="mat-h2">Add New Filter</h2>
     </div>
@@ -10,16 +8,10 @@
         <om-filter [filter]="data.item"></om-filter>
       </div>
     }
-    <hr/>
+    <hr />
     <div>
-      <button
-        mat-button
-        color="primary"
-        [disabled]="!isValid()"
-      (click)="addItem()">Add</button>
-      <button
-        mat-button
-      (click)="goBack()">Back</button>
+      <button mat-button color="primary" [disabled]="!isValid()" (click)="addItem()">Add</button>
+      <button mat-button (click)="goBack()">Back</button>
     </div>
   </div>
 }

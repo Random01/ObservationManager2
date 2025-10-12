@@ -1,7 +1,6 @@
 ﻿import { Serializable } from '../interfaces/serializable.interface';
 
 export class Result implements Serializable {
-
   public type: string;
 
   /**

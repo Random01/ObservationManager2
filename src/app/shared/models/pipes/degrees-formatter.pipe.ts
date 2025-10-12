@@ -7,7 +7,6 @@ import { Degrees } from '../degrees.model';
   standalone: true,
 })
 export class DegreesFormatterPipe implements PipeTransform {
-
   public transform(deg: Degrees): string {
     if (deg == null) {
       return '';
@@ -15,5 +14,4 @@ export class DegreesFormatterPipe implements PipeTransform {
 
     return `${deg.degrees.toFixed(0)}° ${deg.arcminutes.toFixed(0)}′ ${deg.arcseconds.toFixed(0)}″`;
   }
-
 }

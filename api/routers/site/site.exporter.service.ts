@@ -3,11 +3,7 @@ import { Site } from './site.interface';
 import { ExporterFactory, ExportType } from './../common/export';
 
 export class SiteExporterFactory extends ExporterFactory<Site> {
-
   constructor() {
-    super([
-      [ExportType.CSV, SiteCvsExporter],
-    ]);
+    super([[ExportType.CSV, SiteCvsExporter]]);
   }
-
 }

@@ -11,7 +11,6 @@ interface ConstellationEntity {
 
 @Injectable()
 export class ConstellationsAdminService extends BaseEntityService<ConstellationEntity> {
-
   public override getItems(_request: { currentPage: number; pageSize: number }): Observable<PaginatedItems<ConstellationEntity>> {
     return of({
       items: [{ name: 'Item #1' }, { name: 'Item #2' }],
@@ -20,5 +19,4 @@ export class ConstellationsAdminService extends BaseEntityService<ConstellationE
       totalCount: 2,
     } as PaginatedItems<ConstellationEntity>);
   }
-
 }

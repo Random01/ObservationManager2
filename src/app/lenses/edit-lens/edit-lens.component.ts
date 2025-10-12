@@ -9,25 +9,17 @@ import { LensService } from '../shared/lens.service';
 import { LensComponent } from '../lens';
 
 @Component({
-    selector: 'om-edit-lens',
-    templateUrl: 'edit-lens.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-    MatButtonModule,
-    AsyncPipe,
-    LensComponent
-]
+  selector: 'om-edit-lens',
+  templateUrl: 'edit-lens.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatButtonModule, AsyncPipe, LensComponent],
 })
 export class EditLensComponent extends EditEntityComponent<Lens> {
-
-  constructor(
-    lensService: LensService,
-  ) {
+  constructor(lensService: LensService) {
     super(lensService);
   }
 
   public getItemId(): string {
     return this.route.snapshot.paramMap.get('lensId');
   }
-
 }

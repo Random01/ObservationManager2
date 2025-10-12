@@ -10,17 +10,17 @@ export const initialState: NavigationMenuState = {
 export const navigationMenuReducer = createReducer(
   initialState,
 
-  on(NavigationMenuActions.expand, state => ({
+  on(NavigationMenuActions.expand, (state) => ({
     ...state,
     expanded: true,
   })),
 
-  on(NavigationMenuActions.collapse, state => ({
+  on(NavigationMenuActions.collapse, (state) => ({
     ...state,
     expanded: false,
   })),
 
-  on(NavigationMenuActions.toggle, state => ({
+  on(NavigationMenuActions.toggle, (state) => ({
     ...state,
     expanded: !state.expanded,
   })),

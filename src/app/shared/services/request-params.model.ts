@@ -6,7 +6,6 @@ export interface Param<T = any> {
 }
 
 export class RequestParams {
-
   public readonly page: number;
 
   public readonly size: number;
@@ -24,7 +23,7 @@ export class RequestParams {
       { name: 'page', value: this.page },
       { name: 'size', value: this.size },
       { name: 'sortField', value: this.sortField },
-      { name: 'sortDirection', value: this.sortDirection }
+      { name: 'sortDirection', value: this.sortDirection },
     ];
   }
 

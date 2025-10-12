@@ -5,12 +5,9 @@ import { Entity } from '../models/models';
 
 @Injectable()
 export abstract class AddNewEntityDialogService<T extends Entity> {
-
   public item: T;
 
-  constructor(
-    protected readonly dialog: MatDialog,
-  ) { }
+  constructor(protected readonly dialog: MatDialog) {}
 
   public openDialog(): Promise<T> {
     return new Promise((success, fail) => {
@@ -26,7 +23,6 @@ export abstract class AddNewEntityDialogService<T extends Entity> {
           }
         });
     });
-
   }
 
   protected abstract createDialog(): any;

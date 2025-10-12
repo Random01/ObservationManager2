@@ -9,21 +9,13 @@ import { TargetService } from '../shared/target.service';
 import { TargetComponent } from '../target';
 
 @Component({
-    selector: 'om-add-target',
-    templateUrl: 'add-target.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-    MatButtonModule,
-    AsyncPipe,
-    TargetComponent
-]
+  selector: 'om-add-target',
+  templateUrl: 'add-target.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatButtonModule, AsyncPipe, TargetComponent],
 })
 export class AddTargetComponent extends AddEntityComponent<Target> {
-
-  constructor(
-    service: TargetService,
-  ) {
+  constructor(service: TargetService) {
     super(service);
   }
-
 }

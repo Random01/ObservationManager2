@@ -5,11 +5,7 @@ import { VendorStore } from './vendor.store';
 
 // todo: use Vendor instead of any
 export class VendorRouter extends BaseEntityRouter<any, VendorStore> {
-
-  constructor(
-    router: core.Router,
-    store = new VendorStore(),
-  ) {
+  constructor(router: core.Router, store = new VendorStore()) {
     super(router, store);
   }
 
@@ -26,5 +22,4 @@ export class VendorRouter extends BaseEntityRouter<any, VendorStore> {
   //     { name: 'Lumicon' },
   //   ]);
   // }
-
 }

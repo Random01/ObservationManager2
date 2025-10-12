@@ -1,7 +1,5 @@
 @if ({ page: page$ | async }; as data) {
-  <div
-    class="om-sites"
-    >
+  <div class="om-sites">
     <div class="header">
       <h2 class="mat-h2">My Sites</h2>
     </div>
@@ -11,20 +9,17 @@
       [pageSize]="pageSize"
       [pageSizeOptions]="pageSizeOptions"
       [pageIndex]="currentPage"
-      (page)="onPageChanged($event)">
+      (page)="onPageChanged($event)"
+    >
     </mat-paginator>
-    <table
-      mat-table
-      class="mat-elevation-z8"
-      [dataSource]="data.page.items"
-      >
+    <table mat-table class="mat-elevation-z8" [dataSource]="data.page.items">
       <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
-        <mat-cell *matCellDef="let site">{{site.name}}</mat-cell>
+        <mat-cell *matCellDef="let site">{{ site.name }}</mat-cell>
       </ng-container>
       <ng-container matColumnDef="timezone">
         <mat-header-cell *matHeaderCellDef>Timezone</mat-header-cell>
-        <mat-cell *matCellDef="let site">{{site.timezone}}</mat-cell>
+        <mat-cell *matCellDef="let site">{{ site.timezone }}</mat-cell>
       </ng-container>
       <ng-container matColumnDef="latitude">
         <mat-header-cell *matHeaderCellDef>Geographical Latitude</mat-header-cell>
@@ -36,41 +31,25 @@
       </ng-container>
       <ng-container matColumnDef="elevation">
         <mat-header-cell *matHeaderCellDef>Elevation (m)</mat-header-cell>
-        <mat-cell *matCellDef="let site">{{site.elevation | number}}</mat-cell>
+        <mat-cell *matCellDef="let site">{{ site.elevation | number }}</mat-cell>
       </ng-container>
       <ng-container matColumnDef="code">
         <mat-header-cell *matHeaderCellDef>IAU Code</mat-header-cell>
-        <mat-cell *matCellDef="let site">{{site.code}}</mat-cell>
+        <mat-cell *matCellDef="let site">{{ site.code }}</mat-cell>
       </ng-container>
       <ng-container matColumnDef="actions">
         <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
         <mat-cell *matCellDef="let site">
-          <button
-            mat-icon-button
-            matTooltip="Edit Site"
-            [routerLink]="['/sites', site.id]"
-            >
-            <mat-icon
-              aria-label="Click to edit"
-              >
-              edit
-            </mat-icon>
+          <button mat-icon-button matTooltip="Edit Site" [routerLink]="['/sites', site.id]">
+            <mat-icon aria-label="Click to edit"> edit </mat-icon>
           </button>
-          <button
-            mat-icon-button
-            matTooltip="Delete Site"
-            (click)="remove(site)"
-            >
-            <mat-icon
-              aria-label="Click to delete"
-              >
-              delete
-            </mat-icon>
+          <button mat-icon-button matTooltip="Delete Site" (click)="remove(site)">
+            <mat-icon aria-label="Click to delete"> delete </mat-icon>
           </button>
         </mat-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
     </table>
     <mat-paginator
       showFirstLastButtons="true"
@@ -78,29 +57,14 @@
       [pageSize]="pageSize"
       [pageSizeOptions]="pageSizeOptions"
       [pageIndex]="currentPage"
-      (page)="onPageChanged($event)">
+      (page)="onPageChanged($event)"
+    >
     </mat-paginator>
-    <hr/>
+    <hr />
     <div class="footer">
-      <button
-        mat-button
-        routerLink="/sites/new-site"
-        color="primary"
-        >
-        Add New Site
-      </button>
-      <button
-        mat-button
-        routerLink="/"
-        >
-        Back to Main Page
-      </button>
-      <button
-        mat-button
-        (click)="exportToCsv()"
-        >
-        Export To CSV
-      </button>
+      <button mat-button routerLink="/sites/new-site" color="primary">Add New Site</button>
+      <button mat-button routerLink="/">Back to Main Page</button>
+      <button mat-button (click)="exportToCsv()">Export To CSV</button>
     </div>
   </div>
 }

@@ -8,23 +8,16 @@ import { firstValueFrom } from 'rxjs';
 import { SessionService } from '../shared/session.service';
 import { Session } from '../../shared/models/models';
 import { AddEntityComponent } from '../../shared/components/add-entity.component';
-import { SessionComponent } from "../session/session.component";
+import { SessionComponent } from '../session/session.component';
 
 @Component({
-    selector: 'om-add-session',
-    templateUrl: 'add-session.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-    MatButtonModule,
-    AsyncPipe,
-    SessionComponent
-]
+  selector: 'om-add-session',
+  templateUrl: 'add-session.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatButtonModule, AsyncPipe, SessionComponent],
 })
 export class AddSessionComponent extends AddEntityComponent<Session> {
-
-  constructor(
-    service: SessionService,
-  ) {
+  constructor(service: SessionService) {
     super(service);
   }
 

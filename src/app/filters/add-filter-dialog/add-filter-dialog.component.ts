@@ -10,22 +10,14 @@ import { AsyncPipe } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-    selector: 'om-add-filter-dialog',
-    templateUrl: './add-filter-dialog.component.html',
-    styleUrls: ['./add-filter-dialog.component.css'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-    MatDialogModule,
-    MatButtonModule,
-    AsyncPipe,
-    FilterComponent
-]
+  selector: 'om-add-filter-dialog',
+  templateUrl: './add-filter-dialog.component.html',
+  styleUrls: ['./add-filter-dialog.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatDialogModule, MatButtonModule, AsyncPipe, FilterComponent],
 })
 export class AddFilterDialogComponent extends AddEntityDialogComponent<Filter, FilterService> {
-  constructor(
-    storageService: FilterService,
-    dialogRef: MatDialogRef<AddFilterDialogComponent, Filter>,
-  ) {
+  constructor(storageService: FilterService, dialogRef: MatDialogRef<AddFilterDialogComponent, Filter>) {
     super(storageService, dialogRef);
   }
 }

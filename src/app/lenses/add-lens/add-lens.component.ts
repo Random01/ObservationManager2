@@ -9,21 +9,13 @@ import { Lens } from '../../shared/models/equipment/equipment';
 import { LensComponent } from '../lens';
 
 @Component({
-    selector: 'om-add-lens',
-    templateUrl: 'add-lens.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-    MatButtonModule,
-    AsyncPipe,
-    LensComponent
-]
+  selector: 'om-add-lens',
+  templateUrl: 'add-lens.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatButtonModule, AsyncPipe, LensComponent],
 })
 export class AddLensComponent extends AddEntityComponent<Lens> {
-
-  constructor(
-    lensService: LensService,
-  ) {
+  constructor(lensService: LensService) {
     super(lensService);
   }
-
 }

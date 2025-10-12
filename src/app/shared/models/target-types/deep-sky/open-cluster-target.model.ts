@@ -4,25 +4,23 @@ import { DeepSkyTargetType } from './deep-sky-target.model';
  * type definition for open clusters
  */
 export class OpenClusterTarget extends DeepSkyTargetType {
+  /**
+   * number of stars
+   */
+  public numberOfStars: number;
 
-    /**
-     * number of stars
-     */
-    public numberOfStars: number;
+  /**
+   * magnitude of brightest star in [mag]
+   */
+  public brightestStar: number;
 
-    /**
-     * magnitude of brightest star in [mag]
-     */
-    public brightestStar: number;
+  /**
+   * classification according to Trumpler
+   */
+  public trumplerClass: string;
 
-    /**
-     * classification according to Trumpler
-     */
-    public trumplerClass: string;
-
-    constructor(params?: Partial<OpenClusterTarget>) {
-        super(params);
-        Object.assign(this, params);
-    }
-
+  constructor(params?: Partial<OpenClusterTarget>) {
+    super(params);
+    Object.assign(this, params);
+  }
 }

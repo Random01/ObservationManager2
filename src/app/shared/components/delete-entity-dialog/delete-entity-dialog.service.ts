@@ -7,8 +7,7 @@ import { DeleteEntityDialogComponent } from './delete-entity-dialog.component';
 
 @Injectable({ providedIn: 'root' })
 export class DeleteEntityDialogService {
-
-  constructor(private readonly dialog: MatDialog) { }
+  constructor(private readonly dialog: MatDialog) {}
 
   public show(options: DeleteEntityDialogOptions): Promise<DeleteEntityDialogResult> {
     const dialogRef = this.dialog.open(DeleteEntityDialogComponent, {
@@ -18,5 +17,4 @@ export class DeleteEntityDialogService {
 
     return dialogRef.afterClosed().toPromise();
   }
-
 }
