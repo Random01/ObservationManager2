@@ -10,27 +10,17 @@ import { FilterTypeService } from '../shared/filter-type.service';
 import { VendorSelectorComponent } from '../../equipment/vendor-selector';
 import { MatSelectModule } from '@angular/material/select';
 
-
 @Component({
-    selector: 'om-filter',
-    templateUrl: 'filter.component.html',
-    styleUrl: 'filter.component.less',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    FormsModule,
-    VendorSelectorComponent,
-    AsyncPipe
-]
+  selector: 'om-filter',
+  templateUrl: 'filter.component.html',
+  styleUrl: 'filter.component.less',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatFormFieldModule, MatInputModule, MatSelectModule, FormsModule, VendorSelectorComponent, AsyncPipe],
 })
 export class FilterComponent {
-
   @Input() public filter?: Filter;
 
   public readonly filterTypes$ = this.filterTypeService.getAll();
 
-  constructor(private readonly filterTypeService: FilterTypeService) { }
-
+  constructor(private readonly filterTypeService: FilterTypeService) {}
 }

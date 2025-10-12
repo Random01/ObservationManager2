@@ -12,26 +12,19 @@ import { selectAuthState } from '../../store/auth';
 import * as AuthApiActions from '../../store/auth/auth.actions';
 
 @Component({
-    selector: 'om-user-profile-menu',
-    templateUrl: 'user-profile-menu.component.html',
-    styleUrl: 'user-profile-menu.component.less',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-    MatButtonModule,
-    MatMenuModule,
-    MatIconModule,
-    RouterLink,
-    AsyncPipe
-]
+  selector: 'om-user-profile-menu',
+  templateUrl: 'user-profile-menu.component.html',
+  styleUrl: 'user-profile-menu.component.less',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatButtonModule, MatMenuModule, MatIconModule, RouterLink, AsyncPipe],
 })
 export class UserProfileMenuComponent {
-
   public readonly authState$ = this.store.select(selectAuthState);
 
   constructor(
     private readonly router: Router,
     private readonly store: Store,
-  ) { }
+  ) {}
 
   public logOut() {
     this.store.dispatch(AuthApiActions.logout());
@@ -40,5 +33,4 @@ export class UserProfileMenuComponent {
   public editProfile() {
     this.router.navigate(['/users/profile']);
   }
-
 }

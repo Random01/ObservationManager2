@@ -15,14 +15,14 @@ export const UserSchema = new Schema({
     type: String,
     lowercase: true,
     unique: true,
-    required: [true, 'can\'t be blank'],
+    required: [true, "can't be blank"],
     index: true,
   },
   email: {
     type: String,
     lowercase: true,
     unique: true,
-    required: [true, 'can\'t be blank'],
+    required: [true, "can't be blank"],
     index: true,
   },
 
@@ -45,11 +45,14 @@ UserSchema.methods.generateJWT = function () {
   const exp = new Date(today);
   exp.setDate(today.getDate() + 60);
 
-  return sign({
-    id: this._id,
-    userName: this.userName,
-    exp: Math.trunc(exp.getTime() / 1000),
-  }, authConfig.secret);
+  return sign(
+    {
+      id: this._id,
+      userName: this.userName,
+      exp: Math.trunc(exp.getTime() / 1000),
+    },
+    authConfig.secret,
+  );
 };
 
 UserSchema.methods.toAuthJSON = function () {

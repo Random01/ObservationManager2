@@ -7,15 +7,11 @@ import { LoginComponent } from './login.component';
 import { provideNoopAnimations } from '@angular/platform-browser/animations';
 
 describe('LoginComponent', () => {
-
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [LoginComponent],
       schemas: [NO_ERRORS_SCHEMA],
-      providers: [
-        provideMockStore(),
-        provideNoopAnimations(),
-      ],
+      providers: [provideMockStore(), provideNoopAnimations()],
     }).compileComponents();
   });
 
@@ -27,5 +23,4 @@ describe('LoginComponent', () => {
 
     expect(component).toBeDefined();
   });
-
 });

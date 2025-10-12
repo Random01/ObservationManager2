@@ -4,7 +4,6 @@ import { Optics } from './optics.model';
  * type definition for telescopes using eyepieces
  */
 export class Scope extends Optics {
-
   // focal length in [mm]
   public focalLength?: number;
 

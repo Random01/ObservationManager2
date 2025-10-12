@@ -3,11 +3,10 @@ import { Component, OnDestroy } from '@angular/core';
 import { Unsubscribable } from 'rxjs';
 
 @Component({
-    template: '',
-    standalone: false
+  template: '',
+  standalone: false,
 })
 export class DestroyableComponent implements OnDestroy {
-
   private readonly subscriptions: Unsubscribable[] = [];
 
   public ngOnDestroy(): void {
@@ -19,8 +18,7 @@ export class DestroyableComponent implements OnDestroy {
   }
 
   protected destroy() {
-    this.subscriptions.forEach(s => s.unsubscribe());
+    this.subscriptions.forEach((s) => s.unsubscribe());
     this.subscriptions.splice(0);
   }
-
 }

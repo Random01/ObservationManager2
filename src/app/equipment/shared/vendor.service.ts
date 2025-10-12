@@ -9,10 +9,7 @@ import { PaginatedItems } from '../../../../api/routers/common';
 
 @Injectable({ providedIn: 'root' })
 export class VendorService {
-
-  constructor(
-    private readonly http: HttpClient,
-  ) { }
+  constructor(private readonly http: HttpClient) {}
 
   public getAllSuggestions(): Observable<PaginatedItems<Vendor>> {
     return this.getItems();
@@ -25,5 +22,4 @@ export class VendorService {
   private getItems(): Observable<PaginatedItems<Vendor>> {
     return this.http.get<PaginatedItems<Vendor>>(this.getUrl());
   }
-
 }

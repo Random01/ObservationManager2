@@ -11,13 +11,13 @@ export const initialState: RegisterState = {
 export const registerReducer = createReducer(
   initialState,
 
-  on(RegisterActions.register, state => ({
+  on(RegisterActions.register, (state) => ({
     ...state,
     isWorking: true,
     error: null,
   })),
 
-  on(RegisterActions.registerSuccess, state => ({
+  on(RegisterActions.registerSuccess, (state) => ({
     ...state,
     isWorking: false,
     error: null,
@@ -28,5 +28,4 @@ export const registerReducer = createReducer(
     isWorking: false,
     error,
   })),
-
 );

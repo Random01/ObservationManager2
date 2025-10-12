@@ -4,10 +4,9 @@ import readline from 'readline';
 interface CsvReadResult {
   definition: string[];
   rows: string[][];
-};
+}
 
 export class CsvReader {
-
   private readonly path: string;
 
   constructor({ path }: { path: string }) {
@@ -23,7 +22,7 @@ export class CsvReader {
 
       const lines: string[][] = [];
       readLine
-        .on('line', line => lines.push(line.split(separator)))
+        .on('line', (line) => lines.push(line.split(separator)))
         .on('close', () => {
           const [definition, ...rows] = lines;
           success({ definition, rows });

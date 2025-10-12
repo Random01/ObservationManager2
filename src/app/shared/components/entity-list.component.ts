@@ -13,7 +13,6 @@ import { ExportRequestParams } from '../services';
 import { ExportType } from '../models/export-type.model';
 
 export abstract class EntityListComponent<T extends Entity> extends PaginatedListComponent<T> implements OnInit {
-
   constructor(
     protected readonly storageService: StorageService<T>,
     protected readonly deleteEntityDialogService: DeleteEntityDialogService,
@@ -82,9 +81,8 @@ export abstract class EntityListComponent<T extends Entity> extends PaginatedLis
 
     try {
       const date = new Date();
-      const fileName = this.getExportFileName()
-        + `_${date.getFullYear()}_${date.getMonth() + 1}_${date.getDate()}_${date.getHours()}_${date.getMinutes()}`
-        + this.getExtension(exportType);
+      const fileName =
+        this.getExportFileName() + `_${date.getFullYear()}_${date.getMonth() + 1}_${date.getDate()}_${date.getHours()}_${date.getMinutes()}` + this.getExtension(exportType);
 
       const exportParams = this.getExportRequestParameters(exportType);
       saveAs(await this.storageService.exportItems(exportParams), fileName);
@@ -114,5 +112,4 @@ export abstract class EntityListComponent<T extends Entity> extends PaginatedLis
         throw new Error(`Unknown export type: ${exportType}.`);
     }
   }
-
 }

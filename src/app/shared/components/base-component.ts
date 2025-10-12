@@ -6,11 +6,10 @@ import { DestroyableComponent } from './destroyable.component';
 import { MessageService } from '../services/message.service';
 
 @Component({
-    template: '',
-    standalone: false
+  template: '',
+  standalone: false,
 })
 export class BaseComponent extends DestroyableComponent {
-
   protected readonly isLoadingSubject = new BehaviorSubject(false);
   public readonly isLoading$ = this.isLoadingSubject.asObservable();
 
@@ -29,5 +28,4 @@ export class BaseComponent extends DestroyableComponent {
     this.messageService.error(errorMessage || error);
     this.logger.error(error);
   }
-
 }

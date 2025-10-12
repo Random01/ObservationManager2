@@ -23,15 +23,17 @@ if (!dbConfig.url) {
   throw new Error('DB connection string should be provided.');
 }
 
-app.use(session({
-  secret: process.env.SESSION_SECRET || 'conduit',
-  cookie: { maxAge: 60000 },
-  resave: false,
-  saveUninitialized: false,
-  store: MongoStore.create({
-    mongoUrl: dbConfig.url,
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || 'conduit',
+    cookie: { maxAge: 60000 },
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: dbConfig.url,
+    }),
   }),
-}));
+);
 
 app.use(passport.initialize());
 app.use(passport.session());

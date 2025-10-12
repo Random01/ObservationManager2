@@ -11,24 +11,26 @@ import { PaginatedItems } from '../../../../api/routers/common';
 
 @Injectable()
 export class BaseAdminComponentStore<T = any> extends ComponentStore<AdminComponentState<T>> {
+  public readonly items$ = this.select((state) => state.items);
 
-  public readonly items$ = this.select(state => state.items);
+  public readonly currentPage$ = this.select((state) => state.currentPage);
 
-  public readonly currentPage$ = this.select(state => state.currentPage);
+  public readonly pageSize$ = this.select((state) => state.pageSize);
 
-  public readonly pageSize$ = this.select(state => state.pageSize);
+  public readonly fetchItemsData$ = this.select(
+    {
+      pageSize: this.pageSize$,
+      currentPage: this.currentPage$,
+    },
+    { debounce: true },
+  );
 
-  public readonly fetchItemsData$ = this.select({
-    pageSize: this.pageSize$,
-    currentPage: this.currentPage$,
-  }, { debounce: true });
-
-  public readonly tableConfig$ = this.select(state => ({
+  public readonly tableConfig$ = this.select((state) => ({
     displayedColumns: state.displayedColumns,
     pageSizeOptions: state.pageSizeOptions,
   }));
 
-  public readonly isLoading$ = this.select(state => state.isLoading);
+  public readonly isLoading$ = this.select((state) => state.isLoading);
 
   constructor(private readonly entityService: BaseEntityService) {
     super({
@@ -44,15 +46,16 @@ export class BaseAdminComponentStore<T = any> extends ComponentStore<AdminCompon
     this.fetchItems(this.fetchItemsData$);
   }
 
-  private readonly fetchItems = this.effect(
-    (itemsPageData$: Observable<{ pageSize: number; currentPage: number }>) => itemsPageData$.pipe(
+  private readonly fetchItems = this.effect((itemsPageData$: Observable<{ pageSize: number; currentPage: number }>) =>
+    itemsPageData$.pipe(
       tap(() => this.updateLoading(true)),
       concatMap(({ pageSize, currentPage }) =>
         this.entityService.getItems({ currentPage, pageSize }).pipe(
-          tap(result => this.updateItemsResult(result)),
-          finalize(() => this.updateLoading(false))
-        )),
-    )
+          tap((result) => this.updateItemsResult(result)),
+          finalize(() => this.updateLoading(false)),
+        ),
+      ),
+    ),
   );
 
   private readonly updateItemsResult = this.updater((state, result: PaginatedItems<T>) => ({
@@ -65,5 +68,4 @@ export class BaseAdminComponentStore<T = any> extends ComponentStore<AdminCompon
     ...state,
     isLoading,
   }));
-
 }

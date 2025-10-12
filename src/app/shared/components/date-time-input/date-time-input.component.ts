@@ -11,16 +11,10 @@ import moment from 'moment';
   selector: 'om-date-time-input',
   templateUrl: 'date-time-input.component.html',
   styleUrl: 'date-time-input.component.css',
-  imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    MatDatepickerModule,
-    FormsModule,
-  ],
+  imports: [MatFormFieldModule, MatInputModule, MatDatepickerModule, FormsModule],
   providers: [provideNativeDateAdapter()],
 })
 export class DateTimeInputComponent {
-
   private _date: Date;
   public get dateTime(): Date {
     return this._date;
@@ -57,7 +51,5 @@ export class DateTimeInputComponent {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  public onTimeChanged(): void {
-
-  }
+  public onTimeChanged(): void {}
 }

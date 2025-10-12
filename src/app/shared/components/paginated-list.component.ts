@@ -13,11 +13,10 @@ import PaginatedListQueryParams from '../interfaces/paginated-list-query-params.
 import { PaginatedResponsePayload } from '../interfaces/paginated-response-payload.interface';
 
 @Component({
-    template: '',
-    standalone: false
+  template: '',
+  standalone: false,
 })
 export abstract class PaginatedListComponent<T> extends BaseComponent implements OnInit {
-
   protected readonly itemsSubject$ = new BehaviorSubject<PaginatedResponsePayload<T>>({
     items: [],
     pageCount: 0,
@@ -57,19 +56,16 @@ export abstract class PaginatedListComponent<T> extends BaseComponent implements
 
   public ngOnInit(): void {
     this.handle(
-      this.route
-        .queryParams
-        .subscribe(params => {
-          this.currentPage = +params['page'] || 0;
-          this.pageSize = +params['size'] || 10;
+      this.route.queryParams.subscribe((params) => {
+        this.currentPage = +params['page'] || 0;
+        this.pageSize = +params['size'] || 10;
 
-          this.loadItems();
-        })
+        this.loadItems();
+      }),
     );
   }
 
   protected getRequestParams(params?: Partial<RequestParams>): RequestParams {
     return new RequestParams(params);
   }
-
 }

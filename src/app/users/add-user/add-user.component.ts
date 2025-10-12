@@ -6,26 +6,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { AddEntityComponent } from '../../shared/components/add-entity.component';
 import { User } from '../../shared/models/user.model';
 import { UserService } from '../shared/user.service';
-import { UserComponent } from "../user/user.component";
-
+import { UserComponent } from '../user/user.component';
 
 @Component({
   selector: 'om-add-user',
   templateUrl: 'add-user.component.html',
   standalone: true,
-  imports: [
-    MatButtonModule,
-    NgIf,
-    AsyncPipe,
-    UserComponent,
-  ],
+  imports: [MatButtonModule, NgIf, AsyncPipe, UserComponent],
 })
 export class AddUserComponent extends AddEntityComponent<User> {
-
-  constructor(
-    service: UserService,
-  ) {
+  constructor(service: UserService) {
     super(service);
   }
-
 }

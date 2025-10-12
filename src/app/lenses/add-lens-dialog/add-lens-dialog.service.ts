@@ -6,11 +6,9 @@ import { AddLensDialogComponent } from './add-lens-dialog.component';
 
 @Injectable({ providedIn: 'root' })
 export class AddLensDialogService extends AddNewEntityDialogService<Lens> {
-
   protected createDialog() {
     return this.dialog.open(AddLensDialogComponent, {
       width: '550px',
     });
   }
-
 }

@@ -7,19 +7,13 @@ import { MatInputModule } from '@angular/material/input';
 import { RA } from '../../shared/models/ra.model';
 
 @Component({
-    selector: 'om-right-ascension-selector',
-    templateUrl: 'right-ascension-selector.component.html',
-    styleUrl: 'right-ascension-selector.component.less',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        MatFormFieldModule,
-        MatInputModule,
-        FormsModule,
-    ]
+  selector: 'om-right-ascension-selector',
+  templateUrl: 'right-ascension-selector.component.html',
+  styleUrl: 'right-ascension-selector.component.less',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatFormFieldModule, MatInputModule, FormsModule],
 })
 export class RightAscensionSelectorComponent {
-
   @Input() public ra?: RA;
   @Output() public readonly raChange = new EventEmitter<RA>();
-
 }

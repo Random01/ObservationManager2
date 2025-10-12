@@ -20,41 +20,22 @@ import { RequestParams } from '../../shared/services/request-params.model';
 import { ExportType } from '../../shared/models/export-type.model';
 import { ExportRequestParams } from '../../shared/services';
 import { SessionObservationExportRequestParams } from './session-observation-export-request-params.model';
-import { SessionInfoComponent } from "../../sessions/session-info/session-info.component";
+import { SessionInfoComponent } from '../../sessions/session-info/session-info.component';
 
 @Component({
-    selector: 'om-session-observations',
-    templateUrl: 'session-observations.component.html',
-    styleUrl: 'session-observations.component.less',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-    MatPaginatorModule,
-    MatTableModule,
-    MatButtonModule,
-    MatIconModule,
-    MatTooltipModule,
-    RouterLink,
-    AsyncPipe,
-    DatePipe,
-    SessionInfoComponent
-]
+  selector: 'om-session-observations',
+  templateUrl: 'session-observations.component.html',
+  styleUrl: 'session-observations.component.less',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatPaginatorModule, MatTableModule, MatButtonModule, MatIconModule, MatTooltipModule, RouterLink, AsyncPipe, DatePipe, SessionInfoComponent],
 })
 export class SessionObservationsComponent extends EntityListComponent<Observation> {
-
   public readonly session$ = this.route.params.pipe(
-    map(params => params['sessionId']),
-    switchMap(sessionId => this.sessionService.getById(sessionId)),
+    map((params) => params['sessionId']),
+    switchMap((sessionId) => this.sessionService.getById(sessionId)),
   );
 
-  public readonly displayedColumns: string[] = [
-    'date',
-    'targetName',
-    'scopeModel',
-    'eyepieceModel',
-    'filterModel',
-    'result',
-    'actions',
-  ];
+  public readonly displayedColumns: string[] = ['date', 'targetName', 'scopeModel', 'eyepieceModel', 'filterModel', 'result', 'actions'];
 
   constructor(
     private readonly sessionService: SessionService,
@@ -71,12 +52,7 @@ export class SessionObservationsComponent extends EntityListComponent<Observatio
   }
 
   public addNewObservation() {
-    this.router.navigate([
-      'sessions',
-      this.getSessionId(),
-      'observations',
-      'new-observation',
-    ]);
+    this.router.navigate(['sessions', this.getSessionId(), 'observations', 'new-observation']);
   }
 
   public backToSession() {
@@ -104,5 +80,4 @@ export class SessionObservationsComponent extends EntityListComponent<Observatio
       session: this.getSessionId(),
     });
   }
-
 }

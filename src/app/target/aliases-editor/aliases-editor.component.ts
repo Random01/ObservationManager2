@@ -9,25 +9,13 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
-    selector: 'om-aliases-editor',
-    templateUrl: 'aliases-editor.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        MatTableModule,
-        MatButtonModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatIconModule,
-        MatTooltipModule,
-        FormsModule,
-    ]
+  selector: 'om-aliases-editor',
+  templateUrl: 'aliases-editor.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatTableModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule, MatTooltipModule, FormsModule],
 })
 export class AliasesEditorComponent {
-
-  public readonly displayedColumns: string[] = [
-    'alias',
-    'actions',
-  ];
+  public readonly displayedColumns: string[] = ['alias', 'actions'];
 
   private _aliases: string[];
 
@@ -68,5 +56,4 @@ export class AliasesEditorComponent {
     this.isValid = newString !== '' && !this.aliases?.includes(newString);
     return this.isValid;
   }
-
 }

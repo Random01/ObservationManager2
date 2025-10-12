@@ -9,7 +9,6 @@ import { StatisticsRequest } from './statistics-request.interface';
 import { ObservingProgramModel } from './observing-program.model';
 
 export class ObservingProgramStore extends BaseMongooseStore<typeof ObservingProgramModel, ObservingProgram> {
-
   constructor() {
     super(ObservingProgramModel);
   }
@@ -17,10 +16,12 @@ export class ObservingProgramStore extends BaseMongooseStore<typeof ObservingPro
   public override getById({ id, userId }: { id: string; userId: string }): Promise<ObservingProgram> {
     const userFields = ['_id', 'userName', 'firstName', 'lastName'];
     return super.getById({
-      id, userId, populationDetails: {
-        'userCreated': userFields,
-        'userModified': userFields,
-        'targets': ['_id', 'name'],
+      id,
+      userId,
+      populationDetails: {
+        userCreated: userFields,
+        userModified: userFields,
+        targets: ['_id', 'name'],
       },
     });
   }
@@ -31,13 +32,10 @@ export class ObservingProgramStore extends BaseMongooseStore<typeof ObservingPro
   public getOverallStatistics({ id }: { id: string }): Promise<OverallStatistics> {
     return (this.model as any)
       .getById(id)
-      .then((observingProgram: ObservingProgram) => Promise.all([
-        observingProgram.targets,
-        (ObservationModel as any).getByTargets(observingProgram.targets)
-      ]))
+      .then((observingProgram: ObservingProgram) => Promise.all([observingProgram.targets, (ObservationModel as any).getByTargets(observingProgram.targets)]))
       .then(([targets, observations]: [any[], any[]]) => {
-        const observationsToTarget = groupBy(observations, o => o.target);
-        const observedTargets = targets.filter(target => !!observationsToTarget[target.id]);
+        const observationsToTarget = groupBy(observations, (o) => o.target);
+        const observedTargets = targets.filter((target) => !!observationsToTarget[target.id]);
 
         return {
           observedCount: observedTargets.length,
@@ -56,15 +54,11 @@ export class ObservingProgramStore extends BaseMongooseStore<typeof ObservingPro
         const startIndex = page * size;
         const targets = observingProgram.targets.slice(startIndex, startIndex + size);
 
-        return Promise.all([
-          targets,
-          (ObservationModel as any).getByTargets(targets),
-          observingProgram.targets.length,
-        ]);
+        return Promise.all([targets, (ObservationModel as any).getByTargets(targets), observingProgram.targets.length]);
       })
       .then(([targets, observations, totalCount]: [any[], any[], number]) => {
-        const observationsToTarget = groupBy(observations, o => o.target);
-        const targetsStatistics = targets.map(target => ({
+        const observationsToTarget = groupBy(observations, (o) => o.target);
+        const targetsStatistics = targets.map((target) => ({
           target,
           observations: observationsToTarget[target.id],
         }));
@@ -77,5 +71,4 @@ export class ObservingProgramStore extends BaseMongooseStore<typeof ObservingPro
         };
       });
   }
-
 }

@@ -14,41 +14,20 @@ import { EntityListComponent } from '../../shared/components/entity-list.compone
 import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
 
 @Component({
-    selector: 'om-lenses',
-    templateUrl: 'lenses.component.html',
-    styleUrl: 'lenses.component.less',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-    MatPaginatorModule,
-    MatTableModule,
-    MatButtonModule,
-    MatIconModule,
-    MatTooltipModule,
-    RouterLink,
-    AsyncPipe,
-    DecimalPipe
-]
+  selector: 'om-lenses',
+  templateUrl: 'lenses.component.html',
+  styleUrl: 'lenses.component.less',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatPaginatorModule, MatTableModule, MatButtonModule, MatIconModule, MatTooltipModule, RouterLink, AsyncPipe, DecimalPipe],
 })
 export class LensesComponent extends EntityListComponent<Lens> {
+  public readonly displayedColumns: string[] = ['model', 'vendor', 'factor', 'actions'];
 
-  public readonly displayedColumns: string[] = [
-    'model',
-    'vendor',
-    'factor',
-    'actions',
-  ];
-
-  constructor(
-    lensService: LensService,
-    deleteEntityDialogService: DeleteEntityDialogService,
-    route: ActivatedRoute,
-    router: Router,
-  ) {
+  constructor(lensService: LensService, deleteEntityDialogService: DeleteEntityDialogService, route: ActivatedRoute, router: Router) {
     super(lensService, deleteEntityDialogService, route, router);
   }
 
   protected override getExportFileName(): string {
     return 'lenses';
   }
-
 }

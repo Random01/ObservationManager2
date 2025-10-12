@@ -5,26 +5,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSliderModule } from '@angular/material/slider';
 import { FormsModule } from '@angular/forms';
 
-import {
-  Eyepiece,
-  Scope,
-  Lens
-} from '../../shared/models/equipment/equipment';
+import { Eyepiece, Scope, Lens } from '../../shared/models/equipment/equipment';
 
 @Component({
   selector: 'om-magnification-selector',
   templateUrl: 'magnification-selector.component.html',
   styleUrl: 'magnification-selector.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    MatSliderModule,
-    FormsModule,
-  ]
+  imports: [MatFormFieldModule, MatInputModule, MatSliderModule, FormsModule],
 })
 export class MagnificationSelectorComponent {
-
   // #region [Eyepiece]
 
   private _eyepiece: Eyepiece;

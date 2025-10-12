@@ -8,11 +8,9 @@ import { Eyepiece } from '../equipment/equipment';
   standalone: true,
 })
 export class EyepieceFocalLengthPipe implements PipeTransform {
-
-  constructor(@Inject(LOCALE_ID) private readonly locale: string) { }
+  constructor(@Inject(LOCALE_ID) private readonly locale: string) {}
 
   public transform(eyepiece: Eyepiece): string {
-    
     if (eyepiece == null) {
       return '';
     }
@@ -27,5 +25,4 @@ export class EyepieceFocalLengthPipe implements PipeTransform {
   private format(value: number): string {
     return formatNumber(value, this.locale, '0.1');
   }
-
 }

@@ -1,3 +1,3 @@
 export enum ResponseStatus {
-    Ok = 200,
+  Ok = 200,
 }

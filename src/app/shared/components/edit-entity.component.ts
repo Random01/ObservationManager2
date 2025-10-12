@@ -7,14 +7,11 @@ import { StorageService } from '../services/storage.service';
 import { BaseEntityComponent } from './base-entity.component';
 
 @Component({
-    template: '',
-    standalone: false
+  template: '',
+  standalone: false,
 })
 export abstract class EditEntityComponent<T extends Entity> extends BaseEntityComponent<T> implements OnInit {
-
-  constructor(
-    protected readonly storageService: StorageService<T>,
-  ) {
+  constructor(protected readonly storageService: StorageService<T>) {
     super();
   }
 
@@ -22,11 +19,12 @@ export abstract class EditEntityComponent<T extends Entity> extends BaseEntityCo
     this.startLoading();
 
     this.handle(
-      this.storageService.update(this.itemSubject.getValue())
+      this.storageService
+        .update(this.itemSubject.getValue())
         .pipe(finalize(() => this.endLoading()))
         .subscribe({
           complete: () => this.goBack(),
-          error: error => this.handleError(error, 'Unable to update item'),
+          error: (error) => this.handleError(error, 'Unable to update item'),
         }),
     );
   }
@@ -35,12 +33,13 @@ export abstract class EditEntityComponent<T extends Entity> extends BaseEntityCo
     this.startLoading();
 
     this.handle(
-      this.storageService.getById(this.getItemId())
+      this.storageService
+        .getById(this.getItemId())
         .pipe(finalize(() => this.endLoading()))
         .subscribe({
-          next: item => this.itemSubject.next(item),
-          error: error => this.handleError(error, 'Unable to load items'),
-        })
+          next: (item) => this.itemSubject.next(item),
+          error: (error) => this.handleError(error, 'Unable to load items'),
+        }),
     );
   }
 
@@ -50,5 +49,4 @@ export abstract class EditEntityComponent<T extends Entity> extends BaseEntityCo
   }
 
   protected abstract getItemId(): string;
-
 }

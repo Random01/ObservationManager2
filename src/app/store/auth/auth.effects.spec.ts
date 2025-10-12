@@ -12,7 +12,6 @@ import { Action } from '@ngrx/store';
 import { User } from 'app/shared/models/user.model';
 
 describe('AuthEffects', () => {
-
   let authEffects: AuthEffects;
   let actions$: ReplaySubject<Action<string>>;
   let authService: AuthenticationService;
@@ -21,12 +20,7 @@ describe('AuthEffects', () => {
     actions$ = new ReplaySubject(1);
 
     TestBed.configureTestingModule({
-      providers: [
-        AuthEffects,
-
-        provideMockActions(() => actions$),
-        { provide: AuthenticationService, useValue: {} },
-      ],
+      providers: [AuthEffects, provideMockActions(() => actions$), { provide: AuthenticationService, useValue: {} }],
     });
 
     authEffects = TestBed.inject(AuthEffects);
@@ -34,26 +28,24 @@ describe('AuthEffects', () => {
   });
 
   describe('login$ effect', () => {
-
-    it('should login', done => {
+    it('should login', (done) => {
       const user = new User();
 
-      authService.logIn = jasmine.createSpy('logIn')
-        .and.returnValue(of(user));
+      authService.logIn = jasmine.createSpy('logIn').and.returnValue(of(user));
 
-      authEffects.login$.subscribe(result => {
+      authEffects.login$.subscribe((result) => {
         expect(result).toEqual(AuthApiActions.loginSuccess({ user }));
         done();
       });
 
-      actions$.next(AuthApiActions.login({
-        credentials: {
-          email: 'mail',
-          password: 'pass',
-        }
-      }));
+      actions$.next(
+        AuthApiActions.login({
+          credentials: {
+            email: 'mail',
+            password: 'pass',
+          },
+        }),
+      );
     });
-
   });
-
 });

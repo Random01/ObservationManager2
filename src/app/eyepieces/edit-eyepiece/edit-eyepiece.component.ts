@@ -9,25 +9,17 @@ import { EyepieceService } from '../shared/eyepiece.service';
 import { EyepieceComponent } from '../eyepiece';
 
 @Component({
-    selector: 'om-edit-eyepiece',
-    templateUrl: 'edit-eyepiece.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-    MatButtonModule,
-    AsyncPipe,
-    EyepieceComponent
-]
+  selector: 'om-edit-eyepiece',
+  templateUrl: 'edit-eyepiece.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatButtonModule, AsyncPipe, EyepieceComponent],
 })
 export class EditEyepieceComponent extends EditEntityComponent<Eyepiece> {
-
-  constructor(
-    eyepiece: EyepieceService,
-  ) {
+  constructor(eyepiece: EyepieceService) {
     super(eyepiece);
   }
 
   public getItemId(): string {
     return this.route.snapshot.paramMap.get('id');
   }
-
 }

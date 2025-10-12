@@ -7,9 +7,7 @@ import { Entity } from '../interfaces';
 import { GetItemsRequestParameters, BaseMongooseStore } from '../store';
 import { BaseRouter } from './base-router';
 
-export abstract class BaseEntityRouter<TEntity extends Entity, TStore extends BaseMongooseStore<any, TEntity>>
-  extends BaseRouter {
-
+export abstract class BaseEntityRouter<TEntity extends Entity, TStore extends BaseMongooseStore<any, TEntity>> extends BaseRouter {
   constructor(
     router: core.Router,
     public readonly store: TStore,
@@ -25,63 +23,75 @@ export abstract class BaseEntityRouter<TEntity extends Entity, TStore extends Ba
   public exportItemsHandler(req: Request, res: Response): void {
     const exportType = String(req.query.exportType || ExportType.TXT) as ExportType;
 
-    this.store.getItems({
-      requestParameters: this.parseRequestParams(req),
-      userId: this.getUserId(req),
-    }).then(
-      result => this.export(res, result.items, exportType),
-      (error: Error) => this.handleError(res, error),
-    );
+    this.store
+      .getItems({
+        requestParameters: this.parseRequestParams(req),
+        userId: this.getUserId(req),
+      })
+      .then(
+        (result) => this.export(res, result.items, exportType),
+        (error: Error) => this.handleError(res, error),
+      );
   }
 
   public addNewHandler(req: Request, res: Response): void {
-    this.store.add({
-      entity: this.parse(req),
-      userId: this.getUserId(req),
-    }).then(
-      entity => res.json(entity),
-      (error: Error) => this.handleError(res, error),
-    );
+    this.store
+      .add({
+        entity: this.parse(req),
+        userId: this.getUserId(req),
+      })
+      .then(
+        (entity) => res.json(entity),
+        (error: Error) => this.handleError(res, error),
+      );
   }
 
   public getByIdHandler(req: Request, res: Response): void {
-    this.store.getById({
-      id: req.params.id,
-      userId: this.getUserId(req),
-    }).then(
-      entity => res.json(entity),
-      (error: Error) => this.handleError(res, error),
-    );
+    this.store
+      .getById({
+        id: req.params.id,
+        userId: this.getUserId(req),
+      })
+      .then(
+        (entity) => res.json(entity),
+        (error: Error) => this.handleError(res, error),
+      );
   }
 
   public updateHandler(req: Request, res: Response): void {
-    this.store.update({
-      entity: this.parse(req),
-      userId: this.getUserId(req),
-    }).then(
-      entity => res.json(entity),
-      (error: Error) => this.handleError(res, error),
-    );
+    this.store
+      .update({
+        entity: this.parse(req),
+        userId: this.getUserId(req),
+      })
+      .then(
+        (entity) => res.json(entity),
+        (error: Error) => this.handleError(res, error),
+      );
   }
 
   public deleteHandler(req: Request, res: Response): void {
-    this.store.delete({
-      id: req.params.id,
-      userId: this.getUserId(req),
-    }).then(
-      () => res.json({ success: true }),
-      (error: Error) => this.handleError(res, error),
-    );
+    this.store
+      .delete({
+        id: req.params.id,
+        userId: this.getUserId(req),
+      })
+      .then(
+        () => res.json({ success: true }),
+        (error: Error) => this.handleError(res, error),
+      );
   }
 
   public getItemsHandler(req: Request, res: Response): void {
-    this.store.getItems({
-      requestParameters: this.parseRequestParams(req),
-      userId: this.getUserId(req),
-    }).then(
-      items => res.json(items),
-      (error: Error) => this.handleError(res, error),
-    );
+    this.store
+      .getItems({
+        requestParameters: this.parseRequestParams(req),
+        userId: this.getUserId(req),
+      })
+      .then(
+        (items) => res.json(items),
+        (error: Error) => this.handleError(res, error),
+      );
   }
 
   public parseRequestParams(req: Request): GetItemsRequestParameters {
@@ -130,5 +140,4 @@ export abstract class BaseEntityRouter<TEntity extends Entity, TStore extends Ba
   protected toNumber(queryParam: undefined | string | string[] | qs.ParsedQs | qs.ParsedQs[]): number | undefined {
     return typeof queryParam === 'string' ? parseInt(queryParam, 10) : undefined;
   }
-
 }

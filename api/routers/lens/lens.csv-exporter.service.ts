@@ -4,7 +4,6 @@ import { BaseCsvExporter } from '../common';
 import { Lens } from './lens.interface';
 
 export class LensCsvExporter extends BaseCsvExporter<Lens> {
-
   public export(res: Response, items: Lens[]) {
     res.set('Content-Type', 'text/plain');
     let content = 'Model;Vendor;Factor\r\n';
@@ -13,5 +12,4 @@ export class LensCsvExporter extends BaseCsvExporter<Lens> {
     });
     res.send(Buffer.from(content));
   }
-
 }

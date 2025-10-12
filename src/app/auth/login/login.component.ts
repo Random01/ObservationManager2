@@ -15,31 +15,21 @@ import { selectAuthState } from '../../store/auth';
 import { BaseComponent } from '../../shared/components';
 
 @Component({
-    selector: 'om-login',
-    templateUrl: 'login.component.html',
-    styleUrl: 'login.component.less',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    AsyncPipe
-]
+  selector: 'om-login',
+  templateUrl: 'login.component.html',
+  styleUrl: 'login.component.less',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatButtonModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, AsyncPipe],
 })
 export class LoginComponent extends BaseComponent {
-
-  public override readonly isLoading$ = this.store.select(selectAuthState)
-    .pipe(map(state => state.isWorking));
+  public override readonly isLoading$ = this.store.select(selectAuthState).pipe(map((state) => state.isWorking));
 
   public readonly loginForm = new FormGroup({
     email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
 
-  constructor(
-    private readonly store: Store,
-  ) {
+  constructor(private readonly store: Store) {
     super();
   }
 
@@ -49,5 +39,4 @@ export class LoginComponent extends BaseComponent {
       this.store.dispatch(AuthApiActions.login({ credentials: { email, password } }));
     }
   }
-
 }

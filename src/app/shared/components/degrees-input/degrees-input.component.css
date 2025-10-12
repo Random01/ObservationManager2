@@ -1,7 +1,7 @@
 .om-degrees-selector > DIV {
-    display: inline-block;
+  display: inline-block;
 }
 
 .om-degrees-selector .mat-mdc-form-field {
-    max-width: 75px;
+  max-width: 75px;
 }

@@ -18,13 +18,8 @@
     "alwaysStrict": true,
     "skipLibCheck": true,
     "target": "ES2022",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "ES2022",
-      "dom"
-    ],
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["ES2022", "dom"],
     "useDefineForClassFields": false
   },
   "angularCompilerOptions": {

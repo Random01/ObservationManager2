@@ -1,15 +1,9 @@
-import {
-  Scope,
-  Eyepiece,
-  Lens,
-  Filter,
-} from '../../shared/models/equipment/equipment';
+import { Scope, Eyepiece, Lens, Filter } from '../../shared/models/equipment/equipment';
 
 import { Site, Target } from '../../shared/models/models';
 import { RequestParams } from '../../shared/services/request-params.model';
 
 export default class ObservationSearchParameters extends RequestParams {
-
   public readonly scope = new Scope();
   public readonly site = new Site();
   public readonly eyepiece = new Eyepiece();
@@ -36,5 +30,4 @@ export default class ObservationSearchParameters extends RequestParams {
       { name: 'endDate', value: this.endDate },
     ];
   }
-
 }

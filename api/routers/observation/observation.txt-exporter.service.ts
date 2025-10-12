@@ -5,7 +5,6 @@ import { Observation } from './observation.interface';
 import { BaseTxtExporter } from '../common';
 
 export class ObservationTxtExporter extends BaseTxtExporter<Observation> {
-
   public export(res: Response, items: Observation[]): void {
     res.set('Content-Type', 'text/plain');
     const content = this.getContent(items);
@@ -24,7 +23,6 @@ export class ObservationTxtExporter extends BaseTxtExporter<Observation> {
   }
 
   private getContent(items: Observation[]): string {
-    return items.map(item => this.get(item)).join('\r\n\r\n');
+    return items.map((item) => this.get(item)).join('\r\n\r\n');
   }
-
 }

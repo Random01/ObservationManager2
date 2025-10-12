@@ -4,7 +4,6 @@ import { Lens } from './lens.interface';
 import { LensModel } from './lens.model';
 
 export class LensStore extends BaseMongooseStore<typeof LensModel, Lens> {
-
   constructor() {
     super(LensModel);
   }
@@ -15,10 +14,9 @@ export class LensStore extends BaseMongooseStore<typeof LensModel, Lens> {
       id,
       userId,
       populationDetails: {
-        'userCreated': userFields,
-        'userModified': userFields,
+        userCreated: userFields,
+        userModified: userFields,
       },
     });
   }
-
 }

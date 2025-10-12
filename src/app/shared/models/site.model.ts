@@ -2,7 +2,6 @@ import { Entity } from './entity.model';
 import { GeographicalCoordinates } from './geographical-coordinates.model';
 
 export class Site extends Entity {
-
   public name: string;
   // <!-- offset from UT in [min] not including daylight savings time -->
   // <!--PLEASE NOTE: West of Greenwich is negative and east is positive -- >
@@ -36,12 +35,7 @@ export class Site extends Entity {
   public override deserialize(state: any): void {
     super.deserialize(state);
 
-    this.copy(state, [
-      'name',
-      'timezone',
-      'code',
-      'elevation',
-    ]);
+    this.copy(state, ['name', 'timezone', 'code', 'elevation']);
 
     this.coord.longitude.deserialize(state.longitude);
     this.coord.latitude.deserialize(state.latitude);

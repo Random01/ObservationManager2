@@ -1,32 +1,17 @@
 <div class="om-entity-selector">
-
-  <mat-form-field
-    class="select"
-    >
+  <mat-form-field class="select">
     <mat-label>{{ placeholder }}</mat-label>
-    <mat-select
-      [placeholder]="placeholder"
-      [compareWith]="getCompareWithFn"
-      [ngModel]="item"
-      (selectionChange)="onSelectionChange($event)"
-      >
+    <mat-select [placeholder]="placeholder" [compareWith]="getCompareWithFn" [ngModel]="item" (selectionChange)="onSelectionChange($event)">
       <mat-option>None</mat-option>
       @for (item of items; track item) {
-        <mat-option
-          [value]="item"
-          >
+        <mat-option [value]="item">
           {{ item.getDisplayName() }}
         </mat-option>
       }
     </mat-select>
   </mat-form-field>
 
-  <button
-    mat-icon-button
-    matTooltip="Create New"
-    (click)="openDialog()"
-    >
+  <button mat-icon-button matTooltip="Create New" (click)="openDialog()">
     <mat-icon>add</mat-icon>
   </button>
-
 </div>

@@ -15,49 +15,20 @@ import { DeleteEntityDialogService } from '../../shared/components/delete-entity
 import { DegreesFormatterPipe } from '../../shared/models/pipes';
 
 @Component({
-    selector: 'om-sites',
-    templateUrl: 'sites.component.html',
-    styleUrls: ['sites.component.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-    MatPaginatorModule,
-    MatTableModule,
-    MatButtonModule,
-    MatTooltipModule,
-    MatIconModule,
-    RouterLink,
-    AsyncPipe,
-    DecimalPipe,
-    DegreesFormatterPipe
-]
+  selector: 'om-sites',
+  templateUrl: 'sites.component.html',
+  styleUrls: ['sites.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatPaginatorModule, MatTableModule, MatButtonModule, MatTooltipModule, MatIconModule, RouterLink, AsyncPipe, DecimalPipe, DegreesFormatterPipe],
 })
 export class SitesComponent extends EntityListComponent<Site> {
+  public readonly displayedColumns: string[] = ['name', 'timezone', 'latitude', 'longitude', 'elevation', 'actions'];
 
-  public readonly displayedColumns: string[] = [
-    'name',
-    'timezone',
-    'latitude',
-    'longitude',
-    'elevation',
-    'actions',
-  ];
-
-  constructor(
-    siteService: SiteService,
-    deleteEntityDialogService: DeleteEntityDialogService,
-    route: ActivatedRoute,
-    router: Router,
-  ) {
-    super(
-      siteService,
-      deleteEntityDialogService,
-      route,
-      router,
-    );
+  constructor(siteService: SiteService, deleteEntityDialogService: DeleteEntityDialogService, route: ActivatedRoute, router: Router) {
+    super(siteService, deleteEntityDialogService, route, router);
   }
 
   protected override getExportFileName(): string {
     return 'sites';
   }
-
 }

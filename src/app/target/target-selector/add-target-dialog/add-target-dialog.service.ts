@@ -6,11 +6,9 @@ import { AddTargetDialogComponent } from './add-target-dialog.component';
 
 @Injectable({ providedIn: 'root' })
 export class AddTargetDialogService extends AddNewEntityDialogService<Target> {
-
   public createDialog() {
     return this.dialog.open(AddTargetDialogComponent, {
       width: '550px',
     });
   }
-
 }

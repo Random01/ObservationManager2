@@ -8,10 +8,7 @@ export class Message {
 
 @Injectable({ providedIn: 'root' })
 export class MessageService {
-
-  constructor(
-    private readonly snackBar: MatSnackBar,
-  ) { }
+  constructor(private readonly snackBar: MatSnackBar) {}
 
   public info(message: string) {
     this.snackBar.open(message, 'X', {
@@ -24,5 +21,4 @@ export class MessageService {
       panelClass: ['error'],
     });
   }
-
 }

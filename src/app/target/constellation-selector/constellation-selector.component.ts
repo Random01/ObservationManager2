@@ -10,18 +10,13 @@ import { Constellation } from '../../shared/models/constellation.model';
 import { ConstellationsService } from '../../constellations/shared/constellations.service';
 
 @Component({
-    selector: 'om-constellation-selector',
-    templateUrl: 'constellation-selector.component.html',
-    styleUrl: 'constellation-selector.component.less',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-    MatFormFieldModule,
-    MatSelectModule,
-    AsyncPipe
-]
+  selector: 'om-constellation-selector',
+  templateUrl: 'constellation-selector.component.html',
+  styleUrl: 'constellation-selector.component.less',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatFormFieldModule, MatSelectModule, AsyncPipe],
 })
 export class ConstellationSelectorComponent implements OnInit {
-
   @Input()
   public constellation?: Constellation;
 
@@ -32,9 +27,7 @@ export class ConstellationSelectorComponent implements OnInit {
   public constellations: Constellation[] = [];
   public filteredConstellations: Observable<Constellation[]>;
 
-  constructor(
-    private readonly constellationService: ConstellationsService,
-  ) { }
+  constructor(private readonly constellationService: ConstellationsService) {}
 
   public onConstellationChange(model: Constellation) {
     this.constellation = model;
@@ -45,12 +38,11 @@ export class ConstellationSelectorComponent implements OnInit {
     this.isLoading = true;
     try {
       this.constellations = await this.constellationService.getAll();
-      this.filteredConstellations = new Observable(subscriber => {
+      this.filteredConstellations = new Observable((subscriber) => {
         subscriber.next(this.constellations);
       });
     } finally {
       this.isLoading = false;
     }
   }
-
 }

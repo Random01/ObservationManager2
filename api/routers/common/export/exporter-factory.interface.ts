@@ -4,7 +4,6 @@ import { Exporter } from './exporter.interface';
 type ExporterConstructor<T = any> = new () => Exporter<T>;
 
 export abstract class ExporterFactory<T = any> {
-
   protected readonly typeToFactory: Map<ExportType, ExporterConstructor>;
 
   constructor(resolvers: [ExportType, ExporterConstructor<T>][]) {
@@ -18,5 +17,4 @@ export abstract class ExporterFactory<T = any> {
     }
     return new ctor();
   }
-
 }

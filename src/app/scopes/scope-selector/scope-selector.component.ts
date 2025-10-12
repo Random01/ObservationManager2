@@ -12,30 +12,16 @@ import { EntitySelectorComponent } from '../../shared/components/entity-selector
 import { AddScopeDialogService } from '../add-scope-dialog';
 
 @Component({
-    selector: 'om-scope-selector',
-    templateUrl: '../../shared/components/entity-selector/entity-selector.component.html',
-    styleUrls: [
-        '../../shared/components/entity-selector/entity-selector.component.css'
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        MatFormFieldModule,
-        MatSelectModule,
-        MatIconModule,
-        MatButtonModule,
-        FormsModule,
-    ]
+  selector: 'om-scope-selector',
+  templateUrl: '../../shared/components/entity-selector/entity-selector.component.html',
+  styleUrls: ['../../shared/components/entity-selector/entity-selector.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatFormFieldModule, MatSelectModule, MatIconModule, MatButtonModule, FormsModule],
 })
 export class ScopeSelectorComponent extends EntitySelectorComponent<Scope, ScopeService> {
-
-  constructor(
-    scopeService: ScopeService,
-    addScopeDialogService: AddScopeDialogService,
-    cdRef: ChangeDetectorRef,
-  ) {
+  constructor(scopeService: ScopeService, addScopeDialogService: AddScopeDialogService, cdRef: ChangeDetectorRef) {
     super(scopeService, addScopeDialogService, cdRef);
 
     this.placeholder = 'Telescopes, Binoculars & Finders';
   }
-
 }

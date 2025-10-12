@@ -21,14 +21,9 @@ import { RegisterEffects } from './store/register';
 import { UserProfileMenuComponent } from './main/user-profile-menu';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   bootstrap: [AppComponent],
-  providers: [
-    provideHttpClient(withInterceptorsFromDi(), withFetch()),
-    provideNoopAnimations(),
-  ],
+  providers: [provideHttpClient(withInterceptorsFromDi(), withFetch()), provideNoopAnimations()],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -40,12 +35,9 @@ import { UserProfileMenuComponent } from './main/user-profile-menu';
     StoreModule.forRoot(reducers, {
       metaReducers,
     }),
-    EffectsModule.forRoot([
-      AuthEffects,
-      RegisterEffects,
-    ]),
+    EffectsModule.forRoot([AuthEffects, RegisterEffects]),
 
     UserProfileMenuComponent,
   ],
 })
-export class AppModule { }
+export class AppModule {}

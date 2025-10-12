@@ -25,18 +25,18 @@ module.exports = {
   externals: [nodeExternals()],
 
   module: {
-    rules: [{
-      test: /\.ts?$/,
-      use: 'ts-loader',
-      exclude: /node_modules/,
-    }],
+    rules: [
+      {
+        test: /\.ts?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+    ],
   },
 
   resolve: {
     extensions: ['.ts'],
   },
 
-  plugins: [
-    new CleanWebpackPlugin(),
-  ],
+  plugins: [new CleanWebpackPlugin()],
 };

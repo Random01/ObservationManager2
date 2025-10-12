@@ -6,11 +6,7 @@ import { TargetStore } from './target.store';
 import { Target } from './target.interface';
 
 export class TargetRouter extends BaseEntityRouter<Target, TargetStore> {
-
-  constructor(
-    router: core.Router,
-    store = new TargetStore(),
-  ) {
+  constructor(router: core.Router, store = new TargetStore()) {
     super(router, store);
   }
 
@@ -31,16 +27,18 @@ export class TargetRouter extends BaseEntityRouter<Target, TargetStore> {
 
     if (name && maxCount) {
       this.store.search({ name, maxCount }).then(
-        items => res.json(items),
-        (error: Error) => this.handleError(res, error)
-      );
-    } else {
-      this.store.getItems({
-        requestParameters: this.parseRequestParams(req),
-      }).then(
-        items => res.json(items),
+        (items) => res.json(items),
         (error: Error) => this.handleError(res, error),
       );
+    } else {
+      this.store
+        .getItems({
+          requestParameters: this.parseRequestParams(req),
+        })
+        .then(
+          (items) => res.json(items),
+          (error: Error) => this.handleError(res, error),
+        );
     }
   }
 }

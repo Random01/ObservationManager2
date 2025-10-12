@@ -1,4 +1,4 @@
-import {model} from 'mongoose';
+import { model } from 'mongoose';
 
 import { SessionSchema } from './session.schema';
 

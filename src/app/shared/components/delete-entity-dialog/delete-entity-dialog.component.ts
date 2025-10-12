@@ -7,20 +7,16 @@ import { DeleteEntityDialogOptions } from './delete-entity-dialog-options.interf
 import { DeleteEntityDialogResult } from './delete-entity-dialog-result.interface';
 
 @Component({
-    selector: 'om-delete-entity-dialog',
-    templateUrl: 'delete-entity-dialog.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        MatDialogModule,
-        MatButtonModule,
-    ]
+  selector: 'om-delete-entity-dialog',
+  templateUrl: 'delete-entity-dialog.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatDialogModule, MatButtonModule],
 })
 export class DeleteEntityDialogComponent {
-
   constructor(
     public readonly dialogRef: MatDialogRef<DeleteEntityDialogComponent, DeleteEntityDialogResult>,
     @Inject(MAT_DIALOG_DATA) public readonly data: DeleteEntityDialogOptions,
-  ) { }
+  ) {}
 
   public onNoClick(): void {
     this.dialogRef.close({ success: false });
@@ -29,5 +25,4 @@ export class DeleteEntityDialogComponent {
   public onOkClick(): void {
     this.dialogRef.close({ success: true });
   }
-
 }

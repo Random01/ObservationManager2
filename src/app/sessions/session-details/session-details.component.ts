@@ -14,20 +14,15 @@ import { Target } from '../../shared/models/models';
 import { BaseComponent } from '../../shared/components/base-component';
 import { ObservationService } from '../../observations/shared/observation.service';
 import { Eyepiece, Scope, Filter } from '../../shared/models/equipment/equipment';
-import { SessionComponent } from "../session/session.component";
+import { SessionComponent } from '../session/session.component';
 
 @Component({
   selector: 'om-session-details',
   templateUrl: 'session-details.component.html',
   standalone: true,
-  imports: [
-    MatButtonModule,
-    RouterLink,
-    SessionComponent,
-  ],
+  imports: [MatButtonModule, RouterLink, SessionComponent],
 })
 export class SessionDetailsComponent extends BaseComponent implements OnInit {
-
   public session: Session | null = null;
 
   public editMode = false;
@@ -45,9 +40,10 @@ export class SessionDetailsComponent extends BaseComponent implements OnInit {
     this.startLoading();
 
     this.handle(
-      this.sessionService.add(this.session)
+      this.sessionService
+        .add(this.session)
         .pipe(finalize(() => this.endLoading()))
-        .subscribe()
+        .subscribe(),
     );
   }
 
@@ -55,9 +51,10 @@ export class SessionDetailsComponent extends BaseComponent implements OnInit {
     this.startLoading();
 
     this.handle(
-      this.sessionService.update(this.session)
+      this.sessionService
+        .update(this.session)
         .pipe(finalize(() => this.endLoading()))
-        .subscribe()
+        .subscribe(),
     );
   }
 
@@ -68,11 +65,12 @@ export class SessionDetailsComponent extends BaseComponent implements OnInit {
       this.startLoading();
 
       this.handle(
-        this.sessionService.getById(sessionId)
+        this.sessionService
+          .getById(sessionId)
           .pipe(finalize(() => this.endLoading()))
-          .subscribe(session => {
+          .subscribe((session) => {
             this.session = session;
-          })
+          }),
       );
     } else {
       this.session = new Session();
@@ -92,7 +90,7 @@ export class SessionDetailsComponent extends BaseComponent implements OnInit {
         scope: new Scope(),
         filter: new Filter(),
         eyepiece: new Eyepiece(),
-      })
+      }),
     });
 
     // todo: use Observable here instead of toPromise
@@ -106,5 +104,4 @@ export class SessionDetailsComponent extends BaseComponent implements OnInit {
       }
     }
   }
-
 }

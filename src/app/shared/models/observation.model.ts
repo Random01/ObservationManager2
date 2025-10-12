@@ -84,19 +84,6 @@ export class Observation extends Entity {
     this.begin = this.parseDate(state.begin);
     this.end = this.parseDate(state.end);
 
-    this.copy(state, [
-      'seeing',
-      'observer',
-      'target',
-      'scope',
-      'filter',
-      'eyepiece',
-      'lens',
-      'result',
-      'session',
-      'faintestStar',
-      'skyQuality',
-      'magnification',
-    ]);
+    this.copy(state, ['seeing', 'observer', 'target', 'scope', 'filter', 'eyepiece', 'lens', 'result', 'session', 'faintestStar', 'skyQuality', 'magnification']);
   }
 }

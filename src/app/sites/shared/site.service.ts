@@ -7,12 +7,7 @@ import { JwtService } from '../../auth/shared/jwt.service';
 
 @Injectable({ providedIn: 'root' })
 export class SiteService extends StorageService<Site> {
-
-  constructor(
-    http: HttpClient,
-    jwtService: JwtService,
-  ) {
+  constructor(http: HttpClient, jwtService: JwtService) {
     super('/sites', http, jwtService, Site);
   }
-
 }

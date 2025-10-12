@@ -1,7 +1,5 @@
 @if ({ item: item$ | async }; as data) {
-  <div
-    class="om-edit-scope"
-    >
+  <div class="om-edit-scope">
     <div class="header">
       <h2 class="mat-h2">Edit Scope</h2>
     </div>
@@ -10,16 +8,10 @@
         <om-scope [scope]="data.item"></om-scope>
       </div>
     }
-    <hr/>
+    <hr />
     <div class="footer">
-      <button
-        mat-button
-        color="primary"
-        [disabled]="!isValid()"
-      (click)="updateItem()">Update</button>
-      <button
-        mat-button
-      (click)="goBack()">Back</button>
+      <button mat-button color="primary" [disabled]="!isValid()" (click)="updateItem()">Update</button>
+      <button mat-button (click)="goBack()">Back</button>
     </div>
   </div>
 }

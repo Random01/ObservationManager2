@@ -15,33 +15,34 @@ import { BaseEffects } from '../common/base.effects';
 
 @Injectable()
 export class RegisterEffects extends BaseEffects {
-
   public readonly register$ = createEffect(() =>
     this.actions$.pipe(
       ofType(RegisterActions.register),
-      exhaustMap(action =>
+      exhaustMap((action) =>
         this.userService.register(action.user).pipe(
           map(() => RegisterActions.registerSuccess()),
-          catchError(error => of(RegisterActions.registerFailure({ error }))),
-        )
-      )
-    )
+          catchError((error) => of(RegisterActions.registerFailure({ error }))),
+        ),
+      ),
+    ),
   );
 
-  public readonly registerSuccess$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(RegisterActions.registerSuccess),
-      tap(() => this.router.navigate(['/login'])),
-    ),
-    { dispatch: false }
+  public readonly registerSuccess$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(RegisterActions.registerSuccess),
+        tap(() => this.router.navigate(['/login'])),
+      ),
+    { dispatch: false },
   );
 
-  public readonly registerFailure$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(RegisterActions.registerFailure),
-      tap(() => this.router.navigate(['/login'])),
-    ),
-    { dispatch: false }
+  public readonly registerFailure$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(RegisterActions.registerFailure),
+        tap(() => this.router.navigate(['/login'])),
+      ),
+    { dispatch: false },
   );
 
   constructor(
@@ -53,5 +54,4 @@ export class RegisterEffects extends BaseEffects {
   ) {
     super(messageService, loggingService);
   }
-
 }

@@ -3,35 +3,20 @@
     <om-session [session]="session"></om-session>
   }
 
-  <hr/>
+  <hr />
   <div>
-
     @if (!editMode) {
-      <button
-        mat-button
-        (click)="create()"
-      >
-        Create
-      </button>
+      <button mat-button (click)="create()">Create</button>
     }
 
     @if (editMode) {
-      <button
-        mat-button
-        (click)="update()">Update</button>
+      <button mat-button (click)="update()">Update</button>
     }
 
     @if (editMode) {
-      <button
-        mat-button
-        (click)="addNewObservation()"
-      >
-        Add New Observation
-      </button>
+      <button mat-button (click)="addNewObservation()">Add New Observation</button>
     }
 
-    <button
-      mat-button
-      routerLink="/sessions">Back</button>
+    <button mat-button routerLink="/sessions">Back</button>
   </div>
 </div>

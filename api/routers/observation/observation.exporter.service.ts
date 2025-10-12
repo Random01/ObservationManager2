@@ -4,11 +4,7 @@ import { ObservationTxtExporter } from './observation.txt-exporter.service';
 import { ExporterFactory, ExportType } from '../common/export';
 
 export class ObservationExporterService extends ExporterFactory<Observation> {
-
   constructor() {
-    super([
-      [ExportType.TXT, ObservationTxtExporter],
-    ]);
+    super([[ExportType.TXT, ObservationTxtExporter]]);
   }
-
 }

@@ -1,37 +1,17 @@
 <div class="om-right-ascension-selector">
-
   <mat-form-field>
     <mat-label>h</mat-label>
-    <input
-      matInput
-      type="number"
-      min="0"
-      max="24"
-      placeholder="Hours"
-      [(ngModel)]="ra.hours" />
+    <input matInput type="number" min="0" max="24" placeholder="Hours" [(ngModel)]="ra.hours" />
     <mat-hint>RA</mat-hint>
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>m</mat-label>
-    <input
-      matInput
-      type="number"
-      min="0"
-      max="59"
-      placeholder="Minutes"
-      [(ngModel)]="ra.minutes" />
+    <input matInput type="number" min="0" max="59" placeholder="Minutes" [(ngModel)]="ra.minutes" />
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>s</mat-label>
-    <input
-      matInput
-      type="number"
-      min="0"
-      max="59"
-      placeholder="Seconds"
-      [(ngModel)]="ra.seconds" />
+    <input matInput type="number" min="0" max="59" placeholder="Seconds" [(ngModel)]="ra.seconds" />
   </mat-form-field>
-    
 </div>

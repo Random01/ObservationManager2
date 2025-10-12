@@ -9,20 +9,13 @@ import { Session } from '../../shared/models/models';
 import { SessionComponent } from '../session';
 
 @Component({
-    selector: 'om-edit-session',
-    templateUrl: 'edit-session.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-    MatButtonModule,
-    AsyncPipe,
-    SessionComponent
-]
+  selector: 'om-edit-session',
+  templateUrl: 'edit-session.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatButtonModule, AsyncPipe, SessionComponent],
 })
 export class EditSessionComponent extends EditEntityComponent<Session> {
-
-  constructor(
-    service: SessionService,
-  ) {
+  constructor(service: SessionService) {
     super(service);
   }
 
@@ -33,5 +26,4 @@ export class EditSessionComponent extends EditEntityComponent<Session> {
   protected override getItemId(): string {
     return this.route.snapshot.paramMap.get('sessionId');
   }
-
 }

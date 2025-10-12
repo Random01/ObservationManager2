@@ -18,32 +18,12 @@ import { DeleteEntityDialogService } from '../../shared/components/delete-entity
   templateUrl: 'observing-programs.component.html',
   styleUrl: 'observing-programs.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    MatButtonModule,
-    MatPaginatorModule,
-    MatIconModule,
-    MatTableModule,
-    MatTooltipModule,
-    AsyncPipe,
-    CommonModule,
-    RouterLink
-  ]
+  imports: [MatButtonModule, MatPaginatorModule, MatIconModule, MatTableModule, MatTooltipModule, AsyncPipe, CommonModule, RouterLink],
 })
 export class ObservingProgramsComponent extends EntityListComponent<ObservingProgram> {
+  public readonly displayedColumns: string[] = ['name', 'description', 'actions'];
 
-  public readonly displayedColumns: string[] = [
-    'name',
-    'description',
-    'actions',
-  ];
-
-  constructor(
-    service: ObservingProgramsService,
-    deleteEntityDialogService: DeleteEntityDialogService,
-    route: ActivatedRoute,
-    router: Router,
-  ) {
+  constructor(service: ObservingProgramsService, deleteEntityDialogService: DeleteEntityDialogService, route: ActivatedRoute, router: Router) {
     super(service, deleteEntityDialogService, route, router);
   }
-
 }

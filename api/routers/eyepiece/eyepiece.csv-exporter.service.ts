@@ -5,7 +5,6 @@ import { BaseCsvExporter } from '../common';
 import { Eyepiece } from './eyepiece.interface';
 
 export class EyepieceCsvExporter extends BaseCsvExporter<Eyepiece> {
-
   public export(res: Response, items: Eyepiece[]) {
     res.set('Content-Type', 'text/plain');
     const content = this.getContent(items);
@@ -19,5 +18,4 @@ export class EyepieceCsvExporter extends BaseCsvExporter<Eyepiece> {
     });
     return content;
   }
-
 }

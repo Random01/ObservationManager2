@@ -54,7 +54,7 @@ export const ObservationSchema = new Schema({
 ObservationSchema.statics.getByTargets = function (targetIds: string[]): Promise<any[]> {
   return this.find({
     target: {
-      '$in': targetIds,
+      $in: targetIds,
     },
   }).exec();
 };

@@ -1,24 +1,14 @@
 <div class="om-vendor-selector">
   <mat-form-field>
     <mat-label>Vendor</mat-label>
-    <input
-      matInput
-      placeholder="Vendor"
-      [matAutocomplete]="auto"
-      [(ngModel)]="vendor"
-      (ngModelChange)="onVendorChange($event)" />
+    <input matInput placeholder="Vendor" [matAutocomplete]="auto" [(ngModel)]="vendor" (ngModelChange)="onVendorChange($event)" />
 
-      <mat-autocomplete
-        #auto="matAutocomplete">
-
-        @for (vendor of vendors$ | async; track vendor) {
-          <mat-option
-            [value]="vendor"
-            >
-            {{ vendor }}
-          </mat-option>
-        }
-
-      </mat-autocomplete>
-    </mat-form-field>
-  </div>
+    <mat-autocomplete #auto="matAutocomplete">
+      @for (vendor of vendors$ | async; track vendor) {
+        <mat-option [value]="vendor">
+          {{ vendor }}
+        </mat-option>
+      }
+    </mat-autocomplete>
+  </mat-form-field>
+</div>

@@ -7,7 +7,6 @@ import { AddEyepieceDialogComponent } from './add-eyepiece-dialog.component';
 
 @Injectable({ providedIn: 'root' })
 export class AddEyepieceDialogService extends AddNewEntityDialogService<Eyepiece> {
-
   constructor(dialog: MatDialog) {
     super(dialog);
   }
@@ -17,5 +16,4 @@ export class AddEyepieceDialogService extends AddNewEntityDialogService<Eyepiece
       width: '550px',
     });
   }
-
 }

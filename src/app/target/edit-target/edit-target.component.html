@@ -1,7 +1,5 @@
 @if ({ item: item$ | async }; as data) {
-  <div
-    class="om-edit-target"
-    >
+  <div class="om-edit-target">
     <div class="header">
       <h2 class="mat-h2">Edit Object</h2>
     </div>
@@ -12,20 +10,8 @@
     }
     <hr />
     <div class="footer">
-      <button
-        mat-button
-        color="primary"
-        [disabled]="!isValid()"
-        (click)="updateItem()"
-        >
-        Update
-      </button>
-      <button
-        mat-button
-        (click)="goBack()"
-        >
-        Back
-      </button>
+      <button mat-button color="primary" [disabled]="!isValid()" (click)="updateItem()">Update</button>
+      <button mat-button (click)="goBack()">Back</button>
     </div>
   </div>
 }

@@ -15,9 +15,7 @@ import { UserRouter } from './user';
 import { VendorRouter } from './vendor';
 import { BaseRouter } from './common';
 
-
 export class RouterProvider {
-
   constructor(app: core.Express) {
     this.create(app, FilterRouter, '/filters');
     this.create(app, ScopeRouter, '/scopes');
@@ -38,5 +36,4 @@ export class RouterProvider {
     app.use('/api' + path, router);
     return new ctor(router);
   }
-
 }

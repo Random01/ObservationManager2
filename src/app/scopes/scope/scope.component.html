@@ -1,49 +1,25 @@
-﻿﻿<div class="om-scope-component">
-
+﻿﻿
+<div class="om-scope-component">
   <mat-form-field>
     <mat-label>Model</mat-label>
-    <input
-      matInput
-      autocomplete="off"
-      type="text"
-      placeholder="Model"
-      [(ngModel)]="scope.model" />
+    <input matInput autocomplete="off" type="text" placeholder="Model" [(ngModel)]="scope.model" />
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>Aperture (mm)</mat-label>
-    <input
-      matInput
-      autocomplete="off"
-      type="number"
-      min="0"
-      placeholder="Aperture (mm)"
-      [(ngModel)]="scope.aperture" />
+    <input matInput autocomplete="off" type="number" min="0" placeholder="Aperture (mm)" [(ngModel)]="scope.aperture" />
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>Focal Length (mm)</mat-label>
-    <input
-      matInput
-      autocomplete="off"
-      type="number"
-      min="0"
-      placeholder="Focal Length (mm)"
-      [(ngModel)]="scope.focalLength" />
+    <input matInput autocomplete="off" type="number" min="0" placeholder="Focal Length (mm)" [(ngModel)]="scope.focalLength" />
   </mat-form-field>
 
-  <om-vendor-selector
-    [(vendor)]="scope.vendor">
-  </om-vendor-selector>
+  <om-vendor-selector [(vendor)]="scope.vendor"> </om-vendor-selector>
 
   <!-- Description -->
   <mat-form-field>
     <mat-label>Description</mat-label>
-    <textarea
-      matInput
-      autocomplete="off"
-      placeholder="Description" 
-      [(ngModel)]="scope.description"></textarea>
+    <textarea matInput autocomplete="off" placeholder="Description" [(ngModel)]="scope.description"></textarea>
   </mat-form-field>
-  
 </div>

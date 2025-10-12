@@ -11,16 +11,15 @@ import { PaginatedResponsePayload } from '../interfaces/paginated-response-paylo
 import { ResponseStatus } from './response-status.model';
 import { ExportRequestParams } from './export-request-params.model';
 
-type EntityConstructor<T> = new (s?: Partial<T>) => T;;
+type EntityConstructor<T> = new (s?: Partial<T>) => T;
 
 export abstract class StorageService<T extends Entity> {
-
   constructor(
     public readonly url: string,
     protected readonly http: HttpClient,
     protected readonly jwtService: JwtService,
     public readonly createNew: EntityConstructor<T>,
-  ) { }
+  ) {}
 
   public getRecent(): Promise<T[]> {
     return this.getAll();
@@ -34,30 +33,29 @@ export abstract class StorageService<T extends Entity> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.getAuthorizationToken(),
+        Authorization: this.getAuthorizationToken(),
       }),
     };
 
-    return this.http.post<T>(this.getUrl(), newItem.serialize(), httpOptions)
-      .pipe(
-        map(result => new AddResultPayload({
-          status: ResponseStatus.Ok,
-          payload: this.deserialize(result),
-        })),
-      );
+    return this.http.post<T>(this.getUrl(), newItem.serialize(), httpOptions).pipe(
+      map(
+        (result) =>
+          new AddResultPayload({
+            status: ResponseStatus.Ok,
+            payload: this.deserialize(result),
+          }),
+      ),
+    );
   }
 
   public getById(id: string): Observable<T> {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Authorization': this.getAuthorizationToken(),
+        Authorization: this.getAuthorizationToken(),
       }),
     };
 
-    return this.http.get<any>(this.getUrl() + '/' + id, httpOptions)
-      .pipe(
-        map(result => this.deserialize(result))
-      );
+    return this.http.get<any>(this.getUrl() + '/' + id, httpOptions).pipe(map((result) => this.deserialize(result)));
   }
 
   public async getAll(): Promise<T[]> {
@@ -71,8 +69,8 @@ export abstract class StorageService<T extends Entity> {
   public async getItems(request: RequestParams): Promise<PaginatedResponsePayload<T>> {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Authorization': this.getAuthorizationToken(),
-      })
+        Authorization: this.getAuthorizationToken(),
+      }),
     };
 
     const url = this.getUrl() + '?' + request.getQueryString();
@@ -87,7 +85,7 @@ export abstract class StorageService<T extends Entity> {
   public exportItems(request: ExportRequestParams): Promise<Blob> {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Authorization': this.getAuthorizationToken(),
+        Authorization: this.getAuthorizationToken(),
         'Content-Type': 'application/octet-stream',
       }),
       responseType: 'blob',
@@ -102,15 +100,14 @@ export abstract class StorageService<T extends Entity> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.getAuthorizationToken(),
+        Authorization: this.getAuthorizationToken(),
       }),
     };
 
-    return this.http.put<T>(this.getUrl() + '/' + entity.id, entity.serialize(), httpOptions)
-      .pipe(
-        map(() => true),
-        catchError(() => of(false))
-      );
+    return this.http.put<T>(this.getUrl() + '/' + entity.id, entity.serialize(), httpOptions).pipe(
+      map(() => true),
+      catchError(() => of(false)),
+    );
   }
 
   public delete(id: string): Observable<boolean> {
@@ -118,8 +115,8 @@ export abstract class StorageService<T extends Entity> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.getAuthorizationToken(),
-      })
+        Authorization: this.getAuthorizationToken(),
+      }),
     };
 
     return this.http.delete<boolean>(url, httpOptions);
@@ -138,5 +135,4 @@ export abstract class StorageService<T extends Entity> {
   protected getUrl(): string {
     return environment.omServiceEndpoint + this.url;
   }
-
 }

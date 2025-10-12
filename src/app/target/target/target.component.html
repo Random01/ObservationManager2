@@ -1,58 +1,32 @@
 <div class="om-target-component">
-
   <!-- Target Type -->
-  <om-target-type-selector
-    [(targetType)]="target.type">
-  </om-target-type-selector>
+  <om-target-type-selector [(targetType)]="target.type"> </om-target-type-selector>
 
   <!-- Target name -->
   <mat-form-field>
     <mat-label>Name</mat-label>
-    <input
-      matInput
-      type="text"
-      autocomplete="off"
-      [(ngModel)]="target.name"
-      placeholder="Name"/>
+    <input matInput type="text" autocomplete="off" [(ngModel)]="target.name" placeholder="Name" />
   </mat-form-field>
 
   <!-- Target Description -->
   <mat-form-field>
     <mat-label>Description</mat-label>
-    <textarea
-      matInput
-      matTextareaAutosize
-      placeholder="Description"
-      matAutosizeMinRows="5"
-      [(ngModel)]="target.description">
-    </textarea>
+    <textarea matInput matTextareaAutosize placeholder="Description" matAutosizeMinRows="5" [(ngModel)]="target.description"> </textarea>
   </mat-form-field>
 
   <div class="line">
     <div class="item">
-      <om-right-ascension-selector
-        [(ra)]="target.position.ra">
-      </om-right-ascension-selector>
+      <om-right-ascension-selector [(ra)]="target.position.ra"> </om-right-ascension-selector>
     </div>
 
     <div class="item">
-      <om-declination-selector
-        [(dec)]="target.position.dec">
-      </om-declination-selector>
+      <om-declination-selector [(dec)]="target.position.dec"> </om-declination-selector>
     </div>
   </div>
 
   <!-- Constellation -->
-  <om-constellation-selector
-    [(constellation)]="target.constellation">
-  </om-constellation-selector>
+  <om-constellation-selector [(constellation)]="target.constellation"> </om-constellation-selector>
 
   <!-- Alias Names -->
-  <om-aliases-editor
-    [aliases]="target.alliases"
-    (aliasAdded)="onAliasAdded($event)"
-    (aliasRemoved)="onAliasRemoved($event)"
-  >
-  </om-aliases-editor>
-    
+  <om-aliases-editor [aliases]="target.alliases" (aliasAdded)="onAliasAdded($event)" (aliasRemoved)="onAliasRemoved($event)"> </om-aliases-editor>
 </div>

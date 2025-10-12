@@ -6,13 +6,7 @@ import { ScopeStore } from './scope.store';
 import { Scope } from './scope.interface';
 
 export class ScopeRouter extends BaseEntityRouter<Scope, ScopeStore> {
-
-  constructor(
-    router: core.Router,
-    store = new ScopeStore(),
-    exporter = new ScopeExporterFactory(),
-  ) {
+  constructor(router: core.Router, store = new ScopeStore(), exporter = new ScopeExporterFactory()) {
     super(router, store, exporter);
   }
-
 }

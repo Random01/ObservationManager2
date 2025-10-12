@@ -15,33 +15,34 @@ import { BaseEffects } from '../common/base.effects';
 
 @Injectable()
 export class AuthEffects extends BaseEffects {
-
   public readonly login$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthApiActions.login),
-      exhaustMap(action =>
+      exhaustMap((action) =>
         this.authService.logIn(action.credentials).pipe(
-          map(user => AuthApiActions.loginSuccess({ user })),
-          catchError(error => of(AuthApiActions.loginFailure({ error }))),
-        )
-      )
-    )
+          map((user) => AuthApiActions.loginSuccess({ user })),
+          catchError((error) => of(AuthApiActions.loginFailure({ error }))),
+        ),
+      ),
+    ),
   );
 
-  public readonly loginSuccess$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(AuthApiActions.loginSuccess),
-      tap(() => this.router.navigate(['/'])),
-    ),
-    { dispatch: false }
+  public readonly loginSuccess$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthApiActions.loginSuccess),
+        tap(() => this.router.navigate(['/'])),
+      ),
+    { dispatch: false },
   );
 
-  public readonly loginFailure$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(AuthApiActions.loginFailure),
-      tap(({ error }) => this.handleError(error, 'Unable to login. Service Unavailable.')),
-    ),
-    { dispatch: false }
+  public readonly loginFailure$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthApiActions.loginFailure),
+        tap(({ error }) => this.handleError(error, 'Unable to login. Service Unavailable.')),
+      ),
+    { dispatch: false },
   );
 
   public readonly populate$ = createEffect(() =>
@@ -49,11 +50,11 @@ export class AuthEffects extends BaseEffects {
       ofType(AuthApiActions.populate),
       exhaustMap(() =>
         this.authService.populate().pipe(
-          map(user => AuthApiActions.populateSuccess({ user })),
-          catchError(error => of(AuthApiActions.populateFailure({ error })))
-        )
-      )
-    )
+          map((user) => AuthApiActions.populateSuccess({ user })),
+          catchError((error) => of(AuthApiActions.populateFailure({ error }))),
+        ),
+      ),
+    ),
   );
 
   public readonly logout$ = createEffect(() =>
@@ -62,18 +63,19 @@ export class AuthEffects extends BaseEffects {
       exhaustMap(() =>
         this.authService.logOut().pipe(
           map(() => AuthApiActions.logoutSuccess()),
-          catchError(error => of(AuthApiActions.logoutFailure({ error }))),
-        )
+          catchError((error) => of(AuthApiActions.logoutFailure({ error }))),
+        ),
       ),
-    )
+    ),
   );
 
-  public readonly logoutSuccess$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(AuthApiActions.logoutSuccess),
-      tap(() => this.router.navigate(['/'])),
-    ),
-    { dispatch: false }
+  public readonly logoutSuccess$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthApiActions.logoutSuccess),
+        tap(() => this.router.navigate(['/'])),
+      ),
+    { dispatch: false },
   );
 
   constructor(
@@ -85,5 +87,4 @@ export class AuthEffects extends BaseEffects {
   ) {
     super(messageService, loggingService);
   }
-
 }

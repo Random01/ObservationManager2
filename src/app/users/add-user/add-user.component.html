@@ -1,7 +1,4 @@
-<div
-  *ngIf="{ item: item$ | async } as data"
-  class="om-add-user"
->
+<div *ngIf="{ item: item$ | async } as data" class="om-add-user">
   <div>
     <h2 class="mat-h2">Add New User</h2>
   </div>
@@ -11,13 +8,7 @@
   }
 
   <div>
-    <button 
-      mat-button
-      color="primary"
-      [disabled]="!isValid()"
-      (click)="addItem()">Add</button>
-    <button
-      mat-button
-      (click)="goBack()">Back</button>
+    <button mat-button color="primary" [disabled]="!isValid()" (click)="addItem()">Add</button>
+    <button mat-button (click)="goBack()">Back</button>
   </div>
 </div>

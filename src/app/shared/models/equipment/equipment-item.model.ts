@@ -1,7 +1,6 @@
 ﻿import { Entity } from '../entity.model';
 
 export class EquipmentItem extends Entity {
-
   public model: string;
 
   public vendor: string;

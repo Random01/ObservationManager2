@@ -10,23 +10,13 @@ import { AddEntityDialogComponent } from '../../shared/components/add-entity-dia
 import { LensComponent } from '../lens';
 
 @Component({
-    selector: 'om-add-lens-dialog',
-    templateUrl: 'add-lens-dialog.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-    MatDialogModule,
-    MatButtonModule,
-    AsyncPipe,
-    LensComponent
-]
+  selector: 'om-add-lens-dialog',
+  templateUrl: 'add-lens-dialog.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatDialogModule, MatButtonModule, AsyncPipe, LensComponent],
 })
 export class AddLensDialogComponent extends AddEntityDialogComponent<Lens, LensService> {
-
-  constructor(
-    storageService: LensService,
-    dialogRef: MatDialogRef<AddLensDialogComponent, Lens>,
-  ) {
+  constructor(storageService: LensService, dialogRef: MatDialogRef<AddLensDialogComponent, Lens>) {
     super(storageService, dialogRef);
   }
-
 }

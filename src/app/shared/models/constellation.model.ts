@@ -1,14 +1,13 @@
 import { Entity } from './entity.model';
 
 export class Constellation extends Entity {
-
   public code: string;
   public name: string;
 
   public override serialize(): Record<string, any> {
     return Object.assign(super.serialize(), {
       code: this.code,
-      name: this.name
+      name: this.name,
     });
   }
 
@@ -18,5 +17,4 @@ export class Constellation extends Entity {
     this.code = state.code;
     this.name = state.name;
   }
-
 }

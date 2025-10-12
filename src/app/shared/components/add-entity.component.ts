@@ -7,11 +7,10 @@ import { StorageService } from '../services/storage.service';
 import { BaseEntityComponent } from './base-entity.component';
 
 @Component({
-    template: '',
-    standalone: false
+  template: '',
+  standalone: false,
 })
 export abstract class AddEntityComponent<T extends Entity> extends BaseEntityComponent<T> implements OnInit {
-
   constructor(
     protected readonly storageService: StorageService<T>,
     protected readonly cdRef?: ChangeDetectorRef,
@@ -80,5 +79,4 @@ export abstract class AddEntityComponent<T extends Entity> extends BaseEntityCom
   protected showSuccessMessage() {
     this.messageService.info(this.getSuccessMessage());
   }
-
 }

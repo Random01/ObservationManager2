@@ -17,47 +17,22 @@ import { EntityListComponent } from '../../shared/components/entity-list.compone
 import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
 import ObservationSearchParameters from '../observation-search/observation-search-parameters.model';
 import { RequestParams } from '../../shared/services/request-params.model';
-import { ObservationSearchComponent } from "../observation-search/observation-search.component";
+import { ObservationSearchComponent } from '../observation-search/observation-search.component';
 
 @Component({
-    selector: 'om-observations',
-    templateUrl: 'observations.component.html',
-    styleUrl: 'observations.component.less',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-    MatExpansionModule,
-    MatPaginatorModule,
-    MatTableModule,
-    MatButtonModule,
-    MatIconModule,
-    MatTooltipModule,
-    AsyncPipe,
-    RouterLink,
-    ObservationSearchComponent
-]
+  selector: 'om-observations',
+  templateUrl: 'observations.component.html',
+  styleUrl: 'observations.component.less',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatExpansionModule, MatPaginatorModule, MatTableModule, MatButtonModule, MatIconModule, MatTooltipModule, AsyncPipe, RouterLink, ObservationSearchComponent],
 })
 export class ObservationsComponent extends EntityListComponent<Observation> {
-
-  private readonly searchParametersSubject = new BehaviorSubject<ObservationSearchParameters>(
-    new ObservationSearchParameters()
-  );
+  private readonly searchParametersSubject = new BehaviorSubject<ObservationSearchParameters>(new ObservationSearchParameters());
   public readonly searchParameters$ = this.searchParametersSubject.asObservable();
 
-  public readonly displayedColumns: string[] = [
-    'targetName',
-    'scopeModel',
-    'eyepieceModel',
-    'filterModel',
-    'result',
-    'actions',
-  ];
+  public readonly displayedColumns: string[] = ['targetName', 'scopeModel', 'eyepieceModel', 'filterModel', 'result', 'actions'];
 
-  constructor(
-    observationService: ObservationService,
-    deleteEntityDialogService: DeleteEntityDialogService,
-    route: ActivatedRoute,
-    router: Router,
-  ) {
+  constructor(observationService: ObservationService, deleteEntityDialogService: DeleteEntityDialogService, route: ActivatedRoute, router: Router) {
     super(observationService, deleteEntityDialogService, route, router);
   }
 
@@ -76,5 +51,4 @@ export class ObservationsComponent extends EntityListComponent<Observation> {
       ...params,
     });
   }
-
 }

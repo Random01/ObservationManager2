@@ -8,7 +8,6 @@ import { Filter } from './filter.interface';
  * Exports Filters to CSV file.
  */
 export class FilterCsvExporter extends BaseCsvExporter<Filter> {
-
   public export(res: Response, items: Filter[]) {
     res.set('Content-Type', 'text/plain');
     let content = 'Model;Vendor;Filter Type\r\n';
@@ -17,5 +16,4 @@ export class FilterCsvExporter extends BaseCsvExporter<Filter> {
     });
     res.send(Buffer.from(content));
   }
-
 }

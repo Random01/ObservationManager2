@@ -8,10 +8,7 @@ import { TargetTypeService } from '../target-type.service';
   standalone: true,
 })
 export class TargetTypeFormatterPipe implements PipeTransform {
-
-  constructor(
-    public readonly targetTypeService: TargetTypeService,
-  ) { }
+  constructor(public readonly targetTypeService: TargetTypeService) {}
 
   public transform(targetType?: TargetType): string {
     if (targetType == null) {
@@ -20,5 +17,4 @@ export class TargetTypeFormatterPipe implements PipeTransform {
 
     return this.targetTypeService.getName(targetType);
   }
-
 }

@@ -4,7 +4,6 @@ import { Constellation } from './constellation.model';
 import { EquatorialCoordinates } from './equatorial-coordinates.model';
 
 export class Target extends Entity {
-
   /**
    * Most common name.
    */
@@ -42,12 +41,7 @@ export class Target extends Entity {
   public override deserialize(state: any): void {
     super.deserialize(state);
 
-    this.copy(state, [
-      'name',
-      'type',
-      'alliases',
-      'description',
-    ]);
+    this.copy(state, ['name', 'type', 'alliases', 'description']);
 
     this.constellation.deserialize(state.constellation || {});
     this.position.deserialize(state.position || {});
@@ -56,5 +50,4 @@ export class Target extends Entity {
   public override isValid(): boolean {
     return this.name != null && this.name.trim().length > 0;
   }
-
 }

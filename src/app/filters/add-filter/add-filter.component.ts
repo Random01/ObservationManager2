@@ -9,21 +9,13 @@ import { FilterService } from '../shared/filter.service';
 import { FilterComponent } from '../filter/filter.component';
 
 @Component({
-    selector: 'om-add-filter',
-    templateUrl: 'add-filter.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-    MatButtonModule,
-    AsyncPipe,
-    FilterComponent
-]
+  selector: 'om-add-filter',
+  templateUrl: 'add-filter.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatButtonModule, AsyncPipe, FilterComponent],
 })
 export class AddFilterComponent extends AddEntityComponent<Filter> {
-
-  constructor(
-    service: FilterService,
-  ) {
+  constructor(service: FilterService) {
     super(service);
   }
-
 }

@@ -7,19 +7,13 @@ import { Dec } from '../../shared/models/dec.model';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
-    selector: 'om-declination-selector',
-    templateUrl: 'declination-selector.component.html',
-    styleUrl: 'declination-selector.component.less',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        MatFormFieldModule,
-        MatInputModule,
-        FormsModule,
-    ]
+  selector: 'om-declination-selector',
+  templateUrl: 'declination-selector.component.html',
+  styleUrl: 'declination-selector.component.less',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatFormFieldModule, MatInputModule, FormsModule],
 })
 export class DeclinationSelectorComponent {
-
   @Input() public dec?: Dec;
   @Output() public readonly decChange = new EventEmitter<Dec>();
-
 }

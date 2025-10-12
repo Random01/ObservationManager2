@@ -1,8 +1,7 @@
 export class Vendor {
+  name: string;
 
-    name: string;
-
-    constructor(params?: Partial<Vendor>) {
-        this.name = params.name;
-    }
+  constructor(params?: Partial<Vendor>) {
+    this.name = params.name;
+  }
 }

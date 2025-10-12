@@ -1,44 +1,23 @@
 <div class="om-date-time-input">
   <!-- Date -->
   <mat-form-field>
-    <input
-      matInput
-      autocomplete="off"
-      [matDatepicker]="datePicker"
-      [placeholder]="datePlaceholder"
-      [(ngModel)]="dateTime"
-      (ngModelChange)="onDateChanged()" />
+    <input matInput autocomplete="off" [matDatepicker]="datePicker" [placeholder]="datePlaceholder" [(ngModel)]="dateTime" (ngModelChange)="onDateChanged()" />
 
-    <mat-datepicker-toggle
-      matSuffix
-      [for]="datePicker">
-    </mat-datepicker-toggle>
+    <mat-datepicker-toggle matSuffix [for]="datePicker"> </mat-datepicker-toggle>
 
-    <mat-datepicker
-        #datePicker>
-    </mat-datepicker>
+    <mat-datepicker #datePicker> </mat-datepicker>
 
-    <mat-hint
-        align="start">
-        <strong>{{dateHint}}</strong>
+    <mat-hint align="start">
+      <strong>{{ dateHint }}</strong>
     </mat-hint>
-
   </mat-form-field>
 
   <!-- Time -->
   <mat-form-field>
-    <input
-      matInput
-      autocomplete="off"
-      type="time"
-      [(ngModel)]="time"
-      (ngModelChange)="onTimeChanged()"
-      [placeholder]="timePlaceholder"/>
+    <input matInput autocomplete="off" type="time" [(ngModel)]="time" (ngModelChange)="onTimeChanged()" [placeholder]="timePlaceholder" />
 
-    <mat-hint
-      align="start">
-      <strong>{{timeHint}}</strong>
+    <mat-hint align="start">
+      <strong>{{ timeHint }}</strong>
     </mat-hint>
-
   </mat-form-field>
 </div>

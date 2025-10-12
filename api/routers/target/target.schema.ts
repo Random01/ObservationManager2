@@ -25,30 +25,36 @@ export const TargetSchema = new Schema({
  */
 TargetSchema.statics.findByName = function (name: string): Promise<any> {
   return new Promise((success, fail) => {
-    this.find({
-      name: new RegExp(name, 'i'),
-    }, (err: any, targets: any) => {
-      if (err) {
-        fail(err);
-      } else {
-        success(targets);
-      }
-    });
+    this.find(
+      {
+        name: new RegExp(name, 'i'),
+      },
+      (err: any, targets: any) => {
+        if (err) {
+          fail(err);
+        } else {
+          success(targets);
+        }
+      },
+    );
   });
 };
 
 TargetSchema.statics.findByNames = function (names: string[]) {
   return new Promise((success, fail) => {
-    this.find({
-      name: {
-        '$in': names.map(name => name),
+    this.find(
+      {
+        name: {
+          $in: names.map((name) => name),
+        },
       },
-    }, (err: any, targets: unknown) => {
-      if (err) {
-        fail(err);
-      } else {
-        success(targets);
-      }
-    });
+      (err: any, targets: unknown) => {
+        if (err) {
+          fail(err);
+        } else {
+          success(targets);
+        }
+      },
+    );
   });
 };

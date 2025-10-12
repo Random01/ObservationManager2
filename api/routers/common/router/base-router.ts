@@ -2,7 +2,6 @@ import { Response } from 'express';
 import * as core from 'express-serve-static-core';
 
 export abstract class BaseRouter {
-
   constructor(public readonly router: core.Router) {
     if (!router) {
       throw new Error('router should be provided.');
@@ -16,13 +15,14 @@ export abstract class BaseRouter {
 
     res.status(500).send({
       success: false,
-      errors: [{
-        message: error.message,
-        stack: error.stack,
-      }],
+      errors: [
+        {
+          message: error.message,
+          stack: error.stack,
+        },
+      ],
     });
   }
 
   protected abstract setUp(): void;
-
 }

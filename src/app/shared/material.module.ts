@@ -19,4 +19,4 @@ export const matDialogConfig: MatDialogConfig = {
     { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: matDialogConfig },
   ],
 })
-export class MaterialModule { }
+export class MaterialModule {}

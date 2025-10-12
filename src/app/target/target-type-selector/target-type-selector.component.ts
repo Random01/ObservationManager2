@@ -8,30 +8,22 @@ import { TargetType } from '../../shared/models/target-type.model';
 import { TargetTypeService } from '../shared/target-type.service';
 
 @Component({
-    selector: 'om-target-type-selector',
-    templateUrl: 'target-type-selector.component.html',
-    styleUrl: 'target-type-selector.component.less',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-    MatFormFieldModule,
-    MatSelectModule,
-    AsyncPipe
-]
+  selector: 'om-target-type-selector',
+  templateUrl: 'target-type-selector.component.html',
+  styleUrl: 'target-type-selector.component.less',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatFormFieldModule, MatSelectModule, AsyncPipe],
 })
 export class TargetTypeSelectorComponent {
-
   @Input() public targetType?: TargetType;
 
   @Output() public readonly targetTypeChange = new EventEmitter<TargetType>();
 
   public readonly targetTypes$ = this.targetTypeService.getAllTargetTypes();
 
-  constructor(
-    private readonly targetTypeService: TargetTypeService,
-  ) { }
+  constructor(private readonly targetTypeService: TargetTypeService) {}
 
   public onChange(value: TargetType): void {
     this.targetTypeChange.emit(value);
   }
-
 }

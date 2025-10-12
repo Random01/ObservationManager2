@@ -6,13 +6,7 @@ import { SiteStore } from './site.store';
 import { Site } from './site.interface';
 
 export class SiteRouter extends BaseEntityRouter<Site, SiteStore> {
-
-  constructor(
-    router: core.Router,
-    store = new SiteStore(),
-    exporter = new SiteExporterFactory(),
-  ) {
+  constructor(router: core.Router, store = new SiteStore(), exporter = new SiteExporterFactory()) {
     super(router, store, exporter);
   }
-
 }

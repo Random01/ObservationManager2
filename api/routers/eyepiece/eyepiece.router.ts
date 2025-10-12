@@ -6,13 +6,7 @@ import { EyepieceStore } from './eyepiece.store';
 import { Eyepiece } from './eyepiece.interface';
 
 export class EyepieceRouter extends BaseEntityRouter<Eyepiece, EyepieceStore> {
-
-  constructor(
-    router: core.Router,
-    store = new EyepieceStore(),
-    exporter = new EyepieceExporterFactory(),
-  ) {
+  constructor(router: core.Router, store = new EyepieceStore(), exporter = new EyepieceExporterFactory()) {
     super(router, store, exporter);
   }
-
 }
