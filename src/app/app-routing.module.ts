@@ -8,22 +8,15 @@ import { AdminGuard, AuthGuard } from "./auth/shared";
 const routes: Routes = [
   {
     path: "login",
-    loadComponent: () =>
-      import("./auth/login/login.component").then((c) => c.LoginComponent),
+    loadComponent: () => import("./auth/login/login.component").then((c) => c.LoginComponent),
   },
   {
     path: "register",
-    loadComponent: () =>
-      import("./auth/register/register.component").then(
-        (c) => c.RegisterComponent
-      ),
+    loadComponent: () => import("./auth/register/register.component").then((c) => c.RegisterComponent),
   },
   {
     path: "equipment",
-    loadComponent: () =>
-      import("./equipment/equipment.component").then(
-        (c) => c.EquipmentComponent
-      ),
+    loadComponent: () => import("./equipment/equipment.component").then((c) => c.EquipmentComponent),
   },
   {
     path: "observing-programs",
@@ -32,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: "admin",
-    loadChildren: () => import("./admin/admin.module").then((m) => m.AdminModule),
+    loadChildren: () => import("./admin/admin.routing").then((m) => m.adminRoutes),
     canActivate: [AdminGuard],
   },
   {
@@ -72,7 +65,7 @@ const routes: Routes = [
   },
   {
     path: "users",
-    loadChildren: () => import("./users/users.module").then((m) => m.UsersModule),
+    loadChildren: () => import("./users/users.routing").then((m) => m.usersRoutes),
     canActivate: [AuthGuard],
   },
   {
@@ -87,10 +80,7 @@ const routes: Routes = [
   },
   {
     path: "**",
-    loadComponent: () =>
-      import("./page-not-found/page-not-found.component").then(
-        (c) => c.PageNotFoundComponent
-      ),
+    loadComponent: () => import("./page-not-found/page-not-found.component").then((c) => c.PageNotFoundComponent),
   },
 ];
 
