@@ -19,11 +19,6 @@ const routes: Routes = [
     loadComponent: () => import("./equipment/equipment.component").then((c) => c.EquipmentComponent),
   },
   {
-    path: "observing-programs",
-    loadChildren: () => import("./observing-programs/observing-programs.routing").then(m => m.routes),
-    canActivate: [AdminGuard],
-  },
-  {
     path: "admin",
     loadChildren: () => import("./admin/admin.routing").then((m) => m.adminRoutes),
     canActivate: [AdminGuard],
@@ -71,6 +66,11 @@ const routes: Routes = [
   {
     path: "observations",
     loadChildren: () => import("./observations/observations.routing").then(r => r.routes),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "observing-programs",
+    loadChildren: () => import("./observing-programs/observing-programs.routing").then(m => m.routes),
     canActivate: [AuthGuard],
   },
   {
