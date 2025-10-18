@@ -1,4 +1,4 @@
-import { Request, Router } from 'express-serve-static-core';
+import type { Router } from 'express-serve-static-core';
 
 import { BaseEntityRouter, GetItemsRequestParameters } from '../common';
 
@@ -11,7 +11,8 @@ export class ObservationRouter extends BaseEntityRouter<Observation, Observation
     super(router, store, exporter);
   }
 
-  public parseRequestParams(req: Request): GetItemsRequestParameters {
+  // todo: any
+  public parseRequestParams(req: any): GetItemsRequestParameters {
     const session = this.toString(req.query.session);
     return {
       ...super.parseRequestParams(req),

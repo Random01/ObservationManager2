@@ -53,7 +53,7 @@ dataBase.on('error', console.error.bind(console, 'connection error:'));
 dataBase.once('open', () => {
   new RouterProvider(app);
 
-  app.use('/*', (_, res) => {
+  app.use('/{*splat}', (_, res) => {
     res.sendFile(__dirname + '/public/index.html');
   });
 

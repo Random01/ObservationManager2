@@ -21,7 +21,8 @@ export class TargetRouter extends BaseEntityRouter<Target, TargetStore> {
     return requestParams;
   }
 
-  public override getItemsHandler(req: Request, res: Response) {
+  // todo: any
+  public override getItemsHandler(req: any, res: Response) {
     const name = this.toString(req.query.name);
     const maxCount = this.toNumber(req.query.maxCount);
 

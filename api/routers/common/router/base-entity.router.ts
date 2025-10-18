@@ -94,7 +94,8 @@ export abstract class BaseEntityRouter<TEntity extends Entity, TStore extends Ba
       );
   }
 
-  public parseRequestParams(req: Request): GetItemsRequestParameters {
+  // todo: any
+  public parseRequestParams(req: any): GetItemsRequestParameters {
     return {
       sortDirection: this.toString(req.query.sortDirection),
       sortField: this.toString(req.query.sortField),

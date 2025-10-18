@@ -20,7 +20,8 @@ export class ObservingProgramRouter extends BaseEntityRouter<ObservingProgram, O
     this.router.get('/statistics/:id', auth.optional, this.getStatistics.bind(this));
   }
 
-  protected getStatistics(req: Request, res: Response): void {
+  // todo: any
+  protected getStatistics(req: any, res: Response): void {
     this.store
       .getStatistics({
         id: req.params.id,
