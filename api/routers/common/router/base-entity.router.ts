@@ -94,8 +94,7 @@ export abstract class BaseEntityRouter<TEntity extends Entity, TStore extends Ba
       );
   }
 
-  // todo: any
-  public parseRequestParams(req: any): GetItemsRequestParameters {
+  public parseRequestParams(req: Request): GetItemsRequestParameters {
     return {
       sortDirection: this.toString(req.query.sortDirection),
       sortField: this.toString(req.query.sortField),
@@ -134,11 +133,11 @@ export abstract class BaseEntityRouter<TEntity extends Entity, TStore extends Ba
     }
   }
 
-  protected override toString(queryParam: undefined | string | string[] | qs.ParsedQs | qs.ParsedQs[]): string | undefined {
+  protected override toString(queryParam: undefined | string | qs.ParsedQs | (string | qs.ParsedQs)[]): string | undefined {
     return typeof queryParam === 'string' ? queryParam : undefined;
   }
 
-  protected toNumber(queryParam: undefined | string | string[] | qs.ParsedQs | qs.ParsedQs[]): number | undefined {
+  protected toNumber(queryParam: undefined | string | qs.ParsedQs | (string | qs.ParsedQs)[]): number | undefined {
     return typeof queryParam === 'string' ? parseInt(queryParam, 10) : undefined;
   }
 }

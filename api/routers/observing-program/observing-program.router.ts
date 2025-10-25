@@ -20,12 +20,10 @@ export class ObservingProgramRouter extends BaseEntityRouter<ObservingProgram, O
     this.router.get('/statistics/:id', auth.optional, this.getStatistics.bind(this));
   }
 
-  // todo: any
-  protected getStatistics(req: any, res: Response): void {
+  protected getStatistics(req: Request, res: Response): void {
     this.store
       .getStatistics({
         id: req.params.id,
-        // userId: this.getUserId(req),
         size: this.toNumber(req.query.size),
         page: this.toNumber(req.query.page),
       })
@@ -39,7 +37,6 @@ export class ObservingProgramRouter extends BaseEntityRouter<ObservingProgram, O
     this.store
       .getOverallStatistics({
         id: req.params.id,
-        // userId: this.getUserId(req),
       })
       .then(
         (entity) => res.json(entity),
