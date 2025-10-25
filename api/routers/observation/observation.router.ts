@@ -1,4 +1,4 @@
-import { Request, Router } from 'express-serve-static-core';
+import type { Request, Router } from 'express-serve-static-core';
 
 import { BaseEntityRouter, GetItemsRequestParameters } from '../common';
 
