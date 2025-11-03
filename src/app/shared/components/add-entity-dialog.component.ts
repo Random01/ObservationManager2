@@ -1,30 +1,32 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { DestroyRef, inject } from '@angular/core';
 
 import { BehaviorSubject } from 'rxjs';
 
 import { Entity } from '../models/models';
 import { StorageService } from '../services/storage.service';
-import { DestroyableComponent } from './destroyable.component';
 
 @Component({
   template: '',
-  standalone: false,
 })
-export abstract class AddEntityDialogComponent<TEntity extends Entity, SType extends StorageService<TEntity>> extends DestroyableComponent implements OnInit {
+export abstract class AddEntityDialogComponent<TEntity extends Entity, SType extends StorageService<TEntity>> implements OnInit {
   protected readonly itemSubject = new BehaviorSubject<TEntity | null>(null);
   public readonly item$ = this.itemSubject.asObservable();
 
+  protected readonly destroyRef = inject(DestroyRef);
   constructor(
     @Inject('storageService') protected readonly storageService: SType,
     @Inject('dialogRef') protected readonly dialogRef: any,
-  ) {
-    super();
-  }
+  ) { }
 
   public addItem(): void {
     const item = this.itemSubject.getValue();
     if (item) {
-      this.handle(this.storageService.add(item).subscribe((result) => this.dialogRef.close(result.payload)));
+      this.storageService
+        .add(item)
+        .pipe(takeUntilDestroyed(this.destroyRef))
+        .subscribe((result) => this.dialogRef.close(result.payload));
     }
   }
 

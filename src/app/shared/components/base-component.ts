@@ -2,14 +2,13 @@ import { Component, inject } from '@angular/core';
 
 import { BehaviorSubject } from 'rxjs';
 
-import { DestroyableComponent } from './destroyable.component';
 import { MessageService } from '../services/message.service';
 
 @Component({
   template: '',
   standalone: false,
 })
-export class BaseComponent extends DestroyableComponent {
+export class BaseComponent {
   protected readonly isLoadingSubject = new BehaviorSubject(false);
   public readonly isLoading$ = this.isLoadingSubject.asObservable();
 

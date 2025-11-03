@@ -8,7 +8,6 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { Observable, map } from 'rxjs';
 
-import { DestroyableComponent } from '../../shared/components/destroyable.component';
 import { VendorService } from '../shared';
 
 @Component({
@@ -18,15 +17,13 @@ import { VendorService } from '../shared';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatFormFieldModule, MatInputModule, MatAutocompleteModule, AsyncPipe, FormsModule],
 })
-export class VendorSelectorComponent extends DestroyableComponent {
+export class VendorSelectorComponent {
   @Input() public vendor = '';
   @Output() public readonly vendorChange = new EventEmitter<string>();
 
   public readonly vendors$: Observable<string[]> = this.vendorService.getAllSuggestions().pipe(map((vendors) => vendors.items.map((vendor) => vendor.name)));
 
-  constructor(private readonly vendorService: VendorService) {
-    super();
-  }
+  constructor(private readonly vendorService: VendorService) {}
 
   public onVendorChange(model: string) {
     this.vendor = model;
