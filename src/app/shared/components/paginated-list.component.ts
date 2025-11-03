@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PageEvent } from '@angular/material/paginator';
 
 import { BehaviorSubject } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { DestroyRef, inject } from '@angular/core';
 
 import { BaseComponent } from './base-component';
 import { SortOrder } from '../models/sort-order.model';
@@ -31,6 +33,7 @@ export abstract class PaginatedListComponent<T> extends BaseComponent implements
   public sortField: string | null = null;
   public sortDirection: SortOrder | null = null;
 
+  protected readonly destroyRef = inject(DestroyRef);
   constructor(
     protected readonly route: ActivatedRoute,
     protected readonly router: Router,
@@ -55,14 +58,13 @@ export abstract class PaginatedListComponent<T> extends BaseComponent implements
   }
 
   public ngOnInit(): void {
-    this.handle(
-      this.route.queryParams.subscribe((params) => {
+    this.route.queryParams
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((params) => {
         this.currentPage = +params['page'] || 0;
         this.pageSize = +params['size'] || 10;
-
         this.loadItems();
-      }),
-    );
+      });
   }
 
   protected getRequestParams(params?: Partial<RequestParams>): RequestParams {

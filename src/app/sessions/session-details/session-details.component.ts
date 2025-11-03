@@ -5,6 +5,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 
 import { finalize, firstValueFrom } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { DestroyRef, inject } from '@angular/core';
 
 import { Session } from '../../shared/models/session.model';
 import { SessionService } from '../shared/session.service';
@@ -27,6 +29,7 @@ export class SessionDetailsComponent extends BaseComponent implements OnInit {
 
   public editMode = false;
 
+  protected readonly destroyRef = inject(DestroyRef);
   constructor(
     private readonly route: ActivatedRoute,
     private readonly sessionService: SessionService,
@@ -39,23 +42,19 @@ export class SessionDetailsComponent extends BaseComponent implements OnInit {
   public create(): void {
     this.startLoading();
 
-    this.handle(
-      this.sessionService
-        .add(this.session)
-        .pipe(finalize(() => this.endLoading()))
-        .subscribe(),
-    );
+    this.sessionService
+      .add(this.session)
+      .pipe(finalize(() => this.endLoading()), takeUntilDestroyed(this.destroyRef))
+      .subscribe();
   }
 
   public update(): void {
     this.startLoading();
 
-    this.handle(
-      this.sessionService
-        .update(this.session)
-        .pipe(finalize(() => this.endLoading()))
-        .subscribe(),
-    );
+    this.sessionService
+      .update(this.session)
+      .pipe(finalize(() => this.endLoading()), takeUntilDestroyed(this.destroyRef))
+      .subscribe();
   }
 
   public loadSession(): void {
@@ -64,14 +63,12 @@ export class SessionDetailsComponent extends BaseComponent implements OnInit {
     if (sessionId) {
       this.startLoading();
 
-      this.handle(
-        this.sessionService
-          .getById(sessionId)
-          .pipe(finalize(() => this.endLoading()))
-          .subscribe((session) => {
-            this.session = session;
-          }),
-      );
+      this.sessionService
+        .getById(sessionId)
+        .pipe(finalize(() => this.endLoading()), takeUntilDestroyed(this.destroyRef))
+        .subscribe((session) => {
+          this.session = session;
+        });
     } else {
       this.session = new Session();
     }
