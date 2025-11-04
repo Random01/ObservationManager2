@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { inject } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -29,13 +29,7 @@ export class ObservingProgramStatisticsComponent extends PaginatedListComponent<
   private readonly statisticsSubject = new BehaviorSubject<ObservingProgramStatistics>(null);
   public readonly statistics$ = this.statisticsSubject.asObservable();
 
-  constructor(
-    private readonly observingProgramService: ObservingProgramsService,
-    route: ActivatedRoute,
-    router: Router,
-  ) {
-    super(route, router);
-  }
+  private readonly observingProgramService = inject(ObservingProgramsService);
 
   public override async loadItems(): Promise<void> {
     const request = this.getRequestParams();

@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 
 import { BehaviorSubject } from 'rxjs';
@@ -13,7 +13,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { Target } from '../../shared/models/target.model';
 import { TargetService } from '../shared/target.service';
 import { EntityListComponent } from '../../shared/components/entity-list.component';
-import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
 import { TargetSearchParams } from '../target-search-params/target-search-params.model';
 import { RequestParams } from '../../shared/services/request-params.model';
 import { AuthenticationService } from '../../auth/shared';
@@ -33,14 +32,10 @@ export class TargetsComponent extends EntityListComponent<Target> {
 
   public readonly displayedColumns: string[] = ['name', 'type', 'constellation', 'alliases', 'actions'];
 
-  constructor(
-    service: TargetService,
-    deleteEntityDialogService: DeleteEntityDialogService,
-    route: ActivatedRoute,
-    router: Router,
-    private readonly authService: AuthenticationService,
-  ) {
-    super(service, deleteEntityDialogService, route, router);
+  private readonly authService = inject(AuthenticationService);
+
+  constructor(service: TargetService) {
+    super(service);
   }
 
   public onSearch(searchParams: TargetSearchParams) {

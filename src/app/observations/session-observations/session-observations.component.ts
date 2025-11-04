@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { AsyncPipe, DatePipe } from '@angular/common';
 
 import { map, switchMap } from 'rxjs';
@@ -14,7 +14,6 @@ import { Observation } from '../../shared/models/models';
 import { ObservationService } from '../shared/observation.service';
 import { SessionService } from '../../sessions/shared/session.service';
 import { EntityListComponent } from '../../shared/components/entity-list.component';
-import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
 import { ObservationSearchParams } from '../shared/observation-search-params.model';
 import { RequestParams } from '../../shared/services/request-params.model';
 import { ExportType } from '../../shared/models/export-type.model';
@@ -39,12 +38,9 @@ export class SessionObservationsComponent extends EntityListComponent<Observatio
 
   constructor(
     private readonly sessionService: SessionService,
-    route: ActivatedRoute,
-    router: Router,
     observationService: ObservationService,
-    deleteEntityDialogService: DeleteEntityDialogService,
   ) {
-    super(observationService, deleteEntityDialogService, route, router);
+    super(observationService);
   }
 
   public getSessionId(): string {
