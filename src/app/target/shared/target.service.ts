@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Target } from '../../shared/models/target.model';
 import { StorageService } from '../../shared/services/storage.service';
-import { JwtService } from '../../auth/shared/jwt.service';
 import { TargetType } from '../../shared/models/target-type.model';
 import { GalaxyTarget } from '../../shared/models/target-types/deep-sky/galaxy-target.model';
 import { GlobularClusterTarget } from '../../shared/models/target-types/deep-sky/globular-cluster-target.model';
@@ -19,8 +17,8 @@ interface SearchParams {
 
 @Injectable({ providedIn: 'root' })
 export class TargetService extends StorageService<Target> {
-  constructor(http: HttpClient, jwtService: JwtService) {
-    super('/targets', http, jwtService, Target);
+  constructor() {
+    super('/targets', Target);
   }
 
   public search({ name, maxCount }: SearchParams): Observable<Target[]> {

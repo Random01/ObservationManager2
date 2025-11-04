@@ -16,7 +16,6 @@ import { PaginatedResponsePayload } from '../interfaces/paginated-response-paylo
 
 @Component({
   template: '',
-  standalone: false,
 })
 export abstract class PaginatedListComponent<T> extends BaseComponent implements OnInit {
   protected readonly itemsSubject$ = new BehaviorSubject<PaginatedResponsePayload<T>>({
@@ -34,12 +33,8 @@ export abstract class PaginatedListComponent<T> extends BaseComponent implements
   public sortDirection: SortOrder | null = null;
 
   protected readonly destroyRef = inject(DestroyRef);
-  constructor(
-    protected readonly route: ActivatedRoute,
-    protected readonly router: Router,
-  ) {
-    super();
-  }
+  protected readonly route = inject(ActivatedRoute);
+  protected readonly router = inject(Router);
 
   public abstract loadItems(): Promise<void>;
 

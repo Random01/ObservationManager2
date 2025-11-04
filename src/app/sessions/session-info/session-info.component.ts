@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 
@@ -16,12 +16,11 @@ import { Session } from '../../shared/models/models';
   imports: [MatFormFieldModule, MatInputModule, MatButtonModule, DatePipe],
 })
 export class SessionInfoComponent {
-  @Input({ required: true }) session?: Session;
+  readonly session = input.required<Session>();
 
-  constructor(private readonly router: Router) {}
+  private readonly router = inject(Router);
 
   public goToSession(): void {
-    // todo:
-    this.router.navigate([`/sessions/${this.session.id}`]);
+    this.router.navigate(['sessions', this.session().id]);
   }
 }

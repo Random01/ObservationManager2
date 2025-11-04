@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { AsyncPipe, DecimalPipe } from '@angular/common';
 
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -11,7 +11,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { Site } from '../../shared/models/site.model';
 import { SiteService } from '../shared/site.service';
 import { EntityListComponent } from '../../shared/components/entity-list.component';
-import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
 import { DegreesFormatterPipe } from '../../shared/models/pipes';
 
 @Component({
@@ -24,8 +23,8 @@ import { DegreesFormatterPipe } from '../../shared/models/pipes';
 export class SitesComponent extends EntityListComponent<Site> {
   public readonly displayedColumns: string[] = ['name', 'timezone', 'latitude', 'longitude', 'elevation', 'actions'];
 
-  constructor(siteService: SiteService, deleteEntityDialogService: DeleteEntityDialogService, route: ActivatedRoute, router: Router) {
-    super(siteService, deleteEntityDialogService, route, router);
+  constructor(siteService: SiteService) {
+    super(siteService);
   }
 
   protected override getExportFileName(): string {

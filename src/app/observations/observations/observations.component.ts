@@ -1,5 +1,5 @@
 ﻿import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 
 import { BehaviorSubject } from 'rxjs';
@@ -14,7 +14,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { Observation } from '../../shared/models/models';
 import { ObservationService } from '../shared/observation.service';
 import { EntityListComponent } from '../../shared/components/entity-list.component';
-import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
 import ObservationSearchParameters from '../observation-search/observation-search-parameters.model';
 import { RequestParams } from '../../shared/services/request-params.model';
 import { ObservationSearchComponent } from '../observation-search/observation-search.component';
@@ -32,8 +31,8 @@ export class ObservationsComponent extends EntityListComponent<Observation> {
 
   public readonly displayedColumns: string[] = ['targetName', 'scopeModel', 'eyepieceModel', 'filterModel', 'result', 'actions'];
 
-  constructor(observationService: ObservationService, deleteEntityDialogService: DeleteEntityDialogService, route: ActivatedRoute, router: Router) {
-    super(observationService, deleteEntityDialogService, route, router);
+  constructor(observationService: ObservationService) {
+    super(observationService);
   }
 
   public search(): void {

@@ -1,5 +1,4 @@
-import { OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { inject, OnInit } from '@angular/core';
 
 import { firstValueFrom } from 'rxjs';
 
@@ -13,13 +12,13 @@ import { ExportRequestParams } from '../services';
 import { ExportType } from '../models/export-type.model';
 
 export abstract class EntityListComponent<T extends Entity> extends PaginatedListComponent<T> implements OnInit {
+  
+  protected readonly deleteEntityDialogService = inject(DeleteEntityDialogService);
+
   constructor(
     protected readonly storageService: StorageService<T>,
-    protected readonly deleteEntityDialogService: DeleteEntityDialogService,
-    route: ActivatedRoute,
-    router: Router,
   ) {
-    super(route, router);
+    super();
   }
 
   public override async loadItems(): Promise<void> {

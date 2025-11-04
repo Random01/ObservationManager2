@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { AsyncPipe, DecimalPipe } from '@angular/common';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -11,7 +11,6 @@ import { MatTableModule } from '@angular/material/table';
 import { Lens } from '../../shared/models/equipment/equipment';
 import { LensService } from '../shared/lens.service';
 import { EntityListComponent } from '../../shared/components/entity-list.component';
-import { DeleteEntityDialogService } from '../../shared/components/delete-entity-dialog/delete-entity-dialog.service';
 
 @Component({
   selector: 'om-lenses',
@@ -23,8 +22,8 @@ import { DeleteEntityDialogService } from '../../shared/components/delete-entity
 export class LensesComponent extends EntityListComponent<Lens> {
   public readonly displayedColumns: string[] = ['model', 'vendor', 'factor', 'actions'];
 
-  constructor(lensService: LensService, deleteEntityDialogService: DeleteEntityDialogService, route: ActivatedRoute, router: Router) {
-    super(lensService, deleteEntityDialogService, route, router);
+  constructor(lensService: LensService) {
+    super(lensService);
   }
 
   protected override getExportFileName(): string {
