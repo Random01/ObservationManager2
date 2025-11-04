@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 
 import { StorageService } from '../../shared/services/storage.service';
 import { ObservingProgram } from '../../shared/models/observing-program.model';
-import { JwtService } from '../../auth/shared/jwt.service';
 import { PaginatedResponsePayload } from '../../shared/interfaces/paginated-response-payload.interface';
 import { TargetStatistics } from './target-statistics.model';
 import { ObservingProgramStatisticsRequestParams } from './observing-program-statistics-request-params.model';
@@ -12,8 +11,8 @@ import ObservingProgramStatistics from './observing-program-statistics.model';
 
 @Injectable({ providedIn: 'root' })
 export class ObservingProgramsService extends StorageService<ObservingProgram> {
-  constructor(http: HttpClient, jwtService: JwtService) {
-    super('/observing-programs', http, jwtService, ObservingProgram);
+  constructor() {
+    super('/observing-programs', ObservingProgram);
   }
 
   public getStatistics(request: ObservingProgramStatisticsRequestParams): Promise<PaginatedResponsePayload<TargetStatistics>> {

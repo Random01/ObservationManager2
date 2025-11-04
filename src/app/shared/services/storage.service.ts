@@ -1,4 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { inject } from '@angular/core';
 
 import { Observable, catchError, firstValueFrom, map, of } from 'rxjs';
 
@@ -14,10 +15,10 @@ import { ExportRequestParams } from './export-request-params.model';
 type EntityConstructor<T> = new (s?: Partial<T>) => T;
 
 export abstract class StorageService<T extends Entity> {
+  protected readonly http = inject(HttpClient);
+  protected readonly jwtService = inject(JwtService);
   constructor(
     public readonly url: string,
-    protected readonly http: HttpClient,
-    protected readonly jwtService: JwtService,
     public readonly createNew: EntityConstructor<T>,
   ) {}
 
