@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy, inject } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -21,9 +21,7 @@ export class VendorSelectorComponent {
   @Input() public vendor = '';
   @Output() public readonly vendorChange = new EventEmitter<string>();
 
-  public readonly vendors$: Observable<string[]> = this.vendorService.getAllSuggestions().pipe(map((vendors) => vendors.items.map((vendor) => vendor.name)));
-
-  constructor(private readonly vendorService: VendorService) {}
+  public readonly vendors$: Observable<string[]> = inject(VendorService).getAllSuggestions().pipe(map((vendors) => vendors.items.map((vendor) => vendor.name)));
 
   public onVendorChange(model: string) {
     this.vendor = model;
