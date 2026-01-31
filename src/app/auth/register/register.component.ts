@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
@@ -15,6 +15,7 @@ import * as RegisterActions from '../../store/register/register.actions';
 import { User } from '../../shared/models/user.model';
 import { BaseComponent } from '../../shared/components/base-component';
 import { selectRegisterState } from '../../store/register';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'om-register',
@@ -23,8 +24,7 @@ import { selectRegisterState } from '../../store/register';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatFormFieldModule, MatInputModule, MatButtonModule, ReactiveFormsModule, AsyncPipe],
 })
-export class RegisterComponent extends BaseComponent {
-  public override readonly isLoading$ = this.store.select(selectRegisterState).pipe(map((state) => state.isWorking));
+export class RegisterComponent extends BaseComponent implements OnInit {
 
   public readonly profileForm = new FormGroup({
     userName: new FormControl('', Validators.required),
@@ -32,12 +32,9 @@ export class RegisterComponent extends BaseComponent {
     password: new FormControl('', Validators.required),
   });
 
-  constructor(
-    private readonly store: Store,
-    private readonly router: Router,
-  ) {
-    super();
-  }
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly router = inject(Router);
+  private readonly store = inject(Store);
 
   public onSubmit() {
     if (this.profileForm.valid) {
@@ -49,5 +46,11 @@ export class RegisterComponent extends BaseComponent {
 
   public goBack() {
     this.router.navigate(['/login']);
+  }
+
+  public ngOnInit(): void {
+    this.store.select(selectRegisterState).pipe(map((state) => state.isWorking), takeUntilDestroyed(this.destroyRef)).subscribe(isWorking => {
+      this.isLoadingSubject.next(isWorking);
+    });
   }
 }
