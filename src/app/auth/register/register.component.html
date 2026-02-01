@@ -1,4 +1,3 @@
-@let isLoading = isLoading$ | async;
 <form class="om-register-component" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
   <div>
     <h2 class="mat-h2">Register</h2>
@@ -15,7 +14,7 @@
     </mat-form-field>
   </div>
   <div class="form-buttons">
-    <button mat-button type="submit" color="primary" [disabled]="!profileForm.valid || isLoading">Register</button>
+    <button mat-button type="submit" color="primary" [disabled]="!profileForm.valid || isLoading()">Register</button>
     <button mat-button (click)="goBack()">Back</button>
   </div>
 </form>
