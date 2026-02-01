@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, inject, OnInit, DestroyRef } from '@angular/core';
 import { Validators, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { AsyncPipe } from '@angular/common';
+
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -20,7 +20,7 @@ import { BaseComponent } from '../../shared/components';
   templateUrl: 'login.component.html',
   styleUrl: 'login.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatButtonModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, AsyncPipe],
+  imports: [MatButtonModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule],
 })
 export class LoginComponent extends BaseComponent implements OnInit {
 
@@ -41,7 +41,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
 
   public ngOnInit(): void {
     this.store.select(selectAuthState).pipe(map((state) => state.isWorking), takeUntilDestroyed(this.destroyRef)).subscribe(isWorking => {
-      this.isLoadingSubject.next(isWorking);
+      this.isLoading.set(isWorking);
     });
   }
 }

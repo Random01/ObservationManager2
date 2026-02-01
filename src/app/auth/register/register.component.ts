@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AsyncPipe } from '@angular/common';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -15,14 +15,13 @@ import * as RegisterActions from '../../store/register/register.actions';
 import { User } from '../../shared/models/user.model';
 import { BaseComponent } from '../../shared/components/base-component';
 import { selectRegisterState } from '../../store/register';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'om-register',
   templateUrl: 'register.component.html',
   styleUrl: 'register.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatFormFieldModule, MatInputModule, MatButtonModule, ReactiveFormsModule, AsyncPipe],
+  imports: [MatFormFieldModule, MatInputModule, MatButtonModule, ReactiveFormsModule],
 })
 export class RegisterComponent extends BaseComponent implements OnInit {
 
@@ -50,7 +49,7 @@ export class RegisterComponent extends BaseComponent implements OnInit {
 
   public ngOnInit(): void {
     this.store.select(selectRegisterState).pipe(map((state) => state.isWorking), takeUntilDestroyed(this.destroyRef)).subscribe(isWorking => {
-      this.isLoadingSubject.next(isWorking);
+      this.isLoading.set(isWorking);
     });
   }
 }
