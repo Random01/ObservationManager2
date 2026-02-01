@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Actions, ofType, createEffect } from '@ngrx/effects';
@@ -6,15 +6,17 @@ import { Actions, ofType, createEffect } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, exhaustMap, map, tap } from 'rxjs/operators';
 
-import { MessageService } from 'app/shared/services/message.service';
-import { LoggingService } from 'app/shared/services/logging.service';
-
 import { AuthenticationService } from '../../auth/shared';
 import * as AuthApiActions from './auth.actions';
 import { BaseEffects } from '../common/base.effects';
 
 @Injectable()
 export class AuthEffects extends BaseEffects {
+  
+  private readonly actions$ = inject(Actions);
+  private readonly authService = inject(AuthenticationService);
+  private readonly router = inject(Router);
+  
   public readonly login$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthApiActions.login),
@@ -77,14 +79,4 @@ export class AuthEffects extends BaseEffects {
       ),
     { dispatch: false },
   );
-
-  constructor(
-    private readonly actions$: Actions,
-    private readonly authService: AuthenticationService,
-    private readonly router: Router,
-    messageService: MessageService,
-    loggingService: LoggingService,
-  ) {
-    super(messageService, loggingService);
-  }
 }
