@@ -4,7 +4,7 @@
     <input matInput type="text" placeholder="Target" aria-label="Number" [formControl]="searchControl" [matAutocomplete]="auto" (keyup)="search(searchControl.value)" />
 
     <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="onTargetSelected(searchControl.value)">
-      @for (target of targets$ | async; track target) {
+      @for (target of targets$ | async; track target.id) {
         <mat-option [value]="target">
           {{ target.name }}
         </mat-option>
