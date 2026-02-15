@@ -4,21 +4,21 @@
     <input matInput type="text" placeholder="Target" aria-label="Number" [formControl]="searchControl" [matAutocomplete]="auto" (keyup)="search(searchControl.value)" />
 
     <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="onTargetSelected(searchControl.value)">
-      @for (target of targets$ | async; track target.id) {
-        <mat-option [value]="target">
-          {{ target.name }}
+      @for (currentTarget of targets$ | async; track currentTarget.id) {
+        <mat-option [value]="currentTarget">
+          {{ currentTarget.name }}
         </mat-option>
       }
     </mat-autocomplete>
 
-    @if (target?.id) {
+    @if (target()?.id) {
       <button matSuffix mat-icon-button aria-label="Clear" matTooltip="Clear" (click)="clearSelection()">
         <mat-icon>close</mat-icon>
       </button>
     }
   </mat-form-field>
 
-  @if (canAdd) {
+  @if (canAdd()) {
     <button mat-icon-button (click)="openDialog()">
       <mat-icon>add</mat-icon>
     </button>
