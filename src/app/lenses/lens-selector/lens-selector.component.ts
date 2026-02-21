@@ -1,15 +1,15 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 import { Lens } from '../../shared/models/equipment/equipment';
 import { LensService } from '../shared/lens.service';
 import { EntitySelectorComponent } from '../../shared/components/entity-selector/entity-selector.component';
 import { AddLensDialogService } from '../add-lens-dialog';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'om-lens-selector',
@@ -19,8 +19,8 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [MatFormFieldModule, MatSelectModule, MatIconModule, MatButtonModule, FormsModule],
 })
 export class LensSelectorComponent extends EntitySelectorComponent<Lens, LensService> {
-  constructor(lensService: LensService, addLensDialogService: AddLensDialogService, cdRef: ChangeDetectorRef) {
-    super(lensService, addLensDialogService, cdRef);
+  constructor(lensService: LensService, addLensDialogService: AddLensDialogService) {
+    super(lensService, addLensDialogService);
 
     this.placeholder = 'Lenses';
   }
