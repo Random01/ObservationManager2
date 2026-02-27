@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -19,8 +19,8 @@ import { AddEyepieceDialogService } from '../add-eyepiece-dialog';
   imports: [MatFormFieldModule, MatSelectModule, MatIconModule, MatButtonModule, FormsModule],
 })
 export class EyepieceSelectorComponent extends EntitySelectorComponent<Eyepiece, EyepieceService> {
-  constructor(eyepieceService: EyepieceService, addNewEyepieceDialogService: AddEyepieceDialogService, cdRef: ChangeDetectorRef) {
-    super(eyepieceService, addNewEyepieceDialogService, cdRef);
+  constructor(eyepieceService: EyepieceService, addNewEyepieceDialogService: AddEyepieceDialogService) {
+    super(eyepieceService, addNewEyepieceDialogService);
 
     this.placeholder = 'Eyepieces';
   }

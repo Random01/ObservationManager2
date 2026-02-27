@@ -1,4 +1,4 @@
-import { OnInit, Output, EventEmitter, Input, Component, Inject, ChangeDetectorRef } from '@angular/core';
+import { OnInit, Output, EventEmitter, Input, Component, Inject, ChangeDetectorRef, inject } from '@angular/core';
 
 import { MatSelectChange } from '@angular/material/select';
 
@@ -6,10 +6,7 @@ import { StorageService } from '../../services/storage.service';
 import { Entity } from '../../models/models';
 import { AddNewEntityDialogService } from '../../services/add-new-entity-dialog.service';
 
-@Component({
-  template: '',
-  standalone: false,
-})
+@Component({ template: '' })
 export class EntitySelectorComponent<T extends Entity, S extends StorageService<T>> implements OnInit {
   private _item: T | null;
 
@@ -29,11 +26,12 @@ export class EntitySelectorComponent<T extends Entity, S extends StorageService<
 
   public placeholder = '';
 
+  protected readonly cdRef = inject(ChangeDetectorRef);
+
   constructor(
     @Inject('service') protected readonly service: S,
     @Inject('dialogService') protected readonly dialogService: AddNewEntityDialogService<T>,
-    protected readonly cdRef: ChangeDetectorRef,
-  ) {}
+  ) { }
 
   public ngOnInit(): void {
     this.loadAll();

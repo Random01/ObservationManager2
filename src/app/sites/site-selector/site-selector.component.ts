@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -19,8 +19,8 @@ import { AddSiteDialogService } from '../add-site-dialog';
   imports: [MatFormFieldModule, MatSelectModule, MatButtonModule, MatIconModule, FormsModule],
 })
 export class SiteSelectorComponent extends EntitySelectorComponent<Site, SiteService> {
-  constructor(storageService: SiteService, dialogService: AddSiteDialogService, cdRef: ChangeDetectorRef) {
-    super(storageService, dialogService, cdRef);
+  constructor(storageService: SiteService, dialogService: AddSiteDialogService) {
+    super(storageService, dialogService);
 
     this.placeholder = 'Site';
   }

@@ -6,10 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 import { BaseComponent } from './base-component';
 import { Entity } from '../models/entity.model';
 
-@Component({
-  template: '',
-  standalone: false,
-})
+@Component({ template: '' })
 export abstract class BaseEntityComponent<T extends Entity> extends BaseComponent {
   protected readonly router = inject(Router);
   protected readonly route = inject(ActivatedRoute);

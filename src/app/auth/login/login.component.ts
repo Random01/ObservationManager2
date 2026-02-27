@@ -1,6 +1,7 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, OnInit, DestroyRef } from '@angular/core';
 import { Validators, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { AsyncPipe } from '@angular/common';
+
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -19,24 +20,28 @@ import { BaseComponent } from '../../shared/components';
   templateUrl: 'login.component.html',
   styleUrl: 'login.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatButtonModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, AsyncPipe],
+  imports: [MatButtonModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule],
 })
-export class LoginComponent extends BaseComponent {
-  public override readonly isLoading$ = this.store.select(selectAuthState).pipe(map((state) => state.isWorking));
+export class LoginComponent extends BaseComponent implements OnInit {
 
   public readonly loginForm = new FormGroup({
     email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
 
-  constructor(private readonly store: Store) {
-    super();
-  }
+  private readonly store = inject(Store);
+  private readonly destroyRef = inject(DestroyRef);
 
   public onSubmit() {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
       this.store.dispatch(AuthApiActions.login({ credentials: { email, password } }));
     }
+  }
+
+  public ngOnInit(): void {
+    this.store.select(selectAuthState).pipe(map((state) => state.isWorking), takeUntilDestroyed(this.destroyRef)).subscribe(isWorking => {
+      this.isLoading.set(isWorking);
+    });
   }
 }

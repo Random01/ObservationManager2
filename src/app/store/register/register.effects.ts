@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
@@ -7,14 +7,17 @@ import { of } from 'rxjs';
 import { catchError, exhaustMap, map, tap } from 'rxjs/operators';
 
 import { UserService } from 'app/users/shared';
-import { MessageService } from 'app/shared/services/message.service';
-import { LoggingService } from 'app/shared/services/logging.service';
 
 import * as RegisterActions from './register.actions';
 import { BaseEffects } from '../common/base.effects';
 
 @Injectable()
 export class RegisterEffects extends BaseEffects {
+  
+  private readonly actions$ = inject(Actions);
+  private readonly router = inject(Router);
+  private readonly userService = inject(UserService);
+  
   public readonly register$ = createEffect(() =>
     this.actions$.pipe(
       ofType(RegisterActions.register),
@@ -44,14 +47,4 @@ export class RegisterEffects extends BaseEffects {
       ),
     { dispatch: false },
   );
-
-  constructor(
-    private readonly actions$: Actions,
-    private readonly router: Router,
-    private readonly userService: UserService,
-    messageService: MessageService,
-    loggingService: LoggingService,
-  ) {
-    super(messageService, loggingService);
-  }
 }
