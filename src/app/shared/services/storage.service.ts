@@ -75,7 +75,7 @@ export abstract class StorageService<T extends Entity> {
     };
 
     const url = this.getUrl() + '?' + request.getQueryString();
-    const result = await this.http.get<any>(url, httpOptions).toPromise();
+    const result = await firstValueFrom(this.http.get<any>(url, httpOptions));
 
     return {
       ...result,

@@ -90,8 +90,7 @@ export class SessionDetailsComponent extends BaseComponent implements OnInit {
       }),
     });
 
-    // todo: use Observable here instead of toPromise
-    const result = await dialogRef.afterClosed().toPromise();
+    const result = await firstValueFrom(dialogRef.afterClosed());
     if (result) {
       this.startLoading();
       try {

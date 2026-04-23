@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { HttpHeaders } from '@angular/common/http';
 
+import { firstValueFrom } from 'rxjs';
+
 import { StorageService } from '../../shared/services/storage.service';
 import { ObservingProgram } from '../../shared/models/observing-program.model';
 import { PaginatedResponsePayload } from '../../shared/interfaces/paginated-response-payload.interface';
@@ -41,7 +43,7 @@ export class ObservingProgramsService extends StorageService<ObservingProgram> {
     };
 
     const url = `${this.getUrl()}/overall-statistics/${observingProgramId}`;
-    const response = await this.http.get<any>(url, httpOptions).toPromise();
+    const response = await firstValueFrom(this.http.get<any>(url, httpOptions));
     return new ObservingProgramStatistics({
       totalCount: response.totalCount,
       observedCount: response.observedCount,
