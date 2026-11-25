@@ -1,26 +1,20 @@
-import { Component, inject } from '@angular/core';
-
-import { BehaviorSubject } from 'rxjs';
+import { Component, inject, signal } from '@angular/core';
 
 import { MessageService } from '../services/message.service';
 
-@Component({
-  template: '',
-  standalone: false,
-})
+@Component({ template: '' })
 export class BaseComponent {
-  protected readonly isLoadingSubject = new BehaviorSubject(false);
-  public readonly isLoading$ = this.isLoadingSubject.asObservable();
+  public readonly isLoading = signal<boolean>(false);
 
   protected readonly messageService = inject(MessageService);
   protected readonly logger = inject(MessageService);
 
   public startLoading(): void {
-    this.isLoadingSubject.next(true);
+    this.isLoading.set(true);
   }
 
   public endLoading(): void {
-    this.isLoadingSubject.next(false);
+    this.isLoading.set(false);
   }
 
   protected handleError(error: any, errorMessage?: string): void {

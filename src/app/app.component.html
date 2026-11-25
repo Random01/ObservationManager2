@@ -17,8 +17,8 @@
     <mat-nav-list>
       @for (group of navigationLinks; track group; let isLast = $last) {
         <div>
-          @for (item of group; track item) {
-            <a mat-list-item href="..." routerLinkActive="active-link" [routerLink]="item.link">
+          @for (item of group; track item.link) {
+            <a mat-list-item routerLinkActive="active-link" [routerLink]="item.link">
               {{ item.title }}
             </a>
           }

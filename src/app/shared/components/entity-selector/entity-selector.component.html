@@ -3,7 +3,7 @@
     <mat-label>{{ placeholder }}</mat-label>
     <mat-select [placeholder]="placeholder" [compareWith]="getCompareWithFn" [ngModel]="item" (selectionChange)="onSelectionChange($event)">
       <mat-option>None</mat-option>
-      @for (item of items; track item) {
+      @for (item of items; track item.id) {
         <mat-option [value]="item">
           {{ item.getDisplayName() }}
         </mat-option>

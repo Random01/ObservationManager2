@@ -1,11 +1,11 @@
 <div class="om-target-type-selector">
   <mat-form-field>
     <mat-label>Target Type</mat-label>
-    <mat-select placeholder="Target Type" [value]="targetType" (selectionChange)="onChange($event.value)">
+    <mat-select placeholder="Target Type" [value]="targetType()" (selectionChange)="onChange($event.value)">
       <mat-option>None</mat-option>
-      @for (targetType of targetTypes$ | async; track targetType) {
-        <mat-option [value]="targetType.type">
-          {{ targetType.name }}
+      @for (currentTargetType of targetTypes$ | async; track currentTargetType.type) {
+        <mat-option [value]="currentTargetType.type">
+          {{ currentTargetType.name }}
         </mat-option>
       }
     </mat-select>

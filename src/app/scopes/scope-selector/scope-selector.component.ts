@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -19,8 +19,8 @@ import { AddScopeDialogService } from '../add-scope-dialog';
   imports: [MatFormFieldModule, MatSelectModule, MatIconModule, MatButtonModule, FormsModule],
 })
 export class ScopeSelectorComponent extends EntitySelectorComponent<Scope, ScopeService> {
-  constructor(scopeService: ScopeService, addScopeDialogService: AddScopeDialogService, cdRef: ChangeDetectorRef) {
-    super(scopeService, addScopeDialogService, cdRef);
+  constructor(scopeService: ScopeService, addScopeDialogService: AddScopeDialogService) {
+    super(scopeService, addScopeDialogService);
 
     this.placeholder = 'Telescopes, Binoculars & Finders';
   }

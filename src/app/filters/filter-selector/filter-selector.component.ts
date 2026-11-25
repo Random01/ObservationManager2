@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -19,8 +19,8 @@ import { AddFilterDialogService } from '../add-filter-dialog';
   imports: [MatFormFieldModule, MatSelectModule, MatIconModule, MatButtonModule, FormsModule],
 })
 export class FilterSelectorComponent extends EntitySelectorComponent<Filter, FilterService> {
-  constructor(filterService: FilterService, addFilterService: AddFilterDialogService, cdRef: ChangeDetectorRef) {
-    super(filterService, addFilterService, cdRef);
+  constructor(filterService: FilterService, addFilterService: AddFilterDialogService) {
+    super(filterService, addFilterService);
 
     this.placeholder = 'Filters';
   }

@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+
+import { Injectable, inject } from '@angular/core';
 
 import { BehaviorSubject, Observable, of, ReplaySubject } from 'rxjs';
 import { catchError, distinctUntilChanged, map, switchMap, tap } from 'rxjs/operators';
@@ -18,11 +19,9 @@ export class AuthenticationService {
   private readonly isAuthenticatedSubject = new ReplaySubject<boolean>(1);
   public readonly isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
 
-  constructor(
-    private readonly userService: UserService,
-    private readonly jwtService: JwtService,
-    private readonly loggingService: LoggingService,
-  ) {}
+  private readonly userService = inject(UserService);
+  private readonly jwtService = inject(JwtService);
+  private readonly loggingService = inject(LoggingService);
 
   public logOut(): Observable<void> {
     this.jwtService.removeToken();

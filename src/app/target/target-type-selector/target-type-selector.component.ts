@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, model, inject } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -15,15 +15,10 @@ import { TargetTypeService } from '../shared/target-type.service';
   imports: [MatFormFieldModule, MatSelectModule, AsyncPipe],
 })
 export class TargetTypeSelectorComponent {
-  @Input() public targetType?: TargetType;
+  readonly targetType = model<TargetType>();
+  readonly targetTypes$ = inject(TargetTypeService).getAllTargetTypes();
 
-  @Output() public readonly targetTypeChange = new EventEmitter<TargetType>();
-
-  public readonly targetTypes$ = this.targetTypeService.getAllTargetTypes();
-
-  constructor(private readonly targetTypeService: TargetTypeService) {}
-
-  public onChange(value: TargetType): void {
-    this.targetTypeChange.emit(value);
+  onChange(value: TargetType): void {
+    this.targetType.set(value);
   }
 }

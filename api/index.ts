@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path';
 import session from 'express-session';
 import compression from 'compression';
 import errorhandler from 'errorhandler';
@@ -13,7 +14,7 @@ import { RouterProvider } from './routers';
 
 const app = express();
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -54,7 +55,7 @@ dataBase.once('open', () => {
   new RouterProvider(app);
 
   app.use('/{*splat}', (_, res) => {
-    res.sendFile(__dirname + '/public/index.html');
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
   });
 
   const PORT = process.env.PORT || 3002;

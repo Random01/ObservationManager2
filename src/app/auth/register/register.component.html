@@ -1,27 +1,21 @@
-@if (
-  {
-    isLoading: isLoading$ | async,
-  };
-  as data
-) {
-  <form class="om-register-component" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-    <div>
-      <h2 class="mat-h2">Register</h2>
-    </div>
-    <div class="register-profile">
-      <mat-form-field>
-        <input matInput placeholder="Username" formControlName="userName" />
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="E-mail" formControlName="email" />
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Password" formControlName="password" autocomplete="new-password" type="password" />
-      </mat-form-field>
-    </div>
-    <div class="form-buttons">
-      <button mat-button type="submit" color="primary" [disabled]="!profileForm.valid || data.isLoading">Register</button>
-      <button mat-button (click)="goBack()">Back</button>
-    </div>
-  </form>
-}
+<form class="om-register-component" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <div>
+    <h2 class="mat-h2">Register</h2>
+  </div>
+  <div class="register-profile">
+    <mat-form-field>
+      <input matInput placeholder="Username" formControlName="userName" />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="E-mail" formControlName="email" />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Password" formControlName="password" autocomplete="new-password" type="password" />
+    </mat-form-field>
+  </div>
+  <div class="form-buttons">
+    <button mat-button type="submit" color="primary" [disabled]="!profileForm.valid || isLoading()">Register</button>
+    <button mat-button (click)="goBack()">Back</button>
+  </div>
+</form>
+
