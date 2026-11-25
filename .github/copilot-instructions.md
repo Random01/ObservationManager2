@@ -14,7 +14,7 @@ ObservationManager is a full-stack application for managing astronomical observa
 - **Data Flow**: Frontend communicates with backend via REST endpoints under `/api/`.
 
 ## Developer Workflows
-- **Start MongoDB**: `docker run --name mongodb -d -p 27017:27017 mongo`
+- **Start MongoDB**: `docker run --name mongodb -d -p 127.0.0.1:27017:27017 mongo:9.0.8` for a fresh local database. See [README.md](../README.md#install-database) for existing deployments.
 - **Backend**:
   - Install: `cd api && npm install`
   - Build (watch): `cd api && npm run build:watch`

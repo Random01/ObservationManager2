@@ -2,7 +2,9 @@
 
 ## Install Database
 
-1. Run "docker run --name mongodb -d -p 27017:27017 mongo"
+For a fresh local database, run `docker run --name mongodb -d -p 127.0.0.1:27017:27017 mongo:9.0.8`.
+
+For an existing self-managed deployment, back up the data and follow the guide for upgrading from [MongoDB 8.0](https://www.mongodb.com/docs/manual/release-notes/9.0-upgrade-from-8.0/) or [MongoDB 8.3](https://www.mongodb.com/docs/manual/release-notes/9.0-upgrade/). If you run a version earlier than 8.0, follow the [supported upgrade path](https://www.mongodb.com/docs/mongodb-versions/) to 8.0 first.
 
 ## Run Backend
 
