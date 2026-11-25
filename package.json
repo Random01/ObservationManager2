@@ -10,6 +10,7 @@
     "build_server": "cd api && npm run build",
     "build": "npm run build_app && npm run build_server",
     "test": "ng test",
+    "test:coverage": "node scripts/test-coverage.mjs",
     "tsc": "tsc",
     "lint": "ng lint"
   },

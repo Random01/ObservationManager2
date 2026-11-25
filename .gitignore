@@ -21,4 +21,5 @@ _temp
 /api/public
 /api/dist
 coverage
+/src/coverage-inventory.generated.spec.ts
 /.angular
