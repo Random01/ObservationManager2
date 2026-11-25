@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { finalize } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -10,6 +10,7 @@ import { BaseEntityComponent } from './base-entity.component';
 
 @Component({
   template: '',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export abstract class EditEntityComponent<T extends Entity> extends BaseEntityComponent<T> implements OnInit {
@@ -23,7 +24,10 @@ export abstract class EditEntityComponent<T extends Entity> extends BaseEntityCo
 
     this.storageService
       .update(this.itemSubject.getValue())
-      .pipe(finalize(() => this.endLoading()), takeUntilDestroyed(this.destroyRef))
+      .pipe(
+        finalize(() => this.endLoading()),
+        takeUntilDestroyed(this.destroyRef),
+      )
       .subscribe({
         complete: () => this.goBack(),
         error: (error) => this.handleError(error, 'Unable to update item'),
@@ -35,7 +39,10 @@ export abstract class EditEntityComponent<T extends Entity> extends BaseEntityCo
 
     this.storageService
       .getById(this.getItemId())
-      .pipe(finalize(() => this.endLoading()), takeUntilDestroyed(this.destroyRef))
+      .pipe(
+        finalize(() => this.endLoading()),
+        takeUntilDestroyed(this.destroyRef),
+      )
       .subscribe({
         next: (item) => this.itemSubject.next(item),
         error: (error) => this.handleError(error, 'Unable to load items'),

@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -11,17 +11,18 @@ import { MatInputModule } from '@angular/material/input';
 @Component({
   selector: 'om-target-search-params',
   templateUrl: 'target-search-params.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [MatFormFieldModule, MatInputModule, MatButtonModule, FormsModule, TargetTypeSelectorComponent],
 })
 export class TargetSearchParamsComponent {
   @Input() public searchParams?: TargetSearchParams;
-  @Output() public readonly search = new EventEmitter<TargetSearchParams>();
+  @Output() public readonly searchRequested = new EventEmitter<TargetSearchParams>();
 
   public onSearch(): void {
-    this.search.emit(this.searchParams);
+    this.searchRequested.emit(this.searchParams);
   }
 
   public clear() {
-    this.search.emit(new TargetSearchParams());
+    this.searchRequested.emit(new TargetSearchParams());
   }
 }

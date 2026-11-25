@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { User } from '../../shared/models/user.model';
@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'om-users',
   templateUrl: 'users.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [MatPaginatorModule, MatTableModule, MatIconModule, MatButtonModule, RouterLink, AsyncPipe],
 })
 export class UsersComponent extends EntityListComponent<User> {

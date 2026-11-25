@@ -1,13 +1,15 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./src",
     "module": "ES2022",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "esModuleInterop": true,
     "declaration": false,
     "moduleResolution": "bundler",
+    "paths": {
+      "app/*": ["./src/app/*"]
+    },
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "noPropertyAccessFromIndexSignature": false,
@@ -15,6 +17,7 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
     "importHelpers": true,
+    "strict": false,
     "alwaysStrict": true,
     "skipLibCheck": true,
     "target": "ES2022",

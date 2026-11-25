@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChange } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChange, ChangeDetectionStrategy } from '@angular/core';
 
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
@@ -12,6 +12,7 @@ import { TargetSelectorComponent } from '../../target/target-selector/target-sel
   selector: 'om-targets-editor',
   templateUrl: 'targets-editor.component.html',
   styleUrls: ['targets-editor.component.less'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [MatPaginatorModule, MatTableModule, MatIconModule, MatButtonModule, TargetSelectorComponent],
 })
 export class TargetsEditorComponent implements OnChanges {

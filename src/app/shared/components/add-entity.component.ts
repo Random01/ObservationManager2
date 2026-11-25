@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { firstValueFrom } from 'rxjs';
 
@@ -8,6 +8,7 @@ import { BaseEntityComponent } from './base-entity.component';
 
 @Component({
   template: '',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export abstract class AddEntityComponent<T extends Entity> extends BaseEntityComponent<T> implements OnInit {
