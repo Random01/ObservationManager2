@@ -42,10 +42,7 @@ export class UserService extends StorageService<User> {
 
   public getUser(): Observable<SignInResultPayload> {
     const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: this.getAuthorizationToken(),
-      }),
+      headers: this.getRequestHeaders('application/json'),
     };
 
     return this.http.get<{ user: any }>(this.getUrl() + '/user', httpOptions).pipe(

@@ -32,10 +32,7 @@ export abstract class StorageService<T extends Entity> {
     }
 
     const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: this.getAuthorizationToken(),
-      }),
+      headers: this.getRequestHeaders('application/json'),
     };
 
     return this.http.post<T>(this.getUrl(), newItem.serialize(), httpOptions).pipe(
@@ -51,9 +48,7 @@ export abstract class StorageService<T extends Entity> {
 
   public getById(id: string): Observable<T> {
     const httpOptions = {
-      headers: new HttpHeaders({
-        Authorization: this.getAuthorizationToken(),
-      }),
+      headers: this.getRequestHeaders(),
     };
 
     return this.http.get<any>(this.getUrl() + '/' + id, httpOptions).pipe(map((result) => this.deserialize(result)));
@@ -69,9 +64,7 @@ export abstract class StorageService<T extends Entity> {
    */
   public async getItems(request: RequestParams): Promise<PaginatedResponsePayload<T>> {
     const httpOptions = {
-      headers: new HttpHeaders({
-        Authorization: this.getAuthorizationToken(),
-      }),
+      headers: this.getRequestHeaders(),
     };
 
     const url = this.getUrl() + '?' + request.getQueryString();
@@ -85,10 +78,7 @@ export abstract class StorageService<T extends Entity> {
 
   public exportItems(request: ExportRequestParams): Promise<Blob> {
     const httpOptions = {
-      headers: new HttpHeaders({
-        Authorization: this.getAuthorizationToken(),
-        'Content-Type': 'application/octet-stream',
-      }),
+      headers: this.getRequestHeaders('application/octet-stream'),
       responseType: 'blob',
     } as any;
 
@@ -99,10 +89,7 @@ export abstract class StorageService<T extends Entity> {
 
   public update(entity: T): Observable<boolean> {
     const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: this.getAuthorizationToken(),
-      }),
+      headers: this.getRequestHeaders('application/json'),
     };
 
     return this.http.put<T>(this.getUrl() + '/' + entity.id, entity.serialize(), httpOptions).pipe(
@@ -114,10 +101,7 @@ export abstract class StorageService<T extends Entity> {
   public delete(id: string): Observable<boolean> {
     const url = `${this.getUrl()}/${id}`;
     const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: this.getAuthorizationToken(),
-      }),
+      headers: this.getRequestHeaders('application/json'),
     };
 
     return this.http.delete<boolean>(url, httpOptions);
@@ -129,8 +113,10 @@ export abstract class StorageService<T extends Entity> {
     return item;
   }
 
-  protected getAuthorizationToken(): string {
-    return this.jwtService.getToken();
+  protected getRequestHeaders(contentType?: string): HttpHeaders {
+    const headers = contentType ? new HttpHeaders({ 'Content-Type': contentType }) : new HttpHeaders();
+    const token = this.jwtService.getToken();
+    return token ? headers.set('Authorization', token) : headers;
   }
 
   protected getUrl(): string {

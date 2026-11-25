@@ -21,3 +21,4 @@ _temp
 /api/public
 /api/dist
 coverage
+/.angular
