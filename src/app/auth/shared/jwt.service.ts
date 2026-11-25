@@ -10,7 +10,7 @@ export class JwtService {
     localStorage.removeItem('jwtToken');
   }
 
-  public getToken(): string {
+  public getToken(): string | null {
     return localStorage.getItem('jwtToken');
   }
 }

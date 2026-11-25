@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -E \"\\\\.subscribe\\\\\\(\\\\\\)\\\\s*$|catch.*=>\")"
+    ]
+  }
+}

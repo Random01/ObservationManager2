@@ -1,3 +1,11 @@
+# Observation Manager
+
+An astronomy logbook for recording observing sessions, targets, equipment, and findings, and tracking progress through observing programs.
+
+Read [the project context guide](documents/project-context.md) first. It maps the Angular client, Express API, and MongoDB models, traces an observation from form to database, and gives the local run and test commands.
+
+## General Angular reference
+
 
 
 <p style="margin-top: 2em; font-size: larger;">

@@ -1,24 +1,23 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Directive, DestroyRef, inject, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { DestroyRef, inject } from '@angular/core';
+
+import { MatDialogRef } from '@angular/material/dialog';
 
 import { BehaviorSubject } from 'rxjs';
 
 import { Entity } from '../models/models';
 import { StorageService } from '../services/storage.service';
 
-@Component({
-  template: '',
-})
+@Directive()
 export abstract class AddEntityDialogComponent<TEntity extends Entity, SType extends StorageService<TEntity>> implements OnInit {
   protected readonly itemSubject = new BehaviorSubject<TEntity | null>(null);
   public readonly item$ = this.itemSubject.asObservable();
 
   protected readonly destroyRef = inject(DestroyRef);
   constructor(
-    @Inject('storageService') protected readonly storageService: SType,
-    @Inject('dialogRef') protected readonly dialogRef: any,
-  ) { }
+    protected readonly storageService: SType,
+    protected readonly dialogRef: MatDialogRef<unknown, Entity>,
+  ) {}
 
   public addItem(): void {
     const item = this.itemSubject.getValue();

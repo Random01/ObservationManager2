@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
+import { firstValueFrom } from 'rxjs';
+
 import { DeleteEntityDialogOptions } from './delete-entity-dialog-options.interface';
 import { DeleteEntityDialogResult } from './delete-entity-dialog-result.interface';
 import { DeleteEntityDialogComponent } from './delete-entity-dialog.component';
@@ -15,6 +17,6 @@ export class DeleteEntityDialogService {
       data: options,
     });
 
-    return dialogRef.afterClosed().toPromise();
+    return firstValueFrom(dialogRef.afterClosed());
   }
 }
