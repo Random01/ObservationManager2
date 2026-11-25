@@ -9,6 +9,10 @@ module.exports = tseslint.config(
     extends: [eslint.configs.recommended, ...tseslint.configs.recommended, ...tseslint.configs.stylistic, ...angular.configs.tsRecommended],
     processor: angular.processInlineTemplates,
     rules: {
+      // Permit existing NgModules, constructor injection, and eager change detection.
+      '@angular-eslint/prefer-standalone': 'off',
+      '@angular-eslint/prefer-inject': 'off',
+      '@angular-eslint/prefer-on-push-component-change-detection': 'off',
       '@typescript-eslint/no-explicit-any': ['off'],
       '@typescript-eslint/no-unused-vars': [
         'error',

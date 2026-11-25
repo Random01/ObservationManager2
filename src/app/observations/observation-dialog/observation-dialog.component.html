@@ -1,8 +1,10 @@
 <h2 mat-dialog-title>New Observation</h2>
 
-<div mat-dialog-content *ngIf="observation">
-  <om-observation [observation]="observation"> </om-observation>
-</div>
+@if (observation) {
+  <div mat-dialog-content>
+    <om-observation [observation]="observation"></om-observation>
+  </div>
+}
 
 <div mat-dialog-actions>
   <button cdkFocusInitial (click)="add()" mat-button>Add</button>

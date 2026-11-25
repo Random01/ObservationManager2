@@ -18,11 +18,11 @@ describe('SessionInfoComponent', () => {
 
   it('should work', () => {
     const fixture = TestBed.createComponent(SessionInfoComponent);
-    const component = fixture.debugElement.componentInstance;
-    component.session = new Session();
+    const session = new Session();
+    fixture.componentRef.setInput('session', session);
 
     fixture.detectChanges();
 
-    expect(component).toBeDefined();
+    expect(fixture.componentInstance.session()).toBe(session);
   });
 });

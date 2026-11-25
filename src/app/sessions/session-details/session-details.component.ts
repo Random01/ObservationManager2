@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 
 import { MatDialog } from '@angular/material/dialog';
@@ -22,6 +22,7 @@ import { SessionComponent } from '../session/session.component';
   selector: 'om-session-details',
   templateUrl: 'session-details.component.html',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [MatButtonModule, RouterLink, SessionComponent],
 })
 export class SessionDetailsComponent extends BaseComponent implements OnInit {

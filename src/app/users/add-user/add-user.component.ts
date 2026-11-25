@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
 
 import { MatButtonModule } from '@angular/material/button';
 
@@ -12,7 +12,8 @@ import { UserComponent } from '../user/user.component';
   selector: 'om-add-user',
   templateUrl: 'add-user.component.html',
   standalone: true,
-  imports: [MatButtonModule, NgIf, AsyncPipe, UserComponent],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [MatButtonModule, AsyncPipe, UserComponent],
 })
 export class AddUserComponent extends AddEntityComponent<User> {
   constructor(service: UserService) {

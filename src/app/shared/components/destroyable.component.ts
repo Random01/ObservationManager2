@@ -1,10 +1,11 @@
-import { Component, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 
 import { Unsubscribable } from 'rxjs';
 
 @Component({
   template: '',
   standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class DestroyableComponent implements OnDestroy {
   private readonly subscriptions: Unsubscribable[] = [];
