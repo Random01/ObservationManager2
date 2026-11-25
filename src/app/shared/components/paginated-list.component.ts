@@ -1,4 +1,4 @@
-import { OnInit, Component } from '@angular/core';
+import { OnInit, Component, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { PageEvent } from '@angular/material/paginator';
@@ -15,6 +15,7 @@ import PaginatedListQueryParams from '../interfaces/paginated-list-query-params.
 import { PaginatedResponsePayload } from '../interfaces/paginated-response-payload.interface';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: '',
 })
 export abstract class PaginatedListComponent<T> extends BaseComponent implements OnInit {
@@ -53,13 +54,11 @@ export abstract class PaginatedListComponent<T> extends BaseComponent implements
   }
 
   public ngOnInit(): void {
-    this.route.queryParams
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((params) => {
-        this.currentPage = +params['page'] || 0;
-        this.pageSize = +params['size'] || 10;
-        this.loadItems();
-      });
+    this.route.queryParams.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((params) => {
+      this.currentPage = +params['page'] || 0;
+      this.pageSize = +params['size'] || 10;
+      this.loadItems();
+    });
   }
 
   protected getRequestParams(params?: Partial<RequestParams>): RequestParams {

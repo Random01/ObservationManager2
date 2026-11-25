@@ -1,4 +1,4 @@
-﻿import { Component, Input } from '@angular/core';
+﻿import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { MatInputModule } from '@angular/material/input';
@@ -19,6 +19,7 @@ import { ObservationConditionsComponent } from '../observation-conditions/observ
   selector: 'om-observation',
   templateUrl: 'observation.component.html',
   styleUrl: 'observation.component.less',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     MatFormFieldModule,
     MatInputModule,

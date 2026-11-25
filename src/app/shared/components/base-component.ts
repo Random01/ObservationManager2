@@ -1,8 +1,8 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { MessageService } from '../services/message.service';
 
-@Component({ template: '' })
+@Component({ changeDetection: ChangeDetectionStrategy.Eager, template: '' })
 export class BaseComponent {
   public readonly isLoading = signal<boolean>(false);
 

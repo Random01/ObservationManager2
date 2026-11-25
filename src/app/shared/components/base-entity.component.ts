@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { BehaviorSubject } from 'rxjs';
@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 import { BaseComponent } from './base-component';
 import { Entity } from '../models/entity.model';
 
-@Component({ template: '' })
+@Component({ changeDetection: ChangeDetectionStrategy.Eager, template: '' })
 export abstract class BaseEntityComponent<T extends Entity> extends BaseComponent {
   protected readonly router = inject(Router);
   protected readonly route = inject(ActivatedRoute);

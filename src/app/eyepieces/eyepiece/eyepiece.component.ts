@@ -1,4 +1,4 @@
-﻿import { Component, Input } from '@angular/core';
+﻿import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -12,6 +12,7 @@ import { VendorSelectorComponent } from '../../equipment/vendor-selector';
   selector: 'om-eyepiece',
   templateUrl: 'eyepiece.component.html',
   styleUrl: 'eyepiece.component.less',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [MatFormFieldModule, MatInputModule, FormsModule, MatCheckboxModule, VendorSelectorComponent],
 })
 export class EyepieceComponent {

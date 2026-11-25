@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 import ObservationSearchParameters from './observation-search-parameters.model';
 
@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'om-observation-search',
   templateUrl: 'observation-search.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [MatFormFieldModule, MatSelectModule, FormsModule, TargetSelectorComponent],
 })
 export class ObservationSearchComponent implements OnInit {

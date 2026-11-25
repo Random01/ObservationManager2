@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
@@ -12,6 +12,7 @@ import { TargetComponent } from '../../target';
 @Component({
   selector: 'om-add-target-dialog',
   templateUrl: 'add-target-dialog.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [MatButtonModule, MatDialogModule, AsyncPipe, TargetComponent],
 })
 export class AddTargetDialogComponent extends AddEntityDialogComponent<Target, TargetService> {

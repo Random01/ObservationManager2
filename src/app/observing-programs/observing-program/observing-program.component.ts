@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -11,6 +11,7 @@ import { TargetsEditorComponent } from '../targets-editor/targets-editor.compone
   selector: 'om-observing-program',
   templateUrl: 'observing-program.component.html',
   styleUrl: 'observing-program.component.less',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [MatFormFieldModule, MatInputModule, FormsModule, TargetsEditorComponent],
 })
 export class ObservingProgramComponent {
