@@ -24,6 +24,12 @@ For an existing self-managed deployment, back up the data and follow the guide f
 
 1. Open "http://localhost:4200"
 
+## Frontend unit tests
+
+Run `npm test` to develop with the Angular Jasmine suite. Run `npm run test:coverage` with Node `22.22.3` and Chrome installed to measure app-wide coverage. The single-run report is written to `coverage/app/index.html`.
+
+App-wide coverage counts executable frontend modules that the tests never load as zero, including lazy-loaded components. The browser bootstrap in `src/main.ts` is outside the unit-test scope. Type-only files and files that only re-export other modules have no coverage counters.
+
 ## Docker
 
 1. "docker build . -t falserandom/om"

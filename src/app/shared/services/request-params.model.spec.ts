@@ -1,9 +1,9 @@
 import { RequestParams } from './request-params.model';
+import { ObservationSearchParams } from '../../observations/shared/observation-search-params.model';
 
 describe('RequestParams', () => {
-  it('should create a new instance', () => {
-    const requestParams = new RequestParams();
-    expect(requestParams).toBeDefined();
+  it('omits unspecified parameters', () => {
+    expect(new RequestParams().getQueryString()).toBe('');
   });
 
   it('should create query string', () => {
@@ -13,5 +13,10 @@ describe('RequestParams', () => {
     });
 
     expect(requestParams.getQueryString()).toEqual('page=0&size=100');
+  });
+
+  it('combines observation filters with paging', () => {
+    const requestParams = new ObservationSearchParams({ page: 0, session: 'session-1', target: 'target-1' });
+    expect(requestParams.getQueryString()).toBe('page=0&session=session-1&target=target-1');
   });
 });
