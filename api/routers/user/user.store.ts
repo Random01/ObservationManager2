@@ -1,8 +1,13 @@
-import { BaseMongooseStore } from '../common/store/base-mongoose-store';
 import { UserModel } from './user.model';
 
-export class UserStore extends BaseMongooseStore<typeof UserModel, any> {
-  constructor() {
-    super(UserModel);
+export class UserStore {
+  public getById(id: string) {
+    return UserModel.findById(id).exec();
+  }
+
+  public create({ userName, email, password }: { userName: string; email: string; password: string }) {
+    const user = new UserModel({ userName, email });
+    user.setPassword(password);
+    return user.save();
   }
 }

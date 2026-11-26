@@ -1,58 +1,26 @@
-import express from 'express';
-import path from 'path';
-import compression from 'compression';
-import errorhandler from 'errorhandler';
 import mongoose from 'mongoose';
-import cors from 'cors';
+import { once } from 'node:events';
 
-import passport from './config/passport';
-import { dbConfig } from './config';
-
-import { RouterProvider } from './routers';
+import { createApp } from './app';
+import { dbConfig } from './config/db-config';
 import { UserModel } from './routers/user/user.model';
 
-const app = express();
-
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(cors());
-
-app.use(passport.initialize());
-
-if (process.env.NODE_ENV === 'development') {
-  app.use(errorhandler());
-  mongoose.set('debug', true);
-} else {
-  app.use(compression({ level: 1 }));
-}
-
 async function start() {
+  const app = createApp();
   if (!dbConfig.url) {
-    throw new Error('DB connection string should be provided.');
+    throw new Error('CONNECTION_STRING must be set.');
+  }
+
+  const port = Number(process.env.PORT ?? 3002);
+  if (!Number.isInteger(port) || port < 1 || port > 65535) {
+    throw new Error('PORT must be an integer between 1 and 65535.');
   }
 
   await mongoose.connect(dbConfig.url);
-  mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
+  mongoose.connection.on('error', (error) => console.error('MongoDB connection error:', error));
   await UserModel.init();
 
-  new RouterProvider(app);
-
-  app.use('/{*splat}', (_, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-  });
-
-  const port = process.env.PORT || 3002;
-  await new Promise<void>((resolve, reject) => {
-    app.listen(port, (error?: Error) => {
-      if (error) {
-        reject(error);
-      } else {
-        resolve();
-      }
-    });
-  });
+  await once(app.listen(port), 'listening');
   console.log(`Server started on port ${port}!`);
 }
 

@@ -8,11 +8,7 @@ For an existing self-managed deployment, back up the data and follow the guide f
 
 ## Run Backend
 
-1. Run "cd api && npm install"
-
-1. Run "cd api && npm run build:watch"
-
-1. Run "cd api && CONNECTION_STRING='mongodb://localhost:27017/' npm run start:watch"
+Follow the [API setup](api/README.md) to configure MongoDB and the JWT signing secret, then start the API.
 
 ## Run Frontend
 

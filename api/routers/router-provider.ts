@@ -1,4 +1,3 @@
-import * as core from 'express-serve-static-core';
 import { Router } from 'express';
 
 import { ConstellationRouter } from './constellation';
@@ -15,25 +14,27 @@ import { UserRouter } from './user';
 import { VendorRouter } from './vendor';
 import { BaseRouter } from './common';
 
-export class RouterProvider {
-  constructor(app: core.Express) {
-    this.create(app, FilterRouter, '/filters');
-    this.create(app, ScopeRouter, '/scopes');
-    this.create(app, ConstellationRouter, '/constellations');
-    this.create(app, UserRouter, '/users');
-    this.create(app, EyepieceRouter, '/eyepieces');
-    this.create(app, SiteRouter, '/sites');
-    this.create(app, TargetRouter, '/targets');
-    this.create(app, ObservationRouter, '/observations');
-    this.create(app, SessionRouter, '/sessions');
-    this.create(app, LensRouter, '/lenses');
-    this.create(app, ObservingProgramRouter, '/observing-programs');
-    this.create(app, VendorRouter, '/vendors');
+export function createApiRouter(): Router {
+  const api = Router();
+
+  function mount(path: string, RouterType: new (router: Router) => BaseRouter) {
+    const router = Router({ strict: true });
+    new RouterType(router).registerRoutes();
+    api.use(path, router);
   }
 
-  private create(app: core.Express, ctor: new (router: core.Router) => BaseRouter, path: string) {
-    const router = Router({ strict: true });
-    app.use('/api' + path, router);
-    return new ctor(router);
-  }
+  mount('/filters', FilterRouter);
+  mount('/scopes', ScopeRouter);
+  mount('/constellations', ConstellationRouter);
+  mount('/users', UserRouter);
+  mount('/eyepieces', EyepieceRouter);
+  mount('/sites', SiteRouter);
+  mount('/targets', TargetRouter);
+  mount('/observations', ObservationRouter);
+  mount('/sessions', SessionRouter);
+  mount('/lenses', LensRouter);
+  mount('/observing-programs', ObservingProgramRouter);
+  mount('/vendors', VendorRouter);
+
+  return api;
 }

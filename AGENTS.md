@@ -18,7 +18,7 @@ ObservationManager is a full-stack application for managing astronomical observa
 - **Backend**:
   - Install: `cd api && npm install`
   - Build (watch): `cd api && npm run build:watch`
-  - Start (dev): `cd api && CONNECTION_STRING='mongodb://localhost:27017/' npm run start:watch`
+  - Start (dev): Set the environment variables in [API setup](api/README.md) and run `npm run start:watch` from `api/`.
 - **Frontend**:
   - Install: `npm install`
   - Start: `npm run start_app`
@@ -31,7 +31,7 @@ ObservationManager is a full-stack application for managing astronomical observa
 ## Project Conventions
 - **API**: All endpoints are under `/api/`. Add new resources by creating a router, model, schema, and registering in `router-provider.ts`.
 - **Frontend**: Use Angular feature modules and NgRx for new stateful features. Prefer lazy loading for large sections.
-- **Testing**: Use `ng test` for frontend. No explicit backend test scripts found—add as needed.
+- **Testing**: Use `ng test` for frontend and `npm test` from `api/` for backend HTTP tests.
 - Use Node `22.22.3` for root project commands, as specified in the root `package.json`. The Docker image uses Node 22. The app uses Angular 22.x and MongoDB.
 
 ## Integration Points

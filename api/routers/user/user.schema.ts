@@ -1,11 +1,11 @@
-import { randomBytes, pbkdf2Sync } from 'crypto';
+import { randomBytes, pbkdf2Sync } from 'node:crypto';
 import { sign } from 'jsonwebtoken';
-import { Schema } from 'mongoose';
+import { Model, Schema } from 'mongoose';
 
-import { authConfig } from '../../config';
-import { User } from './user.interface';
+import { getAuthSecret } from '../../config/auth-config';
+import { User, UserMethods } from './user.interface';
 
-export const UserSchema = new Schema({
+export const UserSchema = new Schema<User, Model<User>, UserMethods>({
   dateCreated: Date,
   dateModified: Date,
   firstName: String,
@@ -30,12 +30,12 @@ export const UserSchema = new Schema({
   salt: String,
 });
 
-UserSchema.methods.setPassword = function (this: User, password: string) {
+UserSchema.methods.setPassword = function (password: string) {
   this.salt = randomBytes(16).toString('hex');
   this.hash = pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
 };
 
-UserSchema.methods.validPassword = function (this: User, password: string) {
+UserSchema.methods.validPassword = function (password: string) {
   const hash = pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
   return this.hash === hash;
 };
@@ -44,14 +44,13 @@ UserSchema.methods.generateJWT = function () {
   const today = new Date();
   const exp = new Date(today);
   exp.setDate(today.getDate() + 60);
-
   return sign(
     {
       id: this._id,
       userName: this.userName,
       exp: Math.trunc(exp.getTime() / 1000),
     },
-    authConfig.secret,
+    getAuthSecret(),
   );
 };
 

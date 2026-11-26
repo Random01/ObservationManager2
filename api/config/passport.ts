@@ -11,11 +11,11 @@ passport.use(
     },
     (userName, password, done) => {
       UserModel.findOne({ userName })
-        .then((user: any) => {
+        .exec()
+        .then((user) => {
           if (!user || !user.validPassword(password)) {
-            return done(null, false, { errors: { 'user name or password': 'is invalid' } } as any);
+            return done(null, false);
           }
-
           return done(null, user);
         })
         .catch(done);

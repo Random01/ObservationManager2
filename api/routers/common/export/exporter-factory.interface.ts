@@ -1,20 +1,17 @@
 import { ExportType } from './export-type.enum';
 import { Exporter } from './exporter.interface';
 
-type ExporterConstructor<T = any> = new () => Exporter<T>;
+type ExporterConstructor<T> = new () => Exporter<T>;
 
 export abstract class ExporterFactory<T = any> {
-  protected readonly typeToFactory: Map<ExportType, ExporterConstructor>;
+  private readonly typeToFactory: Map<string, ExporterConstructor<T>>;
 
   constructor(resolvers: [ExportType, ExporterConstructor<T>][]) {
-    this.typeToFactory = new Map<ExportType, ExporterConstructor<T>>(resolvers);
+    this.typeToFactory = new Map(resolvers);
   }
 
-  public getExporter(exporterType: ExportType): Exporter<T> {
-    const ctor = this.typeToFactory.get(exporterType);
-    if (!ctor) {
-      throw new Error(`Unknown export type ${exporterType}.`);
-    }
-    return new ctor();
+  public getExporter(exportType: string): Exporter<T> | undefined {
+    const ExporterType = this.typeToFactory.get(exportType);
+    return ExporterType && new ExporterType();
   }
 }
