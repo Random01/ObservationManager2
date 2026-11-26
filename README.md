@@ -34,4 +34,5 @@ App-wide coverage counts executable frontend modules that the tests never load a
 
 1. "docker build . -t falserandom/om"
 
-1. "docker run -d -p 48900:3001 falserandom/om" OR "docker run -d -p 48900:3001 -e SECRET='...' -e CONNECTION_STRING='...' falserandom/om"
+1. Set `SECRET` and `CONNECTION_STRING` in the environment of the shell running Docker. Use a MongoDB address reachable from the container.
+1. Run `docker run -d -p 48900:3002 -e SECRET -e CONNECTION_STRING falserandom/om`.
