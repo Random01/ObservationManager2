@@ -1,16 +1,15 @@
 import express from 'express';
 import path from 'path';
-import session from 'express-session';
 import compression from 'compression';
 import errorhandler from 'errorhandler';
 import mongoose from 'mongoose';
-import MongoStore from 'connect-mongo';
 import cors from 'cors';
 
 import passport from './config/passport';
 import { dbConfig } from './config';
 
 import { RouterProvider } from './routers';
+import { UserModel } from './routers/user/user.model';
 
 const app = express();
 
@@ -20,26 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
-if (!dbConfig.url) {
-  throw new Error('DB connection string should be provided.');
-}
-
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET || 'conduit',
-    cookie: { maxAge: 60000 },
-    resave: false,
-    saveUninitialized: false,
-    store: MongoStore.create({
-      mongoUrl: dbConfig.url,
-    }),
-  }),
-);
-
 app.use(passport.initialize());
-app.use(passport.session());
-
-mongoose.connect(dbConfig.url);
 
 if (process.env.NODE_ENV === 'development') {
   app.use(errorhandler());
@@ -48,18 +28,38 @@ if (process.env.NODE_ENV === 'development') {
   app.use(compression({ level: 1 }));
 }
 
-const dataBase = mongoose.connection;
+async function start() {
+  if (!dbConfig.url) {
+    throw new Error('DB connection string should be provided.');
+  }
 
-dataBase.on('error', console.error.bind(console, 'connection error:'));
-dataBase.once('open', () => {
+  await mongoose.connect(dbConfig.url);
+  mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
+  await UserModel.init();
+
   new RouterProvider(app);
 
   app.use('/{*splat}', (_, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
   });
 
-  const PORT = process.env.PORT || 3002;
-  app.listen(PORT, () => {
-    console.log(`Server started on port ${PORT}!`);
+  const port = process.env.PORT || 3002;
+  await new Promise<void>((resolve, reject) => {
+    app.listen(port, (error?: Error) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve();
+      }
+    });
+  });
+  console.log(`Server started on port ${port}!`);
+}
+
+start().catch(async (error: unknown) => {
+  console.error('API startup failed:', error);
+  process.exitCode = 1;
+  await mongoose.disconnect().catch((disconnectError: unknown) => {
+    console.error('MongoDB cleanup failed:', disconnectError);
   });
 });
