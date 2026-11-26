@@ -6,6 +6,14 @@ import { Entity } from '../interfaces';
 import { GetItemsParameters } from './get-items-parameters.interface';
 import { GetByIdParameter } from './get-by-id-parameter.interface';
 
+const serverManagedFields = new Set(['id', '_id', '__v', 'userCreated', 'userModified', 'dateCreated', 'dateModified']);
+
+function writableFields(entity: Partial<Entity>) {
+  return Object.fromEntries(
+    Object.entries(entity).filter(([field]) => !serverManagedFields.has(field) && !field.startsWith('$') && !field.includes('.')),
+  );
+}
+
 export class BaseMongooseStore<TModel extends Model<any>, TEntity extends Entity> {
   constructor(protected readonly model: TModel) {}
 
@@ -15,7 +23,6 @@ export class BaseMongooseStore<TModel extends Model<any>, TEntity extends Entity
 
   public getItems({ requestParameters, userId, populationDetails = {} }: GetItemsParameters): Promise<PaginatedItems<TEntity>> {
     const { page, size, sortField, sortDirection, ...restRequestParams } = requestParameters;
-
     const request = {
       ...restRequestParams,
       ...(userId ? { userCreated: userId } : undefined),
@@ -55,45 +62,26 @@ export class BaseMongooseStore<TModel extends Model<any>, TEntity extends Entity
     return query.exec();
   }
 
-  public add({ entity, userId }: { entity: TEntity; userId: string }): Promise<TEntity> {
-    if (!entity) {
-      throw new Error('entity should be provided.');
-    }
-
+  public add({ entity, userId }: { entity: Partial<TEntity>; userId: string }): Promise<TEntity> {
     const date = new Date();
     const id = new ObjectId(userId);
-
     return this.model.create({
-      ...entity,
-
+      ...writableFields(entity),
       userCreated: id,
       userModified: id,
-
       dateCreated: date,
       dateModified: date,
     });
   }
 
-  public async update({ entity, userId }: { entity: TEntity; userId: string | undefined }): Promise<TEntity> {
-    if (!entity) {
-      throw new Error('entity should be provided.');
-    }
-
-    const modifiedEntity = {
-      ...entity,
-      userModified: new ObjectId(userId),
-      dateModified: new Date(),
-    };
-
-    await this.model.updateOne(
-      {
-        _id: modifiedEntity.id,
-        userCreated: userId,
-      },
-      modifiedEntity,
-    );
-
-    return modifiedEntity;
+  public update({ id, entity, userId }: { id: string; entity: Partial<TEntity>; userId: string }): Promise<TEntity | null> {
+    return this.model
+      .findOneAndUpdate(
+        { _id: id, userCreated: userId },
+        { $set: { ...writableFields(entity), userModified: new ObjectId(userId), dateModified: new Date() } },
+        { returnDocument: 'after', runValidators: true },
+      )
+      .exec();
   }
 
   public delete({ id, userId }: { id: string; userId: string }): Promise<DeleteResult> {

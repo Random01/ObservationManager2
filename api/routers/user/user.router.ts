@@ -1,126 +1,77 @@
-import { Request, Response } from 'express';
-import * as core from 'express-serve-static-core';
-
+import type { NextFunction, Request, Response, Router } from 'express';
 import passport from 'passport';
 
-import { auth } from '../authentication';
-import { BaseEntityRouter } from '../common';
-
+import { auth, getUserId } from '../authentication';
+import { BaseRouter } from '../common';
+import { HttpError } from '../common/router/http-error';
 import { UserStore } from './user.store';
-import { UserModel } from './user.model';
+import type { UserDocument } from './user.interface';
 
-// todo: use user here
-export class UserRouter extends BaseEntityRouter<any, UserStore> {
-  constructor(router: core.Router, store = new UserStore()) {
-    super(router, store);
+export class UserRouter extends BaseRouter {
+  constructor(router: Router, private readonly store = new UserStore()) {
+    super(router);
   }
 
-  protected override setUp() {
-    this.router.get('/', auth.required, this.getUserById.bind(this));
+  public override registerRoutes(): void {
+    this.router.get('/', auth.required, this.getUserInfo.bind(this));
     this.router.post('/', this.createNewUser.bind(this));
     this.router.post('/login', this.logIn.bind(this));
     this.router.get('/user', auth.required, this.getUserInfo.bind(this));
   }
 
-  private getUserInfo(req: Request, res: Response, next: any) {
-    this.store
-      .getById({ id: this.getUserId(req) })
-      .then((user: any) => {
-        if (!user) {
-          return res.sendStatus(401);
-        } else {
-          return res.json({
-            success: true,
-            user: user.toAuthJSON(),
-          });
-        }
-      })
-      .catch(next);
+  private async getUserInfo(req: Request, res: Response): Promise<void> {
+    const user = await this.store.getById(getUserId(req));
+    if (!user) {
+      throw new HttpError(401, 'User account not found.');
+    }
+    res.json({ success: true, user: user.toAuthJSON() });
   }
 
-  private createNewUser(req: Request, res: Response, next: any) {
-    const { userName, password, email } = req.body;
-
-    if (!userName) {
-      return res.status(422).json({
-        success: false,
-        errors: { userName: "can't be blank" },
-      });
+  private async createNewUser(req: Request, res: Response): Promise<void> {
+    const { userName, password, email } = req.body ?? {};
+    if (typeof userName !== 'string' || !userName.trim()) {
+      this.sendMissingField(res, 'userName');
+      return;
+    }
+    if (typeof email !== 'string' || !email.trim()) {
+      this.sendMissingField(res, 'email');
+      return;
+    }
+    if (typeof password !== 'string' || !password) {
+      this.sendMissingField(res, 'password');
+      return;
     }
 
-    if (!email) {
-      return res.status(422).json({
-        success: false,
-        errors: { email: "can't be blank" },
-      });
-    }
-
-    if (!password) {
-      return res.status(422).json({
-        success: false,
-        errors: { password: "can't be blank" },
-      });
-    }
-
-    const user = new UserModel();
-
-    user.userName = userName;
-    user.email = email;
-    (user as any).setPassword(password);
-
-    user
-      .save()
-      .then(() =>
-        res.json({
-          success: true,
-          user: (user as any).toAuthJSON(),
-        }),
-      )
-      .catch(next);
+    const user = await this.store.create({ userName, email, password });
+    res.json({ success: true, user: user.toAuthJSON() });
   }
 
-  private getUserById(req: Request, res: Response) {
-    this.store.getById({ id: this.getUserId(req) }).then((user) => {
+  private logIn(req: Request, res: Response, next: NextFunction): void {
+    const { userName, password } = req.body?.user ?? {};
+    if (typeof userName !== 'string' || !userName.trim()) {
+      this.sendMissingField(res, 'userName');
+      return;
+    }
+    if (typeof password !== 'string' || !password) {
+      this.sendMissingField(res, 'password');
+      return;
+    }
+
+    passport.authenticate('local', { session: false }, (error: unknown, user: UserDocument | false) => {
+      if (error) {
+        return next(error);
+      }
       if (!user) {
-        return res.sendStatus(401);
-      } else {
-        return res.json({
-          success: true,
-          user: user.toAuthJSON(),
-        });
+        return res.status(422).json({ errors: { 'user name or password': 'is invalid' } });
       }
-    });
+      res.json({ success: true, user: user.toAuthJSON() });
+    })(req, res, next);
   }
 
-  private logIn(req: Request, res: Response, next: any) {
-    if (!req.body.user.userName) {
-      return res.status(422).json({
-        success: false,
-        errors: { userName: "can't be blank" },
-      });
-    }
-
-    if (!req.body.user.password) {
-      return res.status(422).json({
-        success: false,
-        errors: { password: "can't be blank" },
-      });
-    }
-
-    passport.authenticate('local', { session: false }, (err: any, user: any, info: any) => {
-      if (err) {
-        return next(err);
-      }
-
-      if (user) {
-        user.token = user.generateJWT();
-        return res.json({
-          success: true,
-          user: user.toAuthJSON(),
-        });
-      } else {
-        return res.status(422).json(info);
-      }
-    })(req, res, next);
+  private sendMissingField(res: Response, field: string): void {
+    res.status(422).json({
+      success: false,
+      errors: { [field]: "can't be blank" },
+    });
   }
 }

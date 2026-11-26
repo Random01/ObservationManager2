@@ -1,12 +1,11 @@
-import { Request, Response } from 'express';
-import * as core from 'express-serve-static-core';
+import type { Request, Response, Router } from 'express';
 
 import { BaseEntityRouter } from '../common';
 import { TargetStore } from './target.store';
 import { Target } from './target.interface';
 
 export class TargetRouter extends BaseEntityRouter<Target, TargetStore> {
-  constructor(router: core.Router, store = new TargetStore()) {
+  constructor(router: Router, store = new TargetStore()) {
     super(router, store);
   }
 
@@ -21,24 +20,16 @@ export class TargetRouter extends BaseEntityRouter<Target, TargetStore> {
     return requestParams;
   }
 
-  public override getItemsHandler(req: Request, res: Response) {
+  public override async getItemsHandler(req: Request, res: Response): Promise<void> {
     const name = this.toString(req.query.name);
     const maxCount = this.toNumber(req.query.maxCount);
 
     if (name && maxCount) {
-      this.store.search({ name, maxCount }).then(
-        (items) => res.json(items),
-        (error: Error) => this.handleError(res, error),
-      );
+      const items = await this.store.search({ name, maxCount });
+      res.json(items);
     } else {
-      this.store
-        .getItems({
-          requestParameters: this.parseRequestParams(req),
-        })
-        .then(
-          (items) => res.json(items),
-          (error: Error) => this.handleError(res, error),
-        );
+      const items = await this.store.getItems({ requestParameters: this.parseRequestParams(req) });
+      res.json(items);
     }
   }
 }

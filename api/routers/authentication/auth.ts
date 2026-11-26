@@ -1,29 +1,31 @@
-import { expressjwt } from 'express-jwt';
+import type { Request, RequestHandler } from 'express';
+import { expressjwt, UnauthorizedError } from 'express-jwt';
+import { isObjectIdOrHexString } from 'mongoose';
 
-import { Request } from 'express';
+import { getAuthSecret } from '../../config/auth-config';
 
-import { authConfig } from '../../config';
+type AuthenticatedRequest = Request & { payload?: { id?: unknown } };
 
-function getTokenFromHeader(req: Request) {
-  return req.headers.authorization;
+export function getUserId(req: AuthenticatedRequest): string | undefined {
+  const id = req.payload?.id;
+  return typeof id === 'string' ? id : undefined;
 }
 
-if (!authConfig.secret) {
-  throw new Error('Secret should be provided.');
-}
+const validateIdentity: RequestHandler = (req: AuthenticatedRequest, _res, next) => {
+  if (req.payload !== undefined && !isObjectIdOrHexString(getUserId(req))) {
+    return next(new UnauthorizedError('invalid_token', { message: 'Invalid token identity.' }));
+  }
+  next();
+};
+
+const jwtOptions = {
+  secret: getAuthSecret,
+  requestProperty: 'payload',
+  getToken: (req: Request) => req.headers.authorization,
+  algorithms: ['HS256' as const],
+};
 
 export const auth = {
-  required: expressjwt({
-    secret: authConfig.secret,
-    requestProperty: 'payload',
-    getToken: getTokenFromHeader,
-    algorithms: ['HS256'],
-  }),
-  optional: expressjwt({
-    secret: authConfig.secret,
-    requestProperty: 'payload',
-    credentialsRequired: false,
-    getToken: getTokenFromHeader,
-    algorithms: ['HS256'],
-  }),
+  required: [expressjwt(jwtOptions), validateIdentity],
+  optional: [expressjwt({ ...jwtOptions, credentialsRequired: false }), validateIdentity],
 };
