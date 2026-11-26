@@ -1,4 +1,4 @@
-import jwt from 'express-jwt';
+import { expressjwt } from 'express-jwt';
 
 import { Request } from 'express';
 
@@ -13,15 +13,15 @@ if (!authConfig.secret) {
 }
 
 export const auth = {
-  required: jwt({
+  required: expressjwt({
     secret: authConfig.secret,
-    userProperty: 'payload',
+    requestProperty: 'payload',
     getToken: getTokenFromHeader,
     algorithms: ['HS256'],
   }),
-  optional: jwt({
+  optional: expressjwt({
     secret: authConfig.secret,
-    userProperty: 'payload',
+    requestProperty: 'payload',
     credentialsRequired: false,
     getToken: getTokenFromHeader,
     algorithms: ['HS256'],
