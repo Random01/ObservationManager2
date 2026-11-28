@@ -1,22 +1,22 @@
 ﻿import { Serializable } from '../interfaces/serializable.interface';
 
 export class Result implements Serializable {
-  public type: string;
+  declare type: string;
 
   /**
    * Language
    */
-  public lang: string;
+  declare lang: string;
 
   /**
    * Description of the finding
    */
-  public description: string;
+  declare description: string;
 
   /**
    * Visual Rating
    */
-  public rating: number;
+  declare rating: number;
 
   constructor(params?: Partial<Result>) {
     Object.assign(this, params);

@@ -17,16 +17,17 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 export class AliasesEditorComponent {
   public readonly displayedColumns: string[] = ['alias', 'actions'];
 
-  private _aliases: string[];
+  private _aliases: string[] = [];
 
-  @Input() public set aliases(value: string[]) {
-    if (this._aliases !== value) {
-      this._aliases = value;
+  @Input() public set aliases(value: string[] | undefined) {
+    const aliases = value ?? [];
+    if (this._aliases !== aliases) {
+      this._aliases = aliases;
       this.validate();
     }
   }
 
-  public get aliases() {
+  public get aliases(): string[] {
     return this._aliases;
   }
 

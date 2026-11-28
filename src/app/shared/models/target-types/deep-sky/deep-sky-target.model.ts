@@ -1,18 +1,18 @@
 import { Target } from '../../models';
 
 export class DeepSkyTargetType extends Target {
-  public smallDiameter: number;
+  declare smallDiameter: number;
 
-  public largeDiameter: number;
+  declare largeDiameter: number;
 
-  public visualMagnitude: number;
+  declare visualMagnitude: number;
 
   /**
    * surface brightness
    * New in V2.0: usage of the new 'surfaceBrightnessType' type, giving the measurement unit explicitly.
    * In older schema versions, mags per square arcmin were used
    */
-  public surfaceBrightness: number;
+  declare surfaceBrightness: number;
 
   constructor(params?: Partial<DeepSkyTargetType>) {
     super(params);

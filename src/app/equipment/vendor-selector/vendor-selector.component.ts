@@ -21,7 +21,9 @@ export class VendorSelectorComponent {
   @Input() public vendor = '';
   @Output() public readonly vendorChange = new EventEmitter<string>();
 
-  public readonly vendors$: Observable<string[]> = inject(VendorService).getAllSuggestions().pipe(map((vendors) => vendors.items.map((vendor) => vendor.name)));
+  public readonly vendors$: Observable<string[]> = inject(VendorService).getAllSuggestions().pipe(
+    map((vendors) => vendors.items.map((vendor) => vendor.name).filter((name) => name !== undefined)),
+  );
 
   public onVendorChange(model: string) {
     this.vendor = model;

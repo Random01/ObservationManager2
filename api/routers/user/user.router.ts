@@ -20,7 +20,8 @@ export class UserRouter extends BaseRouter {
   }
 
   private async getUserInfo(req: Request, res: Response): Promise<void> {
-    const user = await this.store.getById(getUserId(req));
+    const userId = getUserId(req);
+    const user = userId === undefined ? null : await this.store.getById(userId);
     if (!user) {
       throw new HttpError(401, 'User account not found.');
     }

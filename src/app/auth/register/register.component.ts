@@ -26,9 +26,9 @@ import { selectRegisterState } from '../../store/register';
 export class RegisterComponent extends BaseComponent implements OnInit {
 
   public readonly profileForm = new FormGroup({
-    userName: new FormControl('', Validators.required),
-    email: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
+    userName: new FormControl('', { nonNullable: true, validators: Validators.required }),
+    email: new FormControl('', { nonNullable: true, validators: Validators.required }),
+    password: new FormControl('', { nonNullable: true, validators: Validators.required }),
   });
 
   private readonly destroyRef = inject(DestroyRef);
@@ -37,7 +37,7 @@ export class RegisterComponent extends BaseComponent implements OnInit {
 
   public onSubmit() {
     if (this.profileForm.valid) {
-      const { userName, email, password } = this.profileForm.value;
+      const { userName, email, password } = this.profileForm.getRawValue();
       const user = new User({ email, userName, password });
       this.store.dispatch(RegisterActions.register({ user }));
     }

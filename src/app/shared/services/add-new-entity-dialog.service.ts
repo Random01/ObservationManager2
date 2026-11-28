@@ -5,7 +5,7 @@ import { Entity } from '../models/models';
 
 @Injectable()
 export abstract class AddNewEntityDialogService<T extends Entity> {
-  public item: T;
+  public item?: T;
 
   constructor(protected readonly dialog: MatDialog) {}
 

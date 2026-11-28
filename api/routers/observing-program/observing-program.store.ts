@@ -51,8 +51,11 @@ export class ObservingProgramStore extends BaseMongooseStore<typeof ObservingPro
     return (this.model as any)
       .getById(id)
       .then((observingProgram: ObservingProgram) => {
-        const startIndex = page * size;
-        const targets = observingProgram.targets.slice(startIndex, startIndex + size);
+        let targets: ObservingProgram['targets'] = [];
+        if (page !== undefined && size !== undefined) {
+          const startIndex = page * size;
+          targets = observingProgram.targets.slice(startIndex, startIndex + size);
+        }
 
         return Promise.all([targets, (ObservationModel as any).getByTargets(targets), observingProgram.targets.length]);
       })

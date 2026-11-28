@@ -2,15 +2,15 @@ import { Entity } from './entity.model';
 import { GeographicalCoordinates } from './geographical-coordinates.model';
 
 export class Site extends Entity {
-  public name: string;
+  declare name: string;
   // <!-- offset from UT in [min] not including daylight savings time -->
   // <!--PLEASE NOTE: West of Greenwich is negative and east is positive -- >
-  public timezone: number;
+  declare timezone: number;
 
   // <!-- elevation in meters -->
-  public elevation: number;
+  declare elevation: number;
   // <!--IAU Code for site -- >
-  public code: number;
+  declare code: number;
   // <!-- geographical longitude; eastwards positive -->
   // <!-- geographical latitude -->
   public coord: GeographicalCoordinates;

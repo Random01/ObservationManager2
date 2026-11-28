@@ -16,7 +16,7 @@ import { VendorSelectorComponent } from '../../equipment/vendor-selector';
   imports: [MatFormFieldModule, MatInputModule, FormsModule, MatCheckboxModule, VendorSelectorComponent],
 })
 export class EyepieceComponent {
-  private _eyepiece: Eyepiece;
+  private _eyepiece = new Eyepiece();
 
   @Input() public set eyepiece(eyepiece: Eyepiece) {
     this._eyepiece = eyepiece;

@@ -1,8 +1,8 @@
 import { Entity } from './entity.model';
 
 export class Constellation extends Entity {
-  public code: string;
-  public name: string;
+  declare code: string;
+  declare name: string;
 
   public override serialize(): Record<string, any> {
     return Object.assign(super.serialize(), {

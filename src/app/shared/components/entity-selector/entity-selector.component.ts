@@ -8,19 +8,10 @@ import { AddNewEntityDialogService } from '../../services/add-new-entity-dialog.
 
 @Component({ changeDetection: ChangeDetectionStrategy.Eager, template: '' })
 export class EntitySelectorComponent<T extends Entity, S extends StorageService<T>> implements OnInit {
-  private _item: T | null;
-
-  @Input()
-  public get item(): T {
-    return this._item;
-  }
-
-  public set item(item: T) {
-    this._item = item;
-  }
+  @Input() public item?: T;
 
   @Output()
-  public readonly itemChange = new EventEmitter<T>();
+  public readonly itemChange = new EventEmitter<T | undefined>();
 
   public items: T[] = [];
 
@@ -37,7 +28,7 @@ export class EntitySelectorComponent<T extends Entity, S extends StorageService<
     this.loadAll();
   }
 
-  public getCompareWithFn(e1: Entity, e2: Entity): boolean {
+  public getCompareWithFn(e1?: Entity, e2?: Entity): boolean {
     return e1 && e2 ? e1.id === e2.id : e1 === e2;
   }
 
@@ -49,7 +40,7 @@ export class EntitySelectorComponent<T extends Entity, S extends StorageService<
   }
 
   public onSelectionChange(event: MatSelectChange) {
-    this.onItemSelected(event.value);
+    this.onItemSelected(event.value ?? undefined);
   }
 
   public openDialog(): void {

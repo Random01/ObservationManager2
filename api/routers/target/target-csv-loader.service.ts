@@ -80,12 +80,16 @@ export class TargetCsvLoader {
     return (parseFloat(arcsecondsString) / 3600.0 + parseFloat(arcminutesString) / 60.0 + Math.abs(degrees)) * Math.sign(degrees);
   }
 
-  private parseType(type: string): TargetType {
+  private parseType(type: string): TargetType | undefined {
     return this.typeToTypeMap.get(type);
   }
 
   private parseName(name: string) {
-    const [catalogName, number] = name.match(/(([(NGC)|(IC)])+)|(([0-9])+)/g);
+    const match = name.match(/^(NGC|IC)(\d+)/);
+    if (!match) {
+      return name;
+    }
+    const [, catalogName, number] = match;
 
     return `${catalogName} ${number.replace(/^0+/g, '')}`;
   }

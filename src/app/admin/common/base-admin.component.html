@@ -14,7 +14,7 @@
     [pageIndex]="currentPage"
     (page)="onPageChanged($event)">
   </mat-paginator> -->
-    <table mat-table class="mat-elevation-z8" [dataSource]="data.items">
+    <table mat-table class="mat-elevation-z8" [dataSource]="data.items ?? []">
       <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
         <mat-cell *matCellDef="let item">{{ item.name }}</mat-cell>

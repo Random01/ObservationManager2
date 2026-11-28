@@ -26,7 +26,7 @@ import { TargetTypeFormatterPipe } from '../../target/shared/pipes/target-type-f
 export class ObservingProgramStatisticsComponent extends PaginatedListComponent<TargetStatistics> implements OnInit {
   public readonly displayedColumns: string[] = ['name', 'type', 'constellation', 'observed'];
 
-  private readonly statisticsSubject = new BehaviorSubject<ObservingProgramStatistics>(null);
+  private readonly statisticsSubject = new BehaviorSubject<ObservingProgramStatistics | null>(null);
   public readonly statistics$ = this.statisticsSubject.asObservable();
 
   private readonly observingProgramService = inject(ObservingProgramsService);
@@ -49,15 +49,19 @@ export class ObservingProgramStatisticsComponent extends PaginatedListComponent<
   }
 
   private getObservingProgramId(): string {
-    return this.route.snapshot.paramMap.get('programId');
+    const programId = this.route.snapshot.paramMap.get('programId');
+    if (programId === null) {
+      throw new Error('Missing route parameter: programId');
+    }
+    return programId;
   }
 
   protected override getRequestParams(): RequestParams {
     return new ObservingProgramStatisticsRequestParams({
       size: this.pageSize,
       page: this.currentPage,
-      sortDirection: this.sortDirection,
-      sortField: this.sortField,
+      sortDirection: this.sortDirection ?? undefined,
+      sortField: this.sortField ?? undefined,
       observingProgramId: this.getObservingProgramId(),
     });
   }

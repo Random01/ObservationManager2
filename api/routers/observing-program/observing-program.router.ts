@@ -16,7 +16,7 @@ export class ObservingProgramRouter extends BaseEntityRouter<ObservingProgram, O
     this.router.get('/statistics/:id', auth.optional, this.getStatistics.bind(this));
   }
 
-  protected async getStatistics(req: Request, res: Response): Promise<void> {
+  protected async getStatistics(req: Request<{ id: string }>, res: Response): Promise<void> {
     const result = await this.store.getStatistics({
       id: req.params.id,
       size: this.toNumber(req.query.size),
@@ -25,7 +25,7 @@ export class ObservingProgramRouter extends BaseEntityRouter<ObservingProgram, O
     res.json(result);
   }
 
-  protected async getOverallStatistics(req: Request, res: Response): Promise<void> {
+  protected async getOverallStatistics(req: Request<{ id: string }>, res: Response): Promise<void> {
     const result = await this.store.getOverallStatistics({ id: req.params.id });
     res.json(result);
   }

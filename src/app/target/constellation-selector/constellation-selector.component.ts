@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, EventEmitter, Output, ChangeDetectionStrategy } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
@@ -25,7 +25,7 @@ export class ConstellationSelectorComponent implements OnInit {
 
   public isLoading = false;
   public constellations: Constellation[] = [];
-  public filteredConstellations: Observable<Constellation[]>;
+  public filteredConstellations: Observable<Constellation[]> = of([]);
 
   constructor(private readonly constellationService: ConstellationsService) {}
 
@@ -38,9 +38,7 @@ export class ConstellationSelectorComponent implements OnInit {
     this.isLoading = true;
     try {
       this.constellations = await this.constellationService.getAll();
-      this.filteredConstellations = new Observable((subscriber) => {
-        subscriber.next(this.constellations);
-      });
+      this.filteredConstellations = of(this.constellations);
     } finally {
       this.isLoading = false;
     }

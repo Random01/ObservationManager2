@@ -10,7 +10,7 @@ import { Eyepiece } from '../equipment/equipment';
 export class EyepieceFocalLengthPipe implements PipeTransform {
   constructor(@Inject(LOCALE_ID) private readonly locale: string) {}
 
-  public transform(eyepiece: Eyepiece): string {
+  public transform(eyepiece: Eyepiece | null | undefined): string {
     if (eyepiece == null) {
       return '';
     }

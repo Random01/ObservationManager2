@@ -1,6 +1,6 @@
 export default class ObservingProgramStatistics {
-  public readonly totalCount: number;
-  public readonly observedCount: number;
+  declare readonly totalCount: number;
+  declare readonly observedCount: number;
 
   constructor(params?: Partial<ObservingProgramStatistics>) {
     Object.assign(this, params);

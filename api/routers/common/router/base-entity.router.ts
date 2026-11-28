@@ -36,12 +36,12 @@ export abstract class BaseEntityRouter<TEntity extends Entity, TStore extends Ba
   public async addNewHandler(req: Request, res: Response): Promise<void> {
     const entity = await this.store.add({
       entity: this.parseBody(req),
-      userId: getUserId(req),
+      userId: this.requireUserId(req),
     });
     res.json(entity);
   }
 
-  public async getByIdHandler(req: Request, res: Response): Promise<void> {
+  public async getByIdHandler(req: Request<{ id: string }>, res: Response): Promise<void> {
     const entity = await this.store.getById({
       id: req.params.id,
       userId: getUserId(req),
@@ -49,23 +49,23 @@ export abstract class BaseEntityRouter<TEntity extends Entity, TStore extends Ba
     res.json(entity);
   }
 
-  public async updateHandler(req: Request, res: Response): Promise<void> {
+  public async updateHandler(req: Request<{ id: string }>, res: Response): Promise<void> {
     const id = req.params.id;
     const body = this.parseBody(req);
     if (body.id != null && String(body.id) !== id) {
       throw new HttpError(400, 'Request body ID must match the URL.');
     }
-    const entity = await this.store.update({ id, entity: body, userId: getUserId(req) });
+    const entity = await this.store.update({ id, entity: body, userId: this.requireUserId(req) });
     if (!entity) {
       throw new HttpError(404, 'Record not found.');
     }
     res.json(entity);
   }
 
-  public async deleteHandler(req: Request, res: Response): Promise<void> {
+  public async deleteHandler(req: Request<{ id: string }>, res: Response): Promise<void> {
     const { deletedCount } = await this.store.delete({
       id: req.params.id,
-      userId: getUserId(req),
+      userId: this.requireUserId(req),
     });
     if (!deletedCount) {
       throw new HttpError(404, 'Record not found.');
@@ -98,6 +98,14 @@ export abstract class BaseEntityRouter<TEntity extends Entity, TStore extends Ba
     this.router.put('/:id', auth.required, this.updateHandler.bind(this));
     this.router.delete('/:id', auth.required, this.deleteHandler.bind(this));
     this.router.post('/', auth.required, this.addNewHandler.bind(this));
+  }
+
+  private requireUserId(req: Request): string {
+    const userId = getUserId(req);
+    if (userId === undefined) {
+      throw new HttpError(401, 'Authentication required.');
+    }
+    return userId;
   }
 
   private parseBody(req: Request): Partial<TEntity> {

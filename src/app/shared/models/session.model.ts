@@ -8,27 +8,27 @@ export class Session extends Entity {
   /**
    * Start of observation session
    */
-  public begin: Date;
+  public begin: Date | null = null;
   /**
    * End of observation session
    */
-  public end: Date;
+  public end: Date | null = null;
   /**
    * Site where session took place
    */
-  public site: Site;
+  public site?: Site;
   /**
    * Comments on the (optical or electronic) equipment used
    */
-  public equipment: string;
+  declare equipment: string;
   /**
    * Any other comments
    */
-  public comments: string;
+  declare comments: string;
   /**
    * Comments about the weather situation
    */
-  public weather: string;
+  declare weather: string;
 
   constructor(params?: Partial<Session>) {
     super(params);

@@ -4,15 +4,15 @@ export class Eyepiece extends EquipmentItem {
   /**
    * Focal Length (mm)
    */
-  public focalLength: number;
+  declare focalLength: number;
   /**
    * New in V1.7: upper limit of focal length (used in case of zoom eyepiece) in [mm]
    */
-  public maxFocalLength: number;
+  declare maxFocalLength: number;
   /**
    * Apparent Field of View (deg)
    */
-  public apparentFOV: number;
+  declare apparentFOV: number;
 
   constructor(params?: Partial<Eyepiece>) {
     super(params);

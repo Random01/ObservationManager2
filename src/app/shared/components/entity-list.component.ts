@@ -27,8 +27,8 @@ export abstract class EntityListComponent<T extends Entity> extends PaginatedLis
     const requestParams = this.getRequestParams({
       size: this.pageSize,
       page: this.currentPage,
-      sortDirection: this.sortDirection,
-      sortField: this.sortField,
+      sortDirection: this.sortDirection ?? undefined,
+      sortField: this.sortField ?? undefined,
     });
 
     try {

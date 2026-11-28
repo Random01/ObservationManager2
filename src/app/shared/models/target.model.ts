@@ -7,9 +7,9 @@ export class Target extends Entity {
   /**
    * Most common name.
    */
-  public name: string;
+  declare name: string;
 
-  public type: TargetType;
+  declare type: TargetType;
 
   /**
    * Alternative names.

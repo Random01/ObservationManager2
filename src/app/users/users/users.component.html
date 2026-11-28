@@ -1,11 +1,11 @@
-@if ({ page: page$ | async }; as data) {
+@if (page$ | async; as page) {
   <div class="om-users">
     <div>
       <h2 class="mat-h2">Users</h2>
     </div>
-    <mat-paginator showFirstLastButtons="true" [length]="data.page.totalCount" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChanged($event)">
+    <mat-paginator showFirstLastButtons="true" [length]="page.totalCount" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChanged($event)">
     </mat-paginator>
-    <mat-table [dataSource]="data.page.items" class="mat-elevation-z8">
+    <mat-table [dataSource]="page.items" class="mat-elevation-z8">
       <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
         <mat-cell *matCellDef="let user">{{ user.name }}</mat-cell>
@@ -24,7 +24,7 @@
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
     </mat-table>
-    <mat-paginator showFirstLastButtons="true" [length]="data.page.totalCount" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChanged($event)">
+    <mat-paginator showFirstLastButtons="true" [length]="page.totalCount" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChanged($event)">
     </mat-paginator>
     <hr />
     <div>

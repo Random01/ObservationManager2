@@ -6,9 +6,9 @@ export interface Param<T = any> {
 }
 
 export class RequestParams {
-  public readonly page: number;
+  public readonly page?: number;
 
-  public readonly size: number;
+  public readonly size?: number;
 
   public readonly sortField?: string;
 

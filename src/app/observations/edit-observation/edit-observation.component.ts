@@ -20,6 +20,6 @@ export class EditObservationComponent extends EditEntityComponent<Observation> {
   }
 
   public override getItemId(): string {
-    return this.route.snapshot.paramMap.get('observationId');
+    return this.requireRouteParam('observationId');
   }
 }

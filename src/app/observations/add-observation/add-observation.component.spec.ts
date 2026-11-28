@@ -45,6 +45,9 @@ describe('AddObservationComponent', () => {
     await component.ngOnInit();
 
     const item = await firstValueFrom(component.item$);
+    if (!item) {
+      throw new Error('Expected the item to be initialized');
+    }
     expect(getSession).toHaveBeenCalledOnceWith('session-1');
     expect(item.session).toBe(session);
     expect(item.site).toBe(session.site);
@@ -55,6 +58,9 @@ describe('AddObservationComponent', () => {
   it('waits for the save and carries equipment and conditions forward to a fresh observation', async () => {
     await component.ngOnInit();
     const item = await firstValueFrom(component.item$);
+    if (!item) {
+      throw new Error('Expected the item to be initialized');
+    }
     item.target = new Target({ name: 'M31' });
     item.result.description = 'Bright nucleus';
     item.scope = new Scope({ id: 'scope-1' });
@@ -75,6 +81,9 @@ describe('AddObservationComponent', () => {
     await save;
 
     const next = await firstValueFrom(component.item$);
+    if (!next) {
+      throw new Error('Expected the item to be initialized');
+    }
     expect(next).not.toBe(item);
     expect(next).toEqual(
       jasmine.objectContaining({
@@ -88,7 +97,8 @@ describe('AddObservationComponent', () => {
         session,
       }),
     );
-    expect(next.target.name).toBeUndefined();
+    expect(next.target).toEqual(jasmine.any(Target));
+    expect(next.target?.name).toBeUndefined();
     expect(next.result.description).toBeUndefined();
     expect(component.isLoading()).toBeFalse();
   });
@@ -96,6 +106,9 @@ describe('AddObservationComponent', () => {
   it('keeps the current observation and reports a failed save', async () => {
     await component.ngOnInit();
     const item = await firstValueFrom(component.item$);
+    if (!item) {
+      throw new Error('Expected the item to be initialized');
+    }
     add.and.returnValue(throwError(() => new Error('Save failed')));
 
     await component.addItemAndContinue();

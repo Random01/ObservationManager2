@@ -16,13 +16,13 @@ import moment from 'moment';
   providers: [provideNativeDateAdapter()],
 })
 export class DateTimeInputComponent {
-  private _date: Date;
-  public get dateTime(): Date {
+  private _date: Date | null = null;
+  public get dateTime(): Date | null {
     return this._date;
   }
 
   @Input()
-  public set dateTime(value: Date) {
+  public set dateTime(value: Date | null) {
     this._date = value;
   }
 
@@ -34,18 +34,18 @@ export class DateTimeInputComponent {
   }
 
   public set time(value: string) {
-    if (value) {
+    if (value && this._date) {
       const [hours, minutes] = value.split(':');
       this._date.setHours(parseFloat(hours), parseFloat(minutes));
     }
   }
 
-  @Output() public readonly dateTimeChange = new EventEmitter<Date>();
+  @Output() public readonly dateTimeChange = new EventEmitter<Date | null>();
 
-  @Input() public datePlaceholder: string;
-  @Input() public timePlaceholder: string;
-  @Input() public dateHint: string;
-  @Input() public timeHint: string;
+  @Input() public datePlaceholder = '';
+  @Input() public timePlaceholder = '';
+  @Input() public dateHint = '';
+  @Input() public timeHint = '';
 
   public onDateChanged(): void {
     this.dateTimeChange.emit(this.dateTime);

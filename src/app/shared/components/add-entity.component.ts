@@ -20,10 +20,13 @@ export abstract class AddEntityComponent<T extends Entity> extends BaseEntityCom
   }
 
   public async addItem() {
+    const item = this.itemSubject.getValue();
+    if (!item) {
+      return;
+    }
     this.startLoading();
 
     try {
-      const item = this.itemSubject.getValue();
       await firstValueFrom(this.storageService.add(item));
       this.showSuccessMessage();
       this.goBack();
@@ -35,10 +38,13 @@ export abstract class AddEntityComponent<T extends Entity> extends BaseEntityCom
   }
 
   public async addItemAndContinue() {
+    const item = this.itemSubject.getValue();
+    if (!item) {
+      return;
+    }
     this.startLoading();
 
     try {
-      const item = this.itemSubject.getValue();
       await firstValueFrom(this.storageService.add(item));
       this.showSuccessMessage();
 

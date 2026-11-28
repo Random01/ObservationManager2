@@ -2,9 +2,9 @@ import { RequestParams } from '../../shared/services/request-params.model';
 import { TargetType } from '../../shared/models/target-type.model';
 
 export class TargetSearchParams extends RequestParams {
-  public readonly name: string;
+  public readonly name?: string;
 
-  public readonly type: TargetType;
+  public readonly type?: TargetType;
 
   constructor(props?: Partial<TargetSearchParams>) {
     super(props);
