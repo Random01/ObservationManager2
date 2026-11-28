@@ -9,7 +9,7 @@
     <mat-form-field>
       <mat-select placeholder="Site" [(ngModel)]="searchParameters.site.id">
         <mat-option>None</mat-option>
-        @for (site of sites; track site.id) {
+        @for (site of sites(); track site.id) {
           <mat-option [value]="site.id">
             {{ site.name }}
           </mat-option>
@@ -24,7 +24,7 @@
     <mat-form-field>
       <mat-select placeholder="Telescopes, Binocularus &amp; Finders" [(ngModel)]="searchParameters.scope.id">
         <mat-option>None</mat-option>
-        @for (scope of scopes; track scope.id) {
+        @for (scope of scopes(); track scope.id) {
           <mat-option [value]="scope.id">
             {{ scope.model }}
           </mat-option>
@@ -36,7 +36,7 @@
     <mat-form-field>
       <mat-select placeholder="Eyepieces" [(ngModel)]="searchParameters.eyepiece.id">
         <mat-option>None</mat-option>
-        @for (eyepiece of eyepieces; track eyepiece.id) {
+        @for (eyepiece of eyepieces(); track eyepiece.id) {
           <mat-option [value]="eyepiece.id">
             {{ eyepiece.model }}
           </mat-option>
@@ -48,7 +48,7 @@
     <mat-form-field>
       <mat-select placeholder="Filters" [(ngModel)]="searchParameters.filter.id">
         <mat-option>None</mat-option>
-        @for (filter of filters; track filter.id) {
+        @for (filter of filters(); track filter.id) {
           <mat-option [value]="filter.id">
             {{ filter.model }}
           </mat-option>
@@ -60,7 +60,7 @@
     <mat-form-field>
       <mat-select placeholder="Lenses" [(ngModel)]="searchParameters.lens.id">
         <mat-option>None</mat-option>
-        @for (lens of lenses; track lens.id) {
+        @for (lens of lenses(); track lens.id) {
           <mat-option [value]="lens.id">
             {{ lens.model }}
           </mat-option>

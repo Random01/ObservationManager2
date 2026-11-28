@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 
 import { MatDialog } from '@angular/material/dialog';
@@ -6,7 +6,6 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { finalize, firstValueFrom } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { DestroyRef, inject } from '@angular/core';
 
 import { Session } from '../../shared/models/session.model';
 import { SessionService } from '../shared/session.service';
@@ -22,11 +21,11 @@ import { SessionComponent } from '../session/session.component';
   selector: 'om-session-details',
   templateUrl: 'session-details.component.html',
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatButtonModule, RouterLink, SessionComponent],
 })
 export class SessionDetailsComponent extends BaseComponent implements OnInit {
-  public session: Session | null = null;
+  public readonly session = signal<Session | null>(null);
 
   public editMode = false;
 
@@ -41,25 +40,27 @@ export class SessionDetailsComponent extends BaseComponent implements OnInit {
   }
 
   public create(): void {
-    if (!this.session) {
+    const session = this.session();
+    if (!session) {
       return;
     }
     this.startLoading();
 
     this.sessionService
-      .add(this.session)
+      .add(session)
       .pipe(finalize(() => this.endLoading()), takeUntilDestroyed(this.destroyRef))
       .subscribe();
   }
 
   public update(): void {
-    if (!this.session) {
+    const session = this.session();
+    if (!session) {
       return;
     }
     this.startLoading();
 
     this.sessionService
-      .update(this.session)
+      .update(session)
       .pipe(finalize(() => this.endLoading()), takeUntilDestroyed(this.destroyRef))
       .subscribe();
   }
@@ -73,11 +74,9 @@ export class SessionDetailsComponent extends BaseComponent implements OnInit {
       this.sessionService
         .getById(sessionId)
         .pipe(finalize(() => this.endLoading()), takeUntilDestroyed(this.destroyRef))
-        .subscribe((session) => {
-          this.session = session;
-        });
+        .subscribe((session) => this.session.set(session));
     } else {
-      this.session = new Session();
+      this.session.set(new Session());
     }
   }
 
@@ -86,13 +85,14 @@ export class SessionDetailsComponent extends BaseComponent implements OnInit {
   }
 
   public async addNewObservation() {
-    if (!this.session) {
+    const session = this.session();
+    if (!session) {
       return;
     }
     const dialogRef = this.dialog.open(ObservationDialogComponent, {
       width: '400px',
       data: new Observation({
-        session: this.session,
+        session,
         target: new Target(),
         scope: new Scope(),
         filter: new Filter(),

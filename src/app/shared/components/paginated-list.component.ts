@@ -15,7 +15,7 @@ import PaginatedListQueryParams from '../interfaces/paginated-list-query-params.
 import { PaginatedResponsePayload } from '../interfaces/paginated-response-payload.interface';
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '',
 })
 export abstract class PaginatedListComponent<T> extends BaseComponent implements OnInit {

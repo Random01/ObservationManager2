@@ -10,7 +10,7 @@ import { BaseEntityComponent } from './base-entity.component';
 
 @Component({
   template: '',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
 })
 export abstract class EditEntityComponent<T extends Entity> extends BaseEntityComponent<T> implements OnInit {

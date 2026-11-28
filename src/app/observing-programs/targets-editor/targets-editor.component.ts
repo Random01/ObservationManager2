@@ -12,7 +12,7 @@ import { TargetSelectorComponent } from '../../target/target-selector/target-sel
   selector: 'om-targets-editor',
   templateUrl: 'targets-editor.component.html',
   styleUrls: ['targets-editor.component.less'],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatPaginatorModule, MatTableModule, MatIconModule, MatButtonModule, TargetSelectorComponent],
 })
 export class TargetsEditorComponent implements OnChanges {
@@ -33,6 +33,7 @@ export class TargetsEditorComponent implements OnChanges {
     if (this.newTarget) {
       this.targets = [...(this.targets ?? []), this.newTarget];
       this.newTarget = null;
+      this.updateList();
       this.targetsChange.emit(this.targets);
     }
   }
@@ -41,6 +42,7 @@ export class TargetsEditorComponent implements OnChanges {
     const index = this.targets?.indexOf(target) ?? -1;
     if (this.targets && index >= 0) {
       this.targets = this.targets.filter((_, itemIndex) => itemIndex !== index);
+      this.updateList();
       this.targetsChange.emit(this.targets);
     }
   }
@@ -56,6 +58,10 @@ export class TargetsEditorComponent implements OnChanges {
   }
 
   private updateList(): void {
-    this.paginatedTargets = this.targets?.slice(this.currentPage * this.pageSize, this.currentPage * this.pageSize + this.pageSize) ?? [];
+    const targets = this.targets ?? [];
+    const lastPage = Math.max(0, Math.ceil(targets.length / this.pageSize) - 1);
+    this.currentPage = Math.min(this.currentPage, lastPage);
+    const start = this.currentPage * this.pageSize;
+    this.paginatedTargets = targets.slice(start, start + this.pageSize);
   }
 }

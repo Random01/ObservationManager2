@@ -2,7 +2,7 @@ import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/cor
 
 import { MessageService } from '../services/message.service';
 
-@Component({ changeDetection: ChangeDetectionStrategy.Eager, template: '' })
+@Component({ changeDetection: ChangeDetectionStrategy.OnPush, template: '' })
 export class BaseComponent {
   public readonly isLoading = signal<boolean>(false);
 

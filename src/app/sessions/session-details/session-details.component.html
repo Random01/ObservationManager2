@@ -1,6 +1,6 @@
 <div>
-  @if (session) {
-    <om-session [session]="session"></om-session>
+  @if (session(); as currentSession) {
+    <om-session [session]="currentSession"></om-session>
   }
 
   <hr />

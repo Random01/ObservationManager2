@@ -6,7 +6,7 @@ import { StorageService } from '../../services/storage.service';
 import { Entity } from '../../models/models';
 import { AddNewEntityDialogService } from '../../services/add-new-entity-dialog.service';
 
-@Component({ changeDetection: ChangeDetectionStrategy.Eager, template: '' })
+@Component({ changeDetection: ChangeDetectionStrategy.OnPush, template: '' })
 export class EntitySelectorComponent<T extends Entity, S extends StorageService<T>> implements OnInit {
   @Input() public item?: T;
 

@@ -11,7 +11,7 @@ import { TargetsEditorComponent } from '../targets-editor/targets-editor.compone
   selector: 'om-observing-program',
   templateUrl: 'observing-program.component.html',
   styleUrl: 'observing-program.component.less',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatFormFieldModule, MatInputModule, FormsModule, TargetsEditorComponent],
 })
 export class ObservingProgramComponent {

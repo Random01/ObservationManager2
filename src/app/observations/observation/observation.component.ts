@@ -19,7 +19,7 @@ import { ObservationConditionsComponent } from '../observation-conditions/observ
   selector: 'om-observation',
   templateUrl: 'observation.component.html',
   styleUrl: 'observation.component.less',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatFormFieldModule,
     MatInputModule,
