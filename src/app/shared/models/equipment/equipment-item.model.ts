@@ -1,9 +1,9 @@
 ﻿import { Entity } from '../entity.model';
 
 export class EquipmentItem extends Entity {
-  public model: string;
+  declare model: string;
 
-  public vendor: string;
+  declare vendor: string;
 
   constructor(params?: Partial<EquipmentItem>) {
     super(params);

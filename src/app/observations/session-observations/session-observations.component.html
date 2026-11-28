@@ -15,14 +15,14 @@
     }
     <mat-paginator
       showFirstLastButtons="true"
-      [length]="data.page.totalCount"
+      [length]="data.page?.totalCount ?? 0"
       [pageSize]="pageSize"
       [pageSizeOptions]="pageSizeOptions"
       [pageIndex]="currentPage"
       (page)="onPageChanged($event)"
     >
     </mat-paginator>
-    <mat-table [dataSource]="data.page.items" class="mat-elevation-z8">
+    <mat-table [dataSource]="data.page?.items ?? []" class="mat-elevation-z8">
       <ng-container matColumnDef="date">
         <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
         <mat-cell *matCellDef="let observation">{{ observation.begin | date: 'MMM d, y, hh:mm' }}</mat-cell>
@@ -63,7 +63,7 @@
     </mat-table>
     <mat-paginator
       showFirstLastButtons="true"
-      [length]="data.page.totalCount"
+      [length]="data.page?.totalCount ?? 0"
       [pageSize]="pageSize"
       [pageSizeOptions]="pageSizeOptions"
       [pageIndex]="currentPage"

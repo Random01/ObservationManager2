@@ -1,9 +1,9 @@
 import { Param, RequestParams } from '../../shared/services/request-params.model';
 
 export class ObservationSearchParams extends RequestParams {
-  public readonly session: string;
+  public readonly session?: string;
 
-  public readonly target: string;
+  public readonly target?: string;
 
   constructor(props?: Partial<ObservationSearchParams>) {
     super(props);

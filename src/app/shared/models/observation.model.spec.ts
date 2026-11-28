@@ -25,10 +25,10 @@ describe('Observation', () => {
 
     expect(observation.begin).toEqual(new Date('2026-10-01T18:00:00Z'));
     expect(observation.observer.name).toBe('Vera');
-    expect(observation.target.name).toBe('M31');
-    expect(observation.scope.focalLength).toBe(1000);
-    expect(observation.eyepiece.focalLength).toBe(10);
-    expect(observation.lens.factor).toBe(2);
+    expect(observation.target?.name).toBe('M31');
+    expect(observation.scope?.focalLength).toBe(1000);
+    expect(observation.eyepiece?.focalLength).toBe(10);
+    expect(observation.lens?.factor).toBe(2);
     expect(observation.serialize()).toEqual({
       id: 'observation-1',
       description: 'First sighting',

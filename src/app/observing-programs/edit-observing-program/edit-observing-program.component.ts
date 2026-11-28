@@ -20,6 +20,6 @@ export class EditObservingProgramComponent extends EditEntityComponent<Observing
   }
 
   public getItemId(): string {
-    return this.route.snapshot.paramMap.get('programId');
+    return this.requireRouteParam('programId');
   }
 }

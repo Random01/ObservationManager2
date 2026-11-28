@@ -18,14 +18,14 @@
     }
     <mat-paginator
       showFirstLastButtons="true"
-      [length]="data.page.totalCount"
+      [length]="data.page?.totalCount ?? 0"
       [pageSize]="pageSize"
       [pageSizeOptions]="pageSizeOptions"
       [pageIndex]="currentPage"
       (page)="onPageChanged($event)"
     >
     </mat-paginator>
-    <table mat-table class="mat-elevation-z8" [dataSource]="data.page.items">
+    <table mat-table class="mat-elevation-z8" [dataSource]="data.page?.items ?? []">
       <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
         <mat-cell *matCellDef="let item">{{ item.target.name }}</mat-cell>
@@ -51,7 +51,7 @@
     </table>
     <mat-paginator
       showFirstLastButtons="true"
-      [length]="data.page.totalCount"
+      [length]="data.page?.totalCount ?? 0"
       [pageSize]="pageSize"
       [pageSizeOptions]="pageSizeOptions"
       [pageIndex]="currentPage"

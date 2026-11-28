@@ -20,6 +20,6 @@ export class EditScopeComponent extends EditEntityComponent<Scope> {
   }
 
   public getItemId(): string {
-    return this.route.snapshot.paramMap.get('id');
+    return this.requireRouteParam('id');
   }
 }

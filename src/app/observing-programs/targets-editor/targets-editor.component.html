@@ -1,7 +1,7 @@
 <div class="om-targets-editor">
   <mat-paginator
     showFirstLastButtons="true"
-    [length]="targets.length"
+    [length]="targets?.length ?? 0"
     [pageSize]="pageSize"
     [pageSizeOptions]="pageSizeOptions"
     [pageIndex]="currentPage"
@@ -30,7 +30,7 @@
 
   <mat-paginator
     showFirstLastButtons="true"
-    [length]="targets.length"
+    [length]="targets?.length ?? 0"
     [pageSize]="pageSize"
     [pageSizeOptions]="pageSizeOptions"
     [pageIndex]="currentPage"

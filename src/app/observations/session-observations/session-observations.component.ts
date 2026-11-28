@@ -44,7 +44,11 @@ export class SessionObservationsComponent extends EntityListComponent<Observatio
   }
 
   public getSessionId(): string {
-    return this.route.snapshot.paramMap.get('sessionId');
+    const sessionId = this.route.snapshot.paramMap.get('sessionId');
+    if (sessionId === null) {
+      throw new Error('Missing route parameter: sessionId');
+    }
+    return sessionId;
   }
 
   public addNewObservation() {

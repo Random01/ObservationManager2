@@ -1,7 +1,7 @@
 import { RequestParams } from '../../shared/services/request-params.model';
 
 export class ObservingProgramStatisticsRequestParams extends RequestParams {
-  public observingProgramId: string;
+  declare observingProgramId: string;
 
   constructor(params?: Partial<ObservingProgramStatisticsRequestParams>) {
     super(params);

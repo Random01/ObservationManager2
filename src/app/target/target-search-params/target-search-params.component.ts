@@ -19,7 +19,9 @@ export class TargetSearchParamsComponent {
   @Output() public readonly searchRequested = new EventEmitter<TargetSearchParams>();
 
   public onSearch(): void {
-    this.searchRequested.emit(this.searchParams);
+    if (this.searchParams) {
+      this.searchRequested.emit(this.searchParams);
+    }
   }
 
   public clear() {

@@ -20,10 +20,14 @@ export abstract class EditEntityComponent<T extends Entity> extends BaseEntityCo
   }
 
   public updateItem(): void {
+    const item = this.itemSubject.getValue();
+    if (!item) {
+      return;
+    }
     this.startLoading();
 
     this.storageService
-      .update(this.itemSubject.getValue())
+      .update(item)
       .pipe(
         finalize(() => this.endLoading()),
         takeUntilDestroyed(this.destroyRef),
@@ -51,7 +55,7 @@ export abstract class EditEntityComponent<T extends Entity> extends BaseEntityCo
 
   public isValid(): boolean {
     const item = this.itemSubject.getValue();
-    return item?.isValid();
+    return !!item?.isValid();
   }
 
   protected abstract getItemId(): string;

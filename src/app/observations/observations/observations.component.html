@@ -25,14 +25,14 @@
     </mat-expansion-panel>
     <mat-paginator
       showFirstLastButtons="true"
-      [length]="data.page.totalCount"
+      [length]="data.page?.totalCount ?? 0"
       [pageSize]="pageSize"
       [pageSizeOptions]="pageSizeOptions"
       [pageIndex]="currentPage"
       (page)="onPageChanged($event)"
     >
     </mat-paginator>
-    <mat-table [dataSource]="data.page.items" class="mat-elevation-z8">
+    <mat-table [dataSource]="data.page?.items ?? []" class="mat-elevation-z8">
       <ng-container matColumnDef="targetName">
         <mat-header-cell *matHeaderCellDef>Target</mat-header-cell>
         <mat-cell *matCellDef="let observation">{{ observation.target.name }}</mat-cell>
@@ -71,7 +71,7 @@
     </mat-table>
     <mat-paginator
       showFirstLastButtons="true"
-      [length]="data.page.totalCount"
+      [length]="data.page?.totalCount ?? 0"
       [pageSize]="pageSize"
       [pageSizeOptions]="pageSizeOptions"
       [pageIndex]="currentPage"

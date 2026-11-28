@@ -33,6 +33,9 @@ describe('AddScopeComponent', () => {
 
   it('validates the scope and returns to the list after saving it', async () => {
     const scope = await firstValueFrom(component.item$);
+    if (!scope) {
+      throw new Error('Expected the item to be initialized');
+    }
     expect(component.isValid()).toBeFalse();
     scope.model = 'Reflector';
     expect(component.isValid()).toBeTrue();
@@ -46,6 +49,9 @@ describe('AddScopeComponent', () => {
 
   it('starts a new entry after a successful save and continue', async () => {
     const scope = await firstValueFrom(component.item$);
+    if (!scope) {
+      throw new Error('Expected the item to be initialized');
+    }
     scope.model = 'Reflector';
 
     await component.addItemAndContinue();
@@ -58,6 +64,9 @@ describe('AddScopeComponent', () => {
 
   it('keeps the entry and clears loading when saving fails', async () => {
     const scope = await firstValueFrom(component.item$);
+    if (!scope) {
+      throw new Error('Expected the item to be initialized');
+    }
     add.and.returnValue(throwError(() => new Error('Save failed')));
 
     await component.addItem();

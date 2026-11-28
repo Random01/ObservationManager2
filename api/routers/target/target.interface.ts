@@ -5,7 +5,7 @@ import { TargetType } from './target-type.enum';
 export interface Target extends Entity {
   name: string;
   originalName: string;
-  type: TargetType;
+  type?: TargetType;
   ra: number;
   dec: number;
   constellation: string;

@@ -5,14 +5,14 @@
     </div>
     <mat-paginator
       showFirstLastButtons="true"
-      [length]="data.page.totalCount"
+      [length]="data.page?.totalCount ?? 0"
       [pageSize]="pageSize"
       [pageSizeOptions]="pageSizeOptions"
       [pageIndex]="currentPage"
       (page)="onPageChanged($event)"
     >
     </mat-paginator>
-    <mat-table class="mat-elevation-z8" [dataSource]="data.page.items">
+    <mat-table class="mat-elevation-z8" [dataSource]="data.page?.items ?? []">
       <ng-container matColumnDef="model">
         <mat-header-cell *matHeaderCellDef>Model</mat-header-cell>
         <mat-cell *matCellDef="let eyepiece">{{ eyepiece.model }}</mat-cell>
@@ -45,7 +45,7 @@
     </mat-table>
     <mat-paginator
       showFirstLastButtons="true"
-      [length]="data.page.totalCount"
+      [length]="data.page?.totalCount ?? 0"
       [pageSize]="pageSize"
       [pageSizeOptions]="pageSizeOptions"
       [pageIndex]="currentPage"

@@ -2,7 +2,7 @@
 import { FilterType } from './filter-type.enum';
 
 export class Filter extends EquipmentItem {
-  public filterType: FilterType;
+  declare filterType: FilterType;
 
   // "O-III 2""
   // "Thousand Oaks"

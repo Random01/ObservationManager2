@@ -2,7 +2,7 @@ import { Entity } from './models';
 import { Target } from './target.model';
 
 export class ObservingProgram extends Entity {
-  public name: string;
+  declare name: string;
   public targets: Target[] = [];
 
   constructor(params?: Partial<ObservingProgram>) {

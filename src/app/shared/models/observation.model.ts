@@ -13,35 +13,35 @@ export class Observation extends Entity {
   public observer: Observer;
   // WHERE was observed ?
   // site where session took place
-  public site: Site;
+  public site?: Site;
   // optional session information
   public session: Session;
   // WHAT was observed
-  public target: Target;
+  public target: Target | null;
   // WHEN was observed ? This may be an instant or an interval of time
   // Start or instant of observation
-  public begin: Date;
+  public begin: Date | null = null;
   // End in case of (exposure) interval
-  public end: Date;
+  public end: Date | null = null;
   // Seeing rated according to the Antoniadi scale (1=excellent, 5=very poor)
-  public seeing: SeeingType;
+  public seeing?: SeeingType;
   // Scope used for the observation
-  public scope: Scope;
+  public scope?: Scope;
   // eyepiece used
-  public eyepiece: Eyepiece;
+  public eyepiece?: Eyepiece;
   // filter used
-  public filter: Filter;
+  public filter?: Filter;
   //  Barlow/shapley lens used
-  public lens: Lens;
+  public lens?: Lens;
   // Descripting of the results of the observations. Future extensions are likely!
   public result: Result;
   // Estimated limiting magnitude for naked eye. It's optional but should occur always!
-  public faintestStar: number;
+  public faintestStar?: number;
   // Sky quality meter (SQM) reading
-  public skyQuality: number;
+  public skyQuality?: number;
   // magnification used (redundant in case of existing eyepiece reference)
   // May be used to derive the actually used focal length in case of a zoom eyepiece
-  public magnification: number;
+  public magnification?: number | null;
 
   constructor(params?: Partial<Observation>) {
     super(params);

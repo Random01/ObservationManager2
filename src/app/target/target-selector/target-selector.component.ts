@@ -15,10 +15,6 @@ import { TargetService } from '../shared/target.service';
 import { Target } from '../../shared/models/models';
 import { AddTargetDialogService } from './add-target-dialog';
 
-function isTarget(item: string | Target): item is Target {
-  return item instanceof Target;
-}
-
 @Component({
   selector: 'om-target-selector',
   templateUrl: 'target-selector.component.html',
@@ -27,12 +23,12 @@ function isTarget(item: string | Target): item is Target {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TargetSelectorComponent {
-  readonly target = model<Target>();
+  readonly target = model<Target | null>(null);
   readonly canAdd = input(false);
 
   public targets$: Observable<Target[]>;
 
-  public readonly searchControl = new FormControl<Target>(null);
+  public readonly searchControl = new FormControl<string | Target | null>(null);
 
   private readonly searchTerms$ = new Subject<string>();
 
@@ -52,20 +48,20 @@ export class TargetSelectorComponent {
     );
     
     effect(() => {
-      this.searchControl.setValue(this.target());
+      this.searchControl.setValue(this.target() ?? null);
     });
   }
 
-  public displayFn(target: Target): string {
-    return target?.name;
+  public displayFn(target: Target | null | undefined): string {
+    return target?.name ?? '';
   }
 
-  public search(term: string | Target): void {
-    this.searchTerms$.next(isTarget(term) ? term.name : term);
+  public search(term: string | Target | null): void {
+    this.searchTerms$.next(typeof term === 'string' ? term : term?.name ?? '');
   }
 
-  public onTargetSelected(target: Target) {
-    if (this.target() !== target) {
+  public onTargetSelected(target: string | Target | null) {
+    if (target instanceof Target && this.target() !== target) {
       this.target.set(target);
     }
   }

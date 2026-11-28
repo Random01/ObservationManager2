@@ -24,6 +24,6 @@ export class EditSessionComponent extends EditEntityComponent<Session> {
   }
 
   protected override getItemId(): string {
-    return this.route.snapshot.paramMap.get('sessionId');
+    return this.requireRouteParam('sessionId');
   }
 }

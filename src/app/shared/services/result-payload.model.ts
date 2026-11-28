@@ -2,9 +2,9 @@ import { Entity } from '../models/models';
 import { ResponseStatus } from './response-status.model';
 
 export class ResultPayload<T extends Entity> {
-  public readonly message: string;
-  public readonly payload: T;
-  public readonly status: ResponseStatus;
+  declare readonly message: string;
+  declare readonly payload: T;
+  declare readonly status: ResponseStatus;
 
   constructor(params?: Partial<ResultPayload<T>>) {
     Object.assign(this, params);

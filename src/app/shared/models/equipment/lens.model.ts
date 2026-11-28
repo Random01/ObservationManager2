@@ -7,7 +7,7 @@ export class Lens extends EquipmentItem {
   /**
    * Factors above 1 define an barlow lens, factors below 1 define a shapley lens.
    */
-  public factor: number;
+  declare factor: number;
 
   constructor(params?: Partial<Lens>) {
     super(params);

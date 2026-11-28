@@ -20,6 +20,6 @@ export class EditEyepieceComponent extends EditEntityComponent<Eyepiece> {
   }
 
   public getItemId(): string {
-    return this.route.snapshot.paramMap.get('id');
+    return this.requireRouteParam('id');
   }
 }

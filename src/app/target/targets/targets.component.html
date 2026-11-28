@@ -13,18 +13,20 @@
       <mat-expansion-panel-header>
         <mat-panel-title> Search Panel </mat-panel-title>
       </mat-expansion-panel-header>
-      <om-target-search-params [searchParams]="data.searchParameters" (searchRequested)="onSearch($event)"> </om-target-search-params>
+      @if (data.searchParameters; as searchParams) {
+        <om-target-search-params [searchParams]="searchParams" (searchRequested)="onSearch($event)"> </om-target-search-params>
+      }
     </mat-expansion-panel>
     <mat-paginator
       showFirstLastButtons="true"
-      [length]="data.page.totalCount"
+      [length]="data.page?.totalCount ?? 0"
       [pageSize]="pageSize"
       [pageSizeOptions]="pageSizeOptions"
       [pageIndex]="currentPage"
       (page)="onPageChanged($event)"
     >
     </mat-paginator>
-    <mat-table class="mat-elevation-z8" [dataSource]="data.page.items">
+    <mat-table class="mat-elevation-z8" [dataSource]="data.page?.items ?? []">
       <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
         <mat-cell *matCellDef="let target">{{ target.name }}</mat-cell>
@@ -61,7 +63,7 @@
     </mat-table>
     <mat-paginator
       showFirstLastButtons="true"
-      [length]="data.page.totalCount"
+      [length]="data.page?.totalCount ?? 0"
       [pageSize]="pageSize"
       [pageSizeOptions]="pageSizeOptions"
       [pageIndex]="currentPage"

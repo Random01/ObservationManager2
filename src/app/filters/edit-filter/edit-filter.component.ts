@@ -20,6 +20,6 @@ export class EditFilterComponent extends EditEntityComponent<Filter> {
   }
 
   public getItemId(): string {
-    return this.route.snapshot.paramMap.get('filterId');
+    return this.requireRouteParam('filterId');
   }
 }

@@ -1,11 +1,11 @@
 ﻿import { Entity } from './entity.model';
 
 export class Observer extends Entity {
-  public name: string;
+  declare name: string;
 
-  public surname: string;
+  declare surname: string;
 
-  public contact: string;
+  declare contact: string;
 
   constructor(params?: Partial<Observer>) {
     super(params);

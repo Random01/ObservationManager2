@@ -24,6 +24,9 @@ describe('AddScopeDialogComponent', () => {
     expect(add).not.toHaveBeenCalled();
     component.ngOnInit();
     const scope = await firstValueFrom(component.item$);
+    if (!scope) {
+      throw new Error('Expected the item to be initialized');
+    }
     expect(component.isValid()).toBeFalse();
     scope.model = 'Reflector';
     expect(component.isValid()).toBeTrue();

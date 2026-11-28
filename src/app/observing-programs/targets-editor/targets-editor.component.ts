@@ -19,7 +19,7 @@ export class TargetsEditorComponent implements OnChanges {
   public currentPage = 0;
   public pageSize = 10;
   public pageSizeOptions = [5, 10];
-  public paginatedTargets: Target[];
+  public paginatedTargets: Target[] = [];
   public totalCount = 0;
 
   @Input() public targets?: Target[];
@@ -27,21 +27,22 @@ export class TargetsEditorComponent implements OnChanges {
 
   public readonly displayedColumns: string[] = ['name', 'actions'];
 
-  public newTarget: Target;
+  public newTarget: Target | null = null;
 
   public addNewTarget(): void {
     if (this.newTarget) {
-      this.targets = [...this.targets, this.newTarget];
+      this.targets = [...(this.targets ?? []), this.newTarget];
       this.newTarget = null;
       this.targetsChange.emit(this.targets);
     }
   }
 
   public removeTarget(target: Target): void {
-    const index = this.targets.indexOf(target);
-    this.targets.splice(index, 1);
-    this.targets = [...this.targets];
-    this.targetsChange.emit(this.targets);
+    const index = this.targets?.indexOf(target) ?? -1;
+    if (this.targets && index >= 0) {
+      this.targets = this.targets.filter((_, itemIndex) => itemIndex !== index);
+      this.targetsChange.emit(this.targets);
+    }
   }
 
   public onPageChanged(pageEvent: PageEvent): void {
@@ -55,6 +56,6 @@ export class TargetsEditorComponent implements OnChanges {
   }
 
   private updateList(): void {
-    this.paginatedTargets = this.targets.slice(this.currentPage * this.pageSize, this.currentPage * this.pageSize + this.pageSize);
+    this.paginatedTargets = this.targets?.slice(this.currentPage * this.pageSize, this.currentPage * this.pageSize + this.pageSize) ?? [];
   }
 }

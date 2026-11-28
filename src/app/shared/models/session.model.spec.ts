@@ -15,11 +15,11 @@ describe('Session', () => {
       comments: 'Low humidity',
     });
 
-    expect(session.site.getDisplayName()).toBe('Dark sky park');
-    expect(session.site.isValid()).toBeTrue();
-    expect(session.site.serialize()).toEqual(jasmine.objectContaining({ longitude: -105.5, latitude: 40.5, elevation: 2200 }));
-    expect(session.userCreated.id).toBe('observer-1');
-    expect(session.userUpdated.id).toBe('observer-2');
+    expect(session.site?.getDisplayName()).toBe('Dark sky park');
+    expect(session.site?.isValid()).toBeTrue();
+    expect(session.site?.serialize()).toEqual(jasmine.objectContaining({ longitude: -105.5, latitude: 40.5, elevation: 2200 }));
+    expect(session.userCreated?.id).toBe('observer-1');
+    expect(session.userUpdated?.id).toBe('observer-2');
     expect(session.serialize()).toEqual({
       id: 'session-1',
       description: undefined,

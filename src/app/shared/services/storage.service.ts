@@ -26,7 +26,7 @@ export abstract class StorageService<T extends Entity> {
     return this.getAll();
   }
 
-  public add(newItem: T): Observable<AddResultPayload> {
+  public add(newItem: T | null): Observable<AddResultPayload> {
     if (!newItem) {
       throw new Error('newItem should be provided');
     }

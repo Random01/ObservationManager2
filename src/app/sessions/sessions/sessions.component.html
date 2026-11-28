@@ -1,18 +1,18 @@
-@if ({ page: page$ | async }; as data) {
+@if (page$ | async; as page) {
   <div class="om-sessions-component">
     <div class="header">
       <h2 class="mat-h2">My Sessions</h2>
     </div>
     <mat-paginator
       showFirstLastButtons="true"
-      [length]="data.page.totalCount"
+      [length]="page.totalCount"
       [pageSize]="pageSize"
       [pageSizeOptions]="pageSizeOptions"
       [pageIndex]="currentPage"
       (page)="onPageChanged($event)"
     >
     </mat-paginator>
-    <table mat-table matSort class="mat-elevation-z8" [dataSource]="data.page.items">
+    <table mat-table matSort class="mat-elevation-z8" [dataSource]="page.items">
       <ng-container matColumnDef="begin">
         <mat-header-cell *matHeaderCellDef mat-sort-header="begin"> Date </mat-header-cell>
         <mat-cell *matCellDef="let session">{{ session.begin | date: 'MMM d, y' }}</mat-cell>
@@ -44,7 +44,7 @@
     </table>
     <mat-paginator
       showFirstLastButtons="true"
-      [length]="data.page.totalCount"
+      [length]="page.totalCount"
       [pageSize]="pageSize"
       [pageSizeOptions]="pageSizeOptions"
       [pageIndex]="currentPage"

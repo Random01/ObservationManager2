@@ -31,10 +31,14 @@ export class TargetComponent {
   @Input() public target?: Target;
 
   public onAliasAdded(alias: string) {
-    this.target.alliases = [...(this.target.alliases || []), alias];
+    if (this.target) {
+      this.target.alliases = [...(this.target.alliases ?? []), alias];
+    }
   }
 
   public onAliasRemoved(alias: string) {
-    this.target.alliases = (this.target.alliases || []).filter((x) => x !== alias);
+    if (this.target) {
+      this.target.alliases = (this.target.alliases ?? []).filter((x) => x !== alias);
+    }
   }
 }

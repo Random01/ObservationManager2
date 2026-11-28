@@ -6,17 +6,17 @@ export class User extends Entity {
 
   public static readonly UnauthorizedUser = new User();
 
-  public firstName: string;
+  declare firstName: string;
 
-  public lastName: string;
+  declare lastName: string;
 
-  public userName: string;
+  declare userName: string;
 
-  public password: string;
+  declare password: string;
 
-  public email: string;
+  declare email: string;
 
-  public role: UserRole;
+  declare role: UserRole;
 
   constructor(params?: Partial<User>) {
     super(params);

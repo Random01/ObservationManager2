@@ -41,6 +41,9 @@ export class SessionDetailsComponent extends BaseComponent implements OnInit {
   }
 
   public create(): void {
+    if (!this.session) {
+      return;
+    }
     this.startLoading();
 
     this.sessionService
@@ -50,6 +53,9 @@ export class SessionDetailsComponent extends BaseComponent implements OnInit {
   }
 
   public update(): void {
+    if (!this.session) {
+      return;
+    }
     this.startLoading();
 
     this.sessionService
@@ -80,6 +86,9 @@ export class SessionDetailsComponent extends BaseComponent implements OnInit {
   }
 
   public async addNewObservation() {
+    if (!this.session) {
+      return;
+    }
     const dialogRef = this.dialog.open(ObservationDialogComponent, {
       width: '400px',
       data: new Observation({

@@ -3,12 +3,12 @@ import { Serializable } from '../interfaces/serializable.interface';
 import moment from 'moment';
 
 export class Entity implements Serializable {
-  public id: string;
+  declare id: string;
 
-  public userCreated: Entity;
-  public userUpdated: Entity;
+  public userCreated?: Entity;
+  public userUpdated?: Entity;
 
-  public description: string;
+  public description?: string;
 
   constructor(params?: Partial<Entity>) {
     Object.assign(this, params);
@@ -44,31 +44,33 @@ export class Entity implements Serializable {
     return true;
   }
 
-  public getDisplayName(): string {
+  public getDisplayName(): string | null {
     return null;
   }
 
-  protected parseDate(value?: string): Date {
+  protected parseDate(value?: string): Date | null {
     if (value) {
       return moment(value).toDate();
     }
     return null;
   }
 
-  protected serializeDate(value?: Date): string {
+  protected serializeDate(value?: Date | null): string | null {
     return value ? value.toISOString() : null;
   }
 
-  protected serializeEntity(value?: Entity) {
+  protected serializeEntity(value?: Entity | null): string | null {
     return value ? value.id : null;
   }
 
   protected copy(state: any, fields: string[]): void {
+    const entity = this as unknown as Record<string, unknown>;
     for (const field of fields) {
-      if (this[field] != null && this[field].deserialize != null) {
-        this[field].deserialize(state[field] || {});
+      const value = entity[field];
+      if (value && typeof value === 'object' && 'deserialize' in value && typeof value.deserialize === 'function') {
+        value.deserialize(state[field] || {});
       } else {
-        this[field] = state[field];
+        entity[field] = state[field];
       }
     }
   }

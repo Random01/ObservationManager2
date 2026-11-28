@@ -14,9 +14,12 @@ export class ObservationTxtExporter extends BaseTxtExporter<Observation> {
   private get(observation: Observation): string {
     let row = observation.target?.name + '. ';
 
-    if (observation.eyepiece && observation.scope) {
-      const zoom = Math.fround(observation.scope.focalLength / observation.eyepiece.focalLength);
-      row += `${observation.eyepiece.model} (${Math.round(zoom)}x). `;
+    const { eyepiece, scope } = observation;
+    if (eyepiece && scope) {
+      const magnification = scope.focalLength != null && eyepiece.focalLength
+        ? ` (${Math.round(Math.fround(scope.focalLength / eyepiece.focalLength))}x)`
+        : '';
+      row += `${eyepiece.model}${magnification}. `;
     }
 
     return row + (observation.result.description || '');

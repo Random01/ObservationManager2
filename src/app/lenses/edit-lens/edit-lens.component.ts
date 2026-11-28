@@ -20,6 +20,6 @@ export class EditLensComponent extends EditEntityComponent<Lens> {
   }
 
   public getItemId(): string {
-    return this.route.snapshot.paramMap.get('lensId');
+    return this.requireRouteParam('lensId');
   }
 }

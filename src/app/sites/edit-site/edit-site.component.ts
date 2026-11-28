@@ -20,6 +20,6 @@ export class EditSiteComponent extends EditEntityComponent<Site> {
   }
 
   protected getItemId(): string {
-    return this.route.snapshot.paramMap.get('id');
+    return this.requireRouteParam('id');
   }
 }

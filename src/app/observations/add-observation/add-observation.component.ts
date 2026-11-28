@@ -37,10 +37,13 @@ export class AddObservationComponent extends AddEntityComponent<Observation> {
   }
 
   public override async addItemAndContinue() {
+    const item = this.itemSubject.getValue();
+    if (!item) {
+      return;
+    }
     this.startLoading();
 
     try {
-      const item = this.itemSubject.getValue();
       await firstValueFrom(this.storageService.add(item));
 
       const newItem = await this.createNew({
@@ -64,6 +67,6 @@ export class AddObservationComponent extends AddEntityComponent<Observation> {
   }
 
   private getSessionId(): string {
-    return this.route.snapshot.paramMap.get('sessionId');
+    return this.requireRouteParam('sessionId');
   }
 }

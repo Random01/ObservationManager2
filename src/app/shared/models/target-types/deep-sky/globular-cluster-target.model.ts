@@ -5,13 +5,13 @@ export class GlobularClusterTarget extends DeepSkyTargetType {
    * name="magStars"
    * magnitude of brightest stars in [mag]
    */
-  public brightestStarMagnitude: number;
+  declare brightestStarMagnitude: number;
 
   /**
    * name="conc"
    * degree of concentration [I..XII]
    */
-  public concentration: string;
+  declare concentration: string;
 
   constructor(params?: Partial<GlobularClusterTarget>) {
     super(params);

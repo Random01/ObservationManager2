@@ -25,8 +25,8 @@ import { BaseComponent } from '../../shared/components';
 export class LoginComponent extends BaseComponent implements OnInit {
 
   public readonly loginForm = new FormGroup({
-    email: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
+    email: new FormControl('', { nonNullable: true, validators: Validators.required }),
+    password: new FormControl('', { nonNullable: true, validators: Validators.required }),
   });
 
   private readonly store = inject(Store);
@@ -34,7 +34,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
 
   public onSubmit() {
     if (this.loginForm.valid) {
-      const { email, password } = this.loginForm.value;
+      const { email, password } = this.loginForm.getRawValue();
       this.store.dispatch(AuthApiActions.login({ credentials: { email, password } }));
     }
   }

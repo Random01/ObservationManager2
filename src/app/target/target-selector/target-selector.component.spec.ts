@@ -54,6 +54,7 @@ describe('TargetSelectorComponent', () => {
     expect(component.displayFn(component.target())).toBe('M31');
 
     component.clearSelection();
-    expect(component.target().name).toBeUndefined();
+    expect(component.target()).toEqual(jasmine.any(Target));
+    expect(component.target()?.name).toBeUndefined();
   });
 });
