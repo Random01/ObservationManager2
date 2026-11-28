@@ -12,7 +12,7 @@ import { TargetComponent } from '../../target';
 @Component({
   selector: 'om-add-target-dialog',
   templateUrl: 'add-target-dialog.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatButtonModule, MatDialogModule, AsyncPipe, TargetComponent],
 })
 export class AddTargetDialogComponent extends AddEntityDialogComponent<Target, TargetService> {

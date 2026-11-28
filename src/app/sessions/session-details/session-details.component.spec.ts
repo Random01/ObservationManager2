@@ -1,6 +1,7 @@
+import { Component, input } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, convertToParamMap } from '@angular/router';
+import { ActivatedRoute, convertToParamMap, RouterLink } from '@angular/router';
 import { of, Subject } from 'rxjs';
 
 import { ObservationDialogComponent } from '../../observations/observation-dialog/observation-dialog.component';
@@ -9,8 +10,14 @@ import { Observation } from '../../shared/models/observation.model';
 import { Session } from '../../shared/models/session.model';
 import { AddResultPayload } from '../../shared/services/add-result-payload.model';
 import { MessageService } from '../../shared/services/message.service';
+import { SessionComponent } from '../session/session.component';
 import { SessionService } from '../shared/session.service';
 import { SessionDetailsComponent } from './session-details.component';
+
+@Component({ selector: 'om-session', template: '{{ session().id }}' })
+class SessionEditorStub {
+  readonly session = input.required<Session>();
+}
 
 describe('SessionDetailsComponent', () => {
   const session = new Session({ id: 'session-1' });
@@ -20,10 +27,14 @@ describe('SessionDetailsComponent', () => {
   let dialog: jasmine.SpyObj<MatDialog>;
   let closed: Subject<Observation | undefined>;
 
-  function initialize(id?: string) {
+  function createRoute(id?: string): ActivatedRoute {
     const route = new ActivatedRoute();
     route.snapshot = { paramMap: convertToParamMap(id ? { id } : {}) } as ActivatedRoute['snapshot'];
-    component = TestBed.runInInjectionContext(() => new SessionDetailsComponent(route, sessions, dialog, observations));
+    return route;
+  }
+
+  function initialize(id?: string) {
+    component = TestBed.runInInjectionContext(() => new SessionDetailsComponent(createRoute(id), sessions, dialog, observations));
     component.ngOnInit();
   }
 
@@ -46,7 +57,7 @@ describe('SessionDetailsComponent', () => {
     expect(sessions.getById).not.toHaveBeenCalled();
 
     component.create();
-    expect(sessions.add).toHaveBeenCalledOnceWith(component.session);
+    expect(sessions.add).toHaveBeenCalledOnceWith(component.session());
     expect(component.isLoading()).toBeFalse();
   });
 
@@ -54,11 +65,37 @@ describe('SessionDetailsComponent', () => {
     initialize(session.id);
     expect(component.editMode).toBeTrue();
     expect(sessions.getById).toHaveBeenCalledOnceWith(session.id);
-    expect(component.session).toBe(session);
+    expect(component.session()).toBe(session);
 
     component.update();
     expect(sessions.update).toHaveBeenCalledOnceWith(session);
     expect(component.isLoading()).toBeFalse();
+  });
+
+  it('renders the session editor when the existing session arrives', async () => {
+    const response = new Subject<Session>();
+    sessions.getById.and.returnValue(response);
+    TestBed.configureTestingModule({
+      providers: [
+        { provide: ActivatedRoute, useValue: createRoute(session.id) },
+        { provide: SessionService, useValue: sessions },
+        { provide: ObservationService, useValue: observations },
+        { provide: MatDialog, useValue: dialog },
+      ],
+    }).overrideComponent(SessionDetailsComponent, {
+      remove: { imports: [RouterLink, SessionComponent] },
+      add: { imports: [SessionEditorStub] },
+    });
+    const fixture = TestBed.createComponent(SessionDetailsComponent);
+    const element: HTMLElement = fixture.nativeElement;
+    fixture.autoDetectChanges();
+    expect(element.querySelector('om-session')).toBeNull();
+
+    response.next(session);
+    response.complete();
+    await fixture.whenStable();
+
+    expect(element.querySelector('om-session')?.textContent).toContain(session.id!);
   });
 
   it('opens an observation for the current session and saves a confirmed result', async () => {

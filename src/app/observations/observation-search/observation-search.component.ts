@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, signal } from '@angular/core';
 
 import ObservationSearchParameters from './observation-search-parameters.model';
 
@@ -18,18 +18,18 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'om-observation-search',
   templateUrl: 'observation-search.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatFormFieldModule, MatSelectModule, FormsModule, TargetSelectorComponent],
 })
 export class ObservationSearchComponent implements OnInit {
   @Input()
   public searchParameters?: ObservationSearchParameters;
 
-  public scopes?: Scope[];
-  public eyepieces?: Eyepiece[];
-  public filters?: Filter[];
-  public lenses?: Lens[];
-  public sites?: Site[];
+  public readonly scopes = signal<Scope[]>([]);
+  public readonly eyepieces = signal<Eyepiece[]>([]);
+  public readonly filters = signal<Filter[]>([]);
+  public readonly lenses = signal<Lens[]>([]);
+  public readonly sites = signal<Site[]>([]);
 
   constructor(
     private readonly scopeService: ScopeService,
@@ -40,10 +40,10 @@ export class ObservationSearchComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
-    this.scopeService.getAll().then((scopes) => (this.scopes = scopes));
-    this.eyepieceService.getAll().then((eyepieces) => (this.eyepieces = eyepieces));
-    this.filterService.getAll().then((filters) => (this.filters = filters));
-    this.lensService.getAll().then((lenses) => (this.lenses = lenses));
-    this.siteService.getAll().then((sites) => (this.sites = sites));
+    this.scopeService.getAll().then((scopes) => this.scopes.set(scopes));
+    this.eyepieceService.getAll().then((eyepieces) => this.eyepieces.set(eyepieces));
+    this.filterService.getAll().then((filters) => this.filters.set(filters));
+    this.lensService.getAll().then((lenses) => this.lenses.set(lenses));
+    this.siteService.getAll().then((sites) => this.sites.set(sites));
   }
 }

@@ -12,7 +12,7 @@ import { VendorSelectorComponent } from '../../equipment/vendor-selector';
   selector: 'om-eyepiece',
   templateUrl: 'eyepiece.component.html',
   styleUrl: 'eyepiece.component.less',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatFormFieldModule, MatInputModule, FormsModule, MatCheckboxModule, VendorSelectorComponent],
 })
 export class EyepieceComponent {

@@ -12,7 +12,7 @@ import moment from 'moment';
   templateUrl: 'date-time-input.component.html',
   styleUrl: 'date-time-input.component.css',
   imports: [MatFormFieldModule, MatInputModule, MatDatepickerModule, FormsModule],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [provideNativeDateAdapter()],
 })
 export class DateTimeInputComponent {
@@ -36,7 +36,10 @@ export class DateTimeInputComponent {
   public set time(value: string) {
     if (value && this._date) {
       const [hours, minutes] = value.split(':');
-      this._date.setHours(parseFloat(hours), parseFloat(minutes));
+      const date = new Date(this._date);
+      date.setHours(parseFloat(hours), parseFloat(minutes));
+      this._date = date;
+      this.dateTimeChange.emit(date);
     }
   }
 
@@ -50,7 +53,4 @@ export class DateTimeInputComponent {
   public onDateChanged(): void {
     this.dateTimeChange.emit(this.dateTime);
   }
-
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  public onTimeChanged(): void {}
 }

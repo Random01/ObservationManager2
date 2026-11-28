@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 import { BaseComponent } from './base-component';
 import { Entity } from '../models/entity.model';
 
-@Component({ changeDetection: ChangeDetectionStrategy.Eager, template: '' })
+@Component({ changeDetection: ChangeDetectionStrategy.OnPush, template: '' })
 export abstract class BaseEntityComponent<T extends Entity> extends BaseComponent {
   protected readonly router = inject(Router);
   protected readonly route = inject(ActivatedRoute);

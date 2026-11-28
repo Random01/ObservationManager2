@@ -10,7 +10,7 @@ import { ObservationComponent } from '../observation/observation.component';
   selector: 'om-observation-dialog',
   templateUrl: 'observation-dialog.component.html',
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatDialogModule, MatButtonModule, ObservationComponent],
 })
 export class ObservationDialogComponent {

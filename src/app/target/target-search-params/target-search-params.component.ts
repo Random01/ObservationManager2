@@ -11,7 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 @Component({
   selector: 'om-target-search-params',
   templateUrl: 'target-search-params.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatFormFieldModule, MatInputModule, MatButtonModule, FormsModule, TargetTypeSelectorComponent],
 })
 export class TargetSearchParamsComponent {

@@ -35,5 +35,14 @@ describe('TargetsEditorComponent', () => {
       [triangulum, pinwheel],
     ]);
     expect(component.newTarget).toBeNull();
+    expect(component.paginatedTargets).toEqual([triangulum, pinwheel]);
+  });
+
+  it('moves back a page when the last target on the current page is removed', () => {
+    component.onPageChanged({ pageIndex: 1, pageSize: 1, length: 2 });
+    component.removeTarget(triangulum);
+
+    expect(component.currentPage).toBe(0);
+    expect(component.paginatedTargets).toEqual([andromeda]);
   });
 });

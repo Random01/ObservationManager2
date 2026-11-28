@@ -12,7 +12,7 @@ import { UserComponent } from '../user/user.component';
   selector: 'om-add-user',
   templateUrl: 'add-user.component.html',
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatButtonModule, AsyncPipe, UserComponent],
 })
 export class AddUserComponent extends AddEntityComponent<User> {

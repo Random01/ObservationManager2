@@ -5,7 +5,7 @@ import { Unsubscribable } from 'rxjs';
 @Component({
   template: '',
   standalone: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DestroyableComponent implements OnDestroy {
   private readonly subscriptions: Unsubscribable[] = [];

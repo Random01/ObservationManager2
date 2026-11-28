@@ -13,7 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'om-users',
   templateUrl: 'users.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatPaginatorModule, MatTableModule, MatIconModule, MatButtonModule, RouterLink, AsyncPipe],
 })
 export class UsersComponent extends EntityListComponent<User> {
