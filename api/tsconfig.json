@@ -5,7 +5,7 @@
     "target": "ES2022",
     "esModuleInterop": true,
     "outDir": "dist",
-    "baseUrl": ".",
+    "types": ["node"],
     "noUnusedLocals": true,
     "noUnusedParameters": false,
     "forceConsistentCasingInFileNames": true,
